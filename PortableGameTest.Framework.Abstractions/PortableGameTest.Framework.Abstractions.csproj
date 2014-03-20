@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6216E08B-9DC7-454E-B5ED-4615BB7236B1}</ProjectGuid>
+    <ProjectGuid>{4216E08B-9DC7-454E-B5ED-4615BB7236B2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PortableGameTest.Framework</RootNamespace>
-    <AssemblyName>PortableGameTest.Framework</AssemblyName>
+    <AssemblyName>PortableGameTest.Framework.Abstractions</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
