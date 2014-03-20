@@ -23,16 +23,9 @@ using System.Collections.Generic;
 
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
-using Microsoft.Xna.Framework;
 
 namespace Nuclex.Input.Devices {
-
-  /// <summary>Delegate used to report touch actions</summary>
-  /// <param name="id">ID of the distinct touch</param>
-  /// <param name="position">Position the action occurred at</param>
-  public delegate void TouchDelegate(int id, Vector2 position);
-
-  /// <summary>Specializd input devices for mouse-like controllers</summary>
+    /// <summary>Specializd input devices for mouse-like controllers</summary>
   public interface ITouchPanel : IInputDevice {
 
     /// <summary>Triggered when the user presses on the screen</summary>

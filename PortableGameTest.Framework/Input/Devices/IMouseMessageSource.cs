@@ -24,21 +24,7 @@ using System.Collections.Generic;
 #if WINDOWS || WINRT || LINUX
 
 namespace Nuclex.Input.Devices {
-
-  /// <summary>Delegate used to report a mouse event</summary>
-  /// <param name="button">Button that has been pressed or released</param>
-  internal delegate void MouseButtonEventDelegate(MouseButtons button);
-
-  /// <summary>Delegate used to report a mouse event</summary>
-  /// <param name="ticks">Number of ticks the mouse wheel was rotated</param>
-  internal delegate void MouseWheelEventDelegate(float ticks);
-
-  /// <summary>Delegate used to report a mouse event</summary>
-  /// <param name="x">X coordinate of the mouse cursor</param>
-  /// <param name="y">Y coordinate or the mouse cursor</param>
-  internal delegate void MouseMoveEventDelegate(float x, float y);
-
-  /// <summary>
+    /// <summary>
   ///   Sends out notifications for intercepted window messages related to the mouse
   /// </summary>
   internal interface IMouseMessageSource {

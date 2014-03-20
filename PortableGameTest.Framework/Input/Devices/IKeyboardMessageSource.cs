@@ -21,21 +21,10 @@ License along with this library
 using System;
 using System.Collections.Generic;
 
-using Microsoft.Xna.Framework.Input;
-
 #if WINDOWS || WINRT || LINUX
 
 namespace Nuclex.Input.Devices {
-
-  /// <summary>Delegate used to report a keyboard event</summary>
-  /// <param name="key">Key that was pressed or released</param>
-  internal delegate void KeyboardKeyEventDelegate(Keys key);
-
-  /// <summary>Delegate used to report a keyboard event</summary>
-  /// <param name="character">Character that ha been entered</param>
-  internal delegate void KeyboardCharacterEventDelegate(char character);
-
-  /// <summary>
+    /// <summary>
   ///   Sends out notifications for intercepted window messages related to the keyboard
   /// </summary>
   internal interface IKeyboardMessageSource {

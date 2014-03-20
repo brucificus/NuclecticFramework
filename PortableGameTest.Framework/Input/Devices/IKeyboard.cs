@@ -24,16 +24,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 
 namespace Nuclex.Input.Devices {
-
-  /// <summary>Delegate used to report key presses and releases</summary>
-  /// <param name="key">Key that has been pressed or released</param>
-  public delegate void KeyDelegate(Keys key);
-
-  /// <summary>Delegate used to report characters typed on a keyboard</summary>
-  /// <param name="character">Character that has been typed</param>
-  public delegate void CharacterDelegate(char character);
-
-  /// <summary>Specialized input device for keyboard-like controllers</summary>
+    /// <summary>Specialized input device for keyboard-like controllers</summary>
   public interface IKeyboard : IInputDevice {
 
     /// <summary>Fired when a key has been pressed</summary>

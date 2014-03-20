@@ -24,17 +24,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 
 namespace Nuclex.Input.Devices {
-
-  /// <summary>Delegate use to report presses and releases of game pad buttons</summary>
-  /// <param name="buttons">Button or buttons that have been pressed or released</param>
-  public delegate void GamePadButtonDelegate(Buttons buttons);
-
-  /// <summary>Delegate use to report presses and releases of game pad buttons</summary>
-  /// <param name="buttons1">Button or buttons that have been pressed or released</param>
-  /// <param name="buttons2">Button or buttons that have been pressed or released</param>
-  public delegate void ExtendedGamePadButtonDelegate(ulong buttons1, ulong buttons2);
-
-  /// <summary>Specialized input device for game pad-like controllers</summary>
+    /// <summary>Specialized input device for game pad-like controllers</summary>
   public interface IGamePad : IInputDevice {
 
     /// <summary>Called when one or more buttons on the game pad have been pressed</summary>

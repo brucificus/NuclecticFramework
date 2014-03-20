@@ -28,18 +28,7 @@ using Nuclex.Support.Collections;
 using Nuclex.UserInterface.Input;
 
 namespace Nuclex.UserInterface.Controls.Desktop {
-
-  /// <summary>How the list lets the user select items</summary>
-  public enum ListSelectionMode {
-    /// <summary>The user is not allowed to select an item</summary>
-    None,
-    /// <summary>The user can select only one item</summary>
-    Single,
-    /// <summary>The user can pick any number of items</summary>
-    Multi
-  }
-
-  /// <summary>List showing a sequence of items</summary>
+    /// <summary>List showing a sequence of items</summary>
   public class ListControl : Control, IFocusable {
 
     /// <summary>Triggered when the selected items in list have changed</summary>

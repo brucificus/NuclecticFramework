@@ -23,18 +23,7 @@ using System;
 using Microsoft.Xna.Framework;
 
 namespace Nuclex.Geometry.Areas {
-
-  /// <summary>Informations about the point of first contact between two bodies</summary>
-  public struct ImpactPoint {
-    /// <summary>Whether a contact could be found at all</summary>
-    public bool Found;
-    /// <summary>The absolute location where the contact occurs</summary>
-    public Vector2 AbsoluteLocation;
-    /// <summary>The time at which the contact occurs</summary>
-    public float Time;
-  }
-
-  /// <summary>Two-dimensional geometric body in 2D space</summary>
+    /// <summary>Two-dimensional geometric body in 2D space</summary>
   /// <remarks>
   ///   An area by definition and of course also in the context of this library is a
   ///   two-dimensional region. This region could a either be located in actual
