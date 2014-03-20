@@ -1,0 +1,6 @@
+/PortableGameTest.Framework/obj
+/PortableGameTest.Framework/bin
+/PortableGameTest.Framework.Win32/bin
+/PortableGameTest.Framework.Win32/obj
+*.suo
+*.user
