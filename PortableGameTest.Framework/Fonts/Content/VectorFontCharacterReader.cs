@@ -20,6 +20,7 @@ License along with this library
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Text;
 
 using Microsoft.Xna.Framework;
@@ -47,7 +48,7 @@ namespace Nuclex.Fonts.Content {
 
       // Load the font's outline index records
       int outlineCount = input.ReadInt32();
-      List<VectorFontCharacter.Outline> outlines = new List<VectorFontCharacter.Outline>(
+      var outlines = new List<VectorFontCharacter.Outline>(
         outlineCount
       );
       for(int index = 0; index < outlineCount; ++index) {
@@ -58,7 +59,7 @@ namespace Nuclex.Fonts.Content {
 
       // Load the font's face index records
       int faceCount = input.ReadInt32();
-      List<VectorFontCharacter.Face> faces = new List<VectorFontCharacter.Face>(faceCount);
+      var faces = new List<VectorFontCharacter.Face>(faceCount);
       for(int index = 0; index < faceCount; ++index) {
         int firstVertexIndex = input.ReadInt32();
         int secondVertexIndex = input.ReadInt32();
@@ -69,7 +70,7 @@ namespace Nuclex.Fonts.Content {
       }
 
       // All done, we can construct a new character from the loaded data
-      return new VectorFontCharacter(advancement, vertices, outlines, faces);
+      return new VectorFontCharacter(advancement, vertices.ToImmutableList(), outlines.ToImmutableList(), faces.ToImmutableList());
 
     }
 

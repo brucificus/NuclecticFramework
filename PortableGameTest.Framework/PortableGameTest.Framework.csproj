@@ -360,15 +360,10 @@
     <Compile Include="Support\IntegerHelper.cs" />
     <Compile Include="Support\IO\ChainStream.cs" />
     <Compile Include="Support\IO\PartialStream.cs" />
-    <Compile Include="Support\Observable.cs" />
-    <Compile Include="Support\ObservableHelper.cs" />
-    <Compile Include="Support\PropertyChangedEventArgsHelper.cs" />
-    <Compile Include="Support\Shared.cs" />
     <Compile Include="Support\StringBuilderHelper.cs" />
     <Compile Include="Support\StringHelper.cs" />
     <Compile Include="Support\StringSegment.cs" />
     <Compile Include="Support\WeakReference.cs" />
-    <Compile Include="Support\WeakReference.Phone7.cs" />
     <Compile Include="Support\XmlHelper.cs" />
     <Compile Include="UserInterface\Controls\Arcade\CommandControl.cs" />
     <Compile Include="UserInterface\Controls\Arcade\PanelControl.cs" />
@@ -455,6 +450,9 @@
     </Reference>
     <Reference Include="SevenZipSharp">
       <HintPath>..\packages\SevenZipSharp.0.64\lib\SevenZipSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\packages\Microsoft.Bcl.Immutable.1.0.30\lib\portable-net45+win8+wp8\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="Validation">
       <HintPath>..\packages\Validation.2.0.3.13323\lib\portable-windows8+net40+sl5+windowsphone8+MonoAndroid+MonoTouch\Validation.dll</HintPath>

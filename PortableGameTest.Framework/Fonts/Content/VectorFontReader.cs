@@ -20,6 +20,7 @@ License along with this library
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Text;
 
 using Microsoft.Xna.Framework;
@@ -41,13 +42,13 @@ namespace Nuclex.Fonts.Content {
       float lineHeight = input.ReadSingle();
 
       // Which index corresponds to which character
-      Dictionary<char, int> characterMap = input.ReadObject<Dictionary<char, int>>();
+      var characterMap = input.ReadObject<Dictionary<char, int>>();
 
       // Vectors of each character
-      List<VectorFontCharacter> characters = input.ReadObject<List<VectorFontCharacter>>();
+      var characters = input.ReadObject<List<VectorFontCharacter>>();
 
       // Special distance adjustments between some characters
-      Dictionary<VectorFont.KerningPair, Vector2> kerningTable =
+      var kerningTable =
         new Dictionary<VectorFont.KerningPair, Vector2>();
 
       int kerningEntryCount = input.ReadInt32();
@@ -66,7 +67,7 @@ namespace Nuclex.Fonts.Content {
         );
       #endif
 
-      return new VectorFont(lineHeight, characters, characterMap, kerningTable);
+      return new VectorFont(lineHeight, characters.ToImmutableList(), characterMap.ToImmutableDictionary(), kerningTable.ToImmutableDictionary());
     }
 
   }

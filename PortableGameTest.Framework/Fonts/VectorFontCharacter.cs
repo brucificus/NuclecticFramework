@@ -95,7 +95,7 @@ namespace Nuclex.Fonts {
     /// <param name="outlines">Vertex indices for drawing the character's outline</param>
     /// <param name="faces">Vertex indices for filling the character</param>
     internal VectorFontCharacter(
-      Vector2 advancement, List<Vector2> vertices, List<Outline> outlines, List<Face> faces
+      Vector2 advancement, IReadOnlyList<Vector2> vertices, IReadOnlyList<Outline> outlines, IReadOnlyList<Face> faces
     ) {
       this.advancement = advancement;
       this.vertices = vertices;
@@ -116,7 +116,8 @@ namespace Nuclex.Fonts {
     ///   you can ignore any vertices with an index above the EndVertex of
     ///   the lastmost outline contained in the Outlines list.
     /// </remarks>
-    public List<Vector2> Vertices {
+    public IReadOnlyList<Vector2> Vertices
+    {
       get { return this.vertices; }
     }
 
@@ -139,7 +140,8 @@ namespace Nuclex.Fonts {
     ///     to the first vertex again to close the outline.
     ///   </para>
     /// </remarks>
-    public List<Outline> Outlines {
+    public IReadOnlyList<Outline> Outlines
+    {
       get { return this.outlines; }
     }
 
@@ -147,18 +149,19 @@ namespace Nuclex.Fonts {
     ///   Specifies between which vertices triangles have to be drawn to draw a
     ///   polygon-filled character.
     /// </summary>
-    public List<Face> Faces {
+    public IReadOnlyList<Face> Faces
+    {
       get { return this.faces; }
     }
 
     /// <summary>How far to advance the cursor after this character is rendered</summary>
     private Vector2 advancement;
     /// <summary>Vertices used by this character</summary>
-    private List<Vector2> vertices;
+    private IReadOnlyList<Vector2> vertices;
     /// <summary>Vertex index ranges to use for drawing the character's outlines</summary>
-    private List<Outline> outlines;
+    private IReadOnlyList<Outline> outlines;
     /// <summary>Vertex indices to use for filling the character with triangles</summary>
-    private List<Face> faces;
+    private IReadOnlyList<Face> faces;
 
   }
 

@@ -130,8 +130,8 @@ namespace Nuclex.Fonts {
     /// </param>
     internal VectorFont(
       float lineHeight,
-      List<VectorFontCharacter> characters, Dictionary<char, int> characterMap,
-      Dictionary<VectorFont.KerningPair, Vector2> kerningTable
+      IReadOnlyList<VectorFontCharacter> characters, IReadOnlyDictionary<char, int> characterMap,
+      IReadOnlyDictionary<VectorFont.KerningPair, Vector2> kerningTable
     ) {
       this.lineHeight = lineHeight;
       this.characters = characters;
@@ -166,12 +166,12 @@ namespace Nuclex.Fonts {
     }
 
     /// <summary>List of the characters contained in this font</summary>
-    public List<VectorFontCharacter> Characters {
+    public IReadOnlyList<VectorFontCharacter> Characters {
       get { return this.characters; }
     }
 
     /// <summary>Maps unicode character to indices into the character list</summary>
-    public Dictionary<char, int> CharacterMap {
+    public IReadOnlyDictionary<char, int> CharacterMap {
       get { return this.characterMap; }
     }
 
@@ -185,20 +185,21 @@ namespace Nuclex.Fonts {
     ///   between such characters to keep the perceived character distance at the
     ///   same level for all character combinations.
     /// </remarks>
-    public Dictionary<VectorFont.KerningPair, Vector2> KerningTable {
+    public IReadOnlyDictionary<VectorFont.KerningPair, Vector2> KerningTable
+    {
       get { return this.kerningTable; }
     }
 
     /// <summary>Height of a single line of text in this font</summary>
     private float lineHeight;
     /// <summary>Characters contained in the font</summary>
-    private List<VectorFontCharacter> characters;
+    private IReadOnlyList<VectorFontCharacter> characters;
     /// <summary>Look-up map for indices by unicode character</summary>
-    private Dictionary<char, int> characterMap;
+    private IReadOnlyDictionary<char, int> characterMap;
     /// <summary>
     ///   Kerning table for adjusting the positions of specific character combinations
     /// </summary>
-    private Dictionary<VectorFont.KerningPair, Vector2> kerningTable;
+    private IReadOnlyDictionary<VectorFont.KerningPair, Vector2> kerningTable;
 
   }
 

@@ -23,7 +23,6 @@ License along with this library
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Resources;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
@@ -150,38 +149,6 @@ namespace Nuclex.Graphics.SpecialEffects.Masks {
     /// <summary>Content manager the solid color fill effect was loaded from</summary>
     private ContentManager contentManager;
 
-#if MONOGAME
-	// NOTE: Taken from https://github.com/mono/MonoGame/blob/d10130d7a64c9d41d21fe02e072cc913c5512ceb/MonoGame.Framework/Content/ResourceContentManager.cs
-	private class ResourceContentManager : ContentManager
-	{
-		private ResourceManager resource;
-
-		public ResourceContentManager(IServiceProvider servicesProvider, ResourceManager resource)
-			: base(servicesProvider)
-		{
-			if (resource == null)
-			{
-				throw new ArgumentNullException("resource");
-			}
-			this.resource = resource;
-		}
-
-		protected override System.IO.Stream OpenStream(string assetName)
-		{
-		    throw new NotImplementedException();
-            //object obj = this.resource.GetObject(assetName);
-            //if (obj == null)
-            //{
-            //    throw new ContentLoadException("Resource not found");
-            //}
-            //if (!(obj is byte[]))
-            //{
-            //    throw new ContentLoadException("Resource is not in binary format");
-            //}
-            //return new MemoryStream(obj as byte[]);
-		}
-	}
-#endif
   }
 
 } // namespace Nuclex.Graphics.SpecialEffects.Masks
