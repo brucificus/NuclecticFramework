@@ -24,9 +24,9 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Nuclex.Fonts {
-
-  /// <summary>Base class for vector font texts</summary>
-  public abstract class Text {
+    /// <summary>Base class for vector font texts</summary>
+  public abstract class Text : IText
+    {
 
     /// <summary>Vertices containing the text's outline or face coordinates</summary>
     public VertexPositionNormalTexture[] Vertices {

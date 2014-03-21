@@ -32,14 +32,14 @@ using Nuclex.Fonts;
 namespace Nuclex.Fonts.Content {
 
   /// <summary>XNA framework content reader for VectorFont characters</summary>
-  public class VectorFontCharacterReader : ContentTypeReader<VectorFontCharacter> {
+  public class VectorFontCharacterReader : ContentTypeReader<IVectorFontCharacter> {
 
     /// <summary>Load a vector font character from a stored XNA asset</summary>
     /// <param name="input">Reader from which the asset can be read</param>
     /// <param name="existingInstance">Optional existing instance we are reloading</param>
     /// <returns>The loaded VectorFont character</returns>
-    protected override VectorFontCharacter Read(
-      ContentReader input, VectorFontCharacter existingInstance
+    protected override IVectorFontCharacter Read(
+      ContentReader input, IVectorFontCharacter existingInstance
     ) {
 
       // Read the vertices for this font and the value for the cursor advancement
@@ -48,24 +48,24 @@ namespace Nuclex.Fonts.Content {
 
       // Load the font's outline index records
       int outlineCount = input.ReadInt32();
-      var outlines = new List<VectorFontCharacter.Outline>(
+      var outlines = new List<Outline>(
         outlineCount
       );
       for(int index = 0; index < outlineCount; ++index) {
         int startVertexIndex = input.ReadInt32();
         int vertexCount = input.ReadInt32();
-        outlines.Add(new VectorFontCharacter.Outline(startVertexIndex, vertexCount));
+        outlines.Add(new Outline(startVertexIndex, vertexCount));
       }
 
       // Load the font's face index records
       int faceCount = input.ReadInt32();
-      var faces = new List<VectorFontCharacter.Face>(faceCount);
+      var faces = new List<Face>(faceCount);
       for(int index = 0; index < faceCount; ++index) {
         int firstVertexIndex = input.ReadInt32();
         int secondVertexIndex = input.ReadInt32();
         int thirdVertexIndex = input.ReadInt32();
         faces.Add(
-          new VectorFontCharacter.Face(firstVertexIndex, secondVertexIndex, thirdVertexIndex)
+          new Face(firstVertexIndex, secondVertexIndex, thirdVertexIndex)
         );
       }
 

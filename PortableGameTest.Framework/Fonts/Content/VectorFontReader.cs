@@ -32,13 +32,13 @@ using Nuclex.Fonts;
 namespace Nuclex.Fonts.Content {
 
   /// <summary>XNA framework content reader for VectorFonts</summary>
-  public class VectorFontReader : ContentTypeReader<VectorFont> {
+  public class VectorFontReader : ContentTypeReader<IVectorFont> {
 
     /// <summary>Load a vector font from a stored XNA asset</summary>
     /// <param name="input">Reader from which the asset can be read</param>
     /// <param name="existingInstance">Optional existing instance we are reloading</param>
     /// <returns>The loaded VectorFont instance</returns>
-    protected override VectorFont Read(ContentReader input, VectorFont existingInstance) {
+    protected override IVectorFont Read(ContentReader input, IVectorFont existingInstance) {
       float lineHeight = input.ReadSingle();
 
       // Which index corresponds to which character

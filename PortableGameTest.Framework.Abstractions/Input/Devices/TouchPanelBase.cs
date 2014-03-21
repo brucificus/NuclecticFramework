@@ -42,7 +42,7 @@ namespace Nuclex.Input.Devices {
 
     /// <summary>Retrieves the current state of the touch panel</summary>
     /// <returns>The current state of the touch panel</returns>
-    public abstract TouchState GetState();
+    public abstract ITouchState GetState();
 
     /// <summary>Whether the input device is connected to the system</summary>
     public abstract bool IsAttached { get; }
@@ -104,7 +104,7 @@ namespace Nuclex.Input.Devices {
     /// <summary>Checks two touch states for changes an generates events</summary>
     /// <param name="previous">Previous touch state that will be compared</param>
     /// <param name="touchState">New touch state events will be generated for</param>
-    protected void GenerateEvents(ref TouchState previous, ref TouchState touchState) {
+    protected void GenerateEvents(ref ITouchState previous, ref ITouchState touchState) {
       for (int index = 0; index < touchState.Touches.Count; ++index) {
         switch (touchState.Touches[index].State) {
           case TouchLocationState.Moved: {

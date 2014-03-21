@@ -42,7 +42,7 @@ namespace Nuclex.Graphics {
   ///     onto a flat plane, usually the screen.
   ///   </para>
   /// </remarks>
-  public class Camera {
+  public class Camera : ICamera {
 
     /// <summary>Speed at which the camera moves through the scene</summary>
     /// <remarks>

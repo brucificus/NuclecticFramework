@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Nuclex.Graphics.SpecialEffects.Particles
 {
@@ -22,7 +23,7 @@ namespace Nuclex.Graphics.SpecialEffects.Particles
         int Capacity { get; }
 
         /// <summary>Affectors that are influencing the particles in this system</summary>
-        AffectorCollection<ParticleType> Affectors { get; }
+        ICollection<IParticleAffector<ParticleType>> Affectors { get; }
 
         /// <summary>Runs the specified number of updates on the particle system</summary>
         /// <param name="updates">Number of updates that will be run</param>

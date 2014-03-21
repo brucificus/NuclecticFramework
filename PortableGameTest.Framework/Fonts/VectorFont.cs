@@ -73,49 +73,7 @@ namespace Nuclex.Fonts {
   ///     letter, use the CharacterMap which enlists any letter that the font can provide.
   ///   </para>
   /// </remarks>
-  public class VectorFont {
-
-    #region struct KerningPair
-
-    /// <summary>Pair of characters for kerning informations</summary>
-    public struct KerningPair {
-
-      /// <summary>Initializes a new kerning pair</summary>
-      /// <param name="left">Left character of the kerning pair</param>
-      /// <param name="right">Right character of the kerning pair</param>
-      public KerningPair(char left, char right) {
-        this.Left = left;
-        this.Right = right;
-      }
-
-      /// <summary>The left character in the kerning pair</summary>
-      public char Left;
-      /// <summary>The right character in the kerning pair</summary>
-      public char Right;
-
-      /// <summary>Returns a hash code for the kerning pair</summary>
-      /// <returns>A hash code for the kerning pair</returns>
-      public override int GetHashCode() {
-        return ((int)this.Left) * 65536 + ((int)this.Right);
-      }
-
-      /// <summary>Compares this object to another object</summary>
-      /// <param name="other">Object to compare to</param>
-      /// <returns>True if both objects are identical</returns>
-      public override bool Equals(object other) {
-        if(!(other is KerningPair))
-          return false;
-
-        KerningPair kerningPair = (KerningPair)other;
-
-        return
-          (kerningPair.Left == this.Left) &&
-          (kerningPair.Right == this.Right);
-      }
-
-    }
-
-    #endregion // struct KerningPair
+  public class VectorFont : IVectorFont {
 
     /// <summary>Constructs a new vector font</summary>
     /// <param name="lineHeight">
@@ -131,7 +89,7 @@ namespace Nuclex.Fonts {
     internal VectorFont(
       float lineHeight,
       IReadOnlyList<VectorFontCharacter> characters, IReadOnlyDictionary<char, int> characterMap,
-      IReadOnlyDictionary<VectorFont.KerningPair, Vector2> kerningTable
+      IReadOnlyDictionary<KerningPair, Vector2> kerningTable
     ) {
       this.lineHeight = lineHeight;
       this.characters = characters;
@@ -142,21 +100,23 @@ namespace Nuclex.Fonts {
     /// <summary>Constructs the outline of the specified string</summary>
     /// <param name="text">String to construct an outline of</param>
     /// <returns>The outline of the specified string</returns>
-    public OutlinedText Outline(string text) {
+    public IText Outline(string text) {
       return new OutlinedText(this, text);
     }
 
     /// <summary>Constructs a mesh of the strings face plane</summary>
     /// <param name="text">Text to construct a flat polygon mesh of</param>
     /// <returns>The filled string mesh</returns>
-    public FilledText Fill(string text) {
+    public IText Fill(string text)
+    {
       return new FilledText(this, text);
     }
 
     /// <summary>Constructs an extruded polygon mesh of the string</summary>
     /// <param name="text">String from which to construct a polygon mesh</param>
     /// <returns>The extruded string mesh</returns>
-    public ExtrudedText Extrude(string text) {
+    public IText Extrude(string text)
+    {
       return new ExtrudedText(this, text);
     }
 
@@ -166,7 +126,7 @@ namespace Nuclex.Fonts {
     }
 
     /// <summary>List of the characters contained in this font</summary>
-    public IReadOnlyList<VectorFontCharacter> Characters {
+    public IReadOnlyList<IVectorFontCharacter> Characters {
       get { return this.characters; }
     }
 
@@ -185,7 +145,7 @@ namespace Nuclex.Fonts {
     ///   between such characters to keep the perceived character distance at the
     ///   same level for all character combinations.
     /// </remarks>
-    public IReadOnlyDictionary<VectorFont.KerningPair, Vector2> KerningTable
+    public IReadOnlyDictionary<KerningPair, Vector2> KerningTable
     {
       get { return this.kerningTable; }
     }
@@ -199,7 +159,7 @@ namespace Nuclex.Fonts {
     /// <summary>
     ///   Kerning table for adjusting the positions of specific character combinations
     /// </summary>
-    private IReadOnlyDictionary<VectorFont.KerningPair, Vector2> kerningTable;
+    private IReadOnlyDictionary<KerningPair, Vector2> kerningTable;
 
   }
 

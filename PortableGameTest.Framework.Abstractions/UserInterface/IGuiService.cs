@@ -39,7 +39,7 @@ namespace Nuclex.UserInterface {
     ///   the GUI manager component. You can replace it at any time, for example,
     ///   if the player opens or closes your ingame menu.
     /// </remarks>
-    Screen Screen { get; set; }
+    IScreen Screen { get; set; }
 
     /// <summary>
     ///   Responsible for creating a visual representation of the GUI on the screen

@@ -27,7 +27,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 namespace Nuclex.Input.Devices {
 
   /// <summary>Stores the state of a touch panel</summary>
-  public struct TouchState {
+  public struct TouchState : ITouchState {
 
     /// <summary>Initializes a new touch panel state</summary>
     /// <param name="isAttached">Whether the touch panel is connected</param>

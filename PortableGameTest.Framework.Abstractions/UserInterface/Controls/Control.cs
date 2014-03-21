@@ -271,7 +271,7 @@ namespace Nuclex.UserInterface.Controls {
     protected virtual void OnKeyReleased(Keys keyCode) { }
 
     /// <summary>GUI instance this control belongs to. Can be null.</summary>
-    internal Screen Screen {
+    internal IScreen Screen {
       get { return this.screen; }
     }
 
@@ -328,7 +328,7 @@ namespace Nuclex.UserInterface.Controls {
 
     /// <summary>Assigns a new GUI to the control</summary>
     /// <param name="gui">New GUI to assign to the control</param>
-    internal void SetScreen(Screen gui) {
+    internal void SetScreen(IScreen gui) {
       this.screen = gui;
 
       this.children.SetScreen(gui);
@@ -350,7 +350,7 @@ namespace Nuclex.UserInterface.Controls {
     /// <summary>Control this control is contained in</summary>
     private Control parent;
     /// <summary>GUI instance this control has been added to. Can be null.</summary>
-    private Screen screen;
+    private IScreen screen;
     /// <summary>Name of the control instance (for programmatic identification)</summary>
     private string name;
     /// <summary>Whether this control can obtain the input focus</summary>

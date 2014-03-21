@@ -38,56 +38,8 @@ namespace Nuclex.Fonts {
   ///     outline font, a flat font or an extruded font.
   ///   </para>
   /// </remarks>
-  public class VectorFontCharacter {
-
-    #region struct Outline
-
-    /// <summary>Stores the starting index and the vertex count of a character outline</summary>
-    public struct Outline {
-
-      /// <summary>Initializes a new character outline</summary>
-      /// <param name="startVertexIndex">Index of the vertex with which the outline starts</param>
-      /// <param name="vertexCount">Number of vertices in this outline</param>
-      public Outline(int startVertexIndex, int vertexCount) {
-        this.StartVertexIndex = startVertexIndex;
-        this.VertexCount = vertexCount;
-      }
-
-      /// <summary>Index of the vertex with which the outline begins</summary>
-      public int StartVertexIndex;
-      /// <summary>Total number of vertices the outline consists of</summary>
-      public int VertexCount;
-
-    }
-
-    #endregion // struct Outline
-
-    #region struct Face
-
-    /// <summary>Stores three vertex indices forming a triangle</summary>
-    public struct Face {
-
-      /// <summary>Initializes a new character face triangle</summary>
-      /// <param name="firstVertexIndex">Index of the triangle's first vertex</param>
-      /// <param name="secondVertexIndex">Index of the triangle's second vertex</param>
-      /// <param name="thirdVertexIndex">Index of the triangle's third vertex</param>
-      public Face(int firstVertexIndex, int secondVertexIndex, int thirdVertexIndex) {
-        this.FirstVertexIndex = firstVertexIndex;
-        this.SecondVertexIndex = secondVertexIndex;
-        this.ThirdVertexIndex = thirdVertexIndex;
-      }
-
-      /// <summary>Index of the first vertex of the triangle</summary>
-      public int FirstVertexIndex;
-      /// <summary>Index of the second vertex of the triangle</summary>
-      public int SecondVertexIndex;
-      /// <summary>Index of the third vertex of the triangle</summary>
-      public int ThirdVertexIndex;
-    }
-
-    #endregion // struct Face
-
-    /// <summary>Initializes new vector font character</summary>
+  public class VectorFontCharacter : IVectorFontCharacter {
+      /// <summary>Initializes new vector font character</summary>
     /// <param name="advancement">
     ///   By what to advance the pen after the character was drawn
     /// </param>
@@ -164,5 +116,4 @@ namespace Nuclex.Fonts {
     private IReadOnlyList<Face> faces;
 
   }
-
 } // namespace Nuclex.Fonts

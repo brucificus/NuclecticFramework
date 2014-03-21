@@ -87,7 +87,7 @@ namespace Nuclex.Fonts {
           // Transform the outline index ranges into single big line list pointing
           // to the vertices we just imported from the font
           for(int index = 0; index < character.Outlines.Count; ++index) {
-            VectorFontCharacter.Outline outline = character.Outlines[index];
+            Outline outline = character.Outlines[index];
             int startIndex, endIndex;
 
             // Set up the indices for the outline exluding the final connection from
@@ -174,7 +174,7 @@ namespace Nuclex.Fonts {
           // There may be empty characters (characters without a visual representation
           // in the font, so we need to check this before accessing the outline array
           if(character.Outlines.Count > 0) {
-            VectorFontCharacter.Outline finalOutline =
+            Outline finalOutline =
               character.Outlines[character.Outlines.Count - 1];
 
             int outlineVertexCount = finalOutline.StartVertexIndex + finalOutline.VertexCount;

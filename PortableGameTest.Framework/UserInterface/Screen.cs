@@ -42,7 +42,7 @@ namespace Nuclex.UserInterface {
   ///   suitable for usage on virtual ingame computers and multi-client environments
   ///   such as split-screen games or switchable graphical terminals.
   /// </remarks>
-  public class Screen : IInputReceiver {
+  public class Screen : IScreen {
 
     /// <summary>Triggered when the control in focus changes</summary>
     public event EventHandler<ControlEventArgs> FocusChanged;

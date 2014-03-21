@@ -42,7 +42,7 @@ namespace Nuclex.Input.Devices {
 
     /// <summary>Retrieves the current state of the touch panel</summary>
     /// <returns>The current state of the touch panel</returns>
-    TouchState GetState();
+    ITouchState GetState();
 
   }
 

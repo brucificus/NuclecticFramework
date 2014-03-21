@@ -34,7 +34,7 @@ using Nuclex.Graphics.Batching;
 namespace Nuclex.Fonts {
 
   /// <summary>Batches text drawing commands</summary>
-  public class TextBatch : IDisposable {
+  public class TextBatch : ITextBatch, IDisposable {
 
     /// <summary>Initializes a new text batch for rendering</summary>
     /// <param name="graphicsDevice">Graphics device to render to</param>
@@ -104,7 +104,7 @@ namespace Nuclex.Fonts {
     /// <summary>Draws a line of text to the screen</summary>
     /// <param name="text">Pregenerated text mesh to draw to the screen</param>
     /// <param name="color">Color and opacity with which to draw the text</param>
-    public void DrawText(Text text, Color color) {
+    public void DrawText(IText text, Color color) {
       this.primitiveBatch.Draw(
         text.Vertices, text.Indices, text.PrimitiveType,
         new TextDrawContext(this.solidColorEffect, this.viewProjection, color)
@@ -115,7 +115,7 @@ namespace Nuclex.Fonts {
     /// <param name="text">Pregenerated text mesh to draw to the screen</param>
     /// <param name="color">Color and opacity with which to draw the text</param>
     /// <param name="transform">Transformation matrix to apply to the text</param>
-    public void DrawText(Text text, Matrix transform, Color color) {
+    public void DrawText(IText text, Matrix transform, Color color) {
       this.primitiveBatch.Draw(
         text.Vertices, text.Indices, text.PrimitiveType,
         new TextDrawContext(
@@ -127,7 +127,7 @@ namespace Nuclex.Fonts {
     /// <summary>Draws a line of text to the screen</summary>
     /// <param name="text">Pregenerated text mesh to draw to the screen</param>
     /// <param name="effect">Custom effect with which to draw the text</param>
-    public void DrawText(Text text, Effect effect) {
+    public void DrawText(IText text, Effect effect) {
       this.primitiveBatch.Draw(
         text.Vertices, text.Indices, text.PrimitiveType,
         new EffectDrawContext(effect)
@@ -163,39 +163,6 @@ namespace Nuclex.Fonts {
     private Effect solidColorEffect;
     /// <summary>Current view * projection matrix to apply to the text</summary>
     private Matrix viewProjection;
-
-#if MONOGAME
-	// NOTE: Taken from https://github.com/mono/MonoGame/blob/d10130d7a64c9d41d21fe02e072cc913c5512ceb/MonoGame.Framework/Content/ResourceContentManager.cs
-	private class ResourceContentManager : ContentManager
-	{
-		private ResourceManager resource;
-
-		public ResourceContentManager(IServiceProvider servicesProvider, ResourceManager resource)
-			: base(servicesProvider)
-		{
-			if (resource == null)
-			{
-				throw new ArgumentNullException("resource");
-			}
-			this.resource = resource;
-		}
-
-		protected override System.IO.Stream OpenStream(string assetName)
-		{
-		    throw new NotImplementedException();
-            //object obj = this.resource.GetObject(assetName);
-            //if (obj == null)
-            //{
-            //    throw new ContentLoadException("Resource not found");
-            //}
-            //if (!(obj is byte[]))
-            //{
-            //    throw new ContentLoadException("Resource is not in binary format");
-            //}
-            //return new MemoryStream(obj as byte[]);
-		}
-	}
-#endif
   }
 
 } // namespace Nuclex.Fonts
