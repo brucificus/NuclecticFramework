@@ -7,3 +7,13 @@
 *.suo
 *.user
 
+/PortableGameTest-WinRT/obj
+/PortableGameTest-WinRT/bin
+/PortableGameTest-Win32/obj
+/PortableGameTest-Win32/bin
+/PortableGameTest.Framework.WinRT/obj
+/PortableGameTest.Framework.WinRT/bin
+/PortableGameTest.Framework.WinRT/bin
+/PortableGameTest.Framework.WinRT/obj
+/PortableGameTest.Core/obj
+/PortableGameTest.Core/bin
