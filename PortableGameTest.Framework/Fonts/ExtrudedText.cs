@@ -61,7 +61,7 @@ namespace Nuclex.Fonts {
         // for this unicode symbol in the font (characters not imported by the user
         // will be silently skipped -- this is the only sane option imho)
         if(font.CharacterMap.TryGetValue(text[characterIndex], out fontCharacterIndex)) {
-          VectorFontCharacter character = font.Characters[fontCharacterIndex];
+          var character = font.Characters[fontCharacterIndex];
 
           // Import all of the vertices of this font (we need both the outline vertices
           // as well as the mesh supporting vertices). Each vertex is imported two times,
@@ -166,7 +166,7 @@ namespace Nuclex.Fonts {
         // Try to find the current character in the font's character map. If it isn't
         // there, we'll ignore it, just like the mesh creation routine does.
         if(font.CharacterMap.TryGetValue(text[index], out fontCharacterIndex)) {
-          VectorFontCharacter character = font.Characters[fontCharacterIndex];
+          var character = font.Characters[fontCharacterIndex];
 
           vertexCount += character.Vertices.Count * 2; // multiply by 2 for front and
           indexCount += character.Faces.Count * 3 * 2; // back face of the mesh

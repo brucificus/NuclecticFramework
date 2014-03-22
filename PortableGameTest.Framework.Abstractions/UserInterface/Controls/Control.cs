@@ -29,6 +29,7 @@ using Microsoft.Xna.Framework.Input;
 using Nuclex.Input;
 using Nuclex.Support.Collections;
 using Nuclex.UserInterface.Input;
+using PortableGameTest.Framework.UserInterface.Controls;
 
 namespace Nuclex.UserInterface.Controls {
 
@@ -48,7 +49,7 @@ namespace Nuclex.UserInterface.Controls {
   ///     even think about graphics device resets and similar trouble.
   ///   </para>
   /// </remarks>
-  public partial class Control {
+  public partial class Control : IHasScreen, IHasSettableScreen, ICommandProcessor {
 
     /// <summary>Initializes a new control</summary>
     public Control() : this(false) { }
@@ -271,43 +272,46 @@ namespace Nuclex.UserInterface.Controls {
     protected virtual void OnKeyReleased(Keys keyCode) { }
 
     /// <summary>GUI instance this control belongs to. Can be null.</summary>
-    internal IScreen Screen {
+    public IScreen Screen {
       get { return this.screen; }
     }
 
     /// <summary>Called when a command was sent to the control</summary>
     /// <param name="command">Command to be injected</param>
     /// <returns>Whether the command has been processed</returns>
-    internal bool ProcessCommand(Command command) {
+    public bool ProcessCommand(Command command)
+      {
+          switch (command)
+          {
+                  // These are not supported on the control level
+              case Command.SelectPrevious:
+              case Command.SelectNext:
+              {
+                  return false;
+              }
 
-      switch(command) {
+                  // These can be handled by user code if he so wishes
+              case Command.Up:
+              case Command.Down:
+              case Command.Left:
+              case Command.Right:
+              case Command.Accept:
+              case Command.Cancel:
+              {
+                  return OnCommand(command);
+              }
 
-        // These are not supported on the control level
-        case Command.SelectPrevious:
-        case Command.SelectNext: {
-          return false;
-        }
-
-        // These can be handled by user code if he so wishes
-        case Command.Up:
-        case Command.Down:
-        case Command.Left:
-        case Command.Right:
-        case Command.Accept:
-        case Command.Cancel: {
-          return OnCommand(command);
-        }
-
-        // Value not contained in enumation - should not be happening!
-        default: {
-          throw new ArgumentException("Invalid command", "command");
-        }
+                  // Value not contained in enumation - should not be happening!
+              default:
+              {
+                  throw new ArgumentException("Invalid command", "command");
+              }
+          }
       }
-    }
 
-    /// <summary>Assigns a new parent to the control</summary>
+      /// <summary>Assigns a new parent to the control</summary>
     /// <param name="parent">New parent to assign to the control</param>
-    internal void SetParent(Control parent) {
+    public void SetParent(Control parent) {
       this.parent = parent;
 
       // Have we been assigned to a parent?
@@ -328,13 +332,14 @@ namespace Nuclex.UserInterface.Controls {
 
     /// <summary>Assigns a new GUI to the control</summary>
     /// <param name="gui">New GUI to assign to the control</param>
-    internal void SetScreen(IScreen gui) {
-      this.screen = gui;
+      public void SetScreen(IScreen gui)
+      {
+          this.screen = gui;
 
-      this.children.SetScreen(gui);
-    }
-    
-    /// <summary>Control the mouse is currently over</summary>
+          this.children.SetScreen(gui);
+      }
+
+      /// <summary>Control the mouse is currently over</summary>
     internal protected Control MouseOverControl {
       get { return this.mouseOverControl; }
     }

@@ -53,7 +53,7 @@ namespace Nuclex.Fonts {
         // for this unicode symbol in the font (characters not imported by the user
         // will be silently skipped -- this is the only sane option imho)
         if (font.CharacterMap.TryGetValue(text[characterIndex], out fontCharacterIndex)) {
-          VectorFontCharacter character = font.Characters[fontCharacterIndex];
+          var character = font.Characters[fontCharacterIndex];
 
           if (character.Outlines.Count > 0) {
             Outline finalOutline =
@@ -127,7 +127,7 @@ namespace Nuclex.Fonts {
         // Try to find the current character in the font's character map. If it isn't
         // there, we'll ignore it, just like the vertex creation routine does.
         if (font.CharacterMap.TryGetValue(text[index], out fontCharacterIndex)) {
-          VectorFontCharacter character = font.Characters[fontCharacterIndex];
+          var character = font.Characters[fontCharacterIndex];
 
           // There may be empty characters (characters without a visual representation
           // in the font, so we need to check this before accessing the outline array

@@ -49,7 +49,7 @@ namespace Nuclex.Fonts.Content {
 
       // Special distance adjustments between some characters
       var kerningTable =
-        new Dictionary<VectorFont.KerningPair, Vector2>();
+        new Dictionary<KerningPair, Vector2>();
 
       int kerningEntryCount = input.ReadInt32();
       for(int index = 0; index < kerningEntryCount; ++index) {
@@ -57,7 +57,7 @@ namespace Nuclex.Fonts.Content {
         char right = input.ReadChar();
         Vector2 kerning = input.ReadVector2();
 
-        kerningTable.Add(new VectorFont.KerningPair(left, right), kerning);
+        kerningTable.Add(new KerningPair(left, right), kerning);
       }
 
       #if false

@@ -42,7 +42,7 @@ namespace Nuclex.Input.Devices {
 
     /// <summary>Retrieves the current state of the touch panel</summary>
     /// <returns>The current state of the touch panel</returns>
-    public override TouchState GetState() {
+    public override ITouchState GetState() {
       return this.current;
     }
 
@@ -74,7 +74,7 @@ namespace Nuclex.Input.Devices {
     ///   </para>
     /// </remarks>
     public override void Update() {
-      TouchState previous = this.current;
+      var previous = this.current;
 
       if (this.states.Count == 0) {
         this.current = new TouchState(IsAttached, TouchPanel.GetState());
@@ -98,7 +98,7 @@ namespace Nuclex.Input.Devices {
     /// <summary>Snapshots of the touch panel state waiting to be processed</summary>
     private Queue<TouchState> states;
     /// <summary>Currently published game pad state</summary>
-    private TouchState current;
+    private ITouchState current;
 
   }
 

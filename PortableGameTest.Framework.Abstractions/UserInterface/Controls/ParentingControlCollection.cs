@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using Nuclex.Support.Collections;
+using PortableGameTest.Framework.UserInterface.Controls;
 
 namespace Nuclex.UserInterface.Controls {
 
@@ -33,7 +34,7 @@ namespace Nuclex.UserInterface.Controls {
   ///   exceptions because the collection tries to parent the controls which are already
   ///   belonging to another collection.
   /// </remarks>
-  internal class ParentingControlCollection : Collection<Control> {
+  internal class ParentingControlCollection : Collection<Control>, IHasSettableScreen {
 
     /// <summary>Initializes a new parenting control collection</summary>
     /// <param name="parent">Parent control to assign to all children</param>
@@ -78,7 +79,7 @@ namespace Nuclex.UserInterface.Controls {
 
     /// <summary>Switches the control to a specific GUI</summary>
     /// <param name="screen">Screen that owns the control from now on</param>
-    internal void SetScreen(IScreen screen) {
+    public void SetScreen(IScreen screen) {
       this.screen = screen;
 
       for(int index = 0; index < base.Count; ++index)

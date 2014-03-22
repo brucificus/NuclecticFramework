@@ -45,7 +45,7 @@ namespace Nuclex.Input.Devices {
 
     /// <summary>Retrieves the current state of the touch panel</summary>
     /// <returns>The current state of the touch panel</returns>
-    public TouchState GetState() { return new TouchState(); }
+    public ITouchState GetState() { return new TouchState(); }
 
     /// <summary>Whether the input device is connected to the system</summary>
     public bool IsAttached { get { return false; } }

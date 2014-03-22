@@ -212,7 +212,7 @@ namespace Nuclex.UserInterface {
     ///   the GUI manager component. You can replace it at any time, for example,
     ///   if the player opens or closes your ingame menu.
     /// </remarks>
-    public Screen Screen {
+    public IScreen Screen {
       get { return this.screen; }
       set {
         this.screen = value;
@@ -427,7 +427,7 @@ namespace Nuclex.UserInterface {
     private IUpdateable updateableGuiVisualizer;
 
     /// <summary>The GUI screen representing the desktop</summary>
-    private Screen screen;
+    private IScreen screen;
 
   }
 

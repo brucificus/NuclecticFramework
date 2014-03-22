@@ -79,7 +79,7 @@ namespace Nuclex.Graphics {
     }
 
     /// <summary>True if a format has been provided for the vertex element</summary>
-    internal bool FormatProvided {
+    public bool FormatProvided {
       get { return this.formatProvided; }
     }
 

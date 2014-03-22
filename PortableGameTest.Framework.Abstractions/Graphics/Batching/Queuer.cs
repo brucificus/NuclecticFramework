@@ -26,7 +26,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Nuclex.Graphics.Batching {
 
   /// <summary>Controls the queuing of primitives for the primitive batcher</summary>
-  internal abstract class Queuer<VertexType> : IDisposable
+  public abstract class Queuer<VertexType> : IDisposable
     where VertexType : struct, IVertexType {
 
     /// <summary>Initializes a new primitive queuer</summary>

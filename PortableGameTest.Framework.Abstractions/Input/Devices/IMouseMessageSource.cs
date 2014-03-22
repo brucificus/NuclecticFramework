@@ -27,7 +27,7 @@ namespace Nuclex.Input.Devices {
     /// <summary>
   ///   Sends out notifications for intercepted window messages related to the mouse
   /// </summary>
-  internal interface IMouseMessageSource {
+  public interface IMouseMessageSource {
 
     /// <summary>Triggered when a mouse button has been pressed</summary>
     event MouseButtonEventDelegate MouseButtonPressed;

@@ -31,8 +31,8 @@ using Nuclex.Support.Collections;
 using Nuclex.UserInterface.Input;
 
 namespace Nuclex.UserInterface.Controls {
-
-  partial class Control {
+    partial class Control : IButtonPressReleaseProcessor, IMouseMoveLeaveProcessor, IMousePressReleaseProcessor, IMouseWheelProcessor, IKeyPressReleaseProcessor
+    {
 
     /// <summary>Called when a button on the game pad has been pressed</summary>
     /// <param name="button">Button that has been pressed</param>
@@ -40,7 +40,7 @@ namespace Nuclex.UserInterface.Controls {
     ///   True if the button press was processed by the control and future game pad
     ///   input belongs to the control until all buttons are released again
     /// </returns>
-    internal bool ProcessButtonPress(Buttons button) {
+    public bool ProcessButtonPress(Buttons button) {
 
       // If there's an activated control (one being held down by the mouse or having
       // accepted a previous button press), this control will get the button press
@@ -103,7 +103,7 @@ namespace Nuclex.UserInterface.Controls {
 
     /// <summary>Called when a button on the game pad has been released</summary>
     /// <param name="button">Button that has been released</param>
-    internal void ProcessButtonRelease(Buttons button) {
+    public void ProcessButtonRelease(Buttons button) {
 
       // If we're the top level control, we will receive button presses and their related
       // releases even if nobody was interested in the button presses. Thus, we silently
@@ -138,7 +138,7 @@ namespace Nuclex.UserInterface.Controls {
     /// <summary>
     ///   Called when the mouse has left the control and is no longer hovering over it
     /// </summary>
-    internal void ProcessMouseLeave() {
+    public void ProcessMouseLeave() {
 
       // Because the mouse has left us, if we have a mouse-over control, it also
       // cannot be over one of our children Children leaving the parent container
@@ -161,7 +161,7 @@ namespace Nuclex.UserInterface.Controls {
     /// <summary>Called when a mouse button has been pressed down</summary>
     /// <param name="button">Index of the button that has been pressed</param>
     /// <returns>Whether the control has processed the mouse press</returns>
-    internal bool ProcessMousePress(MouseButtons button) {
+    public bool ProcessMousePress(MouseButtons button) {
 
       // We remember the control the mouse was pressed over and won't replace it for
       // as long as the mouse is being held down. This ensures the mouse release
@@ -214,7 +214,7 @@ namespace Nuclex.UserInterface.Controls {
 
     /// <summary>Called when a mouse button has been released again</summary>
     /// <param name="button">Index of the button that has been released</param>
-    internal void ProcessMouseRelease(MouseButtons button) {
+    public void ProcessMouseRelease(MouseButtons button) {
 
       // When the mouse is clicked on game window's border and the user drags it
       // into the GUI area, we will get a rogue mouse release message without
@@ -255,7 +255,7 @@ namespace Nuclex.UserInterface.Controls {
     /// <param name="containerHeight">Absolute height of the control's container</param>
     /// <param name="x">Absolute X position of the mouse within the container</param>
     /// <param name="y">Absolute Y position of the mouse within the container</param>
-    internal void ProcessMouseMove(
+    public void ProcessMouseMove(
       float containerWidth, float containerHeight, float x, float y
     ) {
 
@@ -329,7 +329,7 @@ namespace Nuclex.UserInterface.Controls {
 
     /// <summary>Called when the mouse wheel has been rotated</summary>
     /// <param name="ticks">Number of ticks that the mouse wheel has been rotated</param>
-    internal void ProcessMouseWheel(float ticks) {
+    public void ProcessMouseWheel(float ticks) {
 
       // If the mouse is being held down on a control, give it any mouse wheel
       // messages. This enables some exotic uses for the mouse wheel, such as holding
@@ -361,7 +361,7 @@ namespace Nuclex.UserInterface.Controls {
     /// <param name="repetition">
     ///   Whether the key press is due to the user holding down a key
     /// </param>
-    internal bool ProcessKeyPress(Keys keyCode, bool repetition) {
+    public bool ProcessKeyPress(Keys keyCode, bool repetition) {
 
       // If there's an activated control (one being held down by the mouse or having
       // accepted a previous key press), this control will get the key press delivered,
@@ -426,7 +426,7 @@ namespace Nuclex.UserInterface.Controls {
 
     /// <summary>Called when a key on the keyboard has been released again</summary>
     /// <param name="keyCode">Code of the key that was released</param>
-    internal void ProcessKeyRelease(Keys keyCode) {
+    public void ProcessKeyRelease(Keys keyCode) {
 
       // Any key release should have an associated key press, otherwise, someone
       // delivered notifications to us we should not have received.

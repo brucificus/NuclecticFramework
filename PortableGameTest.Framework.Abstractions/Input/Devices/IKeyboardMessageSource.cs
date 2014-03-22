@@ -27,7 +27,7 @@ namespace Nuclex.Input.Devices {
     /// <summary>
   ///   Sends out notifications for intercepted window messages related to the keyboard
   /// </summary>
-  internal interface IKeyboardMessageSource {
+  public interface IKeyboardMessageSource {
 
     /// <summary>Triggered when a key has been pressed down</summary>
     event KeyboardKeyEventDelegate KeyPressed;

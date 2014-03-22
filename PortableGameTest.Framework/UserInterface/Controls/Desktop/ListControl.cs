@@ -20,7 +20,7 @@ License along with this library
 
 using System;
 using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
 using Microsoft.Xna.Framework;
 
 using Nuclex.Input;

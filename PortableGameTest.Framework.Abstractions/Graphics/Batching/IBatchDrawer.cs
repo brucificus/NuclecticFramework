@@ -29,7 +29,7 @@ namespace Nuclex.Graphics.Batching {
   ///   Draws batches of primitives using the most efficient method available
   ///   on the platform the game is running on
   /// </summary>
-  internal interface IBatchDrawer<VertexType> where VertexType : struct, IVertexType {
+  public interface IBatchDrawer<VertexType> where VertexType : struct, IVertexType {
 
     /// <summary>
     ///   Maximum number of vertices or indices a single batch is allowed to have

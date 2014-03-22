@@ -78,7 +78,7 @@ namespace Nuclex.UserInterface.Controls {
 
     /// <summary>Switches the control to a specific GUI</summary>
     /// <param name="screen">Screen that owns the control from now on</param>
-    internal void SetScreen(Screen screen) {
+    internal void SetScreen(IScreen screen) {
       this.screen = screen;
 
       for(int index = 0; index < base.Count; ++index)
@@ -212,7 +212,7 @@ namespace Nuclex.UserInterface.Controls {
     }
 
     /// <summary>GUI this control is currently assigned to. Can be null.</summary>
-    private Screen screen;
+    private IScreen screen;
     /// <summary>Parent control to assign to all controls in this collection.</summary>
     private Control parent;
 
