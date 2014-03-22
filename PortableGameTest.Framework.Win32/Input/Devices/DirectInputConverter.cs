@@ -18,14 +18,13 @@ License along with this library
 */
 #endregion
 
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using PortableGameTest.Framework.Input.Devices;
+using Joystick = SlimDX.DirectInput.Joystick;
 #if !NO_DIRECTINPUT
 using System;
 using System.Collections.Generic;
-
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
-
 using SlimDX.DirectInput;
 
 using XnaGamePadButtons = Microsoft.Xna.Framework.Input.GamePadButtons;

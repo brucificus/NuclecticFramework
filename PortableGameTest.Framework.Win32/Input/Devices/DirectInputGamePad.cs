@@ -18,21 +18,18 @@ License along with this library
 */
 #endregion
 
+using Microsoft.Xna.Framework.Input;
 using PortableGameTest.Framework.Input.Devices;
+using Joystick = SlimDX.DirectInput.Joystick;
 #if !NO_DIRECTINPUT
 using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework.Input;
-
 using SlimDX;
 using SlimDX.DirectInput;
-using Microsoft.Xna.Framework;
 
 namespace Nuclex.Input.Devices {
 
   /// <summary>Interfaces with a game pad-like controller through DirectInput</summary>
-  internal class DirectInputGamePad : GamePad, IDisposable {
+  internal class DirectInputGamePad : Nuclex.Input.Devices.GamePad, IDisposable {
 
     /// <summary>Initializes a new DirectInput-based game pad</summary>
     /// <param name="joystick">The DirectInput joystick this instance will query</param>

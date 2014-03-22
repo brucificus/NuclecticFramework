@@ -19,6 +19,7 @@ License along with this library
 #endregion
 
 using PortableGameTest.Framework.Input.Devices;
+using Joystick = SlimDX.DirectInput.Joystick;
 #if !NO_DIRECTINPUT
 using System;
 using System.Collections.Generic;

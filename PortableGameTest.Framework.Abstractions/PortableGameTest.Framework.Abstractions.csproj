@@ -112,6 +112,7 @@
     <Compile Include="Input\Devices\KeyboardCharacterEventDelegate.cs" />
     <Compile Include="Input\Devices\KeyboardKeyEventDelegate.cs" />
     <Compile Include="Input\Devices\KeyDelegate.cs" />
+    <Compile Include="Input\Devices\LeakyQueue.cs" />
     <Compile Include="Input\Devices\MouseButtonDelegate.cs" />
     <Compile Include="Input\Devices\MouseButtonEventDelegate.cs" />
     <Compile Include="Input\Devices\MouseMoveDelegate.cs" />

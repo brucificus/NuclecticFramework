@@ -212,9 +212,6 @@
     <Compile Include="Input\Devices\KeyboardStateHelper.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Input\Devices\LeakyQueue.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Input\Devices\NoGamePad.cs">
       <SubType>Code</SubType>
     </Compile>
