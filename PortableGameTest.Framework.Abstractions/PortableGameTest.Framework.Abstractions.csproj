@@ -61,6 +61,8 @@
     <Compile Include="Graphics.SpecialEffects\Trails\ITrailAccessor.cs" />
     <Compile Include="Graphics\Batching\DrawContext.cs" />
     <Compile Include="Graphics\Batching\IBatchDrawer.cs" />
+    <Compile Include="Graphics\Batching\IPrimitiveBatch.cs" />
+    <Compile Include="Graphics\Batching\IQueuer.cs" />
     <Compile Include="Graphics\Batching\QueueingStrategy.cs" />
     <Compile Include="Graphics\Batching\Queuer.cs" />
     <Compile Include="Graphics\Debugging\IDebugDrawingService.cs" />
@@ -126,6 +128,7 @@
     <Compile Include="Input\ExtendedPlayerIndex.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Input\IDirectInputManager.cs" />
     <Compile Include="Input\IInputService.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -140,6 +143,7 @@
     <Compile Include="Support\Collections\ItemReplaceEventArgs.cs" />
     <Compile Include="Support\Collections\Parentable.cs" />
     <Compile Include="Support\Collections\ParentingCollection.cs" />
+    <Compile Include="Support\GameFrameworkPlatformToken.cs" />
     <Compile Include="Support\GarbagePolicy.cs" />
     <Compile Include="Support\StringSegment.cs" />
     <Compile Include="Support\WeakReference.cs" />

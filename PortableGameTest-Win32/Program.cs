@@ -2,6 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework;
+using PortableGameTest.Core;
+
 #endregion
 
 namespace PortableGameTest_Win32
@@ -18,7 +21,7 @@ namespace PortableGameTest_Win32
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            using (var game = new Game<GameWin32Platform>())
                 game.Run();
         }
     }

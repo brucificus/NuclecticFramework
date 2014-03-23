@@ -18,8 +18,8 @@ License along with this library
 */
 #endregion
 
+using PortableGameTest.Framework.Input;
 #if !NO_DIRECTINPUT
-
 using System;
 using System.Collections.Generic;
 using System.Management;
@@ -36,13 +36,14 @@ namespace Nuclex.Input {
   /// <returns>True if the device is attached, false otherwise</returns>
   internal delegate bool CheckAttachedDelegate(Device device);
 
-  /// <summary>Manages DirectInput devices</summary>
-  internal class DirectInputManager : IDisposable {
+    /// <summary>Manages DirectInput devices</summary>
+  internal class DirectInputManager : IDisposable, IDirectInputManager
+    {
 
     /// <summary>
     ///   Determines whether DirectInput is available on the current system
     /// </summary>
-    public static bool IsDirectInputAvailable {
+    public bool IsDirectInputAvailable {
       get {
         IntPtr handle = UnsafeNativeMethods.LoadLibrary("dinput8.dll");
         bool isAvailable = (handle != IntPtr.Zero);
@@ -80,7 +81,7 @@ namespace Nuclex.Input {
 
     /// <summary>Creates game pad wrappers for all DirectInput game pads</summary>
     /// <returns>An array with wrappers for all DirectInput game pads</returns>
-    public DirectInputGamePad[] CreateGamePads() {
+    public IGamePad[] CreateGamePads() {
       IList<DeviceInstance> devices = this.directInput.GetDevices(
         DeviceClass.GameController, DeviceEnumerationFlags.AllDevices
       );

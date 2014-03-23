@@ -38,6 +38,7 @@
     <Compile Include="Fonts\Effects\SolidColorEffect.cs" />
     <Compile Include="Fonts\ExtrudedText.cs" />
     <Compile Include="Fonts\FilledText.cs" />
+    <Compile Include="Fonts\_FontsModule.cs" />
     <Compile Include="Fonts\OutlinedText.cs" />
     <Compile Include="Fonts\Text.cs" />
     <Compile Include="Fonts\TextBatch.cs" />
@@ -65,10 +66,9 @@
     <Compile Include="Game\Space\QuadTree.Removal.cs" />
     <Compile Include="Game\Space\RectangleTree.cs" />
     <Compile Include="Game\Space\RectangleTree.Node.cs" />
-    <Compile Include="Game\States\DrawableGameState.cs" />
-    <Compile Include="Game\States\GameState.cs" />
     <Compile Include="Game\States\GameStateManager.cs" />
     <Compile Include="Game\States\LoadingScreenState.cs" />
+    <Compile Include="Game\_GameModule.cs" />
     <Compile Include="Geometry\Areas\AxisAlignedRectangle2.cs" />
     <Compile Include="Geometry\Areas\Collisions\AabbAabbCollider.cs" />
     <Compile Include="Geometry\Areas\Collisions\Disc2Disc2Collider.cs" />
@@ -104,7 +104,6 @@
     <Compile Include="Geometry\Lines\Segment3.cs" />
     <Compile Include="Geometry\Side.cs" />
     <Compile Include="Geometry\Specifications.cs" />
-    <Compile Include="Geometry\IRandom.cs" />
     <Compile Include="Geometry\Lines\Collisions\Line2Aabb2Collider.cs" />
     <Compile Include="Geometry\Lines\Collisions\Line2Disc2Collider.cs" />
     <Compile Include="Geometry\Lines\Collisions\Line2Line2Collider.cs" />
@@ -152,6 +151,7 @@
     <Compile Include="Geometry\Volumes\Sphere3.cs" />
     <Compile Include="Geometry\Volumes\TriangleMesh3.cs" />
     <Compile Include="Geometry\Volumes\VolumeVisitor.cs" />
+    <Compile Include="Geometry\_GeometryModule.cs" />
     <Compile Include="Graphics.SpecialEffects\IndexedStaticMesh.cs" />
     <Compile Include="Graphics.SpecialEffects\Masks\ColorScreenMask.cs" />
     <Compile Include="Graphics.SpecialEffects\Masks\PositionVertex.cs" />
@@ -192,6 +192,7 @@
     <Compile Include="Graphics\GraphicsDeviceServiceHelper.cs" />
     <Compile Include="Graphics\VertexDeclarationHelper.cs" />
     <Compile Include="Graphics\VertexHelper.cs" />
+    <Compile Include="Graphics\_GraphicsModule.cs" />
     <Compile Include="Input\CollectionHelper.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -252,6 +253,8 @@
     <Compile Include="Input\InputManager.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Input\NoDirectInputManager.cs" />
+    <Compile Include="Input\_InputModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\Collections\Constants.cs" />
     <Compile Include="Support\Collections\Deque.cs" />
@@ -274,6 +277,7 @@
     <Compile Include="Support\Collections\WeakCollection.Interfaces.cs" />
     <Compile Include="Support\EnumHelper.cs" />
     <Compile Include="Support\FloatHelper.cs" />
+    <Compile Include="Support\GameFrameworkCorePlatform.cs" />
     <Compile Include="Support\IntegerHelper.cs" />
     <Compile Include="Support\IO\ChainStream.cs" />
     <Compile Include="Support\IO\PartialStream.cs" />
@@ -323,6 +327,7 @@
     <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatProgressControlRenderer.cs" />
     <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatVerticalSliderControlRenderer.cs" />
     <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatWindowControlRenderer.cs" />
+    <Compile Include="UserInterface\_UserInterfaceModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Autofac">

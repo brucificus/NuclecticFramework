@@ -22,10 +22,10 @@ using System;
 using System.Collections.Generic;
 
 using Microsoft.Xna.Framework.Graphics;
+using PortableGameTest.Framework.Graphics.Batching;
 
 namespace Nuclex.Graphics.Batching {
-
-  /// <summary>Collects vertices into batches to improve rendering performance</summary>
+    /// <summary>Collects vertices into batches to improve rendering performance</summary>
   /// <typeparam name="VertexType">Type of vertices to be batched</typeparam>
   /// <remarks>
   ///   This class is very similar to the SpriteBatch class, but instead of being
@@ -33,8 +33,7 @@ namespace Nuclex.Graphics.Batching {
   ///   It is ideal for dynamic, CPU-calculated geometry such as particle systems,
   ///   fluid visualization or marching cube/tetrahedron-based geometry.
   /// </remarks>
-  public class PrimitiveBatch<VertexType> : IDisposable
-    where VertexType : struct, IVertexType {
+  public class PrimitiveBatch<VertexType> : IDisposable, IPrimitiveBatch<VertexType> where VertexType : struct, IVertexType {
 
     /// <summary>Maximum number of vertices or indices in a single batch</summary>
     public const int BatchSize = 8192;

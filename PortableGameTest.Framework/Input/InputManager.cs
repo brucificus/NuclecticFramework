@@ -26,7 +26,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 using Nuclex.Input.Devices;
-
+using PortableGameTest.Framework.Input;
 using XnaMouse = Microsoft.Xna.Framework.Input.Mouse;
 using XnaEventHandler = System.EventHandler<System.EventArgs>;
 
@@ -42,37 +42,17 @@ namespace Nuclex.Input {
     /// <summary>Fired when the Enabled property changes its value</summary>
     public event XnaEventHandler EnabledChanged { add { } remove { } }
 
-    /// <summary>Initializes a new input manager</summary>
-    /// <remarks>
-    ///   This overload is offered for convenience and takes the window handle
-    ///   from XNA's Mouse class. It will only work if your game is either based
-    ///   on the XNA Game class or if you assign the Mouse.WindowHandle
-    ///   property sourself.
-    /// </remarks>
-    public InputManager() : this(XnaMouse.WindowHandle) { }
-
-    /// <summary>Initializes a new input manager</summary>
-    /// <param name="windowHandle">Handle of the game's main window</param>
-    public InputManager(IntPtr windowHandle) : this(null, windowHandle) { }
-
-    /// <summary>Initializs a new input manager</summary>
-    /// <param name="services">Game service container the manager registers to</param>
-    public InputManager(GameServiceContainer services) :
-      this(services, XnaMouse.WindowHandle) { }
-
     /// <summary>Initializs a new input manager</summary>
     /// <param name="services">Game service container the manager registers to</param>
     /// <param name="windowHandle">Handle of the game's main window</param>
-    public InputManager(GameServiceContainer services, IntPtr windowHandle) {
+    public InputManager(GameServiceContainer services, IDirectInputManager directInputManager) {
 #if !NO_WININPUT
       this.windowMessageFilter = new WindowMessageFilter(windowHandle);
 #endif
 
-#if !NO_DIRECTINPUT
-      if (DirectInputManager.IsDirectInputAvailable) {
-        this.directInputManager = new DirectInputManager(windowHandle);
+      if (directInputManager.IsDirectInputAvailable) {
+        this.directInputManager = directInputManager;
       }
-#endif
 
       setupGamePads();
       setupMouse();
@@ -113,12 +93,10 @@ namespace Nuclex.Input {
         this.gamePads = null;
       }
 
-#if !NO_DIRECTINPUT
       if (this.directInputManager != null) {
-        this.directInputManager.Dispose();
+        //this.directInputManager.Dispose();
         this.directInputManager = null;
       }
-#endif
 
 #if !NO_WININPUT
       if (this.windowMessageFilter != null) {
@@ -293,12 +271,12 @@ namespace Nuclex.Input {
         gamePads.Add(new XnaGamePad(player));
       }
 #endif
-#if !NO_DIRECTINPUT
+
       // Add DirectInput-based game pads
       if (this.directInputManager != null) {
         gamePads.AddRange(this.directInputManager.CreateGamePads());
       }
-#endif
+
       // Add place holders for all unattached game pads
       while (gamePads.Count < 8) {
         gamePads.Add(new NoGamePad());
@@ -354,10 +332,9 @@ namespace Nuclex.Input {
       this.touchPanels = new ReadOnlyCollection<ITouchPanel>(touchPanels);
     }
 
-#if !NO_DIRECTINPUT
     /// <summary>Manages DirectInput, if DirectInput is installed</summary>
-    private DirectInputManager directInputManager;
-#endif
+    private IDirectInputManager directInputManager;
+
 #if WINDOWS || WINRT || LINUX
     /// <summary>Intercepts input-related messages to XNA's main window</summary>
     //private WindowMessageFilter windowMessageFilter;

@@ -22,9 +22,6 @@ using System;
 using System.Collections.Generic;
 
 using Microsoft.Xna.Framework.Input;
-#if !NO_DIRECTINPUT
-using SlimDX.DirectInput;
-#endif
 using PortableGameTest.Framework.Input.Devices;
 
 namespace Nuclex.Input.Devices {

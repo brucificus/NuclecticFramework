@@ -1,4 +1,5 @@
 ﻿using System;
+using PortableGameTest.Core;
 
 namespace PortableGameTest_WinRT
 {
@@ -12,7 +13,7 @@ namespace PortableGameTest_WinRT
         /// </summary>
         static void Main()
         {
-            var factory = new MonoGame.Framework.GameFrameworkViewSource<Game1>();
+            var factory = new MonoGame.Framework.GameFrameworkViewSource<Game<GameWinRTPlatform>>();
             Windows.ApplicationModel.Core.CoreApplication.Run(factory);
         }
     }
