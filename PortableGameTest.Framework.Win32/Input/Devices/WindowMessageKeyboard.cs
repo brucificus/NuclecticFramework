@@ -25,8 +25,6 @@ using System.Runtime.InteropServices;
 
 using Microsoft.Xna.Framework.Input;
 
-#if WINDOWS || WINRT || LINUX
-
 namespace Nuclex.Input.Devices {
 
   /// <summary>Interfaces with a PC keyboard via window messages</summary>
@@ -81,5 +79,3 @@ namespace Nuclex.Input.Devices {
   }
 
 } // namespace Nuclex.Input.Devices
-
-#endif // WINDOWS || LINUX

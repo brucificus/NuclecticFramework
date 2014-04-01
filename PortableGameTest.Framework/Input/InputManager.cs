@@ -44,11 +44,12 @@ namespace Nuclex.Input {
 
     /// <summary>Initializs a new input manager</summary>
     /// <param name="services">Game service container the manager registers to</param>
-    public InputManager(IDirectInputManager directInputManager, GameServiceContainer services = null)
+    public InputManager(IDirectInputManager directInputManager, IWindowMessageInputManager windowMessageInputManager, GameServiceContainer services = null)
     {
-#if !NO_WININPUT
-      this.windowMessageFilter = new WindowMessageFilter(windowHandle);
-#endif
+	    if (windowMessageInputManager.IsWindowMessageInputAvailable)
+	    {
+		    this.windowMessageInputManager = windowMessageInputManager;
+	    }
 
       if (directInputManager.IsDirectInputAvailable) {
         this.directInputManager = directInputManager;
@@ -97,13 +98,6 @@ namespace Nuclex.Input {
         //this.directInputManager.Dispose();
         this.directInputManager = null;
       }
-
-#if !NO_WININPUT
-      if (this.windowMessageFilter != null) {
-        this.windowMessageFilter.Dispose();
-        this.windowMessageFilter = null;
-      }
-#endif
     }
 
     /// <summary>All keyboards known to the system</summary>
@@ -288,13 +282,14 @@ namespace Nuclex.Input {
     /// <summary>Sets up the collection of available mice</summary>
     private void setupMouse() {
       var mice = new List<IMouse>();
-#if NO_WININPUT
-      // Add a dummy mouse
-      mice.Add(new NoMouse());
-#else
-      // Add main PC mouse
-      mice.Add(new WindowMessageMouse(this.windowMessageFilter));
-#endif
+	    if (windowMessageInputManager != null)
+	    {
+		    mice.Add(windowMessageInputManager.GetMouse());
+	    }
+	    else
+	    {
+		    mice.Add(new NoMouse());
+	    }
 
       this.mice = new ReadOnlyCollection<IMouse>(mice);
     }
@@ -307,13 +302,16 @@ namespace Nuclex.Input {
       for (PlayerIndex player = PlayerIndex.One; player <= PlayerIndex.Four; ++player) {
         keyboards.Add(new XnaKeyboard(player, this.gamePads[(int)player]));
       }
-#if NO_WININPUT
-      // Add a dummy keyboard
-      keyboards.Add(new NoKeyboard());
-#else
-      // Add main PC keyboard
-      keyboards.Add(new WindowMessageKeyboard(this.windowMessageFilter));
-#endif
+
+	    if (windowMessageInputManager != null)
+	    {
+		    keyboards.Add(windowMessageInputManager.GetKeyboard());
+	    }
+	    else
+	    {
+		    keyboards.Add(new NoKeyboard());
+	    }
+
       this.keyboards = new ReadOnlyCollection<IKeyboard>(keyboards);
     }
 
@@ -335,10 +333,6 @@ namespace Nuclex.Input {
     /// <summary>Manages DirectInput, if DirectInput is installed</summary>
     private IDirectInputManager directInputManager;
 
-#if WINDOWS || WINRT || LINUX
-    /// <summary>Intercepts input-related messages to XNA's main window</summary>
-    //private WindowMessageFilter windowMessageFilter;
-#endif
     /// <summary>Collection of all game pads known to the system</summary>
     private ReadOnlyCollection<IGamePad> gamePads;
     /// <summary>Collection of all mice known to the system</summary>
@@ -359,7 +353,8 @@ namespace Nuclex.Input {
     /// <summary>Game service container, saved to unregister on dispose</summary>
     private GameServiceContainer gameServices;
 
-  }
+	  private IWindowMessageInputManager windowMessageInputManager;
+    }
 
 } // namespace Nuclex.Input
 

@@ -122,7 +122,7 @@ namespace Nuclex.Input.Devices {
     public event CharacterDelegate CharacterEntered;
 
     /// <summary>Initialize a new buffered keyboard device</summary>
-    internal BufferedKeyboard() {
+    protected BufferedKeyboard() {
       this.queuedEvents = new Queue<KeyboardEvent>();
       this.current = new KeyboardState();
     }

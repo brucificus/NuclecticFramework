@@ -21,8 +21,6 @@ License along with this library
 using System;
 using System.Collections.Generic;
 
-#if WINDOWS || WINRT || LINUX
-
 namespace Nuclex.Input.Devices {
     /// <summary>
   ///   Sends out notifications for intercepted window messages related to the keyboard
@@ -42,4 +40,3 @@ namespace Nuclex.Input.Devices {
 
 } // namespace Nuclex.Input.Devices
 
-#endif // WINDOWS || LINUX

@@ -15,6 +15,7 @@ namespace PortableGameTest.Framework.Input
         {
             builder.RegisterType<InputManager>().As<IInputService>().SingleInstance();
             builder.RegisterType<NoDirectInputManager>().As<IDirectInputManager>().SingleInstance();
+            builder.RegisterType<NoWindowMessageInputManager>().As<IWindowMessageInputManager>().SingleInstance();
         }
     }
 }

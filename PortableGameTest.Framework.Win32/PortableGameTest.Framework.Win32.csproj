@@ -101,10 +101,15 @@
     <Compile Include="Input\Devices\DirectInputConverter.PovReaders.cs" />
     <Compile Include="Input\Devices\DirectInputConverter.SliderReaders.cs" />
     <Compile Include="Input\Devices\DirectInputGamePad.cs" />
+    <Compile Include="Input\Devices\IKeyboardMessageSource.cs" />
+    <Compile Include="Input\Devices\IMouseMessageSource.cs" />
     <Compile Include="Input\Devices\JoystickStateAdapter.cs" />
+    <Compile Include="Input\Devices\WindowMessageKeyboard.cs" />
+    <Compile Include="Input\Devices\WindowMessageMouse.cs" />
     <Compile Include="Input\DirectInputManager.cs" />
     <Compile Include="Input\UnsafeNativeMethods.cs" />
     <Compile Include="Input\WindowMessageFilter.cs" />
+    <Compile Include="Input\WindowMessageInputManager.cs" />
     <Compile Include="Input\_InputModuleForWin32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\IO\FileSystemAdapter.cs" />

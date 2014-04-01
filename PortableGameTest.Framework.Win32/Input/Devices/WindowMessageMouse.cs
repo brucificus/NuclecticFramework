@@ -24,8 +24,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using System.Runtime.InteropServices;
 
-#if WINDOWS || WINRT || LINUX
-
 namespace Nuclex.Input.Devices {
 
   /// <summary>Interfaces with a PC mouse via window messages</summary>
@@ -91,4 +89,3 @@ namespace Nuclex.Input.Devices {
 
 } // namespace Nuclex.Input.Devices
 
-#endif // WINDOWS || LINUX

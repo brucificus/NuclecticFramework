@@ -231,12 +231,6 @@
     <Compile Include="Input\Devices\TouchState.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Input\Devices\WindowMessageKeyboard.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\WindowMessageMouse.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Input\Devices\XnaGamePad.cs" />
     <Compile Include="Input\Devices\XnaKeyboard.CharacterMap.cs">
       <SubType>Code</SubType>
@@ -254,6 +248,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Input\NoDirectInputManager.cs" />
+    <Compile Include="Input\NoWindowMessageInputManager.cs" />
     <Compile Include="Input\_InputModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\Collections\Constants.cs" />

@@ -18,8 +18,6 @@ License along with this library
 */
 #endregion
 
-#if WINDOWS || WINRT || LINUX
-
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -404,5 +402,3 @@ namespace Nuclex.Input {
   }
 
 } // namespace Nuclex.Input
-
-#endif // WINDOWS || LINUX

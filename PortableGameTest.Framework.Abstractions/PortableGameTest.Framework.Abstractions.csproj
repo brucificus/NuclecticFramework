@@ -96,13 +96,7 @@
     <Compile Include="Input\Devices\IKeyboard.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Input\Devices\IKeyboardMessageSource.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Input\Devices\IMouse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\IMouseMessageSource.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Input\Devices\IPovReader.cs" />
@@ -132,6 +126,7 @@
     <Compile Include="Input\IInputService.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Input\IWindowMessageInputManager.cs" />
     <Compile Include="Input\MouseButtons.cs">
       <SubType>Code</SubType>
     </Compile>

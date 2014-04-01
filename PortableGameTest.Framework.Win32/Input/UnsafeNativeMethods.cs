@@ -461,6 +461,9 @@ namespace Nuclex.Input {
     [DllImport("user32", SetLastError = true)]
     public extern static bool TranslateMessage(ref Message message);
 
+    [DllImport("user32.dll")]
+    public extern static IntPtr GetActiveWindow();
+
   }
 
 } // namespace Nuclex.Input
