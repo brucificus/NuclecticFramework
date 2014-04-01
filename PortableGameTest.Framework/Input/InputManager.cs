@@ -44,8 +44,8 @@ namespace Nuclex.Input {
 
     /// <summary>Initializs a new input manager</summary>
     /// <param name="services">Game service container the manager registers to</param>
-    /// <param name="windowHandle">Handle of the game's main window</param>
-    public InputManager(GameServiceContainer services, IDirectInputManager directInputManager) {
+    public InputManager(IDirectInputManager directInputManager, GameServiceContainer services = null)
+    {
 #if !NO_WININPUT
       this.windowMessageFilter = new WindowMessageFilter(windowHandle);
 #endif

@@ -56,9 +56,8 @@ namespace Nuclex.Input {
       }
     }
 
-    /// <summary>Initializes a new DirectInput manager</summary>
-    /// <param name="windowHandle">Handle of the game's main window</param>
-    public DirectInputManager(IntPtr windowHandle) {
+        /// <summary>Initializes a new DirectInput manager</summary>
+    public DirectInputManager() {
       this.directInput = new DirectInput();
     }
 
