@@ -20,6 +20,7 @@ namespace PortableGameTest.Framework.Support
             yield return typeof (_GeometryModule);
             yield return typeof (_GraphicsModule);
             yield return typeof (_UserInterfaceModule);
+            yield return typeof (_FrameworkModule);
         }
     }
 }

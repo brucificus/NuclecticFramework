@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using PortableGameTest.Core.States;
 using PortableGameTest.Framework.Support;
 
 namespace PortableGameTest.Core
@@ -8,7 +9,7 @@ namespace PortableGameTest.Core
     {
         public virtual IEnumerable<Type> GetAutofacModuleTypes()
         {
-            yield break;
+            yield return typeof (_StatesModule);
         }
 
         public abstract string Name { get; }
@@ -18,9 +19,11 @@ namespace PortableGameTest.Core
         : GamePlatformToken
         where  TGameFrameworkPlatform : GameFrameworkPlatformToken, new()
     {
-        public virtual IEnumerable<Type> GetAutofacModuleTypes()
+        public override IEnumerable<Type> GetAutofacModuleTypes()
         {
             var frameworkPlatform = new TGameFrameworkPlatform();
+            foreach (var moduleType in base.GetAutofacModuleTypes())
+                yield return moduleType;
             foreach (var moduleType in frameworkPlatform.GetAutofacModuleTypes())
                 yield return moduleType;
         }

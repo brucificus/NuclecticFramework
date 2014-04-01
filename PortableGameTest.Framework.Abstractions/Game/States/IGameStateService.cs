@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace Nuclex.Game.States {
 
   /// <summary>Allows management and switching of game states</summary>
-  public interface IGameStateService {
+  public interface IGameStateService : IUpdateable, IDrawable {
 
     /// <summary>The currently active game state. Can be null.</summary>
     IGameState ActiveState { get; }

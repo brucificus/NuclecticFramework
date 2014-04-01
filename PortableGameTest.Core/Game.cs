@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Nuclex.Game.States;
 
 namespace PortableGameTest.Core
 {
@@ -12,14 +15,18 @@ namespace PortableGameTest.Core
         : Microsoft.Xna.Framework.Game
         where TGamePlatform : GamePlatformToken, new()
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private readonly TGamePlatform _GamePlatform;
+        private readonly ContainerBuilder _AutofacContainerBuilder;
+        private readonly GraphicsDeviceManager _GraphicsDeviceManager;
+        private IContainer _AutofacContainer;
+        private IGameStateService _GameStateService;
 
         public Game()
             : base()
         {
-            graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            _GamePlatform = new TGamePlatform();
+            _AutofacContainerBuilder = new Autofac.ContainerBuilder();
+            _GraphicsDeviceManager = new GraphicsDeviceManager(this);
         }
 
         /// <summary>
@@ -30,7 +37,18 @@ namespace PortableGameTest.Core
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            _AutofacContainerBuilder.RegisterInstance(_GamePlatform).As<GamePlatformToken>().SingleInstance();
+            _AutofacContainerBuilder.RegisterInstance(_GraphicsDeviceManager)
+                .As<IGraphicsDeviceManager>()
+                .As<IGraphicsDeviceService>()
+                .ExternallyOwned()
+                .SingleInstance();
+            _AutofacContainerBuilder.RegisterInstance(this)
+                .As<Game>()
+                .ExternallyOwned()
+                .SingleInstance();
+            foreach (var moduleType in _GamePlatform.GetAutofacModuleTypes())
+                _AutofacContainerBuilder.RegisterModule((IModule)Activator.CreateInstance(moduleType));
 
             base.Initialize();
         }
@@ -41,10 +59,10 @@ namespace PortableGameTest.Core
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
+            _AutofacContainer = _AutofacContainerBuilder.Build();
+            _GameStateService = _AutofacContainer.Resolve<Nuclex.Game.States.IGameStateService>();
+            var splashState = _AutofacContainer.Resolve<SplashState>();
+            _GameStateService.Push(splashState, GameStateModality.Exclusive);
         }
 
         /// <summary>
@@ -53,7 +71,8 @@ namespace PortableGameTest.Core
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            _AutofacContainer.Dispose();
+            _AutofacContainer = null;
         }
 
         /// <summary>
@@ -66,9 +85,7 @@ namespace PortableGameTest.Core
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             //    Exit();
 
-            // TODO: Add your update logic here
-
-            base.Update(gameTime);
+            _GameStateService.Update(gameTime);
         }
 
         /// <summary>
@@ -77,11 +94,7 @@ namespace PortableGameTest.Core
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
-            base.Draw(gameTime);
+            _GameStateService.Draw(gameTime);
         }
     }
 }

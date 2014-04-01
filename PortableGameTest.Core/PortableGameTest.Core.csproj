@@ -39,8 +39,9 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="GamePlatformToken.cs" />
-    <Compile Include="SplashState.cs" />
+    <Compile Include="States\SplashState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="States\_StatesModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Autofac">

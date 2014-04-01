@@ -328,6 +328,7 @@
     <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatVerticalSliderControlRenderer.cs" />
     <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatWindowControlRenderer.cs" />
     <Compile Include="UserInterface\_UserInterfaceModule.cs" />
+    <Compile Include="_FrameworkModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Autofac">
