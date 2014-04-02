@@ -37,11 +37,7 @@ namespace Nuclex.Graphics.Batching {
     /// <summary>
     ///   Equivalent to SetDataOptions.Discard if supported by the target platform
     /// </summary>
-#if XBOX360
     private const SetDataOptions DiscardIfPossible = SetDataOptions.None;
-#else
-    private const SetDataOptions DiscardIfPossible = SetDataOptions.None;
-#endif
 
     /// <summary>Initializes a new dynamic vertex buffer based batch drawer</summary>
     /// <param name="graphicsDevice">
@@ -239,7 +235,7 @@ namespace Nuclex.Graphics.Batching {
       );
 #else
     if ((BatchSize*divisionIndex) > 0)
-        throw new NotImplementedException("MonoGame immaturity");
+        throw new NotSupportedException("MonoGame immaturity");
       this.graphicsDevice.SetVertexBuffer(
         this.vertexBuffer
       );

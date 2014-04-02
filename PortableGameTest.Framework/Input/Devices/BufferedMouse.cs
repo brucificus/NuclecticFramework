@@ -24,8 +24,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using System.Runtime.InteropServices;
 
-#if WINDOWS || WINRT || LINUX
-
 namespace Nuclex.Input.Devices {
 
   /// <summary>Mouse that buffers mouse events until Update() is called</summary>
@@ -303,4 +301,3 @@ namespace Nuclex.Input.Devices {
 
 } // namespace Nuclex.Input.Devices
 
-#endif // WINDOWS || LINUX

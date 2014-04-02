@@ -49,14 +49,14 @@ namespace Nuclex.Input.Devices {
     /// <summary>Whether the input device is connected to the system</summary>
     public override bool IsAttached {
       get {
-        return true; // Is there a WP7 device without touch screen?
-        // return TouchPanel.GetCapabilities().IsConnected;
+        //return true; // Is there a WP7 device without touch screen?
+        return TouchPanel.GetCapabilities().IsConnected;
       }
     }
 
     /// <summary>Human-readable name of the input device</summary>
     public override string Name {
-      get { return "Windows Phone 7 Touch Panel"; }
+      get { return "Windows Touch Panel"; }
     }
 
     /// <summary>Updates the state of the input device</summary>

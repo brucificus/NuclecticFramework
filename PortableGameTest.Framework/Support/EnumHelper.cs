@@ -93,11 +93,7 @@ namespace Nuclex.Support {
     ///   and cache the result.
     /// </remarks>
     public static TEnum[] GetValues<TEnum>() {
-#if XBOX360 || WINDOWS_PHONE
-      return GetValuesXbox360<TEnum>();
-#else
       return (TEnum[])Enum.GetValues(typeof(TEnum));
-#endif
     }
 
     /// <summary>Retrieves a list of all values contained in an enumeration</summary>

@@ -21,7 +21,6 @@ License along with this library
 using Microsoft.Xna.Framework.Input;
 using PortableGameTest.Framework.Input.Devices;
 using Joystick = SlimDX.DirectInput.Joystick;
-#if !NO_DIRECTINPUT
 using System;
 using SlimDX;
 using SlimDX.DirectInput;
@@ -311,5 +310,3 @@ namespace Nuclex.Input.Devices {
   }
 
 } // namespace Nuclex.Input.Devices
-
-#endif // !NO_DIRECTINPUT

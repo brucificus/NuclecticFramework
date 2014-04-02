@@ -9,7 +9,6 @@ using PortableGameTest.Core;
 
 namespace PortableGameTest_Win32
 {
-#if WINDOWS || LINUX
     /// <summary>
     /// The main class.
     /// </summary>
@@ -25,5 +24,4 @@ namespace PortableGameTest_Win32
                 game.Run();
         }
     }
-#endif
 }

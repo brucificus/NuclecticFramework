@@ -64,9 +64,7 @@ namespace Nuclex.Graphics {
 
         graphicsDevice.DeviceResetting += this.graphicsDeviceResettingDelegate;
         graphicsDevice.DeviceReset += this.graphicsDeviceResetDelegate;
-#if !MONOGAME
         graphicsDevice.Disposing += this.graphicsDeviceDisposingDelegate;
-#endif
       }
 
       /// <summary>Immediately releases all resouces owned by the instance</summary>
@@ -74,9 +72,7 @@ namespace Nuclex.Graphics {
         if(this.graphicsDevice != null) {
           graphicsDeviceDisposing(this.graphicsDevice, EventArgs.Empty);
 
-#if !MONOGAME
           this.graphicsDevice.Disposing -= this.graphicsDeviceDisposingDelegate;
-#endif
           this.graphicsDevice.DeviceReset -= this.graphicsDeviceResetDelegate;
           this.graphicsDevice.DeviceResetting -= this.graphicsDeviceResettingDelegate;
 

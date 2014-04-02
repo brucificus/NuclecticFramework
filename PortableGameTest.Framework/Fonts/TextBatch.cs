@@ -38,40 +38,29 @@ namespace Nuclex.Fonts {
 
     /// <summary>Initializes a new text batch for rendering</summary>
     /// <param name="graphicsDevice">Graphics device to render to</param>
-    public TextBatch(GraphicsDevice graphicsDevice) {
+	  public TextBatch(GraphicsDevice graphicsDevice, Effect solidColorEffect /* DefaultTextEffect */)
+	  {
       this.dummyService = GraphicsDeviceServiceHelper.MakeDummyGraphicsDeviceService(
         graphicsDevice
       );
-        throw new NotImplementedException();
-//#if WINDOWS_PHONE
-//      // Windows Phone doesn't expose programmable shaders to XNA
-//      this.solidColorEffect = new BasicEffect(graphicsDevice);
-//#else
-//      this.contentManager = new ResourceContentManager(
-//        GraphicsDeviceServiceHelper.MakePrivateServiceProvider(this.dummyService),
-//        Resources.TextBatchResources.ResourceManager
-//      );
+	    this.solidColorEffect = solidColorEffect;
 
-//      // Create the default effect we're going to use for rendering
-//      this.solidColorEffect = this.contentManager.Load<Effect>("DefaultTextEffect");
-//#endif
+		// Set up our internal primitive batch. We delegate the vertex batching
+		// methods to this class and just make it our responsibility to present
+		// a clean interface to the user.
+		this.primitiveBatch = new PrimitiveBatch<VertexPositionNormalTexture>(
+		  graphicsDevice
+		);
 
-//      // Set up our internal primitive batch. We delegate the vertex batching
-//      // methods to this class and just make it our responsibility to present
-//      // a clean interface to the user.
-//      this.primitiveBatch = new PrimitiveBatch<VertexPositionNormalTexture>(
-//        graphicsDevice
-//      );
-
-//      // Set up a view matrix that provides a 1:1 transformation of pixels to
-//      // world units. Unless the user sets his own ViewProjection matrix, this will
-//      // allow us to expose similar behavior to the XNA SpriteBatch class.
-//      this.viewProjection = new Matrix(
-//        2.0f / (float)graphicsDevice.Viewport.Width, 0.0f, 0.0f, 0.0f,
-//        0.0f, 2.0f / (float)graphicsDevice.Viewport.Height, 0.0f, 0.0f,
-//        0.0f, 0.0f, 1.0f, 0.0f,
-//        -1.0f, -1.0f, 0.0f, 1.0f
-//      );
+		// Set up a view matrix that provides a 1:1 transformation of pixels to
+		// world units. Unless the user sets his own ViewProjection matrix, this will
+		// allow us to expose similar behavior to the XNA SpriteBatch class.
+		this.viewProjection = new Matrix(
+		  2.0f / (float)graphicsDevice.Viewport.Width, 0.0f, 0.0f, 0.0f,
+		  0.0f, 2.0f / (float)graphicsDevice.Viewport.Height, 0.0f, 0.0f,
+		  0.0f, 0.0f, 1.0f, 0.0f,
+		  -1.0f, -1.0f, 0.0f, 1.0f
+		);
 
     }
 
@@ -80,11 +69,6 @@ namespace Nuclex.Fonts {
       if(this.primitiveBatch != null) {
         this.primitiveBatch.Dispose();
         this.primitiveBatch = null;
-      }
-      if(this.contentManager != null) {
-        this.contentManager.Dispose();
-        this.solidColorEffect = null;
-        this.contentManager = null;
       }
       if(this.dummyService != null) {
         IDisposable disposable = this.dummyService as IDisposable;
@@ -155,8 +139,6 @@ namespace Nuclex.Fonts {
 
     /// <summary>Dummy graphics device service used for the content manager</summary>
     private IGraphicsDeviceService dummyService;
-    /// <summary>Content manager used to load the text batch's effect file</summary>
-    private ResourceContentManager contentManager;
     /// <summary>Primitive batch used to batch text vertices together</summary>
     private PrimitiveBatch<VertexPositionNormalTexture> primitiveBatch;
     /// <summary>Effect used for rendering text in solid color</summary>

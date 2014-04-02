@@ -22,10 +22,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using PCLCrypto;
-#if !XBOX360
 //using System.Security.Cryptography;
 using System.Text;
-#endif
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -65,7 +63,6 @@ namespace Nuclex.Game.Content {
     public MemoryContentManager(IServiceProvider services) :
       base(services) { }
 
-#if WINDOWS || LINUX
     /// <summary>Loads the asset the embedded content manager was created for</summary>
     /// <typeparam name="AssetType">Type of the asset to load</typeparam>
     /// <param name="content">Content that will be loaded as an asset</param>
@@ -86,7 +83,6 @@ namespace Nuclex.Game.Content {
     public AssetType Load<AssetType>(byte[] content) {
       return Load<AssetType>(content, getSha1(content));
     }
-#endif
 
     /// <summary>Loads the asset the embedded content manager was created for</summary>
     /// <typeparam name="AssetType">Type of the asset to load</typeparam>
@@ -136,17 +132,12 @@ namespace Nuclex.Game.Content {
       return this.memoryStream;
     }
 
-#if WINDOWS || LINUX
     /// <summary>Calculates the SHA-1 hash of the provided byte array</summary>
     /// <param name="data">Data that will be hashed</param>
     /// <returns>A string containing the SHA-1 sum of the byte array</returns>
     private string getSha1(byte[] data) {
       if(this.sha1HashProvider == null) {
-#if WINDOWS
         this.sha1HashProvider = PCLCrypto.WinRTCrypto.HashAlgorithmProvider.OpenAlgorithm(HashAlgorithm.Sha1);
-#else
-        this.sha1HashProvider = new SHA1Managed();
-#endif
       }
       byte[] hashCode = this.sha1HashProvider.HashData(data);
       
@@ -157,18 +148,15 @@ namespace Nuclex.Game.Content {
 
       return builder.ToString();
     }
-#endif
 
     /// <summary>Content that will be loaded by the embedded content manager</summary>
     private MemoryStream memoryStream;
     /// <summary>Content which is currently being loaded</summary>
     private byte[] content;
-#if WINDOWS || LINUX
     /// <summary>
     ///   SHA-1 hash provider used to calculate SHA-1 sums of asset data
     /// </summary>
     private global::PCLCrypto.IHashAlgorithmProvider sha1HashProvider;
-#endif
 
   }
 

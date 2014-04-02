@@ -87,9 +87,11 @@ namespace Nuclex.Graphics.Debugging {
     /// <param name="graphicsDeviceService">
     ///   Graphics device service the debug drawer will use for rendering
     /// </param>
-    public DebugDrawer(IGraphicsDeviceService graphicsDeviceService) :
-      base(graphicsDeviceService) {
-
+    public DebugDrawer(IGraphicsDeviceService graphicsDeviceService, Effect fillEffect /* SolidColorEffect */, SpriteFont font /* LucidaSpriteFont */) :
+      base(graphicsDeviceService)
+    {
+	    this.fillEffect = fillEffect;
+	    this.font = font;
       this.queuedVertices = new VertexPositionColor[MaximumDebugVertexCount];
       this.queuedStrings = new List<QueuedString>();
 
@@ -122,28 +124,13 @@ namespace Nuclex.Graphics.Debugging {
     /// <summary>Loads the graphics resources of the component</summary>
     protected override void LoadContent()
     {
-        throw new NotImplementedException();
-//      this.contentManager = new ResourceContentManager(
-//        GraphicsDeviceServiceHelper.MakePrivateServiceProvider(GraphicsDeviceService),
-//#if WINDOWS_PHONE
-//        Resources.Phone7DebugDrawerResources.ResourceManager
-//#else
-// Resources.DebugDrawerResources.ResourceManager
-//#endif
-//);
-
       // The effect will be managed by our content manager and only needs to be
       // reloaded when the graphics device has been totally shut down or is
       // starting up for the first time.
-#if WINDOWS_PHONE
-      this.fillEffect = new BasicEffect(GraphicsDevice);
-#else
-      this.fillEffect = this.contentManager.Load<Effect>("SolidColorEffect");
-#endif
+
       this.drawContext = new EffectDrawContext(this.fillEffect);
 
       // Create the sprite batch we're using for text rendering
-      this.font = this.contentManager.Load<SpriteFont>("LucidaSpriteFont");
       this.fontSpriteBatch = new SpriteBatch(GraphicsDevice);
 
       // Create a new vertex buffer and its matching vertex declaration for
@@ -173,8 +160,6 @@ namespace Nuclex.Graphics.Debugging {
       // in that case.
       this.fillEffect = null;
       this.font = null;
-      this.contentManager.Unload();
-
     }
 
     /// <summary>Draws a line from the starting point to the destination point</summary>
@@ -445,8 +430,6 @@ namespace Nuclex.Graphics.Debugging {
       }
     }
 
-    /// <summary>Content manager used to load the debug drawer's effect file</summary>
-    private ResourceContentManager contentManager;
     /// <summary>Effect used for drawing the debug overlays</summary>
     private Effect fillEffect;
     /// <summary>Drawing context used wit hthe batch drawer</summary>
@@ -493,39 +476,6 @@ namespace Nuclex.Graphics.Debugging {
     ///   than our vertex array can hold.
     /// </summary>
     private bool overflowed;
-
-#if MONOGAME
-    // NOTE: Taken from https://github.com/mono/MonoGame/blob/d10130d7a64c9d41d21fe02e072cc913c5512ceb/MonoGame.Framework/Content/ResourceContentManager.cs
-    private class ResourceContentManager : ContentManager
-    {
-        private ResourceManager resource;
-
-        public ResourceContentManager(IServiceProvider servicesProvider, ResourceManager resource)
-            : base(servicesProvider)
-        {
-            if (resource == null)
-            {
-                throw new ArgumentNullException("resource");
-            }
-            this.resource = resource;
-        }
-
-        protected override System.IO.Stream OpenStream(string assetName)
-        {
-            throw new NotImplementedException();
-            //object obj = this.resource.GetObject(assetName);
-            //if (obj == null)
-            //{
-            //    throw new ContentLoadException("Resource not found");
-            //}
-            //if (!(obj is byte[]))
-            //{
-            //    throw new ContentLoadException("Resource is not in binary format");
-            //}
-            //return new MemoryStream(obj as byte[]);
-        }
-    }
-#endif
   }
 
 } // namespace Nuclex.Graphics.Debugging

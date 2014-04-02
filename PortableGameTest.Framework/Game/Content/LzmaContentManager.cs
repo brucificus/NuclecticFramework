@@ -21,20 +21,21 @@ License along with this library
 using System;
 using System.Collections.Generic;
 using System.IO;
-
+using PortableGameTest.Framework.Support.IO;
 using SevenZip;
 
 using Microsoft.Xna.Framework.Content;
+using SevenZip.Sdk.Compression.Lzma;
 
 namespace Nuclex.Game.Content {
 
 // MonoGame for WinRT has a type collision with .NET 4.5 corlib, which affects this class. Gotta exclude it for now.
-#if !WINRT
 
   /// <summary>Content manager that can read LZMA-compressed game assets</summary>
   public class LzmaContentManager : ContentManager {
+	  private readonly IFileSystem _fileSystem;
 
-    #region struct CompressedFileInfo
+	  #region struct CompressedFileInfo
 
     /// <summary>Stores the informations of a compressed file</summary>
     private struct CompressedFileInfo {
@@ -53,10 +54,12 @@ namespace Nuclex.Game.Content {
     ///   Service provider to use for accessing additional services that the
     ///   individual content readers require for creating their resources.
     /// </param>
-    public LzmaContentManager(IServiceProvider serviceProvider) :
-      this(serviceProvider, true) { }
+    public LzmaContentManager(IServiceProvider serviceProvider, IFileSystem fileSystem) :
+      this(serviceProvider, true, fileSystem)
+    {
+    }
 
-    /// <summary>Initializes a new LZMA-decompressing content manager</summary>
+	  /// <summary>Initializes a new LZMA-decompressing content manager</summary>
     /// <param name="serviceProvider">
     ///   Service provider to use for accessing additional services that the
     ///   individual content readers require for creating their resources.
@@ -72,10 +75,11 @@ namespace Nuclex.Game.Content {
     ///   might further lead to strange problems because the game would then be working
     ///   with an older version of the assets than you think it does.
     /// </remarks>
-    public LzmaContentManager(IServiceProvider serviceProvider, bool allowReplacement) :
+    public LzmaContentManager(IServiceProvider serviceProvider, bool allowReplacement, IFileSystem fileSystem) :
       base(serviceProvider) {
       this.replacementAllowed = allowReplacement;
-    }
+		  this._fileSystem = fileSystem;
+      }
 
     /// <summary>Initializes a new LZMA-decompressing content manager</summary>
     /// <param name="packagePath">
@@ -86,8 +90,8 @@ namespace Nuclex.Game.Content {
     ///   Service provider to use for accessing additional services that the
     ///   individual content readers require for creating their resources.
     /// </param>
-    public LzmaContentManager(IServiceProvider serviceProvider, string packagePath) :
-      this(serviceProvider, packagePath, true) { }
+    public LzmaContentManager(IServiceProvider serviceProvider, string packagePath, IFileSystem fileSystem) :
+      this(serviceProvider, packagePath, true, fileSystem) { }
 
     /// <summary>Initializes a new LZMA-decompressing content manager</summary>
     /// <param name="serviceProvider">
@@ -110,9 +114,9 @@ namespace Nuclex.Game.Content {
     ///   be working with an older version of the assets than you think it does.
     /// </remarks>
     public LzmaContentManager(
-      IServiceProvider serviceProvider, string packagePath, bool allowReplacement
+      IServiceProvider serviceProvider, string packagePath, bool allowReplacement, IFileSystem fileSystem
     ) :
-      this(serviceProvider, allowReplacement) {
+      this(serviceProvider, allowReplacement, fileSystem) {
       openPackage(packagePath);
     }
 
@@ -146,10 +150,8 @@ namespace Nuclex.Game.Content {
       if(this.replacementAllowed) {
         string xnbAssetFilename = Path.ChangeExtension(assetName, ".xnb");
         string xnbAssetPath = Path.Combine(RootDirectory, xnbAssetFilename);
-        if(File.Exists(xnbAssetPath)) {
-          return new FileStream(
-            xnbAssetPath, FileMode.Open, FileAccess.Read, FileShare.Read
-          );
+        if(_fileSystem.ExistsFile(xnbAssetPath)) {
+          return _fileSystem.GetFile(xnbAssetPath).Open(FileAccess.Read);
         }
       }
 
@@ -194,7 +196,7 @@ namespace Nuclex.Game.Content {
       // Look for a compressed .lzma asset
       string lzmaAssetFilename = Path.ChangeExtension(assetName, ".lzma");
       string lzmaAssetPath = Path.Combine(RootDirectory, lzmaAssetFilename);
-      if(!File.Exists(lzmaAssetPath)) {
+      if(!_fileSystem.ExistsFile(lzmaAssetPath)) {
         throw new ArgumentException(
           string.Format("Asset '{0}' not found", assetName), "assetName"
         );
@@ -202,11 +204,9 @@ namespace Nuclex.Game.Content {
 
       // Try to open and decompress the .lzma asset as an individual file
       using(
-        FileStream compressedFile = new FileStream(
-          lzmaAssetPath, FileMode.Open, FileAccess.Read, FileShare.Read
-        )
+        var compressedFile = _fileSystem.GetFile(lzmaAssetPath).Open(FileAccess.Read)
       ) {
-        BinaryReader reader = new BinaryReader(compressedFile);
+        var reader = new BinaryReader(compressedFile);
         int uncompressedLength = reader.ReadInt32();
 
         return uncompress(
@@ -248,17 +248,15 @@ namespace Nuclex.Game.Content {
       // If file replacement is allowed, there might not even be a package and all the
       // assets are stored uncompressed in their respective folders.
       if(this.replacementAllowed) {
-        if(!File.Exists(packagePath)) {
+        if(!_fileSystem.ExistsFile(packagePath)) {
           this.files = new Dictionary<string, CompressedFileInfo>();
           return;
         }
       }
 
-      FileStream lzmaPackageStream = new FileStream(
-        packagePath, FileMode.Open, FileAccess.Read, FileShare.Read
-      );
+      var lzmaPackageStream = _fileSystem.GetFile(packagePath).Open(FileAccess.Read);
       try {
-        BinaryReader reader = new BinaryReader(lzmaPackageStream);
+        var reader = new BinaryReader(lzmaPackageStream);
 
         // Obtain the number of assets that are stored in this package
         int fileCount = reader.ReadInt32();
@@ -292,12 +290,9 @@ namespace Nuclex.Game.Content {
     /// </summary>
     private bool replacementAllowed;
     /// <summary>File stream for the LZMA package opened by this content manager</summary>
-    private FileStream lzmaPackageStream;
+    private Stream lzmaPackageStream;
     /// <summary>Starting offsets for the files contained</summary>
     private Dictionary<string, CompressedFileInfo> files;
 
   }
-
-#endif
-
 } // namespace Nuclex.Game.Content

@@ -231,7 +231,6 @@
     <Compile Include="Input\Devices\TouchState.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Input\Devices\XnaGamePad.cs" />
     <Compile Include="Input\Devices\XnaKeyboard.CharacterMap.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -344,9 +343,6 @@
     </Reference>
     <Reference Include="PCLCrypto.Abstractions">
       <HintPath>..\packages\PCLCrypto.0.3.1-beta\lib\portable-net40+sl50+wp80+win+MonoAndroid10+MonoTouch10\PCLCrypto.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Portable.IO">
-      <HintPath>..\packages\Portable.IO.1.0.1\lib\portable-win+net45+MonoAndroid16+MonoMac40+MonoTouch40+sl40+wp71\Portable.IO.dll</HintPath>
     </Reference>
     <Reference Include="SevenZipSharp">
       <HintPath>..\packages\SevenZipSharp.0.64\lib\SevenZipSharp.dll</HintPath>

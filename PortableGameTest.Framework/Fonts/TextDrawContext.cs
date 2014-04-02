@@ -46,40 +46,6 @@ namespace Nuclex.Fonts {
       get { return this.effect.CurrentTechnique.Passes.Count; }
     }
 
-#if XNA_3
-
-    /// <summary>Begins the drawing cycle</summary>
-    public override void Begin() {
-      this.effect.Parameters["ViewProjection"].SetValue(this.transform);
-      this.effect.Parameters["TextColor"].SetValue(this.textColor.ToVector4());
-      this.effect.Begin(SaveStateMode.SaveState);
-    }
-
-    /// <summary>Ends the drawing cycle</summary>
-    public override void End() {
-      this.effect.End();
-    }
-
-    /// <summary>Prepares the graphics device for drawing</summary>
-    /// <param name="pass">Index of the pass to begin rendering</param>
-    /// <remarks>
-    ///   Should only be called between the normal Begin() and End() methods.
-    /// </remarks>
-    public override void BeginPass(int pass) {
-      this.effect.CurrentTechnique.Passes[pass].Begin();
-      this.currentPass = pass;
-    }
-
-    /// <summary>Restores the graphics device after drawing has finished</summary>
-    /// <remarks>
-    ///   Should only be called between the normal Begin() and End() methods.
-    /// </remarks>
-    public override void EndPass() {
-      this.effect.CurrentTechnique.Passes[this.currentPass].End();
-    }
-
-#else
-
     /// <summary>Prepares the graphics device for drawing</summary>
     /// <param name="pass">Index of the pass to begin rendering</param>
     public override void Apply(int pass) {
@@ -97,8 +63,6 @@ namespace Nuclex.Fonts {
 #endif
       this.effect.CurrentTechnique.Passes[pass].Apply();
     }
-
-#endif
 
     /// <summary>Tests whether another draw context is identical to this one</summary>
     /// <param name="otherContext">Other context to check for equality</param>
@@ -126,10 +90,6 @@ namespace Nuclex.Fonts {
 
     /// <summary>The draw context's effect used for rendering</summary>
     private Effect effect;
-#if XNA_3
-    /// <summary>Pass being currently rendered</summary>
-    private int currentPass;
-#endif
     /// <summary>Transformation matrix controlling the text's placement</summary>
     private Matrix transform;
     /// <summary>Drawing color of the text</summary>

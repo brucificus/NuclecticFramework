@@ -19,7 +19,6 @@ License along with this library
 #endregion
 
 using PortableGameTest.Framework.Input;
-#if !NO_DIRECTINPUT
 using System;
 using System.Collections.Generic;
 using System.Management;
@@ -191,5 +190,3 @@ namespace Nuclex.Input {
   }
 
 } // namespace Nuclex.Input
-
-#endif // !NO_DIRECTINPUT

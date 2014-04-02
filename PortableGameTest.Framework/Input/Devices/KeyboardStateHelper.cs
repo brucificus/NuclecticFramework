@@ -19,7 +19,6 @@ License along with this library
 #endregion
 
 using System.Linq;
-#if WINDOWS || WINRT || LINUX
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -103,4 +102,3 @@ namespace Nuclex.Input.Devices {
 
 } // namespace Nuclex.Input.Devices
 
-#endif // WINDOWS || LINUX

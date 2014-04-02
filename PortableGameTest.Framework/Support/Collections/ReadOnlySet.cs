@@ -22,8 +22,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-#if !(WINDOWS_PHONE || XBOX360)
-
 namespace Nuclex.Support.Collections {
 
   /// <summary>Wraps a set and prevents it from being modified</summary>
@@ -212,5 +210,3 @@ namespace Nuclex.Support.Collections {
   }
 
 } // namespace Nuclex.Support.Collections
-
-#endif // !(WINDOWS_PHONE || XBOX360)

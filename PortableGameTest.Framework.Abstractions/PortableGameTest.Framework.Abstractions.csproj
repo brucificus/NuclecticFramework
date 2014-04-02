@@ -140,6 +140,11 @@
     <Compile Include="Support\Collections\ParentingCollection.cs" />
     <Compile Include="Support\GameFrameworkPlatformToken.cs" />
     <Compile Include="Support\GarbagePolicy.cs" />
+    <Compile Include="Support\IO\FileAccess.cs" />
+    <Compile Include="Support\IO\IDirectory.cs" />
+    <Compile Include="Support\IO\IFile.cs" />
+    <Compile Include="Support\IO\IFileSystem.cs" />
+    <Compile Include="Support\IO\IFileSystemElement.cs" />
     <Compile Include="Support\StringSegment.cs" />
     <Compile Include="Support\WeakReference.cs" />
     <Compile Include="UserInterface\Controls\Control.cs" />
@@ -189,9 +194,6 @@
     </Reference>
     <Reference Include="PCLCrypto.Abstractions">
       <HintPath>..\packages\PCLCrypto.0.3.1-beta\lib\portable-net40+sl50+wp80+win+MonoAndroid10+MonoTouch10\PCLCrypto.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Portable.IO">
-      <HintPath>..\packages\Portable.IO.1.0.1\lib\portable-win+net45+MonoAndroid16+MonoMac40+MonoTouch40+sl40+wp71\Portable.IO.dll</HintPath>
     </Reference>
     <Reference Include="SevenZipSharp">
       <HintPath>..\packages\SevenZipSharp.0.64\lib\SevenZipSharp.dll</HintPath>

@@ -32,11 +32,7 @@ namespace Nuclex.Input {
     /// <param name="buttons">Button flag field that will be checked</param>
     /// <param name="button">Buttons for which the method will check</param>
     /// <returns>True if all specified buttons appear in the flag field</returns>
-#if NET_40
     public static bool Contains(this Buttons buttons, Buttons button) {
-#else
-    public static bool Contains(Buttons buttons, Buttons button) {
-#endif
       return ((buttons & button) != 0);
     }
 

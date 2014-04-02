@@ -17,7 +17,6 @@ You should have received a copy of the IBM Common Public
 License along with this library
 */
 #endregion
-#if !NO_XNAPAD
 
 using System;
 using System.Collections.Generic;
@@ -30,7 +29,7 @@ using MsGamePad = Microsoft.Xna.Framework.Input.GamePad;
 namespace Nuclex.Input.Devices {
 
   /// <summary>Interfaces with an XBox 360 controller via XNA (XINPUT)</summary>
-  internal class XnaGamePad : GamePad {
+  internal class XnaGamePad : Nuclex.Input.Devices.GamePad {
 
     /// <summary>Initializes a new XNA-based keyboard device</summary>
     public XnaGamePad(PlayerIndex playerIndex) {
@@ -47,7 +46,7 @@ namespace Nuclex.Input.Devices {
 
     /// <summary>Retrieves the current DirectInput joystick state</summary>
     /// <returns>The current state of the DirectInput joystick</returns>
-    public override ExtendedGamePadState GetExtendedState() {
+    public override IExtendedGamePadState GetExtendedState() {
       return new ExtendedGamePadState(ref this.current);
     }
 
@@ -258,4 +257,3 @@ namespace Nuclex.Input.Devices {
   }
 
 } // namespace Nuclex.Input.Devices
-#endif

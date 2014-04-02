@@ -25,8 +25,6 @@ using System.Runtime.InteropServices;
 
 using Microsoft.Xna.Framework.Input;
 
-#if WINDOWS || WINRT || LINUX
-
 namespace Nuclex.Input.Devices {
 
   /// <summary>Keyboard that buffers key presses until Update() is called</summary>
@@ -240,4 +238,3 @@ namespace Nuclex.Input.Devices {
 
 } // namespace Nuclex.Input.Devices
 
-#endif // WINDOWS || LINUX

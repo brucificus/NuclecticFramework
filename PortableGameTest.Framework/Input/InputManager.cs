@@ -259,12 +259,10 @@ namespace Nuclex.Input {
     private void setupGamePads() {
       var gamePads = new List<IGamePad>();
 
-#if !NO_XNAPAD
-      // Add default XNA game pads
-      for (PlayerIndex player = PlayerIndex.One; player <= PlayerIndex.Four; ++player) {
-        gamePads.Add(new XnaGamePad(player));
-      }
-#endif
+	  //// Add default XNA game pads
+	  //for (PlayerIndex player = PlayerIndex.One; player <= PlayerIndex.Four; ++player) {
+	  //  gamePads.Add(new XnaGamePad(player));
+	  //}
 
       // Add DirectInput-based game pads
       if (this.directInputManager != null) {
@@ -319,13 +317,12 @@ namespace Nuclex.Input {
     private void setupTouchPanels() {
       var touchPanels = new List<ITouchPanel>();
 
-#if WINDOWS_PHONE
-      // Add the Windows Phone 7 touch panel
-      touchPanels.Add(new XnaTouchPanel());
-#else
-      // Add dummy touch panel
-      touchPanels.Add(new NoTouchPanel());
-#endif
+	    var touchPanel = new XnaTouchPanel();
+
+	    if (touchPanel.IsAttached)
+		    touchPanels.Add(touchPanel);
+	    else
+			touchPanels.Add(new NoTouchPanel());
 
       this.touchPanels = new ReadOnlyCollection<ITouchPanel>(touchPanels);
     }
