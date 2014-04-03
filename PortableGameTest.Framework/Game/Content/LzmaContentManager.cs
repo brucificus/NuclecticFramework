@@ -29,8 +29,6 @@ using SevenZip.Sdk.Compression.Lzma;
 
 namespace Nuclex.Game.Content {
 
-// MonoGame for WinRT has a type collision with .NET 4.5 corlib, which affects this class. Gotta exclude it for now.
-
   /// <summary>Content manager that can read LZMA-compressed game assets</summary>
   public class LzmaContentManager : ContentManager {
 	  private readonly IFileSystem _fileSystem;
