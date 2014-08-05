@@ -17,3 +17,11 @@
 /PortableGameTest.Framework.WinRT/obj
 /PortableGameTest.Core/obj
 /PortableGameTest.Core/bin
+/PortableGameTest.Framework.Content/PortableGameTest.Framework.Content/obj
+/PortableGameTest.Framework.Content/PortableGameTest.Framework.Content/bin
+/PortableGameTest.Framework.Content/PortableGameTest.Framework.ContentContent/obj
+/PortableGameTest.Framework.Content/PortableGameTest.Framework.ContentContent/bin
+/PortableGameTest.Framework.Content/PortableGameTest.Framework.ContentContent/obj
+/PortableGameTest.Framework.Content/PortableGameTest.Framework.ContentContent/bin
+*.cachefile
+*.cache
