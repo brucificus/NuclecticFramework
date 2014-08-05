@@ -25,11 +25,6 @@ namespace PortableGameTest.Framework
 			builder.RegisterType<ContentManager>()
 				.AsSelf()
 				.WithParameter((pi,ctx)=>pi.ParameterType==typeof(IServiceProvider), (pi,ctx)=>GraphicsDeviceServiceHelper.MakePrivateServiceProvider(ctx.Resolve<IGraphicsDeviceService>()));
-	        builder.RegisterType<ResourceManager>()
-		        .AsSelf();
-			builder.RegisterType<ResourceContentManager>()
-				.AsSelf()
-				.WithParameter((pi, ctx) => pi.ParameterType == typeof(IServiceProvider), (pi, ctx) => GraphicsDeviceServiceHelper.MakePrivateServiceProvider(ctx.Resolve<IGraphicsDeviceService>()));
         }
     }
 }
