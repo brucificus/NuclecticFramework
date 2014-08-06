@@ -220,9 +220,11 @@
     <Compile Include="Input\Devices\NoKeyboard.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Input\Devices\NoKeyboardSoloFactory.cs" />
     <Compile Include="Input\Devices\NoMouse.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Input\Devices\NoMouseFactory.cs" />
     <Compile Include="Input\Devices\NoTouchPanel.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -236,12 +238,15 @@
       <SubType>
       </SubType>
     </Compile>
+    <Compile Include="Input\Devices\XnaKeyboardGamePad.cs" />
     <Compile Include="Input\Devices\XnaKeyboard.CharacterMap.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Input\Devices\XnaKeyboard.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Input\Devices\XnaKeyboardSolo.cs" />
+    <Compile Include="Input\Devices\XnaKeyboardSoloFactory.cs" />
     <Compile Include="Input\Devices\XnaTouchPanel.cs">
       <SubType>Code</SubType>
     </Compile>

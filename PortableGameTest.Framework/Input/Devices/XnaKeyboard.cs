@@ -28,7 +28,7 @@ using Microsoft.Xna.Framework.Input;
 namespace Nuclex.Input.Devices {
 
   /// <summary>Interfaces with an XBox 360 chat pad via XNA (XINPUT)</summary>
-  internal partial class XnaKeyboard : IKeyboard {
+  public abstract partial class XnaKeyboard : IKeyboard {
 
     /// <summary>Fired when a key has been pressed</summary>
     public event KeyDelegate KeyPressed;
@@ -46,11 +46,7 @@ namespace Nuclex.Input.Devices {
     public event CharacterDelegate CharacterEntered;
 
     /// <summary>Initializes a new XNA-based keyboard device</summary>
-    /// <param name="playerIndex">Index of the player whose chat pad will be queried</param>
-    /// <param name="gamePad">Game pad the chat pad is attached to</param>
-    public XnaKeyboard(PlayerIndex playerIndex, IGamePad gamePad) {
-      this.playerIndex = playerIndex;
-      this.gamePad = gamePad;
+    protected internal XnaKeyboard() {
       this.states = new Queue<KeyboardState>();
       this.current = new KeyboardState();
     }
@@ -61,17 +57,10 @@ namespace Nuclex.Input.Devices {
       return this.current;
     }
 
-    /// <summary>Whether the input device is connected to the system</summary>
-    public bool IsAttached {
-      get { return this.gamePad.IsAttached; }
-    }
+	  public abstract bool IsAttached { get; }
+	  public abstract string Name { get; }
 
-    /// <summary>Human-readable name of the input device</summary>
-    public string Name {
-      get { return "XBox 360 chat pad"; }
-    }
-
-    /// <summary>Updates the state of the input device</summary>
+	  /// <summary>Updates the state of the input device</summary>
     /// <remarks>
     ///   <para>
     ///     If this method is called with no snapshots in the queue, it will take
@@ -86,22 +75,23 @@ namespace Nuclex.Input.Devices {
     ///   </para>
     /// </remarks>
     public void Update() {
-      // According to http://msdn.microsoft.com/en-us/library/bb975640.aspx chat pads
-      // are only supported on the Xbox 360. Contrary to the documentation, I have
-      // observed the GetState(PlayerIndex) method returning the state of my
-      // real keyboard instead. This caused my GUI to register entered characters
-      // twice (once from WM_CHAR, once from the supposed chat pad which wasn't)!
-#if XBOX360
-      KeyboardState previous = this.current;
+		// According to http://msdn.microsoft.com/en-us/library/bb975640.aspx chat pads
+		// are only supported on the Xbox 360. Contrary to the documentation, I have
+		// observed the GetState(PlayerIndex) method returning the state of my
+		// real keyboard instead. This caused my GUI to register entered characters
+		// twice (once from WM_CHAR, once from the supposed chat pad which wasn't)!
+		KeyboardState previous = this.current;
 
-      if (this.states.Count == 0) {
-        this.current = queryKeyboardState();
-      } else {
-        this.current = this.states.Dequeue();
-      }
+		if (this.states.Count == 0)
+		{
+			this.current = queryKeyboardState();
+		}
+		else
+		{
+			this.current = this.states.Dequeue();
+		}
 
-      generateEvents(ref previous, ref this.current);
-#endif
+		generateEvents(ref previous, ref this.current);
     }
 
     /// <summary>Takes a snapshot of the current state of the input device</summary>
@@ -141,22 +131,7 @@ namespace Nuclex.Input.Devices {
     /// <summary>Returns all entries in the XNA Keys enumeration</summary>
     /// <returns>All entries in the keys enumeration</returns>
     private static Keys[] getAllValidKeys() {
-#if XBOX360 || WINDOWS_PHONE
-      FieldInfo[] fieldInfos = typeof(Keys).GetFields(
-        BindingFlags.Public | BindingFlags.Static
-      );
-
-      // Create an array to hold the enumeration values and copy them over from
-      // the fields we just retrieved
-      var values = new Keys[fieldInfos.Length];
-      for (int index = 0; index < fieldInfos.Length; ++index) {
-        values[index] = (Keys)fieldInfos[index].GetValue(null);
-      }
-      
-      return values;
-#else
       return (Keys[])Enum.GetValues(typeof(Keys));
-#endif
     }
 
     /// <summary>Updates the immediate (non-buffered) state of the keyboard</summary>
@@ -164,13 +139,12 @@ namespace Nuclex.Input.Devices {
     ///   Only called when the game is not using the Update() and TakeSnapshot() methods
     ///   to buffer input.
     /// </remarks>
-    private KeyboardState queryKeyboardState() {
-      if(this.gamePad.IsAttached) {
-        return Keyboard.GetState(this.playerIndex);
-      } else {
+    protected virtual KeyboardState queryKeyboardState() {
         return new KeyboardState();
-      }
     }
+
+	/// <summary>Contains all keys listed in the Keys enumeration</summary>
+	private static readonly Keys[] validKeys = getAllValidKeys();
 
 #if false
     /// <summary>Updates the immediate (non-buffered) state of the keyboard</summary>
@@ -234,20 +208,11 @@ namespace Nuclex.Input.Devices {
       }
     }
 
-    /// <summary>Contains all keys listed in the Keys enumeration</summary>
-    private static readonly Keys[] validKeys = getAllValidKeys();
-
-    /// <summary>Index of the player this device represents</summary>
-    private PlayerIndex playerIndex;
-
-    /// <summary>Game pad the chat pad is attached to</summary>
-    private IGamePad gamePad;
-
     /// <summary>Snapshots of the keyboard state waiting to be processed</summary>
     private Queue<KeyboardState> states;
 
     /// <summary>Currently published keyboard state</summary>
-    private KeyboardState current;
+    protected KeyboardState current;
 
   }
 

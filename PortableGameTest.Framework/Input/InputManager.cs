@@ -27,6 +27,7 @@ using Microsoft.Xna.Framework.Input;
 
 using Nuclex.Input.Devices;
 using PortableGameTest.Framework.Input;
+using PortableGameTest.Framework.Input.Devices;
 using XnaMouse = Microsoft.Xna.Framework.Input.Mouse;
 using XnaEventHandler = System.EventHandler<System.EventArgs>;
 
@@ -35,8 +36,10 @@ namespace Nuclex.Input {
   /// <summary>Manages and polls input devices</summary>
   public class InputManager :
     IInputService, IGameComponent, IUpdateable, IDisposable {
+	  private readonly IKeyboardSoloFactory _KeyboardSoloFactory;
+	  private readonly IMouseFactory _MouseFactory;
 
-    /// <summary>Fired when the UpdateOrder property changes its  value</summary>
+	  /// <summary>Fired when the UpdateOrder property changes its  value</summary>
     public event XnaEventHandler UpdateOrderChanged;
 
     /// <summary>Fired when the Enabled property changes its value</summary>
@@ -44,14 +47,11 @@ namespace Nuclex.Input {
 
     /// <summary>Initializs a new input manager</summary>
     /// <param name="services">Game service container the manager registers to</param>
-    public InputManager(IDirectInputManager directInputManager, IWindowMessageInputManager windowMessageInputManager, GameServiceContainer services = null)
+    public InputManager(IDirectInputManager directInputManager, IKeyboardSoloFactory keyboardSoloFactory, IMouseFactory mouseFactory, GameServiceContainer services = null)
     {
-	    if (windowMessageInputManager.IsWindowMessageInputAvailable)
-	    {
-		    this.windowMessageInputManager = windowMessageInputManager;
-	    }
-
-      if (directInputManager.IsDirectInputAvailable) {
+	    _KeyboardSoloFactory = keyboardSoloFactory;
+	    _MouseFactory = mouseFactory;
+	    if (directInputManager.IsDirectInputAvailable) {
         this.directInputManager = directInputManager;
       }
 
@@ -281,14 +281,8 @@ namespace Nuclex.Input {
     /// <summary>Sets up the collection of available mice</summary>
     private void setupMouse() {
       var mice = new List<IMouse>();
-	    if (windowMessageInputManager != null)
-	    {
-		    mice.Add(windowMessageInputManager.GetMouse());
-	    }
-	    else
-	    {
-		    mice.Add(new NoMouse());
-	    }
+
+		mice.Add(_MouseFactory.GetMouse());
 
       this.mice = new ReadOnlyCollection<IMouse>(mice);
     }
@@ -297,19 +291,12 @@ namespace Nuclex.Input {
     private void setupKeyboards() {
       var keyboards = new List<IKeyboard>();
 
-      // Add XNA chat pads
-      for (PlayerIndex player = PlayerIndex.One; player <= PlayerIndex.Four; ++player) {
-        keyboards.Add(new XnaKeyboard(player, this.gamePads[(int)player]));
-      }
+		// Add XNA chat pads
+		for (PlayerIndex player = PlayerIndex.One; player <= PlayerIndex.Four; ++player) {
+			keyboards.Add(new XnaKeyboardGamePad(player, this.gamePads[(int)player]));
+		}
 
-	    if (windowMessageInputManager != null)
-	    {
-		    keyboards.Add(windowMessageInputManager.GetKeyboard());
-	    }
-	    else
-	    {
-		    keyboards.Add(new NoKeyboard());
-	    }
+		keyboards.Add(_KeyboardSoloFactory.GetKeyboard());
 
       this.keyboards = new ReadOnlyCollection<IKeyboard>(keyboards);
     }
@@ -351,7 +338,6 @@ namespace Nuclex.Input {
     /// <summary>Game service container, saved to unregister on dispose</summary>
     private GameServiceContainer gameServices;
 
-	  private IWindowMessageInputManager windowMessageInputManager;
     }
 
 } // namespace Nuclex.Input

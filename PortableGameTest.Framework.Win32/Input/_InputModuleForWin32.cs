@@ -17,7 +17,7 @@ namespace PortableGameTest.Framework.Input
             builder.RegisterType<DirectInputConverter>().As<DirectInputConverter>().InstancePerDependency();
             builder.RegisterType<DirectInputManager>().As<IDirectInputManager>().SingleInstance();
 	        
-			builder.RegisterType<WindowMessageInputManager>().As<IWindowMessageInputManager>().SingleInstance();
+			builder.RegisterType<WindowMessageInputManager>().AsImplementedInterfaces().SingleInstance();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace PortableGameTest.Framework
             foreach (var moduleType in base.GetAutofacModuleTypes())
                 yield return moduleType;
 
-            //yield return typeof(_InputModuleForWinRT);
+            yield return typeof(_InputModuleForWinRT);
         }
 
         public override string Name
