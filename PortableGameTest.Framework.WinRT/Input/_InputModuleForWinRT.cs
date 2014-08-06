@@ -13,6 +13,7 @@ namespace PortableGameTest.Framework.Input
 		protected override void Load(ContainerBuilder builder)
 		{
 			builder.RegisterType<XnaKeyboardSoloFactory>().AsImplementedInterfaces().SingleInstance();
+			builder.RegisterType<XnaMouseFactory>().AsImplementedInterfaces().SingleInstance();
 		}
 	}
 }

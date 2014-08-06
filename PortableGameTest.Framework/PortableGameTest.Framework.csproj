@@ -247,6 +247,8 @@
     </Compile>
     <Compile Include="Input\Devices\XnaKeyboardSolo.cs" />
     <Compile Include="Input\Devices\XnaKeyboardSoloFactory.cs" />
+    <Compile Include="Input\Devices\XnaMouse.cs" />
+    <Compile Include="Input\Devices\XnaMouseFactory.cs" />
     <Compile Include="Input\Devices\XnaTouchPanel.cs">
       <SubType>Code</SubType>
     </Compile>

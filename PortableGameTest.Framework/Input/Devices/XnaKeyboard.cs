@@ -186,7 +186,6 @@ namespace Nuclex.Input.Devices {
           }
         }
       }
-
     }
 
     /// <summary>Generates the character entered event for the chat pad</summary>
