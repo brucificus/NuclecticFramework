@@ -26,10 +26,10 @@ using Microsoft.Xna.Framework;
 namespace Nuclex.Game.States {
 
   /// <summary>Manages the game states and updates the active game state</summary>
-  public class GameStateManager : DrawableComponent, IGameStateService, IDisposable {
+  public class ManualGameStateManager : DrawableComponent, IManualGameStateService, IDisposable {
 
     /// <summary>Initializes a new game state manager</summary>
-    public GameStateManager() {
+    public ManualGameStateManager() {
       this.gameStates = new List<KeyValuePair<IGameState, GameStateModality>>();
       this.updateableStates = new List<IUpdateable>();
       this.drawableStates = new List<IDrawable>();
@@ -39,10 +39,10 @@ namespace Nuclex.Game.States {
     /// <param name="gameServices">
     ///   Services container the game state manager will add itself to
     /// </param>
-    public GameStateManager(GameServiceContainer gameServices) :
+    public ManualGameStateManager(GameServiceContainer gameServices) :
       this() {
       this.gameServices = gameServices;
-      gameServices.AddService(typeof(IGameStateService), this);
+      gameServices.AddService(typeof(IManualGameStateService), this);
     }
 
     /// <summary>Immediately releases all resources used by the component</summary>
@@ -51,9 +51,9 @@ namespace Nuclex.Game.States {
 
       // Unregister the service if we have registered it before
       if (this.gameServices != null) {
-        object registeredService = this.gameServices.GetService(typeof(IGameStateService));
+        object registeredService = this.gameServices.GetService(typeof(IManualGameStateService));
         if (ReferenceEquals(registeredService, this)) {
-          this.gameServices.RemoveService(typeof(IGameStateService));
+          this.gameServices.RemoveService(typeof(IManualGameStateService));
         }
       }
     }

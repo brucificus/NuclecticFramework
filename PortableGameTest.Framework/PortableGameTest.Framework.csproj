@@ -66,7 +66,8 @@
     <Compile Include="Game\Space\QuadTree.Removal.cs" />
     <Compile Include="Game\Space\RectangleTree.cs" />
     <Compile Include="Game\Space\RectangleTree.Node.cs" />
-    <Compile Include="Game\States\GameStateManager.cs" />
+    <Compile Include="Game\States\AutoGameStateManager.cs" />
+    <Compile Include="Game\States\ManualGameStateManager.cs" />
     <Compile Include="Game\States\LoadingScreenState.cs" />
     <Compile Include="Game\_GameModule.cs" />
     <Compile Include="Geometry\Areas\AxisAlignedRectangle2.cs" />
@@ -275,6 +276,8 @@
     <Compile Include="Support\IntegerHelper.cs" />
     <Compile Include="Support\IO\ChainStream.cs" />
     <Compile Include="Support\IO\PartialStream.cs" />
+    <Compile Include="Support\NamedAttribute.cs" />
+    <Compile Include="Support\RegistrationBuilderExtensions.cs" />
     <Compile Include="Support\StringBuilderHelper.cs" />
     <Compile Include="Support\StringHelper.cs" />
     <Compile Include="Support\XmlHelper.cs" />
@@ -324,6 +327,7 @@
     <Compile Include="UserInterface\_UserInterfaceModule.cs" />
     <Compile Include="WellKnownContent.cs" />
     <Compile Include="_FrameworkModule.cs" />
+    <Compile Include="_WellKnownContentModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\PortableGameTest.Framework.Content\PortableGameTest.Framework.Content\bin\Windows\Content\**">

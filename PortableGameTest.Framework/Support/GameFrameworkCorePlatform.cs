@@ -23,6 +23,7 @@ namespace PortableGameTest.Framework.Support
             yield return typeof (_InputModule);
             yield return typeof (_UserInterfaceModule);
             yield return typeof (_FrameworkModule);
+	        yield return typeof (_WellKnownContentModule);
         }
     }
 }

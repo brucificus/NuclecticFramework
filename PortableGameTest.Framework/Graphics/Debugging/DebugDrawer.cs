@@ -27,6 +27,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 using Nuclex.Graphics.Batching;
+using PortableGameTest.Framework.Support;
 
 namespace Nuclex.Graphics.Debugging {
 
@@ -87,7 +88,7 @@ namespace Nuclex.Graphics.Debugging {
     /// <param name="graphicsDeviceService">
     ///   Graphics device service the debug drawer will use for rendering
     /// </param>
-    public DebugDrawer(IGraphicsDeviceService graphicsDeviceService, Effect fillEffect /* SolidColorEffect */, SpriteFont font /* LucidaSpriteFont */) :
+	public DebugDrawer(IGraphicsDeviceService graphicsDeviceService, [Named("SolidColorEffect")] Effect fillEffect, [Named("LucidaSpriteFont")] SpriteFont font) :
       base(graphicsDeviceService)
     {
 	    this.fillEffect = fillEffect;

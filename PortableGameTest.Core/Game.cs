@@ -5,9 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using Autofac.Core;
+using Autofac.Features.OwnedInstances;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Nuclex.Game.States;
+using PortableGameTest.Framework.Game.States;
 
 namespace PortableGameTest.Core
 {
@@ -19,9 +22,9 @@ namespace PortableGameTest.Core
         private readonly ContainerBuilder _AutofacContainerBuilder;
         private readonly GraphicsDeviceManager _GraphicsDeviceManager;
         private IContainer _AutofacContainer;
-        private IGameStateService _GameStateService;
+        private Owned<IAutoGameStateService> _OwnedGameStateService;
 
-        public Game()
+	    public Game()
             : base()
         {
             _GamePlatform = new TGamePlatform();
@@ -60,9 +63,8 @@ namespace PortableGameTest.Core
         protected override void LoadContent()
         {
             _AutofacContainer = _AutofacContainerBuilder.Build();
-            _GameStateService = _AutofacContainer.Resolve<Nuclex.Game.States.IGameStateService>();
-            var splashState = _AutofacContainer.Resolve<SplashState>();
-            _GameStateService.Push(splashState, GameStateModality.Exclusive);
+            _OwnedGameStateService = _AutofacContainer.Resolve<Owned<IAutoGameStateService>>();
+	        _OwnedGameStateService.Value.Push<SplashState>(GameStateModality.Exclusive);
         }
 
         /// <summary>
@@ -71,8 +73,22 @@ namespace PortableGameTest.Core
         /// </summary>
         protected override void UnloadContent()
         {
-            _AutofacContainer.Dispose();
-            _AutofacContainer = null;
+	        try
+	        {
+		        _OwnedGameStateService.Dispose();
+	        }
+	        finally
+	        {
+		        _OwnedGameStateService = null;
+	        }
+	        try
+	        {
+		        _AutofacContainer.Dispose();
+	        }
+	        finally
+	        {
+				_AutofacContainer = null;
+	        }
         }
 
         /// <summary>
@@ -85,7 +101,7 @@ namespace PortableGameTest.Core
             //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             //    Exit();
 
-            _GameStateService.Update(gameTime);
+            _OwnedGameStateService.Value.Update(gameTime);
         }
 
         /// <summary>
@@ -94,7 +110,7 @@ namespace PortableGameTest.Core
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            _GameStateService.Draw(gameTime);
+            _OwnedGameStateService.Value.Draw(gameTime);
         }
     }
 }

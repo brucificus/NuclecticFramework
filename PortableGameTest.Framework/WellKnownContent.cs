@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace PortableGameTest.Framework
 {
-	public static class WellKnownContent
+	internal static class WellKnownContent
 	{
 		public static Effect ScreenMaskEffect(ContentManager contentManager)
 		{
@@ -23,6 +23,11 @@ namespace PortableGameTest.Framework
 		public static Effect SolidColorEffect(ContentManager contentManager)
 		{
 			return contentManager.Load<Effect>("SolidColorEffect");
+		}
+
+		public static SpriteFont LucidaSpriteFont(ContentManager contentManager)
+		{
+			return contentManager.Load<SpriteFont>("LucidaSpriteFont");
 		}
 
 		public static class Skins

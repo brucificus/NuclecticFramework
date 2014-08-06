@@ -22,9 +22,12 @@ namespace PortableGameTest.Framework
             builder.Register(ctx => ctx.Resolve<IGraphicsDeviceService>().GraphicsDevice)
                 .AsSelf()
                 .ExternallyOwned();
-			builder.RegisterType<ContentManager>()
-				.AsSelf()
-				.WithParameter((pi,ctx)=>pi.ParameterType==typeof(IServiceProvider), (pi,ctx)=>GraphicsDeviceServiceHelper.MakePrivateServiceProvider(ctx.Resolve<IGraphicsDeviceService>()));
+	        builder.RegisterType<SpriteBatch>().AsSelf();
+	        builder.RegisterType<ContentManager>()
+		        .AsSelf()
+				.WithParameter(new TypedParameter(typeof(string), "Content"))
+		        .WithParameter((pi, ctx) => pi.ParameterType == typeof (IServiceProvider), (pi, ctx) => GraphicsDeviceServiceHelper.MakePrivateServiceProvider(ctx.Resolve<IGraphicsDeviceService>()))
+		        .InstancePerLifetimeScope();
         }
     }
 }

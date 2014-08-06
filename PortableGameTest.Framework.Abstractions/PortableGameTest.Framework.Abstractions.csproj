@@ -51,8 +51,10 @@
     <Compile Include="Game\States\DrawableGameState.cs" />
     <Compile Include="Game\States\GameState.cs" />
     <Compile Include="Game\States\GameStateModality.cs" />
+    <Compile Include="Game\States\IAutoGameStateService.cs" />
     <Compile Include="Game\States\IGameState.cs" />
     <Compile Include="Game\States\IGameStateService.cs" />
+    <Compile Include="Game\States\IManualGameStateService.cs" />
     <Compile Include="Game\States\ILoadableGameState.cs" />
     <Compile Include="Game\States\LoadingScreenState.cs" />
     <Compile Include="Game\States\LoadProgressEventArgs.cs" />

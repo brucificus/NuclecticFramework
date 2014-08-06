@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Nuclex.Graphics.Batching;
 using Nuclex.Graphics.Debugging;
+using PortableGameTest.Framework.Support;
 
 namespace PortableGameTest.Framework.Graphics
 {
@@ -23,9 +24,8 @@ namespace PortableGameTest.Framework.Graphics
             builder.RegisterGeneric(typeof (PrimitiveBatch<>)).AsImplementedInterfaces().InstancePerDependency();
             builder.RegisterGeneric(typeof(UserPrimitiveBatchDrawer<>)).AsImplementedInterfaces().InstancePerDependency();
 
-            builder.RegisterType<DebugDrawer>().As<IDebugDrawingService>().SingleInstance();
-
-
+	        builder.RegisterType<DebugDrawer>().As<IDebugDrawingService>()
+		        .WithParameterExplicitNamingSupport();
         }
     }
 }

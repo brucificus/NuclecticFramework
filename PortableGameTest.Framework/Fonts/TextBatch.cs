@@ -30,6 +30,7 @@ using Microsoft.Xna.Framework.Content;
 
 using Nuclex.Graphics;
 using Nuclex.Graphics.Batching;
+using PortableGameTest.Framework.Support;
 
 namespace Nuclex.Fonts {
 
@@ -38,7 +39,7 @@ namespace Nuclex.Fonts {
 
     /// <summary>Initializes a new text batch for rendering</summary>
     /// <param name="graphicsDevice">Graphics device to render to</param>
-	  public TextBatch(GraphicsDevice graphicsDevice, Effect solidColorEffect /* DefaultTextEffect */)
+	  public TextBatch(GraphicsDevice graphicsDevice, [Named("DefaultTextEffect")] Effect solidColorEffect)
 	  {
       this.dummyService = GraphicsDeviceServiceHelper.MakeDummyGraphicsDeviceService(
         graphicsDevice

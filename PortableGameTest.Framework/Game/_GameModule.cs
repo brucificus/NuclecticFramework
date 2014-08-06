@@ -7,6 +7,7 @@ using Autofac;
 using Nuclex.Game.Content;
 using Nuclex.Game.Packing;
 using Nuclex.Game.States;
+using PortableGameTest.Framework.Game.States;
 
 namespace PortableGameTest.Framework.Game
 {
@@ -21,7 +22,8 @@ namespace PortableGameTest.Framework.Game
             builder.RegisterType<CygonRectanglePacker>().As<RectanglePacker>().InstancePerDependency();
             builder.RegisterType<SimpleRectanglePacker>().As<RectanglePacker>().InstancePerDependency();
 
-            builder.RegisterType<GameStateManager>().As<IGameStateService>().SingleInstance();
+	        builder.RegisterType<ManualGameStateManager>().AsSelf().As<IManualGameStateService>().InstancePerLifetimeScope();
+	        builder.RegisterType<AutoGameStateManager>().AsImplementedInterfaces().AsSelf().InstancePerLifetimeScope();
         }
     }
 }
