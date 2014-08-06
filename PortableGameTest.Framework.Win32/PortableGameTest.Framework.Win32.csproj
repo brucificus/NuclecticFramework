@@ -112,7 +112,6 @@
     <Compile Include="Input\Devices\JoystickStateAdapter.cs" />
     <Compile Include="Input\Devices\WindowMessageKeyboard.cs" />
     <Compile Include="Input\Devices\WindowMessageMouse.cs" />
-    <Compile Include="Input\Devices\XnaGamePad.cs" />
     <Compile Include="Input\DirectInputManager.cs" />
     <Compile Include="Input\UnsafeNativeMethods.cs" />
     <Compile Include="Input\WindowMessageFilter.cs" />

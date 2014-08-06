@@ -259,10 +259,11 @@ namespace Nuclex.Input {
     private void setupGamePads() {
       var gamePads = new List<IGamePad>();
 
-	  //// Add default XNA game pads
-	  //for (PlayerIndex player = PlayerIndex.One; player <= PlayerIndex.Four; ++player) {
-	  //  gamePads.Add(new XnaGamePad(player));
-	  //}
+	  // Add default XNA game pads
+	  for (PlayerIndex player = PlayerIndex.One; player <= PlayerIndex.Four; ++player)
+	  {
+		  gamePads.Add(new XnaGamePad(player));
+	  }
 
       // Add DirectInput-based game pads
       if (this.directInputManager != null) {

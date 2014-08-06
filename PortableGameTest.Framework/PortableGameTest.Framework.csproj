@@ -232,6 +232,10 @@
     <Compile Include="Input\Devices\TouchState.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Input\Devices\XnaGamePad.cs">
+      <SubType>
+      </SubType>
+    </Compile>
     <Compile Include="Input\Devices\XnaKeyboard.CharacterMap.cs">
       <SubType>Code</SubType>
     </Compile>

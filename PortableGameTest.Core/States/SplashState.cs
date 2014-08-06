@@ -43,7 +43,7 @@ namespace PortableGameTest.Core
 
         public override void Update(GameTime gameTime)
         {
-            //throw new NotImplementedException();
+	        _InputService.Update();
         }
 
         public override void Draw(GameTime gameTime)
