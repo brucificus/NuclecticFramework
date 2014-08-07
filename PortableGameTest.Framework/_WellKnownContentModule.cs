@@ -14,20 +14,29 @@ namespace PortableGameTest.Framework
 	{
 		protected override void Load(ContainerBuilder builder)
 		{
-			RegisterWellKnownContent<Effect>(builder, "ScreenMaskEffect");
-			RegisterWellKnownContent<Effect>(builder, "DefaultTextEffect");
-			RegisterWellKnownContent<Effect>(builder, "SolidColorEffect");
-			RegisterWellKnownContent<SpriteFont>(builder, "LucidaSpriteFont");
-			RegisterWellKnownContent<SpriteFont>(builder, "Skins/Suave/DefaultFont");
-			RegisterWellKnownContent<Texture2D>(builder, "Skins/Suave/SuaveSheet");
-			RegisterWellKnownContent<SpriteFont>(builder, "Skins/Suave/TitleFont");
+			RegisterWellKnownContent<Effect>(builder, "ScreenMaskEffect", inSharedContentManager: true);
+			RegisterWellKnownContent<Effect>(builder, "DefaultTextEffect", inSharedContentManager: true);
+			RegisterWellKnownContent<Effect>(builder, "SolidColorEffect", inSharedContentManager: true);
+			RegisterWellKnownContent<SpriteFont>(builder, "LucidaSpriteFont", inSharedContentManager: true);
+			RegisterWellKnownContent<SpriteFont>(builder, "Skins/Suave/DefaultFont", inSharedContentManager: true);
+			RegisterWellKnownContent<Texture2D>(builder, "Skins/Suave/SuaveSheet", inSharedContentManager: true);
+			RegisterWellKnownContent<SpriteFont>(builder, "Skins/Suave/TitleFont", inSharedContentManager: true);
 		}
 
-		private void RegisterWellKnownContent<TContent>(ContainerBuilder builder, string name)
+		private void RegisterWellKnownContent<TContent>(ContainerBuilder builder, string name, bool inSharedContentManager)
 		{
-			builder.Register(ctx => ctx.Resolve<ContentManager>().Load<TContent>(name))
-				.Named<TContent>(name)
-				.InstancePerLifetimeScope();
+			if (inSharedContentManager)
+			{
+				builder.Register(ctx => ctx.ResolveNamed<ContentManager>("Shared").Load<TContent>(name))
+					.Named<TContent>(name)
+					.SingleInstance();	
+			}
+			else
+			{
+				builder.Register(ctx => ctx.Resolve<ContentManager>().Load<TContent>(name))
+					.Named<TContent>(name)
+					.InstancePerLifetimeScope();				
+			}
 		}
 	}
 }

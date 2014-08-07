@@ -14,6 +14,7 @@ namespace PortableGameTest.Core.States
         protected override void Load(ContainerBuilder builder)
         {
 	        builder.RegisterType<SplashState>().AsSelf().WithParameterExplicitNamingSupport();
+	        builder.RegisterType<CapabilitiesDetectionState>().AsSelf().WithParameterExplicitNamingSupport();
         }
     }
 }

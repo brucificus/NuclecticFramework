@@ -22,8 +22,8 @@ namespace PortableGameTest.Framework.Game
             builder.RegisterType<CygonRectanglePacker>().As<RectanglePacker>().InstancePerDependency();
             builder.RegisterType<SimpleRectanglePacker>().As<RectanglePacker>().InstancePerDependency();
 
-	        builder.RegisterType<ManualGameStateManager>().AsSelf().As<IManualGameStateService>().InstancePerLifetimeScope();
-	        builder.RegisterType<AutoGameStateManager>().AsImplementedInterfaces().AsSelf().InstancePerLifetimeScope();
+	        builder.RegisterType<ManualGameStateManager>().AsSelf().As<IManualGameStateService>().SingleInstance();
+			builder.RegisterType<AutoGameStateManager>().AsImplementedInterfaces().AsSelf().SingleInstance();
         }
     }
 }

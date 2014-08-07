@@ -28,6 +28,12 @@ namespace PortableGameTest.Framework
 				.WithParameter(new TypedParameter(typeof(string), "Content"))
 		        .WithParameter((pi, ctx) => pi.ParameterType == typeof (IServiceProvider), (pi, ctx) => GraphicsDeviceServiceHelper.MakePrivateServiceProvider(ctx.Resolve<IGraphicsDeviceService>()))
 		        .InstancePerLifetimeScope();
+			builder.RegisterType<ContentManager>()
+				.AsSelf()
+				.WithParameter(new TypedParameter(typeof(string), "Content"))
+				.WithParameter((pi, ctx) => pi.ParameterType == typeof(IServiceProvider), (pi, ctx) => GraphicsDeviceServiceHelper.MakePrivateServiceProvider(ctx.Resolve<IGraphicsDeviceService>()))
+				.Named<ContentManager>("Shared")
+				.SingleInstance();
         }
     }
 }

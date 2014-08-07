@@ -36,7 +36,6 @@ namespace Nuclex.Game.States {
     /// <summary>Never called because the UpdateOrder property cannot change</summary>
     event StateEventHandler IUpdateable.UpdateOrderChanged { add { } remove { } }
 
-    /// <summary>Initializes a new game state</summary>
     /// <summary>Called when the game state is being paused</summary>
     public void Pause() {
       if (!this.paused) {

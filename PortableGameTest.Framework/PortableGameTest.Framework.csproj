@@ -103,6 +103,7 @@
     <Compile Include="Geometry\Lines\Ray3.cs" />
     <Compile Include="Geometry\Lines\Segment2.cs" />
     <Compile Include="Geometry\Lines\Segment3.cs" />
+    <Compile Include="Geometry\PointExtensions.cs" />
     <Compile Include="Geometry\Side.cs" />
     <Compile Include="Geometry\Specifications.cs" />
     <Compile Include="Geometry\Lines\Collisions\Line2Aabb2Collider.cs" />
