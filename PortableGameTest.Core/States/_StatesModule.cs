@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using Nuclex.Game.States;
 using PortableGameTest.Framework.Support;
 
 namespace PortableGameTest.Core.States
@@ -13,10 +15,18 @@ namespace PortableGameTest.Core.States
     {
         protected override void Load(ContainerBuilder builder)
         {
-	        builder.RegisterType<SplashState>().AsSelf().WithParameterExplicitNamingSupport();
-	        builder.RegisterType<CapabilitiesDetectionState>().AsSelf().WithParameterExplicitNamingSupport();
-	        builder.RegisterType<KeyboardStateDumpState>().AsSelf().WithParameterExplicitNamingSupport();
-	        builder.RegisterType<KeyboardLogState>().AsSelf().WithParameterExplicitNamingSupport();
+			var stateTypesInThisAssembly = 
+				typeof(_StatesModule)
+				.GetTypeInfo()
+				.Assembly
+				.DefinedTypes
+				.Where(t => t.IsClass && !t.IsAbstract && t.ImplementedInterfaces.Contains(typeof(IGameState)))
+				.ToArray();
+
+	        foreach (var stateType in stateTypesInThisAssembly)
+	        {
+		        builder.RegisterType(stateType.AsType()).AsSelf().WithParameterExplicitNamingSupport();
+	        }
         }
     }
 }
