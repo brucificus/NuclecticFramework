@@ -41,6 +41,8 @@
     <Compile Include="GamePlatformToken.cs" />
     <Compile Include="Graphics\SpriteBatchExtensions.cs" />
     <Compile Include="States\CapabilitiesDetectionState.cs" />
+    <Compile Include="States\KeyboardLogState.cs" />
+    <Compile Include="States\KeyboardStateDumpState.cs" />
     <Compile Include="States\SplashState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="States\_StatesModule.cs" />

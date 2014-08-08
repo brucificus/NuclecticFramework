@@ -27,7 +27,7 @@ namespace PortableGameTest.Core
 
 	    public override void Update(GameTime gameTime)
         {
-	        _GameStateService.Push<CapabilitiesDetectionState>(GameStateModality.Exclusive);
+	        _GameStateService.Push<KeyboardLogState>(GameStateModality.Exclusive);
         }
     }
 }

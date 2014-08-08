@@ -15,6 +15,8 @@ namespace PortableGameTest.Core.States
         {
 	        builder.RegisterType<SplashState>().AsSelf().WithParameterExplicitNamingSupport();
 	        builder.RegisterType<CapabilitiesDetectionState>().AsSelf().WithParameterExplicitNamingSupport();
+	        builder.RegisterType<KeyboardStateDumpState>().AsSelf().WithParameterExplicitNamingSupport();
+	        builder.RegisterType<KeyboardLogState>().AsSelf().WithParameterExplicitNamingSupport();
         }
     }
 }

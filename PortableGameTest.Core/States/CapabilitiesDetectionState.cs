@@ -17,7 +17,8 @@ namespace PortableGameTest.Core.States
 	    private readonly SpriteFont _LucidaSpriteFont;
 	    private readonly SpriteBatch _SpriteBatch;
 	    private readonly List<Tuple<Func<bool>, string>> _InputPresenceTests;
-	    private static readonly Color _TestsColorBackground = Color.CornflowerBlue;
+	    private static readonly Color _ColorBackground = Color.CornflowerBlue;
+		private static readonly Color _ColorText = Color.Black;
 
 		public CapabilitiesDetectionState(IInputService inputService, [Named("LucidaSpriteFont")] SpriteFont lucidaSpriteFont, SpriteBatch spriteBatch)
         {
@@ -42,10 +43,12 @@ namespace PortableGameTest.Core.States
 
         public override void Draw(GameTime gameTime)
         {
-			_SpriteBatch.GraphicsDevice.Clear(_TestsColorBackground);
+			_SpriteBatch.GraphicsDevice.Clear(_ColorBackground);
 	        _SpriteBatch.Begin();
 
 	        var testResults = new StringBuilder();
+			testResults.AppendLine("Capabilities Detection");
+
 	        TestInputs(testResults);
 	        
 			testResults.AppendLine();
@@ -57,7 +60,7 @@ namespace PortableGameTest.Core.States
 			testResults.AppendFormat("Viewport: {0}x{1} ({2},{3} - {4},{5}) ({6},{7} - {8},{9} safe)", viewport.Width, viewport.Height, viewport.Bounds.Left, viewport.Bounds.Top, viewport.Bounds.Right, viewport.Bounds.Bottom , viewport.TitleSafeArea.Left, viewport.TitleSafeArea.Top, viewport.TitleSafeArea.Right, viewport.TitleSafeArea.Bottom); ;
 
 			var screenCenter = _SpriteBatch.GraphicsDevice.Viewport.Bounds.Center.ToVector2();
-			_SpriteBatch.DrawStringCentered(_LucidaSpriteFont, testResults.ToString(), screenCenter, Color.Black);
+			_SpriteBatch.DrawStringCentered(_LucidaSpriteFont, testResults.ToString(), screenCenter, _ColorText);
 
 	        _SpriteBatch.End();
         }
