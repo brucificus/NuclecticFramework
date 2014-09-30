@@ -23,7 +23,7 @@ using System.Collections.Generic;
 
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Input.Abstractions.Devices;
 using MsGamePad = Microsoft.Xna.Framework.Input.GamePad;
 
 namespace Nuclex.Input.Devices {

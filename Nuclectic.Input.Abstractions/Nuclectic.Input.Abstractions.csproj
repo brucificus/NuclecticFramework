@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7586DB23-8FC0-4AF8-B855-2A636BD431E6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nuclectic.Input.Abstractions</RootNamespace>
+    <AssemblyName>Nuclectic.Input.Abstractions</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="ControllerEventArgs.cs" />
+    <Compile Include="Devices\CharacterDelegate.cs" />
+    <Compile Include="Devices\ExtendedAxes.cs" />
+    <Compile Include="Devices\ExtendedGamePadButtonDelegate.cs" />
+    <Compile Include="Devices\ExtendedSliders.cs" />
+    <Compile Include="Devices\GamePadButtonDelegate.cs" />
+    <Compile Include="Devices\IAxisReader.cs" />
+    <Compile Include="Devices\IButtonReader.cs" />
+    <Compile Include="Devices\IDirectInputConverter.cs" />
+    <Compile Include="Devices\IExtendedGamePadState.cs" />
+    <Compile Include="Devices\IGamePad.cs" />
+    <Compile Include="Devices\IInputDevice.cs" />
+    <Compile Include="Devices\IJoystickState.cs" />
+    <Compile Include="Devices\IKeyboard.cs" />
+    <Compile Include="Devices\IKeyboardSoloFactory.cs" />
+    <Compile Include="Devices\IMouse.cs" />
+    <Compile Include="Devices\IMouseFactory.cs" />
+    <Compile Include="Devices\IPovReader.cs" />
+    <Compile Include="Devices\ISliderReader.cs" />
+    <Compile Include="Devices\ITouchPanel.cs" />
+    <Compile Include="Devices\ITouchState.cs" />
+    <Compile Include="Devices\KeyboardCharacterEventDelegate.cs" />
+    <Compile Include="Devices\KeyboardKeyEventDelegate.cs" />
+    <Compile Include="Devices\KeyDelegate.cs" />
+    <Compile Include="Devices\MouseButtonDelegate.cs" />
+    <Compile Include="Devices\MouseButtonEventDelegate.cs" />
+    <Compile Include="Devices\MouseMoveDelegate.cs" />
+    <Compile Include="Devices\MouseMoveEventDelegate.cs" />
+    <Compile Include="Devices\MouseWheelDelegate.cs" />
+    <Compile Include="Devices\MouseWheelEventDelegate.cs" />
+    <Compile Include="Devices\TouchDelegate.cs" />
+    <Compile Include="Devices\TouchPanelBase.cs" />
+    <Compile Include="ExtendedPlayerIndex.cs" />
+    <Compile Include="IDirectInputManager.cs" />
+    <Compile Include="IInputService.cs" />
+    <Compile Include="IWindowMessageInputManager.cs" />
+    <Compile Include="MouseButtons.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\packages\MonoGame-Portable.3.2.1\lib\portable-net4+sl5+wp8+win8\MonoGame.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

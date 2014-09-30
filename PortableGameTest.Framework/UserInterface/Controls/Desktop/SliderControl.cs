@@ -20,7 +20,7 @@ License along with this library
 
 using System;
 using System.Collections.Generic;
-
+using Nuclectic.Input.Abstractions;
 using Nuclex.Input;
 using Nuclex.UserInterface.Input;
 

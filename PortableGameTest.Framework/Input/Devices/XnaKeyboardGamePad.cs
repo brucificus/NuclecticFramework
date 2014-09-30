@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Nuclectic.Input.Abstractions.Devices;
 using Nuclex.Input.Devices;
 
 namespace PortableGameTest.Framework.Input.Devices

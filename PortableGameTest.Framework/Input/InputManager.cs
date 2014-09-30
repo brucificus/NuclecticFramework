@@ -24,7 +24,8 @@ using System.Collections.ObjectModel;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-
+using Nuclectic.Input.Abstractions;
+using Nuclectic.Input.Abstractions.Devices;
 using Nuclex.Input.Devices;
 using PortableGameTest.Framework.Input;
 using PortableGameTest.Framework.Input.Devices;

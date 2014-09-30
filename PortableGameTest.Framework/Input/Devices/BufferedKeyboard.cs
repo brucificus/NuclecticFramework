@@ -24,6 +24,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 using Microsoft.Xna.Framework.Input;
+using Nuclectic.Input.Abstractions.Devices;
 
 namespace Nuclex.Input.Devices {
 

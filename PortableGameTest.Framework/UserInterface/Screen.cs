@@ -26,6 +26,7 @@ using System.Diagnostics;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Nuclectic.Input.Abstractions;
 using Nuclectic.Support.Helpers;
 using Nuclex.Input;
 using Nuclex.UserInterface.Input;

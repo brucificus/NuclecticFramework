@@ -1,4 +1,4 @@
-using Nuclex.Input;
+using Nuclectic.Input.Abstractions;
 
 namespace Nuclex.UserInterface.Controls
 {

@@ -71,68 +71,6 @@
     <Compile Include="Graphics\ICamera.cs" />
     <Compile Include="Graphics\TextureRegion2D.cs" />
     <Compile Include="Graphics\VertexElementAttribute.cs" />
-    <Compile Include="Input\ControllerEventArgs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\CharacterDelegate.cs" />
-    <Compile Include="Input\Devices\ExtendedAxes.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\ExtendedGamePadButtonDelegate.cs" />
-    <Compile Include="Input\Devices\ExtendedSliders.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\GamePadButtonDelegate.cs" />
-    <Compile Include="Input\Devices\IAxisReader.cs" />
-    <Compile Include="Input\Devices\IButtonReader.cs" />
-    <Compile Include="Input\Devices\IDirectInputConverter.cs" />
-    <Compile Include="Input\Devices\IExtendedGamePadState.cs" />
-    <Compile Include="Input\Devices\IGamePad.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\IInputDevice.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\IJoystickState.cs" />
-    <Compile Include="Input\Devices\IKeyboard.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\IKeyboardSoloFactory.cs" />
-    <Compile Include="Input\Devices\IMouse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\IMouseFactory.cs" />
-    <Compile Include="Input\Devices\IPovReader.cs" />
-    <Compile Include="Input\Devices\ISliderReader.cs" />
-    <Compile Include="Input\Devices\ITouchPanel.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\ITouchState.cs" />
-    <Compile Include="Input\Devices\KeyboardCharacterEventDelegate.cs" />
-    <Compile Include="Input\Devices\KeyboardKeyEventDelegate.cs" />
-    <Compile Include="Input\Devices\KeyDelegate.cs" />
-    <Compile Include="Input\Devices\LeakyQueue.cs" />
-    <Compile Include="Input\Devices\MouseButtonDelegate.cs" />
-    <Compile Include="Input\Devices\MouseButtonEventDelegate.cs" />
-    <Compile Include="Input\Devices\MouseMoveDelegate.cs" />
-    <Compile Include="Input\Devices\MouseMoveEventDelegate.cs" />
-    <Compile Include="Input\Devices\MouseWheelDelegate.cs" />
-    <Compile Include="Input\Devices\MouseWheelEventDelegate.cs" />
-    <Compile Include="Input\Devices\TouchDelegate.cs" />
-    <Compile Include="Input\Devices\TouchPanelBase.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\ExtendedPlayerIndex.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\IDirectInputManager.cs" />
-    <Compile Include="Input\IInputService.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\IWindowMessageInputManager.cs" />
-    <Compile Include="Input\MouseButtons.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\GameFrameworkPlatformToken.cs" />
     <Compile Include="UserInterface\Controls\Control.cs" />
@@ -198,7 +136,15 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Input\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj">
+      <Project>{7586DB23-8FC0-4AF8-B855-2A636BD431E6}</Project>
+      <Name>Nuclectic.Input.Abstractions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">

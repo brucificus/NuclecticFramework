@@ -22,6 +22,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Microsoft.Xna.Framework;
+using Nuclectic.Input.Abstractions;
 using Nuclectic.Support.Collections;
 using Nuclex.Input;
 using Nuclex.UserInterface.Input;

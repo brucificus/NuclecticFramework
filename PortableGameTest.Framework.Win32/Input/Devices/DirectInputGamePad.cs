@@ -19,6 +19,7 @@ License along with this library
 #endregion
 
 using Microsoft.Xna.Framework.Input;
+using Nuclectic.Input.Abstractions.Devices;
 using PortableGameTest.Framework.Input.Devices;
 using Joystick = SlimDX.DirectInput.Joystick;
 using System;

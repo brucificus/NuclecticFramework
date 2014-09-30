@@ -22,8 +22,7 @@ using System;
 using System.Collections.Generic;
 
 using Microsoft.Xna.Framework.Input;
-
-using Nuclex.Input;
+using Nuclectic.Input.Abstractions;
 using Nuclex.UserInterface.Input;
 
 namespace Nuclex.UserInterface.Controls {

@@ -25,8 +25,7 @@ using System.Diagnostics;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-
-using Nuclex.Input;
+using Nuclectic.Input.Abstractions;
 using Nuclex.UserInterface.Input;
 
 namespace Nuclex.UserInterface.Controls {

@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Input.Abstractions;
 using Nuclex.Input;
 
 using GameEventHandler = System.EventHandler<System.EventArgs>;

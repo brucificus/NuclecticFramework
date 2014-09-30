@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
+using Nuclectic.Input.Abstractions;
+using Nuclectic.Input.Abstractions.Devices;
 using Nuclex.Input;
 using Nuclex.Input.Devices;
 

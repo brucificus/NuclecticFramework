@@ -272,6 +272,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj">
+      <Project>{7586db23-8fc0-4af8-b855-2a636bd431e6}</Project>
+      <Name>Nuclectic.Input.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuclectic.Support.Abstractions\Nuclectic.Support.Abstractions.csproj">
       <Project>{956F95EC-D3D8-491F-AEF1-5830243BE274}</Project>
       <Name>Nuclectic.Support.Abstractions</Name>

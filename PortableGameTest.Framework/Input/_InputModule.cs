@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using Nuclectic.Input.Abstractions;
 using Nuclex.Input;
 using PortableGameTest.Framework.Input.Devices;
 

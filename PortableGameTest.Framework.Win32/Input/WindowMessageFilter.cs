@@ -23,7 +23,8 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 using Microsoft.Xna.Framework.Input;
-
+using Nuclectic.Input.Abstractions;
+using Nuclectic.Input.Abstractions.Devices;
 using Nuclex.Input.Devices;
 
 using Application = System.Windows.Forms.Application;

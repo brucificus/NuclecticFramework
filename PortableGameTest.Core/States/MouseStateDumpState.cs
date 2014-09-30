@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Nuclectic.Geometry;
+using Nuclectic.Input.Abstractions;
 using Nuclex.Input;
 using PortableGameTest.Core.Graphics;
 using PortableGameTest.Framework.Support;
