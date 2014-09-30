@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Nuclectic.Geometry;
 using Nuclex.Input;
 using Nuclex.UserInterface;
 using PortableGameTest.Core.Graphics;
-using PortableGameTest.Framework.Geometry;
 using PortableGameTest.Framework.Support;
 
 namespace PortableGameTest.Core.States

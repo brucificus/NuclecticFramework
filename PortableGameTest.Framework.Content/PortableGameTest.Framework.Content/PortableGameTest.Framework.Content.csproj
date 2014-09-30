@@ -50,8 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PortableGameTest.Framework.ContentContent\PortableGameTest.Framework.ContentContent.contentproj">
-      <Name>PortableGameTest.Framework.ContentContent</Name>
+      <Name>PortableGameTest.Framework.ContentContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
+      <Project>{737AE6D0-AB1E-4B2B-BD02-12E3426A48E8}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

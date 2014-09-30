@@ -22,8 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-using Nuclex.Support.Collections;
-
 namespace Nuclex.UserInterface.Controls {
 
   /// <summary>Collection of GUI controls</summary>

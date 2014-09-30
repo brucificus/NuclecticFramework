@@ -30,9 +30,6 @@ namespace Nuclex.UserInterface {
   ///   collection that already contains a control with the same name, or when you
   ///   change the name of a control to that of another control in the same collection.
   /// </remarks>
-#if !NO_SERIALIZATION
-  [Serializable]
-#endif
   public class DuplicateNameException : Exception {
 
     /// <summary>Initializes the exception</summary>
@@ -46,20 +43,6 @@ namespace Nuclex.UserInterface {
     /// <param name="message">Error message describing the cause of the exception</param>
     /// <param name="inner">Preceding exception that has caused this exception</param>
     public DuplicateNameException(string message, Exception inner) : base(message, inner) { }
-
-#if !NO_SERIALIZATION
-
-    /// <summary>Initializes the exception from its serialized state</summary>
-    /// <param name="info">Contains the serialized fields of the exception</param>
-    /// <param name="context">Additional environmental informations</param>
-    protected DuplicateNameException(
-      System.Runtime.Serialization.SerializationInfo info,
-      System.Runtime.Serialization.StreamingContext context
-    )
-      : base(info, context) { }
-
-#endif // NO_SERIALIZATION
-
   }
 
 } // namespace Nuclex.UserInterface

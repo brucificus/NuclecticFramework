@@ -27,7 +27,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 using Nuclex.Input;
-using Nuclex.Support.Collections;
 using Nuclex.UserInterface.Input;
 
 namespace Nuclex.UserInterface.Controls {

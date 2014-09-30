@@ -58,7 +58,6 @@
     <Compile Include="Game\States\ILoadableGameState.cs" />
     <Compile Include="Game\States\LoadingScreenState.cs" />
     <Compile Include="Game\States\LoadProgressEventArgs.cs" />
-    <Compile Include="Geometry\IRandom.cs" />
     <Compile Include="Graphics.SpecialEffects\StaticMesh.cs" />
     <Compile Include="Graphics.SpecialEffects\Trails\ITrailAccessor.cs" />
     <Compile Include="Graphics\Batching\DrawContext.cs" />
@@ -135,22 +134,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Support\Collections\IMultiDictionary.cs" />
-    <Compile Include="Support\Collections\IObservableCollection.cs" />
-    <Compile Include="Support\Collections\IRecyclable.cs" />
-    <Compile Include="Support\Collections\ItemEventArgs.cs" />
-    <Compile Include="Support\Collections\ItemReplaceEventArgs.cs" />
-    <Compile Include="Support\Collections\Parentable.cs" />
-    <Compile Include="Support\Collections\ParentingCollection.cs" />
     <Compile Include="Support\GameFrameworkPlatformToken.cs" />
-    <Compile Include="Support\GarbagePolicy.cs" />
-    <Compile Include="Support\IO\FileAccess.cs" />
-    <Compile Include="Support\IO\IDirectory.cs" />
-    <Compile Include="Support\IO\IFile.cs" />
-    <Compile Include="Support\IO\IFileSystem.cs" />
-    <Compile Include="Support\IO\IFileSystemElement.cs" />
-    <Compile Include="Support\StringSegment.cs" />
-    <Compile Include="Support\WeakReference.cs" />
     <Compile Include="UserInterface\Controls\Control.cs" />
     <Compile Include="UserInterface\Controls\Control.Input.cs" />
     <Compile Include="UserInterface\Controls\ControlEventArgs.cs" />

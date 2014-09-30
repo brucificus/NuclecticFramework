@@ -26,11 +26,11 @@ using System.Diagnostics;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-
+using Nuclectic.Support.Helpers;
 using Nuclex.Input;
-using Nuclex.Support;
 using Nuclex.UserInterface.Input;
 using Nuclex.UserInterface.Controls;
+using Nuclectic.Support;
 
 namespace Nuclex.UserInterface {
 
@@ -72,7 +72,7 @@ namespace Nuclex.UserInterface {
 
       this.desktopControl.SetScreen(this);
 
-      this.focusedControl = new Nuclex.Support.WeakReference<Control>(null);
+      this.focusedControl = new Nuclectic.Support.WeakReference<Control>(null);
     }
 
     /// <summary>Width of the screen in pixels</summary>
@@ -587,7 +587,7 @@ namespace Nuclex.UserInterface {
     ///   If this field is non-null, all keyboard input sent to the Gui is handed
     ///   over to the focused control. Otherwise, keyboard input is discarded.
     /// </remarks>
-    private Nuclex.Support.WeakReference<Control> focusedControl;
+    private Nuclectic.Support.WeakReference<Control> focusedControl;
     /// <summary>Control the user has activated through one of the input devices</summary>
     private Control activatedControl;
 

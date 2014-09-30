@@ -32,8 +32,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-using Nuclex.Support;
-
 namespace Nuclex.UserInterface.Visuals.Flat {
 
   partial class FlatGuiGraphics {

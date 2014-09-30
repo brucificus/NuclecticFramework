@@ -22,8 +22,7 @@ using System;
 using System.Collections.Generic;
 
 using Microsoft.Xna.Framework.Graphics;
-
-using Nuclex.Support.Collections;
+using Nuclectic.Support.Collections;
 
 namespace Nuclex.Graphics.Batching {
 

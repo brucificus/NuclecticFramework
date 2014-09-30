@@ -21,7 +21,7 @@ License along with this library
 using System;
 using System.Collections.Generic;
 using System.IO;
-using PortableGameTest.Framework.Support.IO;
+using Nuclectic.Support.IO;
 using SevenZip;
 
 using Microsoft.Xna.Framework.Content;

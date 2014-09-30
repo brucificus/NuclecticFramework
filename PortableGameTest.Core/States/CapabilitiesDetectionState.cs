@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Nuclectic.Geometry;
 using Nuclex.Input;
 using PortableGameTest.Core.Graphics;
-using PortableGameTest.Framework.Geometry;
 using PortableGameTest.Framework.Support;
 
 namespace PortableGameTest.Core.States

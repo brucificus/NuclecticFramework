@@ -70,90 +70,6 @@
     <Compile Include="Game\States\ManualGameStateManager.cs" />
     <Compile Include="Game\States\LoadingScreenState.cs" />
     <Compile Include="Game\_GameModule.cs" />
-    <Compile Include="Geometry\Areas\AxisAlignedRectangle2.cs" />
-    <Compile Include="Geometry\Areas\Collisions\AabbAabbCollider.cs" />
-    <Compile Include="Geometry\Areas\Collisions\Disc2Disc2Collider.cs" />
-    <Compile Include="Geometry\Areas\Disc2.cs" />
-    <Compile Include="Geometry\Areas\Disc3.cs" />
-    <Compile Include="Geometry\Areas\IArea2.cs" />
-    <Compile Include="Geometry\Areas\IArea2Visitor.cs" />
-    <Compile Include="Geometry\Areas\IArea3.cs" />
-    <Compile Include="Geometry\Areas\IArea3Visitor.cs" />
-    <Compile Include="Geometry\Areas\IAxisAlignedRectangle2.cs" />
-    <Compile Include="Geometry\Areas\ImpactPoint.cs" />
-    <Compile Include="Geometry\Areas\Plane3.cs" />
-    <Compile Include="Geometry\Areas\PointGenerators\Disc2PointGenerator.cs" />
-    <Compile Include="Geometry\Areas\PointGenerators\Disc3PointGenerator.cs" />
-    <Compile Include="Geometry\Areas\PointGenerators\Plane3PointGenerator.cs" />
-    <Compile Include="Geometry\Areas\PointGenerators\Rectangle2PointGenerator.cs" />
-    <Compile Include="Geometry\Areas\PointGenerators\Rectangle3PointGenerator.cs" />
-    <Compile Include="Geometry\Areas\PointGenerators\Triangle2PointGenerator.cs" />
-    <Compile Include="Geometry\Areas\PointGenerators\Triangle3PointGenerator.cs" />
-    <Compile Include="Geometry\Areas\Rectangle2.cs" />
-    <Compile Include="Geometry\Areas\Rectangle3.cs" />
-    <Compile Include="Geometry\Areas\Triangle2.cs" />
-    <Compile Include="Geometry\Areas\Triangle3.cs" />
-    <Compile Include="Geometry\DefaultRandom.cs" />
-    <Compile Include="Geometry\Lines\ILine2.cs" />
-    <Compile Include="Geometry\Lines\ILine3.cs" />
-    <Compile Include="Geometry\Lines\Line2.cs" />
-    <Compile Include="Geometry\Lines\Line3.cs" />
-    <Compile Include="Geometry\Lines\LineContacts.cs" />
-    <Compile Include="Geometry\Lines\Ray2.cs" />
-    <Compile Include="Geometry\Lines\Ray3.cs" />
-    <Compile Include="Geometry\Lines\Segment2.cs" />
-    <Compile Include="Geometry\Lines\Segment3.cs" />
-    <Compile Include="Geometry\PointExtensions.cs" />
-    <Compile Include="Geometry\Side.cs" />
-    <Compile Include="Geometry\Specifications.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Line2Aabb2Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Line2Disc2Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Line2Line2Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Line2Triangle2Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Line3Aabb3Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Line3Plane3Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Line3Sphere3Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Line3Triangle3Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Ray2Aabb2Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Ray2Disc2Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Ray2Line2Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Ray2Triangle2Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Ray3Aabb3Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Ray3Plane3Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Ray3Sphere3Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Ray3Triangle3Collider.cs" />
-    <Compile Include="Geometry\Lines\Collisions\Segment3Aabb3Collider.cs" />
-    <Compile Include="Geometry\MatrixHelper.cs" />
-    <Compile Include="Geometry\VectorHelper.cs" />
-    <Compile Include="Geometry\Volumes\AxisAlignedBox3.cs" />
-    <Compile Include="Geometry\Volumes\Box3.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\AabbAabbCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\AabbCylinderCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\AabbMeshCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\AabbObbCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\AabbSphereCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\CylinderCylinderCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\CylinderMeshCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\CylinderObbCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\CylinderSphereCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\MeshMeshCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\MeshObbCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\MeshSphereCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\ObbObbCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\ObbSphereCollider.cs" />
-    <Compile Include="Geometry\Volumes\Collisions\SphereSphereCollider.cs" />
-    <Compile Include="Geometry\Volumes\ContactPoint.cs" />
-    <Compile Include="Geometry\Volumes\Cylinder3.cs" />
-    <Compile Include="Geometry\Volumes\IVolume3.cs" />
-    <Compile Include="Geometry\Volumes\PointGenerators\AabbPointGenerator.cs" />
-    <Compile Include="Geometry\Volumes\PointGenerators\CylinderPointGenerator.cs" />
-    <Compile Include="Geometry\Volumes\PointGenerators\MeshPointGenerator.cs" />
-    <Compile Include="Geometry\Volumes\PointGenerators\ObbPointGenerator.cs" />
-    <Compile Include="Geometry\Volumes\PointGenerators\SpherePointGenerator.cs" />
-    <Compile Include="Geometry\Volumes\Sphere3.cs" />
-    <Compile Include="Geometry\Volumes\TriangleMesh3.cs" />
-    <Compile Include="Geometry\Volumes\VolumeVisitor.cs" />
-    <Compile Include="Geometry\_GeometryModule.cs" />
     <Compile Include="Graphics.SpecialEffects\IndexedStaticMesh.cs" />
     <Compile Include="Graphics.SpecialEffects\Masks\ColorScreenMask.cs" />
     <Compile Include="Graphics.SpecialEffects\Masks\PositionVertex.cs" />
@@ -263,36 +179,9 @@
     <Compile Include="Input\NoWindowMessageInputManager.cs" />
     <Compile Include="Input\_InputModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Support\Collections\Constants.cs" />
-    <Compile Include="Support\Collections\Deque.cs" />
-    <Compile Include="Support\Collections\Deque.Insertion.cs" />
-    <Compile Include="Support\Collections\Deque.Interfaces.cs" />
-    <Compile Include="Support\Collections\Deque.Removal.cs" />
-    <Compile Include="Support\Collections\Deque.Search.cs" />
-    <Compile Include="Support\Collections\ObservableList.cs" />
-    <Compile Include="Support\Collections\PairPriorityQueue.cs" />
-    <Compile Include="Support\Collections\Pool.cs" />
-    <Compile Include="Support\Collections\PriorityItemPair.cs" />
-    <Compile Include="Support\Collections\PriorityQueue.cs" />
-    <Compile Include="Support\Collections\ReadOnlyCollection.cs" />
-    <Compile Include="Support\Collections\ReadOnlyList.cs" />
-    <Compile Include="Support\Collections\ReadOnlySet.cs" />
-    <Compile Include="Support\Collections\ReverseComparer.cs" />
-    <Compile Include="Support\Collections\TransformingReadOnlyCollection.cs" />
-    <Compile Include="Support\Collections\TransformingReadOnlyCollection.Interfaces.cs" />
-    <Compile Include="Support\Collections\WeakCollection.cs" />
-    <Compile Include="Support\Collections\WeakCollection.Interfaces.cs" />
-    <Compile Include="Support\EnumHelper.cs" />
-    <Compile Include="Support\FloatHelper.cs" />
     <Compile Include="Support\GameFrameworkCorePlatform.cs" />
-    <Compile Include="Support\IntegerHelper.cs" />
-    <Compile Include="Support\IO\ChainStream.cs" />
-    <Compile Include="Support\IO\PartialStream.cs" />
     <Compile Include="Support\NamedAttribute.cs" />
     <Compile Include="Support\RegistrationBuilderExtensions.cs" />
-    <Compile Include="Support\StringBuilderHelper.cs" />
-    <Compile Include="Support\StringHelper.cs" />
-    <Compile Include="Support\XmlHelper.cs" />
     <Compile Include="UserInterface\Controls\Arcade\CommandControl.cs" />
     <Compile Include="UserInterface\Controls\Arcade\PanelControl.cs" />
     <Compile Include="UserInterface\Controls\DesktopControl.cs" />
@@ -383,6 +272,26 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Nuclectic.Support.Abstractions\Nuclectic.Support.Abstractions.csproj">
+      <Project>{956F95EC-D3D8-491F-AEF1-5830243BE274}</Project>
+      <Name>Nuclectic.Support.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Collections.Abstractions\Nuclectic.Support.Collections.Abstractions.csproj">
+      <Project>{5c231e67-22f1-4a91-b120-39766bdb85c4}</Project>
+      <Name>Nuclectic.Support.Collections.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Collections\Nuclectic.Support.Collections.csproj">
+      <Project>{74882c2f-3ddb-4fe1-ab00-227c0d93b5d0}</Project>
+      <Name>Nuclectic.Support.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Helpers\Nuclectic.Support.Helpers.csproj">
+      <Project>{DE0C9D2E-92D9-40FE-951F-8355302A65DA}</Project>
+      <Name>Nuclectic.Support.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.IO.Abstractions\Nuclectic.Support.IO.Abstractions.csproj">
+      <Project>{222F8D0E-EB3E-4562-AC2B-AE683BF257AF}</Project>
+      <Name>Nuclectic.Support.IO.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PortableGameTest.Framework.Abstractions\PortableGameTest.Framework.Abstractions.csproj">
       <Project>{4216e08b-9dc7-454e-b5ed-4615bb7236b2}</Project>
       <Name>PortableGameTest.Framework.Abstractions</Name>

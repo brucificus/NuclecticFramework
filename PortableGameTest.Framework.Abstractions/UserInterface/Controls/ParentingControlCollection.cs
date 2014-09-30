@@ -21,8 +21,6 @@ License along with this library
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
-using Nuclex.Support.Collections;
 using PortableGameTest.Framework.UserInterface.Controls;
 
 namespace Nuclex.UserInterface.Controls {

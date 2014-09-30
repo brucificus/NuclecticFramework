@@ -79,6 +79,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nuclectic.Geometry\Nuclectic.Geometry.csproj">
+      <Project>{9DE1E131-4AC2-45BD-A1FD-9C512F3F8554}</Project>
+      <Name>Nuclectic.Geometry</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PortableGameTest.Framework.Abstractions\PortableGameTest.Framework.Abstractions.csproj">
       <Project>{4216e08b-9dc7-454e-b5ed-4615bb7236b2}</Project>
       <Name>PortableGameTest.Framework.Abstractions</Name>

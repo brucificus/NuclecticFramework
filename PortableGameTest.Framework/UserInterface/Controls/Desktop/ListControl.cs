@@ -22,9 +22,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Support.Collections;
 using Nuclex.Input;
-using Nuclex.Support.Collections;
 using Nuclex.UserInterface.Input;
 
 namespace Nuclex.UserInterface.Controls.Desktop {
