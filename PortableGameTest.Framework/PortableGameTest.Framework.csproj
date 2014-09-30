@@ -45,30 +45,11 @@
     <Compile Include="Fonts\TextDrawContext.cs" />
     <Compile Include="Fonts\VectorFont.cs" />
     <Compile Include="Fonts\VectorFontCharacter.cs" />
-    <Compile Include="Game\Component.cs" />
     <Compile Include="Game\Content\LzmaContentManager.cs" />
     <Compile Include="Game\Content\MemoryContentManager.cs" />
     <Compile Include="Game\Content\SharedContentManager.cs" />
     <Compile Include="Game\Content\SharedGameContentManager.cs" />
-    <Compile Include="Game\DrawableComponent.cs" />
-    <Compile Include="Game\GraphicsDeviceDrawableComponent.cs" />
-    <Compile Include="Game\Packing\ArevaloRectanglePacker.cs" />
-    <Compile Include="Game\Packing\CygonRectanglePacker.cs" />
-    <Compile Include="Game\Packing\SimpleRectanglePacker.cs" />
-    <Compile Include="Game\Serialization\BinarySerializer.cs" />
-    <Compile Include="Game\Space\HilbertRectangleTree.cs" />
-    <Compile Include="Game\Space\PolyDimensionalTree.cs" />
-    <Compile Include="Game\Space\PriorityRectangleTree.cs" />
-    <Compile Include="Game\Space\PriorityRectangleTree.Node.cs" />
-    <Compile Include="Game\Space\QuadTree.cs" />
-    <Compile Include="Game\Space\QuadTree.Insertion.cs" />
-    <Compile Include="Game\Space\QuadTree.Query.cs" />
-    <Compile Include="Game\Space\QuadTree.Removal.cs" />
-    <Compile Include="Game\Space\RectangleTree.cs" />
-    <Compile Include="Game\Space\RectangleTree.Node.cs" />
     <Compile Include="Game\States\AutoGameStateManager.cs" />
-    <Compile Include="Game\States\ManualGameStateManager.cs" />
-    <Compile Include="Game\States\LoadingScreenState.cs" />
     <Compile Include="Game\_GameModule.cs" />
     <Compile Include="Graphics.SpecialEffects\IndexedStaticMesh.cs" />
     <Compile Include="Graphics.SpecialEffects\Masks\ColorScreenMask.cs" />
@@ -206,6 +187,18 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Nuclectic.Game.Component.Abstractions\Nuclectic.Game.Component.Abstractions.csproj">
+      <Project>{856589E9-6906-4F72-870B-C8BDDD37325B}</Project>
+      <Name>Nuclectic.Game.Component.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Game.State.Abstractions\Nuclectic.Game.State.Abstractions.csproj">
+      <Project>{0E9C6543-019C-4D51-A744-BB2667FA509E}</Project>
+      <Name>Nuclectic.Game.State.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Game.State\Nuclectic.Game.State.csproj">
+      <Project>{6194200d-ef81-44bf-bb39-38230abaffc9}</Project>
+      <Name>Nuclectic.Game.State</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj">
       <Project>{7586db23-8fc0-4af8-b855-2a636bd431e6}</Project>
       <Name>Nuclectic.Input.Abstractions</Name>

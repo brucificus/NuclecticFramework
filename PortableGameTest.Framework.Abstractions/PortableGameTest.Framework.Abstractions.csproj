@@ -41,23 +41,6 @@
     <Compile Include="Fonts\KerningPair.cs" />
     <Compile Include="Fonts\Outline.cs" />
     <Compile Include="Game\Content\ISharedContentService.cs" />
-    <Compile Include="Game\Packing\OutOfSpaceException.cs" />
-    <Compile Include="Game\Packing\RectanglePacker.cs" />
-    <Compile Include="Game\Serialization\IBinarySerializable.cs" />
-    <Compile Include="Game\Space\BoundingRectangle.cs" />
-    <Compile Include="Game\Space\IBoundingRectangleProvider.cs" />
-    <Compile Include="Game\Space\RTreeVariants.cs" />
-    <Compile Include="Game\Space\SpatialIndex2.cs" />
-    <Compile Include="Game\States\DrawableGameState.cs" />
-    <Compile Include="Game\States\GameState.cs" />
-    <Compile Include="Game\States\GameStateModality.cs" />
-    <Compile Include="Game\States\IAutoGameStateService.cs" />
-    <Compile Include="Game\States\IGameState.cs" />
-    <Compile Include="Game\States\IGameStateService.cs" />
-    <Compile Include="Game\States\IManualGameStateService.cs" />
-    <Compile Include="Game\States\ILoadableGameState.cs" />
-    <Compile Include="Game\States\LoadingScreenState.cs" />
-    <Compile Include="Game\States\LoadProgressEventArgs.cs" />
     <Compile Include="Graphics.SpecialEffects\StaticMesh.cs" />
     <Compile Include="Graphics.SpecialEffects\Trails\ITrailAccessor.cs" />
     <Compile Include="Graphics\Batching\DrawContext.cs" />
@@ -138,6 +121,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Nuclectic.Game.State.Abstractions\Nuclectic.Game.State.Abstractions.csproj">
+      <Project>{0e9c6543-019c-4d51-a744-bb2667fa509e}</Project>
+      <Name>Nuclectic.Game.State.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj">
       <Project>{7586DB23-8FC0-4AF8-B855-2A636BD431E6}</Project>
       <Name>Nuclectic.Input.Abstractions</Name>

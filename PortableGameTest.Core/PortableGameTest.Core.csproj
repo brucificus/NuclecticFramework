@@ -79,6 +79,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Nuclectic.Game.State.Abstractions\Nuclectic.Game.State.Abstractions.csproj">
+      <Project>{0E9C6543-019C-4D51-A744-BB2667FA509E}</Project>
+      <Name>Nuclectic.Game.State.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuclectic.Geometry\Nuclectic.Geometry.csproj">
       <Project>{9DE1E131-4AC2-45BD-A1FD-9C512F3F8554}</Project>
       <Name>Nuclectic.Geometry</Name>
