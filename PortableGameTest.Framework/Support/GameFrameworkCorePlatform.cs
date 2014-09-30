@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using PortableGameTest.Framework.Fonts;
 using PortableGameTest.Framework.Game;
 using PortableGameTest.Framework.Graphics;
-using PortableGameTest.Framework.Input;
 using PortableGameTest.Framework.UserInterface;
 
 namespace PortableGameTest.Framework.Support

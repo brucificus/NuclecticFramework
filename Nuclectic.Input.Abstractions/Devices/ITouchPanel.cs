@@ -18,7 +18,7 @@ License along with this library
 */
 #endregion
 
-namespace Nuclectic.Input.Abstractions.Devices {
+namespace Nuclectic.Input.Devices {
     /// <summary>Specializd input devices for mouse-like controllers</summary>
   public interface ITouchPanel : IInputDevice {
 

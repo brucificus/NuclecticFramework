@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PortableGameTest.Framework.Input;
 using PortableGameTest.Framework.Support;
 
 namespace PortableGameTest.Framework

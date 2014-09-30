@@ -104,6 +104,10 @@
       <Project>{7586DB23-8FC0-4AF8-B855-2A636BD431E6}</Project>
       <Name>Nuclectic.Input.Abstractions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Input\Nuclectic.Input.csproj">
+      <Project>{0d9aa327-3759-4e35-b515-9abde6a6ef10}</Project>
+      <Name>Nuclectic.Input</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PortableGameTest.Framework.Abstractions\PortableGameTest.Framework.Abstractions.csproj">
       <Project>{4216e08b-9dc7-454e-b5ed-4615bb7236b2}</Project>
       <Name>PortableGameTest.Framework.Abstractions</Name>
@@ -115,8 +119,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameFrameworkWinRTPlatform.cs" />
-    <Compile Include="Input\_InputModuleForWinRT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_InputModuleForWinRT.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

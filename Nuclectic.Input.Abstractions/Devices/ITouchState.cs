@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Input.Touch;
 
-namespace Nuclectic.Input.Abstractions.Devices
+namespace Nuclectic.Input.Devices
 {
     public interface ITouchState
     {

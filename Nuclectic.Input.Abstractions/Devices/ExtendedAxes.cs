@@ -20,7 +20,7 @@ License along with this library
 
 using System;
 
-namespace Nuclectic.Input.Abstractions.Devices {
+namespace Nuclectic.Input.Devices {
 
   /// <summary>Available axes on a controller</summary>
   [Flags]

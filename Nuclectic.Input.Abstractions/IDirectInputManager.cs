@@ -1,6 +1,6 @@
-using Nuclectic.Input.Abstractions.Devices;
+using Nuclectic.Input.Devices;
 
-namespace Nuclectic.Input.Abstractions
+namespace Nuclectic.Input
 {
     public interface IDirectInputManager
     {

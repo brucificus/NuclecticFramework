@@ -18,7 +18,7 @@ License along with this library
 */
 #endregion
 
-namespace Nuclectic.Input.Abstractions.Devices {
+namespace Nuclectic.Input.Devices {
 
   /// <summary>Generic input device</summary>
   public interface IInputDevice {

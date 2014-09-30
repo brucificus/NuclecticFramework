@@ -1,4 +1,4 @@
-namespace Nuclectic.Input.Abstractions.Devices
+namespace Nuclectic.Input.Devices
 {
     /// <summary>
     ///   Delegate used to report a press or released of one or more mouse buttons

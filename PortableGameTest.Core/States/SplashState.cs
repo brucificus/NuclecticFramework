@@ -7,7 +7,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Nuclex.Game.States;
-using Nuclex.Input;
 using PortableGameTest.Core.Graphics;
 using PortableGameTest.Core.States;
 using PortableGameTest.Framework.Game.States;

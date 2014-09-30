@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Input.Abstractions.Devices
+namespace Nuclectic.Input.Devices
 {
     /// <summary>Delegate used to report touch actions</summary>
     /// <param name="id">ID of the distinct touch</param>

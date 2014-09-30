@@ -20,7 +20,7 @@ License along with this library
 
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Input.Abstractions {
+namespace Nuclectic.Input {
 
   /// <summary>Player index enumeration with slots for 8 players</summary>
   public enum ExtendedPlayerIndex {

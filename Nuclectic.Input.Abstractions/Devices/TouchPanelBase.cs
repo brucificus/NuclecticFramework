@@ -21,7 +21,7 @@ License along with this library
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace Nuclectic.Input.Abstractions.Devices {
+namespace Nuclectic.Input.Devices {
 
   /// <summary>Common functionality for the touch input panel</summary>
   public abstract class TouchPanelBase : ITouchPanel {

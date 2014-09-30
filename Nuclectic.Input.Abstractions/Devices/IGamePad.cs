@@ -20,7 +20,7 @@ License along with this library
 
 using Microsoft.Xna.Framework.Input;
 
-namespace Nuclectic.Input.Abstractions.Devices {
+namespace Nuclectic.Input.Devices {
     /// <summary>Specialized input device for game pad-like controllers</summary>
   public interface IGamePad : IInputDevice {
 

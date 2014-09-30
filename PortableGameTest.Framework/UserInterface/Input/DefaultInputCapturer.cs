@@ -24,10 +24,8 @@ using System.Text;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Nuclectic.Input.Abstractions;
-using Nuclectic.Input.Abstractions.Devices;
-using Nuclex.Input;
-using Nuclex.Input.Devices;
+using Nuclectic.Input;
+using Nuclectic.Input.Devices;
 
 namespace Nuclex.UserInterface.Input {
 

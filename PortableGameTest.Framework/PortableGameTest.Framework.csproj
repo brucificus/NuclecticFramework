@@ -111,73 +111,6 @@
     <Compile Include="Graphics\VertexDeclarationHelper.cs" />
     <Compile Include="Graphics\VertexHelper.cs" />
     <Compile Include="Graphics\_GraphicsModule.cs" />
-    <Compile Include="Input\CollectionHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\ControllerDetector.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\BufferedKeyboard.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\BufferedMouse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\ExtendedGamePadState.Builders.cs" />
-    <Compile Include="Input\Devices\ExtendedGamePadState.cs" />
-    <Compile Include="Input\Devices\GamePad.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\KeyboardStateHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\NoGamePad.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\NoKeyboard.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\NoKeyboardSoloFactory.cs" />
-    <Compile Include="Input\Devices\NoMouse.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\NoMouseFactory.cs" />
-    <Compile Include="Input\Devices\NoTouchPanel.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\TouchCollectionHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\TouchState.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\XnaGamePad.cs">
-      <SubType>
-      </SubType>
-    </Compile>
-    <Compile Include="Input\Devices\XnaKeyboardGamePad.cs" />
-    <Compile Include="Input\Devices\XnaKeyboard.CharacterMap.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\XnaKeyboard.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\Devices\XnaKeyboardSolo.cs" />
-    <Compile Include="Input\Devices\XnaKeyboardSoloFactory.cs" />
-    <Compile Include="Input\Devices\XnaMouse.cs" />
-    <Compile Include="Input\Devices\XnaMouseFactory.cs" />
-    <Compile Include="Input\Devices\XnaTouchPanel.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\GamePadButtonsHelper.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\InputManager.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Input\NoDirectInputManager.cs" />
-    <Compile Include="Input\NoWindowMessageInputManager.cs" />
-    <Compile Include="Input\_InputModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\GameFrameworkCorePlatform.cs" />
     <Compile Include="Support\NamedAttribute.cs" />
@@ -228,6 +161,7 @@
     <Compile Include="UserInterface\_UserInterfaceModule.cs" />
     <Compile Include="WellKnownContent.cs" />
     <Compile Include="_FrameworkModule.cs" />
+    <Compile Include="_InputModule.cs" />
     <Compile Include="_WellKnownContentModule.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -275,6 +209,10 @@
     <ProjectReference Include="..\Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj">
       <Project>{7586db23-8fc0-4af8-b855-2a636bd431e6}</Project>
       <Name>Nuclectic.Input.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Input\Nuclectic.Input.csproj">
+      <Project>{0d9aa327-3759-4e35-b515-9abde6a6ef10}</Project>
+      <Name>Nuclectic.Input</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuclectic.Support.Abstractions\Nuclectic.Support.Abstractions.csproj">
       <Project>{956F95EC-D3D8-491F-AEF1-5830243BE274}</Project>

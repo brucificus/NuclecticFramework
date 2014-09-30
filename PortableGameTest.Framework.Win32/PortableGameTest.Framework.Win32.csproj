@@ -100,26 +100,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameFrameworkWin32Platform.cs" />
-    <Compile Include="Input\Devices\DirectInputConverter.AxisReaders.cs" />
-    <Compile Include="Input\Devices\DirectInputConverter.ButtonReaders.cs" />
-    <Compile Include="Input\Devices\DirectInputConverter.cs" />
-    <Compile Include="Input\Devices\DirectInputConverter.Helpers.cs" />
-    <Compile Include="Input\Devices\DirectInputConverter.PovReaders.cs" />
-    <Compile Include="Input\Devices\DirectInputConverter.SliderReaders.cs" />
-    <Compile Include="Input\Devices\DirectInputGamePad.cs" />
-    <Compile Include="Input\Devices\IKeyboardMessageSource.cs" />
-    <Compile Include="Input\Devices\IMouseMessageSource.cs" />
-    <Compile Include="Input\Devices\JoystickStateAdapter.cs" />
-    <Compile Include="Input\Devices\LeakyQueue.cs" />
-    <Compile Include="Input\Devices\WindowMessageKeyboard.cs" />
-    <Compile Include="Input\Devices\WindowMessageMouse.cs" />
-    <Compile Include="Input\DirectInputManager.cs" />
-    <Compile Include="Input\UnsafeNativeMethods.cs" />
-    <Compile Include="Input\WindowMessageFilter.cs" />
-    <Compile Include="Input\WindowMessageInputManager.cs" />
-    <Compile Include="Input\_InputModuleForWin32.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Support\IO\FileSystemAdapter.cs" />
+    <Compile Include="_InputModuleForWin32.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -130,6 +112,18 @@
     <ProjectReference Include="..\Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj">
       <Project>{7586DB23-8FC0-4AF8-B855-2A636BD431E6}</Project>
       <Name>Nuclectic.Input.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Input.Win32.Dx\Nuclectic.Input.Win32.Dx.csproj">
+      <Project>{27426149-e471-47f5-a9cd-a2d025a57de3}</Project>
+      <Name>Nuclectic.Input.Win32.Dx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Input.Win32\Nuclectic.Input.Win32.csproj">
+      <Project>{46cc39e5-038d-48dc-b72e-eae8b3fea138}</Project>
+      <Name>Nuclectic.Input.Win32</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Input\Nuclectic.Input.csproj">
+      <Project>{0d9aa327-3759-4e35-b515-9abde6a6ef10}</Project>
+      <Name>Nuclectic.Input</Name>
     </ProjectReference>
     <ProjectReference Include="..\PortableGameTest.Framework.Abstractions\PortableGameTest.Framework.Abstractions.csproj">
       <Project>{4216e08b-9dc7-454e-b5ed-4615bb7236b2}</Project>

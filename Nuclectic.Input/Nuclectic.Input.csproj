@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0D9AA327-3759-4E35-B515-9ABDE6A6EF10}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nuclectic.Input</RootNamespace>
+    <AssemblyName>Nuclectic.Input</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj">
+      <Project>{7586db23-8fc0-4af8-b855-2a636bd431e6}</Project>
+      <Name>Nuclectic.Input.Abstractions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CollectionHelper.cs" />
+    <Compile Include="ControllerDetector.cs" />
+    <Compile Include="Devices\BufferedKeyboard.cs" />
+    <Compile Include="Devices\BufferedMouse.cs" />
+    <Compile Include="Devices\ExtendedGamePadState.Builders.cs" />
+    <Compile Include="Devices\ExtendedGamePadState.cs" />
+    <Compile Include="Devices\GamePad.cs" />
+    <Compile Include="Devices\KeyboardStateHelper.cs" />
+    <Compile Include="Devices\NoGamePad.cs" />
+    <Compile Include="Devices\NoKeyboard.cs" />
+    <Compile Include="Devices\NoKeyboardSoloFactory.cs" />
+    <Compile Include="Devices\NoMouse.cs" />
+    <Compile Include="Devices\NoMouseFactory.cs" />
+    <Compile Include="Devices\NoTouchPanel.cs" />
+    <Compile Include="Devices\TouchCollectionHelper.cs" />
+    <Compile Include="Devices\TouchState.cs" />
+    <Compile Include="Devices\XnaGamePad.cs" />
+    <Compile Include="Devices\XnaKeyboard.CharacterMap.cs" />
+    <Compile Include="Devices\XnaKeyboard.cs" />
+    <Compile Include="Devices\XnaKeyboardGamePad.cs" />
+    <Compile Include="Devices\XnaKeyboardSolo.cs" />
+    <Compile Include="Devices\XnaKeyboardSoloFactory.cs" />
+    <Compile Include="Devices\XnaMouse.cs" />
+    <Compile Include="Devices\XnaMouseFactory.cs" />
+    <Compile Include="Devices\XnaTouchPanel.cs" />
+    <Compile Include="GamePadButtonsHelper.cs" />
+    <Compile Include="InputManager.cs" />
+    <Compile Include="NoDirectInputManager.cs" />
+    <Compile Include="NoWindowMessageInputManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\packages\MonoGame-Portable.3.2.1\lib\portable-net4+sl5+wp8+win8\MonoGame.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

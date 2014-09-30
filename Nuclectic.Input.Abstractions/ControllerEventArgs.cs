@@ -20,7 +20,7 @@ License along with this library
 
 using System;
 
-namespace Nuclectic.Input.Abstractions {
+namespace Nuclectic.Input {
 
   /// <summary>Carries the arguments for the controller detection event</summary>
   public class ControllerEventArgs : EventArgs {

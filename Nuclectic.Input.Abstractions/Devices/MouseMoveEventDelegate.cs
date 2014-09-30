@@ -1,4 +1,4 @@
-namespace Nuclectic.Input.Abstractions.Devices
+namespace Nuclectic.Input.Devices
 {
     /// <summary>Delegate used to report a mouse event</summary>
     /// <param name="x">X coordinate of the mouse cursor</param>

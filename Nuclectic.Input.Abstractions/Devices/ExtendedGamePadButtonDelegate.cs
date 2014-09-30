@@ -1,4 +1,4 @@
-namespace Nuclectic.Input.Abstractions.Devices
+namespace Nuclectic.Input.Devices
 {
     /// <summary>Delegate use to report presses and releases of game pad buttons</summary>
     /// <param name="buttons1">Button or buttons that have been pressed or released</param>

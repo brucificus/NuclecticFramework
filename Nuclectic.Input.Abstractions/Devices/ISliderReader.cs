@@ -1,4 +1,4 @@
-namespace Nuclectic.Input.Abstractions.Devices
+namespace Nuclectic.Input.Devices
 {
     /// <summary>Reads the state of a slider or compares states</summary>
     public interface ISliderReader {

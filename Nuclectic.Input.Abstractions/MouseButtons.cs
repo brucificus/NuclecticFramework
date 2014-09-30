@@ -20,7 +20,7 @@ License along with this library
 
 using System;
 
-namespace Nuclectic.Input.Abstractions {
+namespace Nuclectic.Input {
 
   /// <summary>Available buttons on a mouse</summary>
   [Flags]

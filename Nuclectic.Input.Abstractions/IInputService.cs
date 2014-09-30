@@ -20,9 +20,9 @@ License along with this library
 
 using System.Collections.ObjectModel;
 using Microsoft.Xna.Framework;
-using Nuclectic.Input.Abstractions.Devices;
+using Nuclectic.Input.Devices;
 
-namespace Nuclectic.Input.Abstractions {
+namespace Nuclectic.Input {
 
   /// <summary>Provides access to the game's input devices</summary>
   /// <remarks>

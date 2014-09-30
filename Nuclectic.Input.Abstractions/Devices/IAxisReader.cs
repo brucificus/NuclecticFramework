@@ -1,4 +1,4 @@
-namespace Nuclectic.Input.Abstractions.Devices
+namespace Nuclectic.Input.Devices
 {
     /// <summary>Reads the state of an axis or compares states</summary>
     public interface IAxisReader {

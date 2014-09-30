@@ -20,7 +20,7 @@ License along with this library
 
 using System;
 
-namespace Nuclectic.Input.Abstractions.Devices {
+namespace Nuclectic.Input.Devices {
 
   /// <summary>Extended slider axes provided by a game pad or joystick</summary>
   [Flags]

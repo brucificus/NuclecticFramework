@@ -4,8 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nuclectic.Geometry;
-using Nuclectic.Input.Abstractions;
-using Nuclex.Input;
+using Nuclectic.Input;
 using PortableGameTest.Core.Graphics;
 using PortableGameTest.Framework.Support;
 
