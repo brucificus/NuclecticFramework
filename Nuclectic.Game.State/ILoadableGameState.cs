@@ -19,10 +19,8 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Nuclex.Game.States {
+namespace Nuclectic.Game.State {
 
   /// <summary>
   ///   Implemented by game states to make them loadable via the loading screen state

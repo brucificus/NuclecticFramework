@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Nuclectic.Game.State;
 using Nuclectic.Geometry;
 using Nuclectic.Input;
 using PortableGameTest.Core.Graphics;
@@ -11,7 +12,7 @@ using PortableGameTest.Framework.Support;
 namespace PortableGameTest.Core.States
 {
 	public class CapabilitiesDetectionState
-       : Nuclex.Game.States.DrawableGameState
+       : DrawableGameState
     {
         private readonly IInputService _InputService;
 	    private readonly SpriteFont _LucidaSpriteFont;

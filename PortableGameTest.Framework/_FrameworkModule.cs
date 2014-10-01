@@ -9,7 +9,7 @@ using Autofac.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Nuclex.Game.Content;
+using Nuclectic.Graphics.Helpers;
 using Nuclex.Graphics;
 
 namespace PortableGameTest.Framework

@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 
 using Microsoft.Xna.Framework.Graphics;
+using Nuclectic.Graphics.Helpers;
 
 namespace Nuclex.Graphics.Batching {
 

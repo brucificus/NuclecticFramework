@@ -6,7 +6,7 @@ using Autofac.Features.OwnedInstances;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Nuclex.Game.States;
+using Nuclectic.Game.State;
 using PortableGameTest.Core.Graphics;
 using PortableGameTest.Core.States;
 using PortableGameTest.Framework.Game.States;
@@ -15,7 +15,7 @@ using PortableGameTest.Framework.Support;
 namespace PortableGameTest.Core
 {
     public class SplashState
-        : Nuclex.Game.States.GameState
+        : GameState
     {
 	    private readonly IAutoGameStateService _GameStateService;
 

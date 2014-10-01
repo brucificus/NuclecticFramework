@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Reflection;
 using Autofac;
-using Nuclex.Game.States;
+using Nuclectic.Game.State;
 using PortableGameTest.Framework.Support;
 
 namespace PortableGameTest.Core.States

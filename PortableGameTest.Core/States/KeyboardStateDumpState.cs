@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Nuclectic.Game.State;
 using Nuclectic.Geometry;
 using Nuclectic.Input;
 using Nuclex.UserInterface;
@@ -15,7 +16,7 @@ using PortableGameTest.Framework.Support;
 namespace PortableGameTest.Core.States
 {
 	public class KeyboardStateDumpState
-		: Nuclex.Game.States.DrawableGameState
+		: DrawableGameState
 	{
 		private readonly IInputService _InputService;
 		private readonly SpriteFont _LucidaSpriteFont;

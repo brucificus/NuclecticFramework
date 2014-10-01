@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Nuclex.Game.States;
-
-namespace PortableGameTest.Framework.Game.States
+﻿namespace Nuclectic.Game.State
 {
 	public interface IAutoGameStateService : IGameStateService
 	{

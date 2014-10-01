@@ -19,14 +19,9 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Runtime.InteropServices;
-
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Nuclex.Graphics {
+namespace Nuclectic.Graphics.Helpers {
 
   /// <summary>Provides some supporting functions for working with vertices</summary>
   public static class VertexHelper {

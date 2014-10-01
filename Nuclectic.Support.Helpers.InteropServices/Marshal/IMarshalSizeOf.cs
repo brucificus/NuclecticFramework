@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Text;
 
-namespace Nuclectic.Support.Helpers.InteropServices
+namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 {
 	public interface IMarshalSizeOf
 	{

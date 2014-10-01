@@ -19,14 +19,9 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
-using DeviceEventHandler = System.EventHandler<System.EventArgs>;
-
-namespace Nuclex.Game {
+namespace Nuclectic.Game.Component {
 
   /// <summary>
   ///   Lightweight variant DrawableGameComponent that doesn't reference the Game class
@@ -46,10 +41,10 @@ namespace Nuclex.Game {
   public class DrawableComponent : Component, IDrawable {
 
     /// <summary>Triggered when the value of the draw order property is changed.</summary>
-    public event DeviceEventHandler DrawOrderChanged;
+    public event EventHandler<EventArgs> DrawOrderChanged;
 
     /// <summary>Triggered when the value of the visible property is changed.</summary>
-    public event DeviceEventHandler VisibleChanged;
+    public event EventHandler<EventArgs> VisibleChanged;
 
     /// <summary>Initializes a new drawable component.</summary>
     public DrawableComponent() {

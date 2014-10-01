@@ -18,36 +18,25 @@ License along with this library
 */
 #endregion
 
-using System;
-using System.Collections.Generic;
+namespace Nuclectic.Game.Content {
 
-using Microsoft.Xna.Framework.Content;
-
-namespace Nuclex.Game.Content {
-
-  /// <summary>
-  ///   Implements the shared content service on top of the Game class' built-in
-  ///   content manager for dependency injection frameworks.
-  /// </summary>
-  public class SharedGameContentManager : ISharedContentService {
-
-    /// <summary>Initializes a new shared content manager adapter</summary>
-    /// <param name="game">Game the content manager will be taken from</param>
-    public SharedGameContentManager(Microsoft.Xna.Framework.Game game) {
-      this.contentManager = game.Content;
-    }
+  /// <summary>Interface for the shared content access service</summary>
+  /// <remarks>
+  ///   The shared content access service provides game-wide access to shared assets
+  ///   (meaning assets that appear throughout the game, such as UI graphics, weapon
+  ///   models and fonts for example). Once integrated into your game, jsut use this
+  ///   service whenever you need to access any of the game's global assets.
+  /// </remarks>
+  public interface ISharedContentService {
 
     /// <summary>Loads or accesses shared game content</summary>
     /// <typeparam name="AssetType">Type of the asset to be loaded or accessed</typeparam>
     /// <param name="assetName">Path and name of the requested asset</param>
     /// <returns>The requested asset from the the shared game content store</returns>
-    public AssetType Load<AssetType>(string assetName) {
-      return this.contentManager.Load<AssetType>(assetName);
-    }
+    AssetType Load<AssetType>(string assetName);
 
-    /// <summary>The content manager this instance delegates to</summary>
-    private ContentManager contentManager;
-  
   }
 
 } // namespace Nuclex.Game.Content
+
+

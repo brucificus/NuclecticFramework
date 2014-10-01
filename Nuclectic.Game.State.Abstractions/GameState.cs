@@ -19,22 +19,18 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
 
-using StateEventHandler = System.EventHandler<System.EventArgs>;
-
-namespace Nuclex.Game.States {
+namespace Nuclectic.Game.State {
 
   /// <summary>Base class for updateable game states</summary>
   public abstract class GameState : IGameState, IUpdateable {
 
     /// <summary>Never called because the Enabled property cannot change</summary>
-    event StateEventHandler IUpdateable.EnabledChanged { add { } remove { } }
+    event EventHandler<EventArgs> IUpdateable.EnabledChanged { add { } remove { } }
 
     /// <summary>Never called because the UpdateOrder property cannot change</summary>
-    event StateEventHandler IUpdateable.UpdateOrderChanged { add { } remove { } }
+    event EventHandler<EventArgs> IUpdateable.UpdateOrderChanged { add { } remove { } }
 
     /// <summary>Called when the game state is being paused</summary>
     public void Pause() {

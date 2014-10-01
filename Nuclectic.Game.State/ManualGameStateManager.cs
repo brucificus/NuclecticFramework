@@ -20,10 +20,10 @@ License along with this library
 
 using System;
 using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
+using Nuclectic.Game.Component;
 
-namespace Nuclex.Game.States {
+namespace Nuclectic.Game.State {
 
   /// <summary>Manages the game states and updates the active game state</summary>
   public class ManualGameStateManager : DrawableComponent, IManualGameStateService, IDisposable {

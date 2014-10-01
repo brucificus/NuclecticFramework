@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Nuclex.Game.States {
+namespace Nuclectic.Game.State {
 
   /// <summary>Event argument container for a loading progress notification</summary>
   public class LoadProgressEventArgs : EventArgs {

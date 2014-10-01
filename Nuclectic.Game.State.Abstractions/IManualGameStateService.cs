@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Xna.Framework;
-using PortableGameTest.Framework.Game.States;
-
-namespace Nuclex.Game.States {
+﻿namespace Nuclectic.Game.State {
 
   /// <summary>Allows management and switching of game states</summary>
 	public interface IManualGameStateService : IGameStateService

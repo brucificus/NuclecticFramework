@@ -19,22 +19,18 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
 
-using StateEventHandler = System.EventHandler<System.EventArgs>;
-
-namespace Nuclex.Game.States {
+namespace Nuclectic.Game.State {
 
   /// <summary>Base class for updateable and drawable game states</summary>
   public abstract class DrawableGameState : GameState, IDrawable {
 
     /// <summary>Never called because the Visible property cannot change</summary>
-    event StateEventHandler IDrawable.VisibleChanged { add { } remove { } }
+    event EventHandler<EventArgs> IDrawable.VisibleChanged { add { } remove { } }
 
     /// <summary>Never called because the DrawOrder property cannot change</summary>
-    event StateEventHandler IDrawable.DrawOrderChanged { add { } remove { } }
+    event EventHandler<EventArgs> IDrawable.DrawOrderChanged { add { } remove { } }
 
     /// <summary>Called when the drawable component needs to draw itself</summary>
     /// <param name="gameTime">Provides a snapshot of the game's timing values</param>

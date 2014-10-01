@@ -19,12 +19,10 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework.Graphics;
-using Nuclectic.Support.Helpers.InteropServices;
+using Nuclectic.Support.Helpers.InteropServices.Marshal;
 
-namespace Nuclex.Graphics {
+namespace Nuclectic.Graphics.Helpers {
 
   /// <summary>
   ///   Builds vertex declarations from vertex structures

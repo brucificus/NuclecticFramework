@@ -3,9 +3,9 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Nuclectic.Support.Helpers.InteropServices;
+using Nuclectic.Support.Helpers.InteropServices.Marshal;
 
-namespace Nuclex.Graphics
+namespace Nuclectic.Graphics.Helpers
 {
 	public class VertexDefinitionBuilder
 	{

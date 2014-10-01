@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 
-namespace Nuclectic.Support.Helpers.InteropServices
+namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 {
 	public class LateBoundMarshalFactory
 	{

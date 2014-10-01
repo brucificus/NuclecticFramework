@@ -18,20 +18,16 @@ License along with this library
 */
 #endregion
 
-using System;
-using System.Collections.Generic;
-using System.IO;
-using PCLCrypto;
 //using System.Security.Cryptography;
+using System;
+using System.IO;
 using System.Text;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Nuclectic.Graphics.Helpers;
+using PCLCrypto;
 
-using Nuclex.Graphics;
-
-namespace Nuclex.Game.Content {
+namespace Nuclectic.Game.Content {
 
   /// <summary>Content manager for loading content from in-memory arrays</summary>
   /// <remarks>
@@ -50,7 +46,7 @@ namespace Nuclex.Game.Content {
     /// </param>
     public MemoryContentManager(IGraphicsDeviceService graphicsDeviceService) :
       this(
-        GraphicsDeviceServiceHelper.MakePrivateServiceProvider(graphicsDeviceService)
+        (IServiceProvider) GraphicsDeviceServiceHelper.MakePrivateServiceProvider(graphicsDeviceService)
       ) { }
 
     /// <summary>

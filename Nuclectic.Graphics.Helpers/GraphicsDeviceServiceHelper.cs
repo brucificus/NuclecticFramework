@@ -19,16 +19,10 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Runtime.InteropServices;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using DeviceEventHandler = System.EventHandler<System.EventArgs>;
-
-namespace Nuclex.Graphics {
+namespace Nuclectic.Graphics.Helpers {
 
   /// <summary>Provides supporting functions for the graphics device service</summary>
   public static class GraphicsDeviceServiceHelper {
@@ -39,26 +33,26 @@ namespace Nuclex.Graphics {
     private class DummyGraphicsDeviceService : IGraphicsDeviceService, IDisposable {
 
       /// <summary>Triggered when the graphics device has been created</summary>
-      public event DeviceEventHandler DeviceCreated { add { } remove { } }
+      public event EventHandler<EventArgs> DeviceCreated { add { } remove { } }
       /// <summary>Triggered when the graphics device is about to be disposed</summary>
-      public event DeviceEventHandler DeviceDisposing;
+      public event EventHandler<EventArgs> DeviceDisposing;
       /// <summary>Triggered after the graphics device has completed a reset</summary>
-      public event DeviceEventHandler DeviceReset;
+      public event EventHandler<EventArgs> DeviceReset;
       /// <summary>Triggered when the graphcis device is about to be reset</summary>
-      public event DeviceEventHandler DeviceResetting;
+      public event EventHandler<EventArgs> DeviceResetting;
 
       /// <summary>Initializes a new dummy graphics device service</summary>
       /// <param name="graphicsDevice">Graphics device the service will use</param>
       public DummyGraphicsDeviceService(GraphicsDevice graphicsDevice) {
         this.graphicsDevice = graphicsDevice;
         
-        this.graphicsDeviceResettingDelegate = new DeviceEventHandler(
+        this.graphicsDeviceResettingDelegate = new EventHandler<EventArgs>(
           graphicsDeviceResetting
         );
-        this.graphicsDeviceResetDelegate = new DeviceEventHandler(
+        this.graphicsDeviceResetDelegate = new EventHandler<EventArgs>(
           graphicsDeviceReset
         );
-        this.graphicsDeviceDisposingDelegate = new DeviceEventHandler(
+        this.graphicsDeviceDisposingDelegate = new EventHandler<EventArgs>(
           graphicsDeviceDisposing
         );
 
@@ -115,11 +109,11 @@ namespace Nuclex.Graphics {
       /// <summary>Graphics device the dummy service is being created for</summary>
       private GraphicsDevice graphicsDevice;
       /// <summary>Delegate for the graphicsDeviceResetting() method</summary>
-      private DeviceEventHandler graphicsDeviceResettingDelegate;
+      private EventHandler<EventArgs> graphicsDeviceResettingDelegate;
       /// <summary>Delegate for the graphicsDeviceReset() method</summary>
-      private DeviceEventHandler graphicsDeviceResetDelegate;
+      private EventHandler<EventArgs> graphicsDeviceResetDelegate;
       /// <summary>Delegate for the graphicsDeviceDisposing() method</summary>
-      private DeviceEventHandler graphicsDeviceDisposingDelegate;
+      private EventHandler<EventArgs> graphicsDeviceDisposingDelegate;
 
     }
 

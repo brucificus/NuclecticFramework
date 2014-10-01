@@ -18,12 +18,7 @@ License along with this library
 */
 #endregion
 
-using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
-
-namespace Nuclex.Game.States {
+namespace Nuclectic.Game.State {
 
   /// <summary>
   ///   Possible behaviors of a game state in respect to the states its stacked on

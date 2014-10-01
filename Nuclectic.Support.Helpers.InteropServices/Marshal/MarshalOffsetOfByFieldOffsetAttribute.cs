@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace Nuclectic.Support.Helpers.InteropServices
+namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 {
 	public class MarshalOffsetOfByFieldOffsetAttribute
 		: IMarshalOffsetOf

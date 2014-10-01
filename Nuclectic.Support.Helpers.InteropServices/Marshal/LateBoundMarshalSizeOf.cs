@@ -1,6 +1,6 @@
 using System;
 
-namespace Nuclectic.Support.Helpers.InteropServices
+namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 {
 	public class LateBoundMarshalSizeOf
 		: IMarshalSizeOf

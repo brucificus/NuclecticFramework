@@ -45,10 +45,6 @@
     <Compile Include="Fonts\TextDrawContext.cs" />
     <Compile Include="Fonts\VectorFont.cs" />
     <Compile Include="Fonts\VectorFontCharacter.cs" />
-    <Compile Include="Game\Content\LzmaContentManager.cs" />
-    <Compile Include="Game\Content\MemoryContentManager.cs" />
-    <Compile Include="Game\Content\SharedContentManager.cs" />
-    <Compile Include="Game\Content\SharedGameContentManager.cs" />
     <Compile Include="Game\States\AutoGameStateManager.cs" />
     <Compile Include="Game\_GameModule.cs" />
     <Compile Include="Graphics.SpecialEffects\IndexedStaticMesh.cs" />
@@ -169,9 +165,6 @@
       <HintPath>..\packages\PCLCrypto.0.5.1.14165\lib\portable-net40+sl50+win+wpa81+wp80\PCLCrypto.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SevenZipSharp">
-      <HintPath>..\packages\SevenZipSharp.0.64\lib\SevenZipSharp.dll</HintPath>
-    </Reference>
     <Reference Include="System.Collections.Immutable">
       <HintPath>..\packages\Microsoft.Bcl.Immutable.1.0.34\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
     </Reference>
@@ -187,6 +180,10 @@
     <ProjectReference Include="..\Nuclectic.Game.Component.Abstractions\Nuclectic.Game.Component.Abstractions.csproj">
       <Project>{856589E9-6906-4F72-870B-C8BDDD37325B}</Project>
       <Name>Nuclectic.Game.Component.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Game.Content\Nuclectic.Game.Content.csproj">
+      <Project>{409d22a7-c6a9-4f40-ad58-f91ce3776ab7}</Project>
+      <Name>Nuclectic.Game.Content</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuclectic.Game.State.Abstractions\Nuclectic.Game.State.Abstractions.csproj">
       <Project>{0E9C6543-019C-4D51-A744-BB2667FA509E}</Project>

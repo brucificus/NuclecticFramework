@@ -27,7 +27,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-
+using Nuclectic.Graphics.Helpers;
 using Nuclex.Graphics;
 using Nuclex.Graphics.Batching;
 using PortableGameTest.Framework.Support;

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Nuclex.Game.States;
 
-namespace PortableGameTest.Framework.Game.States
+namespace Nuclectic.Game.State
 {
 	public interface IGameStateService : IUpdateable, IDrawable
 	{

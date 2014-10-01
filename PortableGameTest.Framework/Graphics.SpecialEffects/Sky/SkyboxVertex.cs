@@ -24,7 +24,7 @@ using System.Runtime.InteropServices;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Graphics.Helpers;
 using Nuclex.Graphics;
 
 namespace Nuclex.Graphics.SpecialEffects.Sky {

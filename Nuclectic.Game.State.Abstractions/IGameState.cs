@@ -18,12 +18,7 @@ License along with this library
 */
 #endregion
 
-using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
-
-namespace Nuclex.Game.States {
+namespace Nuclectic.Game.State {
 
   /// <summary>State the game can be in</summary>
   /// <remarks>

@@ -19,13 +19,10 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace Nuclex.Game.Content {
+namespace Nuclectic.Game.Content {
 
   /// <summary>Manages global content that is shared within a game</summary>
   /// <remarks>
@@ -33,7 +30,7 @@ namespace Nuclex.Game.Content {
   ///   (for example, the LzmaContentManager) and share is globally throughout
   ///   your game through the ISharedContentService.
   /// </remarks>
-  public class SharedContentManager : Component, ISharedContentService, IDisposable {
+  public class SharedContentManager : Component.Component, ISharedContentService, IDisposable {
 
     /// <summary>Initializes a new shared content manager</summary>
     /// <param name="gameServices">

@@ -73,6 +73,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.Helpers"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Helpers.InteropServices", "Nuclectic.Support.Helpers.InteropServices\Nuclectic.Support.Helpers.InteropServices.csproj", "{BD76C4BB-CAAF-4987-AB11-4199144F629B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.Content", "Nuclectic.Game.Content\Nuclectic.Game.Content.csproj", "{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Android|Any CPU = Android|Any CPU
@@ -1157,6 +1159,42 @@ Global
 		{BD76C4BB-CAAF-4987-AB11-4199144F629B}.Windows8|Any CPU.Build.0 = Release|Any CPU
 		{BD76C4BB-CAAF-4987-AB11-4199144F629B}.Windows8|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{BD76C4BB-CAAF-4987-AB11-4199144F629B}.Windows8|Mixed Platforms.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Android|Any CPU.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Android|Any CPU.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Android|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Android|Mixed Platforms.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.iOS|Any CPU.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.iOS|Any CPU.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.iOS|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.iOS|Mixed Platforms.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Linux|Any CPU.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Linux|Any CPU.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Linux|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Linux|Mixed Platforms.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.OSX|Any CPU.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.OSX|Any CPU.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.OSX|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.OSX|Mixed Platforms.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.PSM|Any CPU.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.PSM|Any CPU.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.PSM|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.PSM|Mixed Platforms.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Windows|Any CPU.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Windows|Any CPU.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Windows|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Windows|Mixed Platforms.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Windows8|Any CPU.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Windows8|Any CPU.Build.0 = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Windows8|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}.Windows8|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1187,6 +1225,7 @@ Global
 		{0E9C6543-019C-4D51-A744-BB2667FA509E} = {EF6C47CD-34D5-404F-89C4-3A2B034B727D}
 		{6194200D-EF81-44BF-BB39-38230ABAFFC9} = {EF6C47CD-34D5-404F-89C4-3A2B034B727D}
 		{856589E9-6906-4F72-870B-C8BDDD37325B} = {EF6C47CD-34D5-404F-89C4-3A2B034B727D}
+		{409D22A7-C6A9-4F40-AD58-F91CE3776AB7} = {EF6C47CD-34D5-404F-89C4-3A2B034B727D}
 		{B8157DBB-0CCF-4ED5-A343-74CD692211DD} = {7FD35B1E-C005-4800-B7A7-5E1E2734B974}
 	EndGlobalSection
 EndGlobal

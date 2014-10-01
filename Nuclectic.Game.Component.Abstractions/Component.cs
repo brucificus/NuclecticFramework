@@ -19,14 +19,9 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
-using ComponentEventHandler = System.EventHandler<System.EventArgs>;
-
-namespace Nuclex.Game {
+namespace Nuclectic.Game.Component {
 
   /// <summary>
   ///   Variant of the XNA GameComponent that doesn't reference the Game class
@@ -46,10 +41,10 @@ namespace Nuclex.Game {
   public class Component : IGameComponent, IUpdateable {
 
     /// <summary>Triggered when the value of the enabled property is changed.</summary>
-    public event ComponentEventHandler EnabledChanged;
+    public event EventHandler<EventArgs> EnabledChanged;
 
     /// <summary>Triggered when the value of the update order property is changed.</summary>
-    public event ComponentEventHandler UpdateOrderChanged;
+    public event EventHandler<EventArgs> UpdateOrderChanged;
 
     /// <summary>Initializes a new component</summary>
     public Component() {

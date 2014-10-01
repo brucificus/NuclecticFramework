@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Nuclectic.Support.Helpers.InteropServices
+namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 {
 	public class MarshalOffsetOfByStrategicOr
 		: IMarshalOffsetOf

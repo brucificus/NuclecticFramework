@@ -19,11 +19,9 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Nuclex.Graphics {
+namespace Nuclectic.Graphics.Helpers {
 
   /// <summary>
   ///   Describes the usage and purpose of an element in a vertex structure

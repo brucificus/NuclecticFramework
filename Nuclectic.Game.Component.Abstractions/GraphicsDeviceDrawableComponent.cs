@@ -19,14 +19,9 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-using DeviceEventHandler = System.EventHandler<System.EventArgs>;
-
-namespace Nuclex.Game {
+namespace Nuclectic.Game.Component {
 
   /// <summary>
   ///   Lightweight variant DrawableGameComponent that doesn't reference the Game class
@@ -170,10 +165,10 @@ namespace Nuclex.Game {
 
       // Register to the events of the graphics device service so we know when
       // the graphics device is set up, shut down or reset.
-      this.graphicsDeviceService.DeviceCreated += new DeviceEventHandler(deviceCreated);
-      this.graphicsDeviceService.DeviceResetting += new DeviceEventHandler(deviceResetting);
-      this.graphicsDeviceService.DeviceReset += new DeviceEventHandler(deviceReset);
-      this.graphicsDeviceService.DeviceDisposing += new DeviceEventHandler(deviceDisposing);
+      this.graphicsDeviceService.DeviceCreated += new EventHandler<EventArgs>(deviceCreated);
+      this.graphicsDeviceService.DeviceResetting += new EventHandler<EventArgs>(deviceResetting);
+      this.graphicsDeviceService.DeviceReset += new EventHandler<EventArgs>(deviceReset);
+      this.graphicsDeviceService.DeviceDisposing += new EventHandler<EventArgs>(deviceDisposing);
 
       // If a graphics device has already been created, we need to simulate the
       // DeviceCreated event that we did miss because we weren't born yet :)
@@ -192,10 +187,10 @@ namespace Nuclex.Game {
     private void unsubscribeFromGraphicsDeviceService() {
 
       // Unsubscribe from the events again
-      this.graphicsDeviceService.DeviceCreated -= new DeviceEventHandler(deviceCreated);
-      this.graphicsDeviceService.DeviceResetting -= new DeviceEventHandler(deviceResetting);
-      this.graphicsDeviceService.DeviceReset -= new DeviceEventHandler(deviceReset);
-      this.graphicsDeviceService.DeviceDisposing -= new DeviceEventHandler(deviceDisposing);
+      this.graphicsDeviceService.DeviceCreated -= new EventHandler<EventArgs>(deviceCreated);
+      this.graphicsDeviceService.DeviceResetting -= new EventHandler<EventArgs>(deviceResetting);
+      this.graphicsDeviceService.DeviceReset -= new EventHandler<EventArgs>(deviceReset);
+      this.graphicsDeviceService.DeviceDisposing -= new EventHandler<EventArgs>(deviceDisposing);
 
       // If the graphics device is still active, we give the component a chance
       // to clean up its data

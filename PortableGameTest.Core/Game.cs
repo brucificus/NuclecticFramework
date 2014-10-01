@@ -9,7 +9,7 @@ using Autofac.Features.OwnedInstances;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Nuclex.Game.States;
+using Nuclectic.Game.State;
 using PortableGameTest.Framework.Game.States;
 
 namespace PortableGameTest.Core

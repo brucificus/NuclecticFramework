@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Autofac;
 using Autofac.Features.OwnedInstances;
 using Microsoft.Xna.Framework;
-using Nuclex.Game.States;
+using Nuclectic.Game.State;
 
 namespace PortableGameTest.Framework.Game.States
 {
