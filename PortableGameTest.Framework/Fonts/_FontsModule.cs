@@ -4,8 +4,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using Microsoft.Xna.Framework.Content;
-using Nuclex.Fonts;
-using Nuclex.Fonts.Content;
+using Nuclectic.Fonts;
+using Nuclectic.Fonts.Content;
 
 namespace PortableGameTest.Framework.Fonts
 {

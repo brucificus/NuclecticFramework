@@ -21,6 +21,7 @@ License along with this library
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Nuclectic.Support.Collections {
 
@@ -305,11 +306,7 @@ namespace Nuclectic.Support.Collections {
     /// <param name="value">Value that will be checked for compatibility</param>
     /// <returns>True if the value can be placed in the deque</returns>
     private static bool isCompatibleObject(object value) {
-#if WINRT
-      return ((value is TItem) || ((value == null) && !typeof(TItem).GetTypeInfo().IsValueType));
-#else
-      return ((value is TItem) || ((value == null) && !typeof(TItem).IsValueType));
-#endif
+		return ((value is TItem) || ((value == null) && !typeof(TItem).GetTypeInfo().IsValueType));
     }
 
     /// <summary>Verifies that the provided object matches the deque's type</summary>

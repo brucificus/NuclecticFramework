@@ -21,6 +21,7 @@ License along with this library
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Nuclectic.Support.Collections {
 
@@ -83,7 +84,7 @@ namespace Nuclectic.Support.Collections {
       Capacity = capacity;
 
       if(createNewDelegate == null) {
-        if(!typeof(TItem).GetConstructors().Any(c=>c.IsPublic && !c.IsStatic && !c.GetParameters().Any())) {
+        if(!typeof(TItem).GetTypeInfo().DeclaredConstructors.Any(c=>c.IsPublic && !c.IsStatic && !c.GetParameters().Any())) {
           throw new ArgumentException(
             "Type " + typeof(TItem).Name + " has no default constructor and " +
             "requires a custom 'create instance' delegate"

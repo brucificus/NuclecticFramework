@@ -72,7 +72,7 @@ namespace Nuclectic.Input.Devices {
     /// </summary>
     /// <returns>A delegate that can be used to change the location count</returns>
     private static SetLocationCountDelegate createLocationCountDelegate() {
-      FieldInfo locationCountField = typeof(TouchCollection).GetField("locationCount");
+      FieldInfo locationCountField = typeof(TouchCollection).GetTypeInfo().GetDeclaredField("locationCount");
       Type byrefTouchCollection = typeof(TouchCollection).MakeByRefType();
 
       ParameterExpression instance = Expression.Parameter(byrefTouchCollection, "instance");
@@ -96,7 +96,7 @@ namespace Nuclectic.Input.Devices {
     /// </summary>
     /// <returns>A delegate that can be used to add a touch location</returns>
     private static AddTouchLocationDelegate createAddTouchLocationDelegate() {
-      MethodInfo addTouchLocationMethod = typeof(TouchCollection).GetMethod("AddTouchLocation");
+      MethodInfo addTouchLocationMethod = typeof(TouchCollection).GetTypeInfo().GetDeclaredMethod("AddTouchLocation");
       Type byrefTouchCollection = typeof(TouchCollection).MakeByRefType();
 
       ParameterExpression instance = Expression.Parameter(byrefTouchCollection, "instance");

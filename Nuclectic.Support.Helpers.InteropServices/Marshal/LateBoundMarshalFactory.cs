@@ -1,4 +1,7 @@
 using System;
+using System.Linq;
+using System.Reflection;
+using Nuclectic.Support.Helpers;
 
 namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 {

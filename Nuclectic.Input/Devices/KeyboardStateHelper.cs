@@ -54,7 +54,7 @@ namespace Nuclectic.Input.Devices {
     /// <returns>A delegate that can be used to add a pressed key</returns>
     private static AddPressedKeyDelegate createAddPressedKeyDelegate()
     {
-        MethodInfo addPressedKeyMethod = typeof (KeyboardState).GetMethod("AddPressedKey");
+        MethodInfo addPressedKeyMethod = typeof (KeyboardState).GetTypeInfo().GetDeclaredMethod("AddPressedKey");
       Type byrefKeyboardState = typeof(KeyboardState).MakeByRefType();
 
       ParameterExpression instance = Expression.Parameter(byrefKeyboardState, "instance");
@@ -74,7 +74,7 @@ namespace Nuclectic.Input.Devices {
     /// </summary>
     /// <returns>A delegate that can be used to remove a pressed key</returns>
     private static RemovePressedKeyDelegate createRemovePressedKeyDelegate() {
-      MethodInfo addPressedKeyMethod = typeof(KeyboardState).GetMethod("RemovePressedKey");
+		MethodInfo addPressedKeyMethod = typeof(KeyboardState).GetTypeInfo().GetDeclaredMethod("RemovePressedKey");
       Type byrefKeyboardState = typeof(KeyboardState).MakeByRefType();
 
       ParameterExpression instance = Expression.Parameter(byrefKeyboardState, "instance");

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Nuclectic.Support.Helpers;
 using Nuclectic.Support.Helpers.InteropServices.Marshal;
 
 namespace Nuclectic.Graphics.Helpers
