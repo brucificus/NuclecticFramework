@@ -30,7 +30,7 @@ using Nuclex.Graphics;
 namespace Nuclex.Graphics.SpecialEffects.Trails {
 
   /// <summary>Contains the definitions for a trail vertex</summary>
-  [StructLayout(LayoutKind.Sequential)]
+  [StructLayout(LayoutKind.Explicit)]
   public struct TrailVertex : IVertexType {
 
     /// <summary>Initializs a new trail vertex</summary>
@@ -42,11 +42,11 @@ namespace Nuclex.Graphics.SpecialEffects.Trails {
     }
 
     /// <summary>Coordinates of the vertex</summary>
-    [VertexElement(VertexElementUsage.Position)]
+    [VertexElement(VertexElementUsage.Position), FieldOffset(0)]
     public Vector3 Position;
 
     /// <summary>Texture coordinates for all texture layers</summary>
-    [VertexElement(VertexElementUsage.TextureCoordinate)]
+    [VertexElement(VertexElementUsage.TextureCoordinate), FieldOffset(12)]
     public Vector2 TextureCoordinate;
 
     /// <summary>Provides a declaration for this vertex type</summary>

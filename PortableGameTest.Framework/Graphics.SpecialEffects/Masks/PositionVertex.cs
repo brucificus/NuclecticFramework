@@ -30,7 +30,7 @@ using Nuclex.Graphics;
 namespace Nuclex.Graphics.SpecialEffects.Masks {
 
   /// <summary>A vertex storing only its position</summary>
-  [StructLayout(LayoutKind.Sequential)]
+  [StructLayout(LayoutKind.Explicit)]
   public struct PositionVertex : IVertexType {
 
     /// <summary>Initializs a new position vertex</summary>
@@ -40,7 +40,7 @@ namespace Nuclex.Graphics.SpecialEffects.Masks {
     }
 
     /// <summary>Coordinates of the vertex</summary>
-    [VertexElement(VertexElementUsage.Position)]
+    [VertexElement(VertexElementUsage.Position), FieldOffset(0)]
     public Vector2 Position;
 
     /// <summary>Provides a declaration for this vertex type</summary>
