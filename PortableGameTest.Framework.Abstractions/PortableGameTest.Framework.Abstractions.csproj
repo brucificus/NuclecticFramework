@@ -42,33 +42,6 @@
     <Compile Include="Fonts\Outline.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\GameFrameworkPlatformToken.cs" />
-    <Compile Include="UserInterface\Controls\Control.cs" />
-    <Compile Include="UserInterface\Controls\Control.Input.cs" />
-    <Compile Include="UserInterface\Controls\ControlEventArgs.cs" />
-    <Compile Include="UserInterface\Controls\IButtonPressReleaseProcessor.cs" />
-    <Compile Include="UserInterface\Controls\ICommandProcessor.cs" />
-    <Compile Include="UserInterface\Controls\IHasSettableScreen.cs" />
-    <Compile Include="UserInterface\Controls\IFocusable.cs" />
-    <Compile Include="UserInterface\Controls\IKeyPressReleaseProcessor.cs" />
-    <Compile Include="UserInterface\Controls\IMouseMoveLeaveProcessor.cs" />
-    <Compile Include="UserInterface\Controls\IMousePressReleaseProcessor.cs" />
-    <Compile Include="UserInterface\Controls\IMouseWheelProcessor.cs" />
-    <Compile Include="UserInterface\Controls\IWritable.cs" />
-    <Compile Include="UserInterface\Controls\ParentingControlCollection.cs" />
-    <Compile Include="UserInterface\Controls\PressableControl.cs" />
-    <Compile Include="UserInterface\DuplicateNameException.cs" />
-    <Compile Include="UserInterface\IGuiService.cs" />
-    <Compile Include="UserInterface\Input\Command.cs" />
-    <Compile Include="UserInterface\Input\IInputCapturer.cs" />
-    <Compile Include="UserInterface\Input\IInputReceiver.cs" />
-    <Compile Include="UserInterface\IScreen.cs" />
-    <Compile Include="UserInterface\RectangleF.cs" />
-    <Compile Include="UserInterface\UniRectangle.cs" />
-    <Compile Include="UserInterface\UniScalar.cs" />
-    <Compile Include="UserInterface\UniVector.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\IFlatControlRenderer.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\IFlatGuiGraphics.cs" />
-    <Compile Include="UserInterface\Visuals\IGuiVisualizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Autofac">
@@ -115,6 +88,10 @@
     <ProjectReference Include="..\Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj">
       <Project>{7586DB23-8FC0-4AF8-B855-2A636BD431E6}</Project>
       <Name>Nuclectic.Input.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.UserInterface.Abstractions\Nuclectic.UserInterface.Abstractions.csproj">
+      <Project>{839d1bd4-664d-471f-9139-10a0a6f90293}</Project>
+      <Name>Nuclectic.UserInterface.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

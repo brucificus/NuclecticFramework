@@ -19,7 +19,6 @@ License along with this library
 #endregion
 
 using Microsoft.Xna.Framework.Graphics;
-using Nuclectic.Graphics.TriD.SpecialEffects.Abstractions;
 
 namespace Nuclectic.Graphics.TriD.SpecialEffects.Masks {
 

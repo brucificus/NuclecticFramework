@@ -47,55 +47,12 @@
     <Compile Include="Fonts\VectorFontCharacter.cs" />
     <Compile Include="Game\States\AutoGameStateManager.cs" />
     <Compile Include="Game\_GameModule.cs" />
-    <Compile Include="Graphics\_GraphicsModule.cs" />
+    <Compile Include="_GraphicsModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\GameFrameworkCorePlatform.cs" />
     <Compile Include="Support\NamedAttribute.cs" />
     <Compile Include="Support\RegistrationBuilderExtensions.cs" />
-    <Compile Include="UserInterface\Controls\Arcade\CommandControl.cs" />
-    <Compile Include="UserInterface\Controls\Arcade\PanelControl.cs" />
-    <Compile Include="UserInterface\Controls\DesktopControl.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\ButtonControl.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\ChoiceControl.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\CloseWindowButtonControl.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\DraggableControl.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\HorizontalSliderControl.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\IListRowLocator.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\InputControl.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\IOpeningLocator.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\IThumbLocator.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\ListControl.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\ListSelectionMode.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\OptionControl.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\SliderControl.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\VerticalSliderControl.cs" />
-    <Compile Include="UserInterface\Controls\Desktop\WindowControl.cs" />
-    <Compile Include="UserInterface\Controls\LabelControl.cs" />
-    <Compile Include="UserInterface\Controls\ParentingControlCollection.cs" />
-    <Compile Include="UserInterface\Controls\ProgressControl.cs" />
-    <Compile Include="UserInterface\GuiManager.cs" />
-    <Compile Include="UserInterface\Input\DefaultInputCapturer.cs" />
-    <Compile Include="UserInterface\Screen.cs" />
-    <Compile Include="UserInterface\UniAssertHelper.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\FlatGuiGraphics.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\FlatGuiGraphics.Drawing.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\FlatGuiGraphics.SkinParsing.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\FlatGuiGraphics.SkinParsing2.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\FlatGuiVisualizer.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\OpeningLocator.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\Renderers\ControlRendererTest.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatButtonControlRenderer.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatChoiceControlRenderer.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatHorizontalSliderControlRenderer.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatInputControlRenderer.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatLabelControlRenderer.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatListControlRenderer.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatOptionControlRenderer.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatPanelControlRenderer.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatProgressControlRenderer.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatVerticalSliderControlRenderer.cs" />
-    <Compile Include="UserInterface\Visuals\Flat\Renderers\FlatWindowControlRenderer.cs" />
-    <Compile Include="UserInterface\_UserInterfaceModule.cs" />
+    <Compile Include="_UserInterfaceModule.cs" />
     <Compile Include="WellKnownContent.cs" />
     <Compile Include="_FrameworkModule.cs" />
     <Compile Include="_InputModule.cs" />
@@ -195,6 +152,14 @@
     <ProjectReference Include="..\Nuclectic.Support.IO.Abstractions\Nuclectic.Support.IO.Abstractions.csproj">
       <Project>{222F8D0E-EB3E-4562-AC2B-AE683BF257AF}</Project>
       <Name>Nuclectic.Support.IO.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.UserInterface.Abstractions\Nuclectic.UserInterface.Abstractions.csproj">
+      <Project>{839d1bd4-664d-471f-9139-10a0a6f90293}</Project>
+      <Name>Nuclectic.UserInterface.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.UserInterface\Nuclectic.UserInterface.csproj">
+      <Project>{4557273a-e0f7-4f12-baec-fca35e52068e}</Project>
+      <Name>Nuclectic.UserInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\PortableGameTest.Framework.Abstractions\PortableGameTest.Framework.Abstractions.csproj">
       <Project>{4216e08b-9dc7-454e-b5ed-4615bb7236b2}</Project>

@@ -20,7 +20,6 @@ License along with this library
 
 using System;
 using Microsoft.Xna.Framework.Graphics;
-using Nuclectic.Graphics.TriD.SpecialEffects.Abstractions;
 
 namespace Nuclectic.Graphics.TriD.SpecialEffects {
 

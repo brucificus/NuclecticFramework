@@ -9,7 +9,6 @@ using Microsoft.Xna.Framework.Input;
 using Nuclectic.Game.State;
 using Nuclectic.Geometry;
 using Nuclectic.Input;
-using Nuclex.UserInterface;
 using PortableGameTest.Core.Graphics;
 using PortableGameTest.Framework.Support;
 

@@ -21,7 +21,7 @@ License along with this library
 using System;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Nuclectic.Graphics.TriD.SpecialEffects.Abstractions {
+namespace Nuclectic.Graphics.TriD.SpecialEffects {
 
   /// <summary>Base class for objects requiring static geometry</summary>
   public class StaticMesh<VertexType> : IDisposable

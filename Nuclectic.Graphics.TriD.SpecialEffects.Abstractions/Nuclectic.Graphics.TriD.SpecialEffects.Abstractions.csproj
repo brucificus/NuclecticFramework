@@ -8,7 +8,7 @@
     <ProjectGuid>{DDAE917E-9931-48DD-9805-DB13D25A3F9D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nuclectic.Graphics.TriD.SpecialEffects.Abstractions</RootNamespace>
+    <RootNamespace>Nuclectic.Graphics.TriD.SpecialEffects</RootNamespace>
     <AssemblyName>Nuclectic.Graphics.TriD.SpecialEffects.Abstractions</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>
