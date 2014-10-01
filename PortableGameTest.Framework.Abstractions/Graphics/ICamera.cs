@@ -25,6 +25,9 @@ namespace Nuclex.Graphics
         /// <summary>The camera's up vector</summary>
         Vector3 Up { get; }
 
+		Matrix View { get; }
+		Matrix Projection { get; }
+
         /// <summary>
         ///   Debugging aid that allows the camera to be moved around by the keyboard
         ///   or the game pad

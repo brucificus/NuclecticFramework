@@ -112,7 +112,17 @@ namespace Nuclex.Graphics {
       get { return Matrix.Invert(this.View).Up; }
     }
 
-    ///// <summary>
+	  Matrix ICamera.View
+	  {
+		  get { return View; }
+	  }
+
+	  Matrix ICamera.Projection
+	  {
+		  get { return Projection; }
+	  }
+
+	  ///// <summary>
     /////   Debugging aid that allows the camera to be moved around by the keyboard
     /////   or the game pad
     ///// </summary>

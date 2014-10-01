@@ -35,7 +35,7 @@ namespace Nuclex.Graphics.SpecialEffects.Water {
     /// <summary>Delegate for a method used to draw the scene</summary>
     /// <param name="gameTime">Snapshot of the game's timing values</param>
     /// <param name="camera">Camera through which the scene is being viewed</param>
-    public delegate void SceneDrawDelegate(GameTime gameTime, Camera camera);
+    public delegate void SceneDrawDelegate(GameTime gameTime, ICamera camera);
 
     /// <summary>Initializes a new water surface</summary>
     /// <param name="graphicsDevice">Graphics device to use for rendering</param>
@@ -93,7 +93,7 @@ namespace Nuclex.Graphics.SpecialEffects.Water {
     /// <summary>Draws the plane making up the water surface</summary>
     /// <param name="gameTime">Snapshot of the game's timing values</param>
     /// <param name="camera">Camera through which the scene is being viewed</param>
-    public void DrawWaterPlane(GameTime gameTime, Camera camera) {
+    public void DrawWaterPlane(GameTime gameTime, ICamera camera) {
       this.graphicsDevice.DrawIndexedPrimitives(
         this.grid.PrimitiveType, // primitive type to render
         0, // will be added to all vertex indices in the index buffer
@@ -124,7 +124,7 @@ namespace Nuclex.Graphics.SpecialEffects.Water {
     ///   </para>
     /// </remarks>
     public void UpdateReflection(
-      GameTime gameTime, Camera camera, SceneDrawDelegate reflectedSceneDrawer
+      GameTime gameTime, ICamera camera, SceneDrawDelegate reflectedSceneDrawer
     ) {
 
       // Create a matrix that undoes the view and projection transforms. We don't
@@ -152,8 +152,9 @@ namespace Nuclex.Graphics.SpecialEffects.Water {
         // the reflection on the water surface.
         Matrix reflectionMatrix = Matrix.CreateReflection(new Plane(worldWaterPlane));
 
-        this.reflectionCamera.View = reflectionMatrix * camera.View;
-        this.reflectionCamera.Projection = camera.Projection;
+		Matrix newReflectionCameraView = reflectionMatrix * camera.View;
+		Matrix newReflectionCameraProjection = camera.Projection;
+		this.reflectionCamera = new Camera(newReflectionCameraView, newReflectionCameraProjection);
 
         reflectedSceneDrawer(gameTime, this.reflectionCamera);
       }
@@ -171,7 +172,7 @@ namespace Nuclex.Graphics.SpecialEffects.Water {
     }
 
     /// <summary>Camera which views the scene turned upside-down</summary>
-    public Camera ReflectionCamera {
+    public ICamera ReflectionCamera {
       get { return this.reflectionCamera; }
     }
 
@@ -209,7 +210,7 @@ namespace Nuclex.Graphics.SpecialEffects.Water {
     }
 
     /// <summary>Camera used to draw the water reflection</summary>
-    private Camera reflectionCamera;
+    private ICamera reflectionCamera;
 
     /// <summary>GraphicsDevice the water surface is rendered with</summary>
     private GraphicsDevice graphicsDevice;
