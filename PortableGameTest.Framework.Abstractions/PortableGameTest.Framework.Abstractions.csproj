@@ -40,8 +40,6 @@
     <Compile Include="Fonts\IVectorFontCharacter.cs" />
     <Compile Include="Fonts\KerningPair.cs" />
     <Compile Include="Fonts\Outline.cs" />
-    <Compile Include="Graphics.SpecialEffects\StaticMesh.cs" />
-    <Compile Include="Graphics.SpecialEffects\Trails\ITrailAccessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\GameFrameworkPlatformToken.cs" />
     <Compile Include="UserInterface\Controls\Control.cs" />
@@ -104,9 +102,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Graphics\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Nuclectic.Game.State.Abstractions\Nuclectic.Game.State.Abstractions.csproj">
       <Project>{0e9c6543-019c-4d51-a744-bb2667fa509e}</Project>

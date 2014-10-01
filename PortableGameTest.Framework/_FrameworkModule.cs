@@ -10,7 +10,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Nuclectic.Graphics.Helpers;
-using Nuclex.Graphics;
 
 namespace PortableGameTest.Framework
 {
