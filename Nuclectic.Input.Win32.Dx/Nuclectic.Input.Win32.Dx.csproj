@@ -40,11 +40,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Devices\DirectInputConverter.AxisReaders.cs" />
@@ -63,10 +58,6 @@
     <ProjectReference Include="..\Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj">
       <Project>{7586DB23-8FC0-4AF8-B855-2A636BD431E6}</Project>
       <Name>Nuclectic.Input.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuclectic.Input.Win32\Nuclectic.Input.Win32.csproj">
-      <Project>{46cc39e5-038d-48dc-b72e-eae8b3fea138}</Project>
-      <Name>Nuclectic.Input.Win32</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuclectic.Input\Nuclectic.Input.csproj">
       <Project>{0D9AA327-3759-4E35-B515-9ABDE6A6EF10}</Project>

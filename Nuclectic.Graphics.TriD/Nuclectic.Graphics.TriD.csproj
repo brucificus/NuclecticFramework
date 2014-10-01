@@ -42,10 +42,6 @@
       <Project>{a4443561-32e0-4c70-ace1-8869973f36a6}</Project>
       <Name>Nuclectic.Graphics.TriD.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nuclectic.Support.Collections.Abstractions\Nuclectic.Support.Collections.Abstractions.csproj">
-      <Project>{5C231E67-22F1-4A91-B120-39766BDB85C4}</Project>
-      <Name>Nuclectic.Support.Collections.Abstractions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nuclectic.Support.Collections\Nuclectic.Support.Collections.csproj">
       <Project>{74882C2F-3DDB-4FE1-AB00-227C0D93B5D0}</Project>
       <Name>Nuclectic.Support.Collections</Name>

@@ -51,9 +51,6 @@
     <Reference Include="PCLCrypto.Abstractions">
       <HintPath>..\packages\PCLCrypto.0.5.1.14165\lib\portable-net40+sl50+win+wpa81+wp80\PCLCrypto.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Validation">
-      <HintPath>..\packages\Validation.2.0.4.14103\lib\portable-windows8+net40+sl5+wp8+wpa81+wp81+MonoAndroid+MonoTouch\Validation.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -66,14 +63,6 @@
     <ProjectReference Include="..\Nuclectic.Graphics.Helpers\Nuclectic.Graphics.Helpers.csproj">
       <Project>{b8157dbb-0ccf-4ed5-a343-74cd692211dd}</Project>
       <Name>Nuclectic.Graphics.Helpers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuclectic.Support.IO.Abstractions\Nuclectic.Support.IO.Abstractions.csproj">
-      <Project>{222f8d0e-eb3e-4562-ac2b-ae683bf257af}</Project>
-      <Name>Nuclectic.Support.IO.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuclectic.Support.IO\Nuclectic.Support.IO.csproj">
-      <Project>{cabd2a2a-52af-4047-8c9c-915b0ed27ce8}</Project>
-      <Name>Nuclectic.Support.IO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
