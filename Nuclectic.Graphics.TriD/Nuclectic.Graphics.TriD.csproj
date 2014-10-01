@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{45232945-F49E-4E32-B0EF-7CBF116D6942}</ProjectGuid>
+    <ProjectGuid>{B304A2E3-412F-46CE-BEE5-36053E76EEC5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nuclectic.Graphics</RootNamespace>
-    <AssemblyName>Nuclectic.Graphics</AssemblyName>
+    <RootNamespace>Nuclectic.Graphics.TriD</RootNamespace>
+    <AssemblyName>Nuclectic.Graphics.TriD</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -33,6 +33,43 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\Nuclectic.Graphics.Helpers\Nuclectic.Graphics.Helpers.csproj">
+      <Project>{B8157DBB-0CCF-4ED5-A343-74CD692211DD}</Project>
+      <Name>Nuclectic.Graphics.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.TriD.Abstractions\Nuclectic.Graphics.TriD.Abstractions.csproj">
+      <Project>{a4443561-32e0-4c70-ace1-8869973f36a6}</Project>
+      <Name>Nuclectic.Graphics.TriD.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Collections.Abstractions\Nuclectic.Support.Collections.Abstractions.csproj">
+      <Project>{5C231E67-22F1-4A91-B120-39766BDB85C4}</Project>
+      <Name>Nuclectic.Support.Collections.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Collections\Nuclectic.Support.Collections.csproj">
+      <Project>{74882C2F-3DDB-4FE1-AB00-227C0D93B5D0}</Project>
+      <Name>Nuclectic.Support.Collections</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Batching\BasicEffectDrawContext.cs" />
+    <Compile Include="Batching\DeferredQueuer.cs" />
+    <Compile Include="Batching\DeferredQueuer.Splitting.cs" />
+    <Compile Include="Batching\DrawContextQueuer.cs" />
+    <Compile Include="Batching\DynamicBufferBatchDrawer.cs" />
+    <Compile Include="Batching\EffectDrawContext.cs" />
+    <Compile Include="Batching\ImmediateQueuer.cs" />
+    <Compile Include="Batching\PrimitiveBatch.cs" />
+    <Compile Include="Batching\UserPrimitiveBatchDrawer.cs" />
+    <Compile Include="Camera.cs" />
+    <Compile Include="Debugging\DebugDrawer.cs" />
+    <Compile Include="Debugging\SolidArrowVertexGenerator.cs" />
+    <Compile Include="Debugging\SolidBoxVertexGenerator.cs" />
+    <Compile Include="Debugging\SolidTriangleVertexGenerator.cs" />
+    <Compile Include="Debugging\VectorHelper.cs" />
+    <Compile Include="Debugging\WireframeArrowVertexGenerator.cs" />
+    <Compile Include="Debugging\WireframeBoxVertexGenerator.cs" />
+    <Compile Include="Debugging\WireframeTriangleVertexGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -43,24 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Nuclectic.Graphics.Abstractions\Nuclectic.Graphics.Abstractions.csproj">
-      <Project>{e9e6597b-4c66-41f7-a780-007b5115e74b}</Project>
-      <Name>Nuclectic.Graphics.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuclectic.Graphics.Helpers\Nuclectic.Graphics.Helpers.csproj">
-      <Project>{B8157DBB-0CCF-4ED5-A343-74CD692211DD}</Project>
-      <Name>Nuclectic.Graphics.Helpers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuclectic.Support.Collections.Abstractions\Nuclectic.Support.Collections.Abstractions.csproj">
-      <Project>{5c231e67-22f1-4a91-b120-39766bdb85c4}</Project>
-      <Name>Nuclectic.Support.Collections.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuclectic.Support.Collections\Nuclectic.Support.Collections.csproj">
-      <Project>{74882c2f-3ddb-4fe1-ab00-227c0d93b5d0}</Project>
-      <Name>Nuclectic.Support.Collections</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

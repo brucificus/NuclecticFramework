@@ -1,9 +1,7 @@
 ﻿using Autofac;
 using Microsoft.Xna.Framework.Graphics;
-using Nuclectic.Graphics.Abstractions.Batching;
-using Nuclectic.Graphics.Abstractions.Debugging;
-using Nuclectic.Graphics.Batching;
-using Nuclectic.Graphics.Debugging;
+using Nuclectic.Graphics.TriD.Batching;
+using Nuclectic.Graphics.TriD.Debugging;
 
 namespace PortableGameTest.Framework.Graphics
 {

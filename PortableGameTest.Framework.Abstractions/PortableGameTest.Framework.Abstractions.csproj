@@ -112,10 +112,6 @@
       <Project>{0e9c6543-019c-4d51-a744-bb2667fa509e}</Project>
       <Name>Nuclectic.Game.State.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nuclectic.Graphics.Abstractions\Nuclectic.Graphics.Abstractions.csproj">
-      <Project>{e9e6597b-4c66-41f7-a780-007b5115e74b}</Project>
-      <Name>Nuclectic.Graphics.Abstractions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nuclectic.Graphics.Helpers\Nuclectic.Graphics.Helpers.csproj">
       <Project>{b8157dbb-0ccf-4ed5-a343-74cd692211dd}</Project>
       <Name>Nuclectic.Graphics.Helpers</Name>

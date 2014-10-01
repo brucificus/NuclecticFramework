@@ -23,7 +23,7 @@ using System.Collections.Generic;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Nuclectic.Graphics.Abstractions.Batching;
+using Nuclectic.Graphics.TriD.Batching;
 
 namespace Nuclex.Fonts {
 

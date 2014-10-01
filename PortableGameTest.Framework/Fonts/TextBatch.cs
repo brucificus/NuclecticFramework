@@ -21,9 +21,8 @@ License along with this library
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Nuclectic.Graphics.Abstractions.Batching;
-using Nuclectic.Graphics.Batching;
 using Nuclectic.Graphics.Helpers;
+using Nuclectic.Graphics.TriD.Batching;
 using PortableGameTest.Framework.Support;
 
 namespace Nuclex.Fonts {

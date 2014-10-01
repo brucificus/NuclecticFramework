@@ -33,17 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Batching\DrawContext.cs" />
-    <Compile Include="Batching\IBatchDrawer.cs" />
-    <Compile Include="Batching\IPrimitiveBatch.cs" />
-    <Compile Include="Batching\IQueuer.cs" />
-    <Compile Include="Batching\QueueingStrategy.cs" />
-    <Compile Include="Batching\Queuer.cs" />
-    <Compile Include="Debugging\IDebugDrawingService.cs" />
-    <Compile Include="Drawable.cs" />
-    <Compile Include="ICamera.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextureRegion2D.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
