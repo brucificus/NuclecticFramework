@@ -42,16 +42,6 @@
     <Compile Include="Fonts\Outline.cs" />
     <Compile Include="Graphics.SpecialEffects\StaticMesh.cs" />
     <Compile Include="Graphics.SpecialEffects\Trails\ITrailAccessor.cs" />
-    <Compile Include="Graphics\Batching\DrawContext.cs" />
-    <Compile Include="Graphics\Batching\IBatchDrawer.cs" />
-    <Compile Include="Graphics\Batching\IPrimitiveBatch.cs" />
-    <Compile Include="Graphics\Batching\IQueuer.cs" />
-    <Compile Include="Graphics\Batching\QueueingStrategy.cs" />
-    <Compile Include="Graphics\Batching\Queuer.cs" />
-    <Compile Include="Graphics\Debugging\IDebugDrawingService.cs" />
-    <Compile Include="Graphics\Drawable.cs" />
-    <Compile Include="Graphics\ICamera.cs" />
-    <Compile Include="Graphics\TextureRegion2D.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\GameFrameworkPlatformToken.cs" />
     <Compile Include="UserInterface\Controls\Control.cs" />
@@ -114,11 +104,17 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Graphics\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nuclectic.Game.State.Abstractions\Nuclectic.Game.State.Abstractions.csproj">
       <Project>{0e9c6543-019c-4d51-a744-bb2667fa509e}</Project>
       <Name>Nuclectic.Game.State.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.Abstractions\Nuclectic.Graphics.Abstractions.csproj">
+      <Project>{e9e6597b-4c66-41f7-a780-007b5115e74b}</Project>
+      <Name>Nuclectic.Graphics.Abstractions</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuclectic.Graphics.Helpers\Nuclectic.Graphics.Helpers.csproj">
       <Project>{b8157dbb-0ccf-4ed5-a343-74cd692211dd}</Project>

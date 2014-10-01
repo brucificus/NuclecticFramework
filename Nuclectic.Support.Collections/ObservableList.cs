@@ -19,11 +19,12 @@ License along with this library
 #endregion
 
 #if !NO_SPECIALIZED_COLLECTIONS
+using System.Collections.Specialized;
 #endif
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
+
 
 namespace Nuclectic.Support.Collections {
 

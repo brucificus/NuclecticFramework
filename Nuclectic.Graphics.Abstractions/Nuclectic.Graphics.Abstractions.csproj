@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{74882C2F-3DDB-4FE1-AB00-227C0D93B5D0}</ProjectGuid>
+    <ProjectGuid>{E9E6597B-4C66-41F7-A780-007B5115E74B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nuclectic.Support.Collections</RootNamespace>
-    <AssemblyName>Nuclectic.Support.Collections</AssemblyName>
+    <RootNamespace>Nuclectic.Graphics.Abstractions</RootNamespace>
+    <AssemblyName>Nuclectic.Graphics.Abstractions</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NO_SPECIALIZED_COLLECTIONS</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -33,42 +33,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\Nuclectic.Support.Abstractions\Nuclectic.Support.Abstractions.csproj">
-      <Project>{956f95ec-d3d8-491f-aef1-5830243be274}</Project>
-      <Name>Nuclectic.Support.Abstractions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nuclectic.Support.Collections.Abstractions\Nuclectic.Support.Collections.Abstractions.csproj">
-      <Project>{5c231e67-22f1-4a91-b120-39766bdb85c4}</Project>
-      <Name>Nuclectic.Support.Collections.Abstractions</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Constants.cs" />
-    <Compile Include="Deque.cs" />
-    <Compile Include="Deque.Insertion.cs" />
-    <Compile Include="Deque.Interfaces.cs" />
-    <Compile Include="Deque.Removal.cs" />
-    <Compile Include="Deque.Search.cs" />
-    <Compile Include="ObservableList.cs" />
-    <Compile Include="PairPriorityQueue.cs" />
-    <Compile Include="Pool.cs" />
-    <Compile Include="PriorityItemPair.cs" />
-    <Compile Include="PriorityQueue.cs" />
+    <Compile Include="Batching\DrawContext.cs" />
+    <Compile Include="Batching\IBatchDrawer.cs" />
+    <Compile Include="Batching\IPrimitiveBatch.cs" />
+    <Compile Include="Batching\IQueuer.cs" />
+    <Compile Include="Batching\QueueingStrategy.cs" />
+    <Compile Include="Batching\Queuer.cs" />
+    <Compile Include="Debugging\IDebugDrawingService.cs" />
+    <Compile Include="Drawable.cs" />
+    <Compile Include="ICamera.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReadOnlyCollection.cs" />
-    <Compile Include="ReadOnlyList.cs" />
-    <Compile Include="ReadOnlySet.cs" />
-    <Compile Include="ReverseComparer.cs" />
-    <Compile Include="TransformingReadOnlyCollection.cs" />
-    <Compile Include="TransformingReadOnlyCollection.Interfaces.cs" />
-    <Compile Include="WeakCollection.cs" />
-    <Compile Include="WeakCollection.Interfaces.cs" />
+    <Compile Include="TextureRegion2D.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.ObjectModel">
-      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETPortable\v4.5\Profile\Profile7\System.ObjectModel.dll</HintPath>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\packages\MonoGame-Portable.3.2.1\lib\portable-net4+sl5+wp8+win8\MonoGame.Framework.dll</HintPath>
+      <Private>False</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

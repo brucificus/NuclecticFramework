@@ -66,24 +66,6 @@
     <Compile Include="Graphics.SpecialEffects\Water\WaterGrid.cs" />
     <Compile Include="Graphics.SpecialEffects\Water\WaterSurface.cs" />
     <Compile Include="Graphics.SpecialEffects\Water\WaterVertex.cs" />
-    <Compile Include="Graphics\Batching\BasicEffectDrawContext.cs" />
-    <Compile Include="Graphics\Batching\DeferredQueuer.cs" />
-    <Compile Include="Graphics\Batching\DeferredQueuer.Splitting.cs" />
-    <Compile Include="Graphics\Batching\DrawContextQueuer.cs" />
-    <Compile Include="Graphics\Batching\DynamicBufferBatchDrawer.cs" />
-    <Compile Include="Graphics\Batching\EffectDrawContext.cs" />
-    <Compile Include="Graphics\Batching\ImmediateQueuer.cs" />
-    <Compile Include="Graphics\Batching\PrimitiveBatch.cs" />
-    <Compile Include="Graphics\Batching\UserPrimitiveBatchDrawer.cs" />
-    <Compile Include="Graphics\Camera.cs" />
-    <Compile Include="Graphics\Debugging\DebugDrawer.cs" />
-    <Compile Include="Graphics\Debugging\SolidArrowVertexGenerator.cs" />
-    <Compile Include="Graphics\Debugging\SolidBoxVertexGenerator.cs" />
-    <Compile Include="Graphics\Debugging\SolidTriangleVertexGenerator.cs" />
-    <Compile Include="Graphics\Debugging\VectorHelper.cs" />
-    <Compile Include="Graphics\Debugging\WireframeArrowVertexGenerator.cs" />
-    <Compile Include="Graphics\Debugging\WireframeBoxVertexGenerator.cs" />
-    <Compile Include="Graphics\Debugging\WireframeTriangleVertexGenerator.cs" />
     <Compile Include="Graphics\_GraphicsModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Support\GameFrameworkCorePlatform.cs" />
@@ -193,9 +175,17 @@
       <Project>{6194200d-ef81-44bf-bb39-38230abaffc9}</Project>
       <Name>Nuclectic.Game.State</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.Abstractions\Nuclectic.Graphics.Abstractions.csproj">
+      <Project>{e9e6597b-4c66-41f7-a780-007b5115e74b}</Project>
+      <Name>Nuclectic.Graphics.Abstractions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nuclectic.Graphics.Helpers\Nuclectic.Graphics.Helpers.csproj">
       <Project>{b8157dbb-0ccf-4ed5-a343-74cd692211dd}</Project>
       <Name>Nuclectic.Graphics.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics\Nuclectic.Graphics.csproj">
+      <Project>{45232945-f49e-4e32-b0ef-7cbf116d6942}</Project>
+      <Name>Nuclectic.Graphics</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj">
       <Project>{7586db23-8fc0-4af8-b855-2a636bd431e6}</Project>

@@ -19,17 +19,11 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Resources;
-using System.Text;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
+using Nuclectic.Graphics.Abstractions.Batching;
+using Nuclectic.Graphics.Batching;
 using Nuclectic.Graphics.Helpers;
-using Nuclex.Graphics;
-using Nuclex.Graphics.Batching;
 using PortableGameTest.Framework.Support;
 
 namespace Nuclex.Fonts {

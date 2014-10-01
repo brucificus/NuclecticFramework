@@ -24,7 +24,8 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-
+using Nuclectic.Graphics;
+using Nuclectic.Graphics.Abstractions;
 using DeviceEventHandler = System.EventHandler<System.EventArgs>;
 
 namespace Nuclex.Graphics.SpecialEffects.Water {

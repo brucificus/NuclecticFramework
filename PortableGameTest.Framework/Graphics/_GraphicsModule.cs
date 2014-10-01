@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac;
-using Nuclex.Graphics.Batching;
-using Nuclex.Graphics.Debugging;
-using PortableGameTest.Framework.Support;
+﻿using Autofac;
+using Microsoft.Xna.Framework.Graphics;
+using Nuclectic.Graphics.Abstractions.Batching;
+using Nuclectic.Graphics.Abstractions.Debugging;
+using Nuclectic.Graphics.Batching;
+using Nuclectic.Graphics.Debugging;
 
 namespace PortableGameTest.Framework.Graphics
 {
@@ -24,8 +21,8 @@ namespace PortableGameTest.Framework.Graphics
             builder.RegisterGeneric(typeof (PrimitiveBatch<>)).AsImplementedInterfaces().InstancePerDependency();
             builder.RegisterGeneric(typeof(UserPrimitiveBatchDrawer<>)).AsImplementedInterfaces().InstancePerDependency();
 
-	        builder.RegisterType<DebugDrawer>().As<IDebugDrawingService>()
-		        .WithParameterExplicitNamingSupport();
+			builder.Register(ctx=> new DebugDrawer(ctx.Resolve<IGraphicsDeviceService>(), ctx.ResolveNamed<Effect>("SolidColorEffect"), ctx.ResolveNamed<SpriteFont>("LucidaSpriteFont")))
+				.As<IDebugDrawingService>();
         }
     }
 }

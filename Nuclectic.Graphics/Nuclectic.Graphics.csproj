@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{45232945-F49E-4E32-B0EF-7CBF116D6942}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nuclectic.Graphics</RootNamespace>
+    <AssemblyName>Nuclectic.Graphics</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;MONOGAME</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Batching\BasicEffectDrawContext.cs" />
+    <Compile Include="Batching\DeferredQueuer.cs" />
+    <Compile Include="Batching\DeferredQueuer.Splitting.cs" />
+    <Compile Include="Batching\DrawContextQueuer.cs" />
+    <Compile Include="Batching\DynamicBufferBatchDrawer.cs" />
+    <Compile Include="Batching\EffectDrawContext.cs" />
+    <Compile Include="Batching\ImmediateQueuer.cs" />
+    <Compile Include="Batching\PrimitiveBatch.cs" />
+    <Compile Include="Batching\UserPrimitiveBatchDrawer.cs" />
+    <Compile Include="Camera.cs" />
+    <Compile Include="Debugging\DebugDrawer.cs" />
+    <Compile Include="Debugging\SolidArrowVertexGenerator.cs" />
+    <Compile Include="Debugging\SolidBoxVertexGenerator.cs" />
+    <Compile Include="Debugging\SolidTriangleVertexGenerator.cs" />
+    <Compile Include="Debugging\VectorHelper.cs" />
+    <Compile Include="Debugging\WireframeArrowVertexGenerator.cs" />
+    <Compile Include="Debugging\WireframeBoxVertexGenerator.cs" />
+    <Compile Include="Debugging\WireframeTriangleVertexGenerator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\packages\MonoGame-Portable.3.2.1\lib\portable-net4+sl5+wp8+win8\MonoGame.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuclectic.Graphics.Abstractions\Nuclectic.Graphics.Abstractions.csproj">
+      <Project>{e9e6597b-4c66-41f7-a780-007b5115e74b}</Project>
+      <Name>Nuclectic.Graphics.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.Helpers\Nuclectic.Graphics.Helpers.csproj">
+      <Project>{B8157DBB-0CCF-4ED5-A343-74CD692211DD}</Project>
+      <Name>Nuclectic.Graphics.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Collections.Abstractions\Nuclectic.Support.Collections.Abstractions.csproj">
+      <Project>{5c231e67-22f1-4a91-b120-39766bdb85c4}</Project>
+      <Name>Nuclectic.Support.Collections.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Collections\Nuclectic.Support.Collections.csproj">
+      <Project>{74882c2f-3ddb-4fe1-ab00-227c0d93b5d0}</Project>
+      <Name>Nuclectic.Support.Collections</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

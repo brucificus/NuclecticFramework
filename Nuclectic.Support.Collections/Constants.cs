@@ -19,9 +19,9 @@ License along with this library
 #endregion
 
 #if !NO_SPECIALIZED_COLLECTIONS
-
-#endif
 using System.Collections.Specialized;
+#endif
+
 
 namespace Nuclectic.Support.Collections {
 
