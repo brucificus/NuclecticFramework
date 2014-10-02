@@ -7,12 +7,12 @@
     <authors>Bruce Markham, Markus Ewald</authors>
     <owners>Bruce Markham</owners>
     <licenseUrl>http://opensource.org/licenses/cpl1.0.php</licenseUrl>
-    <projectUrl>http://nuclexframework.codeplex.com/</projectUrl>
+    <projectUrl>https://github.com/illuminus86/NuclecticFramework</projectUrl>
     <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>Tag1 Tag2</tags>
+    <tags>monogame pcl nuclectic</tags>
   </metadata>
 </package>
