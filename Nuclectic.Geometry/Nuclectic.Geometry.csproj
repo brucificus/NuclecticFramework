@@ -73,6 +73,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Nuclectic.Geometry.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

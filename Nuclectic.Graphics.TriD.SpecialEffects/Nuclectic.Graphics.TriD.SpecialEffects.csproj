@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Nuclectic.Graphics.TriD.SpecialEffects.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

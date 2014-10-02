@@ -83,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Nuclectic.UserInterface.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

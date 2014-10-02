@@ -38,6 +38,7 @@
     <Compile Include="RectanglePacker.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Nuclectic.Game.Packing.Abstractions.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

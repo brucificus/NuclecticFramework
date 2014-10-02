@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Nuclectic.Game.Content.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -46,6 +46,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Nuclectic.Game.State.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

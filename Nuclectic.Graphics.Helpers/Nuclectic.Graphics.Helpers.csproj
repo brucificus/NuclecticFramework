@@ -47,6 +47,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Nuclectic.Graphics.Helpers.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

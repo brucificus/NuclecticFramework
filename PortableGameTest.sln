@@ -105,6 +105,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Fonts", "Nuclecti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Helpers.InteropServices", "Nuclectic.Support.Helpers.InteropServices\Nuclectic.Support.Helpers.InteropServices.csproj", "{BD76C4BB-CAAF-4987-AB11-4199144F629B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{289D1D0C-1814-4798-8497-99CAF8CF2832}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Android|Any CPU = Android|Any CPU
