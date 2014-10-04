@@ -7,4 +7,6 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Nuclectic.Fonts")]
-[assembly: AssemblyDescription("Forked from the popular Nuclex Framework.")]
+[assembly: AssemblyDescription(
+@"Provides support for vector fonts.
+Forked from the popular Nuclex Framework.")]
