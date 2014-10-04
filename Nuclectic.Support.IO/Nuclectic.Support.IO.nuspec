@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>$version$</version>
+    <version>$NFVersion$</version>
     <title>$title$</title>
     <authors>Bruce Markham,Markus Ewald</authors>
     <owners>Bruce Markham</owners>

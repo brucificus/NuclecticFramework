@@ -1,13 +1,27 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
 	<PropertyGroup>
 		<SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$(MSBuildProjectDirectory)\..\</SolutionDir>
-		<BuildPackage Condition=" '$(Configuration)' == 'RELEASE' ">true</BuildPackage>
+		<BuildPackage Condition=" ('$(Configuration)' == 'RELEASE' Or '$(BuildPackage)' == 'true') And '$(BuildPackage)' != 'false'">true</BuildPackage>
 		<NuGetExePath Condition=" '$(NuGetExePath)' == '' ">$(SolutionDir)\packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe</NuGetExePath>
+
+		<MGPclVersionCompatRange Condition="'$(MGPclVersionCompatRange)' == ''">[3.2.1,3.3)</MGPclVersionCompatRange>
+		<SlimDxVersionCompatRange>[4.0.13.44,4.1)</SlimDxVersionCompatRange>
+		
+		<NFVersionSuffix Condition="'$(NFVersionCurrentSuffix)' == ''">-alpha1</NFVersionSuffix>
+		<NFVersion Condition="'$(NFVersion)' == ''"                   >0.1.1$(NFVersionSuffix)</NFVersion>
+		<NFVersionCompatMin Condition="'$(NFVersionCompatMin)' == ''" >0.1.0</NFVersionCompatMin>
+		<NFVersionCompatMax Condition="'$(NFVersionCompatMax)' == ''" >0.1.2</NFVersionCompatMax>
+		<NFVersionCompatRange Condition="'$(NFVersionCompatRange)' == ''">[$(NFVersionCompatMin),$(NFVersionCompatMax))</NFVersionCompatRange>
+		
+		<AdditionalNuGetPackProperties>NFVersion=$(NFVersion);NFVersionCompatRange=$(NFVersionCompatRange);MGPclVersionCompatRange=$(MGPclVersionCompatRange);SlimDxVersionCompatRange=$(SlimDxVersionCompatRange)</AdditionalNuGetPackProperties>
 	</PropertyGroup>
 	
 	<Import Project="$(SolutionDir)packages\NuGet.Build.2.8.2\tools\NuGet.targets" />
 
 	<PropertyGroup>
+		<AdditionalNuGetPackProperties Condition=" '$(AdditionalNuGetPackProperties)' != '' ">;$(AdditionalNuGetPackProperties)</AdditionalNuGetPackProperties>
+		<BuildCommand>$(NuGetCommand) pack "$(ProjectPath)" -Properties "Configuration=$(Configuration);Platform=$(Platform)$(AdditionalNuGetPackProperties)" $(NonInteractiveSwitch) -OutputDirectory "$(PackageOutputDir)" -symbols</BuildCommand>
+		
 		<!-- <PackageOutputDir>$(SolutionDir)dist\</PackageOutputDir> Not working? -->
         <BuildDependsOn Condition="$(BuildPackage) == 'true'">
 			Clean;

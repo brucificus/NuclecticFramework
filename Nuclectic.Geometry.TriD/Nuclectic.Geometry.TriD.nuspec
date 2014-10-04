@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>$version$</version>
+    <version>$NFVersion$</version>
     <title>$title$</title>
     <authors>Bruce Markham,Markus Ewald</authors>
     <owners>Bruce Markham</owners>
@@ -14,5 +14,11 @@
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>monogame pcl nuclectic</tags>
+	<dependencies>
+		<dependency id="MonoGame-Portable" version="$MGPclVersionCompatRange$" />
+
+		<dependency id="Nuclectic.Geometry" version="$NFVersionCompatRange$" />
+		<dependency id="Nuclectic.Geometry.Abstractions" version="$NFVersionCompatRange$" />
+	</dependencies>
   </metadata>
 </package>

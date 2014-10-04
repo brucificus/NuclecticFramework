@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>$version$</version>
+    <version>$NFVersion$</version>
     <title>$title$</title>
     <authors>Bruce Markham,Markus Ewald</authors>
     <owners>Bruce Markham</owners>
@@ -14,5 +14,7 @@
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>monogame pcl nuclectic</tags>
+	<dependencies>
+	</dependencies>
   </metadata>
 </package>

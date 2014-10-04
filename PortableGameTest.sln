@@ -110,6 +110,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{289D1D
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{7C23CC83-04B4-418B-BF06-BFEB5FFCBA28}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{40690B8C-B889-491A-B874-8F8BB1CA64FF}"
+	ProjectSection(SolutionItems) = preProject
+		tools\build\CustomNuGet.targets = tools\build\CustomNuGet.targets
+		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Android|Any CPU = Android|Any CPU
@@ -1745,5 +1753,6 @@ Global
 		{839D1BD4-664D-471F-9139-10A0A6F90293} = {8DFE70F5-2D0F-41F8-BF1B-D97BDCD57138}
 		{5817CE1C-9D30-4242-9EE4-77DDF7DE2D5F} = {BBD0158C-144B-4A85-9DF2-C4F2A15BB917}
 		{2BC54EFA-4D95-44E9-9F16-DC7F5DF9CFFE} = {BBD0158C-144B-4A85-9DF2-C4F2A15BB917}
+		{40690B8C-B889-491A-B874-8F8BB1CA64FF} = {7C23CC83-04B4-418B-BF06-BFEB5FFCBA28}
 	EndGlobalSection
 EndGlobal
