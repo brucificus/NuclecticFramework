@@ -37,6 +37,9 @@
     <Compile Include="LzmaContentManager.cs" />
     <Compile Include="MemoryContentManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+	<Compile Include="$(SolutionDir)GlobalAssemblyInfo.cs">
+		<Link>Properties\GlobalAssemblyInfo.cs</Link>
+	</Compile>
     <Compile Include="SharedContentManager.cs" />
     <Compile Include="SharedGameContentManager.cs" />
   </ItemGroup>
@@ -67,6 +70,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)tools\build\CustomNuGet.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

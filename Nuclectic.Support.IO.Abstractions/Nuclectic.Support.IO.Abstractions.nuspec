@@ -4,7 +4,7 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>Bruce Markham, Markus Ewald</authors>
+    <authors>Bruce Markham,Markus Ewald</authors>
     <owners>Bruce Markham</owners>
     <licenseUrl>http://opensource.org/licenses/cpl1.0.php</licenseUrl>
     <projectUrl>https://github.com/illuminus86/NuclecticFramework</projectUrl>
