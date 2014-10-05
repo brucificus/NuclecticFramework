@@ -1,55 +1,37 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableGameTest.Framework", "PortableGameTest.Framework\PortableGameTest.Framework.csproj", "{6216E08B-9DC7-454E-B5ED-4615BB7236B1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableGameTest.Framework.Win32", "PortableGameTest.Framework.Win32\PortableGameTest.Framework.Win32.csproj", "{2657D56C-14E2-4559-B0AA-60CDA30537F9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableGameTest.Framework.Abstractions", "PortableGameTest.Framework.Abstractions\PortableGameTest.Framework.Abstractions.csproj", "{4216E08B-9DC7-454E-B5ED-4615BB7236B2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableGameTest.Framework.WinRT", "PortableGameTest.Framework.WinRT\PortableGameTest.Framework.WinRT.csproj", "{A99D2EC9-89C2-4753-AB17-F50E8160C4FB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableGameTest.Core", "PortableGameTest.Core\PortableGameTest.Core.csproj", "{B280D2AC-B647-453A-B5B9-A331E7B2B414}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableGameTest-Win32", "PortableGameTest-Win32\PortableGameTest-Win32.csproj", "{816FCA8A-60CF-4562-8AE0-F25E49D25F32}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableGameTest-WinRT", "PortableGameTest-WinRT\PortableGameTest-WinRT.csproj", "{F33AA006-56E1-4D6D-8262-20BEFC2A448A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableGameTest.Framework.Content", "PortableGameTest.Framework.Content\PortableGameTest.Framework.Content\PortableGameTest.Framework.Content.csproj", "{59E08DDD-AF38-46F8-847E-87E82ADFCF6C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableGameTest.Framework.ContentContent", "PortableGameTest.Framework.Content\PortableGameTest.Framework.ContentContent\PortableGameTest.Framework.ContentContent.contentproj", "{737AE6D0-AB1E-4B2B-BD02-12E3426A48E8}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuclectic", "Nuclectic", "{E28CF4ED-F4B9-4767-9882-0DFBB5C8FB1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Geometry.Abstractions", "Nuclectic.Geometry.Abstractions\Nuclectic.Geometry.Abstractions.csproj", "{B8223C3E-4D28-4AAE-8234-FCA8501442CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Geometry.Abstractions", "src\Nuclectic.Geometry.Abstractions\Nuclectic.Geometry.Abstractions.csproj", "{B8223C3E-4D28-4AAE-8234-FCA8501442CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Geometry", "Nuclectic.Geometry\Nuclectic.Geometry.csproj", "{9DE1E131-4AC2-45BD-A1FD-9C512F3F8554}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Geometry", "src\Nuclectic.Geometry\Nuclectic.Geometry.csproj", "{9DE1E131-4AC2-45BD-A1FD-9C512F3F8554}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Geometry.TriD", "Nuclectic.Geometry.TriD\Nuclectic.Geometry.TriD.csproj", "{049603A8-8C77-42D6-8D8C-CD379DD8DB91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Geometry.TriD", "src\Nuclectic.Geometry.TriD\Nuclectic.Geometry.TriD.csproj", "{049603A8-8C77-42D6-8D8C-CD379DD8DB91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.IO.Abstractions", "Nuclectic.Support.IO.Abstractions\Nuclectic.Support.IO.Abstractions.csproj", "{222F8D0E-EB3E-4562-AC2B-AE683BF257AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.IO.Abstractions", "src\Nuclectic.Support.IO.Abstractions\Nuclectic.Support.IO.Abstractions.csproj", "{222F8D0E-EB3E-4562-AC2B-AE683BF257AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.IO", "Nuclectic.Support.IO\Nuclectic.Support.IO.csproj", "{CABD2A2A-52AF-4047-8C9C-915B0ED27CE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.IO", "src\Nuclectic.Support.IO\Nuclectic.Support.IO.csproj", "{CABD2A2A-52AF-4047-8C9C-915B0ED27CE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Collections.Abstractions", "Nuclectic.Support.Collections.Abstractions\Nuclectic.Support.Collections.Abstractions.csproj", "{5C231E67-22F1-4A91-B120-39766BDB85C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Collections.Abstractions", "src\Nuclectic.Support.Collections.Abstractions\Nuclectic.Support.Collections.Abstractions.csproj", "{5C231E67-22F1-4A91-B120-39766BDB85C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Collections", "Nuclectic.Support.Collections\Nuclectic.Support.Collections.csproj", "{74882C2F-3DDB-4FE1-AB00-227C0D93B5D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Collections", "src\Nuclectic.Support.Collections\Nuclectic.Support.Collections.csproj", "{74882C2F-3DDB-4FE1-AB00-227C0D93B5D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Abstractions", "Nuclectic.Support.Abstractions\Nuclectic.Support.Abstractions.csproj", "{956F95EC-D3D8-491F-AEF1-5830243BE274}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Abstractions", "src\Nuclectic.Support.Abstractions\Nuclectic.Support.Abstractions.csproj", "{956F95EC-D3D8-491F-AEF1-5830243BE274}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Helpers", "Nuclectic.Support.Helpers\Nuclectic.Support.Helpers.csproj", "{DE0C9D2E-92D9-40FE-951F-8355302A65DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Helpers", "src\Nuclectic.Support.Helpers\Nuclectic.Support.Helpers.csproj", "{DE0C9D2E-92D9-40FE-951F-8355302A65DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Input.Abstractions", "Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj", "{7586DB23-8FC0-4AF8-B855-2A636BD431E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Input.Abstractions", "src\Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj", "{7586DB23-8FC0-4AF8-B855-2A636BD431E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Input", "Nuclectic.Input\Nuclectic.Input.csproj", "{0D9AA327-3759-4E35-B515-9ABDE6A6EF10}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Input", "src\Nuclectic.Input\Nuclectic.Input.csproj", "{0D9AA327-3759-4E35-B515-9ABDE6A6EF10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Input.Win32", "Nuclectic.Input.Win32\Nuclectic.Input.Win32.csproj", "{46CC39E5-038D-48DC-B72E-EAE8B3FEA138}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Input.Win32", "src\Nuclectic.Input.Win32\Nuclectic.Input.Win32.csproj", "{46CC39E5-038D-48DC-B72E-EAE8B3FEA138}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Input.Win32.Dx", "Nuclectic.Input.Win32.Dx\Nuclectic.Input.Win32.Dx.csproj", "{27426149-E471-47F5-A9CD-A2D025A57DE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Input.Win32.Dx", "src\Nuclectic.Input.Win32.Dx\Nuclectic.Input.Win32.Dx.csproj", "{27426149-E471-47F5-A9CD-A2D025A57DE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.Packing.Abstractions", "Nuclectic.Game.Packing.Abstractions\Nuclectic.Game.Packing.Abstractions.csproj", "{0BE9EDE2-7FD1-421F-BD50-2B73CA3ABBE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.Packing.Abstractions", "src\Nuclectic.Game.Packing.Abstractions\Nuclectic.Game.Packing.Abstractions.csproj", "{0BE9EDE2-7FD1-421F-BD50-2B73CA3ABBE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.Packing", "Nuclectic.Game.Packing\Nuclectic.Game.Packing.csproj", "{F6DDB51D-36B3-4EE4-A209-2F80CEE4FC67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.Packing", "src\Nuclectic.Game.Packing\Nuclectic.Game.Packing.csproj", "{F6DDB51D-36B3-4EE4-A209-2F80CEE4FC67}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{5658B8D9-A6B5-4278-AF50-D67A66B4990D}"
 EndProject
@@ -59,49 +41,49 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Input", "Input", "{DBA388C8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Game", "Game", "{EF6C47CD-34D5-404F-89C4-3A2B034B727D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.Space.Abstractions", "Nuclectic.Game.Space.Abstractions\Nuclectic.Game.Space.Abstractions.csproj", "{DD7E7715-C4E7-474A-88E4-0063D6E3D9DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.Space.Abstractions", "src\Nuclectic.Game.Space.Abstractions\Nuclectic.Game.Space.Abstractions.csproj", "{DD7E7715-C4E7-474A-88E4-0063D6E3D9DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.State.Abstractions", "Nuclectic.Game.State.Abstractions\Nuclectic.Game.State.Abstractions.csproj", "{0E9C6543-019C-4D51-A744-BB2667FA509E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.State.Abstractions", "src\Nuclectic.Game.State.Abstractions\Nuclectic.Game.State.Abstractions.csproj", "{0E9C6543-019C-4D51-A744-BB2667FA509E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.State", "Nuclectic.Game.State\Nuclectic.Game.State.csproj", "{6194200D-EF81-44BF-BB39-38230ABAFFC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.State", "src\Nuclectic.Game.State\Nuclectic.Game.State.csproj", "{6194200D-EF81-44BF-BB39-38230ABAFFC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.Component.Abstractions", "Nuclectic.Game.Component.Abstractions\Nuclectic.Game.Component.Abstractions.csproj", "{856589E9-6906-4F72-870B-C8BDDD37325B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.Component.Abstractions", "src\Nuclectic.Game.Component.Abstractions\Nuclectic.Game.Component.Abstractions.csproj", "{856589E9-6906-4F72-870B-C8BDDD37325B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Graphics", "Graphics", "{7FD35B1E-C005-4800-B7A7-5E1E2734B974}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.Helpers", "Nuclectic.Graphics.Helpers\Nuclectic.Graphics.Helpers.csproj", "{B8157DBB-0CCF-4ED5-A343-74CD692211DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.Helpers", "src\Nuclectic.Graphics.Helpers\Nuclectic.Graphics.Helpers.csproj", "{B8157DBB-0CCF-4ED5-A343-74CD692211DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.Content", "Nuclectic.Game.Content\Nuclectic.Game.Content.csproj", "{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Game.Content", "src\Nuclectic.Game.Content\Nuclectic.Game.Content.csproj", "{409D22A7-C6A9-4F40-AD58-F91CE3776AB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.Abstractions", "Nuclectic.Graphics.TriD.Abstractions\Nuclectic.Graphics.TriD.Abstractions.csproj", "{A4443561-32E0-4C70-ACE1-8869973F36A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.Abstractions", "src\Nuclectic.Graphics.TriD.Abstractions\Nuclectic.Graphics.TriD.Abstractions.csproj", "{A4443561-32E0-4C70-ACE1-8869973F36A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD", "Nuclectic.Graphics.TriD\Nuclectic.Graphics.TriD.csproj", "{B304A2E3-412F-46CE-BEE5-36053E76EEC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD", "src\Nuclectic.Graphics.TriD\Nuclectic.Graphics.TriD.csproj", "{B304A2E3-412F-46CE-BEE5-36053E76EEC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Abstractions", "Nuclectic.Graphics.TriD.SpecialEffects.Abstractions\Nuclectic.Graphics.TriD.SpecialEffects.Abstractions.csproj", "{DDAE917E-9931-48DD-9805-DB13D25A3F9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Abstractions", "src\Nuclectic.Graphics.TriD.SpecialEffects.Abstractions\Nuclectic.Graphics.TriD.SpecialEffects.Abstractions.csproj", "{DDAE917E-9931-48DD-9805-DB13D25A3F9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects", "Nuclectic.Graphics.TriD.SpecialEffects\Nuclectic.Graphics.TriD.SpecialEffects.csproj", "{9D98571C-FB51-436F-8F2E-116D13B8E1F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects", "src\Nuclectic.Graphics.TriD.SpecialEffects\Nuclectic.Graphics.TriD.SpecialEffects.csproj", "{9D98571C-FB51-436F-8F2E-116D13B8E1F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Masks", "Nuclectic.Graphics.TriD.SpecialEffects.Masks\Nuclectic.Graphics.TriD.SpecialEffects.Masks.csproj", "{4FC8998B-B1BC-458D-AADA-AB7E76015447}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Masks", "src\Nuclectic.Graphics.TriD.SpecialEffects.Masks\Nuclectic.Graphics.TriD.SpecialEffects.Masks.csproj", "{4FC8998B-B1BC-458D-AADA-AB7E76015447}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Sky", "Nuclectic.Graphics.TriD.SpecialEffects.Sky\Nuclectic.Graphics.TriD.SpecialEffects.Sky.csproj", "{8B10DD93-58E3-42D8-BDA8-C40A79A0C968}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Sky", "src\Nuclectic.Graphics.TriD.SpecialEffects.Sky\Nuclectic.Graphics.TriD.SpecialEffects.Sky.csproj", "{8B10DD93-58E3-42D8-BDA8-C40A79A0C968}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Trails", "Nuclectic.Graphics.TriD.SpecialEffects.Trails\Nuclectic.Graphics.TriD.SpecialEffects.Trails.csproj", "{CD3C6A09-024A-4D6F-81E7-54BDC9147B75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Trails", "src\Nuclectic.Graphics.TriD.SpecialEffects.Trails\Nuclectic.Graphics.TriD.SpecialEffects.Trails.csproj", "{CD3C6A09-024A-4D6F-81E7-54BDC9147B75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Water", "Nuclectic.Graphics.TriD.SpecialEffects.Water\Nuclectic.Graphics.TriD.SpecialEffects.Water.csproj", "{047069BD-6771-4BE0-A773-0445216F7D8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Water", "src\Nuclectic.Graphics.TriD.SpecialEffects.Water\Nuclectic.Graphics.TriD.SpecialEffects.Water.csproj", "{047069BD-6771-4BE0-A773-0445216F7D8E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserInterface", "UserInterface", "{8DFE70F5-2D0F-41F8-BF1B-D97BDCD57138}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.UserInterface", "Nuclectic.UserInterface\Nuclectic.UserInterface.csproj", "{4557273A-E0F7-4F12-BAEC-FCA35E52068E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.UserInterface", "src\Nuclectic.UserInterface\Nuclectic.UserInterface.csproj", "{4557273A-E0F7-4F12-BAEC-FCA35E52068E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.UserInterface.Abstractions", "Nuclectic.UserInterface.Abstractions\Nuclectic.UserInterface.Abstractions.csproj", "{839D1BD4-664D-471F-9139-10A0A6F90293}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.UserInterface.Abstractions", "src\Nuclectic.UserInterface.Abstractions\Nuclectic.UserInterface.Abstractions.csproj", "{839D1BD4-664D-471F-9139-10A0A6F90293}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fonts", "Fonts", "{BBD0158C-144B-4A85-9DF2-C4F2A15BB917}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Fonts.Abstractions", "Nuclectic.Fonts.Abstractions\Nuclectic.Fonts.Abstractions.csproj", "{5817CE1C-9D30-4242-9EE4-77DDF7DE2D5F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Fonts.Abstractions", "src\Nuclectic.Fonts.Abstractions\Nuclectic.Fonts.Abstractions.csproj", "{5817CE1C-9D30-4242-9EE4-77DDF7DE2D5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Fonts", "Nuclectic.Fonts\Nuclectic.Fonts.csproj", "{2BC54EFA-4D95-44E9-9F16-DC7F5DF9CFFE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Fonts", "src\Nuclectic.Fonts\Nuclectic.Fonts.csproj", "{2BC54EFA-4D95-44E9-9F16-DC7F5DF9CFFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Helpers.InteropServices", "Nuclectic.Support.Helpers.InteropServices\Nuclectic.Support.Helpers.InteropServices.csproj", "{BD76C4BB-CAAF-4987-AB11-4199144F629B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Helpers.InteropServices", "src\Nuclectic.Support.Helpers.InteropServices\Nuclectic.Support.Helpers.InteropServices.csproj", "{BD76C4BB-CAAF-4987-AB11-4199144F629B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{289D1D0C-1814-4798-8497-99CAF8CF2832}"
 	ProjectSection(SolutionItems) = preProject
@@ -113,7 +95,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{40690B8C-B889-491A-B874-8F8BB1CA64FF}"
 	ProjectSection(SolutionItems) = preProject
 		tools\build\CustomNuGet.targets = tools\build\CustomNuGet.targets
-		GlobalAssemblyInfo.cs = GlobalAssemblyInfo.cs
+		tools\build\FrameworkAssemblyInfo.cs = tools\build\FrameworkAssemblyInfo.cs
 	EndProjectSection
 EndProject
 Global
