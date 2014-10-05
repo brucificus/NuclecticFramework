@@ -42,8 +42,8 @@
     <Compile Include="FilledText.cs" />
     <Compile Include="OutlinedText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-	<Compile Include="$(SolutionDir)GlobalAssemblyInfo.cs">
-		<Link>Properties\GlobalAssemblyInfo.cs</Link>
+	<Compile Include="$(SolutionDir)tools\build\FrameworkAssemblyInfo.cs">
+		<Link>Properties\FrameworkAssemblyInfo.cs</Link>
 	</Compile>
     <Compile Include="Text.cs" />
     <Compile Include="TextBatch.cs" />
@@ -53,11 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
-      <HintPath>..\packages\MonoGame-Portable.3.2.1\lib\portable-net4+sl5+wp8+win8\MonoGame.Framework.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\MonoGame-Portable.3.2.1\lib\portable-net4+sl5+wp8+win8\MonoGame.Framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Collections.Immutable">
-      <HintPath>..\packages\Microsoft.Bcl.Immutable.1.0.34\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\Microsoft.Bcl.Immutable.1.0.34\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

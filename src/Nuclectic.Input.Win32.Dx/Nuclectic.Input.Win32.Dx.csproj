@@ -32,11 +32,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame-Portable.3.2.1\lib\portable-net4+sl4+wp8+win8\MonoGame.Framework.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\MonoGame-Portable.3.2.1\lib\portable-net4+sl4+wp8+win8\MonoGame.Framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="SlimDX">
-      <HintPath>..\packages\SlimDX.4.0.13.44\lib\NET40\SlimDX.dll</HintPath>
+      <HintPath>$(SolutionDir)packages\SlimDX.4.0.13.44\lib\NET40\SlimDX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Management" />
@@ -53,8 +53,8 @@
     <Compile Include="Devices\LeakyQueue.cs" />
     <Compile Include="DirectInputManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="$(SolutionDir)GlobalAssemblyInfo.cs">
-      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    <Compile Include="$(SolutionDir)tools\build\FrameworkAssemblyInfo.cs">
+      <Link>Properties\FrameworkAssemblyInfo.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
