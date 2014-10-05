@@ -14,18 +14,37 @@
 		<NFVersionCompatRange Condition="'$(NFVersionCompatRange)' == ''">[$(NFVersionCompatMin),$(NFVersionCompatMax))</NFVersionCompatRange>
 		
 		<AdditionalNuGetPackProperties>NFVersion=$(NFVersion);NFVersionCompatRange=$(NFVersionCompatRange);MGPclVersionCompatRange=$(MGPclVersionCompatRange);SlimDxVersionCompatRange=$(SlimDxVersionCompatRange)</AdditionalNuGetPackProperties>
+		
+		<PackageOutputDir>$(SolutionDir)dist</PackageOutputDir>
 	</PropertyGroup>
+	<PropertyGroup>
+		<ExpectedOutputPackage1>$(PackageOutputDir)\$(AssemblyName).$(NFVersion).nupkg</ExpectedOutputPackage1>
+		<ExpectedOutputPackage2>$(PackageOutputDir)\$(AssemblyName).$(NFVersion).symbols.nupkg</ExpectedOutputPackage2>
+	</PropertyGroup>
+	<ItemGroup Condition="$(BuildPackage) == 'true'">
+		<ExpectedOutputPackage Include="$(ExpectedOutputPackage1)" />
+		<ExpectedOutputPackage Include="$(ExpectedOutputPackage2)" />
+	</ItemGroup>
+	<ItemGroup Condition="$(BuildPackage) == 'true'">
+		<Clean Include="@(ExpectedOutputPackage)"/>
+	</ItemGroup>
 	
 	<Import Project="$(SolutionDir)packages\NuGet.Build.2.8.2\tools\NuGet.targets" />
 
 	<PropertyGroup>
 		<AdditionalNuGetPackProperties Condition=" '$(AdditionalNuGetPackProperties)' != '' ">;$(AdditionalNuGetPackProperties)</AdditionalNuGetPackProperties>
 		<BuildCommand>$(NuGetCommand) pack "$(ProjectPath)" -Properties "Configuration=$(Configuration);Platform=$(Platform)$(AdditionalNuGetPackProperties)" $(NonInteractiveSwitch) -OutputDirectory "$(PackageOutputDir)" -symbols</BuildCommand>
-		
-		<!-- <PackageOutputDir>$(SolutionDir)dist\</PackageOutputDir> Not working? -->
-        <BuildDependsOn Condition="$(BuildPackage) == 'true'">
-			Clean;
-            $(BuildDependsOn);
-        </BuildDependsOn>
 	</PropertyGroup>
-</Project>
+
+	<Target Name="BuildPackage" DependsOnTargets="CheckPrerequisites" Outputs="@(ExpectedOutputPackage)">
+		<Error Text="Attempt to regenerate identically named packages. Please Clean/Rebuild or update version number first." 
+			   Condition="Exists('$(ExpectedOutputPackage1)') Or Exists('$(ExpectedOutputPackage2)') " ContinueOnError="false" />
+		
+		<Exec Command="$(BuildCommand)"
+              Condition=" '$(OS)' != 'Windows_NT' " />
+
+		<Exec Command="$(BuildCommand)"
+              LogStandardErrorAsError="true"
+              Condition=" '$(OS)' == 'Windows_NT' " />
+	</Target>
+</Project>   
