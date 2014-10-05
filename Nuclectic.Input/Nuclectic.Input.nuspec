@@ -10,7 +10,11 @@
     <projectUrl>https://github.com/illuminus86/NuclecticFramework</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/illuminus86/NuclecticFramework/master/gfx/logo/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>
+		Provides an InputManager that can poll for input from keyboard, gamepads, mouse, and touchpanels.
+		Make sure to wire in functionality from Nuclectic.Input.* packages that match your target platform.
+		Forked from the popular Nuclex Framework.
+	</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>monogame pcl nuclectic</tags>

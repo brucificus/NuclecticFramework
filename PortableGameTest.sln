@@ -85,8 +85,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.Spe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Sky", "Nuclectic.Graphics.TriD.SpecialEffects.Sky\Nuclectic.Graphics.TriD.SpecialEffects.Sky.csproj", "{8B10DD93-58E3-42D8-BDA8-C40A79A0C968}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Terrain", "Nuclectic.Graphics.TriD.SpecialEffects.Terrain\Nuclectic.Graphics.TriD.SpecialEffects.Terrain.csproj", "{222C703B-927E-4494-9BD4-72B12C729E37}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Trails", "Nuclectic.Graphics.TriD.SpecialEffects.Trails\Nuclectic.Graphics.TriD.SpecialEffects.Trails.csproj", "{CD3C6A09-024A-4D6F-81E7-54BDC9147B75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Graphics.TriD.SpecialEffects.Water", "Nuclectic.Graphics.TriD.SpecialEffects.Water\Nuclectic.Graphics.TriD.SpecialEffects.Water.csproj", "{047069BD-6771-4BE0-A773-0445216F7D8E}"
@@ -1418,42 +1416,6 @@ Global
 		{8B10DD93-58E3-42D8-BDA8-C40A79A0C968}.Windows8|Any CPU.Build.0 = Release|Any CPU
 		{8B10DD93-58E3-42D8-BDA8-C40A79A0C968}.Windows8|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8B10DD93-58E3-42D8-BDA8-C40A79A0C968}.Windows8|Mixed Platforms.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Android|Any CPU.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Android|Any CPU.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Android|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Android|Mixed Platforms.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.iOS|Any CPU.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.iOS|Any CPU.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.iOS|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.iOS|Mixed Platforms.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Linux|Any CPU.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Linux|Any CPU.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Linux|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Linux|Mixed Platforms.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.OSX|Any CPU.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.OSX|Any CPU.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.OSX|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.OSX|Mixed Platforms.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.PSM|Any CPU.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.PSM|Any CPU.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.PSM|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.PSM|Mixed Platforms.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Release|Any CPU.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Windows|Any CPU.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Windows|Any CPU.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Windows|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Windows|Mixed Platforms.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Windows8|Any CPU.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Windows8|Any CPU.Build.0 = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Windows8|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{222C703B-927E-4494-9BD4-72B12C729E37}.Windows8|Mixed Platforms.Build.0 = Release|Any CPU
 		{CD3C6A09-024A-4D6F-81E7-54BDC9147B75}.Android|Any CPU.ActiveCfg = Release|Any CPU
 		{CD3C6A09-024A-4D6F-81E7-54BDC9147B75}.Android|Any CPU.Build.0 = Release|Any CPU
 		{CD3C6A09-024A-4D6F-81E7-54BDC9147B75}.Android|Mixed Platforms.ActiveCfg = Release|Any CPU
@@ -1746,7 +1708,6 @@ Global
 		{9D98571C-FB51-436F-8F2E-116D13B8E1F1} = {7FD35B1E-C005-4800-B7A7-5E1E2734B974}
 		{4FC8998B-B1BC-458D-AADA-AB7E76015447} = {7FD35B1E-C005-4800-B7A7-5E1E2734B974}
 		{8B10DD93-58E3-42D8-BDA8-C40A79A0C968} = {7FD35B1E-C005-4800-B7A7-5E1E2734B974}
-		{222C703B-927E-4494-9BD4-72B12C729E37} = {7FD35B1E-C005-4800-B7A7-5E1E2734B974}
 		{CD3C6A09-024A-4D6F-81E7-54BDC9147B75} = {7FD35B1E-C005-4800-B7A7-5E1E2734B974}
 		{047069BD-6771-4BE0-A773-0445216F7D8E} = {7FD35B1E-C005-4800-B7A7-5E1E2734B974}
 		{4557273A-E0F7-4F12-BAEC-FCA35E52068E} = {8DFE70F5-2D0F-41F8-BF1B-D97BDCD57138}

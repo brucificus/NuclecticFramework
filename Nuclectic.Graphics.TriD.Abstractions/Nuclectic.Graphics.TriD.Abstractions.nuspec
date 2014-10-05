@@ -10,7 +10,10 @@
     <projectUrl>https://github.com/illuminus86/NuclecticFramework</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/illuminus86/NuclecticFramework/master/gfx/logo/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>
+		Abstractions for vertex batch drawing &amp; other vector operations.
+		Forked from the popular Nuclex Framework.
+	</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
     <tags>monogame pcl nuclectic</tags>
