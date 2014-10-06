@@ -20,7 +20,7 @@ else {
 	try 
 	{
 		# Find all the packages and display them for confirmation
-		$packages = dir "*.nupkg"
+		$packages = dir "*.nupkg" | where {-not ($_ -like "*.symbols.nupkg")}
 		write-host ("Packages to upload to " + $apiUrl + ":")
 		$packages | % { write-host $_.Name }
 
