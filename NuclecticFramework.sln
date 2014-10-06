@@ -104,6 +104,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "publish", "publish", "{93E5130A-AD48-4930-BBE8-96F1D602C869}"
+	ProjectSection(SolutionItems) = preProject
+		tools\publish\PushToNuget.ps1 = tools\publish\PushToNuget.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Android|Any CPU = Android|Any CPU
@@ -1397,5 +1402,6 @@ Global
 		{5817CE1C-9D30-4242-9EE4-77DDF7DE2D5F} = {BBD0158C-144B-4A85-9DF2-C4F2A15BB917}
 		{2BC54EFA-4D95-44E9-9F16-DC7F5DF9CFFE} = {BBD0158C-144B-4A85-9DF2-C4F2A15BB917}
 		{40690B8C-B889-491A-B874-8F8BB1CA64FF} = {7C23CC83-04B4-418B-BF06-BFEB5FFCBA28}
+		{93E5130A-AD48-4930-BBE8-96F1D602C869} = {7C23CC83-04B4-418B-BF06-BFEB5FFCBA28}
 	EndGlobalSection
 EndGlobal
