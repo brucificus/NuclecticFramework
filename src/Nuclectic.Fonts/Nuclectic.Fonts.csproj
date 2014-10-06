@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2BC54EFA-4D95-44E9-9F16-DC7F5DF9CFFE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nuclectic.Fonts</RootNamespace>
+    <AssemblyName>Nuclectic.Fonts</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+	<DocumentationFile>bin\$(Configuration)\$(AssemblyName).xml</DocumentationFile>
+	<BuildPackage>false</BuildPackage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Content\VectorFontCharacterReader.cs" />
+    <Compile Include="Content\VectorFontReader.cs" />
+    <Compile Include="Effects\SolidColorEffect.cs" />
+    <Compile Include="ExtrudedText.cs" />
+    <Compile Include="FilledText.cs" />
+    <Compile Include="OutlinedText.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+	<Compile Include="$(SolutionDir)tools\build\FrameworkAssemblyInfo.cs">
+		<Link>Properties\FrameworkAssemblyInfo.cs</Link>
+	</Compile>
+    <Compile Include="Text.cs" />
+    <Compile Include="TextBatch.cs" />
+    <Compile Include="TextDrawContext.cs" />
+    <Compile Include="VectorFont.cs" />
+    <Compile Include="VectorFontCharacter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>$(SolutionDir)packages\MonoGame-Portable.3.2.1\lib\portable-net4+sl5+wp8+win8\MonoGame.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>$(SolutionDir)packages\Microsoft.Bcl.Immutable.1.0.34\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Nuclectic.Fonts.nuspec" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuclectic.Fonts.Abstractions\Nuclectic.Fonts.Abstractions.csproj">
+      <Project>{5817ce1c-9d30-4242-9ee4-77ddf7de2d5f}</Project>
+      <Name>Nuclectic.Fonts.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.Helpers\Nuclectic.Graphics.Helpers.csproj">
+      <Project>{B8157DBB-0CCF-4ED5-A343-74CD692211DD}</Project>
+      <Name>Nuclectic.Graphics.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.TriD.Abstractions\Nuclectic.Graphics.TriD.Abstractions.csproj">
+      <Project>{A4443561-32E0-4C70-ACE1-8869973F36A6}</Project>
+      <Name>Nuclectic.Graphics.TriD.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.TriD\Nuclectic.Graphics.TriD.csproj">
+      <Project>{B304A2E3-412F-46CE-BEE5-36053E76EEC5}</Project>
+      <Name>Nuclectic.Graphics.TriD</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)tools\build\CustomNuGet.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

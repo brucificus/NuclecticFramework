@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$NFVersion$</version>
+    <title>$title$</title>
+    <authors>Bruce Markham,Markus Ewald</authors>
+    <owners>Bruce Markham</owners>
+    <licenseUrl>http://opensource.org/licenses/cpl1.0.php</licenseUrl>
+    <projectUrl>https://github.com/illuminus86/NuclecticFramework</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/illuminus86/NuclecticFramework/master/gfx/logo/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+		Provides implementations of specialized collections required by the Nuclectic Framework, including: Dequeue, ObservableList, Pool, TransformingReadOnlyCollection, and WeakCollection.
+		Forked from the popular Nuclex Framework.
+	</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>collections monogame pcl nuclectic</tags>
+	<dependencies>
+		<dependency id="Nuclectic.Support.Abstractions" version="$NFVersionCompatRange$" />
+		<dependency id="Nuclectic.Support.Collections.Abstractions" version="$NFVersionCompatRange$" />
+	</dependencies>
+  </metadata>
+</package>

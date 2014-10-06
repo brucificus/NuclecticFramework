@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9DE1E131-4AC2-45BD-A1FD-9C512F3F8554}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nuclectic.Geometry</RootNamespace>
+    <AssemblyName>Nuclectic.Geometry</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+	<DocumentationFile>bin\$(Configuration)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Areas\AxisAlignedRectangle2.cs" />
+    <Compile Include="Areas\Collisions\AabbAabbCollider.cs" />
+    <Compile Include="Areas\Collisions\Disc2Disc2Collider.cs" />
+    <Compile Include="Areas\Disc2.cs" />
+    <Compile Include="Areas\IArea2.cs" />
+    <Compile Include="Areas\IArea2Visitor.cs" />
+    <Compile Include="Areas\IAxisAlignedRectangle2.cs" />
+    <Compile Include="Areas\ImpactPoint.cs" />
+    <Compile Include="Areas\PointGenerators\Disc2PointGenerator.cs" />
+    <Compile Include="Areas\PointGenerators\Rectangle2PointGenerator.cs" />
+    <Compile Include="Areas\PointGenerators\Triangle2PointGenerator.cs" />
+    <Compile Include="Areas\Rectangle2.cs" />
+    <Compile Include="Areas\Triangle2.cs" />
+    <Compile Include="DefaultRandom.cs" />
+    <Compile Include="Lines\Collisions\Line2Aabb2Collider.cs" />
+    <Compile Include="Lines\Collisions\Line2Disc2Collider.cs" />
+    <Compile Include="Lines\Collisions\Line2Line2Collider.cs" />
+    <Compile Include="Lines\Collisions\Line2Triangle2Collider.cs" />
+    <Compile Include="Lines\Collisions\Ray2Aabb2Collider.cs" />
+    <Compile Include="Lines\Collisions\Ray2Disc2Collider.cs" />
+    <Compile Include="Lines\Collisions\Ray2Line2Collider.cs" />
+    <Compile Include="Lines\Collisions\Ray2Triangle2Collider.cs" />
+    <Compile Include="Lines\ILine2.cs" />
+    <Compile Include="Lines\Line2.cs" />
+    <Compile Include="Lines\LineContacts.cs" />
+    <Compile Include="Lines\Ray2.cs" />
+    <Compile Include="Lines\Segment2.cs" />
+    <Compile Include="MatrixHelper.cs" />
+    <Compile Include="PointExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+	<Compile Include="$(SolutionDir)tools\build\FrameworkAssemblyInfo.cs">
+		<Link>Properties\FrameworkAssemblyInfo.cs</Link>
+	</Compile>
+    <Compile Include="Specifications.cs" />
+    <Compile Include="VectorHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>$(SolutionDir)packages\MonoGame-Portable.3.2.1\lib\portable-net4+sl5+wp8+win8\MonoGame.Framework.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Nuclectic.Geometry.nuspec" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nuclectic.Geometry.Abstractions\Nuclectic.Geometry.Abstractions.csproj">
+      <Project>{b8223c3e-4d28-4aae-8234-fca8501442ce}</Project>
+      <Name>Nuclectic.Geometry.Abstractions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)tools\build\CustomNuGet.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

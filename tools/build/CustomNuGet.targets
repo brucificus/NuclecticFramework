@@ -1,0 +1,50 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+	<PropertyGroup>
+		<SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$(MSBuildProjectDirectory)\..\</SolutionDir>
+		<BuildPackage Condition=" ('$(Configuration)' == 'RELEASE' Or '$(BuildPackage)' == 'true') And '$(BuildPackage)' != 'false'">true</BuildPackage>
+		<NuGetExePath Condition=" '$(NuGetExePath)' == '' ">$(SolutionDir)\packages\NuGet.CommandLine.2.8.2\tools\NuGet.exe</NuGetExePath>
+
+		<MGPclVersionCompatRange Condition="'$(MGPclVersionCompatRange)' == ''">[3.2.1,3.3)</MGPclVersionCompatRange>
+		<SlimDxVersionCompatRange>[4.0.13.44,4.1)</SlimDxVersionCompatRange>
+		
+		<NFVersionSuffix Condition="'$(NFVersionCurrentSuffix)' == ''">-alpha1</NFVersionSuffix>
+		<NFVersion Condition="'$(NFVersion)' == ''"                   >0.1.1$(NFVersionSuffix)</NFVersion>
+		<NFVersionCompatMin Condition="'$(NFVersionCompatMin)' == ''" >0.1.0</NFVersionCompatMin>
+		<NFVersionCompatMax Condition="'$(NFVersionCompatMax)' == ''" >0.1.2</NFVersionCompatMax>
+		<NFVersionCompatRange Condition="'$(NFVersionCompatRange)' == ''">[$(NFVersionCompatMin),$(NFVersionCompatMax))</NFVersionCompatRange>
+		
+		<AdditionalNuGetPackProperties>NFVersion=$(NFVersion);NFVersionCompatRange=$(NFVersionCompatRange);MGPclVersionCompatRange=$(MGPclVersionCompatRange);SlimDxVersionCompatRange=$(SlimDxVersionCompatRange)</AdditionalNuGetPackProperties>
+		
+		<PackageOutputDir>$(SolutionDir)dist</PackageOutputDir>
+	</PropertyGroup>
+	<PropertyGroup>
+		<ExpectedOutputPackage1>$(PackageOutputDir)\$(AssemblyName).$(NFVersion).nupkg</ExpectedOutputPackage1>
+		<ExpectedOutputPackage2>$(PackageOutputDir)\$(AssemblyName).$(NFVersion).symbols.nupkg</ExpectedOutputPackage2>
+	</PropertyGroup>
+	<ItemGroup Condition="$(BuildPackage) == 'true'">
+		<ExpectedOutputPackage Include="$(ExpectedOutputPackage1)" />
+		<ExpectedOutputPackage Include="$(ExpectedOutputPackage2)" />
+	</ItemGroup>
+	<ItemGroup Condition="$(BuildPackage) == 'true'">
+		<Clean Include="@(ExpectedOutputPackage)"/>
+	</ItemGroup>
+	
+	<Import Project="$(SolutionDir)packages\NuGet.Build.2.8.2\tools\NuGet.targets" />
+
+	<PropertyGroup>
+		<AdditionalNuGetPackProperties Condition=" '$(AdditionalNuGetPackProperties)' != '' ">;$(AdditionalNuGetPackProperties)</AdditionalNuGetPackProperties>
+		<BuildCommand>$(NuGetCommand) pack "$(ProjectPath)" -Properties "Configuration=$(Configuration);Platform=$(Platform)$(AdditionalNuGetPackProperties)" $(NonInteractiveSwitch) -OutputDirectory "$(PackageOutputDir)" -symbols</BuildCommand>
+	</PropertyGroup>
+
+	<Target Name="BuildPackage" DependsOnTargets="CheckPrerequisites" Outputs="@(ExpectedOutputPackage)">
+		<Error Text="Attempt to regenerate identically named packages. Please Clean/Rebuild or update version number first." 
+			   Condition="Exists('$(ExpectedOutputPackage1)') Or Exists('$(ExpectedOutputPackage2)') " ContinueOnError="false" />
+		
+		<Exec Command="$(BuildCommand)"
+              Condition=" '$(OS)' != 'Windows_NT' " />
+
+		<Exec Command="$(BuildCommand)"
+              LogStandardErrorAsError="true"
+              Condition=" '$(OS)' == 'Windows_NT' " />
+	</Target>
+</Project>   

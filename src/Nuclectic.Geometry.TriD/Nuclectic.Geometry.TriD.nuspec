@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$NFVersion$</version>
+    <title>$title$</title>
+    <authors>Bruce Markham,Markus Ewald</authors>
+    <owners>Bruce Markham</owners>
+    <licenseUrl>http://opensource.org/licenses/cpl1.0.php</licenseUrl>
+    <projectUrl>https://github.com/illuminus86/NuclecticFramework</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/illuminus86/NuclecticFramework/master/gfx/logo/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+		Extends MonoGame with additional 3D geometry operations. Includes primitives for 1-, 2-, and 3-dimensional shapes, (within 3-dimensional space), with simplistic collision detection.
+		Forked from the popular Nuclex Framework.
+	</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2014</copyright>
+	<tags>geometry 3D monogame pcl nuclectic</tags>
+	<dependencies>
+		<dependency id="MonoGame-Portable" version="$MGPclVersionCompatRange$" />
+
+		<dependency id="Nuclectic.Geometry" version="$NFVersionCompatRange$" />
+		<dependency id="Nuclectic.Geometry.Abstractions" version="$NFVersionCompatRange$" />
+	</dependencies>
+  </metadata>
+</package>

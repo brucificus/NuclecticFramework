@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$NFVersion$</version>
+    <title>$title$</title>
+    <authors>Bruce Markham,Markus Ewald</authors>
+    <owners>Bruce Markham</owners>
+    <licenseUrl>http://opensource.org/licenses/cpl1.0.php</licenseUrl>
+    <projectUrl>https://github.com/illuminus86/NuclecticFramework</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/illuminus86/NuclecticFramework/master/gfx/logo/logo.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+		Provides vertex batch drawing capabilities similar to SpriteBatch. Also contains a 3D camera implementation, and a helpful DebugDrawer.
+		Forked from the popular Nuclex Framework.
+	</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>PrimitiveBatch camera debugdrawer monogame pcl nuclectic</tags>
+	<dependencies>
+		<dependency id="MonoGame-Portable" version="$MGPclVersionCompatRange$" />
+
+		<dependency id="Nuclectic.Graphics.Helpers" version="$NFVersionCompatRange$" />
+		<dependency id="Nuclectic.Graphics.TriD.Abstractions" version="$NFVersionCompatRange$" />
+		<dependency id="Nuclectic.Support.Collections" version="$NFVersionCompatRange$" />
+	</dependencies>
+  </metadata>
+</package>
