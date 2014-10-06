@@ -16,7 +16,7 @@
 	</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>monogame pcl nuclectic</tags>
+    <tags>IRandom monogame pcl nuclectic</tags>
 	<dependencies>
 	</dependencies>
   </metadata>

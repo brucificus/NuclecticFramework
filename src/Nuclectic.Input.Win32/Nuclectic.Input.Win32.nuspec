@@ -16,7 +16,7 @@
 	</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>monogame pcl nuclectic</tags>
+	<tags>input keyboard mouse monogame win32 nuclectic</tags>
 	<frameworkAssemblies>
 		<frameworkAssembly assemblyName="System.Windows.Forms" targetFramework="net45"  />
 	</frameworkAssemblies>

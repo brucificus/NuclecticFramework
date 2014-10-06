@@ -11,12 +11,12 @@
     <iconUrl>https://raw.githubusercontent.com/illuminus86/NuclecticFramework/master/gfx/logo/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-		Provides implementations of specialized collections required by the Nuclectic Framework.
+		Provides implementations of specialized collections required by the Nuclectic Framework, including: Dequeue, ObservableList, Pool, TransformingReadOnlyCollection, and WeakCollection.
 		Forked from the popular Nuclex Framework.
 	</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>monogame pcl nuclectic</tags>
+    <tags>collections monogame pcl nuclectic</tags>
 	<dependencies>
 		<dependency id="Nuclectic.Support.Abstractions" version="$NFVersionCompatRange$" />
 		<dependency id="Nuclectic.Support.Collections.Abstractions" version="$NFVersionCompatRange$" />

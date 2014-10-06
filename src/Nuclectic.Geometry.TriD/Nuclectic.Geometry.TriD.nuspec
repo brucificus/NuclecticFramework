@@ -16,7 +16,7 @@
 	</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>monogame pcl nuclectic</tags>
+	<tags>geometry 3D monogame pcl nuclectic</tags>
 	<dependencies>
 		<dependency id="MonoGame-Portable" version="$MGPclVersionCompatRange$" />
 

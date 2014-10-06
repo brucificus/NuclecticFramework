@@ -11,7 +11,9 @@
     <iconUrl>https://raw.githubusercontent.com/illuminus86/NuclecticFramework/master/gfx/logo/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-		Abstractions for extending XNA Game via IGameComponent.
+		Abstractions for extending XNA Game via IGameComponent. 
+		Contains DrawableComponent, a lightweight version of DrawableGameComponent that can be used without requiring a Game class to be present.
+		
 		Forked from the popular Nuclex Framework.
 	</description>
     <releaseNotes></releaseNotes>

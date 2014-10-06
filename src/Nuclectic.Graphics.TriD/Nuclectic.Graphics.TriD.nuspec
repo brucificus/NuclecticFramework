@@ -11,12 +11,12 @@
     <iconUrl>https://raw.githubusercontent.com/illuminus86/NuclecticFramework/master/gfx/logo/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-		Provides vertex batch drawing capabilities similar to SpriteBatch.
+		Provides vertex batch drawing capabilities similar to SpriteBatch. Also contains a 3D camera implementation, and a helpful DebugDrawer.
 		Forked from the popular Nuclex Framework.
 	</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>monogame pcl nuclectic</tags>
+    <tags>PrimitiveBatch camera debugdrawer monogame pcl nuclectic</tags>
 	<dependencies>
 		<dependency id="MonoGame-Portable" version="$MGPclVersionCompatRange$" />
 

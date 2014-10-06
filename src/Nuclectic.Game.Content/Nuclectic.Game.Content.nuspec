@@ -11,12 +11,12 @@
     <iconUrl>https://raw.githubusercontent.com/illuminus86/NuclecticFramework/master/gfx/logo/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-		Provides an in-memory ContentManager.
+		Provides an in-memory ContentManager which allows you to load content directly out of byte arrays.
 		Forked from the popular Nuclex Framework.
 	</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>monogame pcl nuclectic</tags>
+    <tags>MemoryContentManager ContentManager monogame pcl nuclectic</tags>
 	<dependencies>
 		<dependency id="MonoGame-Portable" version="$MGPclVersionCompatRange$" />
 		<dependency id="PCLCrypto" version="[0.5.1.14165,0.5.2)" />

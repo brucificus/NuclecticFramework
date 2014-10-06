@@ -16,7 +16,7 @@
 	</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>monogame pcl nuclectic</tags>
+	<tags>input keyboard gamepad mouse touch monogame pcl nuclectic</tags>
 	<dependencies>
 		<dependency id="MonoGame-Portable" version="$MGPclVersionCompatRange$" />
 	</dependencies>

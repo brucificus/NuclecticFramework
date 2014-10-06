@@ -11,12 +11,12 @@
     <iconUrl>https://raw.githubusercontent.com/illuminus86/NuclecticFramework/master/gfx/logo/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-		Provides helpers for working with vertex definitions.
+		Provides helpers for working with vertex definitions. Use VertexElementAttribute to annotate your custom vertex types, and then use VertexDefinitionBuilder to create arrays of VertexElement to instruct MonoGame how to read your vertices.
 		Forked from the popular Nuclex Framework.
 	</description>
     <releaseNotes></releaseNotes>
     <copyright>Copyright 2014</copyright>
-    <tags>monogame pcl nuclectic</tags>
+    <tags>vertex monogame pcl nuclectic</tags>
 	<dependencies>
 		<dependency id="MonoGame-Portable" version="$MGPclVersionCompatRange$" />
 
