@@ -1,7 +1,7 @@
 $scriptpath = split-path -parent $MyInvocation.MyCommand.Path
 $nugetpath = resolve-path "$scriptpath/../../packages/NuGet.CommandLine.2.8.2/tools/nuget.exe"
 $packagespath = resolve-path "$scriptpath/../../dist"
-$defaultApiUrl = 'http://packages.nuget.org/v1/'
+$defaultApiUrl = 'https://www.nuget.org'
 
 [string] $apiUrl = Read-Host ("NuGet API Url" + " (or blank for " + $defaultApiUrl + ")")
 if([string]::IsNullOrWhitespace($apiUrl)) {
