@@ -87,6 +87,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Support.Helpers.I
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{289D1D0C-1814-4798-8497-99CAF8CF2832}"
 	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
@@ -108,6 +111,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "publish", "publish", "{93E5
 	ProjectSection(SolutionItems) = preProject
 		tools\publish\PushToNuget.ps1 = tools\publish\PushToNuget.ps1
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclectic.Tests.Core", "src\Nuclectic.Tests.Core\Nuclectic.Tests.Core.csproj", "{303635EB-BB3D-428A-9C1B-4969E06FF0D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -389,6 +394,14 @@ Global
 		{BD76C4BB-CAAF-4987-AB11-4199144F629B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BD76C4BB-CAAF-4987-AB11-4199144F629B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{BD76C4BB-CAAF-4987-AB11-4199144F629B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{303635EB-BB3D-428A-9C1B-4969E06FF0D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{303635EB-BB3D-428A-9C1B-4969E06FF0D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{303635EB-BB3D-428A-9C1B-4969E06FF0D4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{303635EB-BB3D-428A-9C1B-4969E06FF0D4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{303635EB-BB3D-428A-9C1B-4969E06FF0D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{303635EB-BB3D-428A-9C1B-4969E06FF0D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{303635EB-BB3D-428A-9C1B-4969E06FF0D4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{303635EB-BB3D-428A-9C1B-4969E06FF0D4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -411,6 +424,7 @@ Global
 		{DE0C9D2E-92D9-40FE-951F-8355302A65DA} = {5658B8D9-A6B5-4278-AF50-D67A66B4990D}
 		{222F8D0E-EB3E-4562-AC2B-AE683BF257AF} = {5658B8D9-A6B5-4278-AF50-D67A66B4990D}
 		{BD76C4BB-CAAF-4987-AB11-4199144F629B} = {5658B8D9-A6B5-4278-AF50-D67A66B4990D}
+		{303635EB-BB3D-428A-9C1B-4969E06FF0D4} = {5658B8D9-A6B5-4278-AF50-D67A66B4990D}
 		{0D9AA327-3759-4E35-B515-9ABDE6A6EF10} = {DBA388C8-EEDD-4261-8967-819C33CB997F}
 		{46CC39E5-038D-48DC-B72E-EAE8B3FEA138} = {DBA388C8-EEDD-4261-8967-819C33CB997F}
 		{27426149-E471-47F5-A9CD-A2D025A57DE3} = {DBA388C8-EEDD-4261-8967-819C33CB997F}
