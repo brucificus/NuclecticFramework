@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;UNITTEST</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;UNITTEST;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -234,6 +234,8 @@
     <Compile Include="Input\InputManager.Test.cs" />
     <Compile Include="Input\MockInputManager.Test.cs" />
     <Compile Include="Input\WindowMessageFilter.Test.cs" />
+    <Compile Include="Mocks\ExclusiveGraphicsDeviceService.cs" />
+    <Compile Include="Mocks\IMockedGraphicsDeviceService.cs" />
     <Compile Include="Mocks\MockedGamePad.cs" />
     <Compile Include="Mocks\MockedGamePad.Test.cs" />
     <Compile Include="Mocks\MockedGraphicsDeviceService.cs" />

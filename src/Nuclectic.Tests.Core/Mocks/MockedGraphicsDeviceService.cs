@@ -35,8 +35,8 @@ namespace Nuclectic.Tests.Mocks {
   ///   device on an invisible window. Tests have shown this method to be fast
   ///   enough for usage in a unit test.
   /// </remarks>
-  public class MockedGraphicsDeviceService : IGraphicsDeviceService {
-#if !XBOX
+  public class MockedGraphicsDeviceService : IMockedGraphicsDeviceService
+  {
     /// <summary>Will be triggered when the graphics device has been created</summary>
     public event EventHandler<EventArgs> DeviceCreated;
     /// <summary>
@@ -89,7 +89,7 @@ namespace Nuclectic.Tests.Mocks {
     #endregion // classs GraphicsDeviceKeeper
 
     /// <summary>Initializs a new mocked graphics device service</summary>
-    public MockedGraphicsDeviceService() : this(DeviceType.NullReference) { }
+    public MockedGraphicsDeviceService() : this(DeviceType.Hardware) { }
 
     /// <summary>Initializs a new mocked graphics device service</summary>
     /// <param name="deviceType">Type of graphics device that will be created</param>
@@ -153,7 +153,9 @@ namespace Nuclectic.Tests.Mocks {
         this.emptyPresentationParameters.IsFullScreen = false;
 
 #if WINDOWS
-        GraphicsAdapter.UseReferenceDevice = (this.deviceType != DeviceType.Hardware);
+	      if (deviceType != DeviceType.Hardware) {
+			  throw new NotSupportedException("MonoGame does not support GraphicsAdapter.UseReferenceDevice");
+	      }
 #else
         if (this.deviceType != DeviceType.Hardware)
             throw new NotImplementedException();
@@ -277,39 +279,7 @@ namespace Nuclectic.Tests.Mocks {
     private DeviceType deviceType;
     /// <summary>Graphics profile the device will be created for</summary>
     private GraphicsProfile graphicsProfile;
-#else
-		// Summary:
-		//     Retrieves a graphcs device.
-		public GraphicsDevice GraphicsDevice { get {throw new NotImplementedException();} }
 
-		// Summary:
-		//     The event that occurs when a graphics device is created.
-		//
-		// Parameters:
-		//   :
-		public event EventHandler<EventArgs> DeviceCreated {add{throw new NotImplementedException();}remove{throw new NotImplementedException();}}
-		//
-		// Summary:
-		//     The event that occurs when a graphics device is disposing.
-		//
-		// Parameters:
-		//   :
-		public event EventHandler<EventArgs> DeviceDisposing {add{throw new NotImplementedException();}remove{throw new NotImplementedException();}}
-		//
-		// Summary:
-		//     The event that occurs when a graphics device is reset.
-		//
-		// Parameters:
-		//   :
-		public event EventHandler<EventArgs> DeviceReset {add{throw new NotImplementedException();}remove{throw new NotImplementedException();}}
-		//
-		// Summary:
-		//     The event that occurs when a graphics device is in the process of resetting.
-		//
-		// Parameters:
-		//   :
-		public event EventHandler<EventArgs> DeviceResetting {add{throw new NotImplementedException();}remove{throw new NotImplementedException();}}
-#endif
   }
 
 } // namespace Nuclex.Testing.Xna
