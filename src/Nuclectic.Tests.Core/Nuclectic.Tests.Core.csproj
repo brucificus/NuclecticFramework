@@ -266,9 +266,7 @@
     <Compile Include="TestFixtureBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="EmbeddedContent\DefaultTextEffect.xnb" />
-    <None Include="EmbeddedContent\UnitTestEffect.xnb" />
-    <None Include="EmbeddedContent\UnitTestVectorFont.xnb" />
+    <None Include="Resources\UnitTestVectorFont.xnb" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -399,6 +397,10 @@
     <ProjectReference Include="..\Nuclectic.Support.IO\Nuclectic.Support.IO.csproj">
       <Project>{cabd2a2a-52af-4047-8c9c-915b0ed27ce8}</Project>
       <Name>Nuclectic.Support.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Tests.ContentSurrogate\Nuclectic.Tests.ContentSurrogate\Nuclectic.Tests.ContentSurrogate.csproj">
+      <Project>{af9d369e-b0df-4de5-8e3c-f5f233e296f4}</Project>
+      <Name>Nuclectic.Tests.ContentSurrogate</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nuclectic.UserInterface.Abstractions\Nuclectic.UserInterface.Abstractions.csproj">
       <Project>{839d1bd4-664d-471f-9139-10a0a6f90293}</Project>

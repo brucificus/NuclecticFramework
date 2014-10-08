@@ -59,5 +59,15 @@ namespace Nuclectic.Tests.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] ScreenMaskEffect {
+            get {
+                object obj = ResourceManager.GetObject("ScreenMaskEffect", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

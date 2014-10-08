@@ -119,6 +119,6 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="DefaultTextEffect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\EmbeddedContent\DefaultTextEffect.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>..\..\Nuclectic.Tests.ContentSurrogate\Nuclectic.Tests.ContentSurrogate\bin\Debug\Content\DefaultTextEffect.xnb;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
