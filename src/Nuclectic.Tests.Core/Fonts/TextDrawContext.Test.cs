@@ -18,6 +18,7 @@ License along with this library
 */
 #endregion
 
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -145,7 +146,7 @@ namespace Nuclectic.Tests.Fonts {
     /// <summary>Initializes a test</summary>
     [SetUp]
     public void Setup() {
-      this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService();
+      this.mockedGraphicsDeviceService = new GlobalExclusiveMockedGraphicsDeviceService(()=>new MockedGraphicsDeviceService());
       this.mockedGraphicsDeviceService.CreateDevice();
 
       this.contentManager = new ResourceContentManager(
@@ -166,13 +167,13 @@ namespace Nuclectic.Tests.Fonts {
       }
 
       if(this.mockedGraphicsDeviceService != null) {
-        this.mockedGraphicsDeviceService.DestroyDevice();
+        ((IDisposable) this.mockedGraphicsDeviceService).Dispose();
         this.mockedGraphicsDeviceService = null;
       }
     }
 
     /// <summary>Mocked graphics device service used by the test</summary>
-    private MockedGraphicsDeviceService mockedGraphicsDeviceService;
+    private IMockedGraphicsDeviceService mockedGraphicsDeviceService;
     /// <summary>ContentManager used to load text effect</summary>
     private ResourceContentManager contentManager;
     /// <summary>Effect used for testing the context</summary>
