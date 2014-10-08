@@ -19,14 +19,14 @@ License along with this library
 #endregion
 
 using System;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry;
+using Nuclectic.Geometry.Areas;
+using Nuclectic.Geometry.Volumes;
+using NUnit.Framework;
 #if UNITTEST
 
-using NUnit.Framework;
-
-namespace Nuclex.Geometry.Areas {
+namespace Nuclectic.Tests.Geometry.Areas {
 
   /// <summary>Test for the three-dimensional plane implementation</summary>
   [TestFixture]
@@ -136,7 +136,7 @@ namespace Nuclex.Geometry.Areas {
     public void TestBoundingBoxCalculationForXPlane() {
       Plane3 xPlane = new Plane3(Vector3.UnitX * 2.0f, Vector3.Right);
       Assert.AreEqual(
-        new Volumes.AxisAlignedBox3(
+        new AxisAlignedBox3(
           new Vector3(2.0f, float.NegativeInfinity, float.NegativeInfinity),
           new Vector3(2.0f, float.PositiveInfinity, float.PositiveInfinity)
         ),
@@ -152,7 +152,7 @@ namespace Nuclex.Geometry.Areas {
     public void TestBoundingBoxCalculationForYPlane() {
       Plane3 yPlane = new Plane3(Vector3.UnitY * 2.0f, Vector3.Up);
       Assert.AreEqual(
-        new Volumes.AxisAlignedBox3(
+        new AxisAlignedBox3(
           new Vector3(float.NegativeInfinity, 2.0f, float.NegativeInfinity),
           new Vector3(float.PositiveInfinity, 2.0f, float.PositiveInfinity)
         ),
@@ -168,7 +168,7 @@ namespace Nuclex.Geometry.Areas {
     public void TestBoundingBoxCalculationForZPlane() {
       Plane3 zPlane = new Plane3(Vector3.UnitZ * 2.0f, Vector3.Backward);
       Assert.AreEqual(
-        new Volumes.AxisAlignedBox3(
+        new AxisAlignedBox3(
           new Vector3(float.NegativeInfinity, float.NegativeInfinity, 2.0f),
           new Vector3(float.PositiveInfinity, float.PositiveInfinity, 2.0f)
         ),
@@ -186,7 +186,7 @@ namespace Nuclex.Geometry.Areas {
       Plane3 plane = new Plane3(Vector3.Zero, diagonal);
 
       Assert.AreEqual(
-        new Volumes.AxisAlignedBox3(
+        new AxisAlignedBox3(
           new Vector3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity),
           new Vector3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity)
         ),

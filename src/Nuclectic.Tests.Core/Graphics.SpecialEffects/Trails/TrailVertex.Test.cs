@@ -18,17 +18,12 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Graphics.TriD.SpecialEffects.Trails;
+#if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclex.Graphics.SpecialEffects.Trails {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Trails {
 
   /// <summary>Unit tests for the trail vertex structure</summary>
   [TestFixture]

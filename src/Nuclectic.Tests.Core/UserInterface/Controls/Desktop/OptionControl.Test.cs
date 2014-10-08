@@ -21,16 +21,9 @@ License along with this library
 #if UNITTEST
 
 using System;
-
-using Nuclex.Support;
-
 using NUnit.Framework;
-using NMock;
 
-using Nuclex.Input;
-using Nuclex.UserInterface.Input;
-
-namespace Nuclex.UserInterface.Controls.Desktop {
+namespace Nuclectic.Tests.UserInterface.Controls.Desktop {
 
   /// <summary>Unit Test for the option control class</summary>
   [TestFixture]

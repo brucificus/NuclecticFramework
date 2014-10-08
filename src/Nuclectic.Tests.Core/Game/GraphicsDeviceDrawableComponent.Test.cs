@@ -18,22 +18,15 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Game.Component;
+using Nuclectic.Tests.Mocks;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-using Nuclex.Graphics;
-using Nuclex.Testing.Xna;
-
-using DeviceEventHandler = System.EventHandler<System.EventArgs>;
-
-namespace Nuclex.Game {
+namespace Nuclectic.Tests.Game {
 
   /// <summary>Unit test for the drawable component class</summary>
   [TestFixture]

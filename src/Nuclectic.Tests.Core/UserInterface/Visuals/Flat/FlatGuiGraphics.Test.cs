@@ -21,20 +21,11 @@ License along with this library
 #if UNITTEST
 
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Resources;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
 using NUnit.Framework;
 
-using Nuclex.Testing.Xna;
-
-namespace Nuclex.UserInterface.Visuals.Flat {
+namespace Nuclectic.Tests.UserInterface.Visuals.Flat {
 
   /// <summary>Unit tests for flat GUI graphics interface</summary>
   [TestFixture]

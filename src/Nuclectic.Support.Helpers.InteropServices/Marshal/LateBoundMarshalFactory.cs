@@ -21,7 +21,7 @@ namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 			if (sizeOfMethod == null)
 				return null;
 
-			return new LateBoundMarshalSizeOf((Type t) => (IntPtr)sizeOfMethod.Invoke(null, new object[]{t}));
+			return new LateBoundMarshalSizeOf((Type t) => (int)sizeOfMethod.Invoke(null, new object[]{t}));
 		}
 
 		public IMarshalOffsetOf CreateMarshalOffsetOf()

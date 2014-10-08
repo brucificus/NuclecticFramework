@@ -20,19 +20,9 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-
 using NUnit.Framework;
 
-using Nuclex.Testing.Xna;
-
-namespace Nuclex.UserInterface.Visuals.Flat {
+namespace Nuclectic.Tests.UserInterface.Visuals.Flat {
 
   /// <summary>Unit tests for character opening locator</summary>
   [TestFixture]

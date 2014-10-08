@@ -18,19 +18,14 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Graphics.TriD.Batching;
+using Nuclectic.Tests.Mocks;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-using Nuclex.Testing.Xna;
-
-namespace Nuclex.Graphics.Batching {
+namespace Nuclectic.Tests.Graphics.Batching {
 
   /// <summary>Unit tests for the Effect drawing context</summary>
   [TestFixture]

@@ -23,13 +23,9 @@ License along with this library
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 using NUnit.Framework;
 
-namespace Nuclex.Graphics.SpecialEffects.Particles {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Particles {
 
   /// <summary>Unit tests for the affector collection</summary>
   [TestFixture]

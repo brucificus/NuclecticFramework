@@ -20,18 +20,9 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-using System.Runtime.InteropServices;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-
 using NUnit.Framework;
-using NMock;
 
-using Nuclex.UserInterface.Controls.Arcade;
-
-namespace Nuclex.UserInterface.Visuals.Flat.Renderers {
+namespace Nuclectic.Tests.UserInterface.Visuals.Flat.Renderers {
 
   /// <summary>Unit Test for the flat panel control renderer</summary>
   [TestFixture]

@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Resources;
+using System.Runtime.CompilerServices;
 
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
@@ -8,6 +9,7 @@ using System.Resources;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
+[assembly: InternalsVisibleTo("Nuclectic.Tests.Core")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -20,13 +20,9 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-
-using Nuclex.Support;
-
 using NUnit.Framework;
 
-namespace Nuclex.UserInterface.Controls {
+namespace Nuclectic.Tests.UserInterface.Controls {
 
   /// <summary>Unit Test for the desktop control</summary>
   [TestFixture]

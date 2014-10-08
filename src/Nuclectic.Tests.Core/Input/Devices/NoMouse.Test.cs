@@ -18,16 +18,12 @@ License along with this library
 */
 #endregion
 
+using Nuclectic.Input;
+using Nuclectic.Input.Devices;
 #if UNITTEST
-
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-
 using NUnit.Framework;
-using NMock;
 
-namespace Nuclex.Input.Devices {
+namespace Nuclectic.Tests.Input.Devices {
 
   /// <summary>Unit tests for the dummy mouse</summary>
   [TestFixture]

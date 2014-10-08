@@ -18,18 +18,12 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-
 using Microsoft.Xna.Framework.Input;
-
+using Nuclectic.Input;
+#if UNITTEST
 using NUnit.Framework;
-using NMock;
 
-namespace Nuclex.Input {
+namespace Nuclectic.Tests.Input {
 
   /// <summary>Unit tests for the game pad buttons helper</summary>
   [TestFixture]

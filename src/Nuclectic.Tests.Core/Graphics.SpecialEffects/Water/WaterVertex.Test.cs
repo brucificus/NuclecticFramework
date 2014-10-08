@@ -18,17 +18,12 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Graphics.TriD.SpecialEffects.Water;
+#if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclex.Graphics.SpecialEffects.Water {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Water {
 
   /// <summary>Unit tests for the water vertex class</summary>
   [TestFixture]

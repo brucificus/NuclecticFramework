@@ -19,12 +19,10 @@ License along with this library
 #endregion
 
 using System;
-
+using NUnit.Framework;
 #if UNITTEST
 
-using NUnit.Framework;
-
-namespace Nuclex.UserInterface.Controls {
+namespace Nuclectic.Tests.UserInterface.Controls {
 
   /// <summary>Unit Test for the parenting control collection class</summary>
   [TestFixture]

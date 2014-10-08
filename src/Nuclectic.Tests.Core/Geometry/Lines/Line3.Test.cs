@@ -20,14 +20,15 @@ License along with this library
 
 using System;
 using System.Xml.Serialization;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry;
+using Nuclectic.Geometry.Areas;
+using Nuclectic.Geometry.Lines;
+using Nuclectic.Geometry.Volumes;
+using NUnit.Framework;
 #if UNITTEST
 
-using NUnit.Framework;
-
-namespace Nuclex.Geometry.Lines {
+namespace Nuclectic.Tests.Geometry.Lines {
 
   /// <summary>Tests the implementation of the Line3 class</summary>
   [TestFixture]
@@ -181,7 +182,7 @@ namespace Nuclex.Geometry.Lines {
     /// <summary>Ensures that the contact finding method works for axis aligned boxes</summary>
     [Test, Ignore]
     public void TestFindContactsOnAxisAlignedBox() {
-      Volumes.AxisAlignedBox3 box = new Volumes.AxisAlignedBox3(
+      AxisAlignedBox3 box = new AxisAlignedBox3(
         new Vector3(10.0f, 10.0f, 10.0f), new Vector3(20.0f, 20.0f, 20.0f)
       );
 
@@ -258,7 +259,7 @@ namespace Nuclex.Geometry.Lines {
     /// <summary>Ensures that the contact finding method works for oriented boxes</summary>
     [Test, Ignore]
     public void TestFindContactsOnOrientedBox() {
-      Volumes.Box3 box = new Volumes.Box3(
+      Box3 box = new Box3(
         MatrixHelper.Create(
           new Vector3(15.0f, 15.0f, 15.0f),
           Vector3.Normalize(new Vector3(1.0f, -1.0f, -1.0f)),
@@ -362,7 +363,7 @@ namespace Nuclex.Geometry.Lines {
     /// <summary>Ensures that the contact finding method works for spheres</summary>
     [Test, Ignore]
     public void TestFindContactsOnSphere() {
-      Volumes.Sphere3 sphere = new Volumes.Sphere3(
+      Sphere3 sphere = new Sphere3(
         new Vector3(15.0f, 15.0f, 15.0f), 5.0f
       );
 
@@ -439,7 +440,7 @@ namespace Nuclex.Geometry.Lines {
     /// <summary>Ensures that the contact finding method works for planes</summary>
     [Test]
     public void TestFindContactsOnPlane() {
-      Areas.Plane3 plane = new Areas.Plane3(
+      Plane3 plane = new Plane3(
         new Vector3(15.0f, 15.0f, 15.0f),
         -Vector3.Backward
       );
@@ -468,7 +469,7 @@ namespace Nuclex.Geometry.Lines {
     /// </summary>
     [Test]
     public void TestFindOrthogonalContactsOnTriangle() {
-      Areas.Triangle3 triangle = new Areas.Triangle3(
+      Triangle3 triangle = new Triangle3(
         new Vector3(10.0f, 10.0f, 15.0f),
         new Vector3(20.0f, 10.0f, 15.0f),
         new Vector3(15.0f, 20.0f, 15.0f)
@@ -497,7 +498,7 @@ namespace Nuclex.Geometry.Lines {
     /// </summary>
     [Test]
     public void TestFindSideContactsOnTriangle() {
-      Areas.Triangle3 triangle = new Areas.Triangle3(
+      Triangle3 triangle = new Triangle3(
         new Vector3(10.0f, 10.0f, 15.0f),
         new Vector3(20.0f, 10.0f, 15.0f),
         new Vector3(15.0f, 20.0f, 15.0f)

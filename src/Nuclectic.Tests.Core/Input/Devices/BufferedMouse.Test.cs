@@ -1,208 +1,202 @@
-﻿#region CPL License
-/*
-Nuclex Framework
-Copyright (C) 2002-2011 Nuclex Development Labs
+﻿//#region CPL License
+///*
+//Nuclex Framework
+//Copyright (C) 2002-2011 Nuclex Development Labs
 
-This library is free software; you can redistribute it and/or
-modify it under the terms of the IBM Common Public License as
-published by the IBM Corporation; either version 1.0 of the
-License, or (at your option) any later version.
+//This library is free software; you can redistribute it and/or
+//modify it under the terms of the IBM Common Public License as
+//published by the IBM Corporation; either version 1.0 of the
+//License, or (at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-IBM Common Public License for more details.
+//This library is distributed in the hope that it will be useful,
+//but WITHOUT ANY WARRANTY; without even the implied warranty of
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//IBM Common Public License for more details.
 
-You should have received a copy of the IBM Common Public
-License along with this library
-*/
-#endregion
+//You should have received a copy of the IBM Common Public
+//License along with this library
+//*/
+//#endregion
 
-#if UNITTEST
+//using Moq;
+//#if UNITTEST
+//using NUnit.Framework;
 
-using System;
-using System.Collections.Generic;
+//namespace Nuclectic.Tests.Input.Devices {
 
-using Microsoft.Xna.Framework.Input;
+//  /// <summary>Unit tests for the buffered mouse class</summary>
+//  [TestFixture]
+//  internal class BufferedMouseTest {
 
-using NUnit.Framework;
-using NMock;
+//	#region class TestBufferedMouse
 
-namespace Nuclex.Input.Devices {
+//	/// <summary>Test implementation of a buffered mouse</summary>
+//	private class TestBufferedMouse : BufferedMouse {
 
-  /// <summary>Unit tests for the buffered mouse class</summary>
-  [TestFixture]
-  internal class BufferedMouseTest {
+//	  /// <summary>Moves the mouse cursor to the specified location</summary>
+//	  /// <param name="x">New X coordinate of the mouse cursor</param>
+//	  /// <param name="y">New Y coordinate of the mouse cursor</param>
+//	  public override void MoveTo(float x, float y) {
+//		base.BufferCursorMovement(x, y);
+//	  }
 
-    #region class TestBufferedMouse
+//	  /// <summary>Whether the input device is connected to the system</summary>
+//	  public override bool IsAttached {
+//		get { return true; }
+//	  }
 
-    /// <summary>Test implementation of a buffered mouse</summary>
-    private class TestBufferedMouse : BufferedMouse {
+//	  /// <summary>Human-readable name of the input device</summary>
+//	  public override string Name {
+//		get { return "Test mouse"; }
+//	  }
 
-      /// <summary>Moves the mouse cursor to the specified location</summary>
-      /// <param name="x">New X coordinate of the mouse cursor</param>
-      /// <param name="y">New Y coordinate of the mouse cursor</param>
-      public override void MoveTo(float x, float y) {
-        base.BufferCursorMovement(x, y);
-      }
+//	  /// <summary>Records a mouse button press in the event queue</summary>
+//	  /// <param name="buttons">Buttons that have been pressed</param>
+//	  public new void BufferButtonPress(MouseButtons buttons) {
+//		base.BufferButtonPress(buttons);
+//	  }
 
-      /// <summary>Whether the input device is connected to the system</summary>
-      public override bool IsAttached {
-        get { return true; }
-      }
+//	  /// <summary>Records a mouse button release in the event queue</summary>
+//	  /// <param name="buttons">Buttons that have been released</param>
+//	  public new void BufferButtonRelease(MouseButtons buttons) {
+//		base.BufferButtonRelease(buttons);
+//	  }
 
-      /// <summary>Human-readable name of the input device</summary>
-      public override string Name {
-        get { return "Test mouse"; }
-      }
+//	  /// <summary>Records a mouse wheel rotation in the event queue</summary>
+//	  /// <param name="ticks">Ticks the mouse wheel has been rotated</param>
+//	  public new void BufferWheelRotation(float ticks) {
+//		base.BufferWheelRotation(ticks);
+//	  }
 
-      /// <summary>Records a mouse button press in the event queue</summary>
-      /// <param name="buttons">Buttons that have been pressed</param>
-      public new void BufferButtonPress(MouseButtons buttons) {
-        base.BufferButtonPress(buttons);
-      }
+//	  /// <summary>Records a mouse cursor movement in the event queue</summary>
+//	  /// <param name="x">X coordinate the mouse cursor has been moved to</param>
+//	  /// <param name="y">Y coordinate the mouse cursor has been moved to</param>
+//	  public new void BufferCursorMovement(float x, float y) {
+//		base.BufferCursorMovement(x, y);
+//	  }
 
-      /// <summary>Records a mouse button release in the event queue</summary>
-      /// <param name="buttons">Buttons that have been released</param>
-      public new void BufferButtonRelease(MouseButtons buttons) {
-        base.BufferButtonRelease(buttons);
-      }
+//	}
 
-      /// <summary>Records a mouse wheel rotation in the event queue</summary>
-      /// <param name="ticks">Ticks the mouse wheel has been rotated</param>
-      public new void BufferWheelRotation(float ticks) {
-        base.BufferWheelRotation(ticks);
-      }
+//	#endregion // TestBufferedMouse
 
-      /// <summary>Records a mouse cursor movement in the event queue</summary>
-      /// <param name="x">X coordinate the mouse cursor has been moved to</param>
-      /// <param name="y">Y coordinate the mouse cursor has been moved to</param>
-      public new void BufferCursorMovement(float x, float y) {
-        base.BufferCursorMovement(x, y);
-      }
+//	#region interface IMouseSubscriber
 
-    }
+//	/// <summary>Subscriber to the events of a mouse</summary>
+//	public interface IMouseSubscriber {
 
-    #endregion // TestBufferedMouse
+//	  /// <summary>Called when a mouse button has been pressed</summary>
+//	  /// <param name="buttons">Button which has been pressed</param>
+//	  void ButtonPressed(MouseButtons buttons);
 
-    #region interface IMouseSubscriber
+//	  /// <summary>Called when a mouse button has been released</summary>
+//	  /// <param name="buttons">Button which has been released</param>
+//	  void ButtonReleased(MouseButtons buttons);
 
-    /// <summary>Subscriber to the events of a mouse</summary>
-    public interface IMouseSubscriber {
+//	  /// <summary>Called when the mouse cursor has been moved</summary>
+//	  /// <param name="x">X coordinate of the mouse cursor</param>
+//	  /// <param name="y">Y coordinate of the mouse cursor</param>
+//	  void Moved(float x, float y);
 
-      /// <summary>Called when a mouse button has been pressed</summary>
-      /// <param name="buttons">Button which has been pressed</param>
-      void ButtonPressed(MouseButtons buttons);
+//	  /// <summary>Called when the mouse wheel has been rotated</summary>
+//	  /// <param name="ticks">Number of ticks the mouse wheel was rotated</param>
+//	  void WheelRotated(float ticks);
 
-      /// <summary>Called when a mouse button has been released</summary>
-      /// <param name="buttons">Button which has been released</param>
-      void ButtonReleased(MouseButtons buttons);
+//	}
 
-      /// <summary>Called when the mouse cursor has been moved</summary>
-      /// <param name="x">X coordinate of the mouse cursor</param>
-      /// <param name="y">Y coordinate of the mouse cursor</param>
-      void Moved(float x, float y);
+//	#endregion // interface IMouseSubscriber
 
-      /// <summary>Called when the mouse wheel has been rotated</summary>
-      /// <param name="ticks">Number of ticks the mouse wheel was rotated</param>
-      void WheelRotated(float ticks);
+//	/// <summary>Called before each test is run</summary>
+//	[SetUp]
+//	public void Setup() {
+//	  this.mockery = new MockFactory();
+//	  this.mouse = new TestBufferedMouse();
+//	}
 
-    }
+//	/// <summary>Called after each test has run</summary>
+//	[TearDown]
+//	public void Teardown() {
+//	  if (this.mockery != null) {
+//		this.mockery.Dispose();
+//		this.mockery = null;
+//	  }
+//	}
 
-    #endregion // interface IMouseSubscriber
+//	/// <summary>Verifies that button presses can be buffered</summary>
+//	[Test]
+//	public void TestBufferButtonPress() {
+//	  Mock<IMouseSubscriber> subscriber = mockSubscriber();
 
-    /// <summary>Called before each test is run</summary>
-    [SetUp]
-    public void Setup() {
-      this.mockery = new MockFactory();
-      this.mouse = new TestBufferedMouse();
-    }
+//	  this.mouse.BufferButtonPress(MouseButtons.Middle);
 
-    /// <summary>Called after each test has run</summary>
-    [TearDown]
-    public void Teardown() {
-      if (this.mockery != null) {
-        this.mockery.Dispose();
-        this.mockery = null;
-      }
-    }
+//	  subscriber.Expects.One.Method(x => x.ButtonPressed(0)).With(MouseButtons.Middle);
 
-    /// <summary>Verifies that button presses can be buffered</summary>
-    [Test]
-    public void TestBufferButtonPress() {
-      Mock<IMouseSubscriber> subscriber = mockSubscriber();
+//	  this.mouse.Update();
 
-      this.mouse.BufferButtonPress(MouseButtons.Middle);
+//	  this.mockery.VerifyAllExpectationsHaveBeenMet();
+//	}
 
-      subscriber.Expects.One.Method(x => x.ButtonPressed(0)).With(MouseButtons.Middle);
+//	/// <summary>Verifies that button releases can be buffered</summary>
+//	[Test]
+//	public void TestBufferButtonRelease() {
+//	  Mock<IMouseSubscriber> subscriber = mockSubscriber();
 
-      this.mouse.Update();
+//	  this.mouse.BufferButtonRelease(MouseButtons.X1);
 
-      this.mockery.VerifyAllExpectationsHaveBeenMet();
-    }
+//	  subscriber.Expects.One.Method(x => x.ButtonReleased(0)).With(MouseButtons.X1);
 
-    /// <summary>Verifies that button releases can be buffered</summary>
-    [Test]
-    public void TestBufferButtonRelease() {
-      Mock<IMouseSubscriber> subscriber = mockSubscriber();
+//	  this.mouse.Update();
 
-      this.mouse.BufferButtonRelease(MouseButtons.X1);
+//	  this.mockery.VerifyAllExpectationsHaveBeenMet();
+//	}
 
-      subscriber.Expects.One.Method(x => x.ButtonReleased(0)).With(MouseButtons.X1);
+//	/// <summary>Verifies that mouse movements can be buffered</summary>
+//	[Test]
+//	public void TestBufferMouseMovement() {
+//	  Mock<IMouseSubscriber> subscriber = mockSubscriber();
 
-      this.mouse.Update();
+//	  this.mouse.BufferCursorMovement(12.34f, 56.78f);
 
-      this.mockery.VerifyAllExpectationsHaveBeenMet();
-    }
+//	  subscriber.Expects.One.Method(x => x.Moved(0, 0)).With(12.34f, 56.78f);
 
-    /// <summary>Verifies that mouse movements can be buffered</summary>
-    [Test]
-    public void TestBufferMouseMovement() {
-      Mock<IMouseSubscriber> subscriber = mockSubscriber();
+//	  this.mouse.Update();
 
-      this.mouse.BufferCursorMovement(12.34f, 56.78f);
+//	  this.mockery.VerifyAllExpectationsHaveBeenMet();
+//	}
 
-      subscriber.Expects.One.Method(x => x.Moved(0, 0)).With(12.34f, 56.78f);
+//	/// <summary>Verifies that mouse wheel rotations can be buffered</summary>
+//	[Test]
+//	public void TestBufferWheelRotation() {
+//	  Mock<IMouseSubscriber> subscriber = mockSubscriber();
 
-      this.mouse.Update();
+//	  this.mouse.BufferWheelRotation(19.28f);
 
-      this.mockery.VerifyAllExpectationsHaveBeenMet();
-    }
+//	  subscriber.Expects.One.Method(x => x.WheelRotated(0)).With(19.28f);
 
-    /// <summary>Verifies that mouse wheel rotations can be buffered</summary>
-    [Test]
-    public void TestBufferWheelRotation() {
-      Mock<IMouseSubscriber> subscriber = mockSubscriber();
+//	  this.mouse.Update();
 
-      this.mouse.BufferWheelRotation(19.28f);
+//	  this.mockery.VerifyAllExpectationsHaveBeenMet();
+//	}
 
-      subscriber.Expects.One.Method(x => x.WheelRotated(0)).With(19.28f);
+//	/// <summary>Mocks a subscriber for the buffered keyboard</summary>
+//	/// <returns>A subscriber registered to the events of the keyboard</returns>
+//	private Mock<IMouseSubscriber> mockSubscriber() {
+//	  Mock<IMouseSubscriber> subscriber = this.mockery.CreateMock<IMouseSubscriber>();
 
-      this.mouse.Update();
+//	  this.mouse.MouseButtonPressed += subscriber.MockObject.ButtonPressed;
+//	  this.mouse.MouseButtonReleased += subscriber.MockObject.ButtonReleased;
+//	  this.mouse.MouseMoved += subscriber.MockObject.Moved;
+//	  this.mouse.MouseWheelRotated += subscriber.MockObject.WheelRotated;
 
-      this.mockery.VerifyAllExpectationsHaveBeenMet();
-    }
+//	  return subscriber;
+//	}
 
-    /// <summary>Mocks a subscriber for the buffered keyboard</summary>
-    /// <returns>A subscriber registered to the events of the keyboard</returns>
-    private Mock<IMouseSubscriber> mockSubscriber() {
-      Mock<IMouseSubscriber> subscriber = this.mockery.CreateMock<IMouseSubscriber>();
+//	/// <summary>Creates dynamic mock objects for interfaces</summary>
+//	private MockFactory mockery;
+//	/// <summary>Buffered mouse being tested</summary>
+//	private TestBufferedMouse mouse;
 
-      this.mouse.MouseButtonPressed += subscriber.MockObject.ButtonPressed;
-      this.mouse.MouseButtonReleased += subscriber.MockObject.ButtonReleased;
-      this.mouse.MouseMoved += subscriber.MockObject.Moved;
-      this.mouse.MouseWheelRotated += subscriber.MockObject.WheelRotated;
+//  }
 
-      return subscriber;
-    }
+//} // namespace Nuclex.Input.Devices
 
-    /// <summary>Creates dynamic mock objects for interfaces</summary>
-    private MockFactory mockery;
-    /// <summary>Buffered mouse being tested</summary>
-    private TestBufferedMouse mouse;
-
-  }
-
-} // namespace Nuclex.Input.Devices
-
-#endif // UNITTEST
+//#endif // UNITTEST

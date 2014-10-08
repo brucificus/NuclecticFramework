@@ -18,18 +18,13 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-
+using Nuclectic.Input.Devices;
 using SlimDX.DirectInput;
-
+#if UNITTEST
+using System.Collections.Generic;
 using NUnit.Framework;
-using NMock;
 
-namespace Nuclex.Input.Devices {
+namespace Nuclectic.Tests.Input.Devices {
 
   /// <summary>Unit tests for the DirectInput data format converter</summary>
   [TestFixture]
@@ -76,8 +71,8 @@ namespace Nuclex.Input.Devices {
 
       var converter = new DirectInputConverter(this.joystick);
 
-      JoystickState joystickState = this.joystick.GetCurrentState();
-      converter.Convert(ref joystickState);
+      var joystickState = new JoystickStateAdapter(this.joystick.GetCurrentState());
+      converter.Convert(joystickState);
     }
 
     /// <summary>Verifies that the converter can build an extended game pad state</summary>
@@ -87,8 +82,8 @@ namespace Nuclex.Input.Devices {
 
       var converter = new DirectInputConverter(this.joystick);
 
-      JoystickState joystickState = this.joystick.GetCurrentState();
-      var gamePadState = new ExtendedGamePadState(converter, ref joystickState);
+	  var joystickState = new JoystickStateAdapter(this.joystick.GetCurrentState());
+      var gamePadState = new ExtendedGamePadState(converter, joystickState);
     }
 
     /// <summary>Requires a joystick to be attached to the system</summary>

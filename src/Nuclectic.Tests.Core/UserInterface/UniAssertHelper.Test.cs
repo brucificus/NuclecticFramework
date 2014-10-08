@@ -20,13 +20,9 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-
 using NUnit.Framework;
 
-using Nuclex.Support;
-
-namespace Nuclex.UserInterface {
+namespace Nuclectic.Tests.UserInterface {
 
   /// <summary>Unit Test for the unified value assertion helper class</summary>
   [TestFixture]

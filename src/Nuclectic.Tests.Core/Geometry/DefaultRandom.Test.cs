@@ -18,18 +18,11 @@ License along with this library
 */
 #endregion
 
+using Nuclectic.Geometry;
 #if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
-
 using NUnit.Framework;
 
-using Nuclex.Support;
-
-namespace Nuclex.Geometry {
+namespace Nuclectic.Tests.Geometry {
 
   /// <summary>Unit Test for the default random number generator</summary>
   [TestFixture]

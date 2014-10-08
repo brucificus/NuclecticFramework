@@ -18,25 +18,16 @@ License along with this library
 */
 #endregion
 
+using Microsoft.Xna.Framework.Content;
+using Nuclectic.Fonts;
+using Nuclectic.Graphics.Helpers;
+using Nuclectic.Tests.Mocks;
 #if UNITTEST
-
 using System;
 using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
 using NUnit.Framework;
 
-using Nuclex.Graphics;
-using Nuclex.Testing.Xna;
-
-using KerningEntry = System.Collections.Generic.KeyValuePair<
-  Nuclex.Fonts.VectorFont.KerningPair, Microsoft.Xna.Framework.Vector2
->;
-
-namespace Nuclex.Fonts {
+namespace Nuclectic.Tests.Fonts {
 
   /// <summary>Unit tests for the vector font character class</summary>
   [TestFixture]
@@ -119,7 +110,7 @@ namespace Nuclex.Fonts {
     /// <summary>Vector font the tested character is taken from</summary>
     private VectorFont vectorFont;
     /// <summary>Vector font character being tested</summary>
-    private VectorFontCharacter vectorCharacter;
+    private IVectorFontCharacter vectorCharacter;
 
   }
 

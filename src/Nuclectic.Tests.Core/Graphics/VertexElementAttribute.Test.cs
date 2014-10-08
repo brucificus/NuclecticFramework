@@ -18,18 +18,14 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Runtime.InteropServices;
-
 using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Graphics.Helpers;
+#if UNITTEST
+using System;
+using System.Reflection;
 using NUnit.Framework;
 
-namespace Nuclex.Graphics {
+namespace Nuclectic.Tests.Graphics {
 
   /// <summary>Unit tests for the vertex element attribute</summary>
   [TestFixture]

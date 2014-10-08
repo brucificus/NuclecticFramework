@@ -18,18 +18,13 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry.Volumes;
+using Nuclectic.Support.Helpers;
+#if UNITTEST
 using NUnit.Framework;
 
-using Nuclex.Support;
-
-namespace Nuclex.Geometry {
+namespace Nuclectic.Tests.Geometry {
 
   /// <summary>Unit Test for the NUnit assertion helper</summary>
   [TestFixture]
@@ -136,10 +131,10 @@ namespace Nuclex.Geometry {
       Vector3 minusOneVector = new Vector3(minusOneFloat, minusOneFloat, minusOneFloat);
       Vector3 plusOneVector = new Vector3(plusOneFloat, plusOneFloat, plusOneFloat);
 
-      Volumes.AxisAlignedBox3 oneOffAabb = new Volumes.AxisAlignedBox3(
+      AxisAlignedBox3 oneOffAabb = new AxisAlignedBox3(
         minusOneVector, plusOneVector
       );
-      Volumes.AxisAlignedBox3 exactAabb = new Volumes.AxisAlignedBox3(
+      AxisAlignedBox3 exactAabb = new AxisAlignedBox3(
         exactVector, exactVector
       );
 
@@ -156,10 +151,10 @@ namespace Nuclex.Geometry {
       Vector3 minusTwoVector = new Vector3(minusTwoFloat, minusTwoFloat, minusTwoFloat);
       Vector3 plusTwoVector = new Vector3(plusTwoFloat, plusTwoFloat, plusTwoFloat);
 
-      Volumes.AxisAlignedBox3 twoOffAabb = new Volumes.AxisAlignedBox3(
+      AxisAlignedBox3 twoOffAabb = new AxisAlignedBox3(
         minusTwoVector, plusTwoVector
       );
-      Volumes.AxisAlignedBox3 exactAabb = new Volumes.AxisAlignedBox3(
+      AxisAlignedBox3 exactAabb = new AxisAlignedBox3(
         exactVector, exactVector
       );
 

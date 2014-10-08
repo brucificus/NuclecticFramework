@@ -18,18 +18,14 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
+using Nuclectic.Graphics.TriD;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-namespace Nuclex.Graphics {
+namespace Nuclectic.Tests.Graphics {
 
   /// <summary>Unit tests for the camera class</summary>
   [TestFixture]
@@ -137,7 +133,7 @@ namespace Nuclex.Graphics {
     [Test]
     public void TestHandleControls() {
       Camera camera = Camera.CreateDefaultOrthographic();
-      camera.HandleControls(OneSecondGameTime);
+      camera.HandleControls(OneSecondGameTime, new KeyboardState(), new GamePadState());
 
       // We can't make assumptions about which keys the user held down while
       // the unit test ran, so we just verify it's not blowing up.

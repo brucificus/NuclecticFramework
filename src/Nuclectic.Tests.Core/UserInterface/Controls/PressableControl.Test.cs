@@ -21,16 +21,9 @@ License along with this library
 #if UNITTEST
 
 using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework.Input;
-
 using NUnit.Framework;
 
-using Nuclex.Input;
-using Nuclex.UserInterface.Input;
-
-namespace Nuclex.UserInterface.Controls {
+namespace Nuclectic.Tests.UserInterface.Controls {
 
   /// <summary>Unit Test for the pressable control</summary>
   [TestFixture]

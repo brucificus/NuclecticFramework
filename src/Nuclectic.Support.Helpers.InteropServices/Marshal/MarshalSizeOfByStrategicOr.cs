@@ -13,7 +13,7 @@ namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 			_providers = providers;
 		}
 
-		public IntPtr? SizeOf(Type t)
+		public int? SizeOf(Type t)
 		{
 			foreach (var provider in _providers)
 			{

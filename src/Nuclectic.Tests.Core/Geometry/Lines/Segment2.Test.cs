@@ -19,14 +19,12 @@ License along with this library
 #endregion
 
 using System.Xml.Serialization;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry.Lines;
+using NUnit.Framework;
 #if UNITTEST
 
-using NUnit.Framework;
-
-namespace Nuclex.Geometry.Lines {
+namespace Nuclectic.Tests.Geometry.Lines {
 
   /// <summary>Tests the implementation of the LineSegment2 class</summary>
   [TestFixture]

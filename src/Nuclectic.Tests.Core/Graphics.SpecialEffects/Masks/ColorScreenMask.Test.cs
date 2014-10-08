@@ -18,20 +18,19 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-
+using Microsoft.Xna.Framework.Graphics;
+using Nuclectic.Graphics.Helpers;
+using Nuclectic.Graphics.TriD.SpecialEffects.Masks;
+using Nuclectic.Tests.Mocks;
+using SlimDX.Direct3D9;
+using Effect = SlimDX.Direct3D9.Effect;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-using Nuclex.Testing.Xna;
-
-namespace Nuclex.Graphics.SpecialEffects.Masks {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks {
 
   /// <summary>Unit tests for the solid color screen mask class</summary>
   [TestFixture]
@@ -97,7 +96,7 @@ namespace Nuclex.Graphics.SpecialEffects.Masks {
         delegate() {
           using(
             ColorScreenMask testMask = ColorScreenMask.Create(
-              this.mockedGraphicsDeviceService.GraphicsDevice, createFail
+              this.mockedGraphicsDeviceService.GraphicsDevice // createFail
             )
           ) { }
         }

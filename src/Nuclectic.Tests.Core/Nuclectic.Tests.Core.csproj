@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;UNITTEST</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -33,35 +33,403 @@
     <Reference Include="Autofac">
       <HintPath>..\..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>..\..\packages\Mono.Security.3.2.3.0\lib\net45\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\packages\MonoGame.Binaries.3.2.0\build\net40\MonoGame.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>..\..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="PCLCrypto">
+      <HintPath>..\..\packages\PCLCrypto.0.5.1.14165\lib\net40-Client\PCLCrypto.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLCrypto.Abstractions">
+      <HintPath>..\..\packages\PCLCrypto.0.5.1.14165\lib\net40-Client\PCLCrypto.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="SlimDX">
+      <HintPath>..\..\packages\SlimDX.4.0.13.44\lib\NET40\SlimDX.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\..\packages\Microsoft.Bcl.Immutable.1.0.34\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Validation">
+      <HintPath>..\..\packages\Validation.2.0.4.14103\lib\portable-windows8+net40+sl5+wp8+wpa81+wp81+MonoAndroid+MonoTouch\Validation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Nuclectic.Geometry\Specifications.cs">
+      <Link>Geometry\Specifications.cs</Link>
+    </Compile>
     <Compile Include="AutoMockWrapper.cs" />
     <Compile Include="AutoMock\AutoMock.cs" />
     <Compile Include="AutoMock\MoqRegistrationHandler.cs" />
+    <Compile Include="Fonts\Content\VectorFontCharacterReader.Test.cs" />
+    <Compile Include="Fonts\Content\VectorFontReader.Test.cs" />
+    <Compile Include="Fonts\Text.Test.cs" />
+    <Compile Include="Fonts\TextBatch.Test.cs" />
+    <Compile Include="Fonts\TextDrawContext.Test.cs" />
+    <Compile Include="Fonts\VectorFont.Test.cs" />
+    <Compile Include="Fonts\VectorFontCharacter.Test.cs" />
+    <Compile Include="Game\Component.Test.cs" />
+    <Compile Include="Game\Content\LzmaContentManager.Test.cs" />
+    <Compile Include="Game\Content\MemoryContentManager.Test.cs" />
+    <Compile Include="Game\Content\SharedContentManager.Test.cs" />
+    <Compile Include="Game\Content\SharedGameContentManager.Test.cs" />
+    <Compile Include="Game\DrawableComponent.Test.cs" />
+    <Compile Include="Game\GraphicsDeviceDrawableComponent.Test.cs" />
+    <Compile Include="Game\Packing\ArevaloRectanglePacker.Test.cs" />
+    <Compile Include="Game\Packing\CygonRectanglePacker.Test.cs" />
+    <Compile Include="Game\Packing\OutOfSpaceException.Test.cs" />
+    <Compile Include="Game\Packing\RectanglePacker.Test.cs" />
+    <Compile Include="Game\Packing\SimpleRectanglePacker.Test.cs" />
+    <Compile Include="Game\Space\BoundingRectangle.Test.cs" />
+    <Compile Include="Game\Space\QuadTree.Test.cs" />
+    <Compile Include="Game\Space\SpatialIndex2.Test.cs" />
+    <Compile Include="Game\States\DrawableGameState.Test.cs" />
+    <Compile Include="Game\States\GameState.Test.cs" />
+    <Compile Include="Game\States\GameStateManager.Test.cs" />
+    <Compile Include="Game\States\LoadingScreenState.Test.cs" />
+    <Compile Include="Game\States\LoadProgressEventArgs.Test.cs" />
+    <Compile Include="Geometry\Areas\AxisAlignedRectangle2.Test.cs" />
+    <Compile Include="Geometry\Areas\Collisions\AabbAabbCollider.Test.cs" />
+    <Compile Include="Geometry\Areas\Collisions\Disc2Disc2Collider.Test.cs" />
+    <Compile Include="Geometry\Areas\Disc2.Test.cs" />
+    <Compile Include="Geometry\Areas\Disc3.Test.cs" />
+    <Compile Include="Geometry\Areas\Plane3.Test.cs" />
+    <Compile Include="Geometry\Areas\Rectangle2.Test.cs" />
+    <Compile Include="Geometry\Areas\Rectangle3.Test.cs" />
+    <Compile Include="Geometry\Areas\Triangle2.Test.cs" />
+    <Compile Include="Geometry\Areas\Triangle3.Test.cs" />
+    <Compile Include="Geometry\DefaultRandom.Test.cs" />
+    <Compile Include="Geometry\GeoAssertHelper.cs" />
+    <Compile Include="Geometry\GeoAssertHelper.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Line2Aabb2Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Line2Disc2Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Line2Line2Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Line2Triangle2Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Line3Aabb3Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Line3Plane3Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Line3Sphere3Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Line3Triangle3Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Ray2Aabb2Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Ray2Disc2Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Ray2Line2Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Ray2Triangle2Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Ray3Aabb3Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Ray3Plane3Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Ray3Sphere3Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Ray3Triangle3Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Collisions\Segment3Aabb3Collider.Test.cs" />
+    <Compile Include="Geometry\Lines\Line2.Test.cs" />
+    <Compile Include="Geometry\Lines\Line3.Test.cs" />
+    <Compile Include="Geometry\Lines\LineContacts.Test.cs" />
+    <Compile Include="Geometry\Lines\Ray2.Test.cs" />
+    <Compile Include="Geometry\Lines\Ray3.Test.cs" />
+    <Compile Include="Geometry\Lines\Segment2.Test.cs" />
+    <Compile Include="Geometry\Lines\Segment3.Test.cs" />
+    <Compile Include="Geometry\MatrixHelper.Test.cs" />
+    <Compile Include="Geometry\VectorHelper.Test.cs" />
+    <Compile Include="Geometry\Volumes\AxisAlignedBox3.Test.cs" />
+    <Compile Include="Geometry\Volumes\Box3.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\AabbAabbCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\AabbCylinderCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\AabbMeshCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\AabbObbCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\AabbSphereCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\CylinderCylinderCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\CylinderMeshCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\CylinderObbCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\CylinderSphereCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\MeshMeshCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\MeshObbCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\MeshSphereCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\ObbObbCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\ObbSphereCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Collisions\SphereSphereCollider.Test.cs" />
+    <Compile Include="Geometry\Volumes\Cylinder3.Test.cs" />
+    <Compile Include="Geometry\Volumes\Sphere3.Test.cs" />
+    <Compile Include="Geometry\Volumes\TriangleMesh3.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\IndexedStaticMesh.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\Masks\ColorScreenMask.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\Masks\PositionVertex.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\Masks\ScreenMask.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\Sky\SkyboxCube.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\Sky\SkyboxVertex.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\StaticMesh.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\Trails\TrailParticle.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\Trails\TrailRenderer.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\Trails\TrailVertex.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\TriangleStripIndexBuilder.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\Water\WaterGrid.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\Water\WaterSurface.Test.cs" />
+    <Compile Include="Graphics.SpecialEffects\Water\WaterVertex.Test.cs" />
+    <Compile Include="Graphics\Batching\BasicEffectDrawContext.Test.cs" />
+    <Compile Include="Graphics\Batching\DeferredQueuer.Test.cs" />
+    <Compile Include="Graphics\Batching\DrawContext.Test.cs" />
+    <Compile Include="Graphics\Batching\DrawContextQueuer.Test.cs" />
+    <Compile Include="Graphics\Batching\DynamicBufferBatchDrawer.Test.cs" />
+    <Compile Include="Graphics\Batching\EffectDrawContext.Test.cs" />
+    <Compile Include="Graphics\Batching\ImmediateQueuer.Test.cs" />
+    <Compile Include="Graphics\Batching\PrimitiveBatch.Test.cs" />
+    <Compile Include="Graphics\Batching\Queuer.Test.cs" />
+    <Compile Include="Graphics\Batching\UserPrimitiveBatchDrawer.Test.cs" />
+    <Compile Include="Graphics\Camera.Test.cs" />
+    <Compile Include="Graphics\Debugging\DebugDrawer.Test.cs" />
+    <Compile Include="Graphics\Debugging\SolidArrowVertexGenerator.Test.cs" />
+    <Compile Include="Graphics\Debugging\SolidBoxVertexGenerator.Test.cs" />
+    <Compile Include="Graphics\Debugging\SolidTriangleVertexGenerator.Test.cs" />
+    <Compile Include="Graphics\Debugging\VectorHelper.Test.cs" />
+    <Compile Include="Graphics\Debugging\WireframeArrowVertexGenerator.Test.cs" />
+    <Compile Include="Graphics\Debugging\WireframeBoxVertexGenerator.Test.cs" />
+    <Compile Include="Graphics\Debugging\WireframeTriangleVertexGenerator.Test.cs" />
+    <Compile Include="Graphics\Drawable.Test.cs" />
+    <Compile Include="Graphics\GraphicsDeviceServiceHelper.Test.cs" />
+    <Compile Include="Graphics\TextureRegion2D.Test.cs" />
+    <Compile Include="Graphics\VertexDeclarationHelper.Test.cs" />
+    <Compile Include="Graphics\VertexElementAttribute.Test.cs" />
+    <Compile Include="Graphics\VertexHelper.Test.cs" />
+    <Compile Include="Input\CollectionHelper.Test.cs" />
+    <Compile Include="Input\ControllerDetector.Test.cs" />
+    <Compile Include="Input\ControllerEventArgs.Test.cs" />
+    <Compile Include="Input\Devices\BufferedKeyboard.Test.cs" />
+    <Compile Include="Input\Devices\BufferedMouse.Test.cs" />
+    <Compile Include="Input\Devices\DirectInputConverter.Test.cs" />
+    <Compile Include="Input\Devices\DirectInputGamePad.Test.cs" />
+    <Compile Include="Input\Devices\ExtendedGamePadState.Test.cs" />
+    <Compile Include="Input\Devices\GamePad.Test.cs" />
+    <Compile Include="Input\Devices\KeyboardStateHelper.Test.cs" />
+    <Compile Include="Input\Devices\LeakyQueue.Test.cs" />
+    <Compile Include="Input\Devices\MockedGamePad.Test.cs" />
+    <Compile Include="Input\Devices\MockedKeyboard.Test.cs" />
+    <Compile Include="Input\Devices\MockedMouse.Test.cs" />
+    <Compile Include="Input\Devices\MockedTouchPanel.Test.cs" />
+    <Compile Include="Input\Devices\NoGamePad.Test.cs" />
+    <Compile Include="Input\Devices\NoKeyboard.Test.cs" />
+    <Compile Include="Input\Devices\NoMouse.Test.cs" />
+    <Compile Include="Input\Devices\NoTouchPanel.Test.cs" />
+    <Compile Include="Input\Devices\TouchCollectionHelper.Test.cs" />
+    <Compile Include="Input\Devices\TouchPanelBase.Test.cs" />
+    <Compile Include="Input\Devices\TouchState.Test.cs" />
+    <Compile Include="Input\Devices\WindowMessageKeyboard.Test.cs" />
+    <Compile Include="Input\Devices\WindowMessageMouse.Test.cs" />
+    <Compile Include="Input\Devices\XnaGamePad.Test.cs" />
+    <Compile Include="Input\Devices\XnaKeyboard.Test.cs" />
+    <Compile Include="Input\DirectInputManager.Test.cs" />
+    <Compile Include="Input\GamePadButtonsHelper.Test.cs" />
+    <Compile Include="Input\InputManager.Test.cs" />
+    <Compile Include="Input\MockInputManager.Test.cs" />
+    <Compile Include="Input\WindowMessageFilter.Test.cs" />
+    <Compile Include="Mocks\MockedGamePad.cs" />
+    <Compile Include="Mocks\MockedGamePad.Test.cs" />
+    <Compile Include="Mocks\MockedGraphicsDeviceService.cs" />
+    <Compile Include="Mocks\MockedGraphicsDeviceService.Test.cs" />
+    <Compile Include="Mocks\MockedKeyboard.cs" />
+    <Compile Include="Mocks\MockedKeyboard.KeyMap.cs" />
+    <Compile Include="Mocks\MockedKeyboard.Test.cs" />
+    <Compile Include="Mocks\MockedMouse.cs" />
+    <Compile Include="Mocks\MockedMouse.Test.cs" />
+    <Compile Include="Mocks\MockedTouchPanel.cs" />
+    <Compile Include="Mocks\MockedTouchPanel.Test.cs" />
     <Compile Include="MoqExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ScreenMaskResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScreenMaskResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\TextBatchResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextBatchResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\UnitTestResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnitTestResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TestFixtureBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="EmbeddedContent\DefaultTextEffect.xnb" />
+    <None Include="EmbeddedContent\UnitTestEffect.xnb" />
+    <None Include="EmbeddedContent\UnitTestVectorFont.xnb" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Fonts\" />
+    <ProjectReference Include="..\Nuclectic.Fonts.Abstractions\Nuclectic.Fonts.Abstractions.csproj">
+      <Project>{5817ce1c-9d30-4242-9ee4-77ddf7de2d5f}</Project>
+      <Name>Nuclectic.Fonts.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Fonts\Nuclectic.Fonts.csproj">
+      <Project>{2bc54efa-4d95-44e9-9f16-dc7f5df9cffe}</Project>
+      <Name>Nuclectic.Fonts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Game.Component.Abstractions\Nuclectic.Game.Component.Abstractions.csproj">
+      <Project>{856589e9-6906-4f72-870b-c8bddd37325b}</Project>
+      <Name>Nuclectic.Game.Component.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Game.Content\Nuclectic.Game.Content.csproj">
+      <Project>{409d22a7-c6a9-4f40-ad58-f91ce3776ab7}</Project>
+      <Name>Nuclectic.Game.Content</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Game.Packing.Abstractions\Nuclectic.Game.Packing.Abstractions.csproj">
+      <Project>{0be9ede2-7fd1-421f-bd50-2b73ca3abbe1}</Project>
+      <Name>Nuclectic.Game.Packing.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Game.Packing\Nuclectic.Game.Packing.csproj">
+      <Project>{f6ddb51d-36b3-4ee4-a209-2f80cee4fc67}</Project>
+      <Name>Nuclectic.Game.Packing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Game.Space.Abstractions\Nuclectic.Game.Space.Abstractions.csproj">
+      <Project>{dd7e7715-c4e7-474a-88e4-0063d6e3d9dd}</Project>
+      <Name>Nuclectic.Game.Space.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Game.State.Abstractions\Nuclectic.Game.State.Abstractions.csproj">
+      <Project>{0e9c6543-019c-4d51-a744-bb2667fa509e}</Project>
+      <Name>Nuclectic.Game.State.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Game.State\Nuclectic.Game.State.csproj">
+      <Project>{6194200d-ef81-44bf-bb39-38230abaffc9}</Project>
+      <Name>Nuclectic.Game.State</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Geometry.Abstractions\Nuclectic.Geometry.Abstractions.csproj">
+      <Project>{b8223c3e-4d28-4aae-8234-fca8501442ce}</Project>
+      <Name>Nuclectic.Geometry.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Geometry.TriD\Nuclectic.Geometry.TriD.csproj">
+      <Project>{049603a8-8c77-42d6-8d8c-cd379dd8db91}</Project>
+      <Name>Nuclectic.Geometry.TriD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Geometry\Nuclectic.Geometry.csproj">
+      <Project>{9de1e131-4ac2-45bd-a1fd-9c512f3f8554}</Project>
+      <Name>Nuclectic.Geometry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.Helpers\Nuclectic.Graphics.Helpers.csproj">
+      <Project>{b8157dbb-0ccf-4ed5-a343-74cd692211dd}</Project>
+      <Name>Nuclectic.Graphics.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.TriD.Abstractions\Nuclectic.Graphics.TriD.Abstractions.csproj">
+      <Project>{a4443561-32e0-4c70-ace1-8869973f36a6}</Project>
+      <Name>Nuclectic.Graphics.TriD.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.TriD.SpecialEffects.Abstractions\Nuclectic.Graphics.TriD.SpecialEffects.Abstractions.csproj">
+      <Project>{ddae917e-9931-48dd-9805-db13d25a3f9d}</Project>
+      <Name>Nuclectic.Graphics.TriD.SpecialEffects.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.TriD.SpecialEffects.Masks\Nuclectic.Graphics.TriD.SpecialEffects.Masks.csproj">
+      <Project>{4fc8998b-b1bc-458d-aada-ab7e76015447}</Project>
+      <Name>Nuclectic.Graphics.TriD.SpecialEffects.Masks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.TriD.SpecialEffects.Sky\Nuclectic.Graphics.TriD.SpecialEffects.Sky.csproj">
+      <Project>{8b10dd93-58e3-42d8-bda8-c40a79a0c968}</Project>
+      <Name>Nuclectic.Graphics.TriD.SpecialEffects.Sky</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.TriD.SpecialEffects.Trails\Nuclectic.Graphics.TriD.SpecialEffects.Trails.csproj">
+      <Project>{cd3c6a09-024a-4d6f-81e7-54bdc9147b75}</Project>
+      <Name>Nuclectic.Graphics.TriD.SpecialEffects.Trails</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.TriD.SpecialEffects.Water\Nuclectic.Graphics.TriD.SpecialEffects.Water.csproj">
+      <Project>{047069bd-6771-4be0-a773-0445216f7d8e}</Project>
+      <Name>Nuclectic.Graphics.TriD.SpecialEffects.Water</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.TriD.SpecialEffects\Nuclectic.Graphics.TriD.SpecialEffects.csproj">
+      <Project>{9d98571c-fb51-436f-8f2e-116d13b8e1f1}</Project>
+      <Name>Nuclectic.Graphics.TriD.SpecialEffects</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Graphics.TriD\Nuclectic.Graphics.TriD.csproj">
+      <Project>{b304a2e3-412f-46ce-bee5-36053e76eec5}</Project>
+      <Name>Nuclectic.Graphics.TriD</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Input.Abstractions\Nuclectic.Input.Abstractions.csproj">
+      <Project>{7586db23-8fc0-4af8-b855-2a636bd431e6}</Project>
+      <Name>Nuclectic.Input.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Input.Win32.Dx\Nuclectic.Input.Win32.Dx.csproj">
+      <Project>{27426149-e471-47f5-a9cd-a2d025a57de3}</Project>
+      <Name>Nuclectic.Input.Win32.Dx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Input.Win32\Nuclectic.Input.Win32.csproj">
+      <Project>{46cc39e5-038d-48dc-b72e-eae8b3fea138}</Project>
+      <Name>Nuclectic.Input.Win32</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Input\Nuclectic.Input.csproj">
+      <Project>{0d9aa327-3759-4e35-b515-9abde6a6ef10}</Project>
+      <Name>Nuclectic.Input</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Abstractions\Nuclectic.Support.Abstractions.csproj">
+      <Project>{956f95ec-d3d8-491f-aef1-5830243be274}</Project>
+      <Name>Nuclectic.Support.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Collections.Abstractions\Nuclectic.Support.Collections.Abstractions.csproj">
+      <Project>{5c231e67-22f1-4a91-b120-39766bdb85c4}</Project>
+      <Name>Nuclectic.Support.Collections.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Collections\Nuclectic.Support.Collections.csproj">
+      <Project>{74882c2f-3ddb-4fe1-ab00-227c0d93b5d0}</Project>
+      <Name>Nuclectic.Support.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Helpers.InteropServices\Nuclectic.Support.Helpers.InteropServices.csproj">
+      <Project>{bd76c4bb-caaf-4987-ab11-4199144f629b}</Project>
+      <Name>Nuclectic.Support.Helpers.InteropServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Helpers\Nuclectic.Support.Helpers.csproj">
+      <Project>{de0c9d2e-92d9-40fe-951f-8355302a65da}</Project>
+      <Name>Nuclectic.Support.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.IO.Abstractions\Nuclectic.Support.IO.Abstractions.csproj">
+      <Project>{222f8d0e-eb3e-4562-ac2b-ae683bf257af}</Project>
+      <Name>Nuclectic.Support.IO.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.IO\Nuclectic.Support.IO.csproj">
+      <Project>{cabd2a2a-52af-4047-8c9c-915b0ed27ce8}</Project>
+      <Name>Nuclectic.Support.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.UserInterface.Abstractions\Nuclectic.UserInterface.Abstractions.csproj">
+      <Project>{839d1bd4-664d-471f-9139-10a0a6f90293}</Project>
+      <Name>Nuclectic.UserInterface.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.UserInterface\Nuclectic.UserInterface.csproj">
+      <Project>{4557273a-e0f7-4f12-baec-fca35e52068e}</Project>
+      <Name>Nuclectic.UserInterface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\ScreenMaskResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ScreenMaskResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\TextBatchResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextBatchResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\UnitTestResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UnitTestResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\MonoGame.Binaries.3.2.0\build\net40\MonoGame.Binaries.targets" Condition="Exists('..\..\packages\MonoGame.Binaries.3.2.0\build\net40\MonoGame.Binaries.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\MonoGame.Binaries.3.2.0\build\net40\MonoGame.Binaries.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\MonoGame.Binaries.3.2.0\build\net40\MonoGame.Binaries.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

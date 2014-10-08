@@ -18,16 +18,13 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-namespace Nuclex.Graphics.Debugging {
+namespace Nuclectic.Tests.Graphics.Debugging {
 
   /// <summary>Unit Test for the vector helper class</summary>
   [TestFixture]

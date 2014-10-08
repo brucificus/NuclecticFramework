@@ -20,13 +20,9 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-
-using Nuclex.Support;
-
 using NUnit.Framework;
 
-namespace Nuclex.UserInterface.Controls.Desktop {
+namespace Nuclectic.Tests.UserInterface.Controls.Desktop {
 
   /// <summary>Unit Test for the close window button</summary>
   [TestFixture]

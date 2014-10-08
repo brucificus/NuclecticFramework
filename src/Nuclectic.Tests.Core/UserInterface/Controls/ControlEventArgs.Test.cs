@@ -21,13 +21,9 @@ License along with this library
 #if UNITTEST
 
 
-using System;
-
 using NUnit.Framework;
 
-using Nuclex.Support;
-
-namespace Nuclex.UserInterface.Controls {
+namespace Nuclectic.Tests.UserInterface.Controls {
 
   /// <summary>Unit Test for the control event argument container</summary>
   [TestFixture]

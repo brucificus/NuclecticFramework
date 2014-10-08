@@ -18,21 +18,13 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Game.Content;
+using Nuclectic.Tests.Mocks;
+#if UNITTEST
 using NUnit.Framework;
 
-using Nuclex.Graphics;
-using Nuclex.Testing.Xna;
-
-namespace Nuclex.Game.Content {
+namespace Nuclectic.Tests.Game.Content {
 
   /// <summary>Unit test for the embedded content manager class</summary>
   [TestFixture]

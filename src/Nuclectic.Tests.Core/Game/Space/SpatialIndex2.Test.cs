@@ -18,18 +18,13 @@ License along with this library
 */
 #endregion
 
+using Nuclectic.Game.Space;
 #if UNITTEST
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-
-using Microsoft.Xna.Framework;
-
 using NUnit.Framework;
 
-namespace Nuclex.Game.Space {
+namespace Nuclectic.Tests.Game.Space {
 
   /// <summary>Unit tests for the 2D spatial index base class</summary>
   [TestFixture]

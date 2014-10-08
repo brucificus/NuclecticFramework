@@ -18,16 +18,14 @@ License along with this library
 */
 #endregion
 
+using Nuclectic.Game.Packing;
 #if UNITTEST
-
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-
 using NUnit.Framework;
 
-namespace Nuclex.Game.Packing {
+namespace Nuclectic.Tests.Game.Packing {
 
   /// <summary>Unit Test for the OutOfSpaceException class</summary>
   [TestFixture]

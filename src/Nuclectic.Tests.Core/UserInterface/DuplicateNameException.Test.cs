@@ -23,14 +23,9 @@ License along with this library
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-
 using NUnit.Framework;
 
-using Microsoft.Xna.Framework;
-
-using Nuclex.Support;
-
-namespace Nuclex.UserInterface {
+namespace Nuclectic.Tests.UserInterface {
 
   /// <summary>Unit Test for the duplicate name exception</summary>
   [TestFixture]

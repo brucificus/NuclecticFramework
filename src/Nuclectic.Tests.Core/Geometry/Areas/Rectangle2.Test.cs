@@ -18,15 +18,10 @@ License along with this library
 */
 #endregion
 
-using System;
-
-using Microsoft.Xna.Framework;
-
+using NUnit.Framework;
 #if UNITTEST
 
-using NUnit.Framework;
-
-namespace Nuclex.Geometry.Areas {
+namespace Nuclectic.Tests.Geometry.Areas {
 
   /// <summary>Test for the two-dimensional box implementation</summary>
   [TestFixture]

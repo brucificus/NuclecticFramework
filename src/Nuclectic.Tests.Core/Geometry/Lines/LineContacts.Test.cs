@@ -18,14 +18,11 @@ License along with this library
 */
 #endregion
 
+using Nuclectic.Geometry.Lines;
 #if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using NUnit.Framework;
 
-namespace Nuclex.Geometry.Lines {
+namespace Nuclectic.Tests.Geometry.Lines {
 
   /// <summary>Test for the LineContacts class</summary>
   [TestFixture]

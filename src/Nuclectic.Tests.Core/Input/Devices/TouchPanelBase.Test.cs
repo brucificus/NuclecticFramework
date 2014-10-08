@@ -20,15 +20,9 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-
 using NUnit.Framework;
-using NMock;
-using Microsoft.Xna.Framework;
 
-namespace Nuclex.Input.Devices {
+namespace Nuclectic.Tests.Input.Devices {
 
   /// <summary>Unit tests for the dummy touch panel</summary>
   [TestFixture]

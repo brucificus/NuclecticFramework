@@ -20,22 +20,9 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-using System.Runtime.InteropServices;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-
 using NUnit.Framework;
-using NMock;
 
-using Nuclex.Input;
-using Nuclex.UserInterface.Controls.Desktop;
-using Nuclex.UserInterface.Input;
-
-using Is = NMock.Is;
-
-namespace Nuclex.UserInterface.Visuals.Flat.Renderers {
+namespace Nuclectic.Tests.UserInterface.Visuals.Flat.Renderers {
 
   /// <summary>Unit Test for the flat button control renderer</summary>
   [TestFixture]

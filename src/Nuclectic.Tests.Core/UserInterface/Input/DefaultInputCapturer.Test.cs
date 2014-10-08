@@ -20,17 +20,9 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-
-using Microsoft.Xna.Framework.Input;
-
 using NUnit.Framework;
 
-using Nuclex.Input;
-using Nuclex.Support;
-using Nuclex.UserInterface.Input;
-
-namespace Nuclex.UserInterface.Input {
+namespace Nuclectic.Tests.UserInterface.Input {
 
   /// <summary>Unit Test for the default input capturer</summary>
   [TestFixture]

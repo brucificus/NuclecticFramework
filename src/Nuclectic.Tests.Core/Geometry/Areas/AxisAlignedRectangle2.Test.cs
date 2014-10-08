@@ -18,17 +18,14 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry;
+using Nuclectic.Geometry.Areas;
+using Nuclectic.Support.Helpers;
+#if UNITTEST
 using NUnit.Framework;
 
-using Nuclex.Support;
-
-namespace Nuclex.Geometry.Areas {
+namespace Nuclectic.Tests.Geometry.Areas {
 
   /// <summary>Test for the two-dimensional axis aligned box implementation</summary>
   [TestFixture]

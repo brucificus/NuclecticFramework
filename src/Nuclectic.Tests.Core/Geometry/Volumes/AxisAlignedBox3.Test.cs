@@ -19,14 +19,12 @@ License along with this library
 #endregion
 
 using System;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry.Volumes;
+using NUnit.Framework;
 #if UNITTEST
 
-using NUnit.Framework;
-
-namespace Nuclex.Geometry.Volumes {
+namespace Nuclectic.Tests.Geometry.Volumes {
 
   /// <summary>Test for the three-dimensional axis aligned box implementation</summary>
   [TestFixture]

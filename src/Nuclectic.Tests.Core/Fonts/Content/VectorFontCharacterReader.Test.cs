@@ -18,22 +18,11 @@ License along with this library
 */
 #endregion
 
+using Nuclectic.Fonts.Content;
 #if UNITTEST
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Resources;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-
 using NUnit.Framework;
 
-using Nuclex.Graphics;
-
-namespace Nuclex.Fonts.Content {
+namespace Nuclectic.Tests.Fonts.Content {
 
   /// <summary>Unit tests for the vector font character reader</summary>
   [TestFixture]

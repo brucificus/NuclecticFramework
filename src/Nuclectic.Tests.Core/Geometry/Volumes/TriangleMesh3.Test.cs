@@ -18,15 +18,9 @@ License along with this library
 */
 #endregion
 
-using System;
-
-using Microsoft.Xna.Framework;
-
 #if UNITTEST
 
-using NUnit.Framework;
-
-namespace Nuclex.Geometry.Volumes {
+namespace Nuclectic.Tests.Geometry.Volumes {
 
 // <summary>Tests the implementation of the TriangleMesh3 class</summary>
 //[ TestFixture ]

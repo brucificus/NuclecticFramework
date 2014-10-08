@@ -19,11 +19,10 @@ License along with this library
 #endregion
 
 using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
+using Nuclectic.Game.Packing;
 
-namespace Nuclex.Game.Packing {
+namespace Nuclectic.Tests.Game.Packing {
 
   /// <summary>Base class for unit testing the rectangle packers</summary>
   internal abstract class RectanglePackerTest {

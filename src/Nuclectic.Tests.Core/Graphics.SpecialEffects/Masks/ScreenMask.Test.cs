@@ -18,20 +18,17 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
-
+using Nuclectic.Graphics.Helpers;
+using Nuclectic.Graphics.TriD.SpecialEffects.Masks;
+using Nuclectic.Tests.Mocks;
+using SlimDX.Direct3D9;
+using Effect = Microsoft.Xna.Framework.Graphics.Effect;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-using Nuclex.Testing.Xna;
-
-namespace Nuclex.Graphics.SpecialEffects.Masks {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks {
 
   /// <summary>Unit tests for the screen mask class</summary>
   [TestFixture]

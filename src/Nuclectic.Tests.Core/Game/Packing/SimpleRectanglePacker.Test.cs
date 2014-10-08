@@ -18,16 +18,12 @@ License along with this library
 */
 #endregion
 
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Game.Packing;
+using NUnit.Framework;
 #if UNITTEST
 
-using NUnit.Framework;
-
-namespace Nuclex.Game.Packing {
+namespace Nuclectic.Tests.Game.Packing {
 
   /// <summary>Unit test for the simple rectangle packer class</summary>
   [TestFixture]

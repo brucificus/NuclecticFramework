@@ -18,20 +18,15 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
+using Nuclectic.Graphics.TriD;
+using Nuclectic.Tests.Mocks;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-using Nuclex.Testing.Xna;
-
-namespace Nuclex.Graphics {
+namespace Nuclectic.Tests.Graphics {
 
   /// <summary>Unit tests for the 'Drawable' class</summary>
   [TestFixture]

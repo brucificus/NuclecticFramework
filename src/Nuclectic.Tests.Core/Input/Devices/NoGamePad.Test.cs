@@ -18,17 +18,12 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-
-using NUnit.Framework;
-using NMock;
 using Microsoft.Xna.Framework.Input;
+using Nuclectic.Input.Devices;
+#if UNITTEST
+using NUnit.Framework;
 
-namespace Nuclex.Input.Devices {
+namespace Nuclectic.Tests.Input.Devices {
 
   /// <summary>Unit tests for the game pad dummy</summary>
   [TestFixture]

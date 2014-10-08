@@ -20,19 +20,7 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-using System.Collections.Generic;
-using System.Threading;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-using NUnit.Framework;
-
-using Nuclex.Graphics;
-using Nuclex.Testing.Xna;
-
-namespace Nuclex.Game.States {
+namespace Nuclectic.Tests.Game.States {
 
 #if false
   /// <summary>Unit test for the loading screen game state</summary>

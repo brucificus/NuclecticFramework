@@ -18,18 +18,13 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-using Nuclex.Support;
-
-namespace Nuclex.Geometry {
+namespace Nuclectic.Tests.Geometry {
 
   /// <summary>Unit Test for the matrix helper class</summary>
   [TestFixture]

@@ -18,25 +18,16 @@ License along with this library
 */
 #endregion
 
+using Microsoft.Xna.Framework.Content;
+using Nuclectic.Fonts;
+using Nuclectic.Graphics.Helpers;
+using Nuclectic.Tests.Mocks;
 #if UNITTEST
-
 using System;
 using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
 using NUnit.Framework;
 
-using Nuclex.Graphics;
-using Nuclex.Testing.Xna;
-
-using KerningEntry = System.Collections.Generic.KeyValuePair<
-  Nuclex.Fonts.VectorFont.KerningPair, Microsoft.Xna.Framework.Vector2
->;
-
-namespace Nuclex.Fonts {
+namespace Nuclectic.Tests.Fonts {
 
   /// <summary>Unit tests for the vector font class</summary>
   [TestFixture]
@@ -53,7 +44,7 @@ namespace Nuclex.Fonts {
       /// </summary>
       [Test]
       public void TestConstructor() {
-        VectorFont.KerningPair pair = new VectorFont.KerningPair('A' ,'B');
+        KerningPair pair = new KerningPair('A' ,'B');
         
         Assert.AreEqual('A', pair.Left);
         Assert.AreEqual('B', pair.Right);
@@ -64,8 +55,8 @@ namespace Nuclex.Fonts {
       /// </summary>
       [Test]
       public void TestGetHashCode() {
-        VectorFont.KerningPair pair1 = new VectorFont.KerningPair('A', 'B');
-        VectorFont.KerningPair pair2 = new VectorFont.KerningPair('A', 'B');
+        KerningPair pair1 = new KerningPair('A', 'B');
+        KerningPair pair2 = new KerningPair('A', 'B');
 
         // Can't check for inequality, always returning "123" as hash code would
         // be legal (even if not exactly the crown of efficiency :D)
@@ -75,9 +66,9 @@ namespace Nuclex.Fonts {
       /// <summary>Verifies that the Equals() method is implemented correctly</summary>
       [Test]
       public void TestEqualityCheck() {
-        VectorFont.KerningPair pair1 = new VectorFont.KerningPair('A', 'B');
-        VectorFont.KerningPair pair2 = new VectorFont.KerningPair('A', 'B');
-        VectorFont.KerningPair pair3 = new VectorFont.KerningPair('B', 'C');
+        KerningPair pair1 = new KerningPair('A', 'B');
+        KerningPair pair2 = new KerningPair('A', 'B');
+        KerningPair pair3 = new KerningPair('B', 'C');
         
         Assert.IsTrue(pair1.Equals(pair2));
         Assert.IsFalse(pair2.Equals(pair3));
@@ -88,7 +79,7 @@ namespace Nuclex.Fonts {
       /// </summary>
       [Test]
       public void TestEqualityCheckAgainstIncompatibleType() {
-        VectorFont.KerningPair pair = new VectorFont.KerningPair('A', 'B');
+        KerningPair pair = new KerningPair('A', 'B');
         Assert.IsFalse(pair.Equals(new object()));
       }
 
@@ -108,7 +99,7 @@ namespace Nuclex.Fonts {
     [Test]
     public void TestCharacters() {
       for(int index = 0; index < this.vectorFont.Characters.Count; ++index) {
-        VectorFontCharacter character = this.vectorFont.Characters[index];
+        var character = this.vectorFont.Characters[index];
         Assert.IsNotNull(character);
       }
     }
@@ -125,7 +116,7 @@ namespace Nuclex.Fonts {
     /// <summary>Tests whether kerning table lists valid characters</summary>
     [Test]
     public void TestKerningTable() {
-      foreach(KerningEntry entry in this.vectorFont.KerningTable) {
+      foreach(var entry in this.vectorFont.KerningTable) {
         char left = entry.Key.Left;
         char right = entry.Key.Right;
         
@@ -138,7 +129,7 @@ namespace Nuclex.Fonts {
     [Test]
     public void TestOutlining() {
       char testChar = getFirstVisibleCharacter();
-      OutlinedText text = this.vectorFont.Outline(new string(testChar, 3));
+      var text = this.vectorFont.Outline(new string(testChar, 3));
       Assert.IsNotNull(text); // nonsense; avoids compiler warning
     }
 
@@ -146,7 +137,7 @@ namespace Nuclex.Fonts {
     [Test]
     public void TestFilling() {
       char testChar = getFirstVisibleCharacter();
-      FilledText text = this.vectorFont.Fill(new string(testChar, 3));
+      var text = this.vectorFont.Fill(new string(testChar, 3));
       Assert.IsNotNull(text); // nonsense; avoids compiler warning
     }
 
@@ -154,7 +145,7 @@ namespace Nuclex.Fonts {
     [Test]
     public void TestExtrusion() {
       char testChar = getFirstVisibleCharacter();
-      ExtrudedText text = this.vectorFont.Extrude(new string(testChar, 3));
+      var text = this.vectorFont.Extrude(new string(testChar, 3));
       Assert.IsNotNull(text); // nonsense; avoids compiler warning
     }
 

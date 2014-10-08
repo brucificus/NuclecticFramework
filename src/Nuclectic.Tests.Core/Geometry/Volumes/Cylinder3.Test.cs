@@ -18,17 +18,13 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry;
+using Nuclectic.Geometry.Volumes;
+#if UNITTEST
 using NUnit.Framework;
 
-using Nuclex.Support;
-
-namespace Nuclex.Geometry.Volumes {
+namespace Nuclectic.Tests.Geometry.Volumes {
 
   /// <summary>Test for the three-dimensional box implementation</summary>
   [TestFixture]

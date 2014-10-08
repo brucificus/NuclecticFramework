@@ -18,21 +18,17 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Game.State;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-namespace Nuclex.Game.States {
+namespace Nuclectic.Tests.Game.States {
 
   /// <summary>Unit test for the game state manager</summary>
   [TestFixture]
-  public class GameStateManagerTest {
+  public class ManualGameStateManagerTest {
 
     #region class TestGameState
 
@@ -138,7 +134,7 @@ namespace Nuclex.Game.States {
       /// <param name="gameStateService">
       ///   Game state manager the unresumable game state belongs to
       /// </param>
-      public ReentrantGameState(IGameStateService gameStateService) {
+      public ReentrantGameState(IManualGameStateService gameStateService) {
         this.gameStateService = gameStateService;
       }
 
@@ -155,7 +151,7 @@ namespace Nuclex.Game.States {
       }
 
       /// <summary>Game state service the reentrant state will use</summary>
-      private IGameStateService gameStateService;
+      private IManualGameStateService gameStateService;
 
     }
 
@@ -166,7 +162,7 @@ namespace Nuclex.Game.States {
     /// </summary>
     [Test]
     public void TestDefaultConstructor() {
-      var manager = new GameStateManager();
+      var manager = new ManualGameStateManager();
       Assert.IsNotNull(manager); // nonsense, avoids compiler warning
     }
 
@@ -179,7 +175,7 @@ namespace Nuclex.Game.States {
       var services = new GameServiceContainer();
 
       Assert.IsNull(services.GetService(typeof(IGameStateService)));
-      using (var manager = new GameStateManager(services)) {
+      using (var manager = new ManualGameStateManager(services)) {
         Assert.IsNotNull(services.GetService(typeof(IGameStateService)));
       }
       Assert.IsNull(services.GetService(typeof(IGameStateService)));
@@ -194,7 +190,7 @@ namespace Nuclex.Game.States {
       var test = new TestGameState();
       Assert.AreEqual(0, test.OnLeavingCallCount);
 
-      using (var manager = new GameStateManager()) {
+      using (var manager = new ManualGameStateManager()) {
         manager.Push(test);
       }
 
@@ -211,7 +207,7 @@ namespace Nuclex.Game.States {
       var test = new TestGameState();
 
       Assert.AreEqual(0, test.DisposeCallCount);
-      using (var manager = new GameStateManager()) {
+      using (var manager = new ManualGameStateManager()) {
         manager.DisposeDroppedStates = disposalEnabled;
         manager.Push(test);
       }
@@ -233,7 +229,7 @@ namespace Nuclex.Game.States {
       var obscured = new TestGameState();
       var active = new TestGameState();
 
-      using (var manager = new GameStateManager()) {
+      using (var manager = new ManualGameStateManager()) {
         manager.Push(obscured);
 
         Assert.AreEqual(0, obscured.OnPauseCallCount);
@@ -264,7 +260,7 @@ namespace Nuclex.Game.States {
       var potentiallyObscured = new TestGameState();
       var active = new TestGameState();
 
-      using (var manager = new GameStateManager()) {
+      using (var manager = new ManualGameStateManager()) {
         manager.Push(alwaysObscured);
         manager.Push(potentiallyObscured);
         manager.Push(active, modality);
@@ -301,7 +297,7 @@ namespace Nuclex.Game.States {
     public void TestPushUnenterableState() {
       var test = new TestGameState();
 
-      using (var manager = new GameStateManager()) {
+      using (var manager = new ManualGameStateManager()) {
         manager.Push(test);
         Assert.AreSame(test, manager.ActiveState);
 
@@ -324,7 +320,7 @@ namespace Nuclex.Game.States {
     /// </summary>
     [Test]
     public void TestReeantrantPush() {
-      using (var manager = new GameStateManager()) {
+      using (var manager = new ManualGameStateManager()) {
         var reentrant = new ReentrantGameState(manager);
         manager.Push(reentrant);
 
@@ -342,7 +338,7 @@ namespace Nuclex.Game.States {
     public void TestDisposalInPop(bool disposalEnabled) {
       var test = new TestGameState();
 
-      using (var manager = new GameStateManager()) {
+      using (var manager = new ManualGameStateManager()) {
         manager.DisposeDroppedStates = disposalEnabled;
         manager.Push(test);
 
@@ -367,7 +363,7 @@ namespace Nuclex.Game.States {
       var popup = new TestGameState();
       var blocker2 = new TestGameState();
 
-      using (var manager = new GameStateManager()) {
+      using (var manager = new ManualGameStateManager()) {
         manager.Push(obscured);
         manager.Push(blocker1);
         manager.Push(popup, GameStateModality.Popup);
@@ -405,7 +401,8 @@ namespace Nuclex.Game.States {
       var popup = new TestGameState();
       var blocker2 = new TestGameState();
 
-      using (var manager = new GameStateManager()) {
+	  using (var manager = new ManualGameStateManager())
+	  {
         manager.Push(obscured);
         manager.Push(blocker1);
         manager.Push(popup, GameStateModality.Popup);
@@ -438,7 +435,8 @@ namespace Nuclex.Game.States {
     public void TestDisposalInSwitch(bool disposalEnabled) {
       var test = new TestGameState();
 
-      using (var manager = new GameStateManager()) {
+	  using (var manager = new ManualGameStateManager())
+	  {
         manager.DisposeDroppedStates = disposalEnabled;
         manager.Push(test);
 
@@ -461,7 +459,8 @@ namespace Nuclex.Game.States {
       var obscured = new TestGameState();
       var active = new TestGameState();
 
-      using (var manager = new GameStateManager()) {
+	  using (var manager = new ManualGameStateManager())
+	  {
         manager.Push(obscured);
         manager.Push(active);
 
@@ -482,7 +481,8 @@ namespace Nuclex.Game.States {
     public void TestActiveState() {
       var test = new TestGameState();
 
-      using (var manager = new GameStateManager()) {
+	  using (var manager = new ManualGameStateManager())
+	  {
         Assert.IsNull(manager.ActiveState);
 
         manager.Push(test);

@@ -18,19 +18,16 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Graphics.Helpers;
+using Nuclectic.Graphics.TriD.SpecialEffects;
+using Nuclectic.Tests.Mocks;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-using Nuclex.Testing.Xna;
-
-namespace Nuclex.Graphics.SpecialEffects {
+namespace Nuclectic.Tests.Graphics.SpecialEffects {
 
   /// <summary>Unit test for the indexed mesh graphics resource keeper</summary>
   [TestFixture]

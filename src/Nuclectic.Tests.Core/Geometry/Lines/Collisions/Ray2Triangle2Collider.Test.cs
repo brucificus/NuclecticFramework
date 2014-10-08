@@ -18,16 +18,14 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry;
+using Nuclectic.Geometry.Lines;
+using Nuclectic.Geometry.Lines.Collisions;
+#if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclex.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions {
 
   /// <summary>Test for the Ray2 to Triangle2 interference detection routines</summary>
   [TestFixture]

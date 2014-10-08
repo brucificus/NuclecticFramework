@@ -21,14 +21,9 @@ License along with this library
 #if UNITTEST
 
 using System;
-
-using Microsoft.Xna.Framework;
-
 using NUnit.Framework;
 
-using Nuclex.Support;
-
-namespace Nuclex.UserInterface {
+namespace Nuclectic.Tests.UserInterface {
 
   /// <summary>Unit Test for the unified rectangle class</summary>
   [TestFixture]

@@ -20,12 +20,9 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-using Microsoft.Xna.Framework;
-
 using NUnit.Framework;
 
-namespace Nuclex.Geometry.Volumes.Collisions {
+namespace Nuclectic.Tests.Geometry.Volumes.Collisions {
 
   /// <summary>Test for the AABB interference detection routines</summary>
   [TestFixture]

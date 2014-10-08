@@ -18,21 +18,17 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Graphics.TriD.Batching;
+using Nuclectic.Tests.Mocks;
+using SlimDX.Direct3D9;
+using PrimitiveType = Microsoft.Xna.Framework.Graphics.PrimitiveType;
+using VertexDeclaration = Microsoft.Xna.Framework.Graphics.VertexDeclaration;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-using Nuclex.Testing.Xna;
-
-using TestVertex = Microsoft.Xna.Framework.Graphics.VertexPositionColor;
-
-namespace Nuclex.Graphics.Batching {
+namespace Nuclectic.Tests.Graphics.Batching {
 
   /// <summary>Unit tests for the dynamic buffer based batch drawer</summary>
   [TestFixture]
@@ -48,8 +44,8 @@ namespace Nuclex.Graphics.Batching {
         this.mockedService = new MockedGraphicsDeviceService(DeviceType.Reference);
         this.graphicsDeviceKeeper = this.mockedService.CreateDevice();
         try {
-          this.vertexDeclaration = TestVertex.VertexDeclaration;
-          this.batchDrawer = new DynamicBufferBatchDrawer<TestVertex>(
+          this.vertexDeclaration = VertexDeclarationHelperTest.TestVertex.VertexDeclaration;
+          this.batchDrawer = new DynamicBufferBatchDrawer<VertexDeclarationHelperTest.TestVertex>(
             this.mockedService.GraphicsDevice
           );
         }
@@ -78,7 +74,7 @@ namespace Nuclex.Graphics.Batching {
       }
 
       /// <summary>The batch drawer being tested</summary>
-      public DynamicBufferBatchDrawer<TestVertex> BatchDrawer {
+      public DynamicBufferBatchDrawer<VertexDeclarationHelperTest.TestVertex> BatchDrawer {
         get { return this.batchDrawer; }
       }
 
@@ -89,7 +85,7 @@ namespace Nuclex.Graphics.Batching {
       /// <summary>Vertex declaration for the vertices we use for testing</summary>
       private VertexDeclaration vertexDeclaration;
       /// <summary>Batch drawer being tested</summary>
-      private DynamicBufferBatchDrawer<TestVertex> batchDrawer;
+      private DynamicBufferBatchDrawer<VertexDeclarationHelperTest.TestVertex> batchDrawer;
 
     }
 
@@ -121,7 +117,7 @@ namespace Nuclex.Graphics.Batching {
     [Test]
     public void TestSelectWithoutIndices() {
       using(Creator creator = new Creator()) {
-        TestVertex[] vertices = new TestVertex[9];
+        VertexDeclarationHelperTest.TestVertex[] vertices = new VertexDeclarationHelperTest.TestVertex[9];
 
         creator.BatchDrawer.Select(vertices, 9);
       }
@@ -133,7 +129,7 @@ namespace Nuclex.Graphics.Batching {
     [Test]
     public void TestSelectMultipleWithoutIndices() {
       using(Creator creator = new Creator()) {
-        TestVertex[] vertices = new TestVertex[9];
+        VertexDeclarationHelperTest.TestVertex[] vertices = new VertexDeclarationHelperTest.TestVertex[9];
 
         // This will cause the drawer to run out of buffer segments and cause
         // a discarding lock on the buffers
@@ -149,7 +145,7 @@ namespace Nuclex.Graphics.Batching {
     [Test]
     public void TestSelectWithIndices() {
       using(Creator creator = new Creator()) {
-        TestVertex[] vertices = new TestVertex[9];
+        VertexDeclarationHelperTest.TestVertex[] vertices = new VertexDeclarationHelperTest.TestVertex[9];
         short[] indices = new short[9];
 
         creator.BatchDrawer.Select(vertices, 9, indices, 9);
@@ -162,7 +158,7 @@ namespace Nuclex.Graphics.Batching {
     [Test]
     public void TestSelectMultipleWithIndices() {
       using(Creator creator = new Creator()) {
-        TestVertex[] vertices = new TestVertex[9];
+        VertexDeclarationHelperTest.TestVertex[] vertices = new VertexDeclarationHelperTest.TestVertex[9];
         short[] indices = new short[9];
 
         // This will cause the drawer to run out of buffer segments and cause
@@ -179,7 +175,7 @@ namespace Nuclex.Graphics.Batching {
     [Test]
     public void TestDrawWithoutIndices() {
       using(Creator creator = new Creator()) {
-        TestVertex[] vertices = new TestVertex[9];
+        VertexDeclarationHelperTest.TestVertex[] vertices = new VertexDeclarationHelperTest.TestVertex[9];
 
         using(
           BasicEffectDrawContext context = new BasicEffectDrawContext(
@@ -198,7 +194,7 @@ namespace Nuclex.Graphics.Batching {
     [Test]
     public void TestDrawWithIndices() {
       using(Creator creator = new Creator()) {
-        TestVertex[] vertices = new TestVertex[9];
+        VertexDeclarationHelperTest.TestVertex[] vertices = new VertexDeclarationHelperTest.TestVertex[9];
         short[] indices = new short[9];
 
         creator.BatchDrawer.Select(vertices, 9, indices, 9);

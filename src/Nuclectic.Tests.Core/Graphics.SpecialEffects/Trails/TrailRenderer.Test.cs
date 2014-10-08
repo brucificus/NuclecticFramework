@@ -20,15 +20,7 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
-using NUnit.Framework;
-
-namespace Nuclex.Graphics.SpecialEffects.Trails {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Trails {
 
 #if false
   /// <summary>Unit tests for the trail renderer class</summary>

@@ -18,17 +18,11 @@ License along with this library
 */
 #endregion
 
+using Nuclectic.Game.State;
 #if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 using NUnit.Framework;
 
-namespace Nuclex.Game.States {
+namespace Nuclectic.Tests.Game.States {
 
   /// <summary>Unit test for the load progress event argument container</summary>
   [TestFixture]

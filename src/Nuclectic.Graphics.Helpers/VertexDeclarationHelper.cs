@@ -19,7 +19,10 @@ License along with this library
 #endregion
 
 using System;
+using System.Linq;
+using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
+using Nuclectic.Support.Helpers;
 using Nuclectic.Support.Helpers.InteropServices.Marshal;
 
 namespace Nuclectic.Graphics.Helpers {
@@ -119,21 +122,23 @@ namespace Nuclectic.Graphics.Helpers {
 			return builder.BuildElementList<VertexType>();
 		}
 
-	///// <summary>Obtains the stride value for a vertex</summary>
-	///// <typeparam name="VertexType">
-	/////   Vertex structure the stride value will be obtained for
-	///// </typeparam>
-	///// <returns>The stride value for the specified vertex structure</returns>
-	//public static int GetStride<VertexType>() where VertexType : struct {
-	//  FieldInfo[] fields = getFields<VertexType>();
+		/// <summary>Obtains the stride value for a vertex</summary>
+		/// <typeparam name="VertexType">
+		///   Vertex structure the stride value will be obtained for
+		/// </typeparam>
+		/// <returns>The stride value for the specified vertex structure</returns>
+		internal static int GetStride<VertexType>(IMarshalSizeOf marshalSizeOf) where VertexType : struct
+		{
+			var fields = typeof(VertexType).GetTypeInfo().DeclaredFields.ToArray();
 
-	//  int fieldOffset = 0;
-	//  for(int index = 0; index < fields.Length; ++index) {
-	//	fieldOffset += Marshal.SizeOf(fields[index].FieldType);
-	//  }
+			int fieldOffset = 0;
+			for (int index = 0; index < fields.Length; ++index)
+			{
+				fieldOffset += marshalSizeOf.SizeOf(fields[index].FieldType).Value;
+			}
 
-	//  return fieldOffset;
-	//}
+			return fieldOffset;
+		}
 
 
 

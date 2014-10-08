@@ -20,16 +20,9 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-using System.Runtime.InteropServices;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-
 using NUnit.Framework;
-using NMock;
 
-namespace Nuclex.UserInterface.Visuals.Flat.Renderers {
+namespace Nuclectic.Tests.UserInterface.Visuals.Flat.Renderers {
 
   /// <summary>Base class for control renderer unit tests</summary>
   public abstract class ControlRendererTest {

@@ -18,17 +18,16 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
+using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Graphics.Helpers;
+using Nuclectic.Support.Helpers.InteropServices.Marshal;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-namespace Nuclex.Graphics {
+namespace Nuclectic.Tests.Graphics {
 
   /// <summary>Unit tests for the vertex element attribute</summary>
   [TestFixture]
@@ -40,7 +39,7 @@ namespace Nuclex.Graphics {
     ///   A vertex used to unit-test the format auto-detection of
     ///   the vertex declaration helper
     /// </summary>
-    private struct TestVertex {
+    internal struct TestVertex : IVertexType {
       /// <summary>A vertex element of type Vector2</summary>
       [VertexElement(VertexElementUsage.TextureCoordinate)]
       public Vector2 TestVector2;
@@ -65,6 +64,21 @@ namespace Nuclex.Graphics {
       /// <summary>A vertex element of type short</summary>
       [VertexElement(VertexElementUsage.BlendWeight, VertexElementFormat.Vector4)]
       public Matrix TestExplicitMatrix;
+
+	    VertexDeclaration IVertexType.VertexDeclaration
+	  {
+		  get { return GetVertexDeclaration(); }
+	  }
+
+	    public static VertexDeclaration VertexDeclaration
+	    {
+		    get { return GetVertexDeclaration(); }
+	    }
+
+	    private static VertexDeclaration GetVertexDeclaration()
+	    {
+		    return new VertexDeclaration(VertexDeclarationHelper.BuildElementList<TestVertex>());
+	    }
     }
 
     #endregion // struct TestVertex
@@ -150,8 +164,8 @@ namespace Nuclex.Graphics {
     /// </summary>
     [Test]
     public void TestStrideDetermination() {
-      Assert.AreEqual(114, VertexDeclarationHelper.GetStride<TestVertex>());
-      Assert.AreEqual(4, VertexDeclarationHelper.GetStride<SecondStreamVertex>());
+      Assert.AreEqual(114, VertexDeclarationHelper.GetStride<TestVertex>(new LateBoundMarshalSizeOf(Marshal.SizeOf)));
+	  Assert.AreEqual(4, VertexDeclarationHelper.GetStride<SecondStreamVertex>(new LateBoundMarshalSizeOf(Marshal.SizeOf)));
     }
 
     /// <summary>

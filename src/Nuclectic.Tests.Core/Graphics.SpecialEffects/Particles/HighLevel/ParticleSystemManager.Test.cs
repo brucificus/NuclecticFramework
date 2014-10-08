@@ -21,20 +21,10 @@ License along with this library
 #if UNITTEST
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-
 using NUnit.Framework;
 
-using Nuclex.Graphics.Batching;
-using Nuclex.Testing.Xna;
-
-namespace Nuclex.Graphics.SpecialEffects.Particles.HighLevel {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Particles.HighLevel {
 
   /// <summary>Unit tests for the particle system manager</summary>
   [TestFixture]

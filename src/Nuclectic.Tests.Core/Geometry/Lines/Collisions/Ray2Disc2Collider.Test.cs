@@ -18,16 +18,14 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry;
+using Nuclectic.Geometry.Lines;
+using Nuclectic.Geometry.Lines.Collisions;
+#if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclex.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions {
 
   /// <summary>Unit test for the 2D ray vs. 2D disc interference detector</summary>
   [TestFixture]

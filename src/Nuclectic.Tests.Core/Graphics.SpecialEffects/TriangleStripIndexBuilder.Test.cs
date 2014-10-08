@@ -18,16 +18,12 @@ License along with this library
 */
 #endregion
 
+using Nuclectic.Graphics.TriD.SpecialEffects;
 #if UNITTEST
-
 using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
-
 using NUnit.Framework;
 
-namespace Nuclex.Graphics.SpecialEffects {
+namespace Nuclectic.Tests.Graphics.SpecialEffects {
 
   /// <summary>Unit tests for the triangle stip index builder class</summary>
   [TestFixture]

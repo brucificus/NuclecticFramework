@@ -18,17 +18,12 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Graphics.TriD.SpecialEffects.Masks;
+#if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclex.Graphics.SpecialEffects.Masks {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks {
 
   /// <summary>Unit tests for the position vertex class</summary>
   [TestFixture]

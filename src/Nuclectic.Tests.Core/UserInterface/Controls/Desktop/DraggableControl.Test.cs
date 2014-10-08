@@ -20,15 +20,9 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-
 using NUnit.Framework;
 
-using Nuclex.Input;
-using Nuclex.Support;
-using Nuclex.UserInterface.Input;
-
-namespace Nuclex.UserInterface.Controls.Desktop {
+namespace Nuclectic.Tests.UserInterface.Controls.Desktop {
 
   /// <summary>Unit Test for the draggable control base class</summary>
   [TestFixture]

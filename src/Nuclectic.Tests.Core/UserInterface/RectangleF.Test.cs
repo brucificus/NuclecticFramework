@@ -21,14 +21,9 @@ License along with this library
 #if UNITTEST
 
 using System;
-
 using NUnit.Framework;
 
-using Microsoft.Xna.Framework;
-
-using Nuclex.Support;
-
-namespace Nuclex.UserInterface {
+namespace Nuclectic.Tests.UserInterface {
 
   /// <summary>Unit Test for the floating point rectangle class</summary>
   [TestFixture]

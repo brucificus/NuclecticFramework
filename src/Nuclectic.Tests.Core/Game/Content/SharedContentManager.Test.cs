@@ -1,287 +1,278 @@
-﻿#region CPL License
-/*
-Nuclex Framework
-Copyright (C) 2002-2011 Nuclex Development Labs
+﻿//#region CPL License
+///*
+//Nuclex Framework
+//Copyright (C) 2002-2011 Nuclex Development Labs
 
-This library is free software; you can redistribute it and/or
-modify it under the terms of the IBM Common Public License as
-published by the IBM Corporation; either version 1.0 of the
-License, or (at your option) any later version.
+//This library is free software; you can redistribute it and/or
+//modify it under the terms of the IBM Common Public License as
+//published by the IBM Corporation; either version 1.0 of the
+//License, or (at your option) any later version.
 
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-IBM Common Public License for more details.
+//This library is distributed in the hope that it will be useful,
+//but WITHOUT ANY WARRANTY; without even the implied warranty of
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//IBM Common Public License for more details.
 
-You should have received a copy of the IBM Common Public
-License along with this library
-*/
-#endregion
+//You should have received a copy of the IBM Common Public
+//License along with this library
+//*/
+//#endregion
 
-#if UNITTEST
+//#if UNITTEST
 
-using System;
-using System.Collections.Generic;
+//using System;
+//using NUnit.Framework;
 
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
+//namespace Nuclectic.Tests.Game.Content {
 
-using NUnit.Framework;
+//  /// <summary>Unit test for the shared content manager class</summary>
+//  [TestFixture]
+//  internal class SharedContentManagerTest {
 
-using Nuclex.Graphics;
-using Nuclex.Testing.Xna;
+//	#region class DummyContentManager
 
-namespace Nuclex.Game.Content {
+//	/// <summary>Dummy content manager used for unit testing</summary>
+//	private class DummyContentManager : ContentManager {
 
-  /// <summary>Unit test for the shared content manager class</summary>
-  [TestFixture]
-  internal class SharedContentManagerTest {
+//	  /// <summary>Initializes a new dummy content manager</summary>
+//	  /// <param name="gameServices">Game services the content manager will use</param>
+//	  public DummyContentManager(IServiceProvider gameServices) :
+//		base(gameServices) { }
 
-    #region class DummyContentManager
+//	  /// <summary>
+//	  ///   Loads an asset that has been processed by the Content Pipeline. Reference
+//	  ///   page contains code sample.
+//	  /// </summary>
+//	  /// <typeparam name="AssetType">Type of the asset that will be loaded</typeparam>
+//	  /// <param name="assetName">
+//	  ///   Asset name, relative to the loader root directory, and not including
+//	  ///   the .xnb file extension.
+//	  /// </param>
+//	  /// <returns>
+//	  ///   The loaded asset. Repeated calls to load the same asset will return
+//	  ///   the same object instance.
+//	  /// </returns>
+//	  public override AssetType Load<AssetType>(string assetName) {
+//		this.LastLoadedAsset = assetName;
+//		return default(AssetType);
+//	  }
 
-    /// <summary>Dummy content manager used for unit testing</summary>
-    private class DummyContentManager : ContentManager {
+//	  /// <summary>Called to unload all content</summary>
+//	  public override void Unload() {
+//		++this.UnloadCallCount;
+//	  }
 
-      /// <summary>Initializes a new dummy content manager</summary>
-      /// <param name="gameServices">Game services the content manager will use</param>
-      public DummyContentManager(IServiceProvider gameServices) :
-        base(gameServices) { }
+//	  /// <summary>The last asset this content manager tried to load</summary>
+//	  public string LastLoadedAsset;
+//	  /// <summary>Number of times the Unload() method has been called</summary>
+//	  public int UnloadCallCount;
 
-      /// <summary>
-      ///   Loads an asset that has been processed by the Content Pipeline. Reference
-      ///   page contains code sample.
-      /// </summary>
-      /// <typeparam name="AssetType">Type of the asset that will be loaded</typeparam>
-      /// <param name="assetName">
-      ///   Asset name, relative to the loader root directory, and not including
-      ///   the .xnb file extension.
-      /// </param>
-      /// <returns>
-      ///   The loaded asset. Repeated calls to load the same asset will return
-      ///   the same object instance.
-      /// </returns>
-      public override AssetType Load<AssetType>(string assetName) {
-        this.LastLoadedAsset = assetName;
-        return default(AssetType);
-      }
+//	}
 
-      /// <summary>Called to unload all content</summary>
-      public override void Unload() {
-        ++this.UnloadCallCount;
-      }
+//	#endregion // class DummyContentManager
 
-      /// <summary>The last asset this content manager tried to load</summary>
-      public string LastLoadedAsset;
-      /// <summary>Number of times the Unload() method has been called</summary>
-      public int UnloadCallCount;
+//	#region class TestSharedContentManager
 
-    }
+//	/// <summary>Shared content manager for testing</summary>
+//	private class TestSharedContentManager : SharedContentManager {
 
-    #endregion // class DummyContentManager
+//	  /// <summary>Initializes a new shared content manager</summary>
+//	  /// <param name="gameServices">
+//	  ///   Game services the shared content manager will use and add its own
+//	  ///   shared content service to
+//	  /// </param>
+//	  public TestSharedContentManager(GameServiceContainer gameServices) :
+//		base(gameServices) {
+//		this.serviceProvider = gameServices;
+//	  }
 
-    #region class TestSharedContentManager
+//	  /// <summary>The last asset the shared content provider tried to load</summary>
+//	  public string LastLoadedAsset {
+//		get {
+//		  if(this.dummyContentManager == null) {
+//			return null;
+//		  } else {
+//			return this.dummyContentManager.LastLoadedAsset;
+//		  }
+//		}
+//	  }
 
-    /// <summary>Shared content manager for testing</summary>
-    private class TestSharedContentManager : SharedContentManager {
+//	  /// <summary>Number of times the Unload() method has been called</summary>
+//	  public int UnloadCallCount {
+//		get { return this.dummyContentManager.UnloadCallCount; }
+//	  }
 
-      /// <summary>Initializes a new shared content manager</summary>
-      /// <param name="gameServices">
-      ///   Game services the shared content manager will use and add its own
-      ///   shared content service to
-      /// </param>
-      public TestSharedContentManager(GameServiceContainer gameServices) :
-        base(gameServices) {
-        this.serviceProvider = gameServices;
-      }
+//	  /// <summary>Creates a new content manager for the shared content provider</summary>
+//	  /// <returns>The newly created content manager</returns>
+//	  protected override ContentManager CreateContentManager() {
+//		this.dummyContentManager = new DummyContentManager(this.serviceProvider);
+//		return this.dummyContentManager;
+//	  }
 
-      /// <summary>The last asset the shared content provider tried to load</summary>
-      public string LastLoadedAsset {
-        get {
-          if(this.dummyContentManager == null) {
-            return null;
-          } else {
-            return this.dummyContentManager.LastLoadedAsset;
-          }
-        }
-      }
+//	  /// <summary>
+//	  ///   Dummy content manager that has been created by the shared content provider
+//	  /// </summary>
+//	  private DummyContentManager dummyContentManager;
+//	  /// <summary>
+//	  ///   Service container used by the content manager to look up that graphics device
+//	  /// </summary>
+//	  private IServiceProvider serviceProvider;
 
-      /// <summary>Number of times the Unload() method has been called</summary>
-      public int UnloadCallCount {
-        get { return this.dummyContentManager.UnloadCallCount; }
-      }
+//	}
 
-      /// <summary>Creates a new content manager for the shared content provider</summary>
-      /// <returns>The newly created content manager</returns>
-      protected override ContentManager CreateContentManager() {
-        this.dummyContentManager = new DummyContentManager(this.serviceProvider);
-        return this.dummyContentManager;
-      }
+//	#endregion // class TestSharedContentManager
 
-      /// <summary>
-      ///   Dummy content manager that has been created by the shared content provider
-      /// </summary>
-      private DummyContentManager dummyContentManager;
-      /// <summary>
-      ///   Service container used by the content manager to look up that graphics device
-      /// </summary>
-      private IServiceProvider serviceProvider;
+//	/// <summary>Tests the constructor of the shared content manager</summary>
+//	[Test]
+//	public void TestConstructor() {
+//	  GameServiceContainer gameServices = new GameServiceContainer();
+//	  MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
+//	  gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
+//	  using(
+//		SharedContentManager contentManager = new SharedContentManager(gameServices)
+//	  ) {
+//		// Nonsense, but avoids compiler warning about unused variable :)
+//		Assert.IsNotNull(contentManager);
+//	  }
+//	}
 
-    }
+//	/// <summary>
+//	///   Verifies that the shared content manager registers itself as a service
+//	/// </summary>
+//	[Test]
+//	public void TestServiceRegistration() {
+//	  GameServiceContainer gameServices = new GameServiceContainer();
+//	  MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
+//	  gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
+//	  using(
+//		SharedContentManager contentManager = new SharedContentManager(gameServices)
+//	  ) {
+//		object service = gameServices.GetService(typeof(ISharedContentService));
 
-    #endregion // class TestSharedContentManager
+//		Assert.AreSame(contentManager, service);
+//	  }
+//	}
 
-    /// <summary>Tests the constructor of the shared content manager</summary>
-    [Test]
-    public void TestConstructor() {
-      GameServiceContainer gameServices = new GameServiceContainer();
-      MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
-      gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
-      using(
-        SharedContentManager contentManager = new SharedContentManager(gameServices)
-      ) {
-        // Nonsense, but avoids compiler warning about unused variable :)
-        Assert.IsNotNull(contentManager);
-      }
-    }
+//	/// <summary>
+//	///   Verifies that the shared content manager can be initialized
+//	/// </summary>
+//	[Test]
+//	public void TestInitialization() {
+//	  GameServiceContainer gameServices = new GameServiceContainer();
+//	  MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
+//	  gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
+//	  using(
+//		SharedContentManager contentManager = new SharedContentManager(gameServices)
+//	  ) {
+//		contentManager.Initialize();
+//	  }
+//	}
 
-    /// <summary>
-    ///   Verifies that the shared content manager registers itself as a service
-    /// </summary>
-    [Test]
-    public void TestServiceRegistration() {
-      GameServiceContainer gameServices = new GameServiceContainer();
-      MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
-      gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
-      using(
-        SharedContentManager contentManager = new SharedContentManager(gameServices)
-      ) {
-        object service = gameServices.GetService(typeof(ISharedContentService));
+//	/// <summary>
+//	///   Verifies that the shared content manager can be initialized and takes over
+//	///   an existing graphics device provided by the game
+//	/// </summary>
+//	[Test]
+//	public void TestInitializationWithExistingGraphicsDevice() {
+//	  GameServiceContainer gameServices = new GameServiceContainer();
+//	  MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
+//	  gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
+//	  using(IDisposable keeper = mockedGraphics.CreateDevice()) {
+//		using(
+//		  SharedContentManager contentManager = new SharedContentManager(gameServices)
+//		) {
+//		  contentManager.Initialize();
+//		}
+//	  }
+//	}
 
-        Assert.AreSame(contentManager, service);
-      }
-    }
+//	/// <summary>
+//	///   Test whether the shared content manager performs the neccessary cleanup
+//	///   work when it is disposed
+//	/// </summary>
+//	[Test]
+//	public void TestDispose() {
+//	  GameServiceContainer gameServices = new GameServiceContainer();
+//	  MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
+//	  gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
+//	  using(
+//		SharedContentManager contentManager = new SharedContentManager(gameServices)
+//	  ) {
+//		object service = gameServices.GetService(typeof(ISharedContentService));
+//		Assert.AreSame(contentManager, service);
+//	  }
 
-    /// <summary>
-    ///   Verifies that the shared content manager can be initialized
-    /// </summary>
-    [Test]
-    public void TestInitialization() {
-      GameServiceContainer gameServices = new GameServiceContainer();
-      MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
-      gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
-      using(
-        SharedContentManager contentManager = new SharedContentManager(gameServices)
-      ) {
-        contentManager.Initialize();
-      }
-    }
+//	  // Make sure the service was unregistered again when the shared content manager
+//	  // got disposed
+//	  object serviceAfterDispose = gameServices.GetService(typeof(ISharedContentService));
+//	  Assert.IsNull(serviceAfterDispose);
+//	}
 
-    /// <summary>
-    ///   Verifies that the shared content manager can be initialized and takes over
-    ///   an existing graphics device provided by the game
-    /// </summary>
-    [Test]
-    public void TestInitializationWithExistingGraphicsDevice() {
-      GameServiceContainer gameServices = new GameServiceContainer();
-      MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
-      gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
-      using(IDisposable keeper = mockedGraphics.CreateDevice()) {
-        using(
-          SharedContentManager contentManager = new SharedContentManager(gameServices)
-        ) {
-          contentManager.Initialize();
-        }
-      }
-    }
+//	/// <summary>
+//	///   Ensures that the content manager throws an exception if it is asked to load
+//	///   an asset before it has been initialized
+//	/// </summary>
+//	[Test]
+//	public void TestThrowOnLoadAssetBeforeInitialization() {
+//	  GameServiceContainer gameServices = new GameServiceContainer();
+//	  MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
+//	  gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
+//	  using(
+//		TestSharedContentManager contentManager = new TestSharedContentManager(gameServices)
+//	  ) {
+//		Assert.Throws<InvalidOperationException>(
+//		  delegate() { contentManager.Load<BadImageFormatException>("I'm a funny asset"); }
+//		);
+//	  }
+//	}
 
-    /// <summary>
-    ///   Test whether the shared content manager performs the neccessary cleanup
-    ///   work when it is disposed
-    /// </summary>
-    [Test]
-    public void TestDispose() {
-      GameServiceContainer gameServices = new GameServiceContainer();
-      MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
-      gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
-      using(
-        SharedContentManager contentManager = new SharedContentManager(gameServices)
-      ) {
-        object service = gameServices.GetService(typeof(ISharedContentService));
-        Assert.AreSame(contentManager, service);
-      }
+//	/// <summary>
+//	///   Tests whether the shared content provider passes on the Load() call to its
+//	///   internal content manager
+//	/// </summary>
+//	[Test]
+//	public void TestLoadAsset() {
+//	  GameServiceContainer gameServices = new GameServiceContainer();
+//	  MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
+//	  gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
+//	  using(
+//		TestSharedContentManager contentManager = new TestSharedContentManager(gameServices)
+//	  ) {
+//		contentManager.Initialize();
 
-      // Make sure the service was unregistered again when the shared content manager
-      // got disposed
-      object serviceAfterDispose = gameServices.GetService(typeof(ISharedContentService));
-      Assert.IsNull(serviceAfterDispose);
-    }
+//		Assert.IsNull(contentManager.LastLoadedAsset);
+//		contentManager.Load<BadImageFormatException>("I'm a funny asset");
+//		Assert.AreEqual("I'm a funny asset", contentManager.LastLoadedAsset);
+//	  }
+//	}
 
-    /// <summary>
-    ///   Ensures that the content manager throws an exception if it is asked to load
-    ///   an asset before it has been initialized
-    /// </summary>
-    [Test]
-    public void TestThrowOnLoadAssetBeforeInitialization() {
-      GameServiceContainer gameServices = new GameServiceContainer();
-      MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
-      gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
-      using(
-        TestSharedContentManager contentManager = new TestSharedContentManager(gameServices)
-      ) {
-        Assert.Throws<InvalidOperationException>(
-          delegate() { contentManager.Load<BadImageFormatException>("I'm a funny asset"); }
-        );
-      }
-    }
+//	/// <summary>
+//	///   Tests whether the shared content provider passes on the Load() call to its
+//	///   internal content manager
+//	/// </summary>
+//	[Test]
+//	public void TestUnloadContent() {
+//	  GameServiceContainer gameServices = new GameServiceContainer();
+//	  MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
+//	  gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
 
-    /// <summary>
-    ///   Tests whether the shared content provider passes on the Load() call to its
-    ///   internal content manager
-    /// </summary>
-    [Test]
-    public void TestLoadAsset() {
-      GameServiceContainer gameServices = new GameServiceContainer();
-      MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
-      gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
-      using(
-        TestSharedContentManager contentManager = new TestSharedContentManager(gameServices)
-      ) {
-        contentManager.Initialize();
+//	  using(IDisposable keeper = mockedGraphics.CreateDevice()) {
+//		using(
+//		  TestSharedContentManager contentManager = new TestSharedContentManager(gameServices)
+//		) {
+//		  contentManager.Initialize();
 
-        Assert.IsNull(contentManager.LastLoadedAsset);
-        contentManager.Load<BadImageFormatException>("I'm a funny asset");
-        Assert.AreEqual("I'm a funny asset", contentManager.LastLoadedAsset);
-      }
-    }
+//		  Assert.AreEqual(0, contentManager.UnloadCallCount);
 
-    /// <summary>
-    ///   Tests whether the shared content provider passes on the Load() call to its
-    ///   internal content manager
-    /// </summary>
-    [Test]
-    public void TestUnloadContent() {
-      GameServiceContainer gameServices = new GameServiceContainer();
-      MockedGraphicsDeviceService mockedGraphics = new MockedGraphicsDeviceService();
-      gameServices.AddService(typeof(IGraphicsDeviceService), mockedGraphics);
+//		  contentManager.Unload();
 
-      using(IDisposable keeper = mockedGraphics.CreateDevice()) {
-        using(
-          TestSharedContentManager contentManager = new TestSharedContentManager(gameServices)
-        ) {
-          contentManager.Initialize();
+//		  Assert.AreEqual(1, contentManager.UnloadCallCount);
+//		}
+//	  }
+//	}
 
-          Assert.AreEqual(0, contentManager.UnloadCallCount);
+//  }
 
-          contentManager.Unload();
+//} // namespace Nuclex.Game.Content
 
-          Assert.AreEqual(1, contentManager.UnloadCallCount);
-        }
-      }
-    }
-
-  }
-
-} // namespace Nuclex.Game.Content
-
-#endif // UNITTEST
+//#endif // UNITTEST

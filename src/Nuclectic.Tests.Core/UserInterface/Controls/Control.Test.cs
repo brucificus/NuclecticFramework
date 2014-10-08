@@ -21,16 +21,9 @@ License along with this library
 #if UNITTEST
 
 using System;
-
-using Microsoft.Xna.Framework.Input;
-
 using NUnit.Framework;
 
-using Nuclex.Input;
-using Nuclex.Support;
-using Nuclex.UserInterface.Input;
-
-namespace Nuclex.UserInterface.Controls {
+namespace Nuclectic.Tests.UserInterface.Controls {
 
   /// <summary>Unit Test for the control class</summary>
   [TestFixture]

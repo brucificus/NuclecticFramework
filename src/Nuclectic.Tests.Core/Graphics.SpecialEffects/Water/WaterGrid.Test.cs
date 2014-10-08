@@ -18,19 +18,15 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using Nuclectic.Graphics.TriD.SpecialEffects.Water;
+using Nuclectic.Tests.Mocks;
+#if UNITTEST
+using System;
 using NUnit.Framework;
 
-using Nuclex.Testing.Xna;
-
-namespace Nuclex.Graphics.SpecialEffects.Water {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Water {
 
   /// <summary>Unit tests for the grid class</summary>
   [TestFixture]

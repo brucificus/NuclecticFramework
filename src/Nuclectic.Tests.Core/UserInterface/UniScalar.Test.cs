@@ -21,10 +21,9 @@ License along with this library
 #if UNITTEST
 
 using System;
-
 using NUnit.Framework;
 
-namespace Nuclex.UserInterface {
+namespace Nuclectic.Tests.UserInterface {
 
   /// <summary>Unit Test for the unified scalar class</summary>
   [TestFixture]

@@ -18,16 +18,11 @@ License along with this library
 */
 #endregion
 
+using Nuclectic.Input;
 #if UNITTEST
-
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-
 using NUnit.Framework;
-using NMock;
 
-namespace Nuclex.Input {
+namespace Nuclectic.Tests.Input {
 
   /// <summary>Unit tests for the controller detector</summary>
   [TestFixture]

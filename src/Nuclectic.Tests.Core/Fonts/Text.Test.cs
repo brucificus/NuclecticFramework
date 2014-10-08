@@ -18,21 +18,12 @@ License along with this library
 */
 #endregion
 
-#if UNITTEST
-
-using System;
-using System.Collections.Generic;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-
+#if UNITTEST
 using NUnit.Framework;
+using Text = Nuclectic.Fonts.Text;
 
-using Nuclex.Graphics;
-using Nuclex.Graphics.Batching;
-
-namespace Nuclex.Fonts {
+namespace Nuclectic.Tests.Fonts {
 
   /// <summary>Unit tests for the text class</summary>
   [TestFixture]

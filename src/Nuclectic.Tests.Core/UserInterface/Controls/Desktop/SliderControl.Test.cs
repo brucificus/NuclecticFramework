@@ -21,15 +21,9 @@ License along with this library
 #if UNITTEST
 
 using System;
-
 using NUnit.Framework;
-using NMock;
 
-using Nuclex.Input;
-using Nuclex.Support;
-using Nuclex.UserInterface.Input;
-
-namespace Nuclex.UserInterface.Controls.Desktop {
+namespace Nuclectic.Tests.UserInterface.Controls.Desktop {
 
   /// <summary>Unit Test for the slider control</summary>
   [TestFixture]

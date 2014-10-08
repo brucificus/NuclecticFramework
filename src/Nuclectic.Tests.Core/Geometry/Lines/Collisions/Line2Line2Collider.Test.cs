@@ -18,16 +18,14 @@ License along with this library
 */
 #endregion
 
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry;
+using Nuclectic.Geometry.Lines;
+using Nuclectic.Geometry.Lines.Collisions;
+using NUnit.Framework;
 #if UNITTEST
 
-using NUnit.Framework;
-
-namespace Nuclex.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions {
 
   /// <summary>
   ///   Unit test for the 2D infinite line vs. 2d infinite line interference detector

@@ -21,18 +21,9 @@ License along with this library
 #if UNITTEST
 
 using System;
-
-using Microsoft.Xna.Framework.Input;
-
 using NUnit.Framework;
-using NMock;
 
-using Nuclex.UserInterface.Input;
-using Nuclex.Input;
-
-using Is = NUnit.Framework.Is;
-
-namespace Nuclex.UserInterface {
+namespace Nuclectic.Tests.UserInterface {
 
   /// <summary>Unit Test for the Screen class</summary>
   [TestFixture]

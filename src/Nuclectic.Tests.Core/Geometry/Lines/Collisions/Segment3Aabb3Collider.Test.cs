@@ -20,12 +20,9 @@ License along with this library
 
 #if UNITTEST
 
-using System;
-using System.Collections.Generic;
-
 using NUnit.Framework;
 
-namespace Nuclex.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions {
 
   /// <summary>Test for the Segment3 to Aabb3 interference detection routines</summary>
   [TestFixture]

@@ -21,21 +21,9 @@ License along with this library
 #if UNITTEST
 
 using System;
-
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-
 using NUnit.Framework;
 
-using Nuclex.Input;
-using Nuclex.Testing.Xna;
-using Nuclex.UserInterface.Visuals;
-using Nuclex.UserInterface.Visuals.Flat;
-
-using ComponentEventHandler = System.EventHandler<System.EventArgs>;
-
-namespace Nuclex.UserInterface {
+namespace Nuclectic.Tests.UserInterface {
 
   /// <summary>Unit Test for the GUI manager</summary>
   [TestFixture]
@@ -47,10 +35,10 @@ namespace Nuclex.UserInterface {
     private class DummyVisualizer : IGuiVisualizer, IUpdateable {
 
       /// <summary>Raised when the Enabled property changes</summary>
-      public event ComponentEventHandler EnabledChanged { add { } remove { } }
+      public event EventHandler<EventArgs> EnabledChanged { add { } remove { } }
 
       /// <summary>Raised when the UpdateOrder property changes</summary>
-      public event ComponentEventHandler UpdateOrderChanged { add { } remove { } }
+      public event EventHandler<EventArgs> UpdateOrderChanged { add { } remove { } }
 
       /// <summary>Renders an entire control tree starting at the provided control</summary>
       /// <param name="screen">Screen containing the GUI that will be drawn</param>

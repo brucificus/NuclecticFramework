@@ -19,14 +19,13 @@ License along with this library
 #endregion
 
 using System;
-
 using Microsoft.Xna.Framework;
-
+using Nuclectic.Geometry;
+using Nuclectic.Geometry.Volumes;
+using NUnit.Framework;
 #if UNITTEST
 
-using NUnit.Framework;
-
-namespace Nuclex.Geometry.Volumes {
+namespace Nuclectic.Tests.Geometry.Volumes {
 
   /// <summary>Test for the three-dimensional box implementation</summary>
   [TestFixture]
@@ -52,7 +51,7 @@ namespace Nuclex.Geometry.Volumes {
     /// <summary>Tests the bounding box generator</summary>
     [Test]
     public void TestBoundingBox() {
-      Volumes.Box3 box = new Volumes.Box3(
+      Box3 box = new Box3(
         MatrixHelper.Create(
           new Vector3(15.0f, 15.0f, 15.0f), 
           Vector3.Normalize(new Vector3(1.0f, -1.0f, -1.0f)),
