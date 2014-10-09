@@ -26,14 +26,14 @@ using Microsoft.Xna.Framework.Content;
 namespace Nuclectic.Fonts.Content {
 
   /// <summary>XNA framework content reader for VectorFont characters</summary>
-  public class VectorFontCharacterReader : ContentTypeReader<IVectorFontCharacter> {
+  public class VectorFontCharacterReader : ContentTypeReader<VectorFontCharacter> {
 
     /// <summary>Load a vector font character from a stored XNA asset</summary>
     /// <param name="input">Reader from which the asset can be read</param>
     /// <param name="existingInstance">Optional existing instance we are reloading</param>
     /// <returns>The loaded VectorFont character</returns>
-    protected override IVectorFontCharacter Read(
-      ContentReader input, IVectorFontCharacter existingInstance
+    protected override VectorFontCharacter Read(
+      ContentReader input, VectorFontCharacter existingInstance
     ) {
 
       // Read the vertices for this font and the value for the cursor advancement

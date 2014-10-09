@@ -85,7 +85,7 @@ namespace Nuclectic.Fonts {
     /// </param>
     internal VectorFont(
       float lineHeight,
-      IReadOnlyList<VectorFontCharacter> characters, IReadOnlyDictionary<char, int> characterMap,
+      IReadOnlyList<IVectorFontCharacter> characters, IReadOnlyDictionary<char, int> characterMap,
       IReadOnlyDictionary<KerningPair, Vector2> kerningTable
     ) {
       this.lineHeight = lineHeight;
@@ -150,7 +150,7 @@ namespace Nuclectic.Fonts {
     /// <summary>Height of a single line of text in this font</summary>
     private float lineHeight;
     /// <summary>Characters contained in the font</summary>
-    private IReadOnlyList<VectorFontCharacter> characters;
+    private IReadOnlyList<IVectorFontCharacter> characters;
     /// <summary>Look-up map for indices by unicode character</summary>
     private IReadOnlyDictionary<char, int> characterMap;
     /// <summary>

@@ -26,13 +26,13 @@ using Microsoft.Xna.Framework.Content;
 namespace Nuclectic.Fonts.Content {
 
   /// <summary>XNA framework content reader for VectorFonts</summary>
-  public class VectorFontReader : ContentTypeReader<IVectorFont> {
+  public class VectorFontReader : ContentTypeReader<VectorFont> {
 
     /// <summary>Load a vector font from a stored XNA asset</summary>
     /// <param name="input">Reader from which the asset can be read</param>
     /// <param name="existingInstance">Optional existing instance we are reloading</param>
     /// <returns>The loaded VectorFont instance</returns>
-    protected override IVectorFont Read(ContentReader input, IVectorFont existingInstance) {
+    protected override VectorFont Read(ContentReader input, VectorFont existingInstance) {
       float lineHeight = input.ReadSingle();
 
       // Which index corresponds to which character
