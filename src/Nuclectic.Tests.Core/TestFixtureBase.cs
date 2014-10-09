@@ -1,4 +1,6 @@
 ﻿
+using Nuclectic.Tests.Mocks;
+
 namespace Nuclectic.Tests
 {
 	/// <summary>
@@ -21,5 +23,10 @@ namespace Nuclectic.Tests
         {
             return AutoMockWrapper.CreateLoose();
         }
+
+		protected IMockedGraphicsDeviceService AcquireGlobalExclusiveMockedGraphicsDeviceService()
+		{
+			return new GlobalExclusiveMockedGraphicsDeviceService(()=>new MockedGraphicsDeviceService());
+		}
     }
 }
