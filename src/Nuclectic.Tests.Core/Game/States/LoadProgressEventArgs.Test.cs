@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,29 +17,29 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Nuclectic.Game.State;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Game.States {
-
-  /// <summary>Unit test for the load progress event argument container</summary>
-  [TestFixture]
-  internal class LoadProgressEventArgsTest {
-
-    /// <summary>
-    ///   Tests whether an integer argument can be stored in the argument container
-    /// </summary>
-    [Test]
-    public void TestIntegerArgument() {
-      LoadProgressEventArgs test = new LoadProgressEventArgs(0.12345f);
-      Assert.AreEqual(0.12345f, test.Progress);
-    }
-
-  }
-
+namespace Nuclectic.Tests.Game.States
+{
+	/// <summary>Unit test for the load progress event argument container</summary>
+	[TestFixture]
+	internal class LoadProgressEventArgsTest
+	{
+		/// <summary>
+		///   Tests whether an integer argument can be stored in the argument container
+		/// </summary>
+		[Test]
+		public void TestIntegerArgument()
+		{
+			LoadProgressEventArgs test = new LoadProgressEventArgs(0.12345f);
+			Assert.AreEqual(0.12345f, test.Progress);
+		}
+	}
 } // namespace Nuclex.Game.States
 
 #endif // UNITTEST

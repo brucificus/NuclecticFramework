@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -25,92 +27,94 @@ using Nuclectic.Geometry.Lines.Collisions;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions
+{
+	/// <summary>Test for the Line3 to Aabb3 interference detection routines</summary>
+	[TestFixture]
+	public class Line3Aabb3ColliderTest
+	{
+		/// <summary>
+		///   Tests whether a close miss of the box results in no contacts being reported
+		/// </summary>
+		[Test]
+		public void TestCloseMiss()
+		{
+			Vector3 boxExtents = new Vector3(10.0f, 10.0f, 10.0f);
+			LineContacts contacts = Line3Aabb3Collider.FindContacts(
+																    new Vector3(0.0f, 0.0f, 10.1f), Vector3.Right, boxExtents
+				);
 
-  /// <summary>Test for the Line3 to Aabb3 interference detection routines</summary>
-  [TestFixture]
-  public class Line3Aabb3ColliderTest {
+			Assert.IsNaN(contacts.EntryTime);
+			Assert.IsNaN(contacts.ExitTime);
+		}
 
-    /// <summary>
-    ///   Tests whether a close miss of the box results in no contacts being reported
-    /// </summary>
-    [Test]
-    public void TestCloseMiss() {
-      Vector3 boxExtents = new Vector3(10.0f, 10.0f, 10.0f);
-      LineContacts contacts = Line3Aabb3Collider.FindContacts(
-        new Vector3(0.0f, 0.0f, 10.1f), Vector3.Right, boxExtents
-      );
+		/// <summary>
+		///   Tests whether a close miss of the box with a diagonal line results in
+		///   no contacts being reported
+		/// </summary>
+		[Test]
+		public void TestDiagonalCloseMiss()
+		{
+			Vector3 boxExtents = new Vector3(5.0f, 5.0f, 5.0f);
+			Vector3 diagonalVector = Vector3.Normalize(Vector3.One);
 
-      Assert.IsNaN(contacts.EntryTime);
-      Assert.IsNaN(contacts.ExitTime);
-    }
+			LineContacts contacts = Line3Aabb3Collider.FindContacts(
+																    new Vector3(-10.1f, 0.0f, 0.0f), diagonalVector, boxExtents
+				);
 
-    /// <summary>
-    ///   Tests whether a close miss of the box with a diagonal line results in
-    ///   no contacts being reported
-    /// </summary>
-    [Test]
-    public void TestDiagonalCloseMiss() {
-      Vector3 boxExtents = new Vector3(5.0f, 5.0f, 5.0f);
-      Vector3 diagonalVector = Vector3.Normalize(Vector3.One);
+			Assert.IsNaN(contacts.EntryTime);
+			Assert.IsNaN(contacts.ExitTime);
 
-      LineContacts contacts = Line3Aabb3Collider.FindContacts(
-        new Vector3(-10.1f, 0.0f, 0.0f), diagonalVector, boxExtents
-      );
+			diagonalVector.Y = -diagonalVector.Y;
 
-      Assert.IsNaN(contacts.EntryTime);
-      Assert.IsNaN(contacts.ExitTime);
+			contacts = Line3Aabb3Collider.FindContacts(
+													   new Vector3(0.0f, 10.1f, 0.0f), diagonalVector, boxExtents
+				);
 
-      diagonalVector.Y = -diagonalVector.Y;
+			Assert.IsNaN(contacts.EntryTime);
+			Assert.IsNaN(contacts.ExitTime);
+		}
 
-      contacts = Line3Aabb3Collider.FindContacts(
-        new Vector3(0.0f, 10.1f, 0.0f), diagonalVector, boxExtents
-      );
+		/// <summary>Tests whether a contact with a box is reported correctly</summary>
+		[Test]
+		public void TestContact()
+		{
+			Vector3 boxExtents = new Vector3(10.0f, 10.0f, 10.0f);
+			LineContacts contacts = Line3Aabb3Collider.FindContacts(
+																    new Vector3(-2.5f, -2.5f, -2.5f), Vector3.Up, boxExtents
+				);
 
-      Assert.IsNaN(contacts.EntryTime);
-      Assert.IsNaN(contacts.ExitTime);
-    }
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(-7.5f).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(12.5f).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
 
-    /// <summary>Tests whether a contact with a box is reported correctly</summary>
-    [Test]
-    public void TestContact() {
-      Vector3 boxExtents = new Vector3(10.0f, 10.0f, 10.0f);
-      LineContacts contacts = Line3Aabb3Collider.FindContacts(
-        new Vector3(-2.5f, -2.5f, -2.5f), Vector3.Up, boxExtents
-      );
+		/// <summary>
+		///   Tests whether a contact with a box defined by two corner points can be detected
+		/// </summary>
+		[Test]
+		public void TestContactOnCornerDefinedBox()
+		{
+			LineContacts contacts = Line3Aabb3Collider.FindContacts(
+																    new Vector3(97.5f, -102.5f, 0.0f), Vector3.Up,
+																	new Vector3(90.0f, -110.0f, -10.0f), new Vector3(110.0f, -90.0f, 10.0f)
+				);
 
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(-7.5f).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(12.5f).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
-
-    /// <summary>
-    ///   Tests whether a contact with a box defined by two corner points can be detected
-    /// </summary>
-    [Test]
-    public void TestContactOnCornerDefinedBox() {
-      LineContacts contacts = Line3Aabb3Collider.FindContacts(
-        new Vector3(97.5f, -102.5f, 0.0f), Vector3.Up,
-        new Vector3(90.0f, -110.0f, -10.0f), new Vector3(110.0f, -90.0f, 10.0f)
-      );
-
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(-7.5f).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(12.5f).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
-
-  }
-
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(-7.5f).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(12.5f).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions
 
 #endif // UNITTEST

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,28 +17,28 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.Input.Devices {
-    /// <summary>Specializd input devices for mouse-like controllers</summary>
-  public interface ITouchPanel : IInputDevice {
+namespace Nuclectic.Input.Devices
+{
+	/// <summary>Specializd input devices for mouse-like controllers</summary>
+	public interface ITouchPanel : IInputDevice
+	{
+		/// <summary>Triggered when the user presses on the screen</summary>
+		event TouchDelegate Pressed;
 
-    /// <summary>Triggered when the user presses on the screen</summary>
-    event TouchDelegate Pressed;
+		/// <summary>Triggered when the user moves his touch on the screen</summary>
+		event TouchDelegate Moved;
 
-    /// <summary>Triggered when the user moves his touch on the screen</summary>
-    event TouchDelegate Moved;
+		/// <summary>Triggered when the user releases the screen again</summary>
+		event TouchDelegate Released;
 
-    /// <summary>Triggered when the user releases the screen again</summary>
-    event TouchDelegate Released;
+		/// <summary>Maximum number of simultaneous touches the panel supports</summary>
+		int MaximumTouchCount { get; }
 
-    /// <summary>Maximum number of simultaneous touches the panel supports</summary>
-    int MaximumTouchCount { get; }
-
-    /// <summary>Retrieves the current state of the touch panel</summary>
-    /// <returns>The current state of the touch panel</returns>
-    ITouchState GetState();
-
-  }
-
+		/// <summary>Retrieves the current state of the touch panel</summary>
+		/// <returns>The current state of the touch panel</returns>
+		ITouchState GetState();
+	}
 } // namespace Nuclex.Input.Devices

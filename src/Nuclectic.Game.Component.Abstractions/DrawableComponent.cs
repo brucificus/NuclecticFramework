@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,92 +17,100 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Game.Component {
+namespace Nuclectic.Game.Component
+{
+	/// <summary>
+	///   Lightweight variant DrawableGameComponent that doesn't reference the Game class
+	/// </summary>
+	/// <remarks>
+	///   <para>
+	///     This is a lightweight version of DrawableGameComponent that can be used
+	///     without requiring a Game class to be present. Useful to get all the
+	///     advantages of the XNA GameServices architecture even when you have
+	///     initialized and manage the graphics device yourself.
+	///   </para>
+	///   <para>
+	///     The name of this class is the same as 'DrawableGameComponent' minus the
+	///     'Game' part as the Game reference is what this class removes from its namesake.
+	///   </para>
+	/// </remarks>
+	public class DrawableComponent : Component, IDrawable
+	{
+		/// <summary>Triggered when the value of the draw order property is changed.</summary>
+		public event EventHandler<EventArgs> DrawOrderChanged;
 
-  /// <summary>
-  ///   Lightweight variant DrawableGameComponent that doesn't reference the Game class
-  /// </summary>
-  /// <remarks>
-  ///   <para>
-  ///     This is a lightweight version of DrawableGameComponent that can be used
-  ///     without requiring a Game class to be present. Useful to get all the
-  ///     advantages of the XNA GameServices architecture even when you have
-  ///     initialized and manage the graphics device yourself.
-  ///   </para>
-  ///   <para>
-  ///     The name of this class is the same as 'DrawableGameComponent' minus the
-  ///     'Game' part as the Game reference is what this class removes from its namesake.
-  ///   </para>
-  /// </remarks>
-  public class DrawableComponent : Component, IDrawable {
+		/// <summary>Triggered when the value of the visible property is changed.</summary>
+		public event EventHandler<EventArgs> VisibleChanged;
 
-    /// <summary>Triggered when the value of the draw order property is changed.</summary>
-    public event EventHandler<EventArgs> DrawOrderChanged;
+		/// <summary>Initializes a new drawable component.</summary>
+		public DrawableComponent() { this.visible = true; }
 
-    /// <summary>Triggered when the value of the visible property is changed.</summary>
-    public event EventHandler<EventArgs> VisibleChanged;
+		/// <summary>Called when the drawable component needs to draw itself</summary>
+		/// <param name="gameTime">Provides a snapshot of the game's timing values</param>
+		public virtual void Draw(GameTime gameTime) { }
 
-    /// <summary>Initializes a new drawable component.</summary>
-    public DrawableComponent() {
-      this.visible = true;
-    }
+		/// <summary>
+		///   Indicates when the drawable component should be drawn in relation to other
+		///   drawables. Has no effect by itself.
+		/// </summary>
+		public int DrawOrder
+		{
+			get { return this.drawOrder; }
+			set
+			{
+				if (value != this.drawOrder)
+				{
+					this.drawOrder = value;
+					OnDrawOrderChanged();
+				}
+			}
+		}
 
-    /// <summary>Called when the drawable component needs to draw itself</summary>
-    /// <param name="gameTime">Provides a snapshot of the game's timing values</param>
-    public virtual void Draw(GameTime gameTime) { }
+		/// <summary>True when the drawable component is visible and should be drawn.</summary>
+		public bool Visible
+		{
+			get { return this.visible; }
+			set
+			{
+				if (value != this.visible)
+				{
+					this.visible = value;
+					OnVisibleChanged();
+				}
+			}
+		}
 
-    /// <summary>
-    ///   Indicates when the drawable component should be drawn in relation to other
-    ///   drawables. Has no effect by itself.
-    /// </summary>
-    public int DrawOrder {
-      get { return this.drawOrder; }
-      set {
-        if (value != this.drawOrder) {
-          this.drawOrder = value;
-          OnDrawOrderChanged();
-        }
-      }
-    }
+		/// <summary>Fires the DrawOrderChanged event</summary>
+		protected virtual void OnDrawOrderChanged()
+		{
+			if (this.DrawOrderChanged != null)
+			{
+				this.DrawOrderChanged(this, EventArgs.Empty);
+			}
+		}
 
-    /// <summary>True when the drawable component is visible and should be drawn.</summary>
-    public bool Visible {
-      get { return this.visible; }
-      set {
-        if (value != this.visible) {
-          this.visible = value;
-          OnVisibleChanged();
-        }
-      }
-    }
+		/// <summary>Fires the VisibleChanged event</summary>
+		protected virtual void OnVisibleChanged()
+		{
+			if (this.VisibleChanged != null)
+			{
+				this.VisibleChanged(this, EventArgs.Empty);
+			}
+		}
 
-    /// <summary>Fires the DrawOrderChanged event</summary>
-    protected virtual void OnDrawOrderChanged() {
-      if (this.DrawOrderChanged != null) {
-        this.DrawOrderChanged(this, EventArgs.Empty);
-      }
-    }
+		/// <summary>
+		///   Used to determine the drawing order of this object in relation to other
+		///   objects in the same list.
+		/// </summary>
+		private int drawOrder;
 
-    /// <summary>Fires the VisibleChanged event</summary>
-    protected virtual void OnVisibleChanged() {
-      if (this.VisibleChanged != null) {
-        this.VisibleChanged(this, EventArgs.Empty);
-      }
-    }
-
-    /// <summary>
-    ///   Used to determine the drawing order of this object in relation to other
-    ///   objects in the same list.
-    /// </summary>
-    private int drawOrder;
-    /// <summary>Whether this object is visible (and should thus be drawn)</summary>
-    private bool visible;
-
-  }
-
+		/// <summary>Whether this object is visible (and should thus be drawn)</summary>
+		private bool visible;
+	}
 } // namespace Nuclex.Graphics

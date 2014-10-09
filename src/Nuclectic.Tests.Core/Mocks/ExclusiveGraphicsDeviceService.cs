@@ -25,55 +25,93 @@ namespace Nuclectic.Tests.Mocks
 
 		private Lazy<IMockedGraphicsDeviceService> CreateLazyGraphicsDeviceService(Func<IMockedGraphicsDeviceService> graphicsDeviceServiceFactory)
 		{
-			return new Lazy<IMockedGraphicsDeviceService>(() =>
-			{
-				GuardAgainstDisposingOrDisposed();
-				System.Threading.Monitor.Enter(GlobalLock);
-				var graphicsDeviceService = graphicsDeviceServiceFactory();
-				_Disposable = new Disposable(() =>
+			return new Lazy<IMockedGraphicsDeviceService>(
+				() =>
 				{
-					try
-					{
-						var disposableGraphicsDeviceService = graphicsDeviceService as IDisposable;
-						if (disposableGraphicsDeviceService != null)
-							disposableGraphicsDeviceService.Dispose();
-					}
-					finally
-					{
-						System.Threading.Monitor.Exit(GlobalLock);
-					}
+					GuardAgainstDisposingOrDisposed();
+					System.Threading.Monitor.Enter(GlobalLock);
+					var graphicsDeviceService = graphicsDeviceServiceFactory();
+					_Disposable = new Disposable(
+						() =>
+						{
+							try
+							{
+								var disposableGraphicsDeviceService = graphicsDeviceService as IDisposable;
+								if (disposableGraphicsDeviceService != null)
+									disposableGraphicsDeviceService.Dispose();
+							}
+							finally
+							{
+								System.Threading.Monitor.Exit(GlobalLock);
+							}
+						});
+					return graphicsDeviceService;
 				});
-				return graphicsDeviceService;
-			});
 		}
 
 		GraphicsDevice IGraphicsDeviceService.GraphicsDevice
 		{
-			get { GuardAgainstDisposingOrDisposed(); return _LazyGraphicsDeviceService.Value.GraphicsDevice; }
+			get
+			{
+				GuardAgainstDisposingOrDisposed();
+				return _LazyGraphicsDeviceService.Value.GraphicsDevice;
+			}
 		}
 
 		event EventHandler<EventArgs> IGraphicsDeviceService.DeviceCreated
 		{
-			add { GuardAgainstDisposingOrDisposed(); _LazyGraphicsDeviceService.Value.DeviceCreated += value; }
-			remove { GuardAgainstDisposingOrDisposed(); _LazyGraphicsDeviceService.Value.DeviceCreated -= value; }
+			add
+			{
+				GuardAgainstDisposingOrDisposed();
+				_LazyGraphicsDeviceService.Value.DeviceCreated += value;
+			}
+			remove
+			{
+				GuardAgainstDisposingOrDisposed();
+				_LazyGraphicsDeviceService.Value.DeviceCreated -= value;
+			}
 		}
 
 		event EventHandler<EventArgs> IGraphicsDeviceService.DeviceDisposing
 		{
-			add { GuardAgainstDisposingOrDisposed(); _LazyGraphicsDeviceService.Value.DeviceDisposing += value; }
-			remove { GuardAgainstDisposingOrDisposed(); _LazyGraphicsDeviceService.Value.DeviceDisposing -= value; }
+			add
+			{
+				GuardAgainstDisposingOrDisposed();
+				_LazyGraphicsDeviceService.Value.DeviceDisposing += value;
+			}
+			remove
+			{
+				GuardAgainstDisposingOrDisposed();
+				_LazyGraphicsDeviceService.Value.DeviceDisposing -= value;
+			}
 		}
 
 		event EventHandler<EventArgs> IGraphicsDeviceService.DeviceReset
 		{
-			add { GuardAgainstDisposingOrDisposed(); _LazyGraphicsDeviceService.Value.DeviceReset += value; }
-			remove { GuardAgainstDisposingOrDisposed(); _LazyGraphicsDeviceService.Value.DeviceReset -= value; }
+			add
+			{
+				GuardAgainstDisposingOrDisposed();
+				_LazyGraphicsDeviceService.Value.DeviceReset += value;
+			}
+			remove
+			{
+				GuardAgainstDisposingOrDisposed();
+				_LazyGraphicsDeviceService.Value.DeviceReset -= value;
+			}
 		}
 
 		event EventHandler<EventArgs> IGraphicsDeviceService.DeviceResetting
 		{
-			add { GuardAgainstDisposingOrDisposed(); _LazyGraphicsDeviceService.Value.DeviceResetting += value; }
-			remove { GuardAgainstDisposingOrDisposed(); _LazyGraphicsDeviceService.Value.DeviceResetting -= value; }
+			add
+			{
+				GuardAgainstDisposingOrDisposed();
+				_LazyGraphicsDeviceService.Value.DeviceResetting += value;
+			}
+			remove
+			{
+				GuardAgainstDisposingOrDisposed();
+				_LazyGraphicsDeviceService.Value.DeviceResetting -= value;
+			}
 		}
 
 		public void Dispose()
@@ -103,7 +141,7 @@ namespace Nuclectic.Tests.Mocks
 
 		private void GuardAgainstDisposingOrDisposed()
 		{
-			if(_DisposingOrDisposed)
+			if (_DisposingOrDisposed)
 				throw new ObjectDisposedException(AlreadyDisposedMessage);
 		}
 	}
@@ -112,14 +150,8 @@ namespace Nuclectic.Tests.Mocks
 	{
 		private readonly Action _onDispose;
 
-		public Disposable(Action onDispose)
-		{
-			_onDispose = onDispose;
-		}
+		public Disposable(Action onDispose) { _onDispose = onDispose; }
 
-		public void Dispose()
-		{
-			_onDispose();
-		}
+		public void Dispose() { _onDispose(); }
 	}
 }

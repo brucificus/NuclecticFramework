@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,13 +17,14 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.Graphics.TriD.SpecialEffects {
-
+namespace Nuclectic.Graphics.TriD.SpecialEffects
+{
 #if false
 
-  /// <summary>Caches bitmaps on large textures to reduce texture switches</summary>
+	/// <summary>Caches bitmaps on large textures to reduce texture switches</summary>
   internal class TextureCache : IDisposable {
 
     #region struct Entry
@@ -249,5 +251,4 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects {
   }
 
 #endif
-
 } // namespace Nuclex.SpecialFx

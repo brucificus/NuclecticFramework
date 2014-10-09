@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,25 +17,24 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Geometry.Lines {
-
-  /// <summary>Straight line situated in 2D space</summary>
-  /// <remarks>
-  ///   This is the generalized interface to all kinds of lines (including rays and
-  ///   line segments). Be careful not to mistake this for an infinite Line like it
-  ///   is represented by the Line2 class.
-  /// </remarks>
-  public interface ILine2 {
-
-    /// <summary>Determines the closest point on the ray to the specified location</summary>
-    /// <param name="location">Random location to which the closest point is determined</param>
-    /// <returns>The closest point within the ray</returns>
-    Vector2 ClosestPointTo(Vector2 location);
-
-  }
-
+namespace Nuclectic.Geometry.Lines
+{
+	/// <summary>Straight line situated in 2D space</summary>
+	/// <remarks>
+	///   This is the generalized interface to all kinds of lines (including rays and
+	///   line segments). Be careful not to mistake this for an infinite Line like it
+	///   is represented by the Line2 class.
+	/// </remarks>
+	public interface ILine2
+	{
+		/// <summary>Determines the closest point on the ray to the specified location</summary>
+		/// <param name="location">Random location to which the closest point is determined</param>
+		/// <returns>The closest point within the ray</returns>
+		Vector2 ClosestPointTo(Vector2 location);
+	}
 } // namespace Nuclex.Geometry.Ranges

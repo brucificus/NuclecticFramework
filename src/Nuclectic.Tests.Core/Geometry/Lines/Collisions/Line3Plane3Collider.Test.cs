@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -25,84 +27,86 @@ using Nuclectic.Geometry.Lines.Collisions;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions
+{
+	/// <summary>Test for the Line3 to Plane3 interference detection routines</summary>
+	[TestFixture]
+	public class Line3Plane3ColliderTest
+	{
+		/// <summary>
+		///   Verifies that a line that is above and parallel to a plane does not
+		///   register as a contact
+		/// </summary>
+		[Test]
+		public void TestParallelLineAbovePlane()
+		{
+			LineContacts contacts = Line3Plane3Collider.FindContacts(
+																	 new Vector3(0.0f, 10.0f, 0.0f), Vector3.Right,
+																	 new Vector3(0.0f, 0.0f, 0.0f), Vector3.Up
+				);
 
-  /// <summary>Test for the Line3 to Plane3 interference detection routines</summary>
-  [TestFixture]
-  public class Line3Plane3ColliderTest {
+			Assert.IsFalse(contacts.HasContact);
+		}
 
-    /// <summary>
-    ///   Verifies that a line that is above and parallel to a plane does not
-    ///   register as a contact
-    /// </summary>
-    [Test]
-    public void TestParallelLineAbovePlane() {
-      LineContacts contacts = Line3Plane3Collider.FindContacts(
-        new Vector3(0.0f, 10.0f, 0.0f), Vector3.Right,
-        new Vector3(0.0f, 0.0f, 0.0f), Vector3.Up
-      );
+		/// <summary>
+		///   Verifies that a line that is above and parallel to a plane does not
+		///   register as a contact
+		/// </summary>
+		[Test]
+		public void TestParallelLineBelowPlane()
+		{
+			LineContacts contacts = Line3Plane3Collider.FindContacts(
+																	 new Vector3(-10.0f, 0.0f, 0.0f), Vector3.Up,
+																	 new Vector3(0.0f, 0.0f, 0.0f), Vector3.Left
+				);
 
-      Assert.IsFalse(contacts.HasContact);
-    }
+			Assert.IsFalse(contacts.HasContact);
+		}
 
-    /// <summary>
-    ///   Verifies that a line that is above and parallel to a plane does not
-    ///   register as a contact
-    /// </summary>
-    [Test]
-    public void TestParallelLineBelowPlane() {
-      LineContacts contacts = Line3Plane3Collider.FindContacts(
-        new Vector3(-10.0f, 0.0f, 0.0f), Vector3.Up,
-        new Vector3(0.0f, 0.0f, 0.0f), Vector3.Left
-      );
+		/// <summary>
+		///   Tests whether a contact is detected for a line crossing a plane orthogonally
+		/// </summary>
+		[Test]
+		public void TestLineCrossingPlaneOrthogonally()
+		{
+			LineContacts contacts = Line3Plane3Collider.FindContacts(
+																	 new Vector3(-10.0f, 0.0f, 0.0f), Vector3.Right,
+																	 new Vector3(0.0f, 0.0f, 0.0f), Vector3.Left
+				);
+			float touchTime = 10.0f;
 
-      Assert.IsFalse(contacts.HasContact);
-    }
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
 
-    /// <summary>
-    ///   Tests whether a contact is detected for a line crossing a plane orthogonally
-    /// </summary>
-    [Test]
-    public void TestLineCrossingPlaneOrthogonally() {
-      LineContacts contacts = Line3Plane3Collider.FindContacts(
-        new Vector3(-10.0f, 0.0f, 0.0f), Vector3.Right,
-        new Vector3(0.0f, 0.0f, 0.0f), Vector3.Left
-      );
-      float touchTime = 10.0f;
+		/// <summary>
+		///   Tests whether a contact is detected for a line crossing a plane diagonally
+		/// </summary>
+		[Test]
+		public void TestLineCrossingPlaneDiagonally()
+		{
+			LineContacts contacts = Line3Plane3Collider.FindContacts(
+																	 new Vector3(-10.0f, 0.0f, 0.0f), Vector3.Normalize(Vector3.One),
+																	 new Vector3(0.0f, 0.0f, 0.0f), Vector3.Left
+				);
+			float touchTime = 10.0f / Vector3.Normalize(Vector3.One).X;
 
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
-
-    /// <summary>
-    ///   Tests whether a contact is detected for a line crossing a plane diagonally
-    /// </summary>
-    [Test]
-    public void TestLineCrossingPlaneDiagonally() {
-      LineContacts contacts = Line3Plane3Collider.FindContacts(
-        new Vector3(-10.0f, 0.0f, 0.0f), Vector3.Normalize(Vector3.One),
-        new Vector3(0.0f, 0.0f, 0.0f), Vector3.Left
-      );
-      float touchTime = 10.0f / Vector3.Normalize(Vector3.One).X;
-
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
-
-  }
-
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions
 
 #endif // UNITTEST

@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -25,49 +27,49 @@ using Nuclectic.Geometry.Lines.Collisions;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions
+{
+	/// <summary>Test for the Line3 to Triangle3 interference detection routines</summary>
+	[TestFixture]
+	public class Line3Triangle3ColliderTest
+	{
+		/// <summary>
+		///   Tests whether a line that closely misses a triangle is detected as such
+		/// </summary>
+		[Test]
+		public void TestCloseMiss()
+		{
+			Assert.IsFalse(
+						   Line3Triangle3Collider.FindContacts(
+															   new Vector3(0.0f, 0.5f, 0.0f), Vector3.Right,
+															   Vector3.Zero, Vector3.UnitX, Vector3.UnitX + Vector3.UnitY
+							   ).HasContact
+				);
+		}
 
-  /// <summary>Test for the Line3 to Triangle3 interference detection routines</summary>
-  [TestFixture]
-  public class Line3Triangle3ColliderTest {
+		/// <summary>
+		///   Tests whether the contact finder reports the correct locations for a line
+		///   that crosses a triangle through its center 
+		/// </summary>
+		[Test]
+		public void TestHitThroughCenter()
+		{
+			LineContacts contacts = Line3Triangle3Collider.FindContacts(
+																	    new Vector3(-0.25f, -0.5f, -1.0f), Vector3.Normalize(Vector3.One),
+																		Vector3.Zero, Vector3.UnitX, Vector3.UnitX + Vector3.UnitY
+				);
+			float contactTime = 1.0f / Vector3.Normalize(Vector3.One).Z;
 
-    /// <summary>
-    ///   Tests whether a line that closely misses a triangle is detected as such
-    /// </summary>
-    [Test]
-    public void TestCloseMiss() {
-      Assert.IsFalse(
-        Line3Triangle3Collider.FindContacts(
-          new Vector3(0.0f, 0.5f, 0.0f), Vector3.Right,
-          Vector3.Zero, Vector3.UnitX, Vector3.UnitX + Vector3.UnitY
-        ).HasContact
-      );
-    }
-
-    /// <summary>
-    ///   Tests whether the contact finder reports the correct locations for a line
-    ///   that crosses a triangle through its center 
-    /// </summary>
-    [Test]
-    public void TestHitThroughCenter() {
-      LineContacts contacts = Line3Triangle3Collider.FindContacts(
-        new Vector3(-0.25f, -0.5f, -1.0f), Vector3.Normalize(Vector3.One),
-        Vector3.Zero, Vector3.UnitX, Vector3.UnitX + Vector3.UnitY
-      );
-      float contactTime = 1.0f / Vector3.Normalize(Vector3.One).Z;
-      
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(contactTime).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(contactTime).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
-
-  }
-
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(contactTime).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(contactTime).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions
 
 #endif // UNITTEST

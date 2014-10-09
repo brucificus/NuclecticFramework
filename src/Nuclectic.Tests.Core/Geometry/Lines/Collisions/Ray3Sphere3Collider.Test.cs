@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -25,68 +27,70 @@ using Nuclectic.Geometry.Lines.Collisions;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions
+{
+	/// <summary>Test for the Ray3 to Sphere3 interference detection routines</summary>
+	[TestFixture]
+	public class Ray3Sphere3ColliderTest
+	{
+		/// <summary>Validates the proper behavior if the ray starts inside the sphere</summary>
+		[Test]
+		public void TestRayStartingInside()
+		{
+			LineContacts contacts = Ray3Sphere3Collider.FindContacts(
+																	 Vector3.Zero, Vector3.UnitX, 2.0f
+				);
 
-  /// <summary>Test for the Ray3 to Sphere3 interference detection routines</summary>
-  [TestFixture]
-  public class Ray3Sphere3ColliderTest {
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(0.0f).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(2.0f).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
 
-    /// <summary>Validates the proper behavior if the ray starts inside the sphere</summary>
-    [Test]
-    public void TestRayStartingInside() {
-      LineContacts contacts = Ray3Sphere3Collider.FindContacts(
-        Vector3.Zero, Vector3.UnitX, 2.0f
-      );
+		/// <summary>Validates the proper behavior if the ray starts behind the sphere</summary>
+		[Test]
+		public void TestRayStartingBehind()
+		{
+			Assert.IsFalse(
+						   Ray3Sphere3Collider.FindContacts(
+														    Vector3.UnitX * 3.0f, Vector3.UnitX, 2.0f
+							   ).HasContact
+				);
+		}
 
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(0.0f).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(2.0f).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
+		/// <summary>Validates the proper behavior if the ray starts inside the sphere</summary>
+		[Test]
+		public void TestRayStartingInsideWithAbsoluteDiscPosition()
+		{
+			LineContacts contacts = Ray3Sphere3Collider.FindContacts(
+																	 Vector3.UnitX * 3.0f, Vector3.UnitX, Vector3.UnitX * 3.0f, 2.0f
+				);
 
-    /// <summary>Validates the proper behavior if the ray starts behind the sphere</summary>
-    [Test]
-    public void TestRayStartingBehind() {
-      Assert.IsFalse(
-        Ray3Sphere3Collider.FindContacts(
-          Vector3.UnitX * 3.0f, Vector3.UnitX, 2.0f
-        ).HasContact
-      );
-    }
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(0.0f).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(2.0f).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
 
-    /// <summary>Validates the proper behavior if the ray starts inside the sphere</summary>
-    [Test]
-    public void TestRayStartingInsideWithAbsoluteDiscPosition() {
-      LineContacts contacts = Ray3Sphere3Collider.FindContacts(
-        Vector3.UnitX * 3.0f, Vector3.UnitX, Vector3.UnitX * 3.0f, 2.0f
-      );
-
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(0.0f).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(2.0f).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
-
-    /// <summary>Validates the proper behavior if the ray starts behind the sphere</summary>
-    [Test]
-    public void TestRayStartingBehindWithAbsoluteDiscPosition() {
-      Assert.IsFalse(
-        Ray3Sphere3Collider.FindContacts(
-          Vector3.UnitX * 6.0f, Vector3.UnitX, Vector3.UnitX * 3.0f, 2.0f
-        ).HasContact
-      );
-    }
-
-  }
-
+		/// <summary>Validates the proper behavior if the ray starts behind the sphere</summary>
+		[Test]
+		public void TestRayStartingBehindWithAbsoluteDiscPosition()
+		{
+			Assert.IsFalse(
+						   Ray3Sphere3Collider.FindContacts(
+														    Vector3.UnitX * 6.0f, Vector3.UnitX, Vector3.UnitX * 3.0f, 2.0f
+							   ).HasContact
+				);
+		}
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions
 
 #endif // UNITTEST

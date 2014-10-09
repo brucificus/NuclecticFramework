@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -25,50 +27,50 @@ using Nuclectic.Geometry.Lines.Collisions;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions
+{
+	/// <summary>Test for the Ray2 to Triangle2 interference detection routines</summary>
+	[TestFixture]
+	public class Ray2Triangle2ColliderTest
+	{
+		/// <summary>
+		///   Tests whether the contact finder reports the correct locations for a ray
+		///   that starts inside a triangle.
+		/// </summary>
+		[Test]
+		public void TestRayStartingInside()
+		{
+			LineContacts contacts = Ray2Triangle2Collider.FindContacts(
+																	   new Vector2(0.75f, 0.5f), Vector2.UnitX,
+																	   Vector2.UnitX, Vector2.One, Vector2.Zero
+				);
 
-  /// <summary>Test for the Ray2 to Triangle2 interference detection routines</summary>
-  [TestFixture]
-  public class Ray2Triangle2ColliderTest {
-
-    /// <summary>
-    ///   Tests whether the contact finder reports the correct locations for a ray
-    ///   that starts inside a triangle.
-    /// </summary>
-    [Test]
-    public void TestRayStartingInside() {
-      LineContacts contacts = Ray2Triangle2Collider.FindContacts(
-        new Vector2(0.75f, 0.5f), Vector2.UnitX,
-        Vector2.UnitX, Vector2.One, Vector2.Zero
-      );
-
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(0.0f).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(0.25f).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(0.0f).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(0.25f).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
 
 
-    /// <summary>
-    ///   Tests whether the contact finder reports the correct locations for a ray
-    ///   that starts behind a triangle.
-    /// </summary>
-    [Test]
-    public void TestRayStartingBehind() {
-      Assert.IsFalse(
-        Ray2Triangle2Collider.FindContacts(
-          new Vector2(1.5f, 0.5f), Vector2.UnitX,
-          Vector2.UnitX, Vector2.One, Vector2.Zero
-        ).HasContact
-      );
-    }
-
-  }
-
+		/// <summary>
+		///   Tests whether the contact finder reports the correct locations for a ray
+		///   that starts behind a triangle.
+		/// </summary>
+		[Test]
+		public void TestRayStartingBehind()
+		{
+			Assert.IsFalse(
+						   Ray2Triangle2Collider.FindContacts(
+															  new Vector2(1.5f, 0.5f), Vector2.UnitX,
+															  Vector2.UnitX, Vector2.One, Vector2.Zero
+							   ).HasContact
+				);
+		}
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions
 
 #endif // UNITTEST

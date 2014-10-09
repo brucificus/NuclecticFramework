@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -23,88 +25,91 @@ using Nuclectic.Geometry;
 using Nuclectic.Geometry.Lines;
 using Nuclectic.Geometry.Lines.Collisions;
 using NUnit.Framework;
+
 #if UNITTEST
 
-namespace Nuclectic.Tests.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions
+{
+	/// <summary>
+	///   Unit test for the 2D infinite line vs. 2d infinite line interference detector
+	/// </summary>
+	[TestFixture]
+	public class Line2Line2ColliderTest
+	{
+		/// <summary>
+		///   Ensures no collisions are reported between two horizontal parallel lines
+		/// </summary>
+		[Test]
+		public void TestHorizontalParallelLines()
+		{
+			Assert.IsFalse(
+						   Line2Line2Collider.FindContacts(
+														   Vector2.Zero, Vector2.UnitX,
+														   Vector2.Zero, Vector2.UnitX
+							   ).HasContact
+				);
+		}
 
-  /// <summary>
-  ///   Unit test for the 2D infinite line vs. 2d infinite line interference detector
-  /// </summary>
-  [TestFixture]
-  public class Line2Line2ColliderTest {
+		/// <summary>
+		///   Ensures no collisions are reported between two vertical parallel lines
+		/// </summary>
+		[Test]
+		public void TestVerticalParallelLines()
+		{
+			Assert.IsFalse(
+						   Line2Line2Collider.FindContacts(
+														   Vector2.Zero, Vector2.UnitY,
+														   Vector2.Zero, Vector2.UnitY
+							   ).HasContact
+				);
+		}
 
-    /// <summary>
-    ///   Ensures no collisions are reported between two horizontal parallel lines
-    /// </summary>
-    [Test]
-    public void TestHorizontalParallelLines() {
-      Assert.IsFalse(
-        Line2Line2Collider.FindContacts(
-          Vector2.Zero, Vector2.UnitX,
-          Vector2.Zero, Vector2.UnitX
-        ).HasContact
-      );
-    }
+		/// <summary>
+		///   Verifies that the intersection of two lines crossing each other
+		///   orthogonally is detected
+		/// </summary>
+		[Test]
+		public void TestOrthogonallyCrossingLines()
+		{
+			LineContacts contacts = Line2Line2Collider.FindContacts(
+																    new Vector2(-1.0f, 0.0f), Vector2.UnitX,
+																	Vector2.Zero, Vector2.UnitY
+				);
+			float touchTime = 1.0f;
 
-    /// <summary>
-    ///   Ensures no collisions are reported between two vertical parallel lines
-    /// </summary>
-    [Test]
-    public void TestVerticalParallelLines() {
-      Assert.IsFalse(
-        Line2Line2Collider.FindContacts(
-          Vector2.Zero, Vector2.UnitY,
-          Vector2.Zero, Vector2.UnitY
-        ).HasContact
-      );
-    }
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
 
-    /// <summary>
-    ///   Verifies that the intersection of two lines crossing each other
-    ///   orthogonally is detected
-    /// </summary>
-    [Test]
-    public void TestOrthogonallyCrossingLines() {
-      LineContacts contacts = Line2Line2Collider.FindContacts(
-        new Vector2(-1.0f, 0.0f), Vector2.UnitX,
-        Vector2.Zero, Vector2.UnitY
-      );
-      float touchTime = 1.0f;
+		/// <summary>
+		///   Verifies that the intersection of two lines crossing each other
+		///   diagonally is detected
+		/// </summary>
+		[Test]
+		public void TestDiagonallyCrossingLines()
+		{
+			LineContacts contacts = Line2Line2Collider.FindContacts(
+																    new Vector2(1.0f, 0.0f), Vector2.Normalize(Vector2.One),
+																	Vector2.Zero, Vector2.UnitY
+				);
+			float touchTime = -1.4142135623730950488016887242097f;
 
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
-
-    /// <summary>
-    ///   Verifies that the intersection of two lines crossing each other
-    ///   diagonally is detected
-    /// </summary>
-    [Test]
-    public void TestDiagonallyCrossingLines() {
-      LineContacts contacts = Line2Line2Collider.FindContacts(
-        new Vector2(1.0f, 0.0f), Vector2.Normalize(Vector2.One),
-        Vector2.Zero, Vector2.UnitY
-      );
-      float touchTime = -1.4142135623730950488016887242097f;
-
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
-
-  }
-
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(touchTime).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions
 
 #endif // UNITTEST

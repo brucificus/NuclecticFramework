@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,71 +17,53 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using System.Collections.Generic;
-
 using Microsoft.Xna.Framework.Input;
 using Nuclectic.Input;
 using Nuclectic.Input.Devices;
 
-namespace Nuclex.Input.Devices {
+namespace Nuclex.Input.Devices
+{
+	/// <summary>Code-controllable mouse for unit testing</summary>
+	public class MockedMouse : BufferedMouse
+	{
+		/// <summary>Initializes a new window message based mouse</summary>
+		public MockedMouse() { }
 
-  /// <summary>Code-controllable mouse for unit testing</summary>
-  public class MockedMouse : BufferedMouse {
+		/// <summary>Moves the mouse cursor to the specified location</summary>
+		/// <param name="x">X coordinate the mouse cursor will be moved to</param>
+		/// <param name="y">Y coordinate the mouse cursor will be moved to</param>
+		public override void MoveTo(float x, float y) { BufferCursorMovement(x, y); }
 
-    /// <summary>Initializes a new window message based mouse</summary>
-    public MockedMouse() { }
+		/// <summary>Whether the input device is connected to the system</summary>
+		public override bool IsAttached { get { return this.isAttached; } }
 
-    /// <summary>Moves the mouse cursor to the specified location</summary>
-    /// <param name="x">X coordinate the mouse cursor will be moved to</param>
-    /// <param name="y">Y coordinate the mouse cursor will be moved to</param>
-    public override void MoveTo(float x, float y) {
-      BufferCursorMovement(x, y);
-    }
+		/// <summary>Human-readable name of the input device</summary>
+		public override string Name { get { return "Mocked mouse"; } }
 
-    /// <summary>Whether the input device is connected to the system</summary>
-    public override bool IsAttached {
-      get { return this.isAttached; }
-    }
+		/// <summary>Presses a button on the mouse</summary>
+		/// <param name="button">Button that will be pressed</param>
+		public void Press(MouseButtons button) { BufferButtonPress(button); }
 
-    /// <summary>Human-readable name of the input device</summary>
-    public override string Name {
-      get { return "Mocked mouse"; }
-    }
+		/// <summary>Buffers a button release on the mouse</summary>
+		/// <param name="button">Button that will be released</param>
+		public void Release(MouseButtons button) { BufferButtonRelease(button); }
 
-    /// <summary>Presses a button on the mouse</summary>
-    /// <param name="button">Button that will be pressed</param>
-    public void Press(MouseButtons button) {
-      BufferButtonPress(button);
-    }
+		/// <summary>Rotates the mouse wheel by the specified number of ticks</summary>
+		/// <param name="ticks">Number of ticks the mouse wheel will be rotated</param>
+		public void RotateWheel(float ticks) { BufferWheelRotation(ticks); }
 
-    /// <summary>Buffers a button release on the mouse</summary>
-    /// <param name="button">Button that will be released</param>
-    public void Release(MouseButtons button) {
-      BufferButtonRelease(button);
-    }
+		/// <summary>Attaches (connects) the game pad</summary>
+		public void Attach() { this.isAttached = true; }
 
-    /// <summary>Rotates the mouse wheel by the specified number of ticks</summary>
-    /// <param name="ticks">Number of ticks the mouse wheel will be rotated</param>
-    public void RotateWheel(float ticks) {
-      BufferWheelRotation(ticks);
-    }
+		/// <summary>Detaches (disconnects) the game pad</summary>
+		public void Detach() { this.isAttached = false; }
 
-    /// <summary>Attaches (connects) the game pad</summary>
-    public void Attach() {
-      this.isAttached = true;
-    }
-
-    /// <summary>Detaches (disconnects) the game pad</summary>
-    public void Detach() {
-      this.isAttached = false;
-    }
-
-    /// <summary>Whether the game pad is attached</summary>
-    private bool isAttached;
-
-  }
-
+		/// <summary>Whether the game pad is attached</summary>
+		private bool isAttached;
+	}
 } // namespace Nuclex.Input.Devices

@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2008 Nuclex Development Labs
@@ -16,36 +17,36 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nuclectic.Graphics.TriD.Batching;
 
-namespace Nuclectic.Fonts {
+namespace Nuclectic.Fonts
+{
+	/// <summary>Drawing context for drawing text with vector fonts</summary>
+	internal class TextDrawContext : DrawContext
+	{
+		/// <summary>Initializes a new text draw context</summary>
+		/// <param name="effect">Effect that will be used to render the text</param>
+		/// <param name="transform">Transformation matrix for the text</param>
+		/// <param name="textColor">Drawing color of the text</param>
+		public TextDrawContext(Effect effect, Matrix transform, Color textColor)
+		{
+			this.effect = effect;
+			this.transform = transform;
+			this.textColor = textColor;
+		}
 
-  /// <summary>Drawing context for drawing text with vector fonts</summary>
-  internal class TextDrawContext : DrawContext {
+		/// <summary>Number of passes this draw context requires for rendering</summary>
+		public override int Passes { get { return this.effect.CurrentTechnique.Passes.Count; } }
 
-    /// <summary>Initializes a new text draw context</summary>
-    /// <param name="effect">Effect that will be used to render the text</param>
-    /// <param name="transform">Transformation matrix for the text</param>
-    /// <param name="textColor">Drawing color of the text</param>
-    public TextDrawContext(Effect effect, Matrix transform, Color textColor) {
-      this.effect = effect;
-      this.transform = transform;
-      this.textColor = textColor;
-    }
-
-    /// <summary>Number of passes this draw context requires for rendering</summary>
-    public override int Passes {
-      get { return this.effect.CurrentTechnique.Passes.Count; }
-    }
-
-    /// <summary>Prepares the graphics device for drawing</summary>
-    /// <param name="pass">Index of the pass to begin rendering</param>
-    public override void Apply(int pass) {
-
+		/// <summary>Prepares the graphics device for drawing</summary>
+		/// <param name="pass">Index of the pass to begin rendering</param>
+		public override void Apply(int pass)
+		{
 #if WINDOWS_PHONE
       BasicEffect basicEffect = this.effect as BasicEffect;
       //basicEffect.World = Matrix.Identity;
@@ -54,43 +55,44 @@ namespace Nuclectic.Fonts {
       basicEffect.Alpha = (float)this.textColor.A / 255.0f;
       basicEffect.DiffuseColor = this.textColor.ToVector3();
 #else
-      this.effect.Parameters["ViewProjection"].SetValue(this.transform);
-      this.effect.Parameters["TextColor"].SetValue(this.textColor.ToVector4());
+			this.effect.Parameters["ViewProjection"].SetValue(this.transform);
+			this.effect.Parameters["TextColor"].SetValue(this.textColor.ToVector4());
 #endif
-      this.effect.CurrentTechnique.Passes[pass].Apply();
-    }
+			this.effect.CurrentTechnique.Passes[pass].Apply();
+		}
 
-    /// <summary>Tests whether another draw context is identical to this one</summary>
-    /// <param name="otherContext">Other context to check for equality</param>
-    /// <returns>True if the other context is identical to this one</returns>
-    public override bool Equals(DrawContext otherContext) {
-      TextDrawContext other = otherContext as TextDrawContext;
-      if(other == null)
-        return false;
+		/// <summary>Tests whether another draw context is identical to this one</summary>
+		/// <param name="otherContext">Other context to check for equality</param>
+		/// <returns>True if the other context is identical to this one</returns>
+		public override bool Equals(DrawContext otherContext)
+		{
+			TextDrawContext other = otherContext as TextDrawContext;
+			if (other == null)
+				return false;
 
-      Effect thisEffect = this.effect;
-      Effect otherEffect = other.effect;
+			Effect thisEffect = this.effect;
+			Effect otherEffect = other.effect;
 
-      // If the same effect instances are different, we stop comparing right here.
-      // This context is specialized to run the same effect in multiple configurations,
-      // different effects with identical settings will not happen due to its usage.
-      if(!ReferenceEquals(thisEffect, otherEffect))
-        return false;
+			// If the same effect instances are different, we stop comparing right here.
+			// This context is specialized to run the same effect in multiple configurations,
+			// different effects with identical settings will not happen due to its usage.
+			if (!ReferenceEquals(thisEffect, otherEffect))
+				return false;
 
-      // It's the same effect instance, so compare the configuration we're assigning
-      // to the effect before each drawing cycle
-      return
-        (this.textColor == other.textColor) &&
-        (this.transform == other.transform);
-    }
+			// It's the same effect instance, so compare the configuration we're assigning
+			// to the effect before each drawing cycle
+			return
+				(this.textColor == other.textColor) &&
+				(this.transform == other.transform);
+		}
 
-    /// <summary>The draw context's effect used for rendering</summary>
-    private Effect effect;
-    /// <summary>Transformation matrix controlling the text's placement</summary>
-    private Matrix transform;
-    /// <summary>Drawing color of the text</summary>
-    private Color textColor;
+		/// <summary>The draw context's effect used for rendering</summary>
+		private Effect effect;
 
-  }
+		/// <summary>Transformation matrix controlling the text's placement</summary>
+		private Matrix transform;
 
+		/// <summary>Drawing color of the text</summary>
+		private Color textColor;
+	}
 } // namespace Nuclex.Fonts

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Nuclectic.Game.Packing;
@@ -25,37 +27,38 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Game.Packing {
+namespace Nuclectic.Tests.Game.Packing
+{
+	/// <summary>Unit Test for the OutOfSpaceException class</summary>
+	[TestFixture]
+	internal class OutOfSpaceExceptionTest
+	{
+		/// <summary>
+		///   Verifies that the exception's default constructor is working
+		/// </summary>
+		[Test]
+		public void TestDefaultConstructor()
+		{
+			OutOfSpaceException testException = new OutOfSpaceException();
 
-  /// <summary>Unit Test for the OutOfSpaceException class</summary>
-  [TestFixture]
-  internal class OutOfSpaceExceptionTest {
+			string testExceptionString = testException.ToString();
+			Assert.IsNotNull(testExceptionString);
+		}
 
-    /// <summary>
-    ///   Verifies that the exception's default constructor is working
-    /// </summary>
-    [Test]
-    public void TestDefaultConstructor() {
-      OutOfSpaceException testException = new OutOfSpaceException();
+		/// <summary>
+		///   Checks whether the exception correctly stores its inner exception
+		/// </summary>
+		[Test]
+		public void TestInnerException()
+		{
+			Exception inner = new Exception("This is a test");
+			OutOfSpaceException testException = new OutOfSpaceException(
+				"Hello World", inner
+				);
 
-      string testExceptionString = testException.ToString();
-      Assert.IsNotNull(testExceptionString);
-    }
-
-    /// <summary>
-    ///   Checks whether the exception correctly stores its inner exception
-    /// </summary>
-    [Test]
-    public void TestInnerException() {
-      Exception inner = new Exception("This is a test");
-      OutOfSpaceException testException = new OutOfSpaceException(
-        "Hello World", inner
-      );
-
-      Assert.AreSame(inner, testException.InnerException);
-    }
-  }
-
+			Assert.AreSame(inner, testException.InnerException);
+		}
+	}
 } // namespace Nuclex.Game.Packing
 
 #endif // UNITTEST

@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,207 +17,206 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Nuclectic.Graphics.TriD.SpecialEffects.Water {
+namespace Nuclectic.Graphics.TriD.SpecialEffects.Water
+{
+	/// <summary>Simple water surface</summary>
+	public class WaterSurface : IDisposable
+	{
+		/// <summary>Delegate for a method used to draw the scene</summary>
+		/// <param name="gameTime">Snapshot of the game's timing values</param>
+		/// <param name="camera">Camera through which the scene is being viewed</param>
+		public delegate void SceneDrawDelegate(GameTime gameTime, ICamera camera);
 
-  /// <summary>Simple water surface</summary>
-  public class WaterSurface : IDisposable {
+		/// <summary>Initializes a new water surface</summary>
+		/// <param name="graphicsDevice">Graphics device to use for rendering</param>
+		/// <param name="min">Lesser coordinates of the region covered by water</param>
+		/// <param name="max">Greater coordinates of the region covered by water</param>
+		public WaterSurface(
+			GraphicsDevice graphicsDevice, Vector2 min, Vector2 max
+			)
+			: this(graphicsDevice, min, max, 1, 1) { }
 
-    /// <summary>Delegate for a method used to draw the scene</summary>
-    /// <param name="gameTime">Snapshot of the game's timing values</param>
-    /// <param name="camera">Camera through which the scene is being viewed</param>
-    public delegate void SceneDrawDelegate(GameTime gameTime, ICamera camera);
+		/// <summary>Initializes a new water surface</summary>
+		/// <param name="graphicsDevice">Graphics device to use for rendering</param>
+		/// <param name="min">Lesser coordinates of the region covered by water</param>
+		/// <param name="max">Greater coordinates of the region covered by water</param>
+		/// <param name="segmentsX">Number segments (and texture repeats) on the X axis</param>
+		/// <param name="segmentsZ">Number segments (and texture repeats) on the Y axis</param>
+		public WaterSurface(
+			GraphicsDevice graphicsDevice,
+			Vector2 min, Vector2 max,
+			int segmentsX, int segmentsZ
+			)
+		{
+			this.graphicsDevice = graphicsDevice;
 
-    /// <summary>Initializes a new water surface</summary>
-    /// <param name="graphicsDevice">Graphics device to use for rendering</param>
-    /// <param name="min">Lesser coordinates of the region covered by water</param>
-    /// <param name="max">Greater coordinates of the region covered by water</param>
-    public WaterSurface(
-      GraphicsDevice graphicsDevice, Vector2 min, Vector2 max
-    )
-      : this(graphicsDevice, min, max, 1, 1) { }
+			this.grid = new WaterGrid(graphicsDevice, min, max, segmentsX, segmentsZ);
 
-    /// <summary>Initializes a new water surface</summary>
-    /// <param name="graphicsDevice">Graphics device to use for rendering</param>
-    /// <param name="min">Lesser coordinates of the region covered by water</param>
-    /// <param name="max">Greater coordinates of the region covered by water</param>
-    /// <param name="segmentsX">Number segments (and texture repeats) on the X axis</param>
-    /// <param name="segmentsZ">Number segments (and texture repeats) on the Y axis</param>
-    public WaterSurface(
-      GraphicsDevice graphicsDevice,
-      Vector2 min, Vector2 max,
-      int segmentsX, int segmentsZ
-    ) {
-      this.graphicsDevice = graphicsDevice;
+			this.reflectionCamera = new Camera(Matrix.Identity, Matrix.Identity);
 
-      this.grid = new WaterGrid(graphicsDevice, min, max, segmentsX, segmentsZ);
+			this.graphicsDevice.DeviceResetting += new EventHandler<EventArgs>(graphicsDeviceResetting);
+			this.graphicsDevice.DeviceReset += new EventHandler<EventArgs>(graphicsDeviceReset);
 
-      this.reflectionCamera = new Camera(Matrix.Identity, Matrix.Identity);
+			createRenderTarget();
+		}
 
-      this.graphicsDevice.DeviceResetting += new EventHandler<EventArgs>(graphicsDeviceResetting);
-      this.graphicsDevice.DeviceReset += new EventHandler<EventArgs>(graphicsDeviceReset);
+		/// <summary>
+		///   Called when graphics resources should be released. Override to
+		///   handle component specific graphics resources
+		/// </summary>
+		public void Dispose()
+		{
+			if (this.reflectionRenderTarget != null)
+			{
+				this.reflectionRenderTarget.Dispose();
+				this.reflectionRenderTarget = null;
+			}
+			if (this.grid != null)
+			{
+				this.grid.Dispose();
+				this.grid = null;
+			}
+		}
 
-      createRenderTarget();
-    }
+		/// <summary>Selects the vertex and index buffer for the water surface</summary>
+		public void SelectVertexAndIndexBuffer()
+		{
+			this.graphicsDevice.SetVertexBuffer(this.grid.VertexBuffer);
+			this.graphicsDevice.Indices = this.grid.IndexBuffer;
+		}
 
-    /// <summary>
-    ///   Called when graphics resources should be released. Override to
-    ///   handle component specific graphics resources
-    /// </summary>
-    public void Dispose() {
-      if(this.reflectionRenderTarget != null) {
-        this.reflectionRenderTarget.Dispose();
-        this.reflectionRenderTarget = null;
-      }
-      if(this.grid != null) {
-        this.grid.Dispose();
-        this.grid = null;
-      }
-    }
+		/// <summary>Draws the plane making up the water surface</summary>
+		/// <param name="gameTime">Snapshot of the game's timing values</param>
+		/// <param name="camera">Camera through which the scene is being viewed</param>
+		public void DrawWaterPlane(GameTime gameTime, ICamera camera)
+		{
+			this.graphicsDevice.DrawIndexedPrimitives(
+													  this.grid.PrimitiveType, // primitive type to render
+													  0, // will be added to all vertex indices in the index buffer
+													  0, // minimum index of the vertices in the vertex buffer used in this call
+													  this.grid.VertexCount, // number of vertices used in this call
+													  0, // where in the index buffer to start drawing
+													  this.grid.PrimitiveCount // number of primitives to draw
+				);
+		}
 
-    /// <summary>Selects the vertex and index buffer for the water surface</summary>
-    public void SelectVertexAndIndexBuffer() {
-      this.graphicsDevice.SetVertexBuffer(this.grid.VertexBuffer);
-      this.graphicsDevice.Indices = this.grid.IndexBuffer;
-    }
+		/// <summary>Updates the reflected image on the water surface</summary>
+		/// <param name="gameTime">Snapshot of the game's timing values</param>
+		/// <param name="camera">Camera through which the scene is being viewed</param>
+		/// <param name="reflectedSceneDrawer">
+		///   Delegate that will be called to draw the scene in its reflected state
+		/// </param>
+		/// <remarks>
+		///   <para>
+		///     When the delegate is called, the scene should be drawn normally using
+		///     the provided game time and camera. The view matrix of the provided camera
+		///     will have been adjusted to draw the scene upside-down and the graphics device
+		///     will be configured to clip off anything that's below the water surface.
+		///   </para>
+		///   <para>
+		///     Some adjustments can be made, like rendering the reflection with reduced
+		///     detail, cheaper effects or even leaving our parts of the scene to improve
+		///     performance since the reflection will not be clearly displayed anyway.
+		///   </para>
+		/// </remarks>
+		public void UpdateReflection(
+			GameTime gameTime, ICamera camera, SceneDrawDelegate reflectedSceneDrawer
+			)
+		{
+			// Create a matrix that undoes the view and projection transforms. We don't
+			// involve any world matrix here because the water plane exists in
+			// the world coordinate frame, its world matrix is always the identity matrix.
+			Matrix viewProjection = camera.View * camera.Projection;
+			Matrix inverseViewProjection = Matrix.Invert(viewProjection);
 
-    /// <summary>Draws the plane making up the water surface</summary>
-    /// <param name="gameTime">Snapshot of the game's timing values</param>
-    /// <param name="camera">Camera through which the scene is being viewed</param>
-    public void DrawWaterPlane(GameTime gameTime, ICamera camera) {
-      this.graphicsDevice.DrawIndexedPrimitives(
-        this.grid.PrimitiveType, // primitive type to render
-        0, // will be added to all vertex indices in the index buffer
-        0, // minimum index of the vertices in the vertex buffer used in this call
-        this.grid.VertexCount, // number of vertices used in this call
-        0, // where in the index buffer to start drawing
-        this.grid.PrimitiveCount // number of primitives to draw
-      );
-    }
+			// The water plane in world coordinates. We want to clip away everything that's
+			// below the water surface (as only things above it should be reflected)
+			Vector4 worldWaterPlane = new Vector4(Vector3.Down, 0.0f);
 
-    /// <summary>Updates the reflected image on the water surface</summary>
-    /// <param name="gameTime">Snapshot of the game's timing values</param>
-    /// <param name="camera">Camera through which the scene is being viewed</param>
-    /// <param name="reflectedSceneDrawer">
-    ///   Delegate that will be called to draw the scene in its reflected state
-    /// </param>
-    /// <remarks>
-    ///   <para>
-    ///     When the delegate is called, the scene should be drawn normally using
-    ///     the provided game time and camera. The view matrix of the provided camera
-    ///     will have been adjusted to draw the scene upside-down and the graphics device
-    ///     will be configured to clip off anything that's below the water surface.
-    ///   </para>
-    ///   <para>
-    ///     Some adjustments can be made, like rendering the reflection with reduced
-    ///     detail, cheaper effects or even leaving our parts of the scene to improve
-    ///     performance since the reflection will not be clearly displayed anyway.
-    ///   </para>
-    /// </remarks>
-    public void UpdateReflection(
-      GameTime gameTime, ICamera camera, SceneDrawDelegate reflectedSceneDrawer
-    ) {
+			// The water plane as sent through the inverse view and projection transforms.
+			// This is neccessary because the plane will be transformed by those two
+			// matrices when it is applied to the scene. Don't ask me why.
+			Vector4 projectedWaterPlane = Vector4.Transform(
+														    worldWaterPlane, Matrix.Transpose(inverseViewProjection)
+				);
 
-      // Create a matrix that undoes the view and projection transforms. We don't
-      // involve any world matrix here because the water plane exists in
-      // the world coordinate frame, its world matrix is always the identity matrix.
-      Matrix viewProjection = camera.View * camera.Projection;
-      Matrix inverseViewProjection = Matrix.Invert(viewProjection);
+			this.graphicsDevice.SetRenderTarget(this.reflectionRenderTarget);
+			try
+			{
+				// Set up a clipping plane that only draws those parts of the scene that
+				// are above the water because that's the only thing we want to appear in
+				// the reflection on the water surface.
+				Matrix reflectionMatrix = Matrix.CreateReflection(new Plane(worldWaterPlane));
 
-      // The water plane in world coordinates. We want to clip away everything that's
-      // below the water surface (as only things above it should be reflected)
-      Vector4 worldWaterPlane = new Vector4(Vector3.Down, 0.0f);
+				Matrix newReflectionCameraView = reflectionMatrix * camera.View;
+				Matrix newReflectionCameraProjection = camera.Projection;
+				this.reflectionCamera = new Camera(newReflectionCameraView, newReflectionCameraProjection);
 
-      // The water plane as sent through the inverse view and projection transforms.
-      // This is neccessary because the plane will be transformed by those two
-      // matrices when it is applied to the scene. Don't ask me why.
-      Vector4 projectedWaterPlane = Vector4.Transform(
-        worldWaterPlane, Matrix.Transpose(inverseViewProjection)
-      );
+				reflectedSceneDrawer(gameTime, this.reflectionCamera);
+			}
+			finally
+			{
+				this.graphicsDevice.SetRenderTarget(null);
+			}
+		}
 
-      this.graphicsDevice.SetRenderTarget(this.reflectionRenderTarget);
-      try {
+		/// <summary>Texture containing the water reflection</summary>
+		public Texture2D ReflectionTexture { get { return this.reflectionRenderTarget; } }
 
-        // Set up a clipping plane that only draws those parts of the scene that
-        // are above the water because that's the only thing we want to appear in
-        // the reflection on the water surface.
-        Matrix reflectionMatrix = Matrix.CreateReflection(new Plane(worldWaterPlane));
+		/// <summary>Camera which views the scene turned upside-down</summary>
+		public ICamera ReflectionCamera { get { return this.reflectionCamera; } }
 
-		Matrix newReflectionCameraView = reflectionMatrix * camera.View;
-		Matrix newReflectionCameraProjection = camera.Projection;
-		this.reflectionCamera = new Camera(newReflectionCameraView, newReflectionCameraProjection);
+		/// <summary>Sets up the render target for the water surface reflection</summary>
+		private void createRenderTarget()
+		{
+			int width = Math.Max(graphicsDevice.PresentationParameters.BackBufferWidth, 16);
+			int height = Math.Max(graphicsDevice.PresentationParameters.BackBufferHeight, 16);
 
-        reflectedSceneDrawer(gameTime, this.reflectionCamera);
-      }
-      finally {
-        this.graphicsDevice.SetRenderTarget(null);
-      }
+			this.reflectionRenderTarget = new RenderTarget2D(
+				graphicsDevice,
+				width, height,
+				false, // mipMap
+				graphicsDevice.PresentationParameters.BackBufferFormat,
+				graphicsDevice.PresentationParameters.DepthStencilFormat,
+				1, // MultisampleCount
+				RenderTargetUsage.PlatformContents
+				);
+		}
 
-    }
+		/// <summary>Called when the graphics device has completed a reset</summary>
+		/// <param name="sender">Graphics device that has completed a reset</param>
+		/// <param name="arguments">Not used</param>
+		private void graphicsDeviceReset(object sender, EventArgs arguments) { createRenderTarget(); }
 
-    /// <summary>Texture containing the water reflection</summary>
-    public Texture2D ReflectionTexture {
-      get {
-        return this.reflectionRenderTarget;
-      }
-    }
+		/// <summary>Called when the graphics device is about to perform a reset</summary>
+		/// <param name="sender">Graphics device that is about to perform a reset</param>
+		/// <param name="arguments">Not used</param>
+		private void graphicsDeviceResetting(object sender, EventArgs arguments)
+		{
+			if (this.reflectionRenderTarget != null)
+			{
+				this.reflectionRenderTarget.Dispose();
+				this.reflectionRenderTarget = null;
+			}
+		}
 
-    /// <summary>Camera which views the scene turned upside-down</summary>
-    public ICamera ReflectionCamera {
-      get { return this.reflectionCamera; }
-    }
+		/// <summary>Camera used to draw the water reflection</summary>
+		private ICamera reflectionCamera;
 
-    /// <summary>Sets up the render target for the water surface reflection</summary>
-    private void createRenderTarget() {
-      int width = Math.Max(graphicsDevice.PresentationParameters.BackBufferWidth, 16);
-      int height = Math.Max(graphicsDevice.PresentationParameters.BackBufferHeight, 16);
+		/// <summary>GraphicsDevice the water surface is rendered with</summary>
+		private GraphicsDevice graphicsDevice;
 
-      this.reflectionRenderTarget = new RenderTarget2D(
-        graphicsDevice,
-        width, height,
-        false, // mipMap
-        graphicsDevice.PresentationParameters.BackBufferFormat,
-        graphicsDevice.PresentationParameters.DepthStencilFormat,
-        1, // MultisampleCount
-        RenderTargetUsage.PlatformContents
-      );
-    }
+		/// <summary>Grid containing the vertices of the water surface</summary>
+		private WaterGrid grid;
 
-    /// <summary>Called when the graphics device has completed a reset</summary>
-    /// <param name="sender">Graphics device that has completed a reset</param>
-    /// <param name="arguments">Not used</param>
-    private void graphicsDeviceReset(object sender, EventArgs arguments) {
-      createRenderTarget();
-    }
-
-    /// <summary>Called when the graphics device is about to perform a reset</summary>
-    /// <param name="sender">Graphics device that is about to perform a reset</param>
-    /// <param name="arguments">Not used</param>
-    private void graphicsDeviceResetting(object sender, EventArgs arguments) {
-      if(this.reflectionRenderTarget != null) {
-        this.reflectionRenderTarget.Dispose();
-        this.reflectionRenderTarget = null;
-      }
-    }
-
-    /// <summary>Camera used to draw the water reflection</summary>
-    private ICamera reflectionCamera;
-
-    /// <summary>GraphicsDevice the water surface is rendered with</summary>
-    private GraphicsDevice graphicsDevice;
-
-    /// <summary>Grid containing the vertices of the water surface</summary>
-    private WaterGrid grid;
-
-    /// <summary>Render target used for the refraction and reflection textures</summary>
-    private RenderTarget2D reflectionRenderTarget;
-
-  }
-
+		/// <summary>Render target used for the refraction and reflection textures</summary>
+		private RenderTarget2D reflectionRenderTarget;
+	}
 } // namespace Nuclex.SpecialEffects.Water
-

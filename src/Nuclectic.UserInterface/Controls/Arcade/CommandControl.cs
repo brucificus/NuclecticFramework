@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,13 +17,14 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.UserInterface.Controls.Arcade {
-
+namespace Nuclectic.UserInterface.Controls.Arcade
+{
 #if false
 
-  /// <summary>Command button, similar to a button</summary>
+	/// <summary>Command button, similar to a button</summary>
   public class CommandControl : PressableControl {
 
     // Renderer can draw it as one of the game pad buttons depending
@@ -31,5 +33,4 @@ namespace Nuclectic.UserInterface.Controls.Arcade {
   }
 
 #endif
-
 } // namespace Nuclex.UserInterface.Controls.Arcade

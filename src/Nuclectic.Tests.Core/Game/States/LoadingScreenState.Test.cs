@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,14 +17,16 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
+
 
 #if UNITTEST
 
-namespace Nuclectic.Tests.Game.States {
-
+namespace Nuclectic.Tests.Game.States
+{
 #if false
-  /// <summary>Unit test for the loading screen game state</summary>
+	/// <summary>Unit test for the loading screen game state</summary>
   [TestFixture]
   internal class LoadingScreenStateTest {
 
@@ -442,7 +445,6 @@ namespace Nuclectic.Tests.Game.States {
 
   }
 #endif
-
 } // namespace Nuclex.Game.States
 
 #endif // UNITTEST

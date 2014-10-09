@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,66 +17,73 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using System.Collections.ObjectModel;
 
-namespace Nuclectic.UserInterface.Controls.Desktop {
+namespace Nuclectic.UserInterface.Controls.Desktop
+{
+	/// <summary>Control displaying an exclusive choice the user can select</summary>
+	/// <remarks>
+	///   The choice control is equivalent to a radio button - if more than one
+	///   choice control is on a dialog, only one can be selected at a time.
+	///   To have several choice groups on a dialog, use panels to group them.
+	/// </remarks>
+	public class ChoiceControl : PressableControl
+	{
+		/// <summary>Will be triggered when the choice is changed</summary>
+		public event EventHandler Changed;
 
-  /// <summary>Control displaying an exclusive choice the user can select</summary>
-  /// <remarks>
-  ///   The choice control is equivalent to a radio button - if more than one
-  ///   choice control is on a dialog, only one can be selected at a time.
-  ///   To have several choice groups on a dialog, use panels to group them.
-  /// </remarks>
-  public class ChoiceControl : PressableControl {
+		/// <summary>Called when the button is pressed</summary>
+		protected override void OnPressed()
+		{
+			if (!this.Selected)
+			{
+				this.Selected = true;
 
-    /// <summary>Will be triggered when the choice is changed</summary>
-    public event EventHandler Changed;
+				// Unselect all sibling choice controls in the same container
+				unselectSiblings();
 
-    /// <summary>Called when the button is pressed</summary>
-    protected override void OnPressed() {
-      if(!this.Selected) {
-        this.Selected = true;
+				OnChanged();
+			}
+		}
 
-        // Unselect all sibling choice controls in the same container
-        unselectSiblings();
+		/// <summary>Triggers the changed event</summary>
+		protected virtual void OnChanged()
+		{
+			if (Changed != null)
+			{
+				Changed(this, EventArgs.Empty);
+			}
+		}
 
-        OnChanged();
-      }
-    }
+		/// <summary>Disables all sibling choices on the same level</summary>
+		private void unselectSiblings()
+		{
+			// Disable any other choices in the same frame
+			if (Parent != null)
+			{
+				Collection<Control> siblings = Parent.Children;
+				for (int index = 0; index < siblings.Count; ++index)
+				{
+					ChoiceControl control = siblings[index] as ChoiceControl;
+					if ((control != null)
+						&& (control != this)
+						&& (control.Selected))
+					{
+						control.Selected = false;
+						control.OnChanged();
+					}
+				}
+			}
+		}
 
-    /// <summary>Triggers the changed event</summary>
-    protected virtual void OnChanged() {
-      if(Changed != null) {
-        Changed(this, EventArgs.Empty);
-      }
-    }
+		/// <summary>Text that will be shown on the button</summary>
+		public string Text;
 
-    /// <summary>Disables all sibling choices on the same level</summary>
-    private void unselectSiblings() {
-
-      // Disable any other choices in the same frame
-      if(Parent != null) {
-        Collection<Control> siblings = Parent.Children;
-        for(int index = 0; index < siblings.Count; ++index) {
-          ChoiceControl control = siblings[index] as ChoiceControl;
-          if((control != null) && (control != this) && (control.Selected)) {
-            control.Selected = false;
-            control.OnChanged();
-          }
-        }
-      }
-
-    }
-
-    /// <summary>Text that will be shown on the button</summary>
-    public string Text;
-
-    /// <summary>Whether the choice is currently selected</summary>
-    public bool Selected;
-
-  }
-
+		/// <summary>Whether the choice is currently selected</summary>
+		public bool Selected;
+	}
 } // namespace Nuclex.UserInterface.Controls.Desktop

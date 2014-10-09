@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,27 +17,30 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 
-namespace Nuclectic.Input {
+namespace Nuclectic.Input
+{
+	/// <summary>Available buttons on a mouse</summary>
+	[Flags]
+	public enum MouseButtons
+	{
+		/// <summary>Left mouse button</summary>
+		Left = 1,
 
-  /// <summary>Available buttons on a mouse</summary>
-  [Flags]
-  public enum MouseButtons {
+		/// <summary>Middle mouse button</summary>
+		Middle = 2,
 
-    /// <summary>Left mouse button</summary>
-    Left = 1,
-    /// <summary>Middle mouse button</summary>
-    Middle = 2,
-    /// <summary>Right mouse button</summary>
-    Right = 4,
-    /// <summary>First extended mouse button</summary>
-    X1 = 8,
-    /// <summary>Second extended mouse button</summary>
-    X2 = 16
+		/// <summary>Right mouse button</summary>
+		Right = 4,
 
-  }
+		/// <summary>First extended mouse button</summary>
+		X1 = 8,
 
+		/// <summary>Second extended mouse button</summary>
+		X2 = 16
+	}
 } // namespace Nuclex.Input

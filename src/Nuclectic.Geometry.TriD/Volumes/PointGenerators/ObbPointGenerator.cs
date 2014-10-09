@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,55 +17,52 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Geometry.Volumes.PointGenerators {
+namespace Nuclectic.Geometry.Volumes.PointGenerators
+{
+	/// <summary>Point generator for oriented volumes</summary>
+	public static class ObbPointGenerator
+	{
+		/// <summary>Returns a random point on the surface of a box</summary>
+		/// <param name="randomNumberGenerator">Random number generator that will be used</param>
+		/// <param name="orientation">Orientation of the box</param>
+		/// <param name="extents">Extents of the box</param>
+		/// <returns>A random point on the box's surface</returns>
+		public static Vector3 GenerateRandomPointOnSurface(
+			IRandom randomNumberGenerator, Matrix orientation, Vector3 extents
+			)
+		{
+			// Use the AABB point generator to generate a point in the local coordinate
+			// frame of the oriented box
+			Vector3 point = AabbPointGenerator.GenerateRandomPointOnSurface(
+																		    randomNumberGenerator, extents
+				);
 
-  /// <summary>Point generator for oriented volumes</summary>
-  public static class ObbPointGenerator {
+			// Rotate the point into the global coordinate frame
+			return Vector3.Transform(point, orientation);
+		}
 
-    /// <summary>Returns a random point on the surface of a box</summary>
-    /// <param name="randomNumberGenerator">Random number generator that will be used</param>
-    /// <param name="orientation">Orientation of the box</param>
-    /// <param name="extents">Extents of the box</param>
-    /// <returns>A random point on the box's surface</returns>
-    public static Vector3 GenerateRandomPointOnSurface(
-      IRandom randomNumberGenerator, Matrix orientation, Vector3 extents
-    ) {
+		/// <summary>Returns a random point within the box</summary>
+		/// <param name="randomNumberGenerator">Random number generator that will be used</param>
+		/// <param name="orientation">Orientation of the box</param>
+		/// <param name="extents">Extents of the box</param>
+		/// <returns>A random point within the box</returns>
+		public static Vector3 GenerateRandomPointWithin(
+			IRandom randomNumberGenerator, Matrix orientation, Vector3 extents
+			)
+		{
+			// Use the AABB point generator to generate a point in the local coordinate
+			// frame of the oriented box
+			Vector3 point = AabbPointGenerator.GenerateRandomPointWithin(
+																		 randomNumberGenerator, extents
+				);
 
-      // Use the AABB point generator to generate a point in the local coordinate
-      // frame of the oriented box
-      Vector3 point = AabbPointGenerator.GenerateRandomPointOnSurface(
-        randomNumberGenerator, extents
-      );
-
-      // Rotate the point into the global coordinate frame
-      return Vector3.Transform(point, orientation);
-
-    }
-
-    /// <summary>Returns a random point within the box</summary>
-    /// <param name="randomNumberGenerator">Random number generator that will be used</param>
-    /// <param name="orientation">Orientation of the box</param>
-    /// <param name="extents">Extents of the box</param>
-    /// <returns>A random point within the box</returns>
-    public static Vector3 GenerateRandomPointWithin(
-      IRandom randomNumberGenerator, Matrix orientation, Vector3 extents
-    ) {
-
-      // Use the AABB point generator to generate a point in the local coordinate
-      // frame of the oriented box
-      Vector3 point = AabbPointGenerator.GenerateRandomPointWithin(
-        randomNumberGenerator, extents
-      );
-
-      // Rotate the point into the global coordinate frame
-      return Vector3.Transform(point, orientation);
-      
-    }
-
-  }
-
+			// Rotate the point into the global coordinate frame
+			return Vector3.Transform(point, orientation);
+		}
+	}
 } // namespace Nuclex.Geometry.Volumes.Generators

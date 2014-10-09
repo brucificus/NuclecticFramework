@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,26 +17,23 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Nuclectic.Graphics.TriD.SpecialEffects.Trails;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Graphics.SpecialEffects.Trails {
-
-  /// <summary>Unit tests for the trail particle structure</summary>
-  [TestFixture]
-  internal class TrailParticleTest {
-
-    /// <summary>Verifies that the trail particle's constructor is working</summary>
-    [Test]
-    public void TestConstructor() {
-      TrailParticle testParticle = new TrailParticle(100);
-    }
-
-  }
-
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Trails
+{
+	/// <summary>Unit tests for the trail particle structure</summary>
+	[TestFixture]
+	internal class TrailParticleTest
+	{
+		/// <summary>Verifies that the trail particle's constructor is working</summary>
+		[Test]
+		public void TestConstructor() { TrailParticle testParticle = new TrailParticle(100); }
+	}
 } // namespace Nuclex.Graphics.SpecialEffects.Trails
 
 #endif // UNITTEST

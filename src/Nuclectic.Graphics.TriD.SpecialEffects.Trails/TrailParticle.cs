@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,24 +17,21 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails {
+namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails
+{
+	/// <summary>Trail particle for reference and testing</summary>
+	public class TrailParticle
+	{
+		/// <summary>Initializes a new trail particle</summary>
+		public TrailParticle(int maximumTrailLength) { this.Trail = new Queue<Vector3>(maximumTrailLength); }
 
-  /// <summary>Trail particle for reference and testing</summary>
-  public class TrailParticle {
-
-    /// <summary>Initializes a new trail particle</summary>
-    public TrailParticle(int maximumTrailLength) {
-      this.Trail = new Queue<Vector3>(maximumTrailLength);
-    }
-
-    /// <summary>Supporting points the trail passes through</summary>
-    public Queue<Vector3> Trail;
-
-  }
-
+		/// <summary>Supporting points the trail passes through</summary>
+		public Queue<Vector3> Trail;
+	}
 } // namespace Nuclex.Graphics.SpecialEffects.Trails

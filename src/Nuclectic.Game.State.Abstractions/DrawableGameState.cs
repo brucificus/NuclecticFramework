@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,40 +17,35 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Game.State {
+namespace Nuclectic.Game.State
+{
+	/// <summary>Base class for updateable and drawable game states</summary>
+	public abstract class DrawableGameState : GameState, IDrawable
+	{
+		/// <summary>Never called because the Visible property cannot change</summary>
+		event EventHandler<EventArgs> IDrawable.VisibleChanged { add { } remove { } }
 
-  /// <summary>Base class for updateable and drawable game states</summary>
-  public abstract class DrawableGameState : GameState, IDrawable {
+		/// <summary>Never called because the DrawOrder property cannot change</summary>
+		event EventHandler<EventArgs> IDrawable.DrawOrderChanged { add { } remove { } }
 
-    /// <summary>Never called because the Visible property cannot change</summary>
-    event EventHandler<EventArgs> IDrawable.VisibleChanged { add { } remove { } }
+		/// <summary>Called when the drawable component needs to draw itself</summary>
+		/// <param name="gameTime">Provides a snapshot of the game's timing values</param>
+		public abstract void Draw(GameTime gameTime);
 
-    /// <summary>Never called because the DrawOrder property cannot change</summary>
-    event EventHandler<EventArgs> IDrawable.DrawOrderChanged { add { } remove { } }
+		/// <summary>
+		///   Always 0 because game states have no ordering relative to each other
+		/// </summary>
+		int IDrawable.DrawOrder { get { return 0; } }
 
-    /// <summary>Called when the drawable component needs to draw itself</summary>
-    /// <param name="gameTime">Provides a snapshot of the game's timing values</param>
-    public abstract void Draw(GameTime gameTime);
-
-    /// <summary>
-    ///   Always 0 because game states have no ordering relative to each other
-    /// </summary>
-    int IDrawable.DrawOrder {
-      get { return 0; }
-    }
-
-    /// <summary>
-    ///   Always true to indicate the game state is visible and should be drawn
-    /// </summary>
-    bool IDrawable.Visible {
-      get { return true; }
-    }
-
-  }
-
+		/// <summary>
+		///   Always true to indicate the game state is visible and should be drawn
+		/// </summary>
+		bool IDrawable.Visible { get { return true; } }
+	}
 } // namespace Nuclex.Game.States

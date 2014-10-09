@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,38 +17,47 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.UserInterface.Controls {
+namespace Nuclectic.UserInterface.Controls
+{
+	/// <summary>Control used to represent the desktop</summary>
+	internal class DesktopControl : Control
+	{
+		/// <summary>Initializes a new control</summary>
+		public DesktopControl() { }
 
-  /// <summary>Control used to represent the desktop</summary>
-  internal class DesktopControl : Control {
+		/// <summary>True if the mouse is currently hovering over a GUI element</summary>
+		public bool IsMouseOverGui
+		{
+			get
+			{
+				if (base.MouseOverControl == null)
+				{
+					return false;
+				}
+				else
+				{
+					return !ReferenceEquals(base.MouseOverControl, this);
+				}
+			}
+		}
 
-    /// <summary>Initializes a new control</summary>
-    public DesktopControl() { }
-
-    /// <summary>True if the mouse is currently hovering over a GUI element</summary>
-    public bool IsMouseOverGui {
-      get {
-        if (base.MouseOverControl == null) {
-          return false;
-        } else {
-          return !ReferenceEquals(base.MouseOverControl, this);
-        }
-      }
-    }
-
-    /// <summary>Whether the GUI holds ownership of the input devices</summary>
-    public bool IsInputCaptured {
-      get {
-        if (base.ActivatedControl == null) {
-          return false;
-        } else {
-          return !ReferenceEquals(base.ActivatedControl, this);
-        }
-      }
-    }
-
-  }
-
+		/// <summary>Whether the GUI holds ownership of the input devices</summary>
+		public bool IsInputCaptured
+		{
+			get
+			{
+				if (base.ActivatedControl == null)
+				{
+					return false;
+				}
+				else
+				{
+					return !ReferenceEquals(base.ActivatedControl, this);
+				}
+			}
+		}
+	}
 } // namespace Nuclex.UserInterface.Controls

@@ -1,4 +1,5 @@
-﻿//#region CPL License
+﻿#region CPL License
+
 ///*
 //Nuclex Framework
 //Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,7 +17,8 @@
 //You should have received a copy of the IBM Common Public
 //License along with this library
 //*/
-//#endregion
+
+#endregion
 
 //using Microsoft.Xna.Framework;
 //using Nuclectic.Graphics.TriD.Debugging;
@@ -59,11 +61,11 @@
 //	[Test]
 //	public void TestDrawLinesToOverflow() {
 //	  int linesRequired = DebugDrawer.MaximumDebugVertexCount / 2;
-      
+
 //	  for(int line = 0; line <= linesRequired; ++line) {
 //		this.debugDrawer.DrawLine(Vector3.Zero, Vector3.One, Color.White);
 //	  }
-      
+
 //	  // No exception means success
 //	}
 
@@ -180,7 +182,7 @@
 //	  this.mockedGraphicsDeviceService.CreateDevice();
 //	  this.debugDrawer = new DebugDrawer(this.mockedGraphicsDeviceService);
 //	}
-    
+
 //	/// <summary>Finalizes the resources used during the test</summary>
 //	[TearDown]
 //	public void Teardown() {

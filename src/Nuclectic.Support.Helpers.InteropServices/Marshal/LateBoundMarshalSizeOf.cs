@@ -14,9 +14,6 @@ namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 			_sizeOf = sizeOf;
 		}
 
-		public int? SizeOf(Type t)
-		{
-			return _sizeOf(t);
-		}
+		public int? SizeOf(Type t) { return _sizeOf(t); }
 	}
 }

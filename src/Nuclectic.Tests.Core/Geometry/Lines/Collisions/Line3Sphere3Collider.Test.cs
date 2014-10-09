@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -25,50 +27,50 @@ using Nuclectic.Geometry.Lines.Collisions;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions
+{
+	/// <summary>Test for the Ray3 to Sphere3 interference detection routines</summary>
+	[TestFixture]
+	public class Line3Sphere3ColliderTest
+	{
+		/// <summary>
+		///   Tests whether a line that is barely outside of the sphere is correctly
+		///   identified as a non-hit
+		/// </summary>
+		[Test]
+		public void TestCloseMiss()
+		{
+			Assert.IsFalse(
+						   Line3Sphere3Collider.FindContacts(
+															 new Vector3(0.0f, 10.1f, 0.0f), Vector3.Right,
+															 Vector3.Zero, 10.0f
+							   ).HasContact
+				);
+		}
 
-  /// <summary>Test for the Ray3 to Sphere3 interference detection routines</summary>
-  [TestFixture]
-  public class Line3Sphere3ColliderTest {
+		/// <summary>
+		///   Tests whether a line that crosses the sphere through its center causes
+		///   to right contact points to be reported
+		/// </summary>
+		[Test]
+		public void TestCenterCrossing()
+		{
+			Vector3 diagonalUnit = Vector3.Normalize(Vector3.One);
+			LineContacts contacts = Line3Sphere3Collider.FindContacts(
+																	  diagonalUnit * -15.0f, diagonalUnit,
+																	  Vector3.Zero, 10.0f
+				);
 
-    /// <summary>
-    ///   Tests whether a line that is barely outside of the sphere is correctly
-    ///   identified as a non-hit
-    /// </summary>
-    [Test]
-    public void TestCloseMiss() {
-      Assert.IsFalse(
-        Line3Sphere3Collider.FindContacts(
-          new Vector3(0.0f, 10.1f, 0.0f), Vector3.Right,
-          Vector3.Zero, 10.0f
-        ).HasContact
-      );
-    }
-
-    /// <summary>
-    ///   Tests whether a line that crosses the sphere through its center causes
-    ///   to right contact points to be reported
-    /// </summary>
-    [Test]
-    public void TestCenterCrossing() {
-      Vector3 diagonalUnit = Vector3.Normalize(Vector3.One);
-      LineContacts contacts = Line3Sphere3Collider.FindContacts(
-        diagonalUnit * -15.0f, diagonalUnit,
-        Vector3.Zero, 10.0f
-      );
-
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(5.0f).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(25.0f).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
-
-  }
-
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(5.0f).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(25.0f).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions
 
 #endif // UNITTEST

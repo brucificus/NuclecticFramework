@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Content;
@@ -27,93 +29,93 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Fonts {
+namespace Nuclectic.Tests.Fonts
+{
+	/// <summary>Unit tests for the vector font character class</summary>
+	[TestFixture]
+	public class VectorFontCharacterTest
+	{
+		/// <summary>Verifies that the tested character has a valid advancement</summary>
+		[Test]
+		public void TestAdvancement() { Assert.Greater(this.vectorCharacter.Advancement.X, 0); }
 
-  /// <summary>Unit tests for the vector font character class</summary>
-  [TestFixture]
-  public class VectorFontCharacterTest {
+		/// <summary>Verifies that the tested character has a face list</summary>
+		[Test]
+		public void TestFaces() { Assert.Greater(this.vectorCharacter.Faces.Count, 0); }
 
-    /// <summary>Verifies that the tested character has a valid advancement</summary>
-    [Test]
-    public void TestAdvancement() {
-      Assert.Greater(this.vectorCharacter.Advancement.X, 0);
-    }
+		/// <summary>Verifies that the tested character has an outline list</summary>
+		[Test]
+		public void TestOutlines() { Assert.Greater(this.vectorCharacter.Outlines.Count, 0); }
 
-    /// <summary>Verifies that the tested character has a face list</summary>
-    [Test]
-    public void TestFaces() {
-      Assert.Greater(this.vectorCharacter.Faces.Count, 0);
-    }
+		/// <summary>Verifies that the tested character has vertices</summary>
+		[Test]
+		public void TestVertices() { Assert.Greater(this.vectorCharacter.Vertices.Count, 0); }
 
-    /// <summary>Verifies that the tested character has an outline list</summary>
-    [Test]
-    public void TestOutlines() {
-      Assert.Greater(this.vectorCharacter.Outlines.Count, 0);
-    }
+		/// <summary>Called before each test is run</summary>
+		[SetUp]
+		public void Setup()
+		{
+			this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService();
+			this.mockedGraphicsDeviceService.CreateDevice();
 
-    /// <summary>Verifies that the tested character has vertices</summary>
-    [Test]
-    public void TestVertices() {
-      Assert.Greater(this.vectorCharacter.Vertices.Count, 0);
-    }
+			this.contentManager = new ResourceContentManager(
+				GraphicsDeviceServiceHelper.MakePrivateServiceProvider(
+																	   this.mockedGraphicsDeviceService
+					),
+				Resources.UnitTestResources.ResourceManager
+				);
+			this.vectorFont = this.contentManager.Load<VectorFont>("UnitTestVectorFont");
 
-    /// <summary>Called before each test is run</summary>
-    [SetUp]
-    public void Setup() {
-      this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService();
-      this.mockedGraphicsDeviceService.CreateDevice();
+			char character = getFirstVisibleCharacter();
+			int characterIndex = this.vectorFont.CharacterMap[character];
+			this.vectorCharacter = this.vectorFont.Characters[characterIndex];
+		}
 
-      this.contentManager = new ResourceContentManager(
-        GraphicsDeviceServiceHelper.MakePrivateServiceProvider(
-          this.mockedGraphicsDeviceService
-        ),
-        Resources.UnitTestResources.ResourceManager
-      );
-      this.vectorFont = this.contentManager.Load<VectorFont>("UnitTestVectorFont");
+		/// <summary>Called after each test has run</summary>
+		[TearDown]
+		public void Teardown()
+		{
+			if (this.contentManager != null)
+			{
+				this.contentManager.Dispose();
+				this.contentManager = null;
+			}
+			if (this.mockedGraphicsDeviceService != null)
+			{
+				this.mockedGraphicsDeviceService.DestroyDevice();
+				this.mockedGraphicsDeviceService = null;
+			}
+		}
 
-      char character = getFirstVisibleCharacter();
-      int characterIndex = this.vectorFont.CharacterMap[character];
-      this.vectorCharacter = this.vectorFont.Characters[characterIndex];
-    }
+		/// <summary>Retrieves the first visible character in the font</summary>
+		/// <returns>The first visible character in the font</returns>
+		private char getFirstVisibleCharacter()
+		{
+			foreach (KeyValuePair<char, int> character in this.vectorFont.CharacterMap)
+			{
+				int index = character.Value;
 
-    /// <summary>Called after each test has run</summary>
-    [TearDown]
-    public void Teardown() {
-      if(this.contentManager != null) {
-        this.contentManager.Dispose();
-        this.contentManager = null;
-      }
-      if(this.mockedGraphicsDeviceService != null) {
-        this.mockedGraphicsDeviceService.DestroyDevice();
-        this.mockedGraphicsDeviceService = null;
-      }
-    }
+				if (this.vectorFont.Characters[index].Outlines.Count > 0)
+				{
+					return character.Key;
+				}
+			}
 
-    /// <summary>Retrieves the first visible character in the font</summary>
-    /// <returns>The first visible character in the font</returns>
-    private char getFirstVisibleCharacter() {
-      foreach(KeyValuePair<char, int> character in this.vectorFont.CharacterMap) {
-        int index = character.Value;
+			throw new InvalidOperationException("No visible characters found");
+		}
 
-        if(this.vectorFont.Characters[index].Outlines.Count > 0) {
-          return character.Key;
-        }
-      }
+		/// <summary>Mocked graphics device service used for unit testing</summary>
+		private MockedGraphicsDeviceService mockedGraphicsDeviceService;
 
-      throw new InvalidOperationException("No visible characters found");
-    }
+		/// <summary>Content manager used to load the vector font</summary>
+		private ResourceContentManager contentManager;
 
-    /// <summary>Mocked graphics device service used for unit testing</summary>
-    private MockedGraphicsDeviceService mockedGraphicsDeviceService;
-    /// <summary>Content manager used to load the vector font</summary>
-    private ResourceContentManager contentManager;
-    /// <summary>Vector font the tested character is taken from</summary>
-    private VectorFont vectorFont;
-    /// <summary>Vector font character being tested</summary>
-    private IVectorFontCharacter vectorCharacter;
+		/// <summary>Vector font the tested character is taken from</summary>
+		private VectorFont vectorFont;
 
-  }
-
+		/// <summary>Vector font character being tested</summary>
+		private IVectorFontCharacter vectorCharacter;
+	}
 } // namespace Nuclex.Fonts
 
 #endif // UNITTEST

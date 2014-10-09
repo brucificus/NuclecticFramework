@@ -18,21 +18,15 @@ namespace Nuclectic.Input.Devices
 		public XnaKeyboardGamePad(PlayerIndex playerIndex, IGamePad gamePad)
 			: base()
 		{
-		  this.playerIndex = playerIndex;
-		  this.gamePad = gamePad;
+			this.playerIndex = playerIndex;
+			this.gamePad = gamePad;
 		}
 
 		/// <summary>Human-readable name of the input device</summary>
-		public override string Name
-		{
-			get { return "Xbox chat pad"; }
-		}
+		public override string Name { get { return "Xbox chat pad"; } }
 
 		/// <summary>Whether the input device is connected to the system</summary>
-		public override bool IsAttached
-		{
-			get { return this.gamePad.IsAttached; }
-		}
+		public override bool IsAttached { get { return this.gamePad.IsAttached; } }
 
 		protected override KeyboardState queryKeyboardState()
 		{

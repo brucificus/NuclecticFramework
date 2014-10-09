@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2013 Nuclex Development Labs
@@ -16,31 +17,26 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 
-namespace Nuclectic.Support.Collections {
+namespace Nuclectic.Support.Collections
+{
+	/// <summary>
+	///   Argument container used by collections to notify about changed items
+	/// </summary>
+	public class ItemEventArgs<TItem> : EventArgs
+	{
+		/// <summary>Initializes a new event arguments supplier</summary>
+		/// <param name="item">Item to be supplied to the event handler</param>
+		public ItemEventArgs(TItem item) { this.item = item; }
 
-  /// <summary>
-  ///   Argument container used by collections to notify about changed items
-  /// </summary>
-  public class ItemEventArgs<TItem> : EventArgs {
+		/// <summary>Obtains the collection item the event arguments are carrying</summary>
+		public TItem Item { get { return this.item; } }
 
-    /// <summary>Initializes a new event arguments supplier</summary>
-    /// <param name="item">Item to be supplied to the event handler</param>
-    public ItemEventArgs(TItem item) {
-      this.item = item;
-    }
-
-    /// <summary>Obtains the collection item the event arguments are carrying</summary>
-    public TItem Item {
-      get { return this.item; }
-    }
-
-    /// <summary>Item to be passed to the event handler</summary>
-    private TItem item;
-
-  }
-
+		/// <summary>Item to be passed to the event handler</summary>
+		private TItem item;
+	}
 } // namespace Nuclex.Support.Collections

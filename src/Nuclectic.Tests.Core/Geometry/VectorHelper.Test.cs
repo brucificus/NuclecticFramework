@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -24,127 +26,136 @@ using Nuclectic.Geometry;
 using System;
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Geometry {
+namespace Nuclectic.Tests.Geometry
+{
+	/// <summary>Unit Test for the vector helper class</summary>
+	[TestFixture]
+	public class VectorHelperTest
+	{
+		/// <summary>
+		///   Verifies that the vector helper can calculate the absolute value of the
+		///   individual elements in a vector
+		/// </summary>
+		[Test]
+		public void TestVectorAbs()
+		{
+			Vector3 testVector = new Vector3(-1.1f, -2.2f, -3.3f);
+			Assert.AreEqual(
+						    new Vector3(1.1f, 2.2f, 3.3f),
+							VectorHelper.Abs(testVector)
+				);
+		}
 
-  /// <summary>Unit Test for the vector helper class</summary>
-  [TestFixture]
-  public class VectorHelperTest {
+		/// <summary>
+		///   Verifies that the vector helper can be used to obtain and assign individual
+		///   rows of a matrix by their indices
+		/// </summary>
+		[Test]
+		public void TestGetAndSetVectorElementsByIndex()
+		{
+			float[ /*3*/] vectorContents = new float[3] {1.2f, 3.4f, 5.6f};
 
-    /// <summary>
-    ///   Verifies that the vector helper can calculate the absolute value of the
-    ///   individual elements in a vector
-    /// </summary>
-    [Test]
-    public void TestVectorAbs() {
-      Vector3 testVector = new Vector3(-1.1f, -2.2f, -3.3f);
-      Assert.AreEqual(
-        new Vector3(1.1f, 2.2f, 3.3f),
-        VectorHelper.Abs(testVector)
-      );
-    }
+			Vector3 testVector = new Vector3();
 
-    /// <summary>
-    ///   Verifies that the vector helper can be used to obtain and assign individual
-    ///   rows of a matrix by their indices
-    /// </summary>
-    [Test]
-    public void TestGetAndSetVectorElementsByIndex() {
-      float[/*3*/] vectorContents = new float[3] { 1.2f, 3.4f, 5.6f };
+			// Assign the vector
+			for (int index = 0; index < 3; ++index)
+			{
+				Assert.AreEqual(0.0f, VectorHelper.Get(ref testVector, index));
+				VectorHelper.Set(ref testVector, index, vectorContents[index]);
+			}
 
-      Vector3 testVector = new Vector3();
+			for (int index = 0; index < 3; ++index)
+			{
+				Assert.AreEqual(vectorContents[index], VectorHelper.Get(ref testVector, index));
+			}
+		}
 
-      // Assign the vector
-      for(int index = 0; index < 3; ++index) {
-        Assert.AreEqual(0.0f, VectorHelper.Get(ref testVector, index));
-        VectorHelper.Set(ref testVector, index, vectorContents[index]);
-      }
+		/// <summary>
+		///   Verifies that the vector helper throws an exception when an invalid row index
+		///   to read from is specified
+		/// </summary>
+		[Test]
+		public void TestThrowOnGetVectorRowWithInvalidIndex()
+		{
+			Vector3 test = Vector3.Zero;
+			Assert.Throws<ArgumentOutOfRangeException>(
+													   delegate() { Console.WriteLine(VectorHelper.Get(ref test, -1)); }
+				);
+		}
 
-      for(int index = 0; index < 3; ++index) {
-        Assert.AreEqual(vectorContents[index], VectorHelper.Get(ref testVector, index));
-      }
-    }
+		/// <summary>
+		///   Verifies that the vector helper throws an exception when an invalid row index
+		///   to write to is specified
+		/// </summary>
+		[Test]
+		public void TestThrowOnSetVectorRowWithInvalidIndex()
+		{
+			Vector3 test = Vector3.Zero;
+			Assert.Throws<ArgumentOutOfRangeException>(
+													   delegate() { VectorHelper.Set(ref test, -1, 0.0f); }
+				);
+		}
 
-    /// <summary>
-    ///   Verifies that the vector helper throws an exception when an invalid row index
-    ///   to read from is specified
-    /// </summary>
-    [Test]
-    public void TestThrowOnGetVectorRowWithInvalidIndex() {
-      Vector3 test = Vector3.Zero;
-      Assert.Throws<ArgumentOutOfRangeException>(
-        delegate() { Console.WriteLine(VectorHelper.Get(ref test, -1)); }
-      );
-    }
+		/// <summary>
+		///   Verifies that the vector helper can determine an arbitrary perpendicular vector
+		///   to another vector
+		/// </summary>
+		[Test]
+		public void TestGetPerpendicularVector()
+		{
+			Vector3[] testVectors = new Vector3[]
+			{
+				Vector3.Right,
+				Vector3.Up,
+				Vector3.Backward,
+				Vector3.Normalize(Vector3.One),
+				Vector3.Normalize(new Vector3(1.0f, 0.0f, 0.0f)),
+				Vector3.Normalize(new Vector3(0.0f, 1.0f, 0.0f)),
+				Vector3.Normalize(new Vector3(0.0f, 0.0f, 1.0f)),
+				Vector3.Normalize(new Vector3(1.0f, 1.0f, 0.0f)),
+				Vector3.Normalize(new Vector3(1.0f, 0.0f, 1.0f)),
+				Vector3.Normalize(new Vector3(0.0f, 1.0f, 1.0f)),
+				Vector3.Normalize(new Vector3(1.0f, 2.0f, 3.0f)),
+				Vector3.Normalize(new Vector3(3.0f, 1.0f, 2.0f)),
+				Vector3.Normalize(new Vector3(2.0f, 3.0f, 1.0f))
+			};
 
-    /// <summary>
-    ///   Verifies that the vector helper throws an exception when an invalid row index
-    ///   to write to is specified
-    /// </summary>
-    [Test]
-    public void TestThrowOnSetVectorRowWithInvalidIndex() {
-      Vector3 test = Vector3.Zero;
-      Assert.Throws<ArgumentOutOfRangeException>(
-        delegate() { VectorHelper.Set(ref test, -1, 0.0f); }
-      );
-    }
+			const double ninetyDegrees = Math.PI / 2.0;
+			for (int index = 0; index < testVectors.Length; ++index)
+			{
+				Vector3 perpendicular = VectorHelper.GetPerpendicularVector(testVectors[index]);
 
-    /// <summary>
-    ///   Verifies that the vector helper can determine an arbitrary perpendicular vector
-    ///   to another vector
-    /// </summary>
-    [Test]
-    public void TestGetPerpendicularVector() {
-      Vector3[] testVectors = new Vector3[] {
-        Vector3.Right,
-        Vector3.Up,
-        Vector3.Backward,
-        Vector3.Normalize(Vector3.One),
-        Vector3.Normalize(new Vector3(1.0f, 0.0f, 0.0f)),
-        Vector3.Normalize(new Vector3(0.0f, 1.0f, 0.0f)),
-        Vector3.Normalize(new Vector3(0.0f, 0.0f, 1.0f)),
-        Vector3.Normalize(new Vector3(1.0f, 1.0f, 0.0f)),
-        Vector3.Normalize(new Vector3(1.0f, 0.0f, 1.0f)),
-        Vector3.Normalize(new Vector3(0.0f, 1.0f, 1.0f)),
-        Vector3.Normalize(new Vector3(1.0f, 2.0f, 3.0f)),
-        Vector3.Normalize(new Vector3(3.0f, 1.0f, 2.0f)),
-        Vector3.Normalize(new Vector3(2.0f, 3.0f, 1.0f))
-      };
+				double angle = Math.Acos(Vector3.Dot(testVectors[index], perpendicular));
+				Assert.That(
+						    angle, Is.EqualTo(ninetyDegrees).Within(Specifications.MaximumDeviation).Ulps
+					);
+			}
+		}
 
-      const double ninetyDegrees = Math.PI / 2.0;
-      for(int index = 0; index < testVectors.Length; ++index) {
-        Vector3 perpendicular = VectorHelper.GetPerpendicularVector(testVectors[index]);
+		/// <summary>
+		///   Tests whether the AbsMax() method is working correctly for 2D vectors
+		/// </summary>
+		[Test]
+		public void TestAbsMaxWithVector2()
+		{
+			Vector2 absMaxVector = VectorHelper.AbsMax(
+													   new Vector2(-10, -1), new Vector2(1, 10)
+				);
+			Assert.AreEqual(new Vector2(-10, 10), absMaxVector);
+		}
 
-        double angle = Math.Acos(Vector3.Dot(testVectors[index], perpendicular));
-        Assert.That(
-          angle, Is.EqualTo(ninetyDegrees).Within(Specifications.MaximumDeviation).Ulps
-        );
-      }
-    }
-
-    /// <summary>
-    ///   Tests whether the AbsMax() method is working correctly for 2D vectors
-    /// </summary>
-    [Test]
-    public void TestAbsMaxWithVector2() {
-      Vector2 absMaxVector = VectorHelper.AbsMax(
-        new Vector2(-10, -1), new Vector2(1, 10)
-      );
-      Assert.AreEqual(new Vector2(-10, 10), absMaxVector);
-    }
-
-    /// <summary>
-    ///   Tests whether the AbsMax() method is working correctly for 3D vectors
-    /// </summary>
-    [Test]
-    public void TestAbsMaxWithVector3() {
-      Vector3 absMaxVector = VectorHelper.AbsMax(
-        new Vector3(-10, -1, 10), new Vector3(1, 10, -10)
-      );
-      Assert.AreEqual(new Vector3(-10, 10, 10), absMaxVector);
-    }
-
-  }
-
+		/// <summary>
+		///   Tests whether the AbsMax() method is working correctly for 3D vectors
+		/// </summary>
+		[Test]
+		public void TestAbsMaxWithVector3()
+		{
+			Vector3 absMaxVector = VectorHelper.AbsMax(
+													   new Vector3(-10, -1, 10), new Vector3(1, 10, -10)
+				);
+			Assert.AreEqual(new Vector3(-10, 10, 10), absMaxVector);
+		}
+	}
 } // namespace Nuclex.Geometry
 
 #endif // UNITTEST

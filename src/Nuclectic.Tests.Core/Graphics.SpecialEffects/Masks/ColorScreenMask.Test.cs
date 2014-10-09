@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -30,115 +32,122 @@ using Effect = SlimDX.Direct3D9.Effect;
 using System;
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks
+{
+	/// <summary>Unit tests for the solid color screen mask class</summary>
+	[TestFixture]
+	internal class ColorScreenMaskTest
+	{
+		/// <summary>Executed before each test is run</summary>
+		[SetUp]
+		public void Setup()
+		{
+			this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService(DeviceType.Reference);
+			this.mockedGraphicsDeviceService.CreateDevice();
 
-  /// <summary>Unit tests for the solid color screen mask class</summary>
-  [TestFixture]
-  internal class ColorScreenMaskTest {
+			serviceProvider = GraphicsDeviceServiceHelper.MakePrivateServiceProvider(
+																					 this.mockedGraphicsDeviceService
+				);
+		}
 
-    /// <summary>Executed before each test is run</summary>
-    [SetUp]
-    public void Setup() {
-      this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService(DeviceType.Reference);
-      this.mockedGraphicsDeviceService.CreateDevice();
+		/// <summary>Executed after each test has completed</summary>
+		[TearDown]
+		public void Teardown()
+		{
+			if (this.mockedGraphicsDeviceService != null)
+			{
+				this.serviceProvider = null;
+				this.mockedGraphicsDeviceService.DestroyDevice();
+				this.mockedGraphicsDeviceService = null;
+			}
+		}
 
-      serviceProvider = GraphicsDeviceServiceHelper.MakePrivateServiceProvider(
-        this.mockedGraphicsDeviceService
-      );
-    }
+		/// <summary>
+		///   Verifies that the constructor of the solid color screen mask class is working
+		/// </summary>
+		[Test]
+		public void TestConstructor()
+		{
+			using (
+				ColorScreenMask testMask = ColorScreenMask.Create(
+																  this.mockedGraphicsDeviceService.GraphicsDevice
+					)
+				) { }
+		}
 
-    /// <summary>Executed after each test has completed</summary>
-    [TearDown]
-    public void Teardown() {
-      if(this.mockedGraphicsDeviceService != null) {
-        this.serviceProvider = null;
-        this.mockedGraphicsDeviceService.DestroyDevice();
-        this.mockedGraphicsDeviceService = null;
-      }
-    }
+		/// <summary>
+		///   Tests whether the color property can be assigned and read from
+		/// </summary>
+		[Test]
+		public void TestColorProperty()
+		{
+			using (
+				ColorScreenMask testMask = ColorScreenMask.Create(
+																  this.mockedGraphicsDeviceService.GraphicsDevice
+					)
+				)
+			{
+				Color testColor = new Color(12, 34, 56, 78);
 
-    /// <summary>
-    ///   Verifies that the constructor of the solid color screen mask class is working
-    /// </summary>
-    [Test]
-    public void TestConstructor() {
-      using(
-        ColorScreenMask testMask = ColorScreenMask.Create(
-          this.mockedGraphicsDeviceService.GraphicsDevice
-        )
-      ) { }
-    }
+				testMask.Color = testColor;
+				Assert.AreEqual(testColor, testMask.Color);
+			}
+		}
 
-    /// <summary>
-    ///   Tests whether the color property can be assigned and read from
-    /// </summary>
-    [Test]
-    public void TestColorProperty() {
-      using(
-        ColorScreenMask testMask = ColorScreenMask.Create(
-          this.mockedGraphicsDeviceService.GraphicsDevice
-        )
-      ) {
-        Color testColor = new Color(12, 34, 56, 78);
+		/// <summary>
+		///   Tests whether a rollback is performed if an exception occurs in
+		///   the solid color screen mask's constructor
+		/// </summary>
+		[Test]
+		public void TestThrowInConstructor()
+		{
+			Assert.Throws<AssertionException>(
+											  delegate()
+											  {
+												  using (
+													  ColorScreenMask testMask = ColorScreenMask.Create(
+																									    this.mockedGraphicsDeviceService.GraphicsDevice // createFail
+														  )
+													  ) { }
+											  }
+				);
+		}
 
-        testMask.Color = testColor;
-        Assert.AreEqual(testColor, testMask.Color);
-      }
-    }
+		/// <summary>Creates a new instance of the solid color screen mask class</summary>
+		/// <param name="graphicsDevice">
+		///   Graphics device the screen mask is rendered with
+		/// </param>
+		/// <param name="contentManager">
+		///   Content manager the effect was loaded from
+		/// </param>
+		/// <param name="effect">Effect that will be used to render the screen mask </param>
+		/// <returns>A new instance of the solid color screen mask</returns>
+		private static ColorScreenMask createFail(
+			GraphicsDevice graphicsDevice, ContentManager contentManager, Effect effect
+			) { throw new AssertionException("Simulated exception for the unit test"); }
 
-    /// <summary>
-    ///   Tests whether a rollback is performed if an exception occurs in
-    ///   the solid color screen mask's constructor
-    /// </summary>
-    [Test]
-    public void TestThrowInConstructor() {
-      Assert.Throws<AssertionException>(
-        delegate() {
-          using(
-            ColorScreenMask testMask = ColorScreenMask.Create(
-              this.mockedGraphicsDeviceService.GraphicsDevice // createFail
-            )
-          ) { }
-        }
-      );
-    }
+		/// <summary>
+		///   Tests whether the solid color screen mask is able to draw itself
+		/// </summary>
+		[Test]
+		public void TestDraw()
+		{
+			using (
+				ColorScreenMask testMask = ColorScreenMask.Create(
+																  this.mockedGraphicsDeviceService.GraphicsDevice
+					)
+				)
+			{
+				testMask.Draw();
+			}
+		}
 
-    /// <summary>Creates a new instance of the solid color screen mask class</summary>
-    /// <param name="graphicsDevice">
-    ///   Graphics device the screen mask is rendered with
-    /// </param>
-    /// <param name="contentManager">
-    ///   Content manager the effect was loaded from
-    /// </param>
-    /// <param name="effect">Effect that will be used to render the screen mask </param>
-    /// <returns>A new instance of the solid color screen mask</returns>
-    private static ColorScreenMask createFail(
-      GraphicsDevice graphicsDevice, ContentManager contentManager, Effect effect
-    ) {
-      throw new AssertionException("Simulated exception for the unit test");
-    }
+		/// <summary>Mocked graphics device service used to run the test</summary>
+		private MockedGraphicsDeviceService mockedGraphicsDeviceService;
 
-    /// <summary>
-    ///   Tests whether the solid color screen mask is able to draw itself
-    /// </summary>
-    [Test]
-    public void TestDraw() {
-      using(
-        ColorScreenMask testMask = ColorScreenMask.Create(
-          this.mockedGraphicsDeviceService.GraphicsDevice
-        )
-      ) {
-        testMask.Draw();
-      }
-    }
-
-    /// <summary>Mocked graphics device service used to run the test</summary>
-    private MockedGraphicsDeviceService mockedGraphicsDeviceService;
-    /// <summary>Service provider containing the mocked graphics device service</summary>
-    private IServiceProvider serviceProvider;
-
-  }
-
+		/// <summary>Service provider containing the mocked graphics device service</summary>
+		private IServiceProvider serviceProvider;
+	}
 } // namespace Nuclex.Graphics.SpecialEffects.Masks
 
 #endif // UNITTEST

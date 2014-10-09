@@ -1,4 +1,5 @@
-﻿//#region CPL License
+﻿#region CPL License
+
 ///*
 //Nuclex Framework
 //Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,7 +17,8 @@
 //You should have received a copy of the IBM Common Public
 //License along with this library
 //*/
-//#endregion
+
+#endregion
 
 //using SlimDX.DirectInput;
 //#if UNITTEST
@@ -69,7 +71,7 @@
 //	[Test]
 //	public void TestName() {
 //	  requireAttachedJoystick();
-      
+
 //	  string expected = this.joystick.Information.InstanceName;
 
 //	  using (var gamePad = new DirectInputGamePad(this.joystick, isAttachedMock)) {
@@ -87,7 +89,7 @@
 //	]
 //	public void TestAttached(bool expected) {
 //	  requireAttachedJoystick();
-      
+
 //	  CheckAttachedDelegate attachedCheck;
 //	  if(expected) {
 //		attachedCheck = isAttachedMock;

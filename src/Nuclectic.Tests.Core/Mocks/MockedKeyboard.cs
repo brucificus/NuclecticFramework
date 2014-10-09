@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,93 +17,85 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Nuclectic.Input.Devices;
 
-namespace Nuclectic.Tests.Mocks {
+namespace Nuclectic.Tests.Mocks
+{
+	/// <summary>Code-controllable keyboard for unit testing</summary>
+	public partial class MockedKeyboard : BufferedKeyboard
+	{
+		/// <summary>Initializes a new mocked keyboard</summary>
+		public MockedKeyboard() { }
 
-  /// <summary>Code-controllable keyboard for unit testing</summary>
-  public partial class MockedKeyboard : BufferedKeyboard {
+		/// <summary>Whether the input device is connected to the system</summary>
+		public override bool IsAttached { get { return this.isAttached; } }
 
-    /// <summary>Initializes a new mocked keyboard</summary>
-    public MockedKeyboard() { }
+		/// <summary>Human-readable name of the input device</summary>
+		public override string Name { get { return "Mocked keyboard"; } }
 
-    /// <summary>Whether the input device is connected to the system</summary>
-    public override bool IsAttached {
-      get { return this.isAttached; }
-    }
+		/// <summary>Types the specified character on the keyboard</summary>
+		/// <param name="character">Character that will be typed</param>
+		public void Enter(char character) { BufferCharacterEntry(character); }
 
-    /// <summary>Human-readable name of the input device</summary>
-    public override string Name {
-      get { return "Mocked keyboard"; }
-    }
+		/// <summary>Types the specified text on the keyboard</summary>
+		/// <param name="text">Text that will be typed</param>
+		public void Type(string text)
+		{
+			for (int index = 0; index < text.Length; ++index)
+			{
+				char character = text[index];
+				bool isUpper = char.IsUpper(character);
 
-    /// <summary>Types the specified character on the keyboard</summary>
-    /// <param name="character">Character that will be typed</param>
-    public void Enter(char character) {
-      BufferCharacterEntry(character);
-    }
+				if (isUpper)
+				{
+					BufferKeyPress(Keys.LeftShift);
+				}
 
-    /// <summary>Types the specified text on the keyboard</summary>
-    /// <param name="text">Text that will be typed</param>
-    public void Type(string text) {
-      for (int index = 0; index < text.Length; ++index) {
-        char character = text[index];
-        bool isUpper = char.IsUpper(character);
+				Keys key;
+				if (((int)character > 0)
+					&& ((int)character < 256))
+				{
+					key = keyMap[(int)character];
+				}
+				else
+				{
+					key = Keys.None;
+				}
 
-        if (isUpper) {
-          BufferKeyPress(Keys.LeftShift);
-        }
+				BufferKeyPress(key);
+				BufferCharacterEntry(character);
+				BufferKeyRelease(key);
 
-        Keys key;
-        if (((int)character > 0) && ((int)character < 256)) {
-          key = keyMap[(int)character];
-        } else {
-          key = Keys.None;
-        }
+				if (isUpper)
+				{
+					BufferKeyRelease(Keys.LeftShift);
+				}
+			}
+		}
 
-        BufferKeyPress(key);
-        BufferCharacterEntry(character);
-        BufferKeyRelease(key);
+		/// <summary>Presses the specified key on the keyboard</summary>
+		/// <param name="key">Key that will be pressed</param>
+		public void Press(Keys key) { BufferKeyPress(key); }
 
-        if (isUpper) {
-          BufferKeyRelease(Keys.LeftShift);
-        }
-      }
-    }
+		/// <summary>Releases the specified key on the keyboard</summary>
+		/// <param name="key">Key that will be released</param>
+		public void Release(Keys key) { BufferKeyRelease(key); }
 
-    /// <summary>Presses the specified key on the keyboard</summary>
-    /// <param name="key">Key that will be pressed</param>
-    public void Press(Keys key) {
-      BufferKeyPress(key);
-    }
+		/// <summary>Attaches (connects) the game pad</summary>
+		public void Attach() { this.isAttached = true; }
 
-    /// <summary>Releases the specified key on the keyboard</summary>
-    /// <param name="key">Key that will be released</param>
-    public void Release(Keys key) {
-      BufferKeyRelease(key);
-    }
+		/// <summary>Detaches (disconnects) the game pad</summary>
+		public void Detach() { this.isAttached = false; }
 
-    /// <summary>Attaches (connects) the game pad</summary>
-    public void Attach() {
-      this.isAttached = true;
-    }
-
-    /// <summary>Detaches (disconnects) the game pad</summary>
-    public void Detach() {
-      this.isAttached = false;
-    }
-
-    /// <summary>Whether the game pad is attached</summary>
-    private bool isAttached;
-
-  }
-
+		/// <summary>Whether the game pad is attached</summary>
+		private bool isAttached;
+	}
 } // namespace Nuclex.Input.Devices

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -27,141 +29,142 @@ using Nuclectic.Tests.Mocks;
 using System;
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Graphics.SpecialEffects {
+namespace Nuclectic.Tests.Graphics.SpecialEffects
+{
+	/// <summary>Unit test for the indexed mesh graphics resource keeper</summary>
+	[TestFixture]
+	internal class IndexedStaticMeshTest
+	{
+		#region struct TestVertex
 
-  /// <summary>Unit test for the indexed mesh graphics resource keeper</summary>
-  [TestFixture]
-  internal class IndexedStaticMeshTest {
+		/// <summary>
+		///   Vertex used to unit-test the static mesh graphics resource keepr
+		/// </summary>
+		private struct TestVertex : IVertexType
+		{
+			/// <summary>A vertex element of type Vector2</summary>
+			[VertexElement(VertexElementUsage.Position)]
+			public Vector3 Position;
 
-    #region struct TestVertex
+			/// <summary>A vertex element of type Color</summary>
+			[VertexElement(VertexElementUsage.Color)]
+			public Color Color;
 
-    /// <summary>
-    ///   Vertex used to unit-test the static mesh graphics resource keepr
-    /// </summary>
-    private struct TestVertex : IVertexType {
+			/// <summary>Provides a declaration for this vertex type</summary>
+			VertexDeclaration IVertexType.VertexDeclaration { get { return TestVertex.VertexDeclaration; } }
 
-      /// <summary>A vertex element of type Vector2</summary>
-      [VertexElement(VertexElementUsage.Position)]
-      public Vector3 Position;
-      /// <summary>A vertex element of type Color</summary>
-      [VertexElement(VertexElementUsage.Color)]
-      public Color Color;
+			/// <summary>Vertex declaration for this vertex structure</summary>
+			public static readonly VertexDeclaration VertexDeclaration =
+				new VertexDeclaration(VertexDeclarationHelper.BuildElementList<TestVertex>());
+		}
 
-      /// <summary>Provides a declaration for this vertex type</summary>
-      VertexDeclaration IVertexType.VertexDeclaration {
-        get { return TestVertex.VertexDeclaration; }
-      }
+		#endregion // struct TestVertex
 
-      /// <summary>Vertex declaration for this vertex structure</summary>
-      public static readonly VertexDeclaration VertexDeclaration =
-        new VertexDeclaration(VertexDeclarationHelper.BuildElementList<TestVertex>());
+		#region class TestStaticMesh
 
-    }
+		/// <summary>Dummy static mesh class used for unit testing</summary>
+		private class TestIndexedStaticMesh : IndexedStaticMesh<TestVertex>
+		{
+			/// <summary>
+			///   Initializes a new static mesh that automatically determines its vertex format
+			/// </summary>
+			/// <param name="graphicsDevice">Graphics device the static mesh lives on</param>
+			/// <param name="vertexCount">Number of vertices used by the static mesh</param>
+			/// <param name="indexCount">Number of indices in the static mesh</param>
+			public TestIndexedStaticMesh(
+				GraphicsDevice graphicsDevice, int vertexCount, int indexCount
+				)
+				:
+					base(graphicsDevice, vertexCount, indexCount) { }
 
-    #endregion // struct TestVertex
+			/// <summary>Selects the static meshes' vertex buffer</summary>
+			public new void Select() { base.Select(); }
 
-    #region class TestStaticMesh
+			/// <summary>Index buffer containing the test meshes' indices</summary>
+			public new IndexBuffer IndexBuffer { get { return base.IndexBuffer; } }
+		}
 
-    /// <summary>Dummy static mesh class used for unit testing</summary>
-    private class TestIndexedStaticMesh : IndexedStaticMesh<TestVertex> {
+		#endregion // class TestStaticMesh
 
-      /// <summary>
-      ///   Initializes a new static mesh that automatically determines its vertex format
-      /// </summary>
-      /// <param name="graphicsDevice">Graphics device the static mesh lives on</param>
-      /// <param name="vertexCount">Number of vertices used by the static mesh</param>
-      /// <param name="indexCount">Number of indices in the static mesh</param>
-      public TestIndexedStaticMesh(
-        GraphicsDevice graphicsDevice, int vertexCount, int indexCount
-      ) :
-        base(graphicsDevice, vertexCount, indexCount) { }
+		/// <summary>
+		///   Verifies that the simple constructor of the static mesh class is working
+		/// </summary>
+		[Test]
+		public void TestSimpleConstructor()
+		{
+			MockedGraphicsDeviceService mockGraphicsDeviceService =
+				new MockedGraphicsDeviceService();
 
-      /// <summary>Selects the static meshes' vertex buffer</summary>
-      public new void Select() {
-        base.Select();
-      }
+			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
+			{
+				using (
+					TestIndexedStaticMesh test = new TestIndexedStaticMesh(
+						mockGraphicsDeviceService.GraphicsDevice, 4, 4
+						)
+					) { }
+			}
+		}
 
-      /// <summary>Index buffer containing the test meshes' indices</summary>
-      public new IndexBuffer IndexBuffer {
-        get { return base.IndexBuffer; }
-      }
+		/// <summary>
+		///   Verifies that the simple constructor rolls back when an exception occurs in it
+		/// </summary>
+		[Test]
+		public void TestThrowInSimpleConstructorRollback()
+		{
+			MockedGraphicsDeviceService mockGraphicsDeviceService =
+				new MockedGraphicsDeviceService();
 
-    }
+			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
+			{
+				Assert.Throws<ArgumentOutOfRangeException>(
+														   delegate()
+														   {
+															   using (
+																   TestIndexedStaticMesh test = new TestIndexedStaticMesh(
+																	   mockGraphicsDeviceService.GraphicsDevice, 4, -1
+																	   )
+																   ) { }
+														   }
+					);
+			}
+		}
 
-    #endregion // class TestStaticMesh
+		/// <summary>
+		///   Tests whether the static meshes' Select() method is implemented correctly
+		/// </summary>
+		[Test]
+		public void TestSelect()
+		{
+			MockedGraphicsDeviceService mockGraphicsDeviceService =
+				new MockedGraphicsDeviceService();
 
-    /// <summary>
-    ///   Verifies that the simple constructor of the static mesh class is working
-    /// </summary>
-    [Test]
-    public void TestSimpleConstructor() {
-      MockedGraphicsDeviceService mockGraphicsDeviceService =
-        new MockedGraphicsDeviceService();
+			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
+			{
+				using (
+					TestIndexedStaticMesh test = new TestIndexedStaticMesh(
+						mockGraphicsDeviceService.GraphicsDevice, 4, 4
+						)
+					)
+				{
+					test.Select();
+					Assert.AreSame(
+								   test.IndexBuffer,
+								   mockGraphicsDeviceService.GraphicsDevice.Indices
+						);
+				}
+			}
+		}
 
-      using(IDisposable keeper = mockGraphicsDeviceService.CreateDevice()) {
-        using(
-          TestIndexedStaticMesh test = new TestIndexedStaticMesh(
-            mockGraphicsDeviceService.GraphicsDevice, 4, 4
-          )
-        ) { }
-      }
-    }
-
-    /// <summary>
-    ///   Verifies that the simple constructor rolls back when an exception occurs in it
-    /// </summary>
-    [Test]
-    public void TestThrowInSimpleConstructorRollback() {
-      MockedGraphicsDeviceService mockGraphicsDeviceService =
-        new MockedGraphicsDeviceService();
-
-      using(IDisposable keeper = mockGraphicsDeviceService.CreateDevice()) {
-        Assert.Throws<ArgumentOutOfRangeException>(
-          delegate() {
-            using(
-              TestIndexedStaticMesh test = new TestIndexedStaticMesh(
-                mockGraphicsDeviceService.GraphicsDevice, 4, -1
-              )
-            ) { }
-          }
-        );
-      }
-    }
-
-    /// <summary>
-    ///   Tests whether the static meshes' Select() method is implemented correctly
-    /// </summary>
-    [Test]
-    public void TestSelect() {
-      MockedGraphicsDeviceService mockGraphicsDeviceService =
-        new MockedGraphicsDeviceService();
-
-      using(IDisposable keeper = mockGraphicsDeviceService.CreateDevice()) {
-        using(
-          TestIndexedStaticMesh test = new TestIndexedStaticMesh(
-            mockGraphicsDeviceService.GraphicsDevice, 4, 4
-          )
-        ) {
-          test.Select();
-          Assert.AreSame(
-            test.IndexBuffer,
-            mockGraphicsDeviceService.GraphicsDevice.Indices
-          );
-        }
-      }
-    }
-
-    /// <summary>
-    ///   Only exists to prevent the compiler from complaining about unused fields
-    /// </summary>
-    protected void AvoidCompilerWarnings() {
-      TestVertex v;
-      v.Color = Color.Red;
-      v.Position = Vector3.Zero;
-    }
-
-  }
-
+		/// <summary>
+		///   Only exists to prevent the compiler from complaining about unused fields
+		/// </summary>
+		protected void AvoidCompilerWarnings()
+		{
+			TestVertex v;
+			v.Color = Color.Red;
+			v.Position = Vector3.Zero;
+		}
+	}
 } // namespace Nuclex.Graphics.SpecialEffects
 
 #endif // UNITTEST

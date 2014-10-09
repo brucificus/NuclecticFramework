@@ -36,107 +36,104 @@ using Moq;
 
 namespace Nuclectic.Tests.AutoMock
 {
-    /// <summary> Resolves unknown interfaces and Mocks using the <see cref="MockRepository"/> from the scope. </summary>
+	/// <summary> Resolves unknown interfaces and Mocks using the <see cref="MockRepository"/> from the scope. </summary>
 	[DebuggerStepThrough, DebuggerNonUserCode]
-    internal class MoqRegistrationHandler : IRegistrationSource
-    {
-        private readonly MethodInfo _createMethod;
+	internal class MoqRegistrationHandler : IRegistrationSource
+	{
+		private readonly MethodInfo _createMethod;
 
-        /// <summary>
-        /// </summary>
-        [SecurityCritical]
-        public MoqRegistrationHandler()
-        {
-            var factoryType = typeof(MockRepository);   
-            _createMethod = factoryType.GetMethod("Create", new Type[] { });
-        }
+		/// <summary>
+		/// </summary>
+		[SecurityCritical]
+		public MoqRegistrationHandler()
+		{
+			var factoryType = typeof (MockRepository);
+			_createMethod = factoryType.GetMethod("Create", new Type[] {});
+		}
 
-        /// <summary>
-        /// Retrieve a registration for an unregistered service, to be used
-        /// by the container.
-        /// </summary>
-        /// <param name="service">The service that was requested.</param>
-        /// <param name="registrationAccessor"></param>
-        /// <returns>
-        /// Registrations for the service.
-        /// </returns>
-        [SecuritySafeCritical]
-        public IEnumerable<IComponentRegistration> RegistrationsFor
-            (Service service, Func<Service, IEnumerable<IComponentRegistration>> registrationAccessor)
-        {
-            if (service == null)
-                throw new ArgumentNullException("service");
+		/// <summary>
+		/// Retrieve a registration for an unregistered service, to be used
+		/// by the container.
+		/// </summary>
+		/// <param name="service">The service that was requested.</param>
+		/// <param name="registrationAccessor"></param>
+		/// <returns>
+		/// Registrations for the service.
+		/// </returns>
+		[SecuritySafeCritical]
+		public IEnumerable<IComponentRegistration> RegistrationsFor
+			(Service service, Func<Service, IEnumerable<IComponentRegistration>> registrationAccessor)
+		{
+			if (service == null)
+				throw new ArgumentNullException("service");
 
-            var typedService = service as TypedService;
-            if (typedService == null)
-                yield break;
+			var typedService = service as TypedService;
+			if (typedService == null)
+				yield break;
 
-            bool isCompatibleMockableType = IsCompatibleMockableType(typedService.ServiceType);
-            bool isCompatibleMockType = IsCompatibleMockType(typedService.ServiceType);
+			bool isCompatibleMockableType = IsCompatibleMockableType(typedService.ServiceType);
+			bool isCompatibleMockType = IsCompatibleMockType(typedService.ServiceType);
 
-            if (isCompatibleMockType || isCompatibleMockableType)
-            {
-                Type mockType;
-                Type serviceType;
+			if (isCompatibleMockType || isCompatibleMockableType)
+			{
+				Type mockType;
+				Type serviceType;
 
-                if (isCompatibleMockType)
-                {
-                    mockType = typedService.ServiceType;
-                    serviceType = typedService.ServiceType.GetGenericArguments().Single();
-                }
-                else
-                {
-                    mockType = typeof (Mock<>).MakeGenericType(typedService.ServiceType);
-                    serviceType = typedService.ServiceType;
-                }
+				if (isCompatibleMockType)
+				{
+					mockType = typedService.ServiceType;
+					serviceType = typedService.ServiceType.GetGenericArguments().Single();
+				}
+				else
+				{
+					mockType = typeof (Mock<>).MakeGenericType(typedService.ServiceType);
+					serviceType = typedService.ServiceType;
+				}
 
-                yield return RegistrationBuilder
-                    .ForDelegate(mockType, (c, p) => CreateMock(c, serviceType))
-                    .As(mockType)
-                    .InstancePerLifetimeScope()
-                    .CreateRegistration();
+				yield return RegistrationBuilder
+					.ForDelegate(mockType, (c, p) => CreateMock(c, serviceType))
+					.As(mockType)
+					.InstancePerLifetimeScope()
+					.CreateRegistration();
 
-                yield return RegistrationBuilder
-                    .ForDelegate((c, p) => ((Mock)c.Resolve(mockType)).Object)
-                    .As(serviceType)
-                    .InstancePerLifetimeScope()
-                    .CreateRegistration();
-            }
-        }
+				yield return RegistrationBuilder
+					.ForDelegate((c, p) => ((Mock)c.Resolve(mockType)).Object)
+					.As(serviceType)
+					.InstancePerLifetimeScope()
+					.CreateRegistration();
+			}
+		}
 
-        private static bool IsCompatibleMockType(Type type)
-        {
-            return type.IsGenericType && type.GetGenericTypeDefinition()==typeof(Mock<>) && IsCompatibleMockableType(type.GetGenericArguments().Single());
-        }
+		private static bool IsCompatibleMockType(Type type)
+		{
+			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof (Mock<>) && IsCompatibleMockableType(type.GetGenericArguments().Single());
+		}
 
-        private static bool IsCompatibleMockableType(Type type)
-        {
-            return !(    (type.IsGenericType && type.GetGenericTypeDefinition() == typeof (IEnumerable<>))
-                        || type.IsArray 
-                        || typeof (IStartable).IsAssignableFrom(type)) 
-                    && (type.IsInterface || type.IsAbstract)
-                    && !typeof(Mock).IsAssignableFrom(type)
-                    ;
-        }
+		private static bool IsCompatibleMockableType(Type type)
+		{
+			return !((type.IsGenericType && type.GetGenericTypeDefinition() == typeof (IEnumerable<>))
+					 || type.IsArray
+					 || typeof (IStartable).IsAssignableFrom(type))
+				   && (type.IsInterface || type.IsAbstract)
+				   && !typeof (Mock).IsAssignableFrom(type)
+				;
+		}
 
-        public bool IsAdapterForIndividualComponents
-        {
-            get { return false; }
-        }
-        
-        /// <summary>
-        /// Creates a mock object.
-        /// </summary>
-        /// <param name="context">The component context.</param>
-        /// <param name="typedService">The typed service.</param>
-        /// <returns></returns>
-        [SecuritySafeCritical]
-        private Mock CreateMock(IComponentContext context, Type serviceType)
-        {
-            var specificCreateMethod =
-                        _createMethod.MakeGenericMethod(new[] { serviceType });
-            var mock = (Mock)specificCreateMethod.Invoke(context.Resolve<MockRepository>(), null);
-            return mock;
-        }
-    }
+		public bool IsAdapterForIndividualComponents { get { return false; } }
+
+		/// <summary>
+		/// Creates a mock object.
+		/// </summary>
+		/// <param name="context">The component context.</param>
+		/// <param name="typedService">The typed service.</param>
+		/// <returns></returns>
+		[SecuritySafeCritical]
+		private Mock CreateMock(IComponentContext context, Type serviceType)
+		{
+			var specificCreateMethod =
+				_createMethod.MakeGenericMethod(new[] {serviceType});
+			var mock = (Mock)specificCreateMethod.Invoke(context.Resolve<MockRepository>(), null);
+			return mock;
+		}
+	}
 }

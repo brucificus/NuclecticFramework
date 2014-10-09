@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System.Runtime.InteropServices;
@@ -27,282 +29,287 @@ using Nuclectic.Support.Helpers.InteropServices.Marshal;
 using System;
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Graphics {
+namespace Nuclectic.Tests.Graphics
+{
+	/// <summary>Unit tests for the vertex element attribute</summary>
+	[TestFixture]
+	internal class VertexDeclarationHelperTest
+	{
+		#region struct TestVertex
 
-  /// <summary>Unit tests for the vertex element attribute</summary>
-  [TestFixture]
-  internal class VertexDeclarationHelperTest {
+		/// <summary>
+		///   A vertex used to unit-test the format auto-detection of
+		///   the vertex declaration helper
+		/// </summary>
+		internal struct TestVertex : IVertexType
+		{
+			/// <summary>A vertex element of type Vector2</summary>
+			[VertexElement(VertexElementUsage.TextureCoordinate)]
+			public Vector2 TestVector2;
 
-    #region struct TestVertex
+			/// <summary>A vertex element of type Vector3</summary>
+			[VertexElement(VertexElementUsage.Position)]
+			public Vector3 TestVector3;
 
-    /// <summary>
-    ///   A vertex used to unit-test the format auto-detection of
-    ///   the vertex declaration helper
-    /// </summary>
-    internal struct TestVertex : IVertexType {
-      /// <summary>A vertex element of type Vector2</summary>
-      [VertexElement(VertexElementUsage.TextureCoordinate)]
-      public Vector2 TestVector2;
-      /// <summary>A vertex element of type Vector3</summary>
-      [VertexElement(VertexElementUsage.Position)]
-      public Vector3 TestVector3;
-      /// <summary>A vertex element of type Vector4</summary>
-      [VertexElement(VertexElementUsage.Normal)]
-      public Vector4 TestVector4;
-      /// <summary>A vertex element of type Color</summary>
-      [VertexElement(VertexElementUsage.Color)]
-      public Color TestColor;
-      /// <summary>A vertex element of type float</summary>
-      [VertexElement(VertexElementUsage.BlendWeight)]
-      public float TestSingle;
-      /// <summary>A vertex element of type int</summary>
-      [VertexElement(VertexElementUsage.Sample)]
-      public int TestInt;
-      /// <summary>A vertex element of type short</summary>
-      [VertexElement(VertexElementUsage.Sample, UsageIndex = 1)]
-      public short TestShort;
-      /// <summary>A vertex element of type short</summary>
-      [VertexElement(VertexElementUsage.BlendWeight, VertexElementFormat.Vector4)]
-      public Matrix TestExplicitMatrix;
+			/// <summary>A vertex element of type Vector4</summary>
+			[VertexElement(VertexElementUsage.Normal)]
+			public Vector4 TestVector4;
 
-	    VertexDeclaration IVertexType.VertexDeclaration
-	  {
-		  get { return GetVertexDeclaration(); }
-	  }
+			/// <summary>A vertex element of type Color</summary>
+			[VertexElement(VertexElementUsage.Color)]
+			public Color TestColor;
 
-	    public static VertexDeclaration VertexDeclaration
-	    {
-		    get { return GetVertexDeclaration(); }
-	    }
+			/// <summary>A vertex element of type float</summary>
+			[VertexElement(VertexElementUsage.BlendWeight)]
+			public float TestSingle;
 
-	    private static VertexDeclaration GetVertexDeclaration()
-	    {
-		    return new VertexDeclaration(VertexDeclarationHelper.BuildElementList<TestVertex>());
-	    }
-    }
+			/// <summary>A vertex element of type int</summary>
+			[VertexElement(VertexElementUsage.Sample)]
+			public int TestInt;
 
-    #endregion // struct TestVertex
+			/// <summary>A vertex element of type short</summary>
+			[VertexElement(VertexElementUsage.Sample, UsageIndex = 1)]
+			public short TestShort;
 
-    #region struct UnknownTypeVertex
+			/// <summary>A vertex element of type short</summary>
+			[VertexElement(VertexElementUsage.BlendWeight, VertexElementFormat.Vector4)]
+			public Matrix TestExplicitMatrix;
 
-    /// <summary>
-    ///   A vertex containing a data type not recognized by the format auto-detection of
-    ///   the vertex declaration helper
-    /// </summary>
-    private struct UnknownTypeVertex {
+			VertexDeclaration IVertexType.VertexDeclaration { get { return GetVertexDeclaration(); } }
 
-      /// <summary>A vertex element of type DateTime</summary>
-      [VertexElement(VertexElementUsage.Sample, UsageIndex = 1)]
-      public DateTime TestTimestamp;
+			public static VertexDeclaration VertexDeclaration { get { return GetVertexDeclaration(); } }
 
-    }
+			private static VertexDeclaration GetVertexDeclaration() { return new VertexDeclaration(VertexDeclarationHelper.BuildElementList<TestVertex>()); }
+		}
 
-    #endregion // struct UnknownTypeVertex
+		#endregion // struct TestVertex
 
-    #region struct EmptyVertex
+		#region struct UnknownTypeVertex
 
-    /// <summary>An empty vertex type used to unit-test error behavior</summary>
-    private struct EmptyVertex { }
+		/// <summary>
+		///   A vertex containing a data type not recognized by the format auto-detection of
+		///   the vertex declaration helper
+		/// </summary>
+		private struct UnknownTypeVertex
+		{
+			/// <summary>A vertex element of type DateTime</summary>
+			[VertexElement(VertexElementUsage.Sample, UsageIndex = 1)]
+			public DateTime TestTimestamp;
+		}
 
-    #endregion // struct EmptyVertex
+		#endregion // struct UnknownTypeVertex
 
-    #region struct UnattributedFieldVertex
+		#region struct EmptyVertex
 
-    /// <summary>
-    ///   A vertex type containing a field without a vertex element attribute
-    /// </summary>
-    private struct UnattributedFieldVertex {
+		/// <summary>An empty vertex type used to unit-test error behavior</summary>
+		private struct EmptyVertex
+		{
+		}
 
-      /// <summary>A vertex element of type Vector3</summary>
-      public Vector3 TestVector3;
-      /// <summary>A vertex element of type Color</summary>
-      public Color TestColor;
+		#endregion // struct EmptyVertex
 
-    }
+		#region struct UnattributedFieldVertex
 
-    #endregion // struct UnattributedFieldVertex
+		/// <summary>
+		///   A vertex type containing a field without a vertex element attribute
+		/// </summary>
+		private struct UnattributedFieldVertex
+		{
+			/// <summary>A vertex element of type Vector3</summary>
+			public Vector3 TestVector3;
 
-    #region struct SecondStreamVertex
+			/// <summary>A vertex element of type Color</summary>
+			public Color TestColor;
+		}
 
-    /// <summary>
-    ///   A vertex containing an additional data element to be used as second vertex stream
-    /// </summary>
-    private struct SecondStreamVertex {
+		#endregion // struct UnattributedFieldVertex
 
-      /// <summary>A vertex element of type DateTime</summary>
-      [VertexElement(VertexElementUsage.BlendWeight, UsageIndex = 1)]
-      public float BlendWeight;
+		#region struct SecondStreamVertex
 
-    }
+		/// <summary>
+		///   A vertex containing an additional data element to be used as second vertex stream
+		/// </summary>
+		private struct SecondStreamVertex
+		{
+			/// <summary>A vertex element of type DateTime</summary>
+			[VertexElement(VertexElementUsage.BlendWeight, UsageIndex = 1)]
+			public float BlendWeight;
+		}
 
-    #endregion // struct SecondStreamVertex
+		#endregion // struct SecondStreamVertex
 
-    #region struct GapVertex
+		#region struct GapVertex
 
-    /// <summary>
-    ///   A vertex in which not all elements are used by the shader
-    /// </summary>
-    private struct GapVertex {
+		/// <summary>
+		///   A vertex in which not all elements are used by the shader
+		/// </summary>
+		private struct GapVertex
+		{
+			/// <summary>Position of the vertex</summary>
+			[VertexElement(VertexElementUsage.Position)]
+			public Vector3 Position;
 
-      /// <summary>Position of the vertex</summary>
-      [VertexElement(VertexElementUsage.Position)]
-      public Vector3 Position;
+			/// <summary>Velocity the vertex is moving at</summary>
+			public Vector3 Velocity;
 
-      /// <summary>Velocity the vertex is moving at</summary>
-      public Vector3 Velocity;
+			/// <summary>Size of the vertex when rendered as a point sprite</summary>
+			[VertexElement(VertexElementUsage.PointSize)]
+			public float Size;
+		}
 
-      /// <summary>Size of the vertex when rendered as a point sprite</summary>
-      [VertexElement(VertexElementUsage.PointSize)]
-      public float Size;
+		#endregion // struct GapVertex
 
-    }
+		/// <summary>
+		///   Verifies that the stride of a vertex structure can be determined
+		/// </summary>
+		[Test]
+		public void TestStrideDetermination()
+		{
+			Assert.AreEqual(114, VertexDeclarationHelper.GetStride<TestVertex>(new LateBoundMarshalSizeOf(Marshal.SizeOf)));
+			Assert.AreEqual(4, VertexDeclarationHelper.GetStride<SecondStreamVertex>(new LateBoundMarshalSizeOf(Marshal.SizeOf)));
+		}
 
-    #endregion // struct GapVertex
+		/// <summary>
+		///   Tests whether the vertex declaration helper fails is provieed with two
+		///   null references instead of two vertex element lists
+		/// </summary>
+		[Test]
+		public void TestThrowOnCombineNull()
+		{
+			Assert.Throws<NullReferenceException>(
+												  delegate() { VertexDeclarationHelper.Combine(null, null); }
+				);
+		}
 
-    /// <summary>
-    ///   Verifies that the stride of a vertex structure can be determined
-    /// </summary>
-    [Test]
-    public void TestStrideDetermination() {
-      Assert.AreEqual(114, VertexDeclarationHelper.GetStride<TestVertex>(new LateBoundMarshalSizeOf(Marshal.SizeOf)));
-	  Assert.AreEqual(4, VertexDeclarationHelper.GetStride<SecondStreamVertex>(new LateBoundMarshalSizeOf(Marshal.SizeOf)));
-    }
+		/// <summary>
+		///   Tests whether the vertex declaration helper is able to combine two vertex element
+		///   lists into a single one
+		/// </summary>
+		[Test]
+		public void TestCombine()
+		{
+			VertexElement[] firstElements = VertexDeclarationHelper.BuildElementList<TestVertex>();
+			VertexElement[] secondElements = VertexDeclarationHelper.BuildElementList<
+				SecondStreamVertex
+				>();
 
-    /// <summary>
-    ///   Tests whether the vertex declaration helper fails is provieed with two
-    ///   null references instead of two vertex element lists
-    /// </summary>
-    [Test]
-    public void TestThrowOnCombineNull() {
-      Assert.Throws<NullReferenceException>(
-        delegate() { VertexDeclarationHelper.Combine(null, null); }
-      );
-    }
+			VertexElement[] combinedElements =
+				VertexDeclarationHelper.Combine(firstElements, secondElements);
 
-    /// <summary>
-    ///   Tests whether the vertex declaration helper is able to combine two vertex element
-    ///   lists into a single one
-    /// </summary>
-    [Test]
-    public void TestCombine() {
-      VertexElement[] firstElements = VertexDeclarationHelper.BuildElementList<TestVertex>();
-      VertexElement[] secondElements = VertexDeclarationHelper.BuildElementList<
-        SecondStreamVertex
-      >();
+			Assert.AreEqual(firstElements.Length + secondElements.Length, combinedElements.Length);
+			CollectionAssert.IsSubsetOf(firstElements, combinedElements);
+			CollectionAssert.IsSubsetOf(secondElements, combinedElements);
+		}
 
-      VertexElement[] combinedElements =
-        VertexDeclarationHelper.Combine(firstElements, secondElements);
+		/// <summary>
+		///   Tests whether the vertex declaration helper fails on empty vertices
+		/// </summary>
+		[Test]
+		public void TestThrowOnEmptyVertex()
+		{
+			Assert.Throws<InvalidOperationException>(
+													 delegate() { VertexElement[] elements = VertexDeclarationHelper.BuildElementList<EmptyVertex>(); }
+				);
+		}
 
-      Assert.AreEqual(firstElements.Length + secondElements.Length, combinedElements.Length);
-      CollectionAssert.IsSubsetOf(firstElements, combinedElements);
-      CollectionAssert.IsSubsetOf(secondElements, combinedElements);
-    }
+		/// <summary>
+		///   Tests whether the vertex declaration helper fails when format auto-detection
+		///   is used on unknown data types
+		/// </summary>
+		[Test]
+		public void TestThrowOnUnknownTypeVertex()
+		{
+			Assert.Throws<InvalidOperationException>(
+													 delegate()
+													 {
+														 VertexElement[] elements = VertexDeclarationHelper.BuildElementList<
+															 UnknownTypeVertex
+															 >();
+													 }
+				);
+		}
 
-    /// <summary>
-    ///   Tests whether the vertex declaration helper fails on empty vertices
-    /// </summary>
-    [Test]
-    public void TestThrowOnEmptyVertex() {
-      Assert.Throws<InvalidOperationException>(
-        delegate() {
-          VertexElement[] elements = VertexDeclarationHelper.BuildElementList<EmptyVertex>();
-        }
-      );
-    }
+		/// <summary>
+		///   Tests whether the vertex declaration helper fails when no field of
+		///   a Vertex has have the vertex element attribute assigned to it
+		/// </summary>
+		[Test]
+		public void TestThrowOnUnattributedFieldVertex()
+		{
+			Assert.Throws<InvalidOperationException>(
+													 delegate()
+													 {
+														 VertexElement[] elements = VertexDeclarationHelper.BuildElementList<
+															 UnattributedFieldVertex
+															 >();
+													 }
+				);
+		}
 
-    /// <summary>
-    ///   Tests whether the vertex declaration helper fails when format auto-detection
-    ///   is used on unknown data types
-    /// </summary>
-    [Test]
-    public void TestThrowOnUnknownTypeVertex() {
-      Assert.Throws<InvalidOperationException>(
-        delegate() {
-          VertexElement[] elements = VertexDeclarationHelper.BuildElementList<
-            UnknownTypeVertex
-          >();
-        }
-      );
-    }
+		/// <summary>Tests the format auto-detection of vertex elements</summary>
+		[Test]
+		public void TestFormatAutoDetection()
+		{
+			VertexElement[] elements = VertexDeclarationHelper.BuildElementList<TestVertex>();
 
-    /// <summary>
-    ///   Tests whether the vertex declaration helper fails when no field of
-    ///   a Vertex has have the vertex element attribute assigned to it
-    /// </summary>
-    [Test]
-    public void TestThrowOnUnattributedFieldVertex() {
-      Assert.Throws<InvalidOperationException>(
-        delegate() {
-          VertexElement[] elements = VertexDeclarationHelper.BuildElementList<
-            UnattributedFieldVertex
-          >();
-        }
-      );
-    }
+			Assert.AreEqual(8, elements.Length);
+			Assert.AreEqual(VertexElementFormat.Vector2, elements[0].VertexElementFormat);
+			Assert.AreEqual(VertexElementFormat.Vector3, elements[1].VertexElementFormat);
+			Assert.AreEqual(VertexElementFormat.Vector4, elements[2].VertexElementFormat);
+			Assert.AreEqual(VertexElementFormat.Color, elements[3].VertexElementFormat);
+			Assert.AreEqual(VertexElementFormat.Single, elements[4].VertexElementFormat);
+			Assert.AreEqual(VertexElementFormat.Short4, elements[5].VertexElementFormat);
+			Assert.AreEqual(VertexElementFormat.Short2, elements[6].VertexElementFormat);
+			Assert.AreEqual(VertexElementFormat.Vector4, elements[7].VertexElementFormat);
 
-    /// <summary>Tests the format auto-detection of vertex elements</summary>
-    [Test]
-    public void TestFormatAutoDetection() {
-      VertexElement[] elements = VertexDeclarationHelper.BuildElementList<TestVertex>();
+			Assert.AreEqual(1, elements[6].UsageIndex);
+		}
 
-      Assert.AreEqual(8, elements.Length);
-      Assert.AreEqual(VertexElementFormat.Vector2, elements[0].VertexElementFormat);
-      Assert.AreEqual(VertexElementFormat.Vector3, elements[1].VertexElementFormat);
-      Assert.AreEqual(VertexElementFormat.Vector4, elements[2].VertexElementFormat);
-      Assert.AreEqual(VertexElementFormat.Color, elements[3].VertexElementFormat);
-      Assert.AreEqual(VertexElementFormat.Single, elements[4].VertexElementFormat);
-      Assert.AreEqual(VertexElementFormat.Short4, elements[5].VertexElementFormat);
-      Assert.AreEqual(VertexElementFormat.Short2, elements[6].VertexElementFormat);
-      Assert.AreEqual(VertexElementFormat.Vector4, elements[7].VertexElementFormat);
-      
-      Assert.AreEqual(1, elements[6].UsageIndex);
-    }
+		/// <summary>
+		///   Tests whether a vertex containing a field in its middle that isn't seen by
+		///   the vertex shader is processed correctly
+		/// </summary>
+		[Test]
+		public void TestGapVertexElements()
+		{
+			VertexElement[] elements = VertexDeclarationHelper.BuildElementList<GapVertex>();
 
-    /// <summary>
-    ///   Tests whether a vertex containing a field in its middle that isn't seen by
-    ///   the vertex shader is processed correctly
-    /// </summary>
-    [Test]
-    public void TestGapVertexElements() {
-      VertexElement[] elements = VertexDeclarationHelper.BuildElementList<GapVertex>();
+			Assert.AreEqual(2, elements.Length);
+			Assert.Greater(elements[1].Offset, elements[0].Offset);
+		}
 
-      Assert.AreEqual(2, elements.Length);
-      Assert.Greater(elements[1].Offset, elements[0].Offset);
-    }
+		/// <summary>
+		///   Only serves to satisfy the compiler. Otherwise, warning CS0414 would occur
+		///   since the fields of the private vertex structures are never assigned to
+		/// </summary>
+		protected void EliminateCompilerWarnings()
+		{
+			TestVertex testVertex;
+			testVertex.TestVector2 = Vector2.Zero;
+			testVertex.TestVector3 = Vector3.Zero;
+			testVertex.TestVector4 = Vector4.Zero;
+			testVertex.TestColor = Color.White;
+			testVertex.TestSingle = 0.0f;
+			testVertex.TestInt = 0;
+			testVertex.TestShort = 0;
+			testVertex.TestExplicitMatrix = Matrix.Identity;
 
-    /// <summary>
-    ///   Only serves to satisfy the compiler. Otherwise, warning CS0414 would occur
-    ///   since the fields of the private vertex structures are never assigned to
-    /// </summary>
-    protected void EliminateCompilerWarnings() {
-      TestVertex testVertex;
-      testVertex.TestVector2 = Vector2.Zero;
-      testVertex.TestVector3 = Vector3.Zero;
-      testVertex.TestVector4 = Vector4.Zero;
-      testVertex.TestColor = Color.White;
-      testVertex.TestSingle = 0.0f;
-      testVertex.TestInt = 0;
-      testVertex.TestShort = 0;
-      testVertex.TestExplicitMatrix = Matrix.Identity;
+			UnknownTypeVertex unknownTypeVertex;
+			unknownTypeVertex.TestTimestamp = DateTime.MinValue;
 
-      UnknownTypeVertex unknownTypeVertex;
-      unknownTypeVertex.TestTimestamp = DateTime.MinValue;
+			UnattributedFieldVertex unattributedFieldVertex;
+			unattributedFieldVertex.TestVector3 = Vector3.Zero;
+			unattributedFieldVertex.TestColor = Color.White;
 
-      UnattributedFieldVertex unattributedFieldVertex;
-      unattributedFieldVertex.TestVector3 = Vector3.Zero;
-      unattributedFieldVertex.TestColor = Color.White;
+			SecondStreamVertex secondStreamVertex;
+			secondStreamVertex.BlendWeight = 0.0f;
 
-      SecondStreamVertex secondStreamVertex;
-      secondStreamVertex.BlendWeight = 0.0f;
-      
-      GapVertex gapVertex;
-      gapVertex.Position = Vector3.Zero;
-      gapVertex.Velocity = Vector3.Zero;
-      gapVertex.Size = 0.0f;
-    }
-
-  }
-
+			GapVertex gapVertex;
+			gapVertex.Position = Vector3.Zero;
+			gapVertex.Velocity = Vector3.Zero;
+			gapVertex.Size = 0.0f;
+		}
+	}
 } // namespace Nuclex.Graphics
 
 #endif // UNITTEST

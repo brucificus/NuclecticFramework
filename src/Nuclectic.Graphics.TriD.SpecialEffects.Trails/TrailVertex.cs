@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System.Runtime.InteropServices;
@@ -23,37 +25,34 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nuclectic.Graphics.Helpers;
 
-namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails {
+namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails
+{
+	/// <summary>Contains the definitions for a trail vertex</summary>
+	[StructLayout(LayoutKind.Explicit)]
+	public struct TrailVertex : IVertexType
+	{
+		/// <summary>Initializs a new trail vertex</summary>
+		/// <param name="position">Position of the vertex in space</param>
+		/// <param name="textureCoordinate">Texture coordinates at this vertex</param>
+		public TrailVertex(Vector3 position, Vector2 textureCoordinate)
+		{
+			this.Position = position;
+			this.TextureCoordinate = textureCoordinate;
+		}
 
-  /// <summary>Contains the definitions for a trail vertex</summary>
-  [StructLayout(LayoutKind.Explicit)]
-  public struct TrailVertex : IVertexType {
+		/// <summary>Coordinates of the vertex</summary>
+		[VertexElement(VertexElementUsage.Position), FieldOffset(0)]
+		public Vector3 Position;
 
-    /// <summary>Initializs a new trail vertex</summary>
-    /// <param name="position">Position of the vertex in space</param>
-    /// <param name="textureCoordinate">Texture coordinates at this vertex</param>
-    public TrailVertex(Vector3 position, Vector2 textureCoordinate) {
-      this.Position = position;
-      this.TextureCoordinate = textureCoordinate;
-    }
+		/// <summary>Texture coordinates for all texture layers</summary>
+		[VertexElement(VertexElementUsage.TextureCoordinate), FieldOffset(12)]
+		public Vector2 TextureCoordinate;
 
-    /// <summary>Coordinates of the vertex</summary>
-    [VertexElement(VertexElementUsage.Position), FieldOffset(0)]
-    public Vector3 Position;
+		/// <summary>Provides a declaration for this vertex type</summary>
+		VertexDeclaration IVertexType.VertexDeclaration { get { return TrailVertex.VertexDeclaration; } }
 
-    /// <summary>Texture coordinates for all texture layers</summary>
-    [VertexElement(VertexElementUsage.TextureCoordinate), FieldOffset(12)]
-    public Vector2 TextureCoordinate;
-
-    /// <summary>Provides a declaration for this vertex type</summary>
-    VertexDeclaration IVertexType.VertexDeclaration {
-      get { return TrailVertex.VertexDeclaration; }
-    }
-
-    /// <summary>Vertex declaration for this vertex structure</summary>
-    public static readonly VertexDeclaration VertexDeclaration =
-      new VertexDeclaration(VertexDeclarationHelper.BuildElementList<TrailVertex>());
-
-  }
-
+		/// <summary>Vertex declaration for this vertex structure</summary>
+		public static readonly VertexDeclaration VertexDeclaration =
+			new VertexDeclaration(VertexDeclarationHelper.BuildElementList<TrailVertex>());
+	}
 } // namespace Nuclex.Graphics.SpecialEffects.Trails

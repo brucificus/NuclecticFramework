@@ -1,4 +1,5 @@
-﻿//#region CPL License
+﻿#region CPL License
+
 ///*
 //Nuclex Framework
 //Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,7 +17,8 @@
 //You should have received a copy of the IBM Common Public
 //License along with this library
 //*/
-//#endregion
+
+#endregion
 
 //using Microsoft.Xna.Framework;
 //using Moq;
@@ -108,10 +110,10 @@
 //	[Test]
 //	public void TestDrawOrderChangedEvent() {
 //	  Mock<IDrawableComponentSubscriber> subscriber = mockSubscriber(this.testComponent);
-      
+
 //	  subscriber.Expects.One.Method(m => m.DrawOrderChanged(null, null)).WithAnyArguments();
 //	  this.testComponent.DrawOrder = 4321;
-      
+
 //	  this.mockery.VerifyAllExpectationsHaveBeenMet();
 //	}
 

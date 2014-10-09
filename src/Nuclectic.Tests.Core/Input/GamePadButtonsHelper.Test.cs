@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Input;
@@ -23,25 +25,24 @@ using Nuclectic.Input;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Input {
+namespace Nuclectic.Tests.Input
+{
+	/// <summary>Unit tests for the game pad buttons helper</summary>
+	[TestFixture]
+	internal class GamePadButtonsHelperTest
+	{
+		/// <summary>Verifies that the Contains() method is working</summary>
+		[Test]
+		public void TestContains()
+		{
+			Buttons buttons = Buttons.A | Buttons.X;
 
-  /// <summary>Unit tests for the game pad buttons helper</summary>
-  [TestFixture]
-  internal class GamePadButtonsHelperTest {
-
-    /// <summary>Verifies that the Contains() method is working</summary>
-    [Test]
-    public void TestContains() {
-      Buttons buttons = Buttons.A | Buttons.X;
-      
-      Assert.IsTrue(GamePadButtonsHelper.Contains(buttons, Buttons.A));
-      Assert.IsTrue(GamePadButtonsHelper.Contains(buttons, Buttons.X));
-      Assert.IsFalse(GamePadButtonsHelper.Contains(buttons, Buttons.B));
-      Assert.IsFalse(GamePadButtonsHelper.Contains(buttons, Buttons.Y));
-    }
-
-  }
-
+			Assert.IsTrue(GamePadButtonsHelper.Contains(buttons, Buttons.A));
+			Assert.IsTrue(GamePadButtonsHelper.Contains(buttons, Buttons.X));
+			Assert.IsFalse(GamePadButtonsHelper.Contains(buttons, Buttons.B));
+			Assert.IsFalse(GamePadButtonsHelper.Contains(buttons, Buttons.Y));
+		}
+	}
 } // namespace Nuclex.Input
 
 #endif // UNITTEST

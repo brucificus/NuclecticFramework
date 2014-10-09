@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,75 +17,76 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Nuclectic.Geometry.Lines;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Geometry.Lines {
+namespace Nuclectic.Tests.Geometry.Lines
+{
+	/// <summary>Test for the LineContacts class</summary>
+	[TestFixture]
+	public class LineContactsTest
+	{
+		/// <summary>
+		///   Verifies that the constructor for a single contact point is working
+		/// </summary>
+		[Test]
+		public void TestSingleContactConstructor()
+		{
+			LineContacts contacts = new LineContacts(123.456f);
 
-  /// <summary>Test for the LineContacts class</summary>
-  [TestFixture]
-  public class LineContactsTest {
+			Assert.IsTrue(contacts.HasContact);
+			Assert.AreEqual(123.456f, contacts.EntryTime);
+			Assert.AreEqual(123.456f, contacts.ExitTime);
+		}
 
-    /// <summary>
-    ///   Verifies that the constructor for a single contact point is working
-    /// </summary>
-    [Test]
-    public void TestSingleContactConstructor() {
-      LineContacts contacts = new LineContacts(123.456f);
+		/// <summary>
+		///   Tests the constructor with normal entry and exit contact times
+		/// </summary>
+		[Test]
+		public void TestFullConstructor()
+		{
+			LineContacts contacts = new LineContacts(12.34f, 56.78f);
 
-      Assert.IsTrue(contacts.HasContact);
-      Assert.AreEqual(123.456f, contacts.EntryTime);
-      Assert.AreEqual(123.456f, contacts.ExitTime);
-    }
+			Assert.IsTrue(contacts.HasContact);
+			Assert.AreEqual(12.34f, contacts.EntryTime);
+			Assert.AreEqual(56.78f, contacts.ExitTime);
+		}
 
-    /// <summary>
-    ///   Tests the constructor with normal entry and exit contact times
-    /// </summary>
-    [Test]
-    public void TestFullConstructor() {
-      LineContacts contacts = new LineContacts(12.34f, 56.78f);
+		/// <summary>Verifies that the LineContacts.None constant has no contacts</summary>
+		[Test]
+		public void TestNoneConstant() { Assert.IsFalse(LineContacts.None.HasContact); }
 
-      Assert.IsTrue(contacts.HasContact);
-      Assert.AreEqual(12.34f, contacts.EntryTime);
-      Assert.AreEqual(56.78f, contacts.ExitTime);
-    }
+		/// <summary>
+		///   Verifies that the GetHashCode() method returns the same hash code for
+		///   two identical instances
+		/// </summary>
+		[Test]
+		public void TestGetHashCode()
+		{
+			LineContacts contacts1 = new LineContacts(12.34f, 56.78f);
+			LineContacts contacts2 = new LineContacts(12.34f, 56.78f);
 
-    /// <summary>Verifies that the LineContacts.None constant has no contacts</summary>
-    [Test]
-    public void TestNoneConstant() {
-      Assert.IsFalse(LineContacts.None.HasContact);
-    }
+			Assert.AreEqual(contacts1.GetHashCode(), contacts2.GetHashCode());
+		}
 
-    /// <summary>
-    ///   Verifies that the GetHashCode() method returns the same hash code for
-    ///   two identical instances
-    /// </summary>
-    [Test]
-    public void TestGetHashCode() {
-      LineContacts contacts1 = new LineContacts(12.34f, 56.78f);
-      LineContacts contacts2 = new LineContacts(12.34f, 56.78f);
+		/// <summary>
+		///   Verifies that the Equals() method is working correctly
+		/// </summary>
+		[Test]
+		public void TestEqualityComparison()
+		{
+			LineContacts contacts = new LineContacts(12.34f, 56.78f);
+			LineContacts identical = new LineContacts(12.34f, 56.78f);
+			LineContacts different = new LineContacts(56.78f, 12.34f);
 
-      Assert.AreEqual(contacts1.GetHashCode(), contacts2.GetHashCode());
-    }
-
-    /// <summary>
-    ///   Verifies that the Equals() method is working correctly
-    /// </summary>
-    [Test]
-    public void TestEqualityComparison() {
-      LineContacts contacts = new LineContacts(12.34f, 56.78f);
-      LineContacts identical = new LineContacts(12.34f, 56.78f);
-      LineContacts different = new LineContacts(56.78f, 12.34f);
-
-      Assert.IsTrue(contacts.Equals(identical));
-      Assert.IsFalse(contacts.Equals(different));
-    }
-
-  }
-
+			Assert.IsTrue(contacts.Equals(identical));
+			Assert.IsFalse(contacts.Equals(different));
+		}
+	}
 } // namespace Nuclex.Geometry.Lines
 
 #endif // UNITTEST

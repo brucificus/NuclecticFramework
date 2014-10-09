@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
@@ -23,57 +25,60 @@ using Microsoft.Xna.Framework;
 using Nuclectic.Geometry;
 using Nuclectic.Geometry.Volumes;
 using NUnit.Framework;
+
 #if UNITTEST
 
-namespace Nuclectic.Tests.Geometry.Volumes {
+namespace Nuclectic.Tests.Geometry.Volumes
+{
+	/// <summary>Test for the three-dimensional box implementation</summary>
+	[TestFixture]
+	public class Box3Test
+	{
+		/// <summary>Tests whether the mass properties of the volume are working</summary>
+		[Test]
+		public void TestMassProperties()
+		{
+			Box3 testBox = new Box3(
+				Matrix.CreateTranslation(105.0f, 110.0f, 115.0f),
+				new Vector3(5.0f, 10.0f, 15.0f) // these are extents, not dimensions!
+				);
 
-  /// <summary>Test for the three-dimensional box implementation</summary>
-  [TestFixture]
-  public class Box3Test {
+			Assert.AreEqual(
+						    new Vector3(105.0f, 110.0f, 115.0f), testBox.CenterOfMass,
+							"Center of mass is correctly positioned"
+				);
+			Assert.AreEqual(6000.0f, testBox.Mass, "Mass of box is exactly determined");
+			Assert.AreEqual(2200.0f, testBox.SurfaceArea, "Surface area of box is exactly determined");
+		}
 
-    /// <summary>Tests whether the mass properties of the volume are working</summary>
-    [Test]
-    public void TestMassProperties() {
-      Box3 testBox = new Box3(
-        Matrix.CreateTranslation(105.0f, 110.0f, 115.0f),
-        new Vector3(5.0f, 10.0f, 15.0f) // these are extents, not dimensions!
-      );
+		/// <summary>Tests the bounding box generator</summary>
+		[Test]
+		public void TestBoundingBox()
+		{
+			Box3 box = new Box3(
+				MatrixHelper.Create(
+								    new Vector3(15.0f, 15.0f, 15.0f),
+									Vector3.Normalize(new Vector3(1.0f, -1.0f, -1.0f)),
+									Vector3.Normalize(new Vector3(1.0f, 1.0f, -1.0f)),
+									Vector3.Normalize(new Vector3(1.0f, 1.0f, 1.0f))
+					),
+				new Vector3(5.0f, 5.0f, 5.0f)
+				);
 
-      Assert.AreEqual(
-        new Vector3(105.0f, 110.0f, 115.0f), testBox.CenterOfMass,
-        "Center of mass is correctly positioned"
-      );
-      Assert.AreEqual(6000.0f, testBox.Mass, "Mass of box is exactly determined");
-      Assert.AreEqual(2200.0f, testBox.SurfaceArea, "Surface area of box is exactly determined");
+			float growth = (float)Math.Sqrt(75.0f);
 
-    }
+			AxisAlignedBox3 expectedBoundingBox = new AxisAlignedBox3(
+				new Vector3(15.0f - growth, 15.0f - growth, 15.0f - growth),
+				new Vector3(15.0f + growth, 15.0f + growth, 15.0f + growth)
+				);
+			GeoAssertHelper.AreAlmostEqual(
+										   expectedBoundingBox, box.BoundingBox,
+										   Specifications.MaximumDeviation,
+										   "Bounding box for oriented box is correctly determined"
+				);
+		}
 
-    /// <summary>Tests the bounding box generator</summary>
-    [Test]
-    public void TestBoundingBox() {
-      Box3 box = new Box3(
-        MatrixHelper.Create(
-          new Vector3(15.0f, 15.0f, 15.0f), 
-          Vector3.Normalize(new Vector3(1.0f, -1.0f, -1.0f)),
-          Vector3.Normalize(new Vector3(1.0f, 1.0f, -1.0f)),
-          Vector3.Normalize(new Vector3(1.0f, 1.0f, 1.0f))
-        ),
-        new Vector3(5.0f, 5.0f, 5.0f)
-      );
-
-      float growth = (float)Math.Sqrt(75.0f);
-
-      AxisAlignedBox3 expectedBoundingBox = new AxisAlignedBox3(
-        new Vector3(15.0f - growth, 15.0f - growth, 15.0f - growth),
-        new Vector3(15.0f + growth, 15.0f + growth, 15.0f + growth)
-      );
-      GeoAssertHelper.AreAlmostEqual(
-        expectedBoundingBox, box.BoundingBox,
-        Specifications.MaximumDeviation,
-        "Bounding box for oriented box is correctly determined"
-      );
-    }
-    /*
+		/*
       /// <summary>Tests the bounding sphere generator</summary>
       [ Test ]
       public void TestBoundingSphere() {
@@ -92,8 +97,7 @@ namespace Nuclectic.Tests.Geometry.Volumes {
         );
       }
     */
-  }
-
+	}
 } // namespace Nuclex.Geometry.Volumes
 
 #endif // UNITTEST

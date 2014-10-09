@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,34 +17,33 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Input;
 
-namespace Nuclectic.Input.Devices {
-    /// <summary>Specialized input device for keyboard-like controllers</summary>
-  public interface IKeyboard : IInputDevice {
+namespace Nuclectic.Input.Devices
+{
+	/// <summary>Specialized input device for keyboard-like controllers</summary>
+	public interface IKeyboard : IInputDevice
+	{
+		/// <summary>Fired when a key has been pressed</summary>
+		event KeyDelegate KeyPressed;
 
-    /// <summary>Fired when a key has been pressed</summary>
-    event KeyDelegate KeyPressed;
+		/// <summary>Fired when a key has been released</summary>
+		event KeyDelegate KeyReleased;
 
-    /// <summary>Fired when a key has been released</summary>
-    event KeyDelegate KeyReleased;
+		/// <summary>Fired when the user has entered a character</summary>
+		/// <remarks>
+		///   This provides the complete, translated character the user has entered.
+		///   Handling of international keyboard layouts, shift key, accents and
+		///   other special cases is done by Windows according to the current users'
+		///   country and selected keyboard layout.
+		/// </remarks>
+		event CharacterDelegate CharacterEntered;
 
-    /// <summary>Fired when the user has entered a character</summary>
-    /// <remarks>
-    ///   This provides the complete, translated character the user has entered.
-    ///   Handling of international keyboard layouts, shift key, accents and
-    ///   other special cases is done by Windows according to the current users'
-    ///   country and selected keyboard layout.
-    /// </remarks>
-    event CharacterDelegate CharacterEntered;
-
-    /// <summary>Retrieves the current state of the keyboard</summary>
-    /// <returns>The current state of the keyboard</returns>
-    KeyboardState GetState();
-
-  }
-  
-
+		/// <summary>Retrieves the current state of the keyboard</summary>
+		/// <returns>The current state of the keyboard</returns>
+		KeyboardState GetState();
+	}
 } // namespace Nuclex.Input.Devices

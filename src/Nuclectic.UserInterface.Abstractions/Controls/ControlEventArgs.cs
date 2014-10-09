@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,29 +17,24 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 
-namespace Nuclectic.UserInterface.Controls {
+namespace Nuclectic.UserInterface.Controls
+{
+	/// <summary>Event argument class that carries a control instance</summary>
+	public class ControlEventArgs : EventArgs
+	{
+		/// <summary>Initializes a new control event args instance</summary>
+		/// <param name="control">Control to provide to the subscribers of the event</param>
+		public ControlEventArgs(Controls.Control control) { this.control = control; }
 
-  /// <summary>Event argument class that carries a control instance</summary>
-  public class ControlEventArgs : EventArgs {
+		/// <summary>Control that has been provided for the event</summary>
+		public Controls.Control Control { get { return this.control; } }
 
-    /// <summary>Initializes a new control event args instance</summary>
-    /// <param name="control">Control to provide to the subscribers of the event</param>
-    public ControlEventArgs(Controls.Control control) {
-      this.control = control;
-    }
-
-    /// <summary>Control that has been provided for the event</summary>
-    public Controls.Control Control {
-      get { return this.control; }
-    }
-
-    /// <summary>Control that will be accessible to the event subscribers</summary>
-    private Controls.Control control;
-
-  }
-
+		/// <summary>Control that will be accessible to the event subscribers</summary>
+		private Controls.Control control;
+	}
 } // namespace Nuclex.UserInterface.Controls

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -24,42 +26,44 @@ using Nuclectic.Geometry.Volumes;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Geometry.Volumes {
+namespace Nuclectic.Tests.Geometry.Volumes
+{
+	/// <summary>Test for the three-dimensional box implementation</summary>
+	[TestFixture]
+	public class Cylinder3Test
+	{
+		/// <summary>Tests whether the mass properties of the volume are working</summary>
+		[Test]
+		public void TestMassProperties()
+		{
+			Cylinder3 testCylinder = new Cylinder3(
+				Matrix.CreateTranslation(new Vector3(100.0f, 200.0f, 300.0f)), 10.0f, 20.0f
+				);
 
-  /// <summary>Test for the three-dimensional box implementation</summary>
-  [TestFixture]
-  public class Cylinder3Test {
+			Assert.AreEqual(
+						    new Vector3(100.0f, 200.0f, 300.0f), testCylinder.CenterOfMass,
+							"Center of mass is correctly positioned"
+				);
 
-    /// <summary>Tests whether the mass properties of the volume are working</summary>
-    [Test]
-    public void TestMassProperties() {
-      Cylinder3 testCylinder = new Cylinder3(
-        Matrix.CreateTranslation(new Vector3(100.0f, 200.0f, 300.0f)), 10.0f, 20.0f
-      );
+			// Formula for cylinder surface area: 2 * pi * (r ^ 2) + 2 * pi * r * h
+			Assert.AreEqual(
+						    1884.9555921538759430775860299677f, testCylinder.SurfaceArea,
+							Specifications.MaximumDeviation, "Surface area of cylinder is exactly determined"
+				);
 
-      Assert.AreEqual(
-        new Vector3(100.0f, 200.0f, 300.0f), testCylinder.CenterOfMass,
-        "Center of mass is correctly positioned"
-      );
+			// Formula for cylinder volume: pi * (r ^ 2) * h
+			Assert.AreEqual(
+						    6283.185307179586476925286766559f, testCylinder.Mass,
+							Specifications.MaximumDeviation, "Mass of cylinder is exactly determined"
+				);
+		}
 
-      // Formula for cylinder surface area: 2 * pi * (r ^ 2) + 2 * pi * r * h
-      Assert.AreEqual(
-        1884.9555921538759430775860299677f, testCylinder.SurfaceArea,
-        Specifications.MaximumDeviation, "Surface area of cylinder is exactly determined"
-      );
-
-      // Formula for cylinder volume: pi * (r ^ 2) * h
-      Assert.AreEqual(
-        6283.185307179586476925286766559f, testCylinder.Mass,
-        Specifications.MaximumDeviation, "Mass of cylinder is exactly determined"
-      );
-    }
-
-    /// <summary>Tests the bounding box generator</summary>
-    [Test]
-    public void TestBoundingBox() {
-      // TODO: Implement bounding box determination for cylinder volumes
-      /*
+		/// <summary>Tests the bounding box generator</summary>
+		[Test]
+		public void TestBoundingBox()
+		{
+			// TODO: Implement bounding box determination for cylinder volumes
+			/*
       Cylinder3 testCylinder = new Cylinder3(
         Matrix.CreateTranslation(new Vector3(100.0f, 200.0f, 300.0f)), 10.0f, 20.0f
       );
@@ -87,31 +91,31 @@ namespace Nuclectic.Tests.Geometry.Volumes {
         "Bounding box for oriented box is correctly determined"
       );
       */
-    }
+		}
 
-    /// <summary>Tests the bounding sphere generator</summary>
-    [Test]
-    public void TestBoundingSphere() {
-      Cylinder3 testCylinder = new Cylinder3(
-        Matrix.CreateTranslation(new Vector3(100.0f, 200.0f, 300.0f)), 10.0f, 20.0f
-      );
-      Sphere3 boundingSphere = testCylinder.BoundingSphere;
+		/// <summary>Tests the bounding sphere generator</summary>
+		[Test]
+		public void TestBoundingSphere()
+		{
+			Cylinder3 testCylinder = new Cylinder3(
+				Matrix.CreateTranslation(new Vector3(100.0f, 200.0f, 300.0f)), 10.0f, 20.0f
+				);
+			Sphere3 boundingSphere = testCylinder.BoundingSphere;
 
-      GeoAssertHelper.AreAlmostEqual(
-        new Vector3(100.0f, 200.0f, 300.0f), boundingSphere.Center,
-        Specifications.MaximumDeviation, "Center of bounding sphere correctly determined"
-      );
+			GeoAssertHelper.AreAlmostEqual(
+										   new Vector3(100.0f, 200.0f, 300.0f), boundingSphere.Center,
+										   Specifications.MaximumDeviation, "Center of bounding sphere correctly determined"
+				);
 
-      Assert.That(
-        boundingSphere.Radius,
-        Is.EqualTo(14.142135623730950488016887242097f).Within(
-          Specifications.MaximumDeviation
-        ).Ulps,
-        "Radius of bounding sphere exactly encloses the box"
-      );
-    }
-  }
-
+			Assert.That(
+					    boundingSphere.Radius,
+						Is.EqualTo(14.142135623730950488016887242097f).Within(
+																			  Specifications.MaximumDeviation
+							).Ulps,
+						"Radius of bounding sphere exactly encloses the box"
+				);
+		}
+	}
 } // namespace Nuclex.Geometry.Volumes
 
 #endif // UNITTEST

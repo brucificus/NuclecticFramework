@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,37 +17,34 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.UserInterface.Controls.Desktop {
+namespace Nuclectic.UserInterface.Controls.Desktop
+{
+	/// <summary>A window for hosting other controls</summary>
+	public class WindowControl : DraggableControl
+	{
+		/// <summary>Initializes a new window control</summary>
+		public WindowControl()
+			: base(true) { }
 
-  /// <summary>A window for hosting other controls</summary>
-  public class WindowControl : DraggableControl {
+		/// <summary>Closes the window</summary>
+		public void Close()
+		{
+			if (IsOpen)
+			{
+				Parent.Children.Remove(this);
+			}
+		}
 
-    /// <summary>Initializes a new window control</summary>
-    public WindowControl() : base(true) {}
+		/// <summary>Whether the window is currently open</summary>
+		public bool IsOpen { get { return Screen != null; } }
 
-    /// <summary>Closes the window</summary>
-    public void Close() {
-      if(IsOpen) {
-        Parent.Children.Remove(this);
-      }
-    }
-    
-    /// <summary>Whether the window is currently open</summary>
-    public bool IsOpen {
-      get { return Screen != null; }
-    }
+		/// <summary>Whether the window can be dragged with the mouse</summary>
+		public new bool EnableDragging { get { return base.EnableDragging; } set { base.EnableDragging = value; } }
 
-    /// <summary>Whether the window can be dragged with the mouse</summary>
-    public new bool EnableDragging {
-      get { return base.EnableDragging; }
-      set { base.EnableDragging = value; }
-    }
-
-    /// <summary>Text in the title bar of the window</summary>
-    public string Title;
-
-  }
-
+		/// <summary>Text in the title bar of the window</summary>
+		public string Title;
+	}
 } // namespace Nuclex.UserInterface.Controls.Desktop

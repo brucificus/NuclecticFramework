@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,45 +17,49 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.UserInterface.Visuals.Flat.Renderers {
+namespace Nuclectic.UserInterface.Visuals.Flat.Renderers
+{
+	/// <summary>Renders horizontal sliders in a traditional flat style</summary>
+	public class FlatHorizontalSliderControlRenderer :
+		IFlatControlRenderer<Controls.Desktop.HorizontalSliderControl>
+	{
+		/// <summary>
+		///   Renders the specified control using the provided graphics interface
+		/// </summary>
+		/// <param name="control">Control that will be rendered</param>
+		/// <param name="graphics">
+		///   Graphics interface that will be used to draw the control
+		/// </param>
+		public void Render(
+			Controls.Desktop.HorizontalSliderControl control, IFlatGuiGraphics graphics
+			)
+		{
+			RectangleF controlBounds = control.GetAbsoluteBounds();
 
-  /// <summary>Renders horizontal sliders in a traditional flat style</summary>
-  public class FlatHorizontalSliderControlRenderer :
-    IFlatControlRenderer<Controls.Desktop.HorizontalSliderControl> {
+			float thumbWidth = controlBounds.Width * control.ThumbSize;
+			float thumbX = (controlBounds.Width - thumbWidth) * control.ThumbPosition;
 
-    /// <summary>
-    ///   Renders the specified control using the provided graphics interface
-    /// </summary>
-    /// <param name="control">Control that will be rendered</param>
-    /// <param name="graphics">
-    ///   Graphics interface that will be used to draw the control
-    /// </param>
-    public void Render(
-      Controls.Desktop.HorizontalSliderControl control, IFlatGuiGraphics graphics
-    ) {
-      RectangleF controlBounds = control.GetAbsoluteBounds();
+			graphics.DrawElement("rail.horizontal", controlBounds);
 
-      float thumbWidth = controlBounds.Width * control.ThumbSize;
-      float thumbX = (controlBounds.Width - thumbWidth) * control.ThumbPosition;
+			RectangleF thumbBounds = new RectangleF(
+				controlBounds.X + thumbX, controlBounds.Y, thumbWidth, controlBounds.Height
+				);
 
-      graphics.DrawElement("rail.horizontal", controlBounds);
-
-      RectangleF thumbBounds = new RectangleF(
-        controlBounds.X + thumbX, controlBounds.Y, thumbWidth, controlBounds.Height
-      );
-
-      if(control.ThumbDepressed) {
-        graphics.DrawElement("slider.horizontal.depressed", thumbBounds);
-      } else if(control.MouseOverThumb) {
-        graphics.DrawElement("slider.horizontal.highlighted", thumbBounds);
-      } else {
-        graphics.DrawElement("slider.horizontal.normal", thumbBounds);
-      }
-
-    }
-
-  }
-
+			if (control.ThumbDepressed)
+			{
+				graphics.DrawElement("slider.horizontal.depressed", thumbBounds);
+			}
+			else if (control.MouseOverThumb)
+			{
+				graphics.DrawElement("slider.horizontal.highlighted", thumbBounds);
+			}
+			else
+			{
+				graphics.DrawElement("slider.horizontal.normal", thumbBounds);
+			}
+		}
+	}
 } // namespace Nuclex.UserInterface.Visuals.Flat.Renderers

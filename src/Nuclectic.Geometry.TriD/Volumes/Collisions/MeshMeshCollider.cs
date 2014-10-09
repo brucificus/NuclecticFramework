@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,36 +17,31 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Geometry.Volumes.Collisions {
+namespace Nuclectic.Geometry.Volumes.Collisions
+{
+	/// <summary>Contains all Mesh-to-Mesh interference detection code</summary>
+	public static class MeshMeshCollider
+	{
+		/// <summary>Test whether a two meshes are overlapping</summary>
+		/// <param name="firstMesh">First mesh to be checked for overlap</param>
+		/// <param name="secondMesh">Second mesh to be checked for overlap</param>
+		/// <returns>True if the two meshes are intersecting</returns>
+		public static bool CheckContact(
+			TriangleMesh3 firstMesh, TriangleMesh3 secondMesh
+			) { throw new NotImplementedException("Not implemented yet"); }
 
-  /// <summary>Contains all Mesh-to-Mesh interference detection code</summary>
-  public static class MeshMeshCollider {
-
-    /// <summary>Test whether a two meshes are overlapping</summary>
-    /// <param name="firstMesh">First mesh to be checked for overlap</param>
-    /// <param name="secondMesh">Second mesh to be checked for overlap</param>
-    /// <returns>True if the two meshes are intersecting</returns>
-    public static bool CheckContact(
-      TriangleMesh3 firstMesh, TriangleMesh3 secondMesh
-    ) {
-      throw new NotImplementedException("Not implemented yet");
-    }
-
-    /// <summary>Find the contact location between two meshes</summary>
-    /// <param name="firstMesh">First mesh to be checked for overlap</param>
-    /// <param name="secondMesh">Second mesh to be checked for overlap</param>
-    /// <returns>A contact location if the two meshes touch each other</returns>
-    public static Vector3? FindContact(
-      TriangleMesh3 firstMesh, TriangleMesh3 secondMesh
-    ) {
-      throw new NotImplementedException("Not implemented yet");
-    }
-
-  }
-
+		/// <summary>Find the contact location between two meshes</summary>
+		/// <param name="firstMesh">First mesh to be checked for overlap</param>
+		/// <param name="secondMesh">Second mesh to be checked for overlap</param>
+		/// <returns>A contact location if the two meshes touch each other</returns>
+		public static Vector3? FindContact(
+			TriangleMesh3 firstMesh, TriangleMesh3 secondMesh
+			) { throw new NotImplementedException("Not implemented yet"); }
+	}
 } // namespace Nuclex.Geometry.Volumes.Collisions

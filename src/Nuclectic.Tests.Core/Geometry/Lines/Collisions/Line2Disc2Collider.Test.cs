@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -25,67 +27,68 @@ using Nuclectic.Geometry.Lines.Collisions;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions
+{
+	/// <summary>Unit test for the 2D line vs. 2D disc interference detector</summary>
+	[TestFixture]
+	public class Line2Disc2ColliderTest
+	{
+		/// <summary>
+		///   Tests whether a close miss of a circle results in no contact being reported
+		/// </summary>
+		[Test]
+		public void TestCloseMiss()
+		{
+			Assert.IsFalse(
+						   Line2Disc2Collider.FindContacts(
+														   new Vector2(-1.0f, 2.1f), Vector2.UnitX, 2.0f
+							   ).HasContact
+				);
+		}
 
-  /// <summary>Unit test for the 2D line vs. 2D disc interference detector</summary>
-  [TestFixture]
-  public class Line2Disc2ColliderTest {
+		/// <summary>
+		///   Tests whether a line crossing the center of a disc generates the appropriate
+		///   contact intervals.
+		/// </summary>
+		[Test]
+		public void TestLineThroughCenter()
+		{
+			LineContacts contacts = Line2Disc2Collider.FindContacts(
+																    new Vector2(-3.0f, 0.0f), Vector2.UnitX, 2.0f
+				);
 
-    /// <summary>
-    ///   Tests whether a close miss of a circle results in no contact being reported
-    /// </summary>
-    [Test]
-    public void TestCloseMiss() {
-      Assert.IsFalse(
-        Line2Disc2Collider.FindContacts(
-          new Vector2(-1.0f, 2.1f), Vector2.UnitX, 2.0f
-        ).HasContact
-      );
-    }
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(1.0f).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(5.0f).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
 
-    /// <summary>
-    ///   Tests whether a line crossing the center of a disc generates the appropriate
-    ///   contact intervals.
-    /// </summary>
-    [Test]
-    public void TestLineThroughCenter() {
-      LineContacts contacts = Line2Disc2Collider.FindContacts(
-        new Vector2(-3.0f, 0.0f), Vector2.UnitX, 2.0f
-      );
+		/// <summary>
+		///   Tests whether a line crossing the center of a disc generates the appropriate
+		///   contact intervals.
+		/// </summary>
+		[Test]
+		public void TestCircleWithAbsolutePosition()
+		{
+			Vector2 unitDiagonal = Vector2.Normalize(Vector2.One);
+			LineContacts contacts = Line2Disc2Collider.FindContacts(
+																    Vector2.Zero, unitDiagonal, unitDiagonal * 5.0f, 2.0f
+				);
 
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(1.0f).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(5.0f).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
-
-    /// <summary>
-    ///   Tests whether a line crossing the center of a disc generates the appropriate
-    ///   contact intervals.
-    /// </summary>
-    [Test]
-    public void TestCircleWithAbsolutePosition() {
-      Vector2 unitDiagonal = Vector2.Normalize(Vector2.One);
-      LineContacts contacts = Line2Disc2Collider.FindContacts(
-        Vector2.Zero, unitDiagonal, unitDiagonal * 5.0f, 2.0f
-      );
-
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(3.0f).Within(Specifications.MaximumDeviation).Ulps
-      );
-      Assert.That(
-        contacts.ExitTime,
-        Is.EqualTo(7.0f).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
-
-  }
-
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(3.0f).Within(Specifications.MaximumDeviation).Ulps
+				);
+			Assert.That(
+					    contacts.ExitTime,
+						Is.EqualTo(7.0f).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions
 
 #endif // UNITTEST

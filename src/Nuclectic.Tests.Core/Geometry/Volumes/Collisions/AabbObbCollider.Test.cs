@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,34 +17,37 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
 using Nuclectic.Geometry;
 using Nuclectic.Geometry.Volumes;
 using NUnit.Framework;
+
 #if UNITTEST
 
-namespace Nuclectic.Tests.Geometry.Volumes.Collisions {
+namespace Nuclectic.Tests.Geometry.Volumes.Collisions
+{
+	/// <summary>Test for the AABB interference detection routines</summary>
+	[TestFixture]
+	public class AabbObbColliderTest
+	{
+		/// <summary>Tests intersection checking between AABBs and OBBs</summary>
+		[Test]
+		public void TestAxisAlignedBoxBoxIntersection()
+		{
+			Vector3 forward = Vector3.Normalize(new Vector3(1.0f, 1.0f, -1.0f));
+			Vector3 right = Vector3.Normalize(new Vector3(1.0f, -1.0f, 1.0f));
+			Vector3 up = Vector3.Normalize(new Vector3(1.0f, 1.0f, 1.0f));
 
-  /// <summary>Test for the AABB interference detection routines</summary>
-  [TestFixture]
-  public class AabbObbColliderTest {
+			Matrix obbTransform = new Matrix(
+				right.X, right.Y, right.Z, 0.0f,
+				up.X, up.Y, up.Z, 0.0f,
+				forward.X, forward.Y, forward.Z, 0.0f,
+				100.0f, 100.0f, 100.0f, 1.0f
+				);
 
-    /// <summary>Tests intersection checking between AABBs and OBBs</summary>
-    [Test]
-    public void TestAxisAlignedBoxBoxIntersection() {
-      Vector3 forward = Vector3.Normalize(new Vector3(1.0f, 1.0f, -1.0f));
-      Vector3 right = Vector3.Normalize(new Vector3(1.0f, -1.0f, 1.0f));
-      Vector3 up = Vector3.Normalize(new Vector3(1.0f, 1.0f, 1.0f));
-
-      Matrix obbTransform = new Matrix(
-        right.X,   right.Y,   right.Z,   0.0f,
-        up.X,      up.Y,      up.Z,      0.0f,
-        forward.X, forward.Y, forward.Z, 0.0f,
-        100.0f,    100.0f,    100.0f,    1.0f
-      );
-        
 /*
       AabbObbCollider.CheckContact(
         new Vector3(5.0f, 5.0f, 5.0f),
@@ -51,7 +55,7 @@ namespace Nuclectic.Tests.Geometry.Volumes.Collisions {
         new Vector3(5.0f, 5.0f, 5.0f)
 */
 
-      /*
+			/*
       double outRadius = Math.Sqrt(75.0f) + Specifications.MaximumDeviation;
 
       Assert.IsTrue(
@@ -133,20 +137,18 @@ namespace Nuclectic.Tests.Geometry.Volumes.Collisions {
         "Close miss of axis aligned box on Z axis to right side is properly handled"
       );
       */
-    }
+		}
 
-    private Box3 tiltedBox = new Box3(
-      MatrixHelper.Create(
-        new Vector3(15.0f, 15.0f, 15.0f),
-        Vector3.Normalize(new Vector3(1.0f, 1.0f, -1.0f)),
-        Vector3.Normalize(new Vector3(-1.0f, 1.0f, -1.0f)),
-        Vector3.Normalize(new Vector3(1.0f, 1.0f, 1.0f))
-      ),
-      new Vector3(5.0f, 5.0f, 5.0f)
-    );
-
-  }
-
+		private Box3 tiltedBox = new Box3(
+			MatrixHelper.Create(
+							    new Vector3(15.0f, 15.0f, 15.0f),
+								Vector3.Normalize(new Vector3(1.0f, 1.0f, -1.0f)),
+								Vector3.Normalize(new Vector3(-1.0f, 1.0f, -1.0f)),
+								Vector3.Normalize(new Vector3(1.0f, 1.0f, 1.0f))
+				),
+			new Vector3(5.0f, 5.0f, 5.0f)
+			);
+	}
 } // namespace Nuclex.Geometry.Volumes.Collisions
 
 #endif // UNITTEST

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,14 +17,16 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
+
 
 #if UNITTEST
 
-namespace Nuclectic.Tests.Graphics.SpecialEffects.Trails {
-
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Trails
+{
 #if false
-  /// <summary>Unit tests for the trail renderer class</summary>
+	/// <summary>Unit tests for the trail renderer class</summary>
   [TestFixture]
   public class TrailRendererTest {
 
@@ -34,7 +37,6 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Trails {
 
   }
 #endif
-
 } // namespace Nuclex.Graphics.SpecialEffects.Trails
 
 #endif // UNITTEST

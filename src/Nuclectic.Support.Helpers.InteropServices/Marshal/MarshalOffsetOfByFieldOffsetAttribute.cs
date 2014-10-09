@@ -18,7 +18,7 @@ namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 			if (fieldOffsetAttribute == null)
 				return null;
 
-			return (IntPtr?) fieldOffsetAttribute.Value;
+			return (IntPtr?)fieldOffsetAttribute.Value;
 		}
 	}
 }

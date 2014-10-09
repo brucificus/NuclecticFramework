@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System.Runtime.InteropServices;
@@ -23,31 +25,25 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nuclectic.Graphics.Helpers;
 
-namespace Nuclectic.Graphics.TriD.SpecialEffects.Masks {
+namespace Nuclectic.Graphics.TriD.SpecialEffects.Masks
+{
+	/// <summary>A vertex storing only its position</summary>
+	[StructLayout(LayoutKind.Explicit)]
+	public struct PositionVertex : IVertexType
+	{
+		/// <summary>Initializs a new position vertex</summary>
+		/// <param name="position">Position of the vertex in screen space</param>
+		public PositionVertex(Vector2 position) { this.Position = position; }
 
-  /// <summary>A vertex storing only its position</summary>
-  [StructLayout(LayoutKind.Explicit)]
-  public struct PositionVertex : IVertexType {
+		/// <summary>Coordinates of the vertex</summary>
+		[VertexElement(VertexElementUsage.Position), FieldOffset(0)]
+		public Vector2 Position;
 
-    /// <summary>Initializs a new position vertex</summary>
-    /// <param name="position">Position of the vertex in screen space</param>
-    public PositionVertex(Vector2 position) {
-      this.Position = position;
-    }
+		/// <summary>Provides a declaration for this vertex type</summary>
+		VertexDeclaration IVertexType.VertexDeclaration { get { return PositionVertex.VertexDeclaration; } }
 
-    /// <summary>Coordinates of the vertex</summary>
-    [VertexElement(VertexElementUsage.Position), FieldOffset(0)]
-    public Vector2 Position;
-
-    /// <summary>Provides a declaration for this vertex type</summary>
-    VertexDeclaration IVertexType.VertexDeclaration {
-      get { return PositionVertex.VertexDeclaration; }
-    }
-
-    /// <summary>Vertex declaration for this vertex structure</summary>
-    public static readonly VertexDeclaration VertexDeclaration =
-      new VertexDeclaration(VertexDeclarationHelper.BuildElementList<PositionVertex>());
-
-  }
-
+		/// <summary>Vertex declaration for this vertex structure</summary>
+		public static readonly VertexDeclaration VertexDeclaration =
+			new VertexDeclaration(VertexDeclarationHelper.BuildElementList<PositionVertex>());
+	}
 } // namespace Nuclex.Graphics.SpecialEffects.Masks

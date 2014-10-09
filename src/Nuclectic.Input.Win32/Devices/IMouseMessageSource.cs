@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,27 +17,26 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.Input.Devices {
-    /// <summary>
-  ///   Sends out notifications for intercepted window messages related to the mouse
-  /// </summary>
-  public interface IMouseMessageSource {
+namespace Nuclectic.Input.Devices
+{
+	/// <summary>
+	///   Sends out notifications for intercepted window messages related to the mouse
+	/// </summary>
+	public interface IMouseMessageSource
+	{
+		/// <summary>Triggered when a mouse button has been pressed</summary>
+		event MouseButtonEventDelegate MouseButtonPressed;
 
-    /// <summary>Triggered when a mouse button has been pressed</summary>
-    event MouseButtonEventDelegate MouseButtonPressed;
+		/// <summary>Triggered when a mouse button has been released</summary>
+		event MouseButtonEventDelegate MouseButtonReleased;
 
-    /// <summary>Triggered when a mouse button has been released</summary>
-    event MouseButtonEventDelegate MouseButtonReleased;
+		/// <summary>Triggered when the mouse has been moved</summary>
+		event MouseMoveEventDelegate MouseMoved;
 
-    /// <summary>Triggered when the mouse has been moved</summary>
-    event MouseMoveEventDelegate MouseMoved;
-
-    /// <summary>Triggered when the mouse wheel has been rotated</summary>
-    event MouseWheelEventDelegate MouseWheelRotated;
-
-  }
-
+		/// <summary>Triggered when the mouse wheel has been rotated</summary>
+		event MouseWheelEventDelegate MouseWheelRotated;
+	}
 } // namespace Nuclex.Input.Devices
-

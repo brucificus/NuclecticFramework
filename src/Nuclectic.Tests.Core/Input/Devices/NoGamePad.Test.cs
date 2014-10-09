@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Input;
@@ -23,102 +25,109 @@ using Nuclectic.Input.Devices;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Input.Devices {
+namespace Nuclectic.Tests.Input.Devices
+{
+	/// <summary>Unit tests for the game pad dummy</summary>
+	[TestFixture]
+	internal class NoGamePadTest
+	{
+		/// <summary>Verifies that the constructor is working</summary>
+		[Test]
+		public void TestConstructor()
+		{
+			var gamePad = new NoGamePad();
+			Assert.IsNotNull(gamePad);
+		}
 
-  /// <summary>Unit tests for the game pad dummy</summary>
-  [TestFixture]
-  internal class NoGamePadTest {
+		/// <summary>Verifies that the GetState() method is working</summary>
+		[Test]
+		public void TestGetState()
+		{
+			var gamePad = new NoGamePad();
+			gamePad.GetState();
+			// No exception means success
+		}
 
-    /// <summary>Verifies that the constructor is working</summary>
-    [Test]
-    public void TestConstructor() {
-      var gamePad = new NoGamePad();
-      Assert.IsNotNull(gamePad);
-    }
+		/// <summary>Verifies that the GetState() method is working</summary>
+		[Test]
+		public void TestGetExtendedState()
+		{
+			var gamePad = new NoGamePad();
+			gamePad.GetState();
+			// No exception means success
+		}
 
-    /// <summary>Verifies that the GetState() method is working</summary>
-    [Test]
-    public void TestGetState() {
-      var gamePad = new NoGamePad();
-      gamePad.GetState();
-      // No exception means success
-    }
+		/// <summary>Verifies that the game pad dummy is not attached</summary>
+		[Test]
+		public void TestIsAttached()
+		{
+			var gamePad = new NoGamePad();
+			Assert.IsFalse(gamePad.IsAttached);
+		}
 
-    /// <summary>Verifies that the GetState() method is working</summary>
-    [Test]
-    public void TestGetExtendedState() {
-      var gamePad = new NoGamePad();
-      gamePad.GetState();
-      // No exception means success
-    }
+		/// <summary>Verifies that the game pad dummy's name can be retrieved</summary>
+		[Test]
+		public void TestName()
+		{
+			var gamePad = new NoGamePad();
+			StringAssert.Contains("no", gamePad.Name.ToLower());
+		}
 
-    /// <summary>Verifies that the game pad dummy is not attached</summary>
-    [Test]
-    public void TestIsAttached() {
-      var gamePad = new NoGamePad();
-      Assert.IsFalse(gamePad.IsAttached);
-    }
+		/// <summary>Verifies that the TakeSnapshot() method works</summary>
+		[Test]
+		public void TestTakeSnapshot()
+		{
+			var gamePad = new NoGamePad();
+			gamePad.TakeSnapshot();
+			// No exception means success
+		}
 
-    /// <summary>Verifies that the game pad dummy's name can be retrieved</summary>
-    [Test]
-    public void TestName() {
-      var gamePad = new NoGamePad();
-      StringAssert.Contains("no", gamePad.Name.ToLower());
-    }
+		/// <summary>Verifies that the Update() method works</summary>
+		[Test]
+		public void TestUpdate()
+		{
+			var gamePad = new NoGamePad();
+			gamePad.Update();
+			// No exception means success
+		}
 
-    /// <summary>Verifies that the TakeSnapshot() method works</summary>
-    [Test]
-    public void TestTakeSnapshot() {
-      var gamePad = new NoGamePad();
-      gamePad.TakeSnapshot();
-      // No exception means success
-    }
+		/// <summary>Tests whether the no game pad class' events can be subscribed</summary>
+		[Test]
+		public void TestEvents()
+		{
+			var gamePad = new NoGamePad();
 
-    /// <summary>Verifies that the Update() method works</summary>
-    [Test]
-    public void TestUpdate() {
-      var gamePad = new NoGamePad();
-      gamePad.Update();
-      // No exception means success
-    }
+			gamePad.ButtonPressed += button;
+			gamePad.ButtonPressed -= button;
 
-    /// <summary>Tests whether the no game pad class' events can be subscribed</summary>
-    [Test]
-    public void TestEvents() {
-      var gamePad = new NoGamePad();
+			gamePad.ButtonReleased += button;
+			gamePad.ButtonReleased -= button;
+		}
 
-      gamePad.ButtonPressed += button;
-      gamePad.ButtonPressed -= button;
+		/// <summary>
+		///   Tests whether the no game pad class' extended events can be subscribed
+		/// </summary>
+		[Test]
+		public void TestExtendedEvents()
+		{
+			var gamePad = new NoGamePad();
 
-      gamePad.ButtonReleased += button;
-      gamePad.ButtonReleased -= button;
-    }
+			gamePad.ExtendedButtonPressed += extendedButton;
+			gamePad.ExtendedButtonPressed -= extendedButton;
 
-    /// <summary>
-    ///   Tests whether the no game pad class' extended events can be subscribed
-    /// </summary>
-    [Test]
-    public void TestExtendedEvents() {
-      var gamePad = new NoGamePad();
+			gamePad.ExtendedButtonReleased += extendedButton;
+			gamePad.ExtendedButtonReleased -= extendedButton;
+		}
 
-      gamePad.ExtendedButtonPressed += extendedButton;
-      gamePad.ExtendedButtonPressed -= extendedButton;
+		/// <summary>Dummy subscriber for the ButtonPressed/Released event</summary>
+		/// <param name="buttons">Buttons that have been pressed/released</param>
+		private static void button(Buttons buttons) { }
 
-      gamePad.ExtendedButtonReleased += extendedButton;
-      gamePad.ExtendedButtonReleased -= extendedButton;
-    }
-
-    /// <summary>Dummy subscriber for the ButtonPressed/Released event</summary>
-    /// <param name="buttons">Buttons that have been pressed/released</param>
-    private static void button(Buttons buttons) { }
-
-    /// <summary>Dummy subscriber for the ExtendedButtonPressed/Released event</summary>
-    /// <param name="buttons1">First 64 buttons that have been pressed/released</param>
-    /// <param name="buttons2">Second 64 buttons that have been pressed/released</param>
-    private static void extendedButton(ulong buttons1, ulong buttons2) { }
-
-  }
-
+		/// <summary>Dummy subscriber for the ExtendedButtonPressed/Released event</summary>
+		/// <param name="buttons1">First 64 buttons that have been pressed/released</param>
+		/// <param name="buttons2">Second 64 buttons that have been pressed/released</param>
+		private static void extendedButton(ulong buttons1, ulong buttons2) { }
+	}
 } // namespace Nuclex.Input.Devices
 
 #endif // UNITTEST

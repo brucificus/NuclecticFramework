@@ -2,9 +2,6 @@
 {
 	public class XnaKeyboardSoloFactory : IKeyboardSoloFactory
 	{
-		public IKeyboard GetKeyboard()
-		{
-			return new XnaKeyboardSolo();
-		}
+		public IKeyboard GetKeyboard() { return new XnaKeyboardSolo(); }
 	}
 }

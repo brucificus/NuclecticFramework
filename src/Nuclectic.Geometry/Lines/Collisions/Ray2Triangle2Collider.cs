@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,49 +17,55 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Geometry.Lines.Collisions {
+namespace Nuclectic.Geometry.Lines.Collisions
+{
+	/// <summary>Contains all Ray2 to Triangle2 interference detection code</summary>
+	public static class Ray2Triangle2Collider
+	{
+		/// <summary>Determines where a ray will hit a triangle, if at all</summary>
+		/// <param name="rayStart">Starting point of the ray</param>
+		/// <param name="rayDirection">Direction into which the ray extends</param>
+		/// <param name="triangleA">
+		///   First corner point of triangle in counter-clockwise order
+		/// </param>
+		/// <param name="triangleB">
+		///   Second corner point of triangle in counter-clockwise order
+		/// </param>
+		/// <param name="triangleC">
+		///   Third corner point of triangle in counter-clockwise order
+		/// </param>
+		/// <returns>The intersection points between the ray and the box, if any</returns>
+		public static LineContacts FindContacts(
+			Vector2 rayStart, Vector2 rayDirection,
+			Vector2 triangleA, Vector2 triangleB, Vector2 triangleC
+			)
+		{
+			LineContacts contacts = Line2Triangle2Collider.FindContacts(
+																	    rayStart, rayDirection, triangleA, triangleB, triangleC
+				);
 
-  /// <summary>Contains all Ray2 to Triangle2 interference detection code</summary>
-  public static class Ray2Triangle2Collider {
+			// If the line has entered the box before the reference point, this means
+			// that the ray starts within the box, thus, its first contact occurs immediately
+			if (!float.IsNaN(contacts.EntryTime))
+			{
+				if (contacts.ExitTime < 0.0f)
+				{
+					// Entry & exit before the ray's beginning?
+					return LineContacts.None;
+				}
+				else if (contacts.EntryTime < 0.0f)
+				{
+					// Only entry before ray's beginning?
+					contacts.EntryTime = 0.0f;
+				}
+			}
 
-    /// <summary>Determines where a ray will hit a triangle, if at all</summary>
-    /// <param name="rayStart">Starting point of the ray</param>
-    /// <param name="rayDirection">Direction into which the ray extends</param>
-    /// <param name="triangleA">
-    ///   First corner point of triangle in counter-clockwise order
-    /// </param>
-    /// <param name="triangleB">
-    ///   Second corner point of triangle in counter-clockwise order
-    /// </param>
-    /// <param name="triangleC">
-    ///   Third corner point of triangle in counter-clockwise order
-    /// </param>
-    /// <returns>The intersection points between the ray and the box, if any</returns>
-    public static LineContacts FindContacts(
-      Vector2 rayStart, Vector2 rayDirection,
-      Vector2 triangleA, Vector2 triangleB, Vector2 triangleC
-    ) {
-      LineContacts contacts = Line2Triangle2Collider.FindContacts(
-        rayStart, rayDirection, triangleA, triangleB, triangleC
-      );
-
-      // If the line has entered the box before the reference point, this means
-      // that the ray starts within the box, thus, its first contact occurs immediately
-      if(!float.IsNaN(contacts.EntryTime)) {
-        if(contacts.ExitTime < 0.0f) { // Entry & exit before the ray's beginning?
-          return LineContacts.None;
-        } else if(contacts.EntryTime < 0.0f) { // Only entry before ray's beginning?
-          contacts.EntryTime = 0.0f;
-        }
-      }
-
-      return contacts;
-    }
-
-  }
-
+			return contacts;
+		}
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions

@@ -1,4 +1,5 @@
-  #region CPL License
+#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,97 +17,105 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Game.Component {
+namespace Nuclectic.Game.Component
+{
+	/// <summary>
+	///   Variant of the XNA GameComponent that doesn't reference the Game class
+	/// </summary>
+	/// <remarks>
+	///   <para>
+	///     This is a lightweight version of GameComponent that can be used without
+	///     requiring a Game class to be present. Useful to get all the advantages
+	///     of the XNA GameServices architecture even when you have initialized and
+	///     manage the graphics device yourself.
+	///   </para>
+	///   <para>
+	///     The name of this class is the same as 'GameComponent' minus the 'Game' part
+	///     as the Game reference is what this class removes from its namesake.
+	///   </para>
+	/// </remarks>
+	public class Component : IGameComponent, IUpdateable
+	{
+		/// <summary>Triggered when the value of the enabled property is changed.</summary>
+		public event EventHandler<EventArgs> EnabledChanged;
 
-  /// <summary>
-  ///   Variant of the XNA GameComponent that doesn't reference the Game class
-  /// </summary>
-  /// <remarks>
-  ///   <para>
-  ///     This is a lightweight version of GameComponent that can be used without
-  ///     requiring a Game class to be present. Useful to get all the advantages
-  ///     of the XNA GameServices architecture even when you have initialized and
-  ///     manage the graphics device yourself.
-  ///   </para>
-  ///   <para>
-  ///     The name of this class is the same as 'GameComponent' minus the 'Game' part
-  ///     as the Game reference is what this class removes from its namesake.
-  ///   </para>
-  /// </remarks>
-  public class Component : IGameComponent, IUpdateable {
+		/// <summary>Triggered when the value of the update order property is changed.</summary>
+		public event EventHandler<EventArgs> UpdateOrderChanged;
 
-    /// <summary>Triggered when the value of the enabled property is changed.</summary>
-    public event EventHandler<EventArgs> EnabledChanged;
+		/// <summary>Initializes a new component</summary>
+		public Component() { this.enabled = true; }
 
-    /// <summary>Triggered when the value of the update order property is changed.</summary>
-    public event EventHandler<EventArgs> UpdateOrderChanged;
+		/// <summary>Gives the game component a chance to initialize itself</summary>
+		public virtual void Initialize() { }
 
-    /// <summary>Initializes a new component</summary>
-    public Component() {
-      this.enabled = true;
-    }
+		/// <summary>Called when the component needs to update its state.</summary>
+		/// <param name="gameTime">Provides a snapshot of the Game's timing values</param>
+		public virtual void Update(GameTime gameTime) { }
 
-    /// <summary>Gives the game component a chance to initialize itself</summary>
-    public virtual void Initialize() { }
+		/// <summary>
+		///   Indicates when the updateable component should be updated in relation to
+		///   other updateables. Has no effect by itself.
+		/// </summary>
+		public int UpdateOrder
+		{
+			get { return this.updateOrder; }
+			set
+			{
+				if (value != this.updateOrder)
+				{
+					this.updateOrder = value;
+					OnUpdateOrderChanged();
+				}
+			}
+		}
 
-    /// <summary>Called when the component needs to update its state.</summary>
-    /// <param name="gameTime">Provides a snapshot of the Game's timing values</param>
-    public virtual void Update(GameTime gameTime) { }
+		/// <summary>
+		///   True when the updateable component is enabled and should be udpated.
+		/// </summary>
+		public bool Enabled
+		{
+			get { return this.enabled; }
+			set
+			{
+				if (value != this.enabled)
+				{
+					this.enabled = value;
+					OnEnabledChanged();
+				}
+			}
+		}
 
-    /// <summary>
-    ///   Indicates when the updateable component should be updated in relation to
-    ///   other updateables. Has no effect by itself.
-    /// </summary>
-    public int UpdateOrder {
-      get { return this.updateOrder; }
-      set {
-        if(value != this.updateOrder) {
-          this.updateOrder = value;
-          OnUpdateOrderChanged();
-        }
-      }
-    }
+		/// <summary>Fires the UpdateOrderChanged event</summary>
+		protected virtual void OnUpdateOrderChanged()
+		{
+			if (this.UpdateOrderChanged != null)
+			{
+				this.UpdateOrderChanged(this, EventArgs.Empty);
+			}
+		}
 
-    /// <summary>
-    ///   True when the updateable component is enabled and should be udpated.
-    /// </summary>
-    public bool Enabled {
-      get { return this.enabled; }
-      set {
-        if(value != this.enabled) {
-          this.enabled = value;
-          OnEnabledChanged();
-        }
-      }
-    }
+		/// <summary>Fires the EnabledChanged event</summary>
+		protected virtual void OnEnabledChanged()
+		{
+			if (this.EnabledChanged != null)
+			{
+				this.EnabledChanged(this, EventArgs.Empty);
+			}
+		}
 
-    /// <summary>Fires the UpdateOrderChanged event</summary>
-    protected virtual void OnUpdateOrderChanged() {
-      if(this.UpdateOrderChanged != null) {
-        this.UpdateOrderChanged(this, EventArgs.Empty);
-      }
-    }
+		/// <summary>
+		///   Used to determine the updating order of this object in relation to other
+		///   objects in the same list.
+		/// </summary>
+		private int updateOrder;
 
-    /// <summary>Fires the EnabledChanged event</summary>
-    protected virtual void OnEnabledChanged() {
-      if(this.EnabledChanged != null) {
-        this.EnabledChanged(this, EventArgs.Empty);
-      }
-    }
-
-    /// <summary>
-    ///   Used to determine the updating order of this object in relation to other
-    ///   objects in the same list.
-    /// </summary>
-    private int updateOrder;
-    /// <summary>Whether this object is enabled (and should thus be updated)</summary>
-    private bool enabled;
-
-  }
-
+		/// <summary>Whether this object is enabled (and should thus be updated)</summary>
+		private bool enabled;
+	}
 } // namespace Nuclex.Game

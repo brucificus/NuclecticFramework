@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,18 +17,20 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 #if UNITTEST
 
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Geometry.Volumes.Collisions {
-
-  /// <summary>Test for the AABB interference detection routines</summary>
-  [TestFixture]
-  public class ObbSphereColliderTest { }
-
+namespace Nuclectic.Tests.Geometry.Volumes.Collisions
+{
+	/// <summary>Test for the AABB interference detection routines</summary>
+	[TestFixture]
+	public class ObbSphereColliderTest
+	{
+	}
 } // namespace Nuclex.Geometry.Volumes.Collisions
 
 #endif // UNITTEST

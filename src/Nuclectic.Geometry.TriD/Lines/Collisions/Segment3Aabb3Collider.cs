@@ -1,7 +1,8 @@
-namespace Nuclectic.Geometry.Lines.Collisions {
-
-  /// <summary>Contains all Segment3 to Aabb3 interference detection code</summary>
-  public static class Segment3Aabb3Collider {
+namespace Nuclectic.Geometry.Lines.Collisions
+{
+	/// <summary>Contains all Segment3 to Aabb3 interference detection code</summary>
+	public static class Segment3Aabb3Collider
+	{
 /*
     /// <summary>Determines where the range clips an axis aligned box</summary>
     /// <param name="box">Box that will be checked for intersection</param>
@@ -71,7 +72,5 @@ namespace Nuclectic.Geometry.Lines.Collisions {
       return true;
     }
 */
-  }
-
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions
-

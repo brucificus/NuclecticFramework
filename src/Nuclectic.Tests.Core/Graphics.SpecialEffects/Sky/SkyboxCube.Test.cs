@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Graphics;
@@ -26,63 +28,68 @@ using SlimDX.Direct3D9;
 using System;
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Graphics.SpecialEffects.Sky {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Sky
+{
+	/// <summary>Unit tests for the skybox cube class</summary>
+	[TestFixture]
+	internal class SkyboxCubeTest
+	{
+		/// <summary>
+		///   Verifies that the constructor of the skybox cube class is working
+		/// </summary>
+		[Test]
+		public void TestConstructor()
+		{
+			MockedGraphicsDeviceService mockGraphicsDeviceService =
+				new MockedGraphicsDeviceService();
 
-  /// <summary>Unit tests for the skybox cube class</summary>
-  [TestFixture]
-  internal class SkyboxCubeTest {
+			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
+			{
+				SkyboxCube theSkybox = new SkyboxCube(mockGraphicsDeviceService.GraphicsDevice);
+				theSkybox.Dispose();
+			}
+		}
 
-    /// <summary>
-    ///   Verifies that the constructor of the skybox cube class is working
-    /// </summary>
-    [Test]
-    public void TestConstructor() {
-      MockedGraphicsDeviceService mockGraphicsDeviceService =
-        new MockedGraphicsDeviceService();
+		/// <summary>
+		///   Verifies that the skybox cube can render a skybox
+		/// </summary>
+		[Test]
+		public void TestRenderSkybox()
+		{
+			MockedGraphicsDeviceService mockGraphicsDeviceService =
+				new MockedGraphicsDeviceService(DeviceType.Reference);
 
-      using(IDisposable keeper = mockGraphicsDeviceService.CreateDevice()) {
-        SkyboxCube theSkybox = new SkyboxCube(mockGraphicsDeviceService.GraphicsDevice);
-        theSkybox.Dispose();
-      }
-    }
+			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
+			{
+				using (
+					BasicEffect effect = new BasicEffect(mockGraphicsDeviceService.GraphicsDevice)
+					)
+				{
+					using (
+						SkyboxCube skyboxCube = new SkyboxCube(
+							mockGraphicsDeviceService.GraphicsDevice
+							)
+						)
+					{
+						skyboxCube.AssignVertexBuffer();
 
-    /// <summary>
-    ///   Verifies that the skybox cube can render a skybox
-    /// </summary>
-    [Test]
-    public void TestRenderSkybox() {
-      MockedGraphicsDeviceService mockGraphicsDeviceService =
-        new MockedGraphicsDeviceService(DeviceType.Reference);
+						EffectTechnique technique = effect.CurrentTechnique;
+						for (int pass = 0; pass < technique.Passes.Count; ++pass)
+						{
+							technique.Passes[pass].Apply();
 
-      using(IDisposable keeper = mockGraphicsDeviceService.CreateDevice()) {
-        using(
-          BasicEffect effect = new BasicEffect(mockGraphicsDeviceService.GraphicsDevice)
-        ) {
-          using(
-            SkyboxCube skyboxCube = new SkyboxCube(
-              mockGraphicsDeviceService.GraphicsDevice
-            )
-          ) {
-            skyboxCube.AssignVertexBuffer();
-
-            EffectTechnique technique = effect.CurrentTechnique;
-            for (int pass = 0; pass < technique.Passes.Count; ++pass) {
-              technique.Passes[pass].Apply();
-
-              skyboxCube.DrawNorthernFace();
-              skyboxCube.DrawEasternFace();
-              skyboxCube.DrawSouthernFace();
-              skyboxCube.DrawWesternFace();
-              skyboxCube.DrawUpperFace();
-              skyboxCube.DrawLowerFace();
-            }
-          }
-        }
-      }
-    }
-
-  }
-
+							skyboxCube.DrawNorthernFace();
+							skyboxCube.DrawEasternFace();
+							skyboxCube.DrawSouthernFace();
+							skyboxCube.DrawWesternFace();
+							skyboxCube.DrawUpperFace();
+							skyboxCube.DrawLowerFace();
+						}
+					}
+				}
+			}
+		}
+	}
 } // namespace Nuclex.Graphics.SpecialEffects.Sky
 
 #endif // UNITTEST

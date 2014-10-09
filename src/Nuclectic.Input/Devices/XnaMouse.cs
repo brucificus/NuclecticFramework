@@ -12,20 +12,9 @@ namespace Nuclectic.Input.Devices
 			this.current = new MouseState();
 		}
 
-		public bool IsAttached
-		{
-			get
-			{
-				return true;
-			}
-		}
-		public string Name
-		{
-			get
-			{
-				return "XNA Mouse";
-			}
-		}
+		public bool IsAttached { get { return true; } }
+		public string Name { get { return "XNA Mouse"; } }
+
 		/// <summary>Updates the state of the input device</summary>
 		/// <remarks>
 		///   <para>
@@ -72,34 +61,28 @@ namespace Nuclectic.Input.Devices
 		public event MouseButtonDelegate MouseButtonReleased;
 		public event MouseWheelDelegate MouseWheelRotated;
 
-		public MouseState GetState()
-		{
-			return this.current;
-		}
+		public MouseState GetState() { return this.current; }
 
-		public void MoveTo(float x, float y)
-		{
-			Mouse.SetPosition((int)x, (int)y);
-		}
+		public void MoveTo(float x, float y) { Mouse.SetPosition((int)x, (int)y); }
 
-		private MouseState queryMouseState()
-		{
-			return Mouse.GetState();
-		}
+		private MouseState queryMouseState() { return Mouse.GetState(); }
 
 		private void generateEvents(ref MouseState previous, ref MouseState current)
 		{
 			// No subscribers? Don't waste time!
-			if ((MouseMoved == null) && (MouseButtonPressed == null) && (MouseButtonReleased == null) && (MouseWheelRotated != null))
+			if ((MouseMoved == null)
+				&& (MouseButtonPressed == null)
+				&& (MouseButtonReleased == null)
+				&& (MouseWheelRotated != null))
 			{
 				return;
 			}
 
-			generateButtonEvents(ref previous, ref current, (ms)=>ms.LeftButton, MouseButtons.Left);
-			generateButtonEvents(ref previous, ref current, (ms)=>ms.MiddleButton, MouseButtons.Middle);
-			generateButtonEvents(ref previous, ref current, (ms)=>ms.RightButton, MouseButtons.Right);
-			generateButtonEvents(ref previous, ref current, (ms)=>ms.XButton1, MouseButtons.X1);
-			generateButtonEvents(ref previous, ref current, (ms)=>ms.XButton2, MouseButtons.X2);
+			generateButtonEvents(ref previous, ref current, (ms) => ms.LeftButton, MouseButtons.Left);
+			generateButtonEvents(ref previous, ref current, (ms) => ms.MiddleButton, MouseButtons.Middle);
+			generateButtonEvents(ref previous, ref current, (ms) => ms.RightButton, MouseButtons.Right);
+			generateButtonEvents(ref previous, ref current, (ms) => ms.XButton1, MouseButtons.X1);
+			generateButtonEvents(ref previous, ref current, (ms) => ms.XButton2, MouseButtons.X2);
 
 			if (previous.Position != current.Position)
 				OnMouseMoved(current.X, current.Y);
@@ -120,7 +103,8 @@ namespace Nuclectic.Input.Devices
 				this.MouseMoved(x, y);
 		}
 
-		private void generateButtonEvents(ref MouseState previous, ref MouseState current, Func<MouseState, ButtonState> getButtonState, MouseButtons mouseButton)
+		private void generateButtonEvents(
+			ref MouseState previous, ref MouseState current, Func<MouseState, ButtonState> getButtonState, MouseButtons mouseButton)
 		{
 			var previousButtonState = getButtonState(previous);
 			var currentButtonState = getButtonState(current);

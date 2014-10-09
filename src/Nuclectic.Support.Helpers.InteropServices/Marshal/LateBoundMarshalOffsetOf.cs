@@ -14,9 +14,6 @@ namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 			_offsetOf = offsetOf;
 		}
 
-		public IntPtr? OffsetOf(Type t, string fieldName)
-		{
-			return _offsetOf(t, fieldName);
-		}
+		public IntPtr? OffsetOf(Type t, string fieldName) { return _offsetOf(t, fieldName); }
 	}
 }

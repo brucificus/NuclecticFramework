@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Content;
@@ -28,80 +30,87 @@ using Effect = Microsoft.Xna.Framework.Graphics.Effect;
 using System;
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks
+{
+	/// <summary>Unit tests for the screen mask class</summary>
+	[TestFixture]
+	internal class ScreenMaskTest
+	{
+		/// <summary>Executed before each test is run</summary>
+		[SetUp]
+		public void Setup()
+		{
+			this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService(DeviceType.Reference);
+			this.mockedGraphicsDeviceService.CreateDevice();
 
-  /// <summary>Unit tests for the screen mask class</summary>
-  [TestFixture]
-  internal class ScreenMaskTest {
+			serviceProvider = GraphicsDeviceServiceHelper.MakePrivateServiceProvider(
+																					 this.mockedGraphicsDeviceService
+				);
 
-    /// <summary>Executed before each test is run</summary>
-    [SetUp]
-    public void Setup() {
-      this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService(DeviceType.Reference);
-      this.mockedGraphicsDeviceService.CreateDevice();
+			this.contentManager = new ResourceContentManager(
+				serviceProvider, Resources.ScreenMaskResources.ResourceManager
+				);
+		}
 
-      serviceProvider = GraphicsDeviceServiceHelper.MakePrivateServiceProvider(
-        this.mockedGraphicsDeviceService
-      );
+		/// <summary>Executed after each test has completed</summary>
+		[TearDown]
+		public void Teardown()
+		{
+			if (this.contentManager != null)
+			{
+				this.contentManager.Dispose();
+				this.contentManager = null;
+			}
+			if (this.mockedGraphicsDeviceService != null)
+			{
+				this.serviceProvider = null;
+				this.mockedGraphicsDeviceService.DestroyDevice();
+				this.mockedGraphicsDeviceService = null;
+			}
+		}
 
-      this.contentManager = new ResourceContentManager(
-        serviceProvider, Resources.ScreenMaskResources.ResourceManager
-      );
-    }
+		/// <summary>
+		///   Verifies that the constructor of the screen mask class is working
+		/// </summary>
+		[Test]
+		public void TestConstructor()
+		{
+			Effect effect = this.contentManager.Load<Effect>("ScreenMaskEffect");
+			using (
+				ScreenMask<PositionVertex> testMask = new ScreenMask<PositionVertex>(
+					this.mockedGraphicsDeviceService.GraphicsDevice,
+					effect,
+					new PositionVertex[4]
+					)
+				) { }
+		}
 
-    /// <summary>Executed after each test has completed</summary>
-    [TearDown]
-    public void Teardown() {
-      if(this.contentManager != null) {
-        this.contentManager.Dispose();
-        this.contentManager = null;
-      }
-      if(this.mockedGraphicsDeviceService != null) {
-        this.serviceProvider = null;
-        this.mockedGraphicsDeviceService.DestroyDevice();
-        this.mockedGraphicsDeviceService = null;
-      }
-    }
+		/// <summary>Tests whether the screen mask is able to draw itself</summary>
+		[Test]
+		public void TestDraw()
+		{
+			Effect effect = this.contentManager.Load<Effect>("ScreenMaskEffect");
+			using (
+				ScreenMask<PositionVertex> testMask = new ScreenMask<PositionVertex>(
+					this.mockedGraphicsDeviceService.GraphicsDevice,
+					effect,
+					new PositionVertex[4]
+					)
+				)
+			{
+				testMask.Draw();
+			}
+		}
 
-    /// <summary>
-    ///   Verifies that the constructor of the screen mask class is working
-    /// </summary>
-    [Test]
-    public void TestConstructor() {
-      Effect effect = this.contentManager.Load<Effect>("ScreenMaskEffect");
-      using(
-        ScreenMask<PositionVertex> testMask = new ScreenMask<PositionVertex>(
-          this.mockedGraphicsDeviceService.GraphicsDevice,
-          effect,
-          new PositionVertex[4]
-        )
-      ) { }
-    }
+		/// <summary>Mocked graphics device service used to run the test</summary>
+		private MockedGraphicsDeviceService mockedGraphicsDeviceService;
 
-    /// <summary>Tests whether the screen mask is able to draw itself</summary>
-    [Test]
-    public void TestDraw() {
-      Effect effect = this.contentManager.Load<Effect>("ScreenMaskEffect");
-      using(
-        ScreenMask<PositionVertex> testMask = new ScreenMask<PositionVertex>(
-          this.mockedGraphicsDeviceService.GraphicsDevice,
-          effect,
-          new PositionVertex[4]
-        )
-      ) {
-        testMask.Draw();
-      }
-    }
+		/// <summary>Service provider containing the mocked graphics device service</summary>
+		private IServiceProvider serviceProvider;
 
-    /// <summary>Mocked graphics device service used to run the test</summary>
-    private MockedGraphicsDeviceService mockedGraphicsDeviceService;
-    /// <summary>Service provider containing the mocked graphics device service</summary>
-    private IServiceProvider serviceProvider;
-    /// <summary>Content manager used to load the assets used during testing</summary>
-    private ResourceContentManager contentManager;
-
-  }
-
+		/// <summary>Content manager used to load the assets used during testing</summary>
+		private ResourceContentManager contentManager;
+	}
 } // namespace Nuclex.Graphics.SpecialEffects.Masks
 
 #endif // UNITTEST

@@ -1,4 +1,5 @@
-﻿//#region CPL License
+﻿#region CPL License
+
 ///*
 //Nuclex Framework
 //Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,7 +17,8 @@
 //You should have received a copy of the IBM Common Public
 //License along with this library
 //*/
-//#endregion
+
+#endregion
 
 //using Microsoft.Xna.Framework;
 //using Microsoft.Xna.Framework.Graphics;
@@ -40,7 +42,7 @@
 //		new Vector3(10.0f, 20.0f, 30.0f), Vector3.Forward,
 //		Color.Blue
 //	  );
-      
+
 //	  Assert.AreEqual(Vector3.Zero, vertices[0].Position);
 //	  Assert.AreNotEqual(Vector3.Zero, vertices[1].Position);
 //	  Assert.AreNotEqual(Vector3.Zero, vertices[count - 1].Position);

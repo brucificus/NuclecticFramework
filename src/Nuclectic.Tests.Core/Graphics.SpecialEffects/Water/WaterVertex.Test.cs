@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -23,30 +25,29 @@ using Nuclectic.Graphics.TriD.SpecialEffects.Water;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Graphics.SpecialEffects.Water {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
+{
+	/// <summary>Unit tests for the water vertex class</summary>
+	[TestFixture]
+	internal class SkyboxVertexTest
+	{
+		/// <summary>
+		///   Verifies that the constructor of the water vertex class is working
+		/// </summary>
+		[Test]
+		public void TestConstructor()
+		{
+			WaterVertex vertex = new WaterVertex(
+				new Vector3(1.0f, 2.0f, 3.0f), new Vector2(4.0f, 5.0f)
+				);
 
-  /// <summary>Unit tests for the water vertex class</summary>
-  [TestFixture]
-  internal class SkyboxVertexTest {
-
-    /// <summary>
-    ///   Verifies that the constructor of the water vertex class is working
-    /// </summary>
-    [Test]
-    public void TestConstructor() {
-      WaterVertex vertex = new WaterVertex(
-        new Vector3(1.0f, 2.0f, 3.0f), new Vector2(4.0f, 5.0f)
-      );
-
-      Assert.AreEqual(1.0f, vertex.Position.X);
-      Assert.AreEqual(2.0f, vertex.Position.Y);
-      Assert.AreEqual(3.0f, vertex.Position.Z);
-      Assert.AreEqual(4.0f, vertex.TextureCoordinate.X);
-      Assert.AreEqual(5.0f, vertex.TextureCoordinate.Y);
-    }
-
-  }
-
+			Assert.AreEqual(1.0f, vertex.Position.X);
+			Assert.AreEqual(2.0f, vertex.Position.Y);
+			Assert.AreEqual(3.0f, vertex.Position.Z);
+			Assert.AreEqual(4.0f, vertex.TextureCoordinate.X);
+			Assert.AreEqual(5.0f, vertex.TextureCoordinate.Y);
+		}
+	}
 } // namespace Nuclex.Graphics.SpecialEffects.Water
 
 #endif // UNITTEST

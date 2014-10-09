@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,20 +17,20 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 #if UNITTEST
 
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Input.Devices {
-
-  /// <summary>Unit tests for the mocked touch panel</summary>
-  [TestFixture]
-  internal class MockedTouchPanelTest {
-
-  }
-
+namespace Nuclectic.Tests.Input.Devices
+{
+	/// <summary>Unit tests for the mocked touch panel</summary>
+	[TestFixture]
+	internal class MockedTouchPanelTest
+	{
+	}
 } // namespace Nuclex.Input.Devices
 
 #endif // UNITTEST

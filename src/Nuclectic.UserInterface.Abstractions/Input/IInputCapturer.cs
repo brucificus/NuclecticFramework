@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,19 +17,18 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.UserInterface.Input {
-
-  /// <summary>
-  ///   Interface for input capturers that monitor user input and forward it to
-  ///   a freely settable input receiver
-  /// </summary>
-  public interface IInputCapturer {
-
-    /// <summary>Input receiver any captured input will be sent to</summary>
-    IInputReceiver InputReceiver { get; set; }
-    
-  }
-
+namespace Nuclectic.UserInterface.Input
+{
+	/// <summary>
+	///   Interface for input capturers that monitor user input and forward it to
+	///   a freely settable input receiver
+	/// </summary>
+	public interface IInputCapturer
+	{
+		/// <summary>Input receiver any captured input will be sent to</summary>
+		IInputReceiver InputReceiver { get; set; }
+	}
 } // namespace Nuclex.UserInterface.Input

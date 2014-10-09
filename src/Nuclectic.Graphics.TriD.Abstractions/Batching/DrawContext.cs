@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,52 +17,50 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.Graphics.TriD.Batching {
+namespace Nuclectic.Graphics.TriD.Batching
+{
+	/// <summary>
+	///   Controls the graphics device settings during the rendering process
+	/// </summary>
+	public abstract class DrawContext
+	{
+		/// <summary>Number of passes this draw context requires for rendering</summary>
+		public abstract int Passes { get; }
 
-  /// <summary>
-  ///   Controls the graphics device settings during the rendering process
-  /// </summary>
-  public abstract class DrawContext {
+		/// <summary>Prepares the graphics device for drawing</summary>
+		/// <param name="pass">Index of the pass to begin rendering</param>
+		public abstract void Apply(int pass);
 
-    /// <summary>Number of passes this draw context requires for rendering</summary>
-    public abstract int Passes { get; }
+		/// <summary>Tests whether another draw context is identical to this one</summary>
+		/// <param name="otherContext">Other context to check for equality</param>
+		/// <returns>True if the other context is identical to this one</returns>
+		public abstract bool Equals(DrawContext otherContext);
 
-    /// <summary>Prepares the graphics device for drawing</summary>
-    /// <param name="pass">Index of the pass to begin rendering</param>
-    public abstract void Apply(int pass);
+		/// <summary>
+		///   Tests whether another object is a draw context with identical settings
+		/// </summary>
+		/// <param name="other">Object to check for equality</param>
+		/// <returns>
+		///   True if the other context is a draw context identical to this one
+		/// </returns>
+		public override bool Equals(object other)
+		{
+			DrawContext drawContext = other as DrawContext;
 
-    /// <summary>Tests whether another draw context is identical to this one</summary>
-    /// <param name="otherContext">Other context to check for equality</param>
-    /// <returns>True if the other context is identical to this one</returns>
-    public abstract bool Equals(DrawContext otherContext);
+			if (drawContext != null)
+				return Equals(drawContext);
+			else
+				return false;
+		}
 
-    /// <summary>
-    ///   Tests whether another object is a draw context with identical settings
-    /// </summary>
-    /// <param name="other">Object to check for equality</param>
-    /// <returns>
-    ///   True if the other context is a draw context identical to this one
-    /// </returns>
-    public override bool Equals(object other) {
-      DrawContext drawContext = other as DrawContext;
-
-      if(drawContext != null)
-        return Equals(drawContext);
-      else
-        return false;
-    }
-
-    /// <summary>
-    ///   Returns a hashcode that is not guaranteed to be unique but will be equal for
-    ///   all instances of the class that are in an identical state
-    /// </summary>
-    /// <returns>The hashcode of the object</returns>
-    public override int GetHashCode() {
-      return base.GetHashCode();
-    }
-
-  }
-
+		/// <summary>
+		///   Returns a hashcode that is not guaranteed to be unique but will be equal for
+		///   all instances of the class that are in an identical state
+		/// </summary>
+		/// <returns>The hashcode of the object</returns>
+		public override int GetHashCode() { return base.GetHashCode(); }
+	}
 } // namespace Nuclex.Graphics.Batching

@@ -1,4 +1,5 @@
-﻿//#region CPL License
+﻿#region CPL License
+
 ///*
 //Nuclex Framework
 //Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,7 +17,8 @@
 //You should have received a copy of the IBM Common Public
 //License along with this library
 //*/
-//#endregion
+
+#endregion
 
 //#if UNITTEST
 
@@ -45,12 +47,12 @@
 //		  try {
 //			game.Content.RootDirectory = Path.GetDirectoryName(assetPath);
 //			string assetName = Path.GetFileNameWithoutExtension(assetPath);
-  
+
 //			SharedGameContentManager adapter = new SharedGameContentManager(game);
-            
+
 //			Effect loadedFromGame = game.Content.Load<Effect>(assetName);
 //			Effect loadedFromShared = adapter.Load<Effect>(assetName);
-            
+
 //			Assert.AreSame(loadedFromGame, loadedFromShared);
 //		  }
 //		  finally {

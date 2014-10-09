@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System.Linq;
@@ -28,122 +30,131 @@ using Nuclectic.Tests.Mocks;
 using System;
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Game {
+namespace Nuclectic.Tests.Game
+{
+	/// <summary>Unit test for the drawable component class</summary>
+	[TestFixture]
+	internal class GraphicsDeviceGraphicsDeviceDrawableComponentTest
+	{
+		/// <summary>Called before each test is run</summary>
+		[SetUp]
+		public void Setup()
+		{
+			this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService();
 
-  /// <summary>Unit test for the drawable component class</summary>
-  [TestFixture]
-  internal class GraphicsDeviceGraphicsDeviceDrawableComponentTest {
+			GameServiceContainer services = new GameServiceContainer();
+			services.AddService(
+							    typeof (IGraphicsDeviceService), this.mockedGraphicsDeviceService
+				);
+			this.testComponent = new GraphicsDeviceDrawableComponent(services);
+		}
 
-    /// <summary>Called before each test is run</summary>
-    [SetUp]
-    public void Setup() {
-      this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService();
+		/// <summary>Called after each test has run</summary>
+		[TearDown]
+		public void Teardown()
+		{
+			if (this.testComponent != null)
+			{
+				this.testComponent.Dispose();
+				this.testComponent = null;
+			}
 
-      GameServiceContainer services = new GameServiceContainer();
-      services.AddService(
-        typeof(IGraphicsDeviceService), this.mockedGraphicsDeviceService
-      );
-      this.testComponent = new GraphicsDeviceDrawableComponent(services);
-    }
+			if (this.mockedGraphicsDeviceService != null)
+			{
+				this.mockedGraphicsDeviceService.DestroyDevice();
+				this.mockedGraphicsDeviceService = null;
+			}
+		}
 
-    /// <summary>Called after each test has run</summary>
-    [TearDown]
-    public void Teardown() {
-      if (this.testComponent != null) {
-        this.testComponent.Dispose();
-        this.testComponent = null;
-      }
+		/// <summary>
+		///   Verifies that the constructor of the drawable component is working
+		/// </summary>
+		[Test]
+		public void TestConstructor()
+		{
+			// This should work even without a graphics device service since the services
+			// should only be queried in Initialize() to allow for order-free initialization
+			GraphicsDeviceDrawableComponent testComponent = new GraphicsDeviceDrawableComponent(
+				new GameServiceContainer()
+				);
+		}
 
-      if (this.mockedGraphicsDeviceService != null) {
-        this.mockedGraphicsDeviceService.DestroyDevice();
-        this.mockedGraphicsDeviceService = null;
-      }
-    }
+		/// <summary>
+		///   Tests whether the Initialize() method throws an exception if the drawable
+		///   component is initialized without a graphics device service present.
+		/// </summary>
+		[Test]
+		public void TestThrowOnInitializeWithoutGraphicsDeviceService()
+		{
+			GraphicsDeviceDrawableComponent testComponent = new GraphicsDeviceDrawableComponent(
+				new GameServiceContainer()
+				);
+			Assert.Throws<InvalidOperationException>(
+													 delegate() { testComponent.Initialize(); }
+				);
+		}
 
-    /// <summary>
-    ///   Verifies that the constructor of the drawable component is working
-    /// </summary>
-    [Test]
-    public void TestConstructor() {
-      // This should work even without a graphics device service since the services
-      // should only be queried in Initialize() to allow for order-free initialization
-      GraphicsDeviceDrawableComponent testComponent = new GraphicsDeviceDrawableComponent(
-        new GameServiceContainer()
-      );
-    }
+		/// <summary>
+		///   Tests whether the Initialize() method is working when it is called before
+		///   the graphics device has been created
+		/// </summary>
+		[Test]
+		public void TestInitializeBeforeGraphicsDeviceCreation()
+		{
+			this.testComponent.Initialize();
+			Assert.IsNull(testComponent.GraphicsDevice);
 
-    /// <summary>
-    ///   Tests whether the Initialize() method throws an exception if the drawable
-    ///   component is initialized without a graphics device service present.
-    /// </summary>
-    [Test]
-    public void TestThrowOnInitializeWithoutGraphicsDeviceService() {
-      GraphicsDeviceDrawableComponent testComponent = new GraphicsDeviceDrawableComponent(
-        new GameServiceContainer()
-      );
-      Assert.Throws<InvalidOperationException>(
-        delegate() { testComponent.Initialize(); }
-      );
-    }
+			this.mockedGraphicsDeviceService.CreateDevice();
 
-    /// <summary>
-    ///   Tests whether the Initialize() method is working when it is called before
-    ///   the graphics device has been created
-    /// </summary>
-    [Test]
-    public void TestInitializeBeforeGraphicsDeviceCreation() {
-      this.testComponent.Initialize();
-      Assert.IsNull(testComponent.GraphicsDevice);
+			Assert.AreSame(
+						   this.mockedGraphicsDeviceService.GraphicsDevice,
+						   this.testComponent.GraphicsDevice
+				);
+		}
 
-      this.mockedGraphicsDeviceService.CreateDevice();
+		/// <summary>
+		///   Tests whether the Initialize() method is working when it is called after
+		///   the graphics device has been created
+		/// </summary>
+		[Test]
+		public void TestInitializeAfterGraphicsDeviceCreation()
+		{
+			this.mockedGraphicsDeviceService.CreateDevice();
 
-      Assert.AreSame(
-        this.mockedGraphicsDeviceService.GraphicsDevice,
-        this.testComponent.GraphicsDevice
-      );
-    }
+			this.testComponent.Initialize();
 
-    /// <summary>
-    ///   Tests whether the Initialize() method is working when it is called after
-    ///   the graphics device has been created
-    /// </summary>
-    [Test]
-    public void TestInitializeAfterGraphicsDeviceCreation() {
-      this.mockedGraphicsDeviceService.CreateDevice();
+			Assert.AreSame(
+						   this.mockedGraphicsDeviceService.GraphicsDevice,
+						   this.testComponent.GraphicsDevice
+				);
+		}
 
-      this.testComponent.Initialize();
+		/// <summary>
+		///   Tests whether the drawable component survives a graphics device reset
+		/// </summary>
+		[Test]
+		public void TestGraphicsDeviceReset()
+		{
+			this.mockedGraphicsDeviceService.CreateDevice();
+			this.testComponent.Initialize();
+			Assert.Throws<NotSupportedException>(() => this.mockedGraphicsDeviceService.ResetDevice());
 
-      Assert.AreSame(
-        this.mockedGraphicsDeviceService.GraphicsDevice,
-        this.testComponent.GraphicsDevice
-      );
-    }
+			// Originally, no exception means success. But MonoGame doesn't support GraphicsDevice.Reset()
+		}
 
-    /// <summary>
-    ///   Tests whether the drawable component survives a graphics device reset
-    /// </summary>
-    [Test]
-    public void TestGraphicsDeviceReset() {
-      this.mockedGraphicsDeviceService.CreateDevice();
-      this.testComponent.Initialize();
-      Assert.Throws<NotSupportedException>(()=>this.mockedGraphicsDeviceService.ResetDevice());
+		[Test]
+		public void GraphicsDeviceDoesNotHaveReset()
+		{
+			var foundMethods = typeof (Microsoft.Xna.Framework.Graphics.GraphicsDevice).GetTypeInfo().GetMethods().Where(m => m.Name == "Reset").ToArray();
+			Assert.IsEmpty(foundMethods, "MonoGame previously did not support GraphicsDevice.Reset, and now the method is present. Update Nuclectic.");
+		}
 
-      // Originally, no exception means success. But MonoGame doesn't support GraphicsDevice.Reset()
-    }
+		/// <summary>Component being tested</summary>
+		private GraphicsDeviceDrawableComponent testComponent;
 
-	  [Test]
-	  public void GraphicsDeviceDoesNotHaveReset() {
-		  var foundMethods = typeof(Microsoft.Xna.Framework.Graphics.GraphicsDevice).GetTypeInfo().GetMethods().Where(m=>m.Name == "Reset").ToArray();
-		  Assert.IsEmpty(foundMethods, "MonoGame previously did not support GraphicsDevice.Reset, and now the method is present. Update Nuclectic.");
-	  }
-
-    /// <summary>Component being tested</summary>
-    private GraphicsDeviceDrawableComponent testComponent;
-    /// <summary>Mock of the graphics device service</summary>
-    private MockedGraphicsDeviceService mockedGraphicsDeviceService;
-
-  }
-
+		/// <summary>Mock of the graphics device service</summary>
+		private MockedGraphicsDeviceService mockedGraphicsDeviceService;
+	}
 } // namespace Nuclex.Game
 
 #endif // UNITTEST

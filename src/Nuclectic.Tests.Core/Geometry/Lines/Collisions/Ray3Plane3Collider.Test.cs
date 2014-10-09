@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -23,39 +25,40 @@ using Nuclectic.Geometry;
 using Nuclectic.Geometry.Lines;
 using Nuclectic.Geometry.Lines.Collisions;
 using NUnit.Framework;
+
 #if UNITTEST
 
-namespace Nuclectic.Tests.Geometry.Lines.Collisions {
+namespace Nuclectic.Tests.Geometry.Lines.Collisions
+{
+	/// <summary>Test for the Ray3 to Plane3 interference detection routines</summary>
+	[TestFixture]
+	public class Ray3Plane3ColliderTest
+	{
+		/// <summary>Tests the collider with a ray pointing away from the plane</summary>
+		[Test]
+		public void TestPointingAway()
+		{
+			Assert.IsFalse(
+						   Ray3Plane3Collider.FindContacts(
+														   new Vector3(0.0f, 100.0f, 0.0f), Vector3.Up, Vector3.Zero, Vector3.Up
+							   ).HasContact
+				);
+		}
 
-  /// <summary>Test for the Ray3 to Plane3 interference detection routines</summary>
-  [TestFixture]
-  public class Ray3Plane3ColliderTest {
+		/// <summary>Tests the collider with a ray pointing towards the plane</summary>
+		[Test]
+		public void TestPointingTowards()
+		{
+			LineContacts contacts = Ray3Plane3Collider.FindContacts(
+																    new Vector3(0.0f, 100.0f, 0.0f), Vector3.Down, Vector3.Zero, Vector3.Up
+				);
 
-    /// <summary>Tests the collider with a ray pointing away from the plane</summary>
-    [Test]
-    public void TestPointingAway() {
-      Assert.IsFalse(
-        Ray3Plane3Collider.FindContacts(
-          new Vector3(0.0f, 100.0f, 0.0f), Vector3.Up, Vector3.Zero, Vector3.Up
-        ).HasContact
-      );
-    }
-
-    /// <summary>Tests the collider with a ray pointing towards the plane</summary>
-    [Test]
-    public void TestPointingTowards() {
-      LineContacts contacts = Ray3Plane3Collider.FindContacts(
-        new Vector3(0.0f, 100.0f, 0.0f), Vector3.Down, Vector3.Zero, Vector3.Up
-      );
-
-      Assert.That(
-        contacts.EntryTime,
-        Is.EqualTo(100.0f).Within(Specifications.MaximumDeviation).Ulps
-      );
-    }
-
-  }
-
+			Assert.That(
+					    contacts.EntryTime,
+						Is.EqualTo(100.0f).Within(Specifications.MaximumDeviation).Ulps
+				);
+		}
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions
 
 #endif // UNITTEST

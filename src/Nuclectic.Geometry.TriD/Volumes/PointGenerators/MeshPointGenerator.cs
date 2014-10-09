@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,8 +17,10 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.Geometry.Volumes.PointGenerators {
-  //class MeshPointGenerator {}
+namespace Nuclectic.Geometry.Volumes.PointGenerators
+{
+	//class MeshPointGenerator {}
 } // namespace Nuclex.Geometry.Volumes.PointGenerators

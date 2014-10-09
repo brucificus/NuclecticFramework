@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,42 +17,42 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
 using Nuclectic.Geometry.Areas;
 using NUnit.Framework;
+
 #if UNITTEST
 
-namespace Nuclectic.Tests.Geometry.Areas {
+namespace Nuclectic.Tests.Geometry.Areas
+{
+	/// <summary>Test for the two-dimensional triangle implementation</summary>
+	[TestFixture]
+	public class Triangle2Test
+	{
+		/// <summary>Tests whether the mass properties of the volume are working</summary>
+		[Test]
+		public void TestMassProperties()
+		{
+			Triangle2 testTriangle =
+				new Triangle2(
+					new Vector2(100.0f, 100.0f), new Vector2(110.0f, 100.0f), new Vector2(105.0f, 110.0f)
+					);
 
-  /// <summary>Test for the two-dimensional triangle implementation</summary>
-  [TestFixture]
-  public class Triangle2Test {
+			Assert.AreEqual(
+						    new Vector2(105.0f, 103.33333333333333f), testTriangle.CenterOfMass,
+							"Center of mass is correctly positioned"
+				);
 
-    /// <summary>Tests whether the mass properties of the volume are working</summary>
-    [Test]
-    public void TestMassProperties() {
-      Triangle2 testTriangle =
-        new Triangle2(
-          new Vector2(100.0f, 100.0f), new Vector2(110.0f, 100.0f), new Vector2(105.0f, 110.0f)
-        );
-
-      Assert.AreEqual(
-        new Vector2(105.0f, 103.33333333333333f), testTriangle.CenterOfMass,
-        "Center of mass is correctly positioned"
-      );
-
-      Assert.AreEqual(50.0f, testTriangle.Area, "Mass of triangle is exactly determined");
-      Assert.AreEqual(
-        18.708286933869708f, testTriangle.CircumferenceLength,
-        "Surface area of triangle is exactly determined"
-      );
-
-    }
-
-  }
-
+			Assert.AreEqual(50.0f, testTriangle.Area, "Mass of triangle is exactly determined");
+			Assert.AreEqual(
+						    18.708286933869708f, testTriangle.CircumferenceLength,
+							"Surface area of triangle is exactly determined"
+				);
+		}
+	}
 } // namespace Nuclex.Geometry.Areas
 
 #endif // UNITTEST

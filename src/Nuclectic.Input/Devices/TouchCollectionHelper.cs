@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
@@ -23,115 +25,113 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace Nuclectic.Input.Devices {
+namespace Nuclectic.Input.Devices
+{
+	/// <summary>An XNA TouchCollection that can be modified</summary>
+	internal static class TouchCollectionHelper
+	{
+		/// <summary>Delegate for setting the TouchCollection's location count</summary>
+		/// <param name="touchCollection">Collection whose location count will be set</param>
+		/// <param name="locationCount">New location count</param>
+		public delegate void SetLocationCountDelegate(
+			ref TouchCollection touchCollection, int locationCount
+			);
 
-  /// <summary>An XNA TouchCollection that can be modified</summary>
-  internal static class TouchCollectionHelper {
+		/// <summary>Delegate for calling the TouchCollection's AddTouchLocation() method</summary>
+		/// <param name="touchCollection">Collection the location will be added to</param>
+		/// <param name="id">ID of the touch location</param>
+		/// <param name="state">What happened at the touch location</param>
+		/// <param name="x">X coordinate of the touch location</param>
+		/// <param name="y">Y coordinate of the touch location</param>
+		/// <param name="prevState">What happened at the previous touch location</param>
+		/// <param name="prevX">Previous X coordinate of the touch location</param>
+		/// <param name="prevY">Previous Y coordinate of the touch location</param>
+		public delegate void AddTouchLocationDelegate(
+			ref TouchCollection touchCollection,
+			int id,
+			TouchLocationState state,
+			float x,
+			float y,
+			TouchLocationState prevState,
+			float prevX,
+			float prevY
+			);
 
-    /// <summary>Delegate for setting the TouchCollection's location count</summary>
-    /// <param name="touchCollection">Collection whose location count will be set</param>
-    /// <param name="locationCount">New location count</param>
-    public delegate void SetLocationCountDelegate(
-      ref TouchCollection touchCollection, int locationCount
-    );
+		/// <summary>Initializes the static fields of the class</summary>
+		static TouchCollectionHelper()
+		{
+			SetLocationCount = createLocationCountDelegate();
+			AddTouchLocation = createAddTouchLocationDelegate();
+		}
 
-    /// <summary>Delegate for calling the TouchCollection's AddTouchLocation() method</summary>
-    /// <param name="touchCollection">Collection the location will be added to</param>
-    /// <param name="id">ID of the touch location</param>
-    /// <param name="state">What happened at the touch location</param>
-    /// <param name="x">X coordinate of the touch location</param>
-    /// <param name="y">Y coordinate of the touch location</param>
-    /// <param name="prevState">What happened at the previous touch location</param>
-    /// <param name="prevX">Previous X coordinate of the touch location</param>
-    /// <param name="prevY">Previous Y coordinate of the touch location</param>
-    public delegate void AddTouchLocationDelegate(
-      ref TouchCollection touchCollection,
-      int id,
-      TouchLocationState state,
-      float x,
-      float y,
-      TouchLocationState prevState,
-      float prevX,
-      float prevY
-    );
+		/// <summary>Removes all touch locations from the collection</summary>
+		/// <param name="touchCollection">Touch collection that will be cleared</param>
+		public static void Clear(ref TouchCollection touchCollection) { SetLocationCount(ref touchCollection, 0); }
 
-    /// <summary>Initializes the static fields of the class</summary>
-    static TouchCollectionHelper() {
-      SetLocationCount = createLocationCountDelegate();
-      AddTouchLocation = createAddTouchLocationDelegate();
-    }
+		/// <summary>
+		///   Creates a delegate for setting the location count in a TouchCollection
+		/// </summary>
+		/// <returns>A delegate that can be used to change the location count</returns>
+		private static SetLocationCountDelegate createLocationCountDelegate()
+		{
+			FieldInfo locationCountField = typeof (TouchCollection).GetTypeInfo().GetDeclaredField("locationCount");
+			Type byrefTouchCollection = typeof (TouchCollection).MakeByRefType();
 
-    /// <summary>Removes all touch locations from the collection</summary>
-    /// <param name="touchCollection">Touch collection that will be cleared</param>
-    public static void Clear(ref TouchCollection touchCollection) {
-      SetLocationCount(ref touchCollection, 0);
-    }
+			ParameterExpression instance = Expression.Parameter(byrefTouchCollection, "instance");
+			ParameterExpression value = Expression.Parameter(typeof (int), "value");
 
-    /// <summary>
-    ///   Creates a delegate for setting the location count in a TouchCollection
-    /// </summary>
-    /// <returns>A delegate that can be used to change the location count</returns>
-    private static SetLocationCountDelegate createLocationCountDelegate() {
-      FieldInfo locationCountField = typeof(TouchCollection).GetTypeInfo().GetDeclaredField("locationCount");
-      Type byrefTouchCollection = typeof(TouchCollection).MakeByRefType();
+			Expression<SetLocationCountDelegate> expression =
+				Expression.Lambda<SetLocationCountDelegate>(
+														    Expression.Assign(
+																			  Expression.Field(instance, locationCountField),
+																			  value
+																),
+															instance,
+															value
+					);
 
-      ParameterExpression instance = Expression.Parameter(byrefTouchCollection, "instance");
-      ParameterExpression value = Expression.Parameter(typeof(int), "value");
+			return expression.Compile();
+		}
 
-      Expression<SetLocationCountDelegate> expression =
-        Expression.Lambda<SetLocationCountDelegate>(
-          Expression.Assign(
-            Expression.Field(instance, locationCountField),
-            value
-          ),
-          instance,
-          value
-        );
+		/// <summary>
+		///   Creates a delegate for adding a touch location to a TouchCollection
+		/// </summary>
+		/// <returns>A delegate that can be used to add a touch location</returns>
+		private static AddTouchLocationDelegate createAddTouchLocationDelegate()
+		{
+			MethodInfo addTouchLocationMethod = typeof (TouchCollection).GetTypeInfo().GetDeclaredMethod("AddTouchLocation");
+			Type byrefTouchCollection = typeof (TouchCollection).MakeByRefType();
 
-      return expression.Compile();
-    }
+			ParameterExpression instance = Expression.Parameter(byrefTouchCollection, "instance");
+			ParameterExpression idValue = Expression.Parameter(typeof (int), "id");
+			ParameterExpression stateValue = Expression.Parameter(
+																  typeof (TouchLocationState), "state"
+				);
+			ParameterExpression xValue = Expression.Parameter(typeof (float), "x");
+			ParameterExpression yValue = Expression.Parameter(typeof (float), "y");
+			ParameterExpression prevStateValue = Expression.Parameter(
+																	  typeof (TouchLocationState), "prevState"
+				);
+			ParameterExpression prevXValue = Expression.Parameter(typeof (float), "prevX");
+			ParameterExpression prevYValue = Expression.Parameter(typeof (float), "prevY");
 
-    /// <summary>
-    ///   Creates a delegate for adding a touch location to a TouchCollection
-    /// </summary>
-    /// <returns>A delegate that can be used to add a touch location</returns>
-    private static AddTouchLocationDelegate createAddTouchLocationDelegate() {
-      MethodInfo addTouchLocationMethod = typeof(TouchCollection).GetTypeInfo().GetDeclaredMethod("AddTouchLocation");
-      Type byrefTouchCollection = typeof(TouchCollection).MakeByRefType();
+			Expression<AddTouchLocationDelegate> expression =
+				Expression.Lambda<AddTouchLocationDelegate>(
+														    Expression.Call(
+																		    instance, addTouchLocationMethod,
+																			idValue, stateValue, xValue, yValue, prevStateValue, prevXValue, prevYValue
+																),
+															instance,
+															idValue, stateValue, xValue, yValue, prevStateValue, prevXValue, prevYValue
+					);
 
-      ParameterExpression instance = Expression.Parameter(byrefTouchCollection, "instance");
-      ParameterExpression idValue = Expression.Parameter(typeof(int), "id");
-      ParameterExpression stateValue = Expression.Parameter(
-        typeof(TouchLocationState), "state"
-      );
-      ParameterExpression xValue = Expression.Parameter(typeof(float), "x");
-      ParameterExpression yValue = Expression.Parameter(typeof(float), "y");
-      ParameterExpression prevStateValue = Expression.Parameter(
-        typeof(TouchLocationState), "prevState"
-      );
-      ParameterExpression prevXValue = Expression.Parameter(typeof(float), "prevX");
-      ParameterExpression prevYValue = Expression.Parameter(typeof(float), "prevY");
+			return expression.Compile();
+		}
 
-      Expression<AddTouchLocationDelegate> expression =
-        Expression.Lambda<AddTouchLocationDelegate>(
-          Expression.Call(
-            instance, addTouchLocationMethod,
-            idValue, stateValue, xValue, yValue, prevStateValue, prevXValue, prevYValue
-          ),
-          instance,
-          idValue, stateValue, xValue, yValue, prevStateValue, prevXValue, prevYValue
-        );
+		/// <summary>Sets the location count of a TouchCollection</summary>
+		public static readonly SetLocationCountDelegate SetLocationCount;
 
-      return expression.Compile();
-    }
-
-    /// <summary>Sets the location count of a TouchCollection</summary>
-    public static readonly SetLocationCountDelegate SetLocationCount;
-
-    /// <summary>Adds a touch location to a TouchCollection</summary>
-    public static readonly AddTouchLocationDelegate AddTouchLocation;
-
-  }
-
+		/// <summary>Adds a touch location to a TouchCollection</summary>
+		public static readonly AddTouchLocationDelegate AddTouchLocation;
+	}
 } // namespace Nuclex.Input.Devices
-

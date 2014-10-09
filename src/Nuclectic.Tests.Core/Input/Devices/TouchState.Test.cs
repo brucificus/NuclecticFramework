@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -24,37 +26,38 @@ using Nuclectic.Input.Devices;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Input.Devices {
+namespace Nuclectic.Tests.Input.Devices
+{
+	/// <summary>Unit tests for the touch state</summary>
+	[TestFixture]
+	internal class TouchStateTest
+	{
+		/// <summary>Tests whether the attached property is working</summary>
+		[Test]
+		public void TestAttachedProperty()
+		{
+			TouchState state = new TouchState(true, new TouchCollection());
+			Assert.IsTrue(state.IsAttached);
 
-  /// <summary>Unit tests for the touch state</summary>
-  [TestFixture]
-  internal class TouchStateTest {
+			state = new TouchState(false, new TouchCollection());
+			Assert.IsFalse(state.IsAttached);
+		}
 
-    /// <summary>Tests whether the attached property is working</summary>
-    [Test]
-    public void TestAttachedProperty() {
-      TouchState state = new TouchState(true, new TouchCollection());
-      Assert.IsTrue(state.IsAttached);
+		/// <summary>Tests whether the touches property is working</summary>
+		[Test]
+		public void TestTouchesProperty()
+		{
+			TouchCollection touches = new TouchCollection(
+				new TouchLocation[]
+				{
+					new TouchLocation(1, TouchLocationState.Pressed, new Vector2(12.34f, 56.78f))
+				}
+				);
+			TouchState state = new TouchState(true, touches);
 
-      state = new TouchState(false, new TouchCollection());
-      Assert.IsFalse(state.IsAttached);
-    }
-
-    /// <summary>Tests whether the touches property is working</summary>
-    [Test]
-    public void TestTouchesProperty() {
-      TouchCollection touches = new TouchCollection(
-        new TouchLocation[] {
-          new TouchLocation(1, TouchLocationState.Pressed, new Vector2(12.34f, 56.78f))
-        }
-      );
-      TouchState state = new TouchState(true, touches);
-
-      Assert.AreEqual(touches, state.Touches);
-    }
-
-  }
-
+			Assert.AreEqual(touches, state.Touches);
+		}
+	}
 } // namespace Nuclex.Input.Devices
 
 #endif // UNITTEST

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,49 +17,50 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Nuclectic.Graphics.TriD.SpecialEffects {
+namespace Nuclectic.Graphics.TriD.SpecialEffects
+{
+	/// <summary>Base class for objects requiring static geometry</summary>
+	public class StaticMesh<VertexType> : IDisposable
+		where VertexType : struct, IVertexType
+	{
+		/// <summary>Initializes a new graphics resource keeper for a static mesh</summary>
+		/// <param name="graphicsDevice">Graphics device the mesh lives on</param>
+		/// <param name="vertexCount">Number of vertices that will be required</param>
+		protected StaticMesh(
+			GraphicsDevice graphicsDevice, int vertexCount
+			)
+		{
+			this.GraphicsDevice = graphicsDevice;
 
-  /// <summary>Base class for objects requiring static geometry</summary>
-  public class StaticMesh<VertexType> : IDisposable
-    where VertexType : struct, IVertexType {
+			// Create a new vertex buffer with the requested size
+			this.VertexBuffer = new VertexBuffer(
+				graphicsDevice, typeof (VertexType), vertexCount, BufferUsage.WriteOnly
+				);
+		}
 
-    /// <summary>Initializes a new graphics resource keeper for a static mesh</summary>
-    /// <param name="graphicsDevice">Graphics device the mesh lives on</param>
-    /// <param name="vertexCount">Number of vertices that will be required</param>
-    protected StaticMesh(
-      GraphicsDevice graphicsDevice, int vertexCount
-    ) {
-      this.GraphicsDevice = graphicsDevice;
+		/// <summary>Immediately releases all resources owned by the instance</summary>
+		public virtual void Dispose()
+		{
+			if (this.VertexBuffer != null)
+			{
+				this.VertexBuffer.Dispose();
+				this.VertexBuffer = null;
+			}
+		}
 
-      // Create a new vertex buffer with the requested size
-      this.VertexBuffer = new VertexBuffer(
-        graphicsDevice, typeof(VertexType), vertexCount, BufferUsage.WriteOnly
-      );
-    }
+		/// <summary>Selects the static meshes' vertices for drawing</summary>
+		protected virtual void Select() { this.GraphicsDevice.SetVertexBuffer(this.VertexBuffer); }
 
-    /// <summary>Immediately releases all resources owned by the instance</summary>
-    public virtual void Dispose() {
-      if(this.VertexBuffer != null) {
-        this.VertexBuffer.Dispose();
-        this.VertexBuffer = null;
-      }
-    }
+		/// <summary>Graphics device the mesh is being rendered on</summary>
+		protected GraphicsDevice GraphicsDevice;
 
-    /// <summary>Selects the static meshes' vertices for drawing</summary>
-    protected virtual void Select() {
-      this.GraphicsDevice.SetVertexBuffer(this.VertexBuffer);
-    }
-
-    /// <summary>Graphics device the mesh is being rendered on</summary>
-    protected GraphicsDevice GraphicsDevice;
-    /// <summary>Vertex buffer containing the vertices for the static mesh</summary>
-    protected VertexBuffer VertexBuffer;
-
-  }
-
+		/// <summary>Vertex buffer containing the vertices for the static mesh</summary>
+		protected VertexBuffer VertexBuffer;
+	}
 } // namespace Nuclex.Graphics.SpecialEffects

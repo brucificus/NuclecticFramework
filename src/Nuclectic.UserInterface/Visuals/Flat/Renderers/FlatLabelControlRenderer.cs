@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,27 +17,24 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.UserInterface.Visuals.Flat.Renderers {
-
-  /// <summary>Renders label controls in a traditional flat style</summary>
-  public class FlatLabelControlRenderer :
-    IFlatControlRenderer<Controls.LabelControl> {
-
-    /// <summary>
-    ///   Renders the specified control using the provided graphics interface
-    /// </summary>
-    /// <param name="control">Control that will be rendered</param>
-    /// <param name="graphics">
-    ///   Graphics interface that will be used to draw the control
-    /// </param>
-    public void Render(
-      Controls.LabelControl control, IFlatGuiGraphics graphics
-    ) {
-      graphics.DrawString("label", control.GetAbsoluteBounds(), control.Text);
-    }
-
-  }
-
+namespace Nuclectic.UserInterface.Visuals.Flat.Renderers
+{
+	/// <summary>Renders label controls in a traditional flat style</summary>
+	public class FlatLabelControlRenderer :
+		IFlatControlRenderer<Controls.LabelControl>
+	{
+		/// <summary>
+		///   Renders the specified control using the provided graphics interface
+		/// </summary>
+		/// <param name="control">Control that will be rendered</param>
+		/// <param name="graphics">
+		///   Graphics interface that will be used to draw the control
+		/// </param>
+		public void Render(
+			Controls.LabelControl control, IFlatGuiGraphics graphics
+			) { graphics.DrawString("label", control.GetAbsoluteBounds(), control.Text); }
+	}
 } // namespace Nuclex.UserInterface.Visuals.Flat.Renderers

@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2008 Nuclex Development Labs
@@ -16,55 +17,48 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Nuclectic.Fonts {
-    /// <summary>Base class for vector font texts</summary>
-  public abstract class Text : IText
-    {
+namespace Nuclectic.Fonts
+{
+	/// <summary>Base class for vector font texts</summary>
+	public abstract class Text : IText
+	{
+		/// <summary>Vertices containing the text's outline or face coordinates</summary>
+		public VertexPositionNormalTexture[] Vertices { get { return this.vertices; } }
 
-    /// <summary>Vertices containing the text's outline or face coordinates</summary>
-    public VertexPositionNormalTexture[] Vertices {
-      get { return this.vertices; }
-    }
+		/// <summary>
+		///   Indices describing which vertices to connect by lines or triangles
+		/// </summary>
+		public short[] Indices { get { return this.indices; } }
 
-    /// <summary>
-    ///   Indices describing which vertices to connect by lines or triangles
-    /// </summary>
-    public short[] Indices {
-      get { return this.indices; }
-    }
+		/// <summary>Type of primitives to draw</summary>
+		public PrimitiveType PrimitiveType { get { return this.primitiveType; } }
 
-    /// <summary>Type of primitives to draw</summary>
-    public PrimitiveType PrimitiveType {
-      get { return this.primitiveType; }
-    }
+		/// <summary>Total width of the string in world units</summary>
+		public float Width { get { return this.width; } }
 
-    /// <summary>Total width of the string in world units</summary>
-    public float Width {
-      get { return this.width; }
-    }
+		/// <summary>Total height of the string in world units</summary>
+		public float Height { get { return this.height; } }
 
-    /// <summary>Total height of the string in world units</summary>
-    public float Height {
-      get { return this.height; }
-    }
+		/// <summary>Vertices containing the text's outline or face coordinates</summary>
+		protected VertexPositionNormalTexture[] vertices;
 
-    /// <summary>Vertices containing the text's outline or face coordinates</summary>
-    protected VertexPositionNormalTexture[] vertices;
-    /// <summary>
-    ///   Indices describing which vertices to connect by lines or triangles
-    /// </summary>
-    protected short[] indices;
-    /// <summary>Type of primitives to draw</summary>
-    protected PrimitiveType primitiveType;
-    /// <summary>Total width of the string in world units</summary>
-    protected float width;
-    /// <summary>Total height of the string in world units</summary>
-    protected float height;
+		/// <summary>
+		///   Indices describing which vertices to connect by lines or triangles
+		/// </summary>
+		protected short[] indices;
 
-  }
+		/// <summary>Type of primitives to draw</summary>
+		protected PrimitiveType primitiveType;
 
+		/// <summary>Total width of the string in world units</summary>
+		protected float width;
+
+		/// <summary>Total height of the string in world units</summary>
+		protected float height;
+	}
 } // namespace Nuclex.Fonts

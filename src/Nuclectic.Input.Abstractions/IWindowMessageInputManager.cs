@@ -3,7 +3,7 @@
 namespace Nuclectic.Input
 {
 	public interface IWindowMessageInputManager : IKeyboardSoloFactory, IMouseFactory
-    {
-        bool IsWindowMessageInputAvailable { get; }
-    }
+	{
+		bool IsWindowMessageInputAvailable { get; }
+	}
 }

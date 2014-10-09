@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Graphics;
@@ -24,124 +26,128 @@ using Nuclectic.Graphics.Helpers;
 using System;
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Graphics {
+namespace Nuclectic.Tests.Graphics
+{
+	/// <summary>Unit tests for the vertex helper functions</summary>
+	[TestFixture]
+	internal class VertexHelperTest
+	{
+		/// <summary>
+		///   Verifies that the primitive count for a line strip is correctly calculated
+		/// </summary>
+		[Test]
+		public void TestLineStripPrimitiveCount()
+		{
+			Assert.AreEqual(
+						    122,
+							VertexHelper.GetPrimitiveCount(123, PrimitiveType.LineStrip)
+				);
+		}
 
-  /// <summary>Unit tests for the vertex helper functions</summary>
-  [TestFixture]
-  internal class VertexHelperTest {
+		/// <summary>
+		///   Verifies that the primitive count for a line list is correctly calculated
+		/// </summary>
+		[Test]
+		public void TestLineListPrimitiveCount()
+		{
+			Assert.AreEqual(
+						    62,
+							VertexHelper.GetPrimitiveCount(124, PrimitiveType.LineList)
+				);
+		}
 
-    /// <summary>
-    ///   Verifies that the primitive count for a line strip is correctly calculated
-    /// </summary>
-    [Test]
-    public void TestLineStripPrimitiveCount() {
-      Assert.AreEqual(
-        122,
-        VertexHelper.GetPrimitiveCount(123, PrimitiveType.LineStrip)
-      );
-    }
+		/// <summary>
+		///   Verifies that the primitive count for a triangle strip is correctly calculated
+		/// </summary>
+		[Test]
+		public void TestTriangleStripPrimitiveCount()
+		{
+			Assert.AreEqual(
+						    121,
+							VertexHelper.GetPrimitiveCount(123, PrimitiveType.TriangleStrip)
+				);
+		}
 
-    /// <summary>
-    ///   Verifies that the primitive count for a line list is correctly calculated
-    /// </summary>
-    [Test]
-    public void TestLineListPrimitiveCount() {
-      Assert.AreEqual(
-        62,
-        VertexHelper.GetPrimitiveCount(124, PrimitiveType.LineList)
-      );
-    }
+		/// <summary>
+		///   Verifies that the primitive count for a triangle strip is correctly calculated
+		/// </summary>
+		[Test]
+		public void TestTriangleListPrimitiveCount()
+		{
+			Assert.AreEqual(
+						    41,
+							VertexHelper.GetPrimitiveCount(123, PrimitiveType.TriangleList)
+				);
+		}
 
-    /// <summary>
-    ///   Verifies that the primitive count for a triangle strip is correctly calculated
-    /// </summary>
-    [Test]
-    public void TestTriangleStripPrimitiveCount() {
-      Assert.AreEqual(
-        121,
-        VertexHelper.GetPrimitiveCount(123, PrimitiveType.TriangleStrip)
-      );
-    }
+		/// <summary>
+		///   Tests whether passing an invalid primitive type to the GetPrimitiveCount()
+		///   method causes it to throw the right exception
+		/// </summary>
+		[Test]
+		public void TestInvalidTypePrimitiveCount()
+		{
+			Assert.Throws<ArgumentException>(
+											 delegate() { VertexHelper.GetPrimitiveCount(123, (PrimitiveType)(-1)); }
+				);
+		}
 
-    /// <summary>
-    ///   Verifies that the primitive count for a triangle strip is correctly calculated
-    /// </summary>
-    [Test]
-    public void TestTriangleListPrimitiveCount() {
-      Assert.AreEqual(
-        41,
-        VertexHelper.GetPrimitiveCount(123, PrimitiveType.TriangleList)
-      );
-    }
+		/// <summary>
+		///   Verifies that the helper can determine whether a vertex count is valid
+		///   for a line strip
+		/// </summary>
+		[Test]
+		public void TestIsValidVertexCountWithLineStrip()
+		{
+			Assert.IsFalse(VertexHelper.IsValidVertexCount(1, PrimitiveType.LineStrip));
+			Assert.IsTrue(VertexHelper.IsValidVertexCount(123, PrimitiveType.LineStrip));
+		}
 
-    /// <summary>
-    ///   Tests whether passing an invalid primitive type to the GetPrimitiveCount()
-    ///   method causes it to throw the right exception
-    /// </summary>
-    [Test]
-    public void TestInvalidTypePrimitiveCount() {
-      Assert.Throws<ArgumentException>(
-        delegate() {
-          VertexHelper.GetPrimitiveCount(123, (PrimitiveType)(-1));
-        }
-      );
-    }
+		/// <summary>
+		///   Verifies that the helper can determine whether a vertex count is valid
+		///   for a line list
+		/// </summary>
+		[Test]
+		public void TestIsValidVertexCountWithLineList()
+		{
+			Assert.IsFalse(VertexHelper.IsValidVertexCount(123, PrimitiveType.LineList));
+			Assert.IsTrue(VertexHelper.IsValidVertexCount(124, PrimitiveType.LineList));
+		}
 
-    /// <summary>
-    ///   Verifies that the helper can determine whether a vertex count is valid
-    ///   for a line strip
-    /// </summary>
-    [Test]
-    public void TestIsValidVertexCountWithLineStrip() {
-      Assert.IsFalse(VertexHelper.IsValidVertexCount(1, PrimitiveType.LineStrip));
-      Assert.IsTrue(VertexHelper.IsValidVertexCount(123, PrimitiveType.LineStrip));
-    }
+		/// <summary>
+		///   Verifies that the helper can determine whether a vertex count is valid
+		///   for a triangle strip
+		/// </summary>
+		[Test]
+		public void TestIsValidVertexCountWithTriangleStrip()
+		{
+			Assert.IsFalse(VertexHelper.IsValidVertexCount(2, PrimitiveType.TriangleStrip));
+			Assert.IsTrue(VertexHelper.IsValidVertexCount(123, PrimitiveType.TriangleStrip));
+		}
 
-    /// <summary>
-    ///   Verifies that the helper can determine whether a vertex count is valid
-    ///   for a line list
-    /// </summary>
-    [Test]
-    public void TestIsValidVertexCountWithLineList() {
-      Assert.IsFalse(VertexHelper.IsValidVertexCount(123, PrimitiveType.LineList));
-      Assert.IsTrue(VertexHelper.IsValidVertexCount(124, PrimitiveType.LineList));
-    }
+		/// <summary>
+		///   Verifies that the helper can determine whether a vertex count is valid
+		///   for a triangle list
+		/// </summary>
+		[Test]
+		public void TestIsValidVertexCountWithTriangleList()
+		{
+			Assert.IsFalse(VertexHelper.IsValidVertexCount(122, PrimitiveType.TriangleList));
+			Assert.IsTrue(VertexHelper.IsValidVertexCount(123, PrimitiveType.TriangleList));
+		}
 
-    /// <summary>
-    ///   Verifies that the helper can determine whether a vertex count is valid
-    ///   for a triangle strip
-    /// </summary>
-    [Test]
-    public void TestIsValidVertexCountWithTriangleStrip() {
-      Assert.IsFalse(VertexHelper.IsValidVertexCount(2, PrimitiveType.TriangleStrip));
-      Assert.IsTrue(VertexHelper.IsValidVertexCount(123, PrimitiveType.TriangleStrip));
-    }
-
-    /// <summary>
-    ///   Verifies that the helper can determine whether a vertex count is valid
-    ///   for a triangle list
-    /// </summary>
-    [Test]
-    public void TestIsValidVertexCountWithTriangleList() {
-      Assert.IsFalse(VertexHelper.IsValidVertexCount(122, PrimitiveType.TriangleList));
-      Assert.IsTrue(VertexHelper.IsValidVertexCount(123, PrimitiveType.TriangleList));
-    }
-
-    /// <summary>
-    ///   Tests whether passing an invalid primitive type to the IsValidVertexCount()
-    ///   method causes it to throw the right exception
-    /// </summary>
-    [Test]
-    public void TestIsValidVertexCountWithInvalidPrimitiveType() {
-      Assert.Throws<ArgumentException>(
-        delegate() {
-          VertexHelper.IsValidVertexCount(123, (PrimitiveType)(-1));
-        }
-      );
-    }
-
-  }
-
+		/// <summary>
+		///   Tests whether passing an invalid primitive type to the IsValidVertexCount()
+		///   method causes it to throw the right exception
+		/// </summary>
+		[Test]
+		public void TestIsValidVertexCountWithInvalidPrimitiveType()
+		{
+			Assert.Throws<ArgumentException>(
+											 delegate() { VertexHelper.IsValidVertexCount(123, (PrimitiveType)(-1)); }
+				);
+		}
+	}
 } // namespace Nuclex.Graphics
 
 #endif // UNITTEST

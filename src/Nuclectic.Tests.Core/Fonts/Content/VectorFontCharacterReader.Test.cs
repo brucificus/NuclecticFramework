@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,31 +17,31 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Nuclectic.Fonts.Content;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Fonts.Content {
+namespace Nuclectic.Tests.Fonts.Content
+{
+	/// <summary>Unit tests for the vector font character reader</summary>
+	[TestFixture]
+	public class VectorFontCharacterReaderTest
+	{
+		/// <summary>
+		///   Tests whether the constructor if the vector font reader is working
+		/// </summary>
+		[Test]
+		public void TestConstructor()
+		{
+			VectorFontCharacterReader reader = new VectorFontCharacterReader();
+			Assert.IsNotNull(reader); // nonsense; avoids compiler warning
+		}
 
-  /// <summary>Unit tests for the vector font character reader</summary>
-  [TestFixture]
-  public class VectorFontCharacterReaderTest {
-
-    /// <summary>
-    ///   Tests whether the constructor if the vector font reader is working
-    /// </summary>
-    [Test]
-    public void TestConstructor() {
-      VectorFontCharacterReader reader = new VectorFontCharacterReader();
-      Assert.IsNotNull(reader); // nonsense; avoids compiler warning
-    }
-
-    // Actual reading is verified by the VectorFontReader test
-
-  }
-
+		// Actual reading is verified by the VectorFontReader test
+	}
 } // namespace Nuclex.Fonts.Content
 
 #endif // UNITTEST

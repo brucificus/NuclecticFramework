@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -23,100 +25,104 @@ using Nuclectic.Geometry;
 using Nuclectic.Geometry.Areas;
 using Nuclectic.Geometry.Areas.Collisions;
 using NUnit.Framework;
+
 #if UNITTEST
 
-namespace Nuclectic.Tests.Geometry.Areas.Collisions {
+namespace Nuclectic.Tests.Geometry.Areas.Collisions
+{
+	/// <summary>Test for the AABB interference detection routines</summary>
+	[TestFixture]
+	public class AabbAabbColliderTest
+	{
+		private AxisAlignedRectangle2 testRectangle = new AxisAlignedRectangle2(
+			new Vector2(10.0f, 10.0f), new Vector2(20.0f, 20.0f)
+			);
 
-  /// <summary>Test for the AABB interference detection routines</summary>
-  [TestFixture]
-  public class AabbAabbColliderTest {
+		private struct TestPoint
+		{
+			public TestPoint(Vector2 min, Vector2 max, string name)
+			{
+				this.Min = min;
+				this.Max = max;
+				this.Name = name;
+			}
 
-    private AxisAlignedRectangle2 testRectangle = new AxisAlignedRectangle2(
-      new Vector2(10.0f, 10.0f), new Vector2(20.0f, 20.0f)
-    );
+			public Vector2 Min, Max;
+			public string Name;
+		}
 
-    struct TestPoint {
-      public TestPoint(Vector2 min, Vector2 max, string name) {
-        this.Min = min;
-        this.Max = max;
-        this.Name = name;
-      }
-      public Vector2 Min, Max;
-      public string Name;
-    }
+		/// <summary>Tests intersection checking with two static AABBs</summary>
+		[Test]
+		public void TestCheckContact()
+		{
+			Assert.IsTrue(
+						  AabbAabbCollider.CheckContact(
+													    testRectangle.Min, testRectangle.Max,
+														new Vector2(14.0f, 14.0f), new Vector2(16.0f, 16.0f)
+							  ),
+						  "Fully enclosed box"
+				);
 
-    /// <summary>Tests intersection checking with two static AABBs</summary>
-    [Test]
-    public void TestCheckContact() {
+			Assert.IsTrue(
+						  AabbAabbCollider.CheckContact(
+													    testRectangle.Min, testRectangle.Max,
+														new Vector2(5.0f, 5.0f), new Vector2(25.0f, 25.0f)
+							  ),
+						  "Fully containing box"
+				);
 
-      Assert.IsTrue(
-        AabbAabbCollider.CheckContact(
-          testRectangle.Min, testRectangle.Max,
-          new Vector2(14.0f, 14.0f), new Vector2(16.0f, 16.0f)
-        ),
-        "Fully enclosed box"
-      );
+			TestPoint[] testPoints =
+			{
+				new TestPoint(
+					new Vector2(5.0f, 5.0f), new Vector2(10.0f - Specifications.MaximumDeviation, 25.0f),
+					"Close miss on X axis, left side"
+					),
+				new TestPoint(
+					new Vector2(20.0f + Specifications.MaximumDeviation, 5.0f), new Vector2(25.0f, 25.0f),
+					"Close miss on X axis, right side"
+					),
+				new TestPoint(
+					new Vector2(5.0f, 5.0f), new Vector2(25.0f, 10.0f - Specifications.MaximumDeviation),
+					"Close miss on Y axis, upper side"
+					),
+				new TestPoint(
+					new Vector2(5.0f, 20.0f + Specifications.MaximumDeviation), new Vector2(25.0f, 25.0f),
+					"Close miss on Y axis, lower side"
+					)
+			};
 
-      Assert.IsTrue(
-        AabbAabbCollider.CheckContact(
-          testRectangle.Min, testRectangle.Max,
-          new Vector2(5.0f, 5.0f), new Vector2(25.0f, 25.0f)
-        ),
-        "Fully containing box"
-      );
-      
-      TestPoint[] testPoints = {
-        new TestPoint(
-          new Vector2(5.0f, 5.0f), new Vector2(10.0f - Specifications.MaximumDeviation, 25.0f),
-          "Close miss on X axis, left side"
-        ),
-        new TestPoint(
-          new Vector2(20.0f + Specifications.MaximumDeviation, 5.0f), new Vector2(25.0f, 25.0f),
-          "Close miss on X axis, right side"
-        ),
-        new TestPoint(
-          new Vector2(5.0f, 5.0f), new Vector2(25.0f, 10.0f - Specifications.MaximumDeviation),
-          "Close miss on Y axis, upper side"
-        ),
-        new TestPoint(
-          new Vector2(5.0f, 20.0f + Specifications.MaximumDeviation), new Vector2(25.0f, 25.0f),
-          "Close miss on Y axis, lower side"
-        )
-      };
+			foreach (TestPoint testPoint in testPoints)
+			{
+				Assert.IsFalse(
+							   AabbAabbCollider.CheckContact(
+															 testRectangle.Min, testRectangle.Max, testPoint.Min, testPoint.Max
+								   ),
+							   testPoint.Name
+					);
+				Assert.IsFalse(
+							   AabbAabbCollider.CheckContact(
+															 testRectangle.Min, testRectangle.Max, testPoint.Min, testPoint.Max
+								   ),
+							   testPoint.Name
+					);
+			}
+		}
 
-      foreach(TestPoint testPoint in testPoints) {
-        Assert.IsFalse(
-          AabbAabbCollider.CheckContact(
-            testRectangle.Min, testRectangle.Max, testPoint.Min, testPoint.Max
-          ),
-          testPoint.Name
-        );
-        Assert.IsFalse(
-          AabbAabbCollider.CheckContact(
-            testRectangle.Min, testRectangle.Max, testPoint.Min, testPoint.Max
-          ),
-          testPoint.Name
-        );
-      }
-
-    }
-
-    /// <summary>Tests intersection checking with moving AABBs</summary>
-    [Test]
-    public void TestFindDynamicContact() {
-      float? impactTime = AabbAabbCollider.FindContact(
-        testRectangle.Min,
-        testRectangle.Max,
-        new Vector2(0.0f, 10.0f),
-        new Vector2(5.0f, 5.0f),
-        new Vector2(10.0f, 0.0f)
-      );
-      Assert.IsTrue(impactTime.HasValue);
-      Assert.AreEqual(0.5f, impactTime.Value);
-    }
-
-  }
-
+		/// <summary>Tests intersection checking with moving AABBs</summary>
+		[Test]
+		public void TestFindDynamicContact()
+		{
+			float? impactTime = AabbAabbCollider.FindContact(
+															 testRectangle.Min,
+															 testRectangle.Max,
+															 new Vector2(0.0f, 10.0f),
+															 new Vector2(5.0f, 5.0f),
+															 new Vector2(10.0f, 0.0f)
+				);
+			Assert.IsTrue(impactTime.HasValue);
+			Assert.AreEqual(0.5f, impactTime.Value);
+		}
+	}
 } // namespace Nuclex.Geometry.Areas.Collisions
 
 #endif // UNITTEST

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Graphics;
@@ -24,76 +26,80 @@ using Nuclectic.Tests.Mocks;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Game.Content {
+namespace Nuclectic.Tests.Game.Content
+{
+	/// <summary>Unit test for the embedded content manager class</summary>
+	[TestFixture]
+	internal class MemoryContentManagerTest
+	{
+		/// <summary>Tests the constructor of the embedded content manager</summary>
+		[Test]
+		public void TestConstructor() { Assert.IsNotNull(this.memoryContentManager); }
 
-  /// <summary>Unit test for the embedded content manager class</summary>
-  [TestFixture]
-  internal class MemoryContentManagerTest {
+		/// <summary>Verifies that assets can be loaded</summary>
+		[Test]
+		public void TestLoadAsset()
+		{
+			Effect effect = this.memoryContentManager.Load<Effect>(
+																   Resources.UnitTestResources.UnitTestEffect
+				);
+			Assert.IsNotNull(effect);
+		}
 
-    /// <summary>Tests the constructor of the embedded content manager</summary>
-    [Test]
-    public void TestConstructor() {
-      Assert.IsNotNull(this.memoryContentManager);
-    }
-    
-    /// <summary>Verifies that assets can be loaded</summary>
-    [Test]
-    public void TestLoadAsset() {
-      Effect effect = this.memoryContentManager.Load<Effect>(
-        Resources.UnitTestResources.UnitTestEffect
-      );
-      Assert.IsNotNull(effect);
-    }
+		/// <summary>Verifies that uniquely named assets can be loaded</summary>
+		[Test]
+		public void TestLoadNamedAsset()
+		{
+			Effect effect = this.memoryContentManager.Load<Effect>(
+																   Resources.UnitTestResources.UnitTestEffect, "UnitTestEffect"
+				);
+			Assert.IsNotNull(effect);
+		}
 
-    /// <summary>Verifies that uniquely named assets can be loaded</summary>
-    [Test]
-    public void TestLoadNamedAsset() {
-      Effect effect = this.memoryContentManager.Load<Effect>(
-        Resources.UnitTestResources.UnitTestEffect, "UnitTestEffect"
-      );
-      Assert.IsNotNull(effect);
-    }
+		/// <summary>Verifies that the ReadAsset() method is working</summary>
+		[Test]
+		public void TestReadAsset()
+		{
+			Effect effect = this.memoryContentManager.ReadAsset<Effect>(
+																	    Resources.UnitTestResources.UnitTestEffect
+				);
+			Assert.IsNotNull(effect);
+		}
 
-    /// <summary>Verifies that the ReadAsset() method is working</summary>
-    [Test]
-    public void TestReadAsset() {
-      Effect effect = this.memoryContentManager.ReadAsset<Effect>(
-        Resources.UnitTestResources.UnitTestEffect
-      );
-      Assert.IsNotNull(effect);
-    }
-    
-    /// <summary>Called before each test is run</summary>
-    [SetUp]
-    public void Setup() {
-      this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService();
-      this.mockedGraphicsDeviceService.CreateDevice();
-      
-      this.memoryContentManager = new MemoryContentManager(
-        this.mockedGraphicsDeviceService
-      );
-    }
-    
-    /// <summary>Called after each test has run</summary>
-    [TearDown]
-    public void Teardown() {
-      if(this.memoryContentManager != null) {
-        this.memoryContentManager.Dispose();
-        this.memoryContentManager = null;
-      }
-      if(this.mockedGraphicsDeviceService != null) {
-        this.mockedGraphicsDeviceService.DestroyDevice();
-        this.mockedGraphicsDeviceService = null;
-      }
-    }
-    
-    /// <summary>Mock of the graphics device service used for unit testing</summary>
-    private MockedGraphicsDeviceService mockedGraphicsDeviceService;
-    /// <summary>Content manager which loads resources from in-memory arrays</summary>
-    private MemoryContentManager memoryContentManager;
+		/// <summary>Called before each test is run</summary>
+		[SetUp]
+		public void Setup()
+		{
+			this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService();
+			this.mockedGraphicsDeviceService.CreateDevice();
 
-  }
+			this.memoryContentManager = new MemoryContentManager(
+				this.mockedGraphicsDeviceService
+				);
+		}
 
+		/// <summary>Called after each test has run</summary>
+		[TearDown]
+		public void Teardown()
+		{
+			if (this.memoryContentManager != null)
+			{
+				this.memoryContentManager.Dispose();
+				this.memoryContentManager = null;
+			}
+			if (this.mockedGraphicsDeviceService != null)
+			{
+				this.mockedGraphicsDeviceService.DestroyDevice();
+				this.mockedGraphicsDeviceService = null;
+			}
+		}
+
+		/// <summary>Mock of the graphics device service used for unit testing</summary>
+		private MockedGraphicsDeviceService mockedGraphicsDeviceService;
+
+		/// <summary>Content manager which loads resources from in-memory arrays</summary>
+		private MemoryContentManager memoryContentManager;
+	}
 } // namespace Nuclex.Game.Content
 
 #endif // UNITTEST

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
@@ -30,99 +32,106 @@ using Nuclectic.Tests.Mocks;
 using NUnit.Framework;
 using Text = Nuclectic.Fonts.Text;
 
-namespace Nuclectic.Tests.Fonts {
+namespace Nuclectic.Tests.Fonts
+{
+	/// <summary>Unit tests for the text drawing context</summary>
+	[TestFixture]
+	public class TextDrawContextTest
+	{
+		/// <summary>
+		///   Verifies that two text contexts which should produce the exact same result
+		///   compare as equal
+		/// </summary>
+		[Test]
+		public void TestIdenticalEffectParameters()
+		{
+			Matrix matrix = Matrix.Identity;
 
-  /// <summary>Unit tests for the text drawing context</summary>
-  [TestFixture]
-  public class TextDrawContextTest {
+			TextDrawContext context1 = new TextDrawContext(this.effect, matrix, Color.White);
+			TextDrawContext context2 = new TextDrawContext(this.effect, matrix, Color.White);
 
-    /// <summary>
-    ///   Verifies that two text contexts which should produce the exact same result
-    ///   compare as equal
-    /// </summary>
-    [Test]
-    public void TestIdenticalEffectParameters() {
-      Matrix matrix = Matrix.Identity;
+			Assert.IsTrue(context1.Equals(context2));
+		}
 
-      TextDrawContext context1 = new TextDrawContext(this.effect, matrix, Color.White);
-      TextDrawContext context2 = new TextDrawContext(this.effect, matrix, Color.White);
+		/// <summary>
+		///   Verifies that two text contexts with different matrices compare as inequal
+		/// </summary>
+		[Test]
+		public void TestDifferentMatrices()
+		{
+			Matrix matrix1 = Matrix.Identity;
+			Matrix matrix2 = new Matrix(
+				1.1f, 1.2f, 1.3f, 1.4f,
+				2.1f, 2.2f, 2.3f, 2.4f,
+				3.1f, 3.2f, 3.3f, 3.4f,
+				4.1f, 4.2f, 4.3f, 4.4f
+				);
 
-      Assert.IsTrue(context1.Equals(context2));
-    }
+			TextDrawContext context1 = new TextDrawContext(this.effect, matrix1, Color.White);
+			TextDrawContext context2 = new TextDrawContext(this.effect, matrix2, Color.White);
 
-    /// <summary>
-    ///   Verifies that two text contexts with different matrices compare as inequal
-    /// </summary>
-    [Test]
-    public void TestDifferentMatrices() {
-      Matrix matrix1 = Matrix.Identity;
-      Matrix matrix2 = new Matrix(
-        1.1f, 1.2f, 1.3f, 1.4f,
-        2.1f, 2.2f, 2.3f, 2.4f,
-        3.1f, 3.2f, 3.3f, 3.4f,
-        4.1f, 4.2f, 4.3f, 4.4f
-      );
+			Assert.IsFalse(context1.Equals(context2));
+		}
 
-      TextDrawContext context1 = new TextDrawContext(this.effect, matrix1, Color.White);
-      TextDrawContext context2 = new TextDrawContext(this.effect, matrix2, Color.White);
+		/// <summary>
+		///   Verifies that two text contexts with different color compare as inequal
+		/// </summary>
+		[Test]
+		public void TestDifferentColors()
+		{
+			Matrix matrix = Matrix.Identity;
 
-      Assert.IsFalse(context1.Equals(context2));
-    }
+			TextDrawContext context1 = new TextDrawContext(this.effect, matrix, Color.Red);
+			TextDrawContext context2 = new TextDrawContext(this.effect, matrix, Color.Black);
 
-    /// <summary>
-    ///   Verifies that two text contexts with different color compare as inequal
-    /// </summary>
-    [Test]
-    public void TestDifferentColors() {
-      Matrix matrix = Matrix.Identity;
+			Assert.IsFalse(context1.Equals(context2));
+		}
 
-      TextDrawContext context1 = new TextDrawContext(this.effect, matrix, Color.Red);
-      TextDrawContext context2 = new TextDrawContext(this.effect, matrix, Color.Black);
-
-      Assert.IsFalse(context1.Equals(context2));
-    }
-
-    /// <summary>
-    ///   Verifies that the text context can be compared against another context of
-    ///   a different type
-    /// </summary>
-    [Test]
-    public void TestDifferentEffects() {
-      Matrix matrix = Matrix.Identity;
-      TextDrawContext context1 = new TextDrawContext(this.effect, matrix, Color.White);
-      using(
-        BasicEffect effect2 = new BasicEffect(
-          this.mockedGraphicsDeviceService.GraphicsDevice
+		/// <summary>
+		///   Verifies that the text context can be compared against another context of
+		///   a different type
+		/// </summary>
+		[Test]
+		public void TestDifferentEffects()
+		{
+			Matrix matrix = Matrix.Identity;
+			TextDrawContext context1 = new TextDrawContext(this.effect, matrix, Color.White);
+			using (
+				BasicEffect effect2 = new BasicEffect(
+					this.mockedGraphicsDeviceService.GraphicsDevice
 #if XNA_3
           , null
 #endif
-        )
-      ) {
-        TextDrawContext context2 = new TextDrawContext(effect2, matrix, Color.White);
-        Assert.IsFalse(context1.Equals(context2));
-      }
-    }
+					)
+				)
+			{
+				TextDrawContext context2 = new TextDrawContext(effect2, matrix, Color.White);
+				Assert.IsFalse(context1.Equals(context2));
+			}
+		}
 
-    /// <summary>
-    ///   Verifies that the text context can be compared against another context of
-    ///   a different type
-    /// </summary>
-    [Test]
-    public void TestDifferentContexts() {
-      Matrix matrix = Matrix.Identity;
-      TextDrawContext context1 = new TextDrawContext(this.effect, matrix, Color.White);
-      EffectDrawContext context2 = new EffectDrawContext(this.effect);
+		/// <summary>
+		///   Verifies that the text context can be compared against another context of
+		///   a different type
+		/// </summary>
+		[Test]
+		public void TestDifferentContexts()
+		{
+			Matrix matrix = Matrix.Identity;
+			TextDrawContext context1 = new TextDrawContext(this.effect, matrix, Color.White);
+			EffectDrawContext context2 = new EffectDrawContext(this.effect);
 
-      Assert.IsFalse(context1.Equals(context2));
-    }
+			Assert.IsFalse(context1.Equals(context2));
+		}
 
-    /// <summary>
-    ///   Tests the Begin() and End() methods of the draw context without any rendering
-    ///   taking place inbetween them
-    /// </summary>
-    [Test]
-    public void TestBeginEnd() {
-      Matrix matrix = Matrix.Identity;
+		/// <summary>
+		///   Tests the Begin() and End() methods of the draw context without any rendering
+		///   taking place inbetween them
+		/// </summary>
+		[Test]
+		public void TestBeginEnd()
+		{
+			Matrix matrix = Matrix.Identity;
 #if XNA_3
       TextDrawContext context = new TextDrawContext(this.effect, matrix, Color.Red);
       context.Begin();
@@ -136,51 +145,56 @@ namespace Nuclectic.Tests.Fonts {
         context.End();
       }
 #else
-      TextDrawContext context = new TextDrawContext(this.effect, matrix, Color.Red);
-      for (int pass = 0; pass < context.Passes; ++pass) {
-        context.Apply(pass);
-      }
+			TextDrawContext context = new TextDrawContext(this.effect, matrix, Color.Red);
+			for (int pass = 0; pass < context.Passes; ++pass)
+			{
+				context.Apply(pass);
+			}
 #endif
-    }
+		}
 
-    /// <summary>Initializes a test</summary>
-    [SetUp]
-    public void Setup() {
-      this.mockedGraphicsDeviceService = new GlobalExclusiveMockedGraphicsDeviceService(()=>new MockedGraphicsDeviceService());
-      this.mockedGraphicsDeviceService.CreateDevice();
+		/// <summary>Initializes a test</summary>
+		[SetUp]
+		public void Setup()
+		{
+			this.mockedGraphicsDeviceService = new GlobalExclusiveMockedGraphicsDeviceService(() => new MockedGraphicsDeviceService());
+			this.mockedGraphicsDeviceService.CreateDevice();
 
-      this.contentManager = new ResourceContentManager(
-        GraphicsDeviceServiceHelper.MakePrivateServiceProvider(
-          this.mockedGraphicsDeviceService
-        ),
-        Resources.TextBatchResources.ResourceManager
-      );
-      this.effect = this.contentManager.Load<Effect>("DefaultTextEffect");
-    }
+			this.contentManager = new ResourceContentManager(
+				GraphicsDeviceServiceHelper.MakePrivateServiceProvider(
+																	   this.mockedGraphicsDeviceService
+					),
+				Resources.TextBatchResources.ResourceManager
+				);
+			this.effect = this.contentManager.Load<Effect>("DefaultTextEffect");
+		}
 
-    /// <summary>Finalizes the resources used during the test</summary>
-    [TearDown]
-    public void Teardown() {
-      if(this.contentManager != null) {
-        this.contentManager.Dispose();
-        this.contentManager = null;
-      }
+		/// <summary>Finalizes the resources used during the test</summary>
+		[TearDown]
+		public void Teardown()
+		{
+			if (this.contentManager != null)
+			{
+				this.contentManager.Dispose();
+				this.contentManager = null;
+			}
 
-      if(this.mockedGraphicsDeviceService != null) {
-        ((IDisposable) this.mockedGraphicsDeviceService).Dispose();
-        this.mockedGraphicsDeviceService = null;
-      }
-    }
+			if (this.mockedGraphicsDeviceService != null)
+			{
+				((IDisposable)this.mockedGraphicsDeviceService).Dispose();
+				this.mockedGraphicsDeviceService = null;
+			}
+		}
 
-    /// <summary>Mocked graphics device service used by the test</summary>
-    private IMockedGraphicsDeviceService mockedGraphicsDeviceService;
-    /// <summary>ContentManager used to load text effect</summary>
-    private ResourceContentManager contentManager;
-    /// <summary>Effect used for testing the context</summary>
-    private Effect effect;
+		/// <summary>Mocked graphics device service used by the test</summary>
+		private IMockedGraphicsDeviceService mockedGraphicsDeviceService;
 
-  }
+		/// <summary>ContentManager used to load text effect</summary>
+		private ResourceContentManager contentManager;
 
+		/// <summary>Effect used for testing the context</summary>
+		private Effect effect;
+	}
 } // namespace Nuclex.Fonts
 
 #endif // UNITTEST

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,66 +17,66 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Nuclectic.Geometry;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Geometry {
+namespace Nuclectic.Tests.Geometry
+{
+	/// <summary>Unit Test for the default random number generator</summary>
+	[TestFixture]
+	public class DefaultRandomTest
+	{
+		/// <summary>Verifies that the default constructor works</summary>
+		[Test]
+		public void TestDefaultConstructor() { new DefaultRandom(); }
 
-  /// <summary>Unit Test for the default random number generator</summary>
-  [TestFixture]
-  public class DefaultRandomTest {
+		/// <summary>Verifies that the constructor with explicit seed value works</summary>
+		[Test]
+		public void TestSeedConstructor() { new DefaultRandom(12345); }
 
-    /// <summary>Verifies that the default constructor works</summary>
-    [Test]
-    public void TestDefaultConstructor() {
-      new DefaultRandom();
-    }
+		/// <summary>Verifies that the seed value has the desired effect</summary>
+		[Test]
+		public void TestReseed()
+		{
+			DefaultRandom one = new DefaultRandom(123456789);
+			DefaultRandom two = new DefaultRandom(123456789);
 
-    /// <summary>Verifies that the constructor with explicit seed value works</summary>
-    [Test]
-    public void TestSeedConstructor() {
-      new DefaultRandom(12345);
-    }
+			Assert.AreEqual(one.Next(int.MaxValue), two.Next(int.MaxValue));
+		}
 
-    /// <summary>Verifies that the seed value has the desired effect</summary>
-    [Test]
-    public void TestReseed() {
-      DefaultRandom one = new DefaultRandom(123456789);
-      DefaultRandom two = new DefaultRandom(123456789);
+		/// <summary>
+		///   Verifies that the random number generator can generate integers within a range
+		/// </summary>
+		[Test]
+		public void TestNext()
+		{
+			DefaultRandom randomNumberGenerator = new DefaultRandom();
+			for (int index = 0; index < Specifications.ProbabilisticFunctionSamples; ++index)
+			{
+				Assert.That(randomNumberGenerator.Next(12345), Is.LessThan(12345));
+			}
+		}
 
-      Assert.AreEqual(one.Next(int.MaxValue), two.Next(int.MaxValue));
-    }
+		/// <summary>
+		///   Verifies that the random number generator can generate doubles within a range
+		/// </summary>
+		[Test]
+		public void TestNextDouble()
+		{
+			DefaultRandom randomNumberGenerator = new DefaultRandom();
+			for (int index = 0; index < Specifications.ProbabilisticFunctionSamples; ++index)
+			{
+				double randomNumber = randomNumberGenerator.NextDouble();
 
-    /// <summary>
-    ///   Verifies that the random number generator can generate integers within a range
-    /// </summary>
-    [Test]
-    public void TestNext() {
-      DefaultRandom randomNumberGenerator = new DefaultRandom();
-      for(int index = 0; index < Specifications.ProbabilisticFunctionSamples; ++index) {
-        Assert.That(randomNumberGenerator.Next(12345), Is.LessThan(12345));
-      }
-    }
-
-    /// <summary>
-    ///   Verifies that the random number generator can generate doubles within a range
-    /// </summary>
-    [Test]
-    public void TestNextDouble() {
-      DefaultRandom randomNumberGenerator = new DefaultRandom();
-      for(int index = 0; index < Specifications.ProbabilisticFunctionSamples; ++index) {
-        double randomNumber = randomNumberGenerator.NextDouble();
-
-        Assert.That(randomNumber, Is.GreaterThanOrEqualTo(0.0));
-        Assert.That(randomNumber, Is.LessThan(1.0));
-      }
-    }
-
-  }
-
+				Assert.That(randomNumber, Is.GreaterThanOrEqualTo(0.0));
+				Assert.That(randomNumber, Is.LessThan(1.0));
+			}
+		}
+	}
 } // namespace Nuclex.Geometry
 
 #endif // UNITTEST

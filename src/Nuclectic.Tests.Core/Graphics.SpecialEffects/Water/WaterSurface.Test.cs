@@ -1,4 +1,5 @@
-﻿//#region CPL License
+﻿#region CPL License
+
 ///*
 //Nuclex Framework
 //Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,7 +17,8 @@
 //You should have received a copy of the IBM Common Public
 //License along with this library
 //*/
-//#endregion
+
+#endregion
 
 //using Microsoft.Xna.Framework;
 //using Microsoft.Xna.Framework.Content;
@@ -162,7 +164,7 @@
 //		  new GameTime(), Camera.CreateDefaultOrthographic(),
 //		  new WaterSurface.SceneDrawDelegate(drawReflection)
 //		);
-        
+
 //		Assert.IsNotNull(surface.ReflectionCamera);
 //		Assert.IsNotNull(surface.ReflectionTexture);
 //	  }

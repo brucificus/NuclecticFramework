@@ -2,9 +2,6 @@
 {
 	public class NoMouseFactory : IMouseFactory
 	{
-		public IMouse GetMouse()
-		{
-			return new NoMouse();
-		}
+		public IMouse GetMouse() { return new NoMouse(); }
 	}
 }

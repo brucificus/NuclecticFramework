@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Graphics;
@@ -25,91 +27,102 @@ using Nuclectic.Tests.Mocks;
 using System;
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Graphics.Batching {
+namespace Nuclectic.Tests.Graphics.Batching
+{
+	/// <summary>Unit tests for the BasicEffect drawing context</summary>
+	[TestFixture]
+	internal class BasicEffectDrawContextTest
+	{
+		#region class TestEffectDrawContext
 
-  /// <summary>Unit tests for the BasicEffect drawing context</summary>
-  [TestFixture]
-  internal class BasicEffectDrawContextTest {
+		/// <summary>Drawing context used for the unit test</summary>
+		private class TestEffectDrawContext : EffectDrawContext
+		{
+			/// <summary>Initializes a new test effect drawing context</summary>
+			/// <param name="effect">Effect that will be used for testing</param>
+			public TestEffectDrawContext(Effect effect)
+				: base(effect) { }
+		}
 
-    #region class TestEffectDrawContext
+		#endregion // class TestEffectDrawContext
 
-    /// <summary>Drawing context used for the unit test</summary>
-    private class TestEffectDrawContext : EffectDrawContext {
+		/// <summary>Verifies that the constructor of the drawing context is working</summary>
+		[Test]
+		public void TestConstructor()
+		{
+			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (IDisposable keeper = service.CreateDevice())
+			{
+				using (IDisposable context = new BasicEffectDrawContext(service.GraphicsDevice))
+				{
+					Assert.IsNotNull(context);
+				}
+			}
+		}
 
-      /// <summary>Initializes a new test effect drawing context</summary>
-      /// <param name="effect">Effect that will be used for testing</param>
-      public TestEffectDrawContext(Effect effect) : base(effect) { }
+		/// <summary>
+		///   Verifies that testing the drawing context against a different instance
+		///   results the comparison reporting inequality
+		/// </summary>
+		[Test]
+		public void TestEqualsWithDifferentObject()
+		{
+			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (IDisposable keeper = service.CreateDevice())
+			{
+				using (
+					BasicEffectDrawContext test1 = new BasicEffectDrawContext(service.GraphicsDevice)
+					)
+				{
+					using (
+						BasicEffectDrawContext test2 = new BasicEffectDrawContext(service.GraphicsDevice)
+						)
+					{
+						Assert.IsTrue(test1.Equals((object)test2));
+					}
+				}
+			}
+		}
 
-    }
+		/// <summary>
+		///   Verifies that testing the drawing context against another drawing context with
+		///   an incompatible effect type results in the comparison reporting inequality
+		/// </summary>
+		[Test]
+		public void TestEqualsWithIncompatibleEffect()
+		{
+			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (IDisposable keeper = service.CreateDevice())
+			{
+				using (
+					BasicEffectDrawContext test1 = new BasicEffectDrawContext(service.GraphicsDevice)
+					)
+				{
+					TestEffectDrawContext test2 = new TestEffectDrawContext(null);
 
-    #endregion // class TestEffectDrawContext
+					Assert.IsFalse(test1.Equals((object)test2));
+				}
+			}
+		}
 
-    /// <summary>Verifies that the constructor of the drawing context is working</summary>
-    [Test]
-    public void TestConstructor() {
-      MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
-      using(IDisposable keeper = service.CreateDevice()) {
-        using(IDisposable context = new BasicEffectDrawContext(service.GraphicsDevice)) {
-          Assert.IsNotNull(context);
-        }
-      }
-    }
-
-    /// <summary>
-    ///   Verifies that testing the drawing context against a different instance
-    ///   results the comparison reporting inequality
-    /// </summary>
-    [Test]
-    public void TestEqualsWithDifferentObject() {
-      MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
-      using(IDisposable keeper = service.CreateDevice()) {
-        using(
-          BasicEffectDrawContext test1 = new BasicEffectDrawContext(service.GraphicsDevice)
-        ) {
-          using(
-            BasicEffectDrawContext test2 = new BasicEffectDrawContext(service.GraphicsDevice)
-          ) {
-            Assert.IsTrue(test1.Equals((object)test2));
-          }
-        }
-      }
-    }
-
-    /// <summary>
-    ///   Verifies that testing the drawing context against another drawing context with
-    ///   an incompatible effect type results in the comparison reporting inequality
-    /// </summary>
-    [Test]
-    public void TestEqualsWithIncompatibleEffect() {
-      MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
-      using(IDisposable keeper = service.CreateDevice()) {
-        using(
-          BasicEffectDrawContext test1 = new BasicEffectDrawContext(service.GraphicsDevice)
-        ) {
-          TestEffectDrawContext test2 = new TestEffectDrawContext(null);
-
-          Assert.IsFalse(test1.Equals((object)test2));
-        }
-      }
-    }
-
-    /// <summary>
-    ///   Verifies that the used effect can be obtained using the 'BasicEffect' property
-    /// </summary>
-    [Test]
-    public void TestEffectRetrieval() {
-      MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
-      using(IDisposable keeper = service.CreateDevice()) {
-        using(
-          BasicEffectDrawContext test = new BasicEffectDrawContext(service.GraphicsDevice)
-        ) {
-          Assert.AreSame(test.Effect, test.BasicEffect);
-        }
-      }
-    }
-
-  }
-
+		/// <summary>
+		///   Verifies that the used effect can be obtained using the 'BasicEffect' property
+		/// </summary>
+		[Test]
+		public void TestEffectRetrieval()
+		{
+			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (IDisposable keeper = service.CreateDevice())
+			{
+				using (
+					BasicEffectDrawContext test = new BasicEffectDrawContext(service.GraphicsDevice)
+					)
+				{
+					Assert.AreSame(test.Effect, test.BasicEffect);
+				}
+			}
+		}
+	}
 } // namespace Nuclex.Graphics
 
 #endif // UNITTEST

@@ -1,4 +1,5 @@
-﻿//#region CPL License
+﻿#region CPL License
+
 ///*
 //Nuclex Framework
 //Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,7 +17,8 @@
 //You should have received a copy of the IBM Common Public
 //License along with this library
 //*/
-//#endregion
+
+#endregion
 
 //using Moq;
 //#if UNITTEST
@@ -123,7 +125,7 @@
 //	[Test]
 //	public void TestKeyPressMessage() {
 //	  Mock<IKeyboardMessageSubscriber> subscriber = mockKeyboardSubscriber();
-      
+
 //	  subscriber.Expects.One.Method(x => x.KeyPressed(0)).With(Keys.X);
 //	  sendThreadMessage(UnsafeNativeMethods.WindowMessages.WM_KEYDOWN, (int)Keys.X, 0);
 

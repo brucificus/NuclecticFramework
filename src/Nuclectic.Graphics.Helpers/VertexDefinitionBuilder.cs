@@ -12,10 +12,7 @@ namespace Nuclectic.Graphics.Helpers
 	{
 		private readonly IMarshalOffsetOf _offsetOfProvider;
 
-		public VertexDefinitionBuilder(IMarshalOffsetOf offsetOfProvider)
-		{
-			_offsetOfProvider = offsetOfProvider;
-		}
+		public VertexDefinitionBuilder(IMarshalOffsetOf offsetOfProvider) { _offsetOfProvider = offsetOfProvider; }
 
 		/// <summary>
 		///   Builds a vertex element list that can be used to construct a vertex declaration
@@ -40,7 +37,6 @@ namespace Nuclectic.Graphics.Helpers
 			VertexElement[] elements = new VertexElement[fields.Length];
 			for (int index = 0; index < fields.Length; ++index)
 			{
-
 				// Find out whether this field is used by the vertex shader. If so, add
 				// it to the elements list so it ends up in the vertex shader.
 				VertexElementAttribute attribute = getVertexElementAttribute(fields[index]);
@@ -50,7 +46,7 @@ namespace Nuclectic.Graphics.Helpers
 
 
 #if !(XBOX360 || WINDOWS_PHONE)
-					fieldOffset = _offsetOfProvider.OffsetOf(typeof(VertexType), fields[index].Name).Value.ToInt32();
+					fieldOffset = _offsetOfProvider.OffsetOf(typeof (VertexType), fields[index].Name).Value.ToInt32();
 #endif
 					elements[elementCount].Offset = (short)fieldOffset;
 
@@ -80,7 +76,7 @@ namespace Nuclectic.Graphics.Helpers
 		/// <returns>The list of fields declared in the provided structure</returns>
 		private static FieldInfo[] getFields<VertexType>() where VertexType : struct
 		{
-			Type vertexType = typeof(VertexType);
+			Type vertexType = typeof (VertexType);
 
 			// Obtain a list of all the fields (object member variables) in the vertex type
 			FieldInfo[] fields = vertexType.GetFields().Where(f => f.IsStatic == false).ToArray();
@@ -113,37 +109,39 @@ namespace Nuclectic.Graphics.Helpers
 				element.VertexElementFormat = attribute.Format;
 			}
 			else
-			{ // Nope, try to auto-detect the data type
-				if (fieldInfo.FieldType == typeof(Vector2))
+			{
+				// Nope, try to auto-detect the data type
+				if (fieldInfo.FieldType == typeof (Vector2))
 				{
 					element.VertexElementFormat = VertexElementFormat.Vector2;
 				}
-				else if (fieldInfo.FieldType == typeof(Vector3))
+				else if (fieldInfo.FieldType == typeof (Vector3))
 				{
 					element.VertexElementFormat = VertexElementFormat.Vector3;
 				}
-				else if (fieldInfo.FieldType == typeof(Vector4))
+				else if (fieldInfo.FieldType == typeof (Vector4))
 				{
 					element.VertexElementFormat = VertexElementFormat.Vector4;
 				}
-				else if (fieldInfo.FieldType == typeof(Color))
+				else if (fieldInfo.FieldType == typeof (Color))
 				{
 					element.VertexElementFormat = VertexElementFormat.Color;
 				}
-				else if (fieldInfo.FieldType == typeof(float))
+				else if (fieldInfo.FieldType == typeof (float))
 				{
 					element.VertexElementFormat = VertexElementFormat.Single;
 				}
-				else if (fieldInfo.FieldType == typeof(int))
+				else if (fieldInfo.FieldType == typeof (int))
 				{
 					element.VertexElementFormat = VertexElementFormat.Short4;
 				}
-				else if (fieldInfo.FieldType == typeof(short))
+				else if (fieldInfo.FieldType == typeof (short))
 				{
 					element.VertexElementFormat = VertexElementFormat.Short2;
 				}
 				else
-				{ // No success in auto-detection, give up
+				{
+					// No success in auto-detection, give up
 					throw new InvalidOperationException(
 						"Unrecognized field type, please specify vertex format explicitly"
 						);
@@ -162,7 +160,7 @@ namespace Nuclectic.Graphics.Helpers
 		private static VertexElementAttribute getVertexElementAttribute(FieldInfo fieldInfo)
 		{
 			var attributes = fieldInfo.GetCustomAttributes(
-				typeof(VertexElementAttribute), false
+														   typeof (VertexElementAttribute), false
 				).ToArray();
 
 			// The docs state that if the requested attribute has not been applied to the field,

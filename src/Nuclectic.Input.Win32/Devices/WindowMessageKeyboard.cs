@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,61 +17,61 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 
-namespace Nuclectic.Input.Devices {
+namespace Nuclectic.Input.Devices
+{
+	/// <summary>Interfaces with a PC keyboard via window messages</summary>
+	internal class WindowMessageKeyboard : BufferedKeyboard, IDisposable
+	{
+		/// <summary>Initialize a new window message-based keyboard device</summary>
+		/// <param name="messageSource">Source the window messages are obtained from</param>
+		internal WindowMessageKeyboard(IKeyboardMessageSource messageSource)
+		{
+			this.bufferKeyPressDelegate = new KeyboardKeyEventDelegate(BufferKeyPress);
+			this.bufferKeyReleaseDelegate = new KeyboardKeyEventDelegate(BufferKeyRelease);
+			this.bufferCharacterEntryDelegate = new KeyboardCharacterEventDelegate(
+				BufferCharacterEntry
+				);
 
-  /// <summary>Interfaces with a PC keyboard via window messages</summary>
-  internal class WindowMessageKeyboard : BufferedKeyboard, IDisposable {
+			this.messageSource = messageSource;
+			this.messageSource.KeyPressed += this.bufferKeyPressDelegate;
+			this.messageSource.KeyReleased += this.bufferKeyReleaseDelegate;
+			this.messageSource.CharacterEntered += this.bufferCharacterEntryDelegate;
+		}
 
-    /// <summary>Initialize a new window message-based keyboard device</summary>
-    /// <param name="messageSource">Source the window messages are obtained from</param>
-    internal WindowMessageKeyboard(IKeyboardMessageSource messageSource) {
-      this.bufferKeyPressDelegate = new KeyboardKeyEventDelegate(BufferKeyPress);
-      this.bufferKeyReleaseDelegate = new KeyboardKeyEventDelegate(BufferKeyRelease);
-      this.bufferCharacterEntryDelegate = new KeyboardCharacterEventDelegate(
-        BufferCharacterEntry
-      );
+		/// <summary>Immediately releases all resources owned by the instance</summary>
+		public void Dispose()
+		{
+			if (this.messageSource != null)
+			{
+				this.messageSource.CharacterEntered -= this.bufferCharacterEntryDelegate;
+				this.messageSource.KeyReleased -= this.bufferKeyReleaseDelegate;
+				this.messageSource.KeyPressed -= this.bufferKeyPressDelegate;
 
-      this.messageSource = messageSource;
-      this.messageSource.KeyPressed += this.bufferKeyPressDelegate;
-      this.messageSource.KeyReleased += this.bufferKeyReleaseDelegate;
-      this.messageSource.CharacterEntered += this.bufferCharacterEntryDelegate;
-    }
+				this.messageSource = null;
+			}
+		}
 
-    /// <summary>Immediately releases all resources owned by the instance</summary>
-    public void Dispose() {
-      if (this.messageSource != null) {
-        this.messageSource.CharacterEntered -= this.bufferCharacterEntryDelegate;
-        this.messageSource.KeyReleased -= this.bufferKeyReleaseDelegate;
-        this.messageSource.KeyPressed -= this.bufferKeyPressDelegate;
+		/// <summary>Whether the input device is connected to the system</summary>
+		public override bool IsAttached { get { return true; } }
 
-        this.messageSource = null;
-      }
-    }
+		/// <summary>Human-readable name of the input device</summary>
+		public override string Name { get { return "PC Keyboard"; } }
 
-    /// <summary>Whether the input device is connected to the system</summary>
-    public override bool IsAttached {
-      get { return true; }
-    }
+		/// <summary>Delegate for the keyPressed() method</summary>
+		private KeyboardKeyEventDelegate bufferKeyPressDelegate;
 
-    /// <summary>Human-readable name of the input device</summary>
-    public override string Name {
-      get { return "PC Keyboard"; }
-    }
+		/// <summary>Delegate for the keyReleased() method</summary>
+		private KeyboardKeyEventDelegate bufferKeyReleaseDelegate;
 
-    /// <summary>Delegate for the keyPressed() method</summary>
-    private KeyboardKeyEventDelegate bufferKeyPressDelegate;
-    /// <summary>Delegate for the keyReleased() method</summary>
-    private KeyboardKeyEventDelegate bufferKeyReleaseDelegate;
-    /// <summary>Delegate for the characterEntered() method</summary>
-    private KeyboardCharacterEventDelegate bufferCharacterEntryDelegate;
+		/// <summary>Delegate for the characterEntered() method</summary>
+		private KeyboardCharacterEventDelegate bufferCharacterEntryDelegate;
 
-    /// <summary>Window message source the instance is currently subscribed to</summary>
-    private IKeyboardMessageSource messageSource;
-
-  }
-
+		/// <summary>Window message source the instance is currently subscribed to</summary>
+		private IKeyboardMessageSource messageSource;
+	}
 } // namespace Nuclex.Input.Devices

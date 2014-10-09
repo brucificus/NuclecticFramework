@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,38 +17,33 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Geometry.Volumes.Collisions {
+namespace Nuclectic.Geometry.Volumes.Collisions
+{
+	/// <summary>Contains all Mesh-to-Obb interference detection code</summary>
+	public static class MeshObbCollider
+	{
+		/// <summary>Test whether a mesh and an OBB are overlapping</summary>
+		/// <param name="triangleMesh">Mesh to be checked for intersection</param>
+		/// <param name="obbTransform">Position and orientation of the OBB</param>
+		/// <param name="obbExtents">Extents of the OBB</param>
+		/// <returns>True if the mesh and the OBB are intersecting</returns>
+		public static bool CheckContact(
+			TriangleMesh3 triangleMesh, Matrix obbTransform, Vector3 obbExtents
+			) { throw new NotImplementedException("Not implemented yet"); }
 
-  /// <summary>Contains all Mesh-to-Obb interference detection code</summary>
-  public static class MeshObbCollider {
-
-    /// <summary>Test whether a mesh and an OBB are overlapping</summary>
-    /// <param name="triangleMesh">Mesh to be checked for intersection</param>
-    /// <param name="obbTransform">Position and orientation of the OBB</param>
-    /// <param name="obbExtents">Extents of the OBB</param>
-    /// <returns>True if the mesh and the OBB are intersecting</returns>
-    public static bool CheckContact(
-      TriangleMesh3 triangleMesh, Matrix obbTransform, Vector3 obbExtents
-    ) {
-      throw new NotImplementedException("Not implemented yet");
-    }
-
-    /// <summary>Find the contact location between a mesh and an OBB</summary>
-    /// <param name="triangleMesh">Mesh to be checked for intersection</param>
-    /// <param name="obbTransform">Position and orientation of the OBB</param>
-    /// <param name="obbExtents">Extents of the OBB</param>
-    /// <returns>A contact location if the mesh touches the OBB</returns>
-    public static Vector3? FindContact(
-      TriangleMesh3 triangleMesh, Matrix obbTransform, Vector3 obbExtents
-    ) {
-      throw new NotImplementedException("Not implemented yet");
-    }
-
-  }
-
+		/// <summary>Find the contact location between a mesh and an OBB</summary>
+		/// <param name="triangleMesh">Mesh to be checked for intersection</param>
+		/// <param name="obbTransform">Position and orientation of the OBB</param>
+		/// <param name="obbExtents">Extents of the OBB</param>
+		/// <returns>A contact location if the mesh touches the OBB</returns>
+		public static Vector3? FindContact(
+			TriangleMesh3 triangleMesh, Matrix obbTransform, Vector3 obbExtents
+			) { throw new NotImplementedException("Not implemented yet"); }
+	}
 } // namespace Nuclex.Geometry.Volumes.Collisions

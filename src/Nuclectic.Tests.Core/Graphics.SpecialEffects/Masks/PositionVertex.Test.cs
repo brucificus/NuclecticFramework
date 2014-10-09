@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
@@ -23,25 +25,24 @@ using Nuclectic.Graphics.TriD.SpecialEffects.Masks;
 #if UNITTEST
 using NUnit.Framework;
 
-namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks
+{
+	/// <summary>Unit tests for the position vertex class</summary>
+	[TestFixture]
+	internal class PositionVertexTest
+	{
+		/// <summary>
+		///   Verifies that the constructor of the position vertex class is working
+		/// </summary>
+		[Test]
+		public void TestConstructor()
+		{
+			PositionVertex vertex = new PositionVertex(new Vector2(1.2f, 3.4f));
 
-  /// <summary>Unit tests for the position vertex class</summary>
-  [TestFixture]
-  internal class PositionVertexTest {
-
-    /// <summary>
-    ///   Verifies that the constructor of the position vertex class is working
-    /// </summary>
-    [Test]
-    public void TestConstructor() {
-      PositionVertex vertex = new PositionVertex(new Vector2(1.2f, 3.4f));
-
-      Assert.AreEqual(1.2f, vertex.Position.X);
-      Assert.AreEqual(3.4f, vertex.Position.Y);
-    }
-
-  }
-
+			Assert.AreEqual(1.2f, vertex.Position.X);
+			Assert.AreEqual(3.4f, vertex.Position.Y);
+		}
+	}
 } // namespace Nuclex.Graphics.SpecialEffects.Masks
 
 #endif // UNITTEST
