@@ -18,6 +18,8 @@ License along with this library
 */
 #endregion
 
+using System.Linq;
+using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nuclectic.Game.Component;
@@ -124,10 +126,16 @@ namespace Nuclectic.Tests.Game {
     public void TestGraphicsDeviceReset() {
       this.mockedGraphicsDeviceService.CreateDevice();
       this.testComponent.Initialize();
-      this.mockedGraphicsDeviceService.ResetDevice();
+      Assert.Throws<NotSupportedException>(()=>this.mockedGraphicsDeviceService.ResetDevice());
 
-      // No exception means success
+      // Originally, no exception means success. But MonoGame doesn't support GraphicsDevice.Reset()
     }
+
+	  [Test]
+	  public void GraphicsDeviceDoesNotHaveReset() {
+		  var foundMethods = typeof(Microsoft.Xna.Framework.Graphics.GraphicsDevice).GetTypeInfo().GetMethods().Where(m=>m.Name == "Reset").ToArray();
+		  Assert.IsEmpty(foundMethods, "MonoGame previously did not support GraphicsDevice.Reset, and now the method is present. Update Nuclectic.");
+	  }
 
     /// <summary>Component being tested</summary>
     private GraphicsDeviceDrawableComponent testComponent;

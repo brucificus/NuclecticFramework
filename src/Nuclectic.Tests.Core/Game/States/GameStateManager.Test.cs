@@ -174,11 +174,11 @@ namespace Nuclectic.Tests.Game.States {
     public void TestGameServiceConstructor() {
       var services = new GameServiceContainer();
 
-      Assert.IsNull(services.GetService(typeof(IGameStateService)));
+      Assert.IsNull(services.GetService(typeof(IManualGameStateService)));
       using (var manager = new ManualGameStateManager(services)) {
-        Assert.IsNotNull(services.GetService(typeof(IGameStateService)));
+        Assert.IsNotNull(services.GetService(typeof(IManualGameStateService)));
       }
-      Assert.IsNull(services.GetService(typeof(IGameStateService)));
+	  Assert.IsNull(services.GetService(typeof(IManualGameStateService)));
     }
 
     /// <summary>

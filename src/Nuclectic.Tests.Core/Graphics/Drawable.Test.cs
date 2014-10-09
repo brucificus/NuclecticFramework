@@ -18,6 +18,8 @@ License along with this library
 */
 #endregion
 
+using System.Linq;
+using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Nuclectic.Graphics.TriD;
@@ -191,13 +193,19 @@ namespace Nuclectic.Tests.Graphics {
           Assert.AreEqual(0, drawable.LoadContentFalseCount);
           Assert.AreEqual(0, drawable.UnloadContentFalseCount);
 
-          service.ResetDevice();
+          Assert.Throws<NotSupportedException>(()=>service.ResetDevice());
 
-          Assert.AreEqual(1, drawable.LoadContentFalseCount);
-          Assert.AreEqual(1, drawable.UnloadContentFalseCount);
+		  //Assert.AreEqual(1, drawable.LoadContentFalseCount);
+		  //Assert.AreEqual(1, drawable.UnloadContentFalseCount);
         }
       }
     }
+
+	[Test]
+	public void GraphicsDeviceDoesNotHaveReset() {
+	  var foundMethods = typeof(Microsoft.Xna.Framework.Graphics.GraphicsDevice).GetTypeInfo().GetMethods().Where(m => m.Name == "Reset").ToArray();
+	  Assert.IsEmpty(foundMethods, "MonoGame previously did not support GraphicsDevice.Reset, and now the method is present. Update Nuclectic.");
+	}
 
   }
 

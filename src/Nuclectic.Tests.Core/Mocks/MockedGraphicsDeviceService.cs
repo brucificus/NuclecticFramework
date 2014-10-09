@@ -218,7 +218,7 @@ namespace Nuclectic.Tests.Mocks {
       dummyViewport.MaxDepth = 0.9f;
       this.dummyGraphicsDevice.Viewport = dummyViewport;
 
-      throw new NotSupportedException();
+	  throw new NotSupportedException("MonoGame does not support GraphicsDevice.Reset");
 	  //this.dummyGraphicsDevice.Reset();
       OnDeviceReset();
     }

@@ -54,30 +54,6 @@ namespace Nuclectic.Tests.Game.Packing {
 
       Assert.AreSame(inner, testException.InnerException);
     }
-
-    /// <summary>
-    ///   Test whether the exception can be serialized
-    /// </summary>
-    [Test]
-    public void TestSerialization() {
-      BinaryFormatter formatter = new BinaryFormatter();
-
-      using(MemoryStream memory = new MemoryStream()) {
-        OutOfSpaceException exception1 = new OutOfSpaceException(
-          "Hello World"
-        );
-
-        formatter.Serialize(memory, exception1);
-        memory.Position = 0;
-        object exception2 = formatter.Deserialize(memory);
-
-        Assert.IsInstanceOf<OutOfSpaceException>(exception2);
-        Assert.AreEqual(
-          exception1.Message, ((OutOfSpaceException)exception2).Message
-        );
-      }
-    }
-
   }
 
 } // namespace Nuclex.Game.Packing
