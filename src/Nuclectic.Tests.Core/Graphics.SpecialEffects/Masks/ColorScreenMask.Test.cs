@@ -32,7 +32,8 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks
 {
 	/// <summary>Unit tests for the solid color screen mask class</summary>
-	[TestFixture]
+	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
+	[RequiresSTA]
 	internal class ColorScreenMaskTest
 		: TestFixtureBase
 	{

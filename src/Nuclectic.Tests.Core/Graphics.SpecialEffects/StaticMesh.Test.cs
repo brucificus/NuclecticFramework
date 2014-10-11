@@ -33,6 +33,7 @@
 
 //  /// <summary>Unit test for the static mesh graphics resource keeper</summary>
 //  [TestFixture]
+//  [RequiresSTA]
 //  internal class StaticMeshTest {
 
 //	#region struct TestVertex

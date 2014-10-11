@@ -33,7 +33,8 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Graphics
 {
 	/// <summary>Unit tests for the 'Drawable' class</summary>
-	[TestFixture]
+	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
+	[RequiresSTA]
 	internal class DrawableTest
 		: TestFixtureBase
 	{

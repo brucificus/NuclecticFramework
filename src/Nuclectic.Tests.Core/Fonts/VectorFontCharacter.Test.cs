@@ -33,6 +33,7 @@ namespace Nuclectic.Tests.Fonts
 {
 	/// <summary>Unit tests for the vector font character class</summary>
 	[TestFixture]
+	[RequiresSTA]
 	public class VectorFontCharacterTest : TestFixtureBase
 	{
 		/// <summary>Verifies that the tested character has a valid advancement</summary>

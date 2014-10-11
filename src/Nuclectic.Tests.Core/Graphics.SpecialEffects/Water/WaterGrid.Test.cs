@@ -31,7 +31,8 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 {
 	/// <summary>Unit tests for the grid class</summary>
-	[TestFixture]
+	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
+	[RequiresSTA]
 	internal class WaterGridTest
 		: TestFixtureBase
 	{

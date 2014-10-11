@@ -31,6 +31,7 @@
 
 //  /// <summary>Unit tests for the debug drawer</summary>
 //  [TestFixture]
+//  [RequiresSTA]
 //  internal class DebugDrawerTest {
 
 //	/// <summary>

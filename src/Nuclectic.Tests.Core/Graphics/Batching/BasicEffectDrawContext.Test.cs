@@ -30,7 +30,8 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Graphics.Batching
 {
 	/// <summary>Unit tests for the BasicEffect drawing context</summary>
-	[TestFixture]
+	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
+	[RequiresSTA]
 	internal class BasicEffectDrawContextTest
 		: TestFixtureBase
 	{

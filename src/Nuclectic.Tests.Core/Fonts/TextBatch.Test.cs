@@ -33,6 +33,7 @@
 
 //  /// <summary>Unit tests for the text batcher</summary>
 //  [TestFixture]
+//  [RequiresSTA]
 //  public class TextBatchTest {
 
 //	#region class TestText

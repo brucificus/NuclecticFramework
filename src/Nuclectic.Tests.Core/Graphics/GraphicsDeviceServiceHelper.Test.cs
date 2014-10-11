@@ -32,6 +32,7 @@
 
 //  /// <summary>Unit tests for the graphics device mock test helper</summary>
 //  [TestFixture]
+//  [RequiresSTA]
 //  internal class GraphicsDeviceServiceHelperTest {
 
 //	#region interface IGraphicsDeviceServiceSubscriber

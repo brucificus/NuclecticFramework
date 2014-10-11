@@ -31,7 +31,8 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Graphics.SpecialEffects.Sky
 {
 	/// <summary>Unit tests for the skybox cube class</summary>
-	[TestFixture]
+	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
+	[RequiresSTA]
 	internal class SkyboxCubeTest
 		: TestFixtureBase
 	{

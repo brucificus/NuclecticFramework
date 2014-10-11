@@ -33,7 +33,8 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Graphics.Batching
 {
 	/// <summary>Unit tests for the DrawUserPrimitive()-based batch drawer</summary>
-	[TestFixture]
+	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
+	[RequiresSTA]
 	internal class UserPrimitiveBatchDrawerTest
 		: TestFixtureBase
 	{

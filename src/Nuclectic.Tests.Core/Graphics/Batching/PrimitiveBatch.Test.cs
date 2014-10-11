@@ -31,6 +31,7 @@
 
 //  /// <summary>Unit tests for the primitive batcher</summary>
 //  [TestFixture]
+//  [RequiresSTA]
 //  internal class PrimitiveBatchTest {
 
 //	#region class DummyDrawContext

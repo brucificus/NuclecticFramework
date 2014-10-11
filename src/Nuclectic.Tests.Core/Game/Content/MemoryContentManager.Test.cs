@@ -29,7 +29,8 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Game.Content
 {
 	/// <summary>Unit test for the embedded content manager class</summary>
-	[TestFixture]
+	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
+	[RequiresSTA]
 	internal class MemoryContentManagerTest
 		: TestFixtureBase
 	{

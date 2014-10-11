@@ -32,7 +32,8 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Graphics.SpecialEffects
 {
 	/// <summary>Unit test for the indexed mesh graphics resource keeper</summary>
-	[TestFixture]
+	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
+	[RequiresSTA]
 	internal class IndexedStaticMeshTest
 		: TestFixtureBase
 	{

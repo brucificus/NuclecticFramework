@@ -36,6 +36,7 @@
 
 //  /// <summary>Unit tests for the grid class</summary>
 //  [TestFixture]
+//  [RequiresSTA]
 //  internal class WaterSurfaceTest {
 
 //	/// <summary>Executed before each test is run</summary>

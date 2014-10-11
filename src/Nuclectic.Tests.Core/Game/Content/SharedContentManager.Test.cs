@@ -29,6 +29,7 @@
 
 //  /// <summary>Unit test for the shared content manager class</summary>
 //  [TestFixture]
+//  [RequiresSTA]
 //  internal class SharedContentManagerTest {
 
 //	#region class DummyContentManager

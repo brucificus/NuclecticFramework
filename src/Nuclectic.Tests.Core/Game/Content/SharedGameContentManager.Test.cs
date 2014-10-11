@@ -29,6 +29,7 @@
 
 //  /// <summary>Unit test for the embedded content manager class</summary>
 //  [TestFixture]
+//  [RequiresSTA]
 //  internal class GameSharedContentManagerTest {
 
 //	/// <summary>

@@ -32,7 +32,8 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Fonts
 {
 	/// <summary>Unit tests for the vector font class</summary>
-	[TestFixture]
+	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
+	[RequiresSTA]
 	public class VectorFontTest
 		: TestFixtureBase
 	{

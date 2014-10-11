@@ -33,39 +33,11 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Game
 {
 	/// <summary>Unit test for the drawable component class</summary>
-	[TestFixture]
+	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
+	[RequiresSTA]
 	internal class GraphicsDeviceGraphicsDeviceDrawableComponentTest
 		: TestFixtureBase
 	{
-		/// <summary>Called before each test is run</summary>
-		[SetUp]
-		public void Setup()
-		{
-			this.mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService();
-
-			GameServiceContainer services = new GameServiceContainer();
-			services.AddService(typeof (IGraphicsDeviceService), this.mockedGraphicsDeviceService);
-
-			this.testComponent = new GraphicsDeviceDrawableComponent(services);
-		}
-
-		/// <summary>Called after each test has run</summary>
-		[TearDown]
-		public void Teardown()
-		{
-			if (this.testComponent != null)
-			{
-				this.testComponent.Dispose();
-				this.testComponent = null;
-			}
-
-			if (this.mockedGraphicsDeviceService != null)
-			{
-				this.mockedGraphicsDeviceService.DestroyDevice();
-				this.mockedGraphicsDeviceService = null;
-			}
-		}
-
 		/// <summary>
 		///   Verifies that the constructor of the drawable component is working
 		/// </summary>
@@ -101,15 +73,24 @@ namespace Nuclectic.Tests.Game
 		[Test]
 		public void TestInitializeBeforeGraphicsDeviceCreation()
 		{
-			this.testComponent.Initialize();
-			Assert.IsNull(testComponent.GraphicsDevice);
+			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
+			{
+				GameServiceContainer services = new GameServiceContainer();
+				services.AddService(typeof(IGraphicsDeviceService), mockedGraphicsDeviceService);
 
-			this.mockedGraphicsDeviceService.CreateDevice();
+				using (var testComponent = new GraphicsDeviceDrawableComponent(services))
+				{
+					testComponent.Initialize();
+					Assert.IsNull(testComponent.GraphicsDevice);
 
-			Assert.AreSame(
-						   this.mockedGraphicsDeviceService.GraphicsDevice,
-						   this.testComponent.GraphicsDevice
-				);
+					mockedGraphicsDeviceService.CreateDevice();
+
+					Assert.AreSame(
+								   mockedGraphicsDeviceService.GraphicsDevice,
+								   testComponent.GraphicsDevice
+						);
+				}
+			}
 		}
 
 		/// <summary>
@@ -119,14 +100,21 @@ namespace Nuclectic.Tests.Game
 		[Test]
 		public void TestInitializeAfterGraphicsDeviceCreation()
 		{
-			this.mockedGraphicsDeviceService.CreateDevice();
+			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
+			{
+				GameServiceContainer services = new GameServiceContainer();
+				services.AddService(typeof(IGraphicsDeviceService), mockedGraphicsDeviceService);
 
-			this.testComponent.Initialize();
+				using (var testComponent = new GraphicsDeviceDrawableComponent(services))
+				{
+					testComponent.Initialize();
 
-			Assert.AreSame(
-						   this.mockedGraphicsDeviceService.GraphicsDevice,
-						   this.testComponent.GraphicsDevice
-				);
+					Assert.AreSame(
+								   mockedGraphicsDeviceService.GraphicsDevice,
+								   testComponent.GraphicsDevice
+						);
+				}
+			}
 		}
 
 		/// <summary>
@@ -135,11 +123,20 @@ namespace Nuclectic.Tests.Game
 		[Test]
 		public void TestGraphicsDeviceReset()
 		{
-			this.mockedGraphicsDeviceService.CreateDevice();
-			this.testComponent.Initialize();
-			Assert.Throws<NotSupportedException>(() => this.mockedGraphicsDeviceService.ResetDevice());
+			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
+			{
+				GameServiceContainer services = new GameServiceContainer();
+				services.AddService(typeof(IGraphicsDeviceService), mockedGraphicsDeviceService);
 
-			// Originally, no exception means success. But MonoGame doesn't support GraphicsDevice.Reset()
+				using (var testComponent = new GraphicsDeviceDrawableComponent(services))
+				{
+					mockedGraphicsDeviceService.CreateDevice();
+					testComponent.Initialize();
+					Assert.Throws<NotSupportedException>(() => mockedGraphicsDeviceService.ResetDevice());
+
+					// Originally, no exception means success. But MonoGame doesn't support GraphicsDevice.Reset()
+				}
+			}
 		}
 
 		[Test]
@@ -149,11 +146,6 @@ namespace Nuclectic.Tests.Game
 			Assert.IsEmpty(foundMethods, "MonoGame previously did not support GraphicsDevice.Reset, and now the method is present. Update Nuclectic.");
 		}
 
-		/// <summary>Component being tested</summary>
-		private GraphicsDeviceDrawableComponent testComponent;
-
-		/// <summary>Mock of the graphics device service</summary>
-		private IMockedGraphicsDeviceService mockedGraphicsDeviceService;
 	}
 } // namespace Nuclex.Game
 

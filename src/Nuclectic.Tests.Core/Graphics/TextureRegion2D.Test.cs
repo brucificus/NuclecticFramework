@@ -30,7 +30,8 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Graphics
 {
 	/// <summary>Unit tests for the texture region class</summary>
-	[TestFixture]
+	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
+	[RequiresSTA]
 	internal class TextureRegion2DTest
 		: TestFixtureBase
 	{

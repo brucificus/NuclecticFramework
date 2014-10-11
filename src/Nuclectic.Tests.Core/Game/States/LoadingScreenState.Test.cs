@@ -28,14 +28,15 @@ namespace Nuclectic.Tests.Game.States
 #if false
 	/// <summary>Unit test for the loading screen game state</summary>
   [TestFixture]
+  [RequiresSTA]
   internal class LoadingScreenStateTest {
 
-    #region class TestGameState
+	#region class TestGameState
 
     /// <summary>Game state used for unit testing</summary>
     private class TestGameState : GameState, ILoadableGameState {
 
-      #region class SynchronousAsyncResult
+	#region class SynchronousAsyncResult
 
       /// <summary>Dummy async result for a synchronously completed process</summary>
       private class SynchronousAsyncResult : IAsyncResult {
@@ -80,9 +81,9 @@ namespace Nuclectic.Tests.Game.States
 
       }
 
-      #endregion // class SynchronousAsyncResult
+	  #endregion // class SynchronousAsyncResult
 
-      #region class AsynchronousAsyncResult
+	#region class AsynchronousAsyncResult
 
       /// <summary>Dummy async result for an asynchronously completed process</summary>
       public class AsynchronousAsyncResult : IAsyncResult {
@@ -150,7 +151,7 @@ namespace Nuclectic.Tests.Game.States
 
       }
 
-      #endregion // class SynchronousAsyncResult
+	  #endregion // class SynchronousAsyncResult
 
       /// <summary>Can be fired when the loading progress has changed</summary>
       public event EventHandler<LoadProgressEventArgs> ProgressChanged;
@@ -212,9 +213,9 @@ namespace Nuclectic.Tests.Game.States
 
     }
 
-    #endregion // class TestGameState
+	#endregion // class TestGameState
 
-    #region class TestLoadingScreenState
+	#region class TestLoadingScreenState
 
     /// <summary>Loading screen game state used for testing</summary>
     private class TestLoadingScreenState : LoadingScreenState<TestGameState> {
@@ -248,7 +249,7 @@ namespace Nuclectic.Tests.Game.States
 
     }
 
-    #endregion // class TestLoadingScreenState
+	#endregion // class TestLoadingScreenState
 
     /// <summary>Called before each test is run</summary>
     [SetUp]

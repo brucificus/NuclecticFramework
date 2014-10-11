@@ -49,6 +49,7 @@ namespace Nuclectic.Tests.Fonts.Content
 
 		/// <summary>Verifies that the vector font reader can load a vector font</summary>
 		[Test]
+		[RequiresSTA]
 		public void TestVectorFontReading()
 		{
 			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService())

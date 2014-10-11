@@ -30,6 +30,7 @@
 
 //  /// <summary>Unit test for the LZMA content manager class</summary>
 //  [TestFixture]
+//  [RequiresSTA]
 //  internal class LzmaContentManagerTest {
 
 //	#region class TempDirectoryKeeper
