@@ -20,6 +20,7 @@
     <DefineConstants>TRACE;DEBUG;UNITTEST;WINDOWS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,8 +43,24 @@
     <Reference Include="Moq">
       <HintPath>..\..\packages\Moq.4.2.1409.1722\lib\net40\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.core">
+      <HintPath>..\..\packages\NUnitTestAdapter.1.2\lib\nunit.core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="nunit.core.interfaces">
+      <HintPath>..\..\packages\NUnitTestAdapter.1.2\lib\nunit.core.interfaces.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.util">
+      <HintPath>..\..\packages\NUnitTestAdapter.1.2\lib\nunit.util.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="NUnit.VisualStudio.TestAdapter">
+      <HintPath>..\..\packages\NUnitTestAdapter.1.2\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="PCLCrypto">
       <HintPath>..\..\packages\PCLCrypto.0.5.1.14165\lib\net40-Client\PCLCrypto.dll</HintPath>
@@ -239,6 +256,7 @@
     <Compile Include="Mocks\MockedGamePad.Test.cs" />
     <Compile Include="Mocks\MockedGraphicsDeviceService.cs" />
     <Compile Include="Mocks\MockedGraphicsDeviceService.Test.cs" />
+    <Compile Include="Mocks\MockedGraphicsDeviceServiceExtensions.cs" />
     <Compile Include="Mocks\MockedKeyboard.cs" />
     <Compile Include="Mocks\MockedKeyboard.KeyMap.cs" />
     <Compile Include="Mocks\MockedKeyboard.Test.cs" />

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
+using Nuclectic.Support;
 
 namespace Nuclectic.Tests.Mocks
 {
@@ -31,7 +32,7 @@ namespace Nuclectic.Tests.Mocks
 					GuardAgainstDisposingOrDisposed();
 					System.Threading.Monitor.Enter(GlobalLock);
 					var graphicsDeviceService = graphicsDeviceServiceFactory();
-					_Disposable = new Disposable(
+					_Disposable = new OnDispose(
 						() =>
 						{
 							try
@@ -144,14 +145,5 @@ namespace Nuclectic.Tests.Mocks
 			if (_DisposingOrDisposed)
 				throw new ObjectDisposedException(AlreadyDisposedMessage);
 		}
-	}
-
-	public class Disposable : IDisposable
-	{
-		private readonly Action _onDispose;
-
-		public Disposable(Action onDispose) { _onDispose = onDispose; }
-
-		public void Dispose() { _onDispose(); }
 	}
 }

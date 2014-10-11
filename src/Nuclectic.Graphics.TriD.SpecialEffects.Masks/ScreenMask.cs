@@ -21,6 +21,7 @@ License along with this library
 #endregion
 
 using Microsoft.Xna.Framework.Graphics;
+using Nuclectic.Support;
 
 namespace Nuclectic.Graphics.TriD.SpecialEffects.Masks
 {
@@ -37,15 +38,12 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Masks
 	{
 		/// <summary>Initializes as new skybox cube</summary>
 		/// <param name="graphicsDevice">Graphics device the skybox cube lives on</param>
-		/// <param name="effect">Effect by which the screen mask will be rendered</param>
+		/// <param name="ownedEffect">The (owned) effect by which the screen mask will be rendered</param>
 		/// <param name="vertices">Vertices that make up the screen mask</param>
-		public ScreenMask(
-			GraphicsDevice graphicsDevice, Effect effect, VertexType[ /*4*/] vertices
-			)
-			:
-				base(graphicsDevice, 4)
+		public ScreenMask(GraphicsDevice graphicsDevice, IOwned<Effect> ownedEffect, VertexType[/*4*/] vertices)
+			: base(graphicsDevice, 4)
 		{
-			this.Effect = effect;
+			this.OwnedEffect = ownedEffect;
 			this.Vertices = vertices;
 
 			base.VertexBuffer.SetData<VertexType>(vertices);
@@ -56,7 +54,7 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Masks
 		{
 			Select();
 
-			EffectTechnique technique = this.Effect.CurrentTechnique;
+			EffectTechnique technique = this.OwnedEffect.Value.CurrentTechnique;
 			for (int pass = 0; pass < technique.Passes.Count; ++pass)
 			{
 				technique.Passes[pass].Apply();
@@ -65,8 +63,11 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Masks
 			}
 		}
 
-		/// <summary>Effect being used to render the screen mask</summary>
-		protected Effect Effect;
+		/// <summary>Immediately releases all resources owned by the instance</summary>
+		public override void Dispose() { OwnedEffect.Dispose(); base.Dispose(); }
+
+		/// <summary>The (owned) effect being used to render the screen mask</summary>
+		protected IOwned<Effect> OwnedEffect;
 
 		/// <summary>Vertices used to render the screen mask</summary>
 		protected VertexType[ /*4*/] Vertices;

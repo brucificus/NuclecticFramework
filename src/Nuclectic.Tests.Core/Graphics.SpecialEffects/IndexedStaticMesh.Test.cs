@@ -34,6 +34,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 	/// <summary>Unit test for the indexed mesh graphics resource keeper</summary>
 	[TestFixture]
 	internal class IndexedStaticMeshTest
+		: TestFixtureBase
 	{
 		#region struct TestVertex
 
@@ -92,17 +93,13 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		[Test]
 		public void TestSimpleConstructor()
 		{
-			MockedGraphicsDeviceService mockGraphicsDeviceService =
-				new MockedGraphicsDeviceService();
-
+			using (var mockGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
-			{
-				using (
-					TestIndexedStaticMesh test = new TestIndexedStaticMesh(
-						mockGraphicsDeviceService.GraphicsDevice, 4, 4
-						)
-					) { }
-			}
+			using (
+				TestIndexedStaticMesh test = new TestIndexedStaticMesh(
+					mockGraphicsDeviceService.GraphicsDevice, 4, 4
+					)
+				) { }
 		}
 
 		/// <summary>
@@ -111,13 +108,11 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		[Test]
 		public void TestThrowInSimpleConstructorRollback()
 		{
-			MockedGraphicsDeviceService mockGraphicsDeviceService =
-				new MockedGraphicsDeviceService();
-
+			using (var mockGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
 			{
 				Assert.Throws<ArgumentOutOfRangeException>(
-														   delegate()
+														   () =>
 														   {
 															   using (
 																   TestIndexedStaticMesh test = new TestIndexedStaticMesh(
@@ -135,9 +130,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		[Test]
 		public void TestSelect()
 		{
-			MockedGraphicsDeviceService mockGraphicsDeviceService =
-				new MockedGraphicsDeviceService();
-
+			using (var mockGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
 			{
 				using (

@@ -20,94 +20,25 @@ License along with this library
 
 #endregion
 
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
 using Nuclectic.Fonts;
 using Nuclectic.Fonts.Content;
 using Nuclectic.Graphics.Helpers;
 using Nuclectic.Tests.Mocks;
 #if UNITTEST
-using System;
-using System.IO;
 using NUnit.Framework;
 
 namespace Nuclectic.Tests.Fonts.Content
 {
 	/// <summary>Unit tests for the vector font reader</summary>
 	[TestFixture]
-	public class VectorFontReaderTest
+	public class VectorFontReaderTest : TestFixtureBase
 	{
 		#region class MemoryContentManager
-
-		/// <summary>Content manager for loading content from arrays</summary>
-		private class MemoryContentManager : ContentManager
-		{
-			/// <summary>
-			///   Initializes a new embedded content manager using a directly specified
-			///   graphics device service for the resources.
-			/// </summary>
-			/// <param name="graphicsDeviceService">
-			///   Graphics device service to load the content asset in
-			/// </param>
-			public MemoryContentManager(IGraphicsDeviceService graphicsDeviceService)
-				:
-					this(makePrivateServiceContainer(graphicsDeviceService)) { }
-
-			/// <summary>
-			///   Initializes a new embedded content manager using the provided game services
-			///   container for providing services for the loaded asset.
-			/// </summary>
-			/// <param name="services">
-			///   Service container containing the services the asset may access
-			/// </param>
-			public MemoryContentManager(IServiceProvider services)
-				:
-					base(services) { }
-
-			/// <summary>Loads the asset the embedded content manager was created for</summary>
-			/// <typeparam name="AssetType">Type of the asset to load</typeparam>
-			/// <param name="content">Content that will be loaded as an asset</param>
-			/// <returns>The loaded asset</returns>
-			public AssetType Load<AssetType>(byte[] content)
-			{
-				lock (this)
-				{
-					using (this.memoryStream = new MemoryStream(content, false))
-					{
-						return base.ReadAsset<AssetType>("null", null);
-					}
-				} // lock(this)
-			}
-
-			/// <summary>Opens a stream for reading the specified asset</summary>
-			/// <param name="assetName">The name of the asset to be read</param>
-			/// <returns>The opened stream for the asset</returns>
-			protected override Stream OpenStream(string assetName) { return this.memoryStream; }
-
-			/// <summary>
-			///   Creates a new game service container containing the specified graphics device
-			///   service only.
-			/// </summary>
-			/// <param name="graphicsDeviceService">Service to add to the service container</param>
-			/// <returns>A service container with the specified graphics device service</returns>
-			private static IServiceProvider makePrivateServiceContainer(
-				IGraphicsDeviceService graphicsDeviceService
-				)
-			{
-				GameServiceContainer gameServices = new GameServiceContainer();
-				gameServices.AddService(typeof (IGraphicsDeviceService), graphicsDeviceService);
-				return gameServices;
-			}
-
-			/// <summary>Content that will be loaded by the embedded content manager</summary>
-			private MemoryStream memoryStream;
-		}
 
 		#endregion // class MemoryContentManager
 
 		/// <summary>
-		///   Tests whether the constructor if the vector font reader is working
+		///     Tests whether the constructor if the vector font reader is working
 		/// </summary>
 		[Test]
 		public void TestConstructor()
@@ -120,15 +51,9 @@ namespace Nuclectic.Tests.Fonts.Content
 		[Test]
 		public void TestVectorFontReading()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
-			using (IDisposable keeper = service.CreateDevice())
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService())
 			{
-				using (
-					ResourceContentManager contentManager = new ResourceContentManager(
-						GraphicsDeviceServiceHelper.MakePrivateServiceProvider(service),
-						Resources.UnitTestResources.ResourceManager
-						)
-					)
+				using (var contentManager = service.CreateResourceContentManager(Resources.UnitTestResources.ResourceManager))
 				{
 					VectorFont font = contentManager.Load<VectorFont>("UnitTestVectorFont");
 					Assert.IsNotNull(font);

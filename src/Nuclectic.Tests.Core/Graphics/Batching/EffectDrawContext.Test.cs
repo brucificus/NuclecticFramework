@@ -32,6 +32,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 	/// <summary>Unit tests for the Effect drawing context</summary>
 	[TestFixture]
 	internal class EffectDrawContextTest
+		: TestFixtureBase
 	{
 		#region class TestDrawContext
 
@@ -73,14 +74,12 @@ namespace Nuclectic.Tests.Graphics.Batching
 		[Test]
 		public void TestConstructor()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = service.CreateDevice())
+			using (BasicEffect effect = new BasicEffect(service.GraphicsDevice))
 			{
-				using (BasicEffect effect = new BasicEffect(service.GraphicsDevice))
-				{
-					TestEffectDrawContext test = new TestEffectDrawContext(effect);
-					Assert.GreaterOrEqual(test.Passes, 1);
-				}
+				TestEffectDrawContext test = new TestEffectDrawContext(effect);
+				Assert.GreaterOrEqual(test.Passes, 1);
 			}
 		}
 
@@ -91,17 +90,15 @@ namespace Nuclectic.Tests.Graphics.Batching
 		[Test]
 		public void TestBeginEnd()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = service.CreateDevice())
+			using (BasicEffect effect = new BasicEffect(service.GraphicsDevice))
 			{
-				using (BasicEffect effect = new BasicEffect(service.GraphicsDevice))
-				{
-					TestEffectDrawContext test = new TestEffectDrawContext(effect);
+				TestEffectDrawContext test = new TestEffectDrawContext(effect);
 
-					for (int pass = 0; pass < test.Passes; ++pass)
-					{
-						test.Apply(pass);
-					}
+				for (int pass = 0; pass < test.Passes; ++pass)
+				{
+					test.Apply(pass);
 				}
 			}
 		}
@@ -112,14 +109,12 @@ namespace Nuclectic.Tests.Graphics.Batching
 		[Test]
 		public void TestEffectRetrieval()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = service.CreateDevice())
+			using (BasicEffect effect = new BasicEffect(service.GraphicsDevice))
 			{
-				using (BasicEffect effect = new BasicEffect(service.GraphicsDevice))
-				{
-					TestEffectDrawContext test = new TestEffectDrawContext(effect);
-					Assert.AreSame(effect, test.Effect);
-				}
+				TestEffectDrawContext test = new TestEffectDrawContext(effect);
+				Assert.AreSame(effect, test.Effect);
 			}
 		}
 
@@ -130,14 +125,12 @@ namespace Nuclectic.Tests.Graphics.Batching
 		[Test]
 		public void TestEqualsWithSameObject()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = service.CreateDevice())
+			using (BasicEffect effect = new BasicEffect(service.GraphicsDevice))
 			{
-				using (BasicEffect effect = new BasicEffect(service.GraphicsDevice))
-				{
-					TestEffectDrawContext test = new TestEffectDrawContext(effect);
-					Assert.IsTrue(test.Equals((object)test));
-				}
+				TestEffectDrawContext test = new TestEffectDrawContext(effect);
+				Assert.IsTrue(test.Equals((object)test));
 			}
 		}
 
@@ -148,18 +141,14 @@ namespace Nuclectic.Tests.Graphics.Batching
 		[Test]
 		public void TestEqualsWithDifferentObject()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = service.CreateDevice())
+			using (BasicEffect effect1 = new BasicEffect(service.GraphicsDevice))
+			using (BasicEffect effect2 = new BasicEffect(service.GraphicsDevice))
 			{
-				using (BasicEffect effect1 = new BasicEffect(service.GraphicsDevice))
-				{
-					using (BasicEffect effect2 = new BasicEffect(service.GraphicsDevice))
-					{
-						TestEffectDrawContext test1 = new TestEffectDrawContext(effect1);
-						TestEffectDrawContext test2 = new TestEffectDrawContext(effect2);
-						Assert.IsFalse(test1.Equals((object)test2));
-					}
-				}
+				TestEffectDrawContext test1 = new TestEffectDrawContext(effect1);
+				TestEffectDrawContext test2 = new TestEffectDrawContext(effect2);
+				Assert.IsFalse(test1.Equals((object)test2));
 			}
 		}
 
@@ -170,15 +159,13 @@ namespace Nuclectic.Tests.Graphics.Batching
 		[Test]
 		public void TestEqualsWithIncpmpatibleDrawContext()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = service.CreateDevice())
+			using (BasicEffect effect = new BasicEffect(service.GraphicsDevice))
 			{
-				using (BasicEffect effect = new BasicEffect(service.GraphicsDevice))
-				{
-					TestEffectDrawContext test1 = new TestEffectDrawContext(effect);
-					TestDrawContext test2 = new TestDrawContext();
-					Assert.IsFalse(test1.Equals((object)test2));
-				}
+				TestEffectDrawContext test1 = new TestEffectDrawContext(effect);
+				TestDrawContext test2 = new TestDrawContext();
+				Assert.IsFalse(test1.Equals((object)test2));
 			}
 		}
 	}

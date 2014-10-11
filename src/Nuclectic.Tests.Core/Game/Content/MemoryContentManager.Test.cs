@@ -31,6 +31,7 @@ namespace Nuclectic.Tests.Game.Content
 	/// <summary>Unit test for the embedded content manager class</summary>
 	[TestFixture]
 	internal class MemoryContentManagerTest
+		: TestFixtureBase
 	{
 		/// <summary>Tests the constructor of the embedded content manager</summary>
 		[Test]
@@ -70,12 +71,9 @@ namespace Nuclectic.Tests.Game.Content
 		[SetUp]
 		public void Setup()
 		{
-			this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService();
-			this.mockedGraphicsDeviceService.CreateDevice();
+			this.mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService();
 
-			this.memoryContentManager = new MemoryContentManager(
-				this.mockedGraphicsDeviceService
-				);
+			this.memoryContentManager = new MemoryContentManager(this.mockedGraphicsDeviceService);
 		}
 
 		/// <summary>Called after each test has run</summary>
@@ -95,7 +93,7 @@ namespace Nuclectic.Tests.Game.Content
 		}
 
 		/// <summary>Mock of the graphics device service used for unit testing</summary>
-		private MockedGraphicsDeviceService mockedGraphicsDeviceService;
+		private IMockedGraphicsDeviceService mockedGraphicsDeviceService;
 
 		/// <summary>Content manager which loads resources from in-memory arrays</summary>
 		private MemoryContentManager memoryContentManager;

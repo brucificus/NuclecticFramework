@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Nuclectic.Tests.Mocks
 {
-	public interface IMockedGraphicsDeviceService : IGraphicsDeviceService
+	public interface IMockedGraphicsDeviceService : IGraphicsDeviceService, IDisposable
 	{
 		/// <summary>Creates a new graphics device</summary>
 		/// <returns>

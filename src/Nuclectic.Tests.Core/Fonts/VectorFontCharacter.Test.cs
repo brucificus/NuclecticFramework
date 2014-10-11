@@ -33,7 +33,7 @@ namespace Nuclectic.Tests.Fonts
 {
 	/// <summary>Unit tests for the vector font character class</summary>
 	[TestFixture]
-	public class VectorFontCharacterTest
+	public class VectorFontCharacterTest : TestFixtureBase
 	{
 		/// <summary>Verifies that the tested character has a valid advancement</summary>
 		[Test]
@@ -55,15 +55,10 @@ namespace Nuclectic.Tests.Fonts
 		[SetUp]
 		public void Setup()
 		{
-			this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService();
-			this.mockedGraphicsDeviceService.CreateDevice();
+			this.mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService();
 
-			this.contentManager = new ResourceContentManager(
-				GraphicsDeviceServiceHelper.MakePrivateServiceProvider(
-																	   this.mockedGraphicsDeviceService
-					),
-				Resources.UnitTestResources.ResourceManager
-				);
+			this.contentManager = mockedGraphicsDeviceService.CreateResourceContentManager(Resources.UnitTestResources.ResourceManager);
+
 			this.vectorFont = this.contentManager.Load<VectorFont>("UnitTestVectorFont");
 
 			char character = getFirstVisibleCharacter();
@@ -105,7 +100,7 @@ namespace Nuclectic.Tests.Fonts
 		}
 
 		/// <summary>Mocked graphics device service used for unit testing</summary>
-		private MockedGraphicsDeviceService mockedGraphicsDeviceService;
+		private IMockedGraphicsDeviceService mockedGraphicsDeviceService;
 
 		/// <summary>Content manager used to load the vector font</summary>
 		private ResourceContentManager contentManager;

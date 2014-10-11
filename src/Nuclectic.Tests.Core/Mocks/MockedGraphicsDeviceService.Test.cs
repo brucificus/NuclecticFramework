@@ -62,7 +62,7 @@
 //	  void DeviceReset(object sender, EventArgs arguments);
 //	}
 
-#endregion // interface IGraphicsDeviceSubscriber
+// #endregion // interface IGraphicsDeviceSubscriber
 
 //	/// <summary>Initialization routine executed before each test is run</summary>
 //	[SetUp]

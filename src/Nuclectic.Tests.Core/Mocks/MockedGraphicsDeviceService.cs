@@ -306,5 +306,14 @@ namespace Nuclectic.Tests.Mocks
 
 		/// <summary>Graphics profile the device will be created for</summary>
 		private GraphicsProfile graphicsProfile;
+
+		#region Implementation of IDisposable
+
+		/// <summary>
+		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+		/// </summary>
+		public void Dispose() { DestroyDevice(); }
+
+		#endregion
 	}
 } // namespace Nuclex.Testing.Xna

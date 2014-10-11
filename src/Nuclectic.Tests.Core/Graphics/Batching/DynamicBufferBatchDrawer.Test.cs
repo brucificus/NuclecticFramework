@@ -35,6 +35,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 	/// <summary>Unit tests for the dynamic buffer based batch drawer</summary>
 	[TestFixture]
 	internal class DynamicBufferBatchDrawerTest
+		: TestFixtureBase
 	{
 		#region class Creator
 
@@ -44,8 +45,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 			/// <summary>Initializes a new batch drawer creator</summary>
 			public Creator()
 			{
-				this.mockedService = new MockedGraphicsDeviceService(DeviceType.Reference);
-				this.graphicsDeviceKeeper = this.mockedService.CreateDevice();
+				this.mockedService = PrepareGlobalExclusiveMockedGraphicsDeviceService();
 				try
 				{
 					this.vertexDeclaration = VertexDeclarationHelperTest.TestVertex.VertexDeclaration;
@@ -83,7 +83,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 			public DynamicBufferBatchDrawer<VertexDeclarationHelperTest.TestVertex> BatchDrawer { get { return this.batchDrawer; } }
 
 			/// <summary>Mocked graphics device service the drawer operates on</summary>
-			private MockedGraphicsDeviceService mockedService;
+			private IMockedGraphicsDeviceService mockedService;
 
 			/// <summary>Keeps the graphics device alive</summary>
 			private IDisposable graphicsDeviceKeeper;

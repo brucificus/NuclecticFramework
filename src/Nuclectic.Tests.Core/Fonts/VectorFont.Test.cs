@@ -34,6 +34,7 @@ namespace Nuclectic.Tests.Fonts
 	/// <summary>Unit tests for the vector font class</summary>
 	[TestFixture]
 	public class VectorFontTest
+		: TestFixtureBase
 	{
 		#region class KerningPairTest
 
@@ -165,15 +166,10 @@ namespace Nuclectic.Tests.Fonts
 		[SetUp]
 		public void Setup()
 		{
-			this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService();
-			this.mockedGraphicsDeviceService.CreateDevice();
+			this.mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService();
 
-			this.contentManager = new ResourceContentManager(
-				GraphicsDeviceServiceHelper.MakePrivateServiceProvider(
-																	   this.mockedGraphicsDeviceService
-					),
-				Resources.UnitTestResources.ResourceManager
-				);
+			this.contentManager = mockedGraphicsDeviceService.CreateResourceContentManager(Resources.UnitTestResources.ResourceManager);
+
 			this.vectorFont = this.contentManager.Load<VectorFont>("UnitTestVectorFont");
 		}
 
@@ -211,7 +207,7 @@ namespace Nuclectic.Tests.Fonts
 		}
 
 		/// <summary>Mocked graphics device service used for unit testing</summary>
-		private MockedGraphicsDeviceService mockedGraphicsDeviceService;
+		private IMockedGraphicsDeviceService mockedGraphicsDeviceService;
 
 		/// <summary>Content manager used to load the vector font</summary>
 		private ResourceContentManager contentManager;

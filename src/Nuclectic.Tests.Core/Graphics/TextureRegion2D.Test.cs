@@ -32,13 +32,13 @@ namespace Nuclectic.Tests.Graphics
 	/// <summary>Unit tests for the texture region class</summary>
 	[TestFixture]
 	internal class TextureRegion2DTest
+		: TestFixtureBase
 	{
 		/// <summary>Called before each test is run</summary>
 		[SetUp]
 		public void Setup()
 		{
-			this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService();
-			this.mockedGraphicsDeviceService.CreateDevice();
+			this.mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService();
 		}
 
 		/// <summary>Called after each test has run</summary>
@@ -373,7 +373,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>Mocked graphics service used to run the unit tests</summary>
-		private MockedGraphicsDeviceService mockedGraphicsDeviceService;
+		private IMockedGraphicsDeviceService mockedGraphicsDeviceService;
 	}
 } // namespace Nuclex.Graphics
 

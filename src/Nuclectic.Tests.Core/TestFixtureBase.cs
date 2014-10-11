@@ -23,9 +23,16 @@ namespace Nuclectic.Tests
 			return AutoMockWrapper.CreateLoose();
 		}
 
-		protected IMockedGraphicsDeviceService AcquireGlobalExclusiveMockedGraphicsDeviceService()
+		protected static IMockedGraphicsDeviceService PrepareGlobalExclusiveMockedGraphicsDeviceService(bool callCreateDeviceOnInit = true)
 		{
-			return new GlobalExclusiveMockedGraphicsDeviceService(() => new MockedGraphicsDeviceService());
+			return new GlobalExclusiveMockedGraphicsDeviceService(
+				() =>
+				{
+					var result = new MockedGraphicsDeviceService();
+					if (callCreateDeviceOnInit)
+						result.CreateDevice();
+					return result;
+				});
 		}
 	}
 }

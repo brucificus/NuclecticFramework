@@ -33,6 +33,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Sky
 	/// <summary>Unit tests for the skybox cube class</summary>
 	[TestFixture]
 	internal class SkyboxCubeTest
+		: TestFixtureBase
 	{
 		/// <summary>
 		///   Verifies that the constructor of the skybox cube class is working
@@ -40,9 +41,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Sky
 		[Test]
 		public void TestConstructor()
 		{
-			MockedGraphicsDeviceService mockGraphicsDeviceService =
-				new MockedGraphicsDeviceService();
-
+			using (var mockGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
 			{
 				SkyboxCube theSkybox = new SkyboxCube(mockGraphicsDeviceService.GraphicsDevice);
@@ -56,36 +55,24 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Sky
 		[Test]
 		public void TestRenderSkybox()
 		{
-			MockedGraphicsDeviceService mockGraphicsDeviceService =
-				new MockedGraphicsDeviceService(DeviceType.Reference);
-
+			using (var mockGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
+			using (BasicEffect effect = new BasicEffect(mockGraphicsDeviceService.GraphicsDevice))
+			using (SkyboxCube skyboxCube = new SkyboxCube(mockGraphicsDeviceService.GraphicsDevice))
 			{
-				using (
-					BasicEffect effect = new BasicEffect(mockGraphicsDeviceService.GraphicsDevice)
-					)
+				skyboxCube.AssignVertexBuffer();
+
+				EffectTechnique technique = effect.CurrentTechnique;
+				for (int pass = 0; pass < technique.Passes.Count; ++pass)
 				{
-					using (
-						SkyboxCube skyboxCube = new SkyboxCube(
-							mockGraphicsDeviceService.GraphicsDevice
-							)
-						)
-					{
-						skyboxCube.AssignVertexBuffer();
+					technique.Passes[pass].Apply();
 
-						EffectTechnique technique = effect.CurrentTechnique;
-						for (int pass = 0; pass < technique.Passes.Count; ++pass)
-						{
-							technique.Passes[pass].Apply();
-
-							skyboxCube.DrawNorthernFace();
-							skyboxCube.DrawEasternFace();
-							skyboxCube.DrawSouthernFace();
-							skyboxCube.DrawWesternFace();
-							skyboxCube.DrawUpperFace();
-							skyboxCube.DrawLowerFace();
-						}
-					}
+					skyboxCube.DrawNorthernFace();
+					skyboxCube.DrawEasternFace();
+					skyboxCube.DrawSouthernFace();
+					skyboxCube.DrawWesternFace();
+					skyboxCube.DrawUpperFace();
+					skyboxCube.DrawLowerFace();
 				}
 			}
 		}

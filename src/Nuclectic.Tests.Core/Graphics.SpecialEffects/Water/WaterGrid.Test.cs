@@ -33,6 +33,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 	/// <summary>Unit tests for the grid class</summary>
 	[TestFixture]
 	internal class WaterGridTest
+		: TestFixtureBase
 	{
 		/// <summary>
 		///   Verifies that the simple constructor of the Grid class is working
@@ -40,9 +41,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		[Test]
 		public void TestSimpleConstructor()
 		{
-			MockedGraphicsDeviceService mockGraphicsDeviceService =
-				new MockedGraphicsDeviceService();
-
+			using (var mockGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
 			{
 				WaterGrid theGrid = new WaterGrid(
@@ -59,9 +58,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		[Test]
 		public void TestFullConstructor()
 		{
-			MockedGraphicsDeviceService mockGraphicsDeviceService =
-				new MockedGraphicsDeviceService();
-
+			using (var mockGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
 			{
 				WaterGrid theGrid = new WaterGrid(
@@ -80,9 +77,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		[Test]
 		public void TestThrowOnInvalidSegmentCountX()
 		{
-			MockedGraphicsDeviceService mockGraphicsDeviceService =
-				new MockedGraphicsDeviceService();
-
+			using (var mockGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
 			{
 				Assert.Throws<ArgumentException>(
@@ -103,9 +98,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		[Test]
 		public void TestThrowOnInvalidSegmentCountY()
 		{
-			MockedGraphicsDeviceService mockGraphicsDeviceService =
-				new MockedGraphicsDeviceService();
-
+			using (var mockGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
 			{
 				Assert.Throws<ArgumentException>(
@@ -125,9 +118,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		[Test]
 		public void TestRenderingProperties()
 		{
-			MockedGraphicsDeviceService mockGraphicsDeviceService =
-				new MockedGraphicsDeviceService();
-
+			using (var mockGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
 			{
 				using (
@@ -150,9 +141,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		[Test]
 		public void TestStatisticalProperties()
 		{
-			MockedGraphicsDeviceService mockGraphicsDeviceService =
-				new MockedGraphicsDeviceService();
-
+			using (var mockGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
 			{
 				using (

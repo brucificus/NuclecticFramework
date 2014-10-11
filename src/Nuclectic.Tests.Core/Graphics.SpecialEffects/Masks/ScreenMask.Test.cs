@@ -23,6 +23,7 @@ License along with this library
 using Microsoft.Xna.Framework.Content;
 using Nuclectic.Graphics.Helpers;
 using Nuclectic.Graphics.TriD.SpecialEffects.Masks;
+using Nuclectic.Support;
 using Nuclectic.Tests.Mocks;
 using SlimDX.Direct3D9;
 using Effect = Microsoft.Xna.Framework.Graphics.Effect;
@@ -35,81 +36,78 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks
 	/// <summary>Unit tests for the screen mask class</summary>
 	[TestFixture]
 	internal class ScreenMaskTest
+		: TestFixtureBase
 	{
-		/// <summary>Executed before each test is run</summary>
-		[SetUp]
-		public void Setup()
-		{
-			this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService(DeviceType.Reference);
-			this.mockedGraphicsDeviceService.CreateDevice();
-
-			serviceProvider = GraphicsDeviceServiceHelper.MakePrivateServiceProvider(
-																					 this.mockedGraphicsDeviceService
-				);
-
-			this.contentManager = new ResourceContentManager(
-				serviceProvider, Resources.ScreenMaskResources.ResourceManager
-				);
-		}
-
-		/// <summary>Executed after each test has completed</summary>
-		[TearDown]
-		public void Teardown()
-		{
-			if (this.contentManager != null)
-			{
-				this.contentManager.Dispose();
-				this.contentManager = null;
-			}
-			if (this.mockedGraphicsDeviceService != null)
-			{
-				this.serviceProvider = null;
-				this.mockedGraphicsDeviceService.DestroyDevice();
-				this.mockedGraphicsDeviceService = null;
-			}
-		}
-
 		/// <summary>
 		///   Verifies that the constructor of the screen mask class is working
 		/// </summary>
 		[Test]
-		public void TestConstructor()
+		public void TestConstructor() 
 		{
-			Effect effect = this.contentManager.Load<Effect>("ScreenMaskEffect");
-			using (
-				ScreenMask<PositionVertex> testMask = new ScreenMask<PositionVertex>(
-					this.mockedGraphicsDeviceService.GraphicsDevice,
-					effect,
-					new PositionVertex[4]
-					)
-				) { }
+			using (MakeColorScreenMask())
+			{
+				// Do nothing
+			} 
 		}
 
 		/// <summary>Tests whether the screen mask is able to draw itself</summary>
 		[Test]
 		public void TestDraw()
 		{
-			Effect effect = this.contentManager.Load<Effect>("ScreenMaskEffect");
-			using (
-				ScreenMask<PositionVertex> testMask = new ScreenMask<PositionVertex>(
-					this.mockedGraphicsDeviceService.GraphicsDevice,
-					effect,
-					new PositionVertex[4]
-					)
-				)
+			using (var testMask = MakeColorScreenMask())
 			{
 				testMask.Draw();
-			}
+			} 
 		}
 
-		/// <summary>Mocked graphics device service used to run the test</summary>
-		private MockedGraphicsDeviceService mockedGraphicsDeviceService;
+		private static ScreenMask<PositionVertex> MakeColorScreenMask()
+		{
+			bool createSuccess = false;
+			var service = PrepareGlobalExclusiveMockedGraphicsDeviceService();
 
-		/// <summary>Service provider containing the mocked graphics device service</summary>
-		private IServiceProvider serviceProvider;
+			try
+			{
+				var serviceProvider = GraphicsDeviceServiceHelper.MakePrivateServiceProvider(service);
+				var contentManager = new ResourceContentManager(serviceProvider, Resources.ScreenMaskResources.ResourceManager);
 
-		/// <summary>Content manager used to load the assets used during testing</summary>
-		private ResourceContentManager contentManager;
+				try
+				{
+					var effect = contentManager.Load<Effect>("ScreenMaskEffect");
+
+					try
+					{
+						// ReSharper disable AccessToDisposedClosure
+						var result = new ScreenMask<PositionVertex>(
+							service.GraphicsDevice, new Owned<Effect>(
+														effect, () =>
+														{
+
+															effect.Dispose();
+															contentManager.Dispose();
+															service.Dispose();
+														}), new PositionVertex[4]);
+						// ReSharper restore AccessToDisposedClosure
+						createSuccess = true;
+						return result;
+					}
+					finally
+					{
+						if (!createSuccess)
+							effect.Dispose();
+					}
+				}
+				finally
+				{
+					if (!createSuccess)
+						contentManager.Dispose();
+				}
+			}
+			finally
+			{
+				if (!createSuccess)
+					service.Dispose();
+			}
+		}
 	}
 } // namespace Nuclex.Graphics.SpecialEffects.Masks
 

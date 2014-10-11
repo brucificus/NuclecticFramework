@@ -37,6 +37,7 @@ namespace Nuclectic.Tests.Fonts
 	/// <summary>Unit tests for the text drawing context</summary>
 	[TestFixture]
 	public class TextDrawContextTest
+		: TestFixtureBase
 	{
 		/// <summary>
 		///   Verifies that two text contexts which should produce the exact same result
@@ -157,15 +158,10 @@ namespace Nuclectic.Tests.Fonts
 		[SetUp]
 		public void Setup()
 		{
-			this.mockedGraphicsDeviceService = new GlobalExclusiveMockedGraphicsDeviceService(() => new MockedGraphicsDeviceService());
-			this.mockedGraphicsDeviceService.CreateDevice();
+			this.mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService();
 
-			this.contentManager = new ResourceContentManager(
-				GraphicsDeviceServiceHelper.MakePrivateServiceProvider(
-																	   this.mockedGraphicsDeviceService
-					),
-				Resources.TextBatchResources.ResourceManager
-				);
+			this.contentManager = mockedGraphicsDeviceService.CreateResourceContentManager(Resources.TextBatchResources.ResourceManager);
+
 			this.effect = this.contentManager.Load<Effect>("DefaultTextEffect");
 		}
 

@@ -35,17 +35,17 @@ namespace Nuclectic.Tests.Game
 	/// <summary>Unit test for the drawable component class</summary>
 	[TestFixture]
 	internal class GraphicsDeviceGraphicsDeviceDrawableComponentTest
+		: TestFixtureBase
 	{
 		/// <summary>Called before each test is run</summary>
 		[SetUp]
 		public void Setup()
 		{
-			this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService();
+			this.mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService();
 
 			GameServiceContainer services = new GameServiceContainer();
-			services.AddService(
-							    typeof (IGraphicsDeviceService), this.mockedGraphicsDeviceService
-				);
+			services.AddService(typeof (IGraphicsDeviceService), this.mockedGraphicsDeviceService);
+
 			this.testComponent = new GraphicsDeviceDrawableComponent(services);
 		}
 
@@ -153,7 +153,7 @@ namespace Nuclectic.Tests.Game
 		private GraphicsDeviceDrawableComponent testComponent;
 
 		/// <summary>Mock of the graphics device service</summary>
-		private MockedGraphicsDeviceService mockedGraphicsDeviceService;
+		private IMockedGraphicsDeviceService mockedGraphicsDeviceService;
 	}
 } // namespace Nuclex.Game
 

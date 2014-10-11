@@ -35,6 +35,7 @@ namespace Nuclectic.Tests.Graphics
 	/// <summary>Unit tests for the 'Drawable' class</summary>
 	[TestFixture]
 	internal class DrawableTest
+		: TestFixtureBase
 	{
 		#region class TestDrawable
 
@@ -115,7 +116,7 @@ namespace Nuclectic.Tests.Graphics
 		[Test]
 		public void TestConstructor()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (Drawable drawable = new TestDrawable(service))
 			{
 				Assert.IsNotNull(drawable);
@@ -129,13 +130,11 @@ namespace Nuclectic.Tests.Graphics
 		[Test]
 		public void TestCreateGraphicsDeviceAfterConstructor()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (Drawable drawable = new TestDrawable(service))
+			using (IDisposable keeper = service.CreateDevice())
 			{
-				using (IDisposable keeper = service.CreateDevice())
-				{
-					Assert.AreSame(drawable.GraphicsDevice, service.GraphicsDevice);
-				}
+				Assert.AreSame(drawable.GraphicsDevice, service.GraphicsDevice);
 			}
 		}
 
@@ -146,13 +145,11 @@ namespace Nuclectic.Tests.Graphics
 		[Test]
 		public void TestCreateGraphicsDeviceBeforeConstructor()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = service.CreateDevice())
+			using (Drawable drawable = new TestDrawable(service))
 			{
-				using (Drawable drawable = new TestDrawable(service))
-				{
-					Assert.AreSame(drawable.GraphicsDevice, service.GraphicsDevice);
-				}
+				Assert.AreSame(drawable.GraphicsDevice, service.GraphicsDevice);
 			}
 		}
 
@@ -163,16 +160,17 @@ namespace Nuclectic.Tests.Graphics
 		[Test]
 		public void TestCreateFromServiceProvider()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
-
-			GameServiceContainer container = new GameServiceContainer();
-			container.AddService(typeof (IGraphicsDeviceService), service);
-
-			using (IDisposable keeper = service.CreateDevice())
+			using(var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			{
-				using (Drawable drawable = new TestDrawable(container))
+				GameServiceContainer container = new GameServiceContainer();
+				container.AddService(typeof (IGraphicsDeviceService), service);
+
+				using (IDisposable keeper = service.CreateDevice())
 				{
-					Assert.AreSame(drawable.GraphicsDevice, service.GraphicsDevice);
+					using (Drawable drawable = new TestDrawable(container))
+					{
+						Assert.AreSame(drawable.GraphicsDevice, service.GraphicsDevice);
+					}
 				}
 			}
 		}
@@ -195,7 +193,7 @@ namespace Nuclectic.Tests.Graphics
 		[Test]
 		public void TestDraw()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (Drawable drawable = new TestDrawable(service))
 			{
 				drawable.Draw(new GameTime());
@@ -208,7 +206,7 @@ namespace Nuclectic.Tests.Graphics
 		[Test]
 		public void TestGraphicsDeviceReset()
 		{
-			MockedGraphicsDeviceService service = new MockedGraphicsDeviceService();
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = service.CreateDevice())
 			{
 				using (TestDrawable drawable = new TestDrawable(service))
