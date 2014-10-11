@@ -376,26 +376,16 @@ namespace Nuclectic.Tests.Input.Devices
 			Assert.AreEqual(0.1234f, extendedState.GetSlider(ExtendedSliders.Slider1));
 			Assert.AreEqual(0.5678f, extendedState.GetSlider(ExtendedSliders.Slider2));
 
+			Assert.AreEqual(ExtendedGamePadState.PovFromDpad(state.DPad), extendedState.GetPov(0));
+
 			switch (button)
 			{
 				case Buttons.DPadUp:
-				{
-					Assert.AreEqual(0, extendedState.GetPov(0));
-					break;
-				}
 				case Buttons.DPadRight:
-				{
-					Assert.AreEqual(9000, extendedState.GetPov(0));
-					break;
-				}
 				case Buttons.DPadDown:
-				{
-					Assert.AreEqual(18000, extendedState.GetPov(0));
-					break;
-				}
 				case Buttons.DPadLeft:
 				{
-					Assert.AreEqual(27000, extendedState.GetPov(0));
+					Assert.AreEqual(ExtendedGamePadState.PovFromDpad(state.DPad), extendedState.GetPov(0));
 					break;
 				}
 				default:
@@ -407,6 +397,52 @@ namespace Nuclectic.Tests.Input.Devices
 						);
 					break;
 				}
+			}
+		}
+
+		/// <summary>
+		///   Verifies that ExtendedGamePadState.PovFromDpad processes values correctly
+		/// </summary>
+		/// <param name="button">Button to test on the normal game pad state</param>
+		[
+			Test,
+			TestCase(Buttons.DPadUp),
+			TestCase(Buttons.DPadDown),
+			TestCase(Buttons.DPadLeft),
+			TestCase(Buttons.DPadRight)
+		]
+		public void PovFromDpad(Buttons button)
+		{
+			var state = new GamePadState(
+				Vector2.Zero,
+				Vector2.Zero,
+				0f, 0f,
+				button
+				);
+			var pov = ExtendedGamePadState.PovFromDpad(state.DPad);
+
+			switch (button)
+			{
+				case Buttons.DPadUp:
+					{
+						Assert.AreEqual(0, pov);
+						break;
+					}
+				case Buttons.DPadRight:
+					{
+						Assert.AreEqual(9000, pov);
+						break;
+					}
+				case Buttons.DPadDown:
+					{
+						Assert.AreEqual(18000, pov);
+						break;
+					}
+				case Buttons.DPadLeft:
+					{
+						Assert.AreEqual(27000, pov);
+						break;
+					}
 			}
 		}
 
