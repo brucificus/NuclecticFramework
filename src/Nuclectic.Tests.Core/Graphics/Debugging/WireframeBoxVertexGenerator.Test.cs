@@ -31,12 +31,12 @@ namespace Nuclectic.Tests.Graphics.Debugging
 
 	/// <summary>Unit tests for the wireframe box vertex generator</summary>
 	[TestFixture]
-	internal class WireframeBoxVertexGeneratorTest
+	public class WireframeBoxVertexGeneratorTest
 	{
 
 		/// <summary>Verifies that the vertex generator can create a box</summary>
 		[Test]
-		internal void TestBoxGeneration()
+		public void TestBoxGeneration()
 		{
 			int count = WireframeBoxVertexGenerator.VertexCount;
 			VertexPositionColor[] vertices = new VertexPositionColor[count + 1];
