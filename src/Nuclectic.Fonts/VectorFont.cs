@@ -27,63 +27,63 @@ namespace Nuclectic.Fonts
 {
 	/// <summary>Vector-based font for creating three-dimensional text</summary>
 	/// <remarks>
-	///   <para>
-	///     Whereas bitmap based fonts copy pre-rendered image of the characters onto
-	///     the screen, vector based fonts store the vertices that make up a fonts 'hull'
-	///     and render the text with actual polygons at runtime.
-	///   </para>
-	///   <para>
-	///     For normal usage, after loading a VectorFont instance through the
-	///     Content Manager, use one of the three mesh generation methods:
-	///     <list type="bullet">
-	///       <item>
-	///         <term>Outline()</term>
-	///         <description>
-	///           This method outlines the given string and returns a text mesh that
-	///           contains the side faces of the entire string in a single vertex list.
-	///         </description>
-	///       </item>
-	///       <item>
-	///         <term>Fill()</term>
-	///         <description>
-	///           Probably the most-used variant, this will build a flat mesh from the
-	///           string you provide. The mesh only contains front-facing polygons and
-	///           is ideal for normal text display, with the advantage that text won't
-	///           become distorted or blurry when it is zoomed / rotated.
-	///         </description>
-	///       </item>
-	///       <item>
-	///         <term>Extrude()</term>
-	///         <description>
-	///           This method builds a complete sealed 3D mesh from the string you
-	///           specify. The length of extrusion is always 1.0 units, centered
-	///           about the middle of that range, giving you the ability to scale the
-	///           extrusion level at will using the text's transformation matrix.
-	///         </description>
-	///       </item>
-	///     </list>
-	///   </para>
-	///   <para>
-	///     The vector font class also gives you full access to the underlying data of
-	///     a font, enabling you to use it for other purposes such as collision detection
-	///     or volume-based particle emitters that will make your credits or intro text
-	///     look more dynamic. This data is contained in the character instances you can
-	///     access through this class. To find the character index for a specific unicode
-	///     letter, use the CharacterMap which enlists any letter that the font can provide.
-	///   </para>
+	///     <para>
+	///         Whereas bitmap based fonts copy pre-rendered image of the characters onto
+	///         the screen, vector based fonts store the vertices that make up a fonts 'hull'
+	///         and render the text with actual polygons at runtime.
+	///     </para>
+	///     <para>
+	///         For normal usage, after loading a VectorFont instance through the
+	///         Content Manager, use one of the three mesh generation methods:
+	///         <list type="bullet">
+	///             <item>
+	///                 <term>Outline()</term>
+	///                 <description>
+	///                     This method outlines the given string and returns a text mesh that
+	///                     contains the side faces of the entire string in a single vertex list.
+	///                 </description>
+	///             </item>
+	///             <item>
+	///                 <term>Fill()</term>
+	///                 <description>
+	///                     Probably the most-used variant, this will build a flat mesh from the
+	///                     string you provide. The mesh only contains front-facing polygons and
+	///                     is ideal for normal text display, with the advantage that text won't
+	///                     become distorted or blurry when it is zoomed / rotated.
+	///                 </description>
+	///             </item>
+	///             <item>
+	///                 <term>Extrude()</term>
+	///                 <description>
+	///                     This method builds a complete sealed 3D mesh from the string you
+	///                     specify. The length of extrusion is always 1.0 units, centered
+	///                     about the middle of that range, giving you the ability to scale the
+	///                     extrusion level at will using the text's transformation matrix.
+	///                 </description>
+	///             </item>
+	///         </list>
+	///     </para>
+	///     <para>
+	///         The vector font class also gives you full access to the underlying data of
+	///         a font, enabling you to use it for other purposes such as collision detection
+	///         or volume-based particle emitters that will make your credits or intro text
+	///         look more dynamic. This data is contained in the character instances you can
+	///         access through this class. To find the character index for a specific unicode
+	///         letter, use the CharacterMap which enlists any letter that the font can provide.
+	///     </para>
 	/// </remarks>
 	public class VectorFont : IVectorFont
 	{
 		/// <summary>Constructs a new vector font</summary>
 		/// <param name="lineHeight">
-		///   Height of a single line of text in this font
+		///     Height of a single line of text in this font
 		/// </param>
 		/// <param name="characters">List of Characters contained in the font</param>
 		/// <param name="characterMap">
-		///   Map used to associate unicode characters with character indices
+		///     Map used to associate unicode characters with character indices
 		/// </param>
 		/// <param name="kerningTable">
-		///   Kerning data for adjusting the space between specific characters
+		///     Kerning data for adjusting the space between specific characters
 		/// </param>
 		internal VectorFont(
 			float lineHeight,
@@ -122,14 +122,14 @@ namespace Nuclectic.Fonts
 		public IReadOnlyDictionary<char, int> CharacterMap { get { return this.characterMap; } }
 
 		/// <summary>
-		///   Kerning table for adjusting the positions of specific character combinations
+		///     Kerning table for adjusting the positions of specific character combinations
 		/// </summary>
 		/// <remarks>
-		///   Certain character combination, such as the two consecutive characters 'AV'
-		///   have diagonal shapes that would cause the characters to visually appear
-		///   is if they were further apart from each other. Kerning adjusts the distances
-		///   between such characters to keep the perceived character distance at the
-		///   same level for all character combinations.
+		///     Certain character combination, such as the two consecutive characters 'AV'
+		///     have diagonal shapes that would cause the characters to visually appear
+		///     is if they were further apart from each other. Kerning adjusts the distances
+		///     between such characters to keep the perceived character distance at the
+		///     same level for all character combinations.
 		/// </remarks>
 		public IReadOnlyDictionary<KerningPair, Vector2> KerningTable { get { return this.kerningTable; } }
 
@@ -143,7 +143,7 @@ namespace Nuclectic.Fonts
 		private IReadOnlyDictionary<char, int> characterMap;
 
 		/// <summary>
-		///   Kerning table for adjusting the positions of specific character combinations
+		///     Kerning table for adjusting the positions of specific character combinations
 		/// </summary>
 		private IReadOnlyDictionary<KerningPair, Vector2> kerningTable;
 	}

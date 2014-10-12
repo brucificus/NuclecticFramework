@@ -37,7 +37,7 @@ namespace Nuclectic.Input
 	public class DirectInputManager : IDisposable, IDirectInputManager
 	{
 		/// <summary>
-		///   Determines whether DirectInput is available on the current system
+		///     Determines whether DirectInput is available on the current system
 		/// </summary>
 		public bool IsDirectInputAvailable
 		{
@@ -104,24 +104,24 @@ namespace Nuclectic.Input
 		}
 
 		/// <summary>
-		///   Determines whether the specified DirectInput device is handled by XINPUT
+		///     Determines whether the specified DirectInput device is handled by XINPUT
 		/// </summary>
 		/// <param name="deviceInstance">
-		///   The DirectInput device instance that will be checked
+		///     The DirectInput device instance that will be checked
 		/// </param>
 		/// <returns>True if this is a device that is handled by XINPUT</returns>
 		/// <remarks>
-		///   <para>
-		///     XINPUT devices are accessable through both DirectInput and XINPUT.
-		///     Since we're already using XINPUT (through XNA), we need to filter out
-		///     any DirectInput devices that we already access through XINPUT, otherwise,
-		///     each XINPUT game controller would appear twice.
-		///   </para>
-		///   <para>
-		///     This method is based on the code from the ZMan's article on detecting
-		///     which DirectInput devices are also XInput devices:
-		///     http://www.thezbuffer.com/articles/351.aspx
-		///   </para>
+		///     <para>
+		///         XINPUT devices are accessable through both DirectInput and XINPUT.
+		///         Since we're already using XINPUT (through XNA), we need to filter out
+		///         any DirectInput devices that we already access through XINPUT, otherwise,
+		///         each XINPUT game controller would appear twice.
+		///     </para>
+		///     <para>
+		///         This method is based on the code from the ZMan's article on detecting
+		///         which DirectInput devices are also XInput devices:
+		///         http://www.thezbuffer.com/articles/351.aspx
+		///     </para>
 		/// </remarks>
 		private static bool isXInputDevice(DeviceInstance deviceInstance)
 		{

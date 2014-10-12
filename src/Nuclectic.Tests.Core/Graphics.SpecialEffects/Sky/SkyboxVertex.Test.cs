@@ -32,7 +32,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Sky
 	internal class SkyboxVertexTest
 	{
 		/// <summary>
-		///   Verifies that the constructor of the skybox vertex class is working
+		///     Verifies that the constructor of the skybox vertex class is working
 		/// </summary>
 		[Test]
 		public void TestConstructor()

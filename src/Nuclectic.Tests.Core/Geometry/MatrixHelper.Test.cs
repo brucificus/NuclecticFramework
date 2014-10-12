@@ -33,7 +33,7 @@ namespace Nuclectic.Tests.Geometry
 	public class MatrixHelperTest
 	{
 		/// <summary>
-		///   Verifies that the matrix helper can construct a matrix from individual vectors
+		///     Verifies that the matrix helper can construct a matrix from individual vectors
 		/// </summary>
 		[Test]
 		public void TestCreateMatrixFromVectors()
@@ -49,8 +49,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the matrix helper can construct a matrix from individual vectors
-		///   together with a translation point
+		///     Verifies that the matrix helper can construct a matrix from individual vectors
+		///     together with a translation point
 		/// </summary>
 		[Test]
 		public void TestCreateMatrixFromVectorsAndTranslation()
@@ -67,8 +67,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the matrix helper can be used to obtain and assign individual
-		///   elements of a matrix by their indices
+		///     Verifies that the matrix helper can be used to obtain and assign individual
+		///     elements of a matrix by their indices
 		/// </summary>
 		[Test]
 		public void TestGetAndSetMatrixElementsByIndex()
@@ -106,8 +106,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the matrix helper throws an exception when an invalid index to
-		///   read from is specified
+		///     Verifies that the matrix helper throws an exception when an invalid index to
+		///     read from is specified
 		/// </summary>
 		[Test]
 		public void TestThrowOnGetMatrixElementWithInvalidIndex()
@@ -119,8 +119,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the matrix helper throws an exception when an invalid index to
-		///   write to is specified
+		///     Verifies that the matrix helper throws an exception when an invalid index to
+		///     write to is specified
 		/// </summary>
 		[Test]
 		public void TestThrowOnSetMatrixElementWithInvalidIndex()
@@ -132,8 +132,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the matrix helper can be used to obtain and assign individual
-		///   rows of a matrix by their indices
+		///     Verifies that the matrix helper can be used to obtain and assign individual
+		///     rows of a matrix by their indices
 		/// </summary>
 		[Test]
 		public void TestGetAndSetMatrixRowsByIndex()
@@ -162,8 +162,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the matrix helper throws an exception when an invalid row index
-		///   to read from is specified
+		///     Verifies that the matrix helper throws an exception when an invalid row index
+		///     to read from is specified
 		/// </summary>
 		[Test]
 		public void TestThrowOnGetMatrixRowWithInvalidIndex()
@@ -176,8 +176,8 @@ namespace Nuclectic.Tests.Geometry
 
 
 		/// <summary>
-		///   Verifies that the matrix helper throws an exception when an invalid row index
-		///   to write to is specified
+		///     Verifies that the matrix helper throws an exception when an invalid row index
+		///     to write to is specified
 		/// </summary>
 		[Test]
 		public void TestThrowOnSetMatrixRowWithInvalidIndex()

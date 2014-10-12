@@ -27,10 +27,10 @@ namespace Nuclectic.Game.Space
 	/// <summary>Two-dimensional spatial index</summary>
 	/// <typeparam name="ItemType">Type of the items being indexed</typeparam>
 	/// <remarks>
-	///   <para>
-	///     This class serves as the base class for spatial indexes that allow for
-	///     efficient searches in large sets of two-dimensional objects.
-	///   </para>
+	///     <para>
+	///         This class serves as the base class for spatial indexes that allow for
+	///         efficient searches in large sets of two-dimensional objects.
+	///     </para>
 	/// </remarks>
 	public abstract class SpatialIndex2<ItemType>
 	{
@@ -51,11 +51,11 @@ namespace Nuclectic.Game.Space
 		/// <summary>Queries the spatial database for all objects in a region</summary>
 		/// <param name="region">Region of which the items will be returned</param>
 		/// <param name="items">
-		///   Collection that will receive all items in the query region
+		///     Collection that will receive all items in the query region
 		/// </param>
 		/// <remarks>
-		///   Use this method to avoid generating garbage by reusing the collection
-		///   the queried items are stored in.
+		///     Use this method to avoid generating garbage by reusing the collection
+		///     the queried items are stored in.
 		/// </remarks>
 		public abstract void Query(BoundingRectangle region, ICollection<ItemType> items);
 

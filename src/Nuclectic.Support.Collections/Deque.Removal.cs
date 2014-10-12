@@ -180,8 +180,8 @@ namespace Nuclectic.Support.Collections
 		}
 
 		/// <summary>
-		///   Removes an item from the left side of the queue by shifting all items that
-		///   come before it to the right by one
+		///     Removes an item from the left side of the queue by shifting all items that
+		///     come before it to the right by one
 		/// </summary>
 		/// <param name="index">Index of the item that will be removed</param>
 		private void removeFromLeft(int index)
@@ -246,8 +246,8 @@ namespace Nuclectic.Support.Collections
 		}
 
 		/// <summary>
-		///   Removes an item from the right side of the queue by shifting all items that
-		///   come after it to the left by one
+		///     Removes an item from the right side of the queue by shifting all items that
+		///     come after it to the left by one
 		/// </summary>
 		/// <param name="index">Index of the item that will be removed</param>
 		private void removeFromRight(int index)

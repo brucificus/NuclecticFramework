@@ -26,16 +26,16 @@ namespace Nuclectic.Fonts
 
 		/// <summary>Begins a new text rendering batch</summary>
 		/// <remarks>
-		///   Call this before drawing text with the DrawText() method. For optimal
-		///   performance, try to put all your text drawing commands inside as few
-		///   Begin()..End() pairs as you can manage.
+		///     Call this before drawing text with the DrawText() method. For optimal
+		///     performance, try to put all your text drawing commands inside as few
+		///     Begin()..End() pairs as you can manage.
 		/// </remarks>
 		void Begin();
 
 		/// <summary>Ends the current text rendering batch</summary>
 		/// <remarks>
-		///   This method needs to be called each time you call the Begin() method
-		///   after all text drawing commands have taken place.
+		///     This method needs to be called each time you call the Begin() method
+		///     after all text drawing commands have taken place.
 		/// </remarks>
 		void End();
 	}

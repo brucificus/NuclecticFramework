@@ -32,7 +32,6 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 {
-
 	/// <summary>Unit tests for the grid class</summary>
 	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
 	[RequiresSTA]
@@ -40,56 +39,56 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		: TestFixtureBase
 	{
 		/// <summary>
-		///   Verifies that the simple constructor of the Grid class is working
+		///     Verifies that the simple constructor of the Grid class is working
 		/// </summary>
 		[Test]
 		public void TestSimpleConstructor()
 		{
 			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService())
 			using (
-			  WaterSurface surface = new WaterSurface(
-				mockedGraphicsDeviceService.GraphicsDevice,
-				new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f)
-			  )
-			)
+				WaterSurface surface = new WaterSurface(
+					mockedGraphicsDeviceService.GraphicsDevice,
+					new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f)
+					)
+				)
 			{
 				Assert.IsNotNull(surface); // Nonsense; avoids compiler warning
 			}
 		}
 
 		/// <summary>
-		///   Verifies that the complete constructor of the Grid class is working
+		///     Verifies that the complete constructor of the Grid class is working
 		/// </summary>
 		[Test]
 		public void TestFullConstructor()
 		{
 			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService())
 			using (
-			  WaterSurface surface = new WaterSurface(
-				mockedGraphicsDeviceService.GraphicsDevice,
-				new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
-				4, 4
-			  )
-			)
+				WaterSurface surface = new WaterSurface(
+					mockedGraphicsDeviceService.GraphicsDevice,
+					new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
+					4, 4
+					)
+				)
 			{
 				Assert.IsNotNull(surface); // Nonsense; avoids compiler warning
 			}
 		}
 
 		/// <summary>
-		///   Tests whether the water surface can select its index and vertex buffers
+		///     Tests whether the water surface can select its index and vertex buffers
 		/// </summary>
 		[Test]
 		public void TestSelectIndexAndVertexBuffer()
 		{
 			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService())
 			using (
-			  WaterSurface surface = new WaterSurface(
-				mockedGraphicsDeviceService.GraphicsDevice,
-				new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
-				4, 4
-			  )
-			)
+				WaterSurface surface = new WaterSurface(
+					mockedGraphicsDeviceService.GraphicsDevice,
+					new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
+					4, 4
+					)
+				)
 			{
 				GraphicsDevice graphicsDevice = mockedGraphicsDeviceService.GraphicsDevice;
 				graphicsDevice.Indices = null;
@@ -108,7 +107,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		}
 
 		/// <summary>
-		///   Tests whether the water surface can draw its water plane
+		///     Tests whether the water surface can draw its water plane
 		/// </summary>
 		[Test]
 		public void TestDrawWaterPlane()
@@ -117,7 +116,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 			using (var contentManager = mockedGraphicsDeviceService.CreateResourceContentManager(Resources.UnitTestResources.ResourceManager))
 			{
 				Effect waterSurfaceEffect = contentManager.Load<Effect>(
-																			 "WaterSurfaceEffect"
+																	    "WaterSurfaceEffect"
 					);
 
 				using (
@@ -142,24 +141,24 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		}
 
 		/// <summary>
-		///   Tests whether the water surface can update its reflection texture
+		///     Tests whether the water surface can update its reflection texture
 		/// </summary>
 		[Test]
 		public void TestUpdateReflection()
 		{
 			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService())
 			using (
-			  WaterSurface surface = new WaterSurface(
-				mockedGraphicsDeviceService.GraphicsDevice,
-				new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
-				4, 4
-			  )
-			)
+				WaterSurface surface = new WaterSurface(
+					mockedGraphicsDeviceService.GraphicsDevice,
+					new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
+					4, 4
+					)
+				)
 			{
 				surface.UpdateReflection(
-				  new GameTime(), Camera.CreateDefaultOrthographic(),
-				  new WaterSurface.SceneDrawDelegate(drawReflection)
-				);
+										 new GameTime(), Camera.CreateDefaultOrthographic(),
+										 new WaterSurface.SceneDrawDelegate(drawReflection)
+					);
 
 				Assert.IsNotNull(surface.ReflectionCamera);
 				Assert.IsNotNull(surface.ReflectionTexture);
@@ -167,26 +166,26 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		}
 
 		/// <summary>
-		///   Verifies that the water surface can survive a graphics device reset
+		///     Verifies that the water surface can survive a graphics device reset
 		/// </summary>
 		[Test]
 		public void TestGraphicsDeviceReset()
 		{
 			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService())
 			using (
-			  WaterSurface surface = new WaterSurface(
-				mockedGraphicsDeviceService.GraphicsDevice,
-				new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
-				4, 4
-			  )
-			)
+				WaterSurface surface = new WaterSurface(
+					mockedGraphicsDeviceService.GraphicsDevice,
+					new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
+					4, 4
+					)
+				)
 			{
 				mockedGraphicsDeviceService.ResetDevice();
 
 				surface.UpdateReflection(
-				  new GameTime(), Camera.CreateDefaultOrthographic(),
-				  new WaterSurface.SceneDrawDelegate(drawReflection)
-				);
+										 new GameTime(), Camera.CreateDefaultOrthographic(),
+										 new WaterSurface.SceneDrawDelegate(drawReflection)
+					);
 
 				Assert.IsNotNull(surface.ReflectionCamera);
 				Assert.IsNotNull(surface.ReflectionTexture);
@@ -198,7 +197,6 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		/// <param name="camera">Camera containing the viewer's position</param>
 		private void drawReflection(GameTime gameTime, ICamera camera) { }
 	}
-
 } // namespace Nuclex.Graphics.SpecialEffects.Water
 
 #endif // UNITTEST

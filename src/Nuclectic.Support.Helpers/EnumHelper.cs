@@ -29,7 +29,7 @@ namespace Nuclectic.Support.Helpers
 	{
 		/// <summary>Returns the highest value encountered in an enumeration</summary>
 		/// <typeparam name="TEnumeration">
-		///   Enumeration of which the highest value will be returned
+		///     Enumeration of which the highest value will be returned
 		/// </typeparam>
 		/// <returns>The highest value in the enumeration</returns>
 		public static TEnumeration GetHighestValue<TEnumeration>()
@@ -60,7 +60,7 @@ namespace Nuclectic.Support.Helpers
 
 		/// <summary>Returns the lowest value encountered in an enumeration</summary>
 		/// <typeparam name="TEnumeration">
-		///   Enumeration of which the lowest value will be returned
+		///     Enumeration of which the lowest value will be returned
 		/// </typeparam>
 		/// <returns>The lowest value in the enumeration</returns>
 		public static TEnumeration GetLowestValue<TEnumeration>()
@@ -91,12 +91,12 @@ namespace Nuclectic.Support.Helpers
 
 		/// <summary>Retrieves a list of all values contained in an enumeration</summary>
 		/// <typeparam name="TEnum">
-		///   Type of the enumeration whose values will be returned
+		///     Type of the enumeration whose values will be returned
 		/// </typeparam>
 		/// <returns>All values contained in the specified enumeration</returns>
 		/// <remarks>
-		///   This method produces collectable garbage so it's best to only call it once
-		///   and cache the result.
+		///     This method produces collectable garbage so it's best to only call it once
+		///     and cache the result.
 		/// </remarks>
 		public static TEnum[] GetValues<TEnum>() { return (TEnum[])Enum.GetValues(typeof (TEnum)); }
 	}

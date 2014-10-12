@@ -32,9 +32,9 @@ namespace Nuclectic.UserInterface.Visuals.Flat
 {
 	/// <summary>Graphics interface for the traditional flat GUI visualizer</summary>
 	/// <remarks>
-	///   This class is analog to System.Drawing.Graphics, but contains specialized
-	///   methods that allow the FlatControlRenderers to draw controls from
-	///   high-level elements which are controlled by loadable XML themes.
+	///     This class is analog to System.Drawing.Graphics, but contains specialized
+	///     methods that allow the FlatControlRenderers to draw controls from
+	///     high-level elements which are controlled by loadable XML themes.
 	/// </remarks>
 	public partial class FlatGuiGraphics : IFlatGuiGraphics, IDisposable
 	{
@@ -51,19 +51,19 @@ namespace Nuclectic.UserInterface.Visuals.Flat
 			{
 				/// <summary>The text's base offset is placed at the left of the frame</summary>
 				/// <remarks>
-				///   The base offset is normally identical to the text's leftmost pixel.
-				///   However, a glyph may have some eccentrics like an arc that extends to
-				///   the left over the letter's actual starting position.
+				///     The base offset is normally identical to the text's leftmost pixel.
+				///     However, a glyph may have some eccentrics like an arc that extends to
+				///     the left over the letter's actual starting position.
 				/// </remarks>
 				Left,
 
 				/// <summary>
-				///   The text's ending offset is placed at the right of the frame
+				///     The text's ending offset is placed at the right of the frame
 				/// </summary>
 				/// <remarks>
-				///   The ending offset is normally identical to the text's rightmost pixel.
-				///   However, a glyph may have some eccentrics like an arc that extends to
-				///   the right over the last letter's actual ending position.
+				///     The ending offset is normally identical to the text's rightmost pixel.
+				///     However, a glyph may have some eccentrics like an arc that extends to
+				///     the right over the last letter's actual ending position.
 				/// </remarks>
 				Right,
 
@@ -89,7 +89,7 @@ namespace Nuclectic.UserInterface.Visuals.Flat
 			{
 				/// <summary>Identification string for the region</summary>
 				/// <remarks>
-				///   Used to associate regions with specific behavior
+				///     Used to associate regions with specific behavior
 				/// </remarks>
 				public string Id;
 
@@ -147,7 +147,7 @@ namespace Nuclectic.UserInterface.Visuals.Flat
 		{
 			/// <summary>Initializes a new scissor manager</summary>
 			/// <param name="flatGuiGraphics">
-			///   GUI graphics interface the scissor rectangle will be managed for
+			///     GUI graphics interface the scissor rectangle will be managed for
 			/// </param>
 			public ScissorKeeper(FlatGuiGraphics flatGuiGraphics) { this.flatGuiGraphics = flatGuiGraphics; }
 
@@ -184,12 +184,12 @@ namespace Nuclectic.UserInterface.Visuals.Flat
 			}
 
 			/// <summary>
-			///   GUI graphics interface for which the scissor rectangle is managed
+			///     GUI graphics interface for which the scissor rectangle is managed
 			/// </summary>
 			private FlatGuiGraphics flatGuiGraphics;
 
 			/// <summary>
-			///   Scissor rectangle that was previously assigned to the graphics device
+			///     Scissor rectangle that was previously assigned to the graphics device
 			/// </summary>
 			private Rectangle oldScissorRectangle;
 		}
@@ -198,11 +198,11 @@ namespace Nuclectic.UserInterface.Visuals.Flat
 
 		/// <summary>Initializes a new gui painter</summary>
 		/// <param name="contentManager">
-		///   Content manager containing the resources for the GUI. The instance takes
-		///   ownership of the content manager and will dispose it.
+		///     Content manager containing the resources for the GUI. The instance takes
+		///     ownership of the content manager and will dispose it.
 		/// </param>
 		/// <param name="skinStream">
-		///   Stream from which the skin description will be read
+		///     Stream from which the skin description will be read
 		/// </param>
 		public FlatGuiGraphics(ContentManager contentManager, Stream skinStream)
 		{
@@ -243,8 +243,8 @@ namespace Nuclectic.UserInterface.Visuals.Flat
 		}
 
 		/// <summary>
-		///   Positions a string within a frame according to the positioning instructions
-		///   stored in the provided text anchor.
+		///     Positions a string within a frame according to the positioning instructions
+		///     stored in the provided text anchor.
 		/// </summary>
 		/// <param name="anchor">Text anchor the string will be positioned for</param>
 		/// <param name="bounds">Boundaries of the control the string is rendered in</param>
@@ -299,12 +299,12 @@ namespace Nuclectic.UserInterface.Visuals.Flat
 		}
 
 		/// <summary>
-		///   Calculates the absolute pixel position of a rectangle in unified coordinates
+		///     Calculates the absolute pixel position of a rectangle in unified coordinates
 		/// </summary>
 		/// <param name="bounds">Bounds of the drawing area in pixels</param>
 		/// <param name="destination">Destination rectangle in unified coordinates</param>
 		/// <returns>
-		///   The destination rectangle converted to absolute pixel coordinates
+		///     The destination rectangle converted to absolute pixel coordinates
 		/// </returns>
 		private static Rectangle calculateDestinationRectangle(
 			ref RectangleF bounds, ref UniRectangle destination

@@ -26,25 +26,25 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Nuclectic.Game.Component
 {
 	/// <summary>
-	///   Lightweight variant DrawableGameComponent that doesn't reference the Game class
+	///     Lightweight variant DrawableGameComponent that doesn't reference the Game class
 	/// </summary>
 	/// <remarks>
-	///   <para>
-	///     This variant of the DrawableComponent class stores a graphics device and
-	///     calls the LoadContent() method at the appropriate time. It is useful
-	///     if the deriving class actually makes direct use of the graphics device.
-	///   </para>
-	///   <para>
-	///     To work, this class requires to things: A GameServices collection and
-	///     an entry for the IGraphicsDeviceService. You can easily implement this
-	///     interface yourself for any custom graphics device manager.
-	///   </para>
+	///     <para>
+	///         This variant of the DrawableComponent class stores a graphics device and
+	///         calls the LoadContent() method at the appropriate time. It is useful
+	///         if the deriving class actually makes direct use of the graphics device.
+	///     </para>
+	///     <para>
+	///         To work, this class requires to things: A GameServices collection and
+	///         an entry for the IGraphicsDeviceService. You can easily implement this
+	///         interface yourself for any custom graphics device manager.
+	///     </para>
 	/// </remarks>
 	public class GraphicsDeviceDrawableComponent : DrawableComponent, IDisposable
 	{
 		/// <summary>Initializes a new drawable component.</summary>
 		/// <param name="serviceProvider">
-		///   Service provider from which the graphics device service will be taken
+		///     Service provider from which the graphics device service will be taken
 		/// </param>
 		public GraphicsDeviceDrawableComponent(IServiceProvider serviceProvider)
 		{
@@ -58,21 +58,21 @@ namespace Nuclectic.Game.Component
 
 		/// <summary>Initializes a new drawable component</summary>
 		/// <param name="graphicsDeviceService">
-		///   Graphics device service the component will use
+		///     Graphics device service the component will use
 		/// </param>
 		/// <remarks>
-		///   This constructor is mainly relevant for users of IoC containers which
-		///   can wire up components to each other automatically. For the XNA
-		///   game services model, the service provider-based constructor should
-		///   be used instead because it uses a two-stage initialization process
-		///   where components wire up to each other in <see cref=" Initialize" />.
+		///     This constructor is mainly relevant for users of IoC containers which
+		///     can wire up components to each other automatically. For the XNA
+		///     game services model, the service provider-based constructor should
+		///     be used instead because it uses a two-stage initialization process
+		///     where components wire up to each other in <see cref=" Initialize" />.
 		/// </remarks>
 		public GraphicsDeviceDrawableComponent(IGraphicsDeviceService graphicsDeviceService) { this.graphicsDeviceService = graphicsDeviceService; }
 
 		/// <summary>Immediately releases all resources owned by this instance</summary>
 		/// <remarks>
-		///   This method is not suitable for being called during a GC run, it is intended
-		///   for manual usage when you actually want to get rid of the drawable component.
+		///     This method is not suitable for being called during a GC run, it is intended
+		///     for manual usage when you actually want to get rid of the drawable component.
 		/// </remarks>
 		public virtual void Dispose()
 		{
@@ -112,12 +112,12 @@ namespace Nuclectic.Game.Component
 		public GraphicsDevice GraphicsDevice { get { return this.graphicsDeviceService.GraphicsDevice; } }
 
 		/// <summary>
-		///   Called when the object needs to set up graphics resources. Override to
-		///   set up any object specific graphics resources.
+		///     Called when the object needs to set up graphics resources. Override to
+		///     set up any object specific graphics resources.
 		/// </summary>
 		/// <param name="createAllContent">
-		///   True if all graphics resources need to be set up; false if only
-		///   manual resources need to be set up.
+		///     True if all graphics resources need to be set up; false if only
+		///     manual resources need to be set up.
 		/// </param>
 		[
 			Obsolete(
@@ -128,18 +128,18 @@ namespace Nuclectic.Game.Component
 		protected virtual void LoadGraphicsContent(bool createAllContent) { }
 
 		/// <summary>
-		///   Called when graphics resources need to be loaded. Override this method to load
-		///   any game-specific graphics resources.
+		///     Called when graphics resources need to be loaded. Override this method to load
+		///     any game-specific graphics resources.
 		/// </summary>
 		protected virtual void LoadContent() { }
 
 		/// <summary>
-		///   Called when graphics resources should be released. Override to
-		///   handle component specific graphics resources.
+		///     Called when graphics resources should be released. Override to
+		///     handle component specific graphics resources.
 		/// </summary>
 		/// <param name="destroyAllContent">
-		///   True if all graphics resources should be released; false if only
-		///   manual resources should be released.
+		///     True if all graphics resources should be released; false if only
+		///     manual resources should be released.
 		/// </param>
 		[
 			Obsolete(
@@ -150,13 +150,13 @@ namespace Nuclectic.Game.Component
 		protected virtual void UnloadGraphicsContent(bool destroyAllContent) { }
 
 		/// <summary>
-		///   Called when graphics resources need to be unloaded. Override this method to unload
-		///   any game-specific graphics resources.
+		///     Called when graphics resources need to be unloaded. Override this method to unload
+		///     any game-specific graphics resources.
 		/// </summary>
 		protected virtual void UnloadContent() { }
 
 		/// <summary>
-		///   Subscribes this component to the events of the graphics device service.
+		///     Subscribes this component to the events of the graphics device service.
 		/// </summary>
 		private void subscribeToGraphicsDeviceService()
 		{
@@ -179,7 +179,7 @@ namespace Nuclectic.Game.Component
 		}
 
 		/// <summary>
-		///   Unsubscribes this component from the events of the graphics device service.
+		///     Unsubscribes this component from the events of the graphics device service.
 		/// </summary>
 		private void unsubscribeFromGraphicsDeviceService()
 		{
@@ -244,9 +244,9 @@ namespace Nuclectic.Game.Component
 
 		/// <summary>XNA game service provider (can be null)</summary>
 		/// <remarks>
-		///   This is only set when the component is initialized using the IServiceProvider
-		///   constructor, where it needs to remember the service provider until the
-		///   Initialize() method has been called.
+		///     This is only set when the component is initialized using the IServiceProvider
+		///     constructor, where it needs to remember the service provider until the
+		///     Initialize() method has been called.
 		/// </remarks>
 		private IServiceProvider serviceProvider;
 

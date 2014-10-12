@@ -26,10 +26,10 @@ namespace Nuclectic.UserInterface
 {
 	/// <summary>The control's id has already been taken by another control</summary>
 	/// <remarks>
-	///   This exception indicates that you have a name collision between two controls
-	///   in the same collection. It will either occur when you add a control to a
-	///   collection that already contains a control with the same name, or when you
-	///   change the name of a control to that of another control in the same collection.
+	///     This exception indicates that you have a name collision between two controls
+	///     in the same collection. It will either occur when you add a control to a
+	///     collection that already contains a control with the same name, or when you
+	///     change the name of a control to that of another control in the same collection.
 	/// </remarks>
 	public class DuplicateNameException : Exception
 	{

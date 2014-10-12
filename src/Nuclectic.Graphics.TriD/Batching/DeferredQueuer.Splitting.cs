@@ -38,22 +38,22 @@ namespace Nuclectic.Graphics.TriD.Batching
 		// ----------------------------------------------------------------------------------------- //
 
 		/// <summary>
-		///   Queues the provided vertices for deferred rendering, doing one or more
-		///   intermediate flushes when the vertex batch is full
+		///     Queues the provided vertices for deferred rendering, doing one or more
+		///     intermediate flushes when the vertex batch is full
 		/// </summary>
 		/// <param name="vertices">Primitive vertices</param>
 		/// <param name="startVertex">
-		///   Index in the vertex array of the first vertex. This vertex will become
-		///   the new index 0 for the index buffer.
+		///     Index in the vertex array of the first vertex. This vertex will become
+		///     the new index 0 for the index buffer.
 		/// </param>
 		/// <param name="vertexCount">Number of vertices to draw</param>
 		/// <param name="type">Type of primitives to draw</param>
 		/// <param name="context">Desired graphics device settings for the primitives</param>
 		/// <param name="spaceLeft">Amount of space left in the current batch</param>
 		/// <remarks>
-		///   This is a special optimized method for adding vertices when the amount of
-		///   vertices to render does not exceed available batch space, which should be
-		///   the default usage of a vertex batcher.
+		///     This is a special optimized method for adding vertices when the amount of
+		///     vertices to render does not exceed available batch space, which should be
+		///     the default usage of a vertex batcher.
 		/// </remarks>
 		private void queueVerticesBufferSplit(
 			VertexType[] vertices, int startVertex, int vertexCount,
@@ -228,13 +228,13 @@ namespace Nuclectic.Graphics.TriD.Batching
 		}
 
 		/// <summary>
-		///   Queues the provided vertices for deferred rendering, doing one or more
-		///   intermediate flushes when the vertex batch is full
+		///     Queues the provided vertices for deferred rendering, doing one or more
+		///     intermediate flushes when the vertex batch is full
 		/// </summary>
 		/// <param name="vertices">Primitive vertices</param>
 		/// <param name="startVertex">
-		///   Index in the vertex array of the first vertex. This vertex will become
-		///   the new index 0 for the index buffer.
+		///     Index in the vertex array of the first vertex. This vertex will become
+		///     the new index 0 for the index buffer.
 		/// </param>
 		/// <param name="vertexCount">Number of vertices to draw</param>
 		/// <param name="indices">Indices of the vertices to draw</param>
@@ -244,9 +244,9 @@ namespace Nuclectic.Graphics.TriD.Batching
 		/// <param name="context">Desired graphics device settings for the primitives</param>
 		/// <param name="spaceLeft">Amount of space left in the current batch</param>
 		/// <remarks>
-		///   This is a special optimized method for adding vertices when the amount of
-		///   vertices to render does not exceed available batch space, which should be
-		///   the default usage of a vertex batcher.
+		///     This is a special optimized method for adding vertices when the amount of
+		///     vertices to render does not exceed available batch space, which should be
+		///     the default usage of a vertex batcher.
 		/// </remarks>
 		private void queueIndexedVerticesBufferSplit(
 			VertexType[] vertices, int startVertex, int vertexCount,

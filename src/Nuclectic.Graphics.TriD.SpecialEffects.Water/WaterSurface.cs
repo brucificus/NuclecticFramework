@@ -68,8 +68,8 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Water
 		}
 
 		/// <summary>
-		///   Called when graphics resources should be released. Override to
-		///   handle component specific graphics resources
+		///     Called when graphics resources should be released. Override to
+		///     handle component specific graphics resources
 		/// </summary>
 		public void Dispose()
 		{
@@ -111,20 +111,20 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Water
 		/// <param name="gameTime">Snapshot of the game's timing values</param>
 		/// <param name="camera">Camera through which the scene is being viewed</param>
 		/// <param name="reflectedSceneDrawer">
-		///   Delegate that will be called to draw the scene in its reflected state
+		///     Delegate that will be called to draw the scene in its reflected state
 		/// </param>
 		/// <remarks>
-		///   <para>
-		///     When the delegate is called, the scene should be drawn normally using
-		///     the provided game time and camera. The view matrix of the provided camera
-		///     will have been adjusted to draw the scene upside-down and the graphics device
-		///     will be configured to clip off anything that's below the water surface.
-		///   </para>
-		///   <para>
-		///     Some adjustments can be made, like rendering the reflection with reduced
-		///     detail, cheaper effects or even leaving our parts of the scene to improve
-		///     performance since the reflection will not be clearly displayed anyway.
-		///   </para>
+		///     <para>
+		///         When the delegate is called, the scene should be drawn normally using
+		///         the provided game time and camera. The view matrix of the provided camera
+		///         will have been adjusted to draw the scene upside-down and the graphics device
+		///         will be configured to clip off anything that's below the water surface.
+		///     </para>
+		///     <para>
+		///         Some adjustments can be made, like rendering the reflection with reduced
+		///         detail, cheaper effects or even leaving our parts of the scene to improve
+		///         performance since the reflection will not be clearly displayed anyway.
+		///     </para>
 		/// </remarks>
 		public void UpdateReflection(
 			GameTime gameTime, ICamera camera, SceneDrawDelegate reflectedSceneDrawer

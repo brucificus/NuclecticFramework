@@ -24,18 +24,18 @@ namespace Nuclectic.UserInterface.Input
 {
 	/// <summary>Input commands that can be sent to a control</summary>
 	/// <remarks>
-	///   <para>
-	///     The Nuclex GUI library is designed to work even when none of the usual
-	///     input devices are available. In this case, the entire GUI is controlled
-	///     through command keys, which might for example directly be linked to
-	///     the buttons of a gamepad.
-	///   </para>
-	///   <para>
-	///     It is, of course, still the responsibility of the developer to design
-	///     GUIs in a simple and easy to navigate style. When building GUIs that
-	///     are intended be used without a mouse, it is best not to use complex
-	///     controls like lists or text input boxes.
-	///   </para>
+	///     <para>
+	///         The Nuclex GUI library is designed to work even when none of the usual
+	///         input devices are available. In this case, the entire GUI is controlled
+	///         through command keys, which might for example directly be linked to
+	///         the buttons of a gamepad.
+	///     </para>
+	///     <para>
+	///         It is, of course, still the responsibility of the developer to design
+	///         GUIs in a simple and easy to navigate style. When building GUIs that
+	///         are intended be used without a mouse, it is best not to use complex
+	///         controls like lists or text input boxes.
+	///     </para>
 	/// </remarks>
 	public enum Command
 	{

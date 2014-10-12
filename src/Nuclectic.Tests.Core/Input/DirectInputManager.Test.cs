@@ -28,17 +28,15 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input
 {
-
 	/// <summary>Unit tests for the DirectInput manager</summary>
 	[TestFixture]
 	internal class DirectInputManagerTest
 	{
-
 		/// <summary>Verifies that the IsDirectInputAvailable property is working</summary>
 		[Test]
 		public void TestIsDirectInputAvailable()
 		{
-			using(var directInputManager = new DirectInputManager())
+			using (var directInputManager = new DirectInputManager())
 			{
 				bool result = directInputManager.IsDirectInputAvailable;
 				Assert.IsTrue(result || !result); // the result doesn't matter
@@ -60,7 +58,6 @@ namespace Nuclectic.Tests.Input
 			}
 		}
 	}
-
 } // namespace Nuclex.Input
 
 #endif // UNITTEST

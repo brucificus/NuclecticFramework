@@ -41,8 +41,8 @@ namespace Nuclectic.Tests.Game.States
 			public TestGameState() { }
 
 			/// <summary>
-			///   Allows the game state to run logic such as updating the world,
-			///   checking for collisions, gathering input and playing audio.
+			///     Allows the game state to run logic such as updating the world,
+			///     checking for collisions, gathering input and playing audio.
 			/// </summary>
 			/// <param name="gameTime">Provides a snapshot of timing values</param>
 			public override void Update(GameTime gameTime) { ++this.UpdateCallCount; }
@@ -94,7 +94,7 @@ namespace Nuclectic.Tests.Game.States
 		#endregion // class TestGameState
 
 		/// <summary>
-		///   Verifies that the constructor of the game state class is working
+		///     Verifies that the constructor of the game state class is working
 		/// </summary>
 		[Test]
 		public void TestConstructor()
@@ -104,7 +104,7 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Verifies that the Update() call can be used on the game state
+		///     Verifies that the Update() call can be used on the game state
 		/// </summary>
 		[Test]
 		public void TestUpdate()
@@ -116,8 +116,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether the Enter() and Leave() notifications of a game state are
-		///   invoked at the appropriate times
+		///     Tests whether the Enter() and Leave() notifications of a game state are
+		///     invoked at the appropriate times
 		/// </summary>
 		[Test]
 		public void TestEnterLeave()
@@ -134,8 +134,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether the Pause() and Resume() notifications of a game state are
-		///   invoked at the appropriate times
+		///     Tests whether the Pause() and Resume() notifications of a game state are
+		///     invoked at the appropriate times
 		/// </summary>
 		[Test]
 		public void TestPauseResume()
@@ -152,8 +152,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Verifies that redundant calls to the Pause() method will not cause
-		///   multiple calls of the OnPaused() notification
+		///     Verifies that redundant calls to the Pause() method will not cause
+		///     multiple calls of the OnPaused() notification
 		/// </summary>
 		[Test]
 		public void TestRedundantPauseIsIgnored()
@@ -169,8 +169,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Verifies that redundant calls to the Resume() method will not cause
-		///   multiple calls of the OnResume() notification
+		///     Verifies that redundant calls to the Resume() method will not cause
+		///     multiple calls of the OnResume() notification
 		/// </summary>
 		[Test]
 		public void TestRedundantResumeIsIgnored()
@@ -190,8 +190,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether the Enabled property provided via the IUpdateable
-		///   interface is returned correctly
+		///     Tests whether the Enabled property provided via the IUpdateable
+		///     interface is returned correctly
 		/// </summary>
 		[Test]
 		public void TestEnabledProperty()
@@ -201,8 +201,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether the UpdateOrder property provided via the IUpdateable
-		///   interface is returned correctly
+		///     Tests whether the UpdateOrder property provided via the IUpdateable
+		///     interface is returned correctly
 		/// </summary>
 		[Test]
 		public void TestUpdateOrderProperty()
@@ -212,7 +212,7 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether the UpdateOrderChanged event can be used
+		///     Tests whether the UpdateOrderChanged event can be used
 		/// </summary>
 		[Test]
 		public void TestUpdateOrderChangedEvent()
@@ -227,7 +227,7 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether the EnabledChanged event can be used
+		///     Tests whether the EnabledChanged event can be used
 		/// </summary>
 		[Test]
 		public void TestEnabledChangedEvent()

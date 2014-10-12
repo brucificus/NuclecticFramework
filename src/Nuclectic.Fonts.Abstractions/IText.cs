@@ -8,7 +8,7 @@ namespace Nuclectic.Fonts
 		VertexPositionNormalTexture[] Vertices { get; }
 
 		/// <summary>
-		///   Indices describing which vertices to connect by lines or triangles
+		///     Indices describing which vertices to connect by lines or triangles
 		/// </summary>
 		short[] Indices { get; }
 

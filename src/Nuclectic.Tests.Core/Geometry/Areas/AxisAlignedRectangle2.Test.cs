@@ -47,7 +47,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Validates that the surface area of an axis aligned box can be calculated
+		///     Validates that the surface area of an axis aligned box can be calculated
 		/// </summary>
 		[Test]
 		public void TestArea()
@@ -61,7 +61,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Validates that the circumference length of an axis aligned box can be calculated
+		///     Validates that the circumference length of an axis aligned box can be calculated
 		/// </summary>
 		[Test]
 		public void TestCircumferenceLength()
@@ -75,7 +75,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether the center of mass for the rectangle is correctly calculated
+		///     Tests whether the center of mass for the rectangle is correctly calculated
 		/// </summary>
 		[Test]
 		public void TestCenterOfMass()
@@ -88,7 +88,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Validates that the bounding box determination works for the rectangle
+		///     Validates that the bounding box determination works for the rectangle
 		/// </summary>
 		[Test]
 		public void TestBoundingBox()
@@ -101,7 +101,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Verifies that the closest point finder is working
+		///     Verifies that the closest point finder is working
 		/// </summary>
 		[Test]
 		public void TestClosestPointTo()
@@ -125,7 +125,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Verifies that random points on the rectangle's perimeter can be calculated
+		///     Verifies that random points on the rectangle's perimeter can be calculated
 		/// </summary>
 		[Test]
 		public void TestRandomPointOnPerimeter()
@@ -150,7 +150,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Verifies that the closest point finder is working
+		///     Verifies that the closest point finder is working
 		/// </summary>
 		[Test]
 		public void TestRandomPointWithin()

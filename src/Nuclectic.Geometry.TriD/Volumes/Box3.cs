@@ -32,7 +32,7 @@ namespace Nuclectic.Geometry.Volumes
 	{
 		/// <summary>Initializes a new instance of the oriented box</summary>
 		/// <param name="transform">
-		///   Transformation matrix that defines the box' rotation and translation
+		///     Transformation matrix that defines the box' rotation and translation
 		/// </param>
 		/// <param name="extents">The extents (half the dimensions) of the box</param>
 		[System.Diagnostics.DebuggerStepThrough]
@@ -54,17 +54,17 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Smallest box that encloses the volume in its entirety</summary>
 		/// <remarks>
-		///   <para>
-		///     This always produces an optimal box which means a tight-fitting box is generated
-		///     that will touch the volume on each of its six sides. As a side effect, it is very
-		///     likely that this box needs to be recalculated whenever the volume changes its
-		///     orientation.
-		///   </para>
-		///   <para>
-		///     This method was actually thought up by myself when all googling did not
-		///     reveal a clever way to avoid the expensive matrix-vector multiplications.
-		///     Feel free to use it in any way you see fit.
-		///   </para>
+		///     <para>
+		///         This always produces an optimal box which means a tight-fitting box is generated
+		///         that will touch the volume on each of its six sides. As a side effect, it is very
+		///         likely that this box needs to be recalculated whenever the volume changes its
+		///         orientation.
+		///     </para>
+		///     <para>
+		///         This method was actually thought up by myself when all googling did not
+		///         reveal a clever way to avoid the expensive matrix-vector multiplications.
+		///         Feel free to use it in any way you see fit.
+		///     </para>
 		/// </remarks>
 		public AxisAlignedBox3 BoundingBox
 		{
@@ -98,9 +98,9 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Smallest sphere that encloses the volume in its entirety</summary>
 		/// <remarks>
-		///   Bounding spheres have the advantage to not change even when the volume is
-		///   rotated. That makes them ideal for dynamic objects that are not keeping their
-		///   original orientation.
+		///     Bounding spheres have the advantage to not change even when the volume is
+		///     rotated. That makes them ideal for dynamic objects that are not keeping their
+		///     original orientation.
 		/// </remarks>
 		public Sphere3 BoundingSphere { get { return new Sphere3(this.Center, this.Extents.Length()); } }
 
@@ -281,10 +281,10 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Box dimensions in the box' local coordinate system</summary>
 		/// <remarks>
-		///   These are the extents, not the dimensions. The dimensions are the
-		///   total length of the box on each of its three local coordinate axes while
-		///   the extents refer to the distance of each side from the center of the
-		///   box, much like the radius and the diameter of a sphere.
+		///     These are the extents, not the dimensions. The dimensions are the
+		///     total length of the box on each of its three local coordinate axes while
+		///     the extents refer to the distance of each side from the center of the
+		///     box, much like the radius and the diameter of a sphere.
 		/// </remarks>
 		[DataMember]
 		public Vector3 Extents;

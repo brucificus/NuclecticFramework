@@ -120,10 +120,10 @@ namespace Nuclectic.Input.Devices
 
 		/// <summary>Fired when the user has entered a character</summary>
 		/// <remarks>
-		///   This provides the complete, translated character the user has entered.
-		///   Handling of international keyboard layouts, shift key, accents and
-		///   other special cases is done by Windows according to the current users'
-		///   country and selected keyboard layout.
+		///     This provides the complete, translated character the user has entered.
+		///     Handling of international keyboard layouts, shift key, accents and
+		///     other special cases is done by Windows according to the current users'
+		///     country and selected keyboard layout.
 		/// </remarks>
 		public event CharacterDelegate CharacterEntered;
 
@@ -146,17 +146,17 @@ namespace Nuclectic.Input.Devices
 
 		/// <summary>Updates the state of the input device</summary>
 		/// <remarks>
-		///   <para>
-		///     If this method is called with no snapshots in the queue, it will take
-		///     an immediate snapshot and make it the current state. This way, you
-		///     can use the input devices without caring for the snapshot system if
-		///     you wish.
-		///   </para>
-		///   <para>
-		///     If this method is called while one or more snapshots are waiting in
-		///     the queue, this method takes the next snapshot from the queue and makes
-		///     it the current state.
-		///   </para>
+		///     <para>
+		///         If this method is called with no snapshots in the queue, it will take
+		///         an immediate snapshot and make it the current state. This way, you
+		///         can use the input devices without caring for the snapshot system if
+		///         you wish.
+		///     </para>
+		///     <para>
+		///         If this method is called while one or more snapshots are waiting in
+		///         the queue, this method takes the next snapshot from the queue and makes
+		///         it the current state.
+		///     </para>
 		/// </remarks>
 		public void Update()
 		{
@@ -192,9 +192,9 @@ namespace Nuclectic.Input.Devices
 
 		/// <summary>Takes a snapshot of the current state of the input device</summary>
 		/// <remarks>
-		///   This snapshot will be queued until the user calls the Update() method,
-		///   where the next polled snapshot will be taken from the queue and provided
-		///   to the user.
+		///     This snapshot will be queued until the user calls the Update() method,
+		///     where the next polled snapshot will be taken from the queue and provided
+		///     to the user.
 		/// </remarks>
 		public void TakeSnapshot() { this.queuedEvents.Enqueue(KeyboardEvent.Snapshot()); }
 

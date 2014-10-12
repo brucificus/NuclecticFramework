@@ -34,11 +34,11 @@ namespace Nuclectic.UserInterface
 {
 	/// <summary>Manages the controls and their state on a GUI screen</summary>
 	/// <remarks>
-	///   This class manages the global state of a distinct user interface. Unlike your
-	///   typical GUI library, the Nuclex.UserInterface library can handle any number of
-	///   simultaneously active user interfaces at the same time, making the library
-	///   suitable for usage on virtual ingame computers and multi-client environments
-	///   such as split-screen games or switchable graphical terminals.
+	///     This class manages the global state of a distinct user interface. Unlike your
+	///     typical GUI library, the Nuclex.UserInterface library can handle any number of
+	///     simultaneously active user interfaces at the same time, making the library
+	///     suitable for usage on virtual ingame computers and multi-client environments
+	///     such as split-screen games or switchable graphical terminals.
 	/// </remarks>
 	public class Screen : IScreen
 	{
@@ -53,9 +53,9 @@ namespace Nuclectic.UserInterface
 		/// <param name="width">Width of the area the GUI can occupy</param>
 		/// <param name="height">Height of the area the GUI can occupy</param>
 		/// <remarks>
-		///   Width and height should reflect the entire drawable area of your GUI. If you
-		///   want to limit the region which the GUI is allowed to use (eg. to only use the
-		///   safe area of a TV) please resize the desktop control accordingly!
+		///     Width and height should reflect the entire drawable area of your GUI. If you
+		///     want to limit the region which the GUI is allowed to use (eg. to only use the
+		///     safe area of a TV) please resize the desktop control accordingly!
 		/// </remarks>
 		public Screen(float width, float height)
 		{
@@ -451,37 +451,37 @@ namespace Nuclectic.UserInterface
 
 		/// <summary>Whether the GUI has currently captured the input devices</summary>
 		/// <remarks>
-		///   <para>
-		///     When you mix GUIs and gameplay (for example, in a strategy game where the GUI
-		///     manages the build menu and the remainder of the screen belongs to the game),
-		///     it is important to keep control of who currently owns the input devices.
-		///   </para>
-		///   <para>
-		///     Assume the player is drawing a selection rectangle around some units using
-		///     the mouse. He will press the mouse button outside any GUI elements, keep
-		///     holding it down and possibly drag over the GUI. Until the player lets go
-		///     of the mouse button, input exclusively belongs to the game. The same goes
-		///     vice versa, of course.
-		///   </para>
-		///   <para>
-		///     This property tells whether the GUI currently thinks that all input belongs
-		///     to it. If it is true, the game should not process any input. The GUI will
-		///     implement the input model as described here and respect the game's ownership
-		///     of the input devices if a mouse button is pressed outside of the GUI. To
-		///     correctly handle input device ownership, send all input to the GUI
-		///     regardless of this property's value, then check this property and if it
-		///     returns false let your game process the input.
-		///   </para>
+		///     <para>
+		///         When you mix GUIs and gameplay (for example, in a strategy game where the GUI
+		///         manages the build menu and the remainder of the screen belongs to the game),
+		///         it is important to keep control of who currently owns the input devices.
+		///     </para>
+		///     <para>
+		///         Assume the player is drawing a selection rectangle around some units using
+		///         the mouse. He will press the mouse button outside any GUI elements, keep
+		///         holding it down and possibly drag over the GUI. Until the player lets go
+		///         of the mouse button, input exclusively belongs to the game. The same goes
+		///         vice versa, of course.
+		///     </para>
+		///     <para>
+		///         This property tells whether the GUI currently thinks that all input belongs
+		///         to it. If it is true, the game should not process any input. The GUI will
+		///         implement the input model as described here and respect the game's ownership
+		///         of the input devices if a mouse button is pressed outside of the GUI. To
+		///         correctly handle input device ownership, send all input to the GUI
+		///         regardless of this property's value, then check this property and if it
+		///         returns false let your game process the input.
+		///     </para>
 		/// </remarks>
 		public bool IsInputCaptured { get { return this.desktopControl.IsInputCaptured; } }
 
 		/// <summary>True if the mouse is currently hovering over any GUI elements</summary>
 		/// <remarks>
-		///   Useful if you mix gameplay with a GUI and use different mouse cursors
-		///   depending on the location of the mouse. As long as input is not captured
-		///   (see <see cref="IsInputCaptured" />) you can use this property to know
-		///   whether you should use the standard GUI mouse cursor or let your game
-		///   decide which cursor to use.
+		///     Useful if you mix gameplay with a GUI and use different mouse cursors
+		///     depending on the location of the mouse. As long as input is not captured
+		///     (see <see cref="IsInputCaptured" />) you can use this property to know
+		///     whether you should use the standard GUI mouse cursor or let your game
+		///     decide which cursor to use.
 		/// </remarks>
 		public bool IsMouseOverGui { get { return this.desktopControl.IsMouseOverGui; } }
 
@@ -513,7 +513,7 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Whether any keys, mouse buttons or game pad buttons are beind held pressed
+		///     Whether any keys, mouse buttons or game pad buttons are beind held pressed
 		/// </summary>
 		private bool anyKeysOrButtonsPressed
 		{
@@ -527,14 +527,14 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Determines the distance of one rectangle to the other, also taking direction
-		///   into account
+		///     Determines the distance of one rectangle to the other, also taking direction
+		///     into account
 		/// </summary>
 		/// <param name="ownBounds">Boundaries of the base rectangle</param>
 		/// <param name="otherBounds">Boundaries of the other rectangle</param>
 		/// <param name="direction">Direction into which distance will be determined</param>
 		/// <returns>
-		///   The direction of the other rectangle of NaN if it didn't lie in that direction
+		///     The direction of the other rectangle of NaN if it didn't lie in that direction
 		/// </returns>
 		private static float getDirectionalDistance(
 			ref RectangleF ownBounds, ref RectangleF otherBounds, Command direction
@@ -688,8 +688,8 @@ namespace Nuclectic.UserInterface
 
 		/// <summary>Child that currently has the input focus</summary>
 		/// <remarks>
-		///   If this field is non-null, all keyboard input sent to the Gui is handed
-		///   over to the focused control. Otherwise, keyboard input is discarded.
+		///     If this field is non-null, all keyboard input sent to the Gui is handed
+		///     over to the focused control. Otherwise, keyboard input is discarded.
 		/// </remarks>
 		private Nuclectic.Support.WeakReference<Control> focusedControl;
 

@@ -29,12 +29,10 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input.Devices
 {
-
 	/// <summary>Unit tests for the DirectInput-based game pad</summary>
 	[TestFixture]
 	internal class DirectInputGamePadTest
 	{
-
 		/// <summary>Called before each test is run</summary>
 		[SetUp]
 		public void Setup()
@@ -42,8 +40,8 @@ namespace Nuclectic.Tests.Input.Devices
 			this.directInput = new DirectInput();
 
 			IList<DeviceInstance> devices = this.directInput.GetDevices(
-			  DeviceClass.GameController, DeviceEnumerationFlags.AllDevices
-			);
+																	    DeviceClass.GameController, DeviceEnumerationFlags.AllDevices
+				);
 			if (devices.Count > 0)
 			{
 				this.joystick = new Joystick(this.directInput, devices[0].InstanceGuid);
@@ -96,9 +94,9 @@ namespace Nuclectic.Tests.Input.Devices
 
 		/// <summary>Verifies that the IsAttached method is working</summary>
 		[
-		  Test,
-		  TestCase(true),
-		  TestCase(false)
+			Test,
+			TestCase(true),
+			TestCase(false)
 		]
 		public void TestAttached(bool expected)
 		{
@@ -134,10 +132,10 @@ namespace Nuclectic.Tests.Input.Devices
 
 		/// <summary>Requires a joystick to be attached to the system</summary>
 		/// <remarks>
-		///   Requiring hardware for a unit test is a big no-no, but SlimDX' wrappers arent
-		///   all based on funky interfaces, so there's no way to mock the darn thing.
-		///   Adding another layer of abstraction would only mean having no test coverage
-		///   for that layer of abstraction.
+		///     Requiring hardware for a unit test is a big no-no, but SlimDX' wrappers arent
+		///     all based on funky interfaces, so there's no way to mock the darn thing.
+		///     Adding another layer of abstraction would only mean having no test coverage
+		///     for that layer of abstraction.
 		/// </remarks>
 		private void requireAttachedJoystick()
 		{
@@ -149,11 +147,10 @@ namespace Nuclectic.Tests.Input.Devices
 
 		/// <summary>DirectInput interface the game pad will be based on</summary>
 		private DirectInput directInput;
+
 		/// <summary>DirectInput joystick that will be used for testing</summary>
 		private Joystick joystick;
-
 	}
-
 } // namespace Nuclex.Input.Devices
 
 #endif // UNITTEST

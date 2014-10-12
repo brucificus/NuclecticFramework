@@ -25,7 +25,7 @@ using System;
 namespace Nuclectic.Game.State
 {
 	/// <summary>
-	///   Implemented by game states to make them loadable via the loading screen state
+	///     Implemented by game states to make them loadable via the loading screen state
 	/// </summary>
 	public interface ILoadableGameState
 	{
@@ -34,7 +34,7 @@ namespace Nuclectic.Game.State
 
 		/// <summary>Begins loading the game state</summary>
 		/// <param name="callback">
-		///   Callback to be called when the game state has been loaded
+		///     Callback to be called when the game state has been loaded
 		/// </param>
 		/// <param name="state">User defined object to pass on to the callback</param>
 		/// <returns>A result handle that can be used to wait for the loading process</returns>

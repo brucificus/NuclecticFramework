@@ -40,11 +40,11 @@ namespace Nuclectic.Tests.Game.Space
 			/// <summary>Queries the spatial database for all objects in a region</summary>
 			/// <param name="region">Region of which the items will be returned</param>
 			/// <param name="items">
-			///   Collection that will receive all items in the query region
+			///     Collection that will receive all items in the query region
 			/// </param>
 			/// <remarks>
-			///   Use this method to avoid generating garbage by reusing the collection
-			///   the queried items are stored in.
+			///     Use this method to avoid generating garbage by reusing the collection
+			///     the queried items are stored in.
 			/// </remarks>
 			public override void Query(BoundingRectangle region, ICollection<int> items)
 			{

@@ -24,27 +24,27 @@ namespace Nuclectic.UserInterface
 {
 	/// <summary>Stores a size or location on one axis</summary>
 	/// <remarks>
-	///   <para>
-	///     Any position or size in Nuclex.UserInterface uses a combined position consisting
-	///     of a fraction and an offset. The fraction specifies the position or size as a
-	///     fraction of the parent frame's bounds and usually is in the range between 0.0 and
-	///     1.0. The offset simply is the number of pixels to divert from the thusly
-	///     determined location.
-	///   </para>
-	///   <para>
-	///     Through the use of both fraction and offset, any kind of anchoring behavior can be
-	///     achieved that normally would require a complex anchoring and docking system as can
-	///     be seen in System.Windows.Forms.
-	///   </para>
-	///   <para>
-	///     If you, for example, wanted to always place a control 20 pixels from the right
-	///     border of its parent container, set the fraction of its position to 1.0 (always
-	///     on the right border) and the offset to -20.0 (go 20 units to the left from there).
-	///   </para>
-	///   <para>
-	///     You can achieve traditional absolute positioning by leaving the fraction at 0.0,
-	///     which is equivalent to the upper or left border of the parent container.
-	///   </para>
+	///     <para>
+	///         Any position or size in Nuclex.UserInterface uses a combined position consisting
+	///         of a fraction and an offset. The fraction specifies the position or size as a
+	///         fraction of the parent frame's bounds and usually is in the range between 0.0 and
+	///         1.0. The offset simply is the number of pixels to divert from the thusly
+	///         determined location.
+	///     </para>
+	///     <para>
+	///         Through the use of both fraction and offset, any kind of anchoring behavior can be
+	///         achieved that normally would require a complex anchoring and docking system as can
+	///         be seen in System.Windows.Forms.
+	///     </para>
+	///     <para>
+	///         If you, for example, wanted to always place a control 20 pixels from the right
+	///         border of its parent container, set the fraction of its position to 1.0 (always
+	///         on the right border) and the offset to -20.0 (go 20 units to the left from there).
+	///     </para>
+	///     <para>
+	///         You can achieve traditional absolute positioning by leaving the fraction at 0.0,
+	///         which is equivalent to the upper or left border of the parent container.
+	///     </para>
 	/// </remarks>
 	public struct UniScalar
 	{
@@ -68,16 +68,16 @@ namespace Nuclectic.UserInterface
 		/// <summary>Implicitely constructs a scalar using a float as the absolute part</summary>
 		/// <param name="offset">Float that will be used for the scalar's absolute value</param>
 		/// <returns>
-		///   A new scalar constructed with the original float as its absolute part
+		///     A new scalar constructed with the original float as its absolute part
 		/// </returns>
 		public static implicit operator UniScalar(float offset) { return new UniScalar(offset); }
 
 		/// <summary>Converts the scalar into a pure offset position</summary>
 		/// <param name="containerSize">
-		///   Absolute dimension of the parent that the relative coordinate relates to
+		///     Absolute dimension of the parent that the relative coordinate relates to
 		/// </param>
 		/// <returns>
-		///   The absolute position in the parent container denoted by the dimension
+		///     The absolute position in the parent container denoted by the dimension
 		/// </returns>
 		public float ToOffset(float containerSize) { return this.Fraction * containerSize + this.Offset; }
 
@@ -170,7 +170,7 @@ namespace Nuclectic.UserInterface
 		public override int GetHashCode() { return this.Fraction.GetHashCode() ^ this.Offset.GetHashCode(); }
 
 		/// <summary>
-		///   Returns a human-readable string representation for the unified scalar
+		///     Returns a human-readable string representation for the unified scalar
 		/// </summary>
 		/// <returns>The human-readable string representation of the unified scalar</returns>
 		public override string ToString()
@@ -185,15 +185,15 @@ namespace Nuclectic.UserInterface
 
 		/// <summary>Position of the scalar as fraction of the parent frame's bounds</summary>
 		/// <remarks>
-		///   The relative part is normally in the 0.0 .. 1.0 range, denoting the
-		///   fraction of the parent container's size the scalar will indicate.
+		///     The relative part is normally in the 0.0 .. 1.0 range, denoting the
+		///     fraction of the parent container's size the scalar will indicate.
 		/// </remarks>
 		public float Fraction;
 
 		/// <summary>Offset of the scalar in pixels relative to its fractional position</summary>
 		/// <remarks>
-		///   This part is taken literally without paying attention to the size of
-		///   the parent container the coordinate is used in.
+		///     This part is taken literally without paying attention to the size of
+		///     the parent container the coordinate is used in.
 		/// </remarks>
 		public float Offset;
 	}

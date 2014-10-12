@@ -37,7 +37,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Sky
 		: TestFixtureBase
 	{
 		/// <summary>
-		///   Verifies that the constructor of the skybox cube class is working
+		///     Verifies that the constructor of the skybox cube class is working
 		/// </summary>
 		[Test]
 		public void TestConstructor()
@@ -51,7 +51,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Sky
 		}
 
 		/// <summary>
-		///   Verifies that the skybox cube can render a skybox
+		///     Verifies that the skybox cube can render a skybox
 		/// </summary>
 		[Test]
 		public void TestRenderSkybox()

@@ -31,7 +31,7 @@ namespace Nuclectic.Geometry.Areas
 	{
 		/// <summary>Initializes a new flat disc in 3D space</summary>
 		/// <param name="transform">
-		///   Transformation matrix definining the disc's position and orientation
+		///     Transformation matrix definining the disc's position and orientation
 		/// </param>
 		/// <param name="radius">Radius of the disc</param>
 		[DebuggerStepThrough]

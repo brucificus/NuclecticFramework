@@ -55,7 +55,7 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Copies the contents of the List into an array</summary>
 		/// <param name="array">Array the List will be copied into</param>
 		/// <param name="arrayIndex">
-		///   Starting index at which to begin filling the destination array
+		///     Starting index at which to begin filling the destination array
 		/// </param>
 		public void CopyTo(TItem[] array, int arrayIndex) { this.typedList.CopyTo(array, arrayIndex); }
 
@@ -225,7 +225,7 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Copies the contents of the list into an array</summary>
 		/// <param name="array">Array the list will be copied into</param>
 		/// <param name="index">
-		///   Starting index at which to begin filling the destination array
+		///     Starting index at which to begin filling the destination array
 		/// </param>
 		void ICollection.CopyTo(Array array, int index) { this.objectList.CopyTo(array, index); }
 

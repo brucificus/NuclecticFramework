@@ -49,7 +49,7 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the random number generator can generate integers within a range
+		///     Verifies that the random number generator can generate integers within a range
 		/// </summary>
 		[Test]
 		public void TestNext()
@@ -62,7 +62,7 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the random number generator can generate doubles within a range
+		///     Verifies that the random number generator can generate doubles within a range
 		/// </summary>
 		[Test]
 		public void TestNextDouble()

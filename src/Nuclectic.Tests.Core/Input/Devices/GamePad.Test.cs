@@ -29,18 +29,15 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input.Devices
 {
-
 	/// <summary>Unit tests for the game pad base class</summary>
 	[TestFixture]
 	public class GamePadTest
 	{
-
 		#region interface IGamePadSubscriber
 
 		/// <summary>Subscriber for the game pad's events</summary>
 		public interface IGamePadSubscriber
 		{
-
 			/// <summary>Called when a button on the game pad is pressed</summary>
 			/// <param name="buttons">Button that has been pressed</param>
 			void ButtonPressed(Buttons buttons);
@@ -58,7 +55,6 @@ namespace Nuclectic.Tests.Input.Devices
 			/// <param name="buttons1">Button or buttons that have been released</param>
 			/// <param name="buttons2">Button or buttons that have been released</param>
 			void ExtendedButtonReleased(ulong buttons1, ulong buttons2);
-
 		}
 
 		#endregion interface IGamePadSubscriber
@@ -68,32 +64,19 @@ namespace Nuclectic.Tests.Input.Devices
 		/// <summary>Implementation of a game pad for unit testing</summary>
 		private class TestGamePad : GamePad
 		{
-
 			/// <summary>Retrieves the current state of the game pad</summary>
 			/// <returns>The current state of the game pad</returns>
-			public override GamePadState GetState()
-			{
-				return new GamePadState();
-			}
+			public override GamePadState GetState() { return new GamePadState(); }
 
 			/// <summary>Retrieves the current DirectInput joystick state</summary>
 			/// <returns>The current state of the DirectInput joystick</returns>
-			public override IExtendedGamePadState GetExtendedState()
-			{
-				return new ExtendedGamePadState();
-			}
+			public override IExtendedGamePadState GetExtendedState() { return new ExtendedGamePadState(); }
 
 			/// <summary>Whether the input device is connected to the system</summary>
-			public override bool IsAttached
-			{
-				get { return true; }
-			}
+			public override bool IsAttached { get { return true; } }
 
 			/// <summary>Human-readable name of the input device</summary>
-			public override string Name
-			{
-				get { return "Test dummy"; }
-			}
+			public override string Name { get { return "Test dummy"; } }
 
 			/// <summary>Update the state of all input devices</summary>
 			public override void Update() { }
@@ -102,47 +85,28 @@ namespace Nuclectic.Tests.Input.Devices
 			public override void TakeSnapshot() { }
 
 			/// <summary>Whether subscribers to the standard button events exist</summary>
-			public new bool HaveEventSubscribers
-			{
-				get { return base.HaveEventSubscribers; }
-			}
+			public new bool HaveEventSubscribers { get { return base.HaveEventSubscribers; } }
 
 			/// <summary>Whether subscribers to the extended button events exist</summary>
-			public new bool HaveExtendedEventSubscribers
-			{
-				get { return base.HaveExtendedEventSubscribers; }
-			}
+			public new bool HaveExtendedEventSubscribers { get { return base.HaveExtendedEventSubscribers; } }
 
 			/// <summary>Triggers the ButtonPressed event</summary>
 			/// <param name="buttons">Buttons that will be reported</param>
-			public void FireButtonPressed(Buttons buttons)
-			{
-				OnButtonPressed(buttons);
-			}
+			public void FireButtonPressed(Buttons buttons) { OnButtonPressed(buttons); }
 
 			/// <summary>Triggers the ButtonReleased event</summary>
 			/// <param name="buttons">Buttons that will be reported</param>
-			public void FireButtonReleased(Buttons buttons)
-			{
-				OnButtonReleased(buttons);
-			}
+			public void FireButtonReleased(Buttons buttons) { OnButtonReleased(buttons); }
 
 			/// <summary>Triggers the ExtendedButtonPressed event</summary>
 			/// <param name="buttons1">First set of buttons that will be reported</param>
 			/// <param name="buttons2">Second set of buttons that will be reported</param>
-			public void FireExtendedButtonPressed(ulong buttons1, ulong buttons2)
-			{
-				OnExtendedButtonPressed(buttons1, buttons2);
-			}
+			public void FireExtendedButtonPressed(ulong buttons1, ulong buttons2) { OnExtendedButtonPressed(buttons1, buttons2); }
 
 			/// <summary>Triggers the ExtendedButtonReleased event</summary>
 			/// <param name="buttons1">First set of buttons that will be reported</param>
 			/// <param name="buttons2">Second set of buttons that will be reported</param>
-			public void FireExtendedButtonReleased(ulong buttons1, ulong buttons2)
-			{
-				OnExtendedButtonReleased(buttons1, buttons2);
-			}
-
+			public void FireExtendedButtonReleased(ulong buttons1, ulong buttons2) { OnExtendedButtonReleased(buttons1, buttons2); }
 		}
 
 		#endregion // class TestGamePad
@@ -182,8 +146,8 @@ namespace Nuclectic.Tests.Input.Devices
 
 			subscriber.Setup(s => s.ExtendedButtonPressed(0x1234567812345678UL, 0x8765432187654321UL)).Verifiable();
 			testGamePad.FireExtendedButtonPressed(
-			  0x1234567812345678UL, 0x8765432187654321UL
-			);
+												  0x1234567812345678UL, 0x8765432187654321UL
+				);
 
 			subscriber.VerifyAll();
 		}
@@ -197,8 +161,8 @@ namespace Nuclectic.Tests.Input.Devices
 
 			subscriber.Setup(s => s.ExtendedButtonReleased(0x8765432187654321UL, 0x1234567812345678UL)).Verifiable();
 			testGamePad.FireExtendedButtonReleased(
-			  0x8765432187654321UL, 0x1234567812345678UL
-			);
+												   0x8765432187654321UL, 0x1234567812345678UL
+				);
 
 			subscriber.VerifyAll();
 		}

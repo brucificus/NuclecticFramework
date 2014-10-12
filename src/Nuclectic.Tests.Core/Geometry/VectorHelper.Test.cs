@@ -33,8 +33,8 @@ namespace Nuclectic.Tests.Geometry
 	public class VectorHelperTest
 	{
 		/// <summary>
-		///   Verifies that the vector helper can calculate the absolute value of the
-		///   individual elements in a vector
+		///     Verifies that the vector helper can calculate the absolute value of the
+		///     individual elements in a vector
 		/// </summary>
 		[Test]
 		public void TestVectorAbs()
@@ -47,8 +47,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the vector helper can be used to obtain and assign individual
-		///   rows of a matrix by their indices
+		///     Verifies that the vector helper can be used to obtain and assign individual
+		///     rows of a matrix by their indices
 		/// </summary>
 		[Test]
 		public void TestGetAndSetVectorElementsByIndex()
@@ -71,8 +71,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the vector helper throws an exception when an invalid row index
-		///   to read from is specified
+		///     Verifies that the vector helper throws an exception when an invalid row index
+		///     to read from is specified
 		/// </summary>
 		[Test]
 		public void TestThrowOnGetVectorRowWithInvalidIndex()
@@ -84,8 +84,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the vector helper throws an exception when an invalid row index
-		///   to write to is specified
+		///     Verifies that the vector helper throws an exception when an invalid row index
+		///     to write to is specified
 		/// </summary>
 		[Test]
 		public void TestThrowOnSetVectorRowWithInvalidIndex()
@@ -97,8 +97,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the vector helper can determine an arbitrary perpendicular vector
-		///   to another vector
+		///     Verifies that the vector helper can determine an arbitrary perpendicular vector
+		///     to another vector
 		/// </summary>
 		[Test]
 		public void TestGetPerpendicularVector()
@@ -133,7 +133,7 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Tests whether the AbsMax() method is working correctly for 2D vectors
+		///     Tests whether the AbsMax() method is working correctly for 2D vectors
 		/// </summary>
 		[Test]
 		public void TestAbsMaxWithVector2()
@@ -145,7 +145,7 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Tests whether the AbsMax() method is working correctly for 3D vectors
+		///     Tests whether the AbsMax() method is working correctly for 3D vectors
 		/// </summary>
 		[Test]
 		public void TestAbsMaxWithVector3()

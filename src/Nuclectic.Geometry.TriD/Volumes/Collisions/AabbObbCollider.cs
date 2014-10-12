@@ -34,18 +34,18 @@ namespace Nuclectic.Geometry.Volumes.Collisions
 		/// <param name="obbExtents">Extents of the OBB</param>
 		/// <returns>True if the two boxes are overlapping</returns>
 		/// <remarks>
-		///   <para>
-		///     This method is a helper method for the other intersection checks. It assumes the
-		///     AABB is sitting right in the center of the coordinate frame. In other words,
-		///     that the OBB has been transformed into the AABB's local coordinate frame.
-		///   </para>
-		///   <para>
-		///     Idea taken from the "Simple Intersection Tests for Games" article
-		///     on gamasutra by Gomez. The algorithm uses the separating axis test for
-		///     all 15 potential separating axes. If a separating axis can not be found,
-		///     the two boxes are overlapping.
-		///     (http://www.gamasutra.com/features/19991018/Gomez_1.htm)
-		///   </para>
+		///     <para>
+		///         This method is a helper method for the other intersection checks. It assumes the
+		///         AABB is sitting right in the center of the coordinate frame. In other words,
+		///         that the OBB has been transformed into the AABB's local coordinate frame.
+		///     </para>
+		///     <para>
+		///         Idea taken from the "Simple Intersection Tests for Games" article
+		///         on gamasutra by Gomez. The algorithm uses the separating axis test for
+		///         all 15 potential separating axes. If a separating axis can not be found,
+		///         the two boxes are overlapping.
+		///         (http://www.gamasutra.com/features/19991018/Gomez_1.htm)
+		///     </para>
 		/// </remarks>
 		public static bool CheckContact(
 			Vector3 aabbExtents, Matrix obbTransform, Vector3 obbExtents

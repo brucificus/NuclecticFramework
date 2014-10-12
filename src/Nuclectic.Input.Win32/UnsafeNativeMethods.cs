@@ -30,26 +30,26 @@ namespace Nuclectic.Input
 	internal static class UnsafeNativeMethods
 	{
 		/// <summary>
-		///   Flag returned by a window in response to WM_GETDLGCODE to indicate that it
-		///   is interested in receiving WM_CHAR messages
+		///     Flag returned by a window in response to WM_GETDLGCODE to indicate that it
+		///     is interested in receiving WM_CHAR messages
 		/// </summary>
 		public const int DLGC_WANTCHARS = 0x0080;
 
 		/// <summary>
-		///   Flag returned by a window in response to WM_GETDLGCODE to indicate that it
-		///   wants to process all keyboard input from the user
+		///     Flag returned by a window in response to WM_GETDLGCODE to indicate that it
+		///     wants to process all keyboard input from the user
 		/// </summary>
 		public const int DLGC_WANTALLKEYS = 0x0004;
 
 		/// <summary>
-		///   The caller wants leave notification. Notification is delivered as
-		///   a WM_MOUSELEAVE message.
+		///     The caller wants leave notification. Notification is delivered as
+		///     a WM_MOUSELEAVE message.
 		/// </summary>
 		public const int TME_LEAVE = 0x00000002;
 
 		/// <summary>
-		///   Bit in lparam that indicates whether a WM_KEYDOWN is being generated due
-		///   to the keyboard's auto-repeat
+		///     Bit in lparam that indicates whether a WM_KEYDOWN is being generated due
+		///     to the keyboard's auto-repeat
 		/// </summary>
 		public const int WM_KEYDOWN_WASDOWN = (1 << 30);
 
@@ -63,8 +63,8 @@ namespace Nuclectic.Input
 		public const int RID_INPUT = 0x10000003;
 
 		/// <summary>
-		///   Enables the caller to receive the input even when the caller is not in
-		///   the foreground. Note that WindowHandle must be specified.
+		///     Enables the caller to receive the input even when the caller is not in
+		///     the foreground. Note that WindowHandle must be specified.
 		/// </summary>
 		public const int RIDEV_INPUTSINK = 0x00000100;
 
@@ -89,31 +89,31 @@ namespace Nuclectic.Input
 		public enum MapType : uint
 		{
 			/// <summary>
-			///   Virtual-key code is translated into a scan code. Does not distinguish
-			///   between left- and right-hand keys.
+			///     Virtual-key code is translated into a scan code. Does not distinguish
+			///     between left- and right-hand keys.
 			/// </summary>
 			VirtualKeyToScanCode = 0,
 
 			/// <summary>
-			///   Scan code is translated into a virtual-key code that does not distinguish
-			///   between left- and right-hand keys.
+			///     Scan code is translated into a virtual-key code that does not distinguish
+			///     between left- and right-hand keys.
 			/// </summary>
 			ScanCodeToVirtualKey = 1,
 
 			/// <summary>
-			///   Virtual-key code is translated into an unshifted character value
+			///     Virtual-key code is translated into an unshifted character value
 			/// </summary>
 			VirtualKeyToChar = 2,
 
 			/// <summary>
-			///   Scan code is translated into a virtual-key code that distinguishes between
-			///   left- and right-hand keys.
+			///     Scan code is translated into a virtual-key code that distinguishes between
+			///     left- and right-hand keys.
 			/// </summary>
 			ScanCodeToVirtualKeyEx = 3,
 
 			/// <summary>
-			///   Virtual-key code is translated into a scan code. Distinguishes between
-			///   left- and right-hand keys.
+			///     Virtual-key code is translated into a scan code. Distinguishes between
+			///     left- and right-hand keys.
 			/// </summary>
 			VirtualKeytoScanCodeEx = 4
 		}
@@ -142,9 +142,9 @@ namespace Nuclectic.Input
 
 			/// <summary>Indicates that the user has pressed a system key</summary>
 			/// <remarks>
-			///   Posted to the window with the keyboard focus when the user presses the F10 key
-			///   (which activates the menu bar) or holds down the ALT key and then presses
-			///   another key.
+			///     Posted to the window with the keyboard focus when the user presses the F10 key
+			///     (which activates the menu bar) or holds down the ALT key and then presses
+			///     another key.
 			/// </remarks>
 			WM_SYSKEYDOWN = 0x104,
 
@@ -153,9 +153,9 @@ namespace Nuclectic.Input
 
 			/// <summary>Indicates that the user has entered text (UTF-32 variant)</summary>
 			/// <remarks>
-			///   This is only required if the window is an ANSI window (created by
-			///   CreateWindowA() and not reset to unicode). In this case, windows will
-			///   send WM_CHAR with ANSI characters and WM_UNICHAR with UTF-32 characters.
+			///     This is only required if the window is an ANSI window (created by
+			///     CreateWindowA() and not reset to unicode). In this case, windows will
+			///     send WM_CHAR with ANSI characters and WM_UNICHAR with UTF-32 characters.
 			/// </remarks>
 			WM_UNICHAR = 0x0109,
 
@@ -203,16 +203,16 @@ namespace Nuclectic.Input
 
 			/// <summary>Indicates that the mouse wheel has been rotated or tilted</summary>
 			/// <remarks>
-			///   This window message is only supported by Windows Vista. Mouse drivers may,
-			///   however, emulate it on Windows XP by directly communicating with
-			///   the low-level driver and injecting this message into the active window.
+			///     This window message is only supported by Windows Vista. Mouse drivers may,
+			///     however, emulate it on Windows XP by directly communicating with
+			///     the low-level driver and injecting this message into the active window.
 			/// </remarks>
 			WM_MOUSEHWHEEL_TILT = 0x020E,
 
 			/// <summary>Sent to the window when the mouse cursor has left it</summary>
 			/// <remarks>
-			///   To receive this message, the window has to set up the notification using
-			///   the TrackMouseEvent() function when the mouse enters the window.
+			///     To receive this message, the window has to set up the notification using
+			///     the TrackMouseEvent() function when the mouse enters the window.
 			/// </remarks>
 			WM_MOUSELEAVE = 0x02A3
 		}
@@ -232,13 +232,13 @@ namespace Nuclectic.Input
 			public ushort Usage;
 
 			/// <summary>
-			///   Mode flag that specifies how to interpret the information provided
-			///   by UsagePage and Usage
+			///     Mode flag that specifies how to interpret the information provided
+			///     by UsagePage and Usage
 			/// </summary>
 			public int Flags;
 
 			/// <summary>
-			///   Handle to the target window. If NULL it follows the keyboard focus
+			///     Handle to the target window. If NULL it follows the keyboard focus
 			/// </summary>
 			public IntPtr WindowHandle;
 		}
@@ -248,8 +248,8 @@ namespace Nuclectic.Input
 		#region struct TRACKMOUSEEVENT
 
 		/// <summary>
-		///   Used by the TrackMouseEvent function to track when the mouse pointer leaves
-		///   a window or hovers over a window
+		///     Used by the TrackMouseEvent function to track when the mouse pointer leaves
+		///     a window or hovers over a window
 		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
 		public struct TRACKMOUSEEVENT
@@ -264,8 +264,8 @@ namespace Nuclectic.Input
 			public IntPtr trackWindowHandle;
 
 			/// <summary>
-			///   Specifies the hover time-out (if TME_HOVER was specified in dwFlags),
-			///   in milliseconds
+			///     Specifies the hover time-out (if TME_HOVER was specified in dwFlags),
+			///     in milliseconds
 			/// </summary>
 			public Int32 hoverTime;
 		}
@@ -296,7 +296,7 @@ namespace Nuclectic.Input
 		#region struct RAWMOUSE
 
 		/// <summary>
-		/// Value type for raw input from a mouse.
+		///     Value type for raw input from a mouse.
 		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
 		public struct RAWMOUSE
@@ -305,7 +305,7 @@ namespace Nuclectic.Input
 			public ushort Flags;
 
 			/// <summary>
-			///   If the mouse wheel is rotated, this will contain the delta amount
+			///     If the mouse wheel is rotated, this will contain the delta amount
 			/// </summary>
 			public ushort ButtonData;
 
@@ -330,7 +330,7 @@ namespace Nuclectic.Input
 		#region struct RAWHID
 
 		/// <summary>
-		///   Describes the format of the raw input from a Human Interface Device
+		///     Describes the format of the raw input from a Human Interface Device
 		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
 		public struct RAWHID
@@ -381,18 +381,18 @@ namespace Nuclectic.Input
 
 		/// <summary>Retrieves the raw input from the specified device</summary>
 		/// <param name="rawInputHandle">
-		///   Handle to the raw input structure (provided by WM_INPUT)
+		///     Handle to the raw input structure (provided by WM_INPUT)
 		/// </param>
 		/// <param name="command">Command flag indicating what will be retrieved</param>
 		/// <param name="data">Receives the data that comes from the RAWINPUT structure</param>
 		/// <param name="size">
-		///   Size of the data buffer, receives amount of data retrieved
+		///     Size of the data buffer, receives amount of data retrieved
 		/// </param>
 		/// <param name="headerSize">Size, in bytes, of the RAWINPUTHEADER structure</param>
 		/// <returns>
-		///   If pData is NULL and the function is successful, the return value is 0.
-		///   If pData is not NULL and the function is successful, the return value is
-		///   the number of bytes copied into pData. -1 on error.
+		///     If pData is NULL and the function is successful, the return value is 0.
+		///     If pData is not NULL and the function is successful, the return value is
+		///     the number of bytes copied into pData. -1 on error.
 		/// </returns>
 		[DllImport("user32")]
 		public static extern int GetRawInputData(
@@ -404,36 +404,36 @@ namespace Nuclectic.Input
 			);
 
 		/// <summary>
-		///   Posts messages when the mouse pointer leaves a window or hovers over a window
-		///   for a specified amount of time
+		///     Posts messages when the mouse pointer leaves a window or hovers over a window
+		///     for a specified amount of time
 		/// </summary>
 		/// <param name="eventTrack">
-		///   Pointer to a TRACKMOUSEEVENT structure that contains tracking information
+		///     Pointer to a TRACKMOUSEEVENT structure that contains tracking information
 		/// </param>
 		/// <returns>If the function succeeds, the return value is nonzero</returns>
 		[DllImport("user32")]
 		public static extern int TrackMouseEvent(ref TRACKMOUSEEVENT eventTrack);
 
 		/// <summary>
-		///   Translates (maps) a virtual-key code into a scan code or character value,
-		///   or translates a scan code into a virtual-key code
+		///     Translates (maps) a virtual-key code into a scan code or character value,
+		///     or translates a scan code into a virtual-key code
 		/// </summary>
 		/// <param name="code">Virtual-key code or scan code for a key</param>
 		/// <param name="mapType">Translation to perform</param>
 		/// <returns>
-		///   A scan code, virtual key code or character value depending on
-		///   the translation peformed. Zero if no translation could be performed.
+		///     A scan code, virtual key code or character value depending on
+		///     the translation peformed. Zero if no translation could be performed.
 		/// </returns>
 		[DllImport("user32")]
 		public static extern uint MapVirtualKey(uint code, uint mapType);
 
 		/// <summary>
-		///   Places (posts) a message in the message queue associated with the thread that
-		///   created the specified window and returns without waiting for the thread to
-		///   process the message.
+		///     Places (posts) a message in the message queue associated with the thread that
+		///     created the specified window and returns without waiting for the thread to
+		///     process the message.
 		/// </summary>
 		/// <param name="windowHandle">
-		///   Handle to the window whose window procedure is to receive the message
+		///     Handle to the window whose window procedure is to receive the message
 		/// </param>
 		/// <param name="messageId">Specifies the message to be posted</param>
 		/// <param name="wParam">Specifies additional message-specific information</param>
@@ -447,7 +447,7 @@ namespace Nuclectic.Input
 
 		/// <summary>Sends the specified message to a window or windows</summary>
 		/// <param name="windowHandle">
-		///   Handle to the window whose window procedure will receive the message
+		///     Handle to the window whose window procedure will receive the message
 		/// </param>
 		/// <param name="messageId">Specifies the message to be sent</param>
 		/// <param name="wParam">Specifies additional message-specific information</param>
@@ -460,7 +460,7 @@ namespace Nuclectic.Input
 
 		/// <summary>Posts a message to the message queue of the specified thread</summary>
 		/// <param name="threadId">
-		///   Identifier of the thread to which the message is to be posted
+		///     Identifier of the thread to which the message is to be posted
 		/// </param>
 		/// <param name="messageId">Type of message that will be posted</param>
 		/// <param name="wParam">Additinal message-specified information</param>
@@ -473,18 +473,18 @@ namespace Nuclectic.Input
 			);
 
 		/// <summary>
-		///   Loads the specified module into the address space of the calling process
+		///     Loads the specified module into the address space of the calling process
 		/// </summary>
 		/// <param name="filename">Name of the module that will be loaded</param>
 		/// <returns>
-		///   If successful, the handle of the loaded module, otherwise NULL
+		///     If successful, the handle of the loaded module, otherwise NULL
 		/// </returns>
 		[DllImport("kernel32", SetLastError = true)]
 		public static extern IntPtr LoadLibrary(string filename);
 
 		/// <summary>
-		///   Frees the loaded dynamic-link library (DLL) module and, if necessary,
-		///   decrements its reference count
+		///     Frees the loaded dynamic-link library (DLL) module and, if necessary,
+		///     decrements its reference count
 		/// </summary>
 		/// <param name="moduleHandle">A handle to the loaded library module</param>
 		/// <returns>Any non-zero value on success, otherwise zero</returns>
@@ -494,13 +494,13 @@ namespace Nuclectic.Input
 		/// <summary>Translates virtual-key messages into character messages</summary>
 		/// <param name="message">Keyboard Message that will be translated</param>
 		/// <returns>
-		///   True if the message has been translated into a character message that
-		///   has been posted to the thread's message queue
+		///     True if the message has been translated into a character message that
+		///     has been posted to the thread's message queue
 		/// </returns>
 		/// <remarks>
-		///   The character messages are posted to the calling thread's message queue,
-		///   to be read the next time the thread calls the GetMessage() or
-		///   PeekMessage() function.
+		///     The character messages are posted to the calling thread's message queue,
+		///     to be read the next time the thread calls the GetMessage() or
+		///     PeekMessage() function.
 		/// </remarks>
 		[DllImport("user32", SetLastError = true)]
 		public static extern bool TranslateMessage(ref Message message);

@@ -33,27 +33,28 @@ using System.Threading;
 namespace Nuclectic.Support
 {
 	/// <summary>
-	/// Represents a dependency that can be released by the dependent component.
+	///     Represents a dependency that can be released by the dependent component.
 	/// </summary>
 	/// <typeparam name="T">The service provided by the dependency.</typeparam>
 	/// <remarks>
-	/// <para>
-	/// It is not necessary for <typeparamref name="T"/>, or the underlying component, to implement <see cref="System.IDisposable"/>.
-	/// Disposing of the <see cref="Owned{T}"/> object is the correct way to handle cleanup of the dependency,
-	/// as this will dispose of any other components created indirectly as well.
-	/// </para>
+	///     <para>
+	///         It is not necessary for <typeparamref name="T" />, or the underlying component, to implement
+	///         <see cref="System.IDisposable" />.
+	///         Disposing of the <see cref="Owned{T}" /> object is the correct way to handle cleanup of the dependency,
+	///         as this will dispose of any other components created indirectly as well.
+	///     </para>
 	/// </remarks>
 	/// <example>
-	/// The component D below is disposable and implements IService:
-	/// <code>
+	///     The component D below is disposable and implements IService:
+	///     <code>
 	/// public class D : IService, IDisposable
 	/// {
 	///   // ...
 	/// }
 	/// </code>
-	/// The dependent component C can dispose of the D instance whenever required by taking a dependency on
-	/// <see cref="Owned{IService}"/>:
-	/// <code>
+	///     The dependent component C can dispose of the D instance whenever required by taking a dependency on
+	///     <see cref="Owned{IService}" />:
+	///     <code>
 	/// public class C
 	/// {
 	///   IService _service;
@@ -74,16 +75,16 @@ namespace Nuclectic.Support
 	///   }
 	/// }
 	/// </code>
-	/// In general, rather than depending on <see cref="Owned{T}"/> directly, components will depend on
-	/// System.Func&lt;Owned&lt;T&gt;&gt; in order to create and dispose of other components as required.
+	///     In general, rather than depending on <see cref="Owned{T}" /> directly, components will depend on
+	///     System.Func&lt;Owned&lt;T&gt;&gt; in order to create and dispose of other components as required.
 	/// </example>
 	public class Owned<T> : Disposable, IOwned<T>
 	{
-		T _value;
-		IDisposable _lifetime;
+		private T _value;
+		private IDisposable _lifetime;
 
 		/// <summary>
-		/// Create an instance of <see cref="Owned{T}"/>.
+		///     Create an instance of <see cref="Owned{T}" />.
 		/// </summary>
 		/// <param name="value">The value representing the instance.</param>
 		/// <param name="lifetime">An IDisposable interface through which ownership can be released.</param>
@@ -95,30 +96,25 @@ namespace Nuclectic.Support
 		}
 
 		/// <summary>
-		/// Create an instance of <see cref="Owned{T}"/>.
+		///     Create an instance of <see cref="Owned{T}" />.
 		/// </summary>
 		/// <param name="value">The value representing the instance.</param>
 		/// <param name="onDispose">The action to execute at disposal time.</param>
 		public Owned(T value, Action onDispose)
-			: this(value, new OnDispose(onDispose))
-		{
-		}
+			: this(value, new OnDispose(onDispose)) { }
 
 		/// <summary>
-		/// The owned value.
+		///     The owned value.
 		/// </summary>
-		public T Value
-		{
-			get
-			{
-				return _value;
-			}
-		}
+		public T Value { get { return _value; } }
 
 		/// <summary>
-		/// Releases unmanaged and - optionally - managed resources
+		///     Releases unmanaged and - optionally - managed resources
 		/// </summary>
-		/// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+		/// <param name="disposing">
+		///     <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only
+		///     unmanaged resources.
+		/// </param>
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing)

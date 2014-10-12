@@ -38,7 +38,7 @@ namespace Nuclectic.Tests.Graphics
 		public void TestConstructor() { new Camera(Matrix.Identity, Matrix.Identity); }
 
 		/// <summary>
-		///   Tests the LookAt() method of the camera class from the world's center
+		///     Tests the LookAt() method of the camera class from the world's center
 		/// </summary>
 		[Test]
 		public void TestLookAtFromWorldCenter()
@@ -56,7 +56,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests the LookAt() method of the camera class from an arbitrary position
+		///     Tests the LookAt() method of the camera class from an arbitrary position
 		/// </summary>
 		[Test]
 		public void TestLookAtFromArbitraryPosition()
@@ -114,7 +114,7 @@ namespace Nuclectic.Tests.Graphics
 #endif
 
 		/// <summary>
-		///   Verifies that the default orthographic camera is constructed as expected
+		///     Verifies that the default orthographic camera is constructed as expected
 		/// </summary>
 		[Test]
 		public void TestDefaultOrthographic()
@@ -130,7 +130,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Verifies that the HandleControls() method of the camera is working
+		///     Verifies that the HandleControls() method of the camera is working
 		/// </summary>
 		[Test]
 		public void TestHandleControls()
@@ -143,7 +143,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be moved forward using the keyboard
+		///     Tests whether the camera can be moved forward using the keyboard
 		/// </summary>
 		[Test]
 		public void TestKeyboardForwardMovement()
@@ -157,7 +157,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be moved backward using the keyboard
+		///     Tests whether the camera can be moved backward using the keyboard
 		/// </summary>
 		[Test]
 		public void TestKeyboardBackwardMovement()
@@ -171,7 +171,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be moved to the left using the keyboard
+		///     Tests whether the camera can be moved to the left using the keyboard
 		/// </summary>
 		[Test]
 		public void TestKeyboardLeftMovement()
@@ -185,7 +185,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be moved to the right using the keyboard
+		///     Tests whether the camera can be moved to the right using the keyboard
 		/// </summary>
 		[Test]
 		public void TestKeyboardRightMovement()
@@ -199,7 +199,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be moved up using the keyboard
+		///     Tests whether the camera can be moved up using the keyboard
 		/// </summary>
 		[Test]
 		public void TestKeyboardUpMovement()
@@ -213,7 +213,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be moved up using the keyboard
+		///     Tests whether the camera can be moved up using the keyboard
 		/// </summary>
 		[Test]
 		public void TestKeyboardDownMovement()
@@ -227,7 +227,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be rotated upwards using the keyboard
+		///     Tests whether the camera can be rotated upwards using the keyboard
 		/// </summary>
 		[Test]
 		public void TestKeyboardUpRotation()
@@ -239,7 +239,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be rotated downwards using the keyboard
+		///     Tests whether the camera can be rotated downwards using the keyboard
 		/// </summary>
 		[Test]
 		public void TestKeyboardDownRotation()
@@ -251,7 +251,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be rotated to the left using the keyboard
+		///     Tests whether the camera can be rotated to the left using the keyboard
 		/// </summary>
 		[Test]
 		public void TestKeyboardLeftRotation()
@@ -263,7 +263,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be rotated to the right using the keyboard
+		///     Tests whether the camera can be rotated to the right using the keyboard
 		/// </summary>
 		[Test]
 		public void TestKeyboardRightRotation()
@@ -275,7 +275,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be rotated clockwise using the keyboard
+		///     Tests whether the camera can be rotated clockwise using the keyboard
 		/// </summary>
 		[Test]
 		public void TestKeyboardClockwiseRotation()
@@ -287,7 +287,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be rotated counter-clockwise using the keyboard
+		///     Tests whether the camera can be rotated counter-clockwise using the keyboard
 		/// </summary>
 		[Test]
 		public void TestKeyboardCounterClockwiseRotation()
@@ -299,7 +299,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be rotated upwards using the game pad
+		///     Tests whether the camera can be rotated upwards using the game pad
 		/// </summary>
 		[Test]
 		public void TestGamePadUpRotation()
@@ -318,7 +318,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be rotated downwards using the game pad
+		///     Tests whether the camera can be rotated downwards using the game pad
 		/// </summary>
 		[Test]
 		public void TestGamePadDownRotation()
@@ -337,7 +337,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be rotated to the left using the game pad
+		///     Tests whether the camera can be rotated to the left using the game pad
 		/// </summary>
 		[Test]
 		public void TestGamePadLeftRotation()
@@ -356,7 +356,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be rotated to the left using the game pad
+		///     Tests whether the camera can be rotated to the left using the game pad
 		/// </summary>
 		[Test]
 		public void TestGamePadRightRotation()
@@ -375,7 +375,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be rotated clockwise using the game pad
+		///     Tests whether the camera can be rotated clockwise using the game pad
 		/// </summary>
 		[Test]
 		public void TestGamePadClockwiseRotation()
@@ -389,7 +389,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the camera can be rotated counter-clockwise using the game pad
+		///     Tests whether the camera can be rotated counter-clockwise using the game pad
 		/// </summary>
 		[Test]
 		public void TestGamePadCounterClockwiseRotation()
@@ -403,8 +403,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Creates a default orthographic camera and lets it respond as if
-		///   the specified keys were pressed
+		///     Creates a default orthographic camera and lets it respond as if
+		///     the specified keys were pressed
 		/// </summary>
 		/// <param name="keys">Keys that will be reported to the camera as pressed</param>
 		/// <returns>The camera after it has responded to the provided controls</returns>
@@ -416,8 +416,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Creates a default orthographic camera and lets it respond as if
-		///   the game pad's directional pad was in the specified state
+		///     Creates a default orthographic camera and lets it respond as if
+		///     the game pad's directional pad was in the specified state
 		/// </summary>
 		/// <param name="directionalPad">State of the game pad's directional pad</param>
 		/// <returns>The camera after it has responded to the provided controls</returns>
@@ -433,8 +433,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Creates a default orthographic camera and lets it respond as if
-		///   the game pad's buttons were in the specified state
+		///     Creates a default orthographic camera and lets it respond as if
+		///     the game pad's buttons were in the specified state
 		/// </summary>
 		/// <param name="buttons">State of the game pad's buttons</param>
 		/// <returns>The camera after it has responded to the provided controls</returns>
@@ -449,14 +449,14 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Creates a default orthographic camera and lets it respond to the provided
-		///   controls once with a 1 second update.
+		///     Creates a default orthographic camera and lets it respond to the provided
+		///     controls once with a 1 second update.
 		/// </summary>
 		/// <param name="keyboardState">
-		///   Keyboard state that will be reported to the camera
+		///     Keyboard state that will be reported to the camera
 		/// </param>
 		/// <param name="gamePadState">
-		///   GamePad state that will be reported to the camera
+		///     GamePad state that will be reported to the camera
 		/// </param>
 		/// <returns>The camera after it has responded to the provided controls</returns>
 		private Camera handleControlsOnDefaultCamera(

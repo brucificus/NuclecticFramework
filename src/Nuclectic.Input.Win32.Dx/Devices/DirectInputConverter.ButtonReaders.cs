@@ -36,7 +36,7 @@ namespace Nuclectic.Input.Devices
 		{
 			/// <summary>Initializes a new button reader for the specified button</summary>
 			/// <param name="buttonIndex">
-			///   Index of the button the reader is initialized for
+			///     Index of the button the reader is initialized for
 			/// </param>
 			public ButtonReader(int buttonIndex) { this.buttonIndex = buttonIndex; }
 
@@ -46,8 +46,8 @@ namespace Nuclectic.Input.Devices
 			public bool IsPressed(bool[] buttons) { return buttons[this.buttonIndex]; }
 
 			/// <summary>
-			///   Determines whether the state of the specified button has changed
-			///   between two states
+			///     Determines whether the state of the specified button has changed
+			///     between two states
 			/// </summary>
 			/// <param name="previous">Previous state of the buttons</param>
 			/// <param name="current">Current state of the buttons</param>

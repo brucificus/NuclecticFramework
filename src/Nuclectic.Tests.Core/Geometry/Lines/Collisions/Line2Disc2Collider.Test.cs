@@ -34,7 +34,7 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 	public class Line2Disc2ColliderTest
 	{
 		/// <summary>
-		///   Tests whether a close miss of a circle results in no contact being reported
+		///     Tests whether a close miss of a circle results in no contact being reported
 		/// </summary>
 		[Test]
 		public void TestCloseMiss()
@@ -47,8 +47,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether a line crossing the center of a disc generates the appropriate
-		///   contact intervals.
+		///     Tests whether a line crossing the center of a disc generates the appropriate
+		///     contact intervals.
 		/// </summary>
 		[Test]
 		public void TestLineThroughCenter()
@@ -68,8 +68,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether a line crossing the center of a disc generates the appropriate
-		///   contact intervals.
+		///     Tests whether a line crossing the center of a disc generates the appropriate
+		///     contact intervals.
 		/// </summary>
 		[Test]
 		public void TestCircleWithAbsolutePosition()

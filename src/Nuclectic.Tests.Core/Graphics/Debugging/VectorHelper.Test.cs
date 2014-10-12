@@ -33,8 +33,8 @@ namespace Nuclectic.Tests.Graphics.Debugging
 	internal class VectorHelperTest
 	{
 		/// <summary>
-		///   Verifies that the vector helper can determine an arbitrary perpendicular vector
-		///   to another vector
+		///     Verifies that the vector helper can determine an arbitrary perpendicular vector
+		///     to another vector
 		/// </summary>
 		[Test]
 		public void TestGetPerpendicularVector()

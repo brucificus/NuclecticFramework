@@ -211,8 +211,8 @@ namespace Nuclectic.Geometry.Lines
 		/// <param name="box">Box that will be checked for intersection</param>
 		/// <returns>The times at which the range enters or leaves the volume</returns>
 		/// <remarks>
-		///   Taken from the article "Simple Intersection Tests for Games" on
-		///   Gamasutra by Gomez et al.
+		///     Taken from the article "Simple Intersection Tests for Games" on
+		///     Gamasutra by Gomez et al.
 		/// </remarks>
 		public bool Intersects(AxisAlignedBox3 box)
 		{
@@ -277,8 +277,8 @@ namespace Nuclectic.Geometry.Lines
 		}
 
 		/// <summary>
-		///   Limits the contact positions found in a line to the subsection of
-		///   the line covered by the line segment
+		///     Limits the contact positions found in a line to the subsection of
+		///     the line covered by the line segment
 		/// </summary>
 		/// <param name="contacts">Contacts that will be limited to the line segment</param>
 		private static void limitContactToLineSegment(ref LineContacts contacts)

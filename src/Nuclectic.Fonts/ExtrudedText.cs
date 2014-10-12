@@ -27,10 +27,10 @@ namespace Nuclectic.Fonts
 {
 	/// <summary>Stores the vertices for an extruded string mesh</summary>
 	/// <remarks>
-	///   The extruded mesh will always be extruded by 1.0 units centered about the
-	///   middle of the extrusion. This allows you to scale the text's extrusion
-	///   level at rendering time for free using the transformation matrix of the
-	///   rendered text.
+	///     The extruded mesh will always be extruded by 1.0 units centered about the
+	///     middle of the extrusion. This allows you to scale the text's extrusion
+	///     level at rendering time for free using the transformation matrix of the
+	///     rendered text.
 	/// </remarks>
 	public class ExtrudedText : Text
 	{

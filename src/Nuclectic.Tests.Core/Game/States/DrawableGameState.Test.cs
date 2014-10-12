@@ -41,8 +41,8 @@ namespace Nuclectic.Tests.Game.States
 			public TestGameState() { }
 
 			/// <summary>
-			///   Allows the game state to run logic such as updating the world,
-			///   checking for collisions, gathering input and playing audio.
+			///     Allows the game state to run logic such as updating the world,
+			///     checking for collisions, gathering input and playing audio.
 			/// </summary>
 			/// <param name="gameTime">Provides a snapshot of timing values</param>
 			public override void Update(GameTime gameTime) { }
@@ -58,13 +58,13 @@ namespace Nuclectic.Tests.Game.States
 		#endregion // class TestGameState
 
 		/// <summary>
-		///   Verifies that the constructor of the drawable game state is working
+		///     Verifies that the constructor of the drawable game state is working
 		/// </summary>
 		[Test]
 		public void TestConstructor() { GameState gameState = new TestGameState(); }
 
 		/// <summary>
-		///   Verifies that the Draw() call can be used on the game state
+		///     Verifies that the Draw() call can be used on the game state
 		/// </summary>
 		[Test]
 		public void TestDraw()
@@ -76,8 +76,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether the Visible property provided via the IDrawable
-		///   interface is returned correctly
+		///     Tests whether the Visible property provided via the IDrawable
+		///     interface is returned correctly
 		/// </summary>
 		[Test]
 		public void TestVisibleProperty()
@@ -87,8 +87,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether the DrawOrder property provided via the IDrawable
-		///   interface is returned correctly
+		///     Tests whether the DrawOrder property provided via the IDrawable
+		///     interface is returned correctly
 		/// </summary>
 		[Test]
 		public void TestDrawOrderProperty()
@@ -98,7 +98,7 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether the DrawOrderChanged event can be used
+		///     Tests whether the DrawOrderChanged event can be used
 		/// </summary>
 		[Test]
 		public void TestDrawOrderChangedEvent()
@@ -113,7 +113,7 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether the VisibleChanged event can be used
+		///     Tests whether the VisibleChanged event can be used
 		/// </summary>
 		[Test]
 		public void TestVisibleChangedEvent()

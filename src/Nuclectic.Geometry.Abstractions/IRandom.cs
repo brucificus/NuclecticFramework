@@ -28,26 +28,26 @@ namespace Nuclectic.Geometry
 	public interface IRandom
 	{
 		/// <summary>
-		///   Returns a nonnegative random number less than the specified maximum
+		///     Returns a nonnegative random number less than the specified maximum
 		/// </summary>
 		/// <param name="maximumValue">
-		///   The exclusive upper bound of the random number to be generated. maxValue must
-		///   be greater than or equal to zero
+		///     The exclusive upper bound of the random number to be generated. maxValue must
+		///     be greater than or equal to zero
 		/// </param>
 		/// <returns>
-		///   A 32-bit signed integer greater than or equal to zero, and less than maxValue;
-		///   that is, the range of return values ordinarily includes zero but not maxValue.
-		///   However, if maxValue equals zero, maxValue is returned
+		///     A 32-bit signed integer greater than or equal to zero, and less than maxValue;
+		///     that is, the range of return values ordinarily includes zero but not maxValue.
+		///     However, if maxValue equals zero, maxValue is returned
 		/// </returns>
 		/// <exception cref="System.ArgumentOutOfRangeException">
-		///   maximumValue is less than zero
+		///     maximumValue is less than zero
 		/// </exception>
 		int Next(int maximumValue);
 
 		/// <summary>Returns a random number between 0.0 and 1.0</summary>
 		/// <returns>
-		///   A double-precision floating point number greater than or equal to 0.0,
-		///   and less than 1.0
+		///     A double-precision floating point number greater than or equal to 0.0,
+		///     and less than 1.0
 		/// </returns>
 		double NextDouble();
 	}

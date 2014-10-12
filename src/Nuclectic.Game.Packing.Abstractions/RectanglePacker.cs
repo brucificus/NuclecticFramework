@@ -26,15 +26,15 @@ namespace Nuclectic.Game.Packing
 {
 	/// <summary>Base class for rectangle packing algorithms</summary>
 	/// <remarks>
-	///   <para>
-	///     By uniting all rectangle packers under this common base class, you can
-	///     easily switch between different algorithms to find the most efficient or
-	///     performant one for a given job.
-	///   </para>
-	///   <para>
-	///     An almost exhaustive list of packing algorithms can be found here:
-	///     http://www.csc.liv.ac.uk/~epa/surveyhtml.html
-	///   </para>
+	///     <para>
+	///         By uniting all rectangle packers under this common base class, you can
+	///         easily switch between different algorithms to find the most efficient or
+	///         performant one for a given job.
+	///     </para>
+	///     <para>
+	///         An almost exhaustive list of packing algorithms can be found here:
+	///         http://www.csc.liv.ac.uk/~epa/surveyhtml.html
+	///     </para>
 	/// </remarks>
 	public abstract class RectanglePacker
 	{

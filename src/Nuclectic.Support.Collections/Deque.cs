@@ -30,16 +30,16 @@ namespace Nuclectic.Support.Collections
 	/// <summary>A double-ended queue that allocates memory in blocks</summary>
 	/// <typeparam name="TItem">Type of the items being stored in the queue</typeparam>
 	/// <remarks>
-	///   <para>
-	///     The double-ended queue allows items to be appended to either side of the queue
-	///     without a hefty toll on performance. Like its namesake in C++, it is implemented
-	///     using multiple arrays.
-	///   </para>
-	///   <para>
-	///     Therefore, it's not only good at coping with lists that are modified at their
-	///     beginning, but also at handling huge data sets since enlarging the deque doesn't
-	///     require items to be copied around and it still can be accessed by index.
-	///   </para>
+	///     <para>
+	///         The double-ended queue allows items to be appended to either side of the queue
+	///         without a hefty toll on performance. Like its namesake in C++, it is implemented
+	///         using multiple arrays.
+	///     </para>
+	///     <para>
+	///         Therefore, it's not only good at coping with lists that are modified at their
+	///         beginning, but also at handling huge data sets since enlarging the deque doesn't
+	///         require items to be copied around and it still can be accessed by index.
+	///     </para>
 	/// </remarks>
 	public partial class Deque<TItem> : IList<TItem>, IList
 	{
@@ -344,7 +344,7 @@ namespace Nuclectic.Support.Collections
 		}
 
 		/// <summary>
-		///   Determines whether the provided object can be placed in the deque
+		///     Determines whether the provided object can be placed in the deque
 		/// </summary>
 		/// <param name="value">Value that will be checked for compatibility</param>
 		/// <returns>True if the value can be placed in the deque</returns>

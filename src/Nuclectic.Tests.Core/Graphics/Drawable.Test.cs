@@ -45,14 +45,14 @@ namespace Nuclectic.Tests.Graphics
 		{
 			/// <summary>Initializes a new drawable</summary>
 			/// <param name="service">
-			///   Graphics device service that will be used for rendering
+			///     Graphics device service that will be used for rendering
 			/// </param>
 			public TestDrawable(IGraphicsDeviceService service)
 				: base(service) { }
 
 			/// <summary>Initializes the drawable from a service provider</summary>
 			/// <param name="serviceProvider">
-			///   Service provider containing the graphics device service
+			///     Service provider containing the graphics device service
 			/// </param>
 			public TestDrawable(IServiceProvider serviceProvider)
 				:
@@ -60,12 +60,12 @@ namespace Nuclectic.Tests.Graphics
 
 #pragma warning disable 672 // Overrides obsolete method
 			/// <summary>
-			///   Called when the object needs to set up graphics resources. Override to
-			///   set up any object specific graphics resources.
+			///     Called when the object needs to set up graphics resources. Override to
+			///     set up any object specific graphics resources.
 			/// </summary>
 			/// <param name="createAllContent">
-			///   True if all graphics resources need to be set up; false if only
-			///   manual resources need to be set up.
+			///     True if all graphics resources need to be set up; false if only
+			///     manual resources need to be set up.
 			/// </param>
 			protected override void LoadGraphicsContent(bool createAllContent)
 			{
@@ -80,12 +80,12 @@ namespace Nuclectic.Tests.Graphics
 			}
 
 			/// <summary>
-			///   Called when graphics resources should be released. Override to
-			///   handle component specific graphics resources.
+			///     Called when graphics resources should be released. Override to
+			///     handle component specific graphics resources.
 			/// </summary>
 			/// <param name="destroyAllContent">
-			///   True if all graphics resources should be released; false if only
-			///   manual resources should be released.
+			///     True if all graphics resources should be released; false if only
+			///     manual resources should be released.
 			/// </param>
 			protected override void UnloadGraphicsContent(bool destroyAllContent)
 			{
@@ -101,12 +101,12 @@ namespace Nuclectic.Tests.Graphics
 #pragma warning restore 672 // Overrides obsolete method
 
 			/// <summary>
-			///   Number of calls to the LoadContent() method with false as parameter
+			///     Number of calls to the LoadContent() method with false as parameter
 			/// </summary>
 			public int LoadContentFalseCount;
 
 			/// <summary>
-			///   Number of calls to the UnloadContent() method with false as parameter
+			///     Number of calls to the UnloadContent() method with false as parameter
 			/// </summary>
 			public int UnloadContentFalseCount;
 		}
@@ -125,8 +125,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the drawable can handle the graphics device being created
-		///   after the drawable's constructor has already run
+		///     Tests whether the drawable can handle the graphics device being created
+		///     after the drawable's constructor has already run
 		/// </summary>
 		[Test]
 		public void TestCreateGraphicsDeviceAfterConstructor()
@@ -140,8 +140,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the drawable can handle the graphics device being created
-		///   before the drawable's constructor has run
+		///     Tests whether the drawable can handle the graphics device being created
+		///     before the drawable's constructor has run
 		/// </summary>
 		[Test]
 		public void TestCreateGraphicsDeviceBeforeConstructor()
@@ -155,13 +155,13 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the drawable can retrieve the graphics device service
-		///   from a service provider
+		///     Tests whether the drawable can retrieve the graphics device service
+		///     from a service provider
 		/// </summary>
 		[Test]
 		public void TestCreateFromServiceProvider()
 		{
-			using(var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			{
 				GameServiceContainer container = new GameServiceContainer();
 				container.AddService(typeof (IGraphicsDeviceService), service);
@@ -177,8 +177,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if the drawable is constructed from
-		///   a service provider which doesn't contain the graphics device service
+		///     Verifies that an exception is thrown if the drawable is constructed from
+		///     a service provider which doesn't contain the graphics device service
 		/// </summary>
 		[Test]
 		public void TestThrowOnMissingGraphicsDeviceService()
@@ -202,7 +202,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Verifies that the Drawable class correctly responds to a graphics device reset
+		///     Verifies that the Drawable class correctly responds to a graphics device reset
 		/// </summary>
 		[Test]
 		public void TestGraphicsDeviceReset()

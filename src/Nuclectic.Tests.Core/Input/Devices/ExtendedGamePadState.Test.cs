@@ -34,7 +34,7 @@ namespace Nuclectic.Tests.Input.Devices
 	public class ExtendedGamePadStateTest
 	{
 		/// <summary>
-		///   Verifies that the default constructor of the game state class works
+		///     Verifies that the default constructor of the game state class works
 		/// </summary>
 		[Test]
 		public void DefaultConstructorCanBeUsed()
@@ -44,7 +44,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that the axis mappings in the full constructor are working
+		///     Verifies that the axis mappings in the full constructor are working
 		/// </summary>
 		[Test]
 		public void ConstructorTakesOverAxisStates()
@@ -88,7 +88,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that the number of axes is taken over by the constructor
+		///     Verifies that the number of axes is taken over by the constructor
 		/// </summary>
 		[Test]
 		public void ConstructorTakesOverAxisCount()
@@ -120,7 +120,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that the slider mappings in the full constructor are working
+		///     Verifies that the slider mappings in the full constructor are working
 		/// </summary>
 		[Test]
 		public void ConstructorTakesOverSliderStates()
@@ -164,7 +164,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that the number of sliders is taken over by the constructor
+		///     Verifies that the number of sliders is taken over by the constructor
 		/// </summary>
 		[Test]
 		public void ConstructorTakesOverSliderCount()
@@ -196,7 +196,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that the button mappings in the full constructor are working
+		///     Verifies that the button mappings in the full constructor are working
 		/// </summary>
 		[Test]
 		public void ConstuctorTakesOverButtonStates()
@@ -241,7 +241,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that the PoV controller mappings in the full constructor are working
+		///     Verifies that the PoV controller mappings in the full constructor are working
 		/// </summary>
 		[Test]
 		public void ConstructorTakesOverPovControllerStates()
@@ -282,7 +282,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if an invalid axis is accessed
+		///     Verifies that an exception is thrown if an invalid axis is accessed
 		/// </summary>
 		[Test]
 		public void AccessingInvalidAxisCausesException()
@@ -294,7 +294,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if an invalid slider is accessed
+		///     Verifies that an exception is thrown if an invalid slider is accessed
 		/// </summary>
 		[Test]
 		public void AccessingInvalidSliderCausesException()
@@ -306,7 +306,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if an invalid button is accessed
+		///     Verifies that an exception is thrown if an invalid button is accessed
 		/// </summary>
 		[
 			Test, TestCase(-1), TestCase(128)
@@ -323,7 +323,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if an invalid PoV controller is accessed
+		///     Verifies that an exception is thrown if an invalid PoV controller is accessed
 		/// </summary>
 		[
 			Test, TestCase(-1), TestCase(4)
@@ -337,8 +337,8 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that an extended game pad state can be constructed from a normal
-		///   XNA game pad state
+		///     Verifies that an extended game pad state can be constructed from a normal
+		///     XNA game pad state
 		/// </summary>
 		/// <param name="button">Button to test on the normal game pad state</param>
 		[
@@ -401,7 +401,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that ExtendedGamePadState.PovFromDpad processes values correctly
+		///     Verifies that ExtendedGamePadState.PovFromDpad processes values correctly
 		/// </summary>
 		/// <param name="button">Button to test on the normal game pad state</param>
 		[
@@ -425,31 +425,31 @@ namespace Nuclectic.Tests.Input.Devices
 			switch (button)
 			{
 				case Buttons.DPadUp:
-					{
-						Assert.AreEqual(0, pov);
-						break;
-					}
+				{
+					Assert.AreEqual(0, pov);
+					break;
+				}
 				case Buttons.DPadRight:
-					{
-						Assert.AreEqual(9000, pov);
-						break;
-					}
+				{
+					Assert.AreEqual(9000, pov);
+					break;
+				}
 				case Buttons.DPadDown:
-					{
-						Assert.AreEqual(18000, pov);
-						break;
-					}
+				{
+					Assert.AreEqual(18000, pov);
+					break;
+				}
 				case Buttons.DPadLeft:
-					{
-						Assert.AreEqual(27000, pov);
-						break;
-					}
+				{
+					Assert.AreEqual(27000, pov);
+					break;
+				}
 			}
 		}
 
 		/// <summary>
-		///   Verifies that directional pad states can be converted into PoV controller states
-		///   and vice versa
+		///     Verifies that directional pad states can be converted into PoV controller states
+		///     and vice versa
 		/// </summary>
 		/// <param name="pov">PoV controll state</param>
 		/// <param name="up">Whether up on the directional pad is being pressed</param>

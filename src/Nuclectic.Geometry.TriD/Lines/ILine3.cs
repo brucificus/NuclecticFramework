@@ -28,9 +28,9 @@ namespace Nuclectic.Geometry.Lines
 {
 	/// <summary>One-dimensional range situated in 3D space</summary>
 	/// <remarks>
-	///   This is the generalized interface to all kinds of lines (including rays and
-	///   line segments). Be careful not to mistake this for an infinite Line like it
-	///   is represented by the Line3 class.
+	///     This is the generalized interface to all kinds of lines (including rays and
+	///     line segments). Be careful not to mistake this for an infinite Line like it
+	///     is represented by the Line3 class.
 	/// </remarks>
 	public interface ILine3
 	{

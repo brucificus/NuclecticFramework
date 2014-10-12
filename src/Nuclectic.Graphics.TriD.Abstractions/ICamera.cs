@@ -29,22 +29,22 @@ namespace Nuclectic.Graphics.TriD
 		Matrix Projection { get; }
 
 		/// <summary>
-		///   Debugging aid that allows the camera to be moved around by the keyboard
-		///   or the game pad
+		///     Debugging aid that allows the camera to be moved around by the keyboard
+		///     or the game pad
 		/// </summary>
 		/// <param name="gameTime">Game time to use for scaling the movements</param>
 		/// <param name="keyboardState">Current state of the keyboard</param>
 		/// <param name="gamepadState">Current state of the gamepad</param>
 		/// <remarks>
-		///   <para>
-		///     This is only intended as a debugging aid and should not be used for the actual
-		///     player controls. As long as you don't rebuild the camera matrix each frame
-		///     (which is not a good idea anyway) this will allow you to control the camera
-		///     in the style of the old "Descent" game series.
-		///   </para>
-		///   <para>
-		///     To enable the camera controls, simply call this method from your main loop!
-		///   </para>
+		///     <para>
+		///         This is only intended as a debugging aid and should not be used for the actual
+		///         player controls. As long as you don't rebuild the camera matrix each frame
+		///         (which is not a good idea anyway) this will allow you to control the camera
+		///         in the style of the old "Descent" game series.
+		///     </para>
+		///     <para>
+		///         To enable the camera controls, simply call this method from your main loop!
+		///     </para>
 		/// </remarks>
 		void HandleControls(
 			GameTime gameTime, KeyboardState keyboardState, GamePadState gamepadState

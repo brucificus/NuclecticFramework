@@ -25,7 +25,7 @@ using System;
 namespace Nuclectic.Support.Collections
 {
 	/// <summary>
-	///   Argument container used by collections to notify about changed items
+	///     Argument container used by collections to notify about changed items
 	/// </summary>
 	public class ItemEventArgs<TItem> : EventArgs
 	{

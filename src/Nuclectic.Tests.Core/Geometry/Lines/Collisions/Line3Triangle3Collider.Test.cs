@@ -34,7 +34,7 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 	public class Line3Triangle3ColliderTest
 	{
 		/// <summary>
-		///   Tests whether a line that closely misses a triangle is detected as such
+		///     Tests whether a line that closely misses a triangle is detected as such
 		/// </summary>
 		[Test]
 		public void TestCloseMiss()
@@ -48,8 +48,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether the contact finder reports the correct locations for a line
-		///   that crosses a triangle through its center 
+		///     Tests whether the contact finder reports the correct locations for a line
+		///     that crosses a triangle through its center
 		/// </summary>
 		[Test]
 		public void TestHitThroughCenter()

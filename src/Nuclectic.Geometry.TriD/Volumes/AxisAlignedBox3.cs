@@ -52,10 +52,10 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Smallest box that encloses the volume in its entirety</summary>
 		/// <remarks>
-		///   This always produces an optimal box which means a tight-fitting box is generated
-		///   that will touch the volume on each of its six sides. As a side effect, it is very
-		///   likely that this box needs to be recalculated whenever the volume changes its
-		///   orientation.
+		///     This always produces an optimal box which means a tight-fitting box is generated
+		///     that will touch the volume on each of its six sides. As a side effect, it is very
+		///     likely that this box needs to be recalculated whenever the volume changes its
+		///     orientation.
 		/// </remarks>
 		public AxisAlignedBox3 BoundingBox
 		{
@@ -64,9 +64,9 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Smallest sphere that encloses the volume in its entirety</summary>
 		/// <remarks>
-		///   Bounding spheres have the advantage to not change even when the volume is
-		///   rotated. That makes them ideal for dynamic objects that are not keeping their
-		///   original orientation.
+		///     Bounding spheres have the advantage to not change even when the volume is
+		///     rotated. That makes them ideal for dynamic objects that are not keeping their
+		///     original orientation.
 		/// </remarks>
 		public Sphere3 BoundingSphere
 		{

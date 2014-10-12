@@ -29,8 +29,8 @@ namespace Nuclectic.Graphics.Helpers
 	public static class VertexHelper
 	{
 		/// <summary>
-		///   Calculates the number of primitives given the number of vertices (or indices)
-		///   and the type of primitives to be drawn.
+		///     Calculates the number of primitives given the number of vertices (or indices)
+		///     and the type of primitives to be drawn.
 		/// </summary>
 		/// <param name="verticesOrIndices">Number of vertices or indices</param>
 		/// <param name="type">Type of primitives the vertices will be processed as</param>
@@ -63,17 +63,17 @@ namespace Nuclectic.Graphics.Helpers
 		}
 
 		/// <summary>
-		///   Checks whether a vertex count is valid for the specified type of primitives
+		///     Checks whether a vertex count is valid for the specified type of primitives
 		/// </summary>
 		/// <param name="verticesOrIndices">Number of vertices or indices</param>
 		/// <param name="type">Type of primitives the vertices will be processed as</param>
 		/// <returns>
-		///   True if the specified number is a valid vertex count for the specified
-		///   type of primitives
+		///     True if the specified number is a valid vertex count for the specified
+		///     type of primitives
 		/// </returns>
 		/// <remarks>
-		///   A zero check is expected to be done in addition to this method. Negative
-		///   vertex or index counts will result in undefined behavior.
+		///     A zero check is expected to be done in addition to this method. Negative
+		///     vertex or index counts will result in undefined behavior.
 		/// </remarks>
 		public static bool IsValidVertexCount(int verticesOrIndices, PrimitiveType type)
 		{

@@ -35,9 +35,7 @@ namespace Nuclectic.Game.Space
 		/// <param name="maxY">Y coordinate of the rectangle's lower border</param>
 		public BoundingRectangle(float minX, float minY, float maxX, float maxY)
 			:
-				this(new Vector2(minX, minY), new Vector2(maxX, maxY))
-		{
-		}
+				this(new Vector2(minX, minY), new Vector2(maxX, maxY)) { }
 
 		/// <summary>Initializes a new two-dimensional bounding rectangle</summary>
 		/// <param name="min">Lesser coordinates of the bounding rectangle</param>
@@ -49,7 +47,7 @@ namespace Nuclectic.Game.Space
 		}
 
 		/// <summary>
-		///   Determines the containment type of a point to the bounding rectangle
+		///     Determines the containment type of a point to the bounding rectangle
 		/// </summary>
 		/// <param name="point">Point that will be checked for containment</param>
 		/// <param name="result">The containment type of the point in the rectangle</param>
@@ -63,17 +61,14 @@ namespace Nuclectic.Game.Space
 		/// <summary>Determines whether the bounding rectangle contains a point</summary>
 		/// <param name="point">Point that will be checked for containment</param>
 		/// <returns>True if the bounding rectangle contains the point</returns>
-		public bool Contains(Vector2 point)
-		{
-			return containsPoint(ref point);
-		}
+		public bool Contains(Vector2 point) { return containsPoint(ref point); }
 
 		/// <summary>
-		///   Determines the containment type of another rectangle to the bounding rectangle
+		///     Determines the containment type of another rectangle to the bounding rectangle
 		/// </summary>
 		/// <param name="rectangle">Rectangle that will be checked for containment</param>
 		/// <param name="result">
-		///   The containment type of the other rectangle in the rectangle
+		///     The containment type of the other rectangle in the rectangle
 		/// </param>
 		public void Contains(ref BoundingRectangle rectangle, out ContainmentType result)
 		{
@@ -106,7 +101,7 @@ namespace Nuclectic.Game.Space
 		}
 
 		/// <summary>
-		///   Determines whether the bounding rectangle contains another rectangle
+		///     Determines whether the bounding rectangle contains another rectangle
 		/// </summary>
 		/// <param name="rectangle">Rectangle that will be checked for containment</param>
 		/// <returns>True if the other rectangle is contained in the rectangle</returns>
@@ -120,8 +115,8 @@ namespace Nuclectic.Game.Space
 		}
 
 		/// <summary>
-		///   Builds the smallest bounding rectangle that contains the two
-		///   specified bounding rectangle.
+		///     Builds the smallest bounding rectangle that contains the two
+		///     specified bounding rectangle.
 		/// </summary>
 		/// <param name="original">One of the bounding rectangles to contain</param>
 		/// <param name="additional">One of the bounding rectangles to contain</param>
@@ -136,8 +131,8 @@ namespace Nuclectic.Game.Space
 		}
 
 		/// <summary>
-		///   Builds the smallest bounding rectangle that contains the two
-		///   specified bounding rectangles.
+		///     Builds the smallest bounding rectangle that contains the two
+		///     specified bounding rectangles.
 		/// </summary>
 		/// <param name="original">One of the bounding rectangles to contain</param>
 		/// <param name="additional">One of the bounding rectangles to contain</param>
@@ -153,30 +148,24 @@ namespace Nuclectic.Game.Space
 		}
 
 		/// <summary>
-		///   Determines whether the rectangle intersects with another rectangle
+		///     Determines whether the rectangle intersects with another rectangle
 		/// </summary>
 		/// <param name="other">
-		///   Other rectangle that will be checked for intersection
+		///     Other rectangle that will be checked for intersection
 		/// </param>
 		/// <returns>True if the rectangles intersect</returns>
-		public bool Intersects(BoundingRectangle other)
-		{
-			return intersectsRectangle(ref other);
-		}
+		public bool Intersects(BoundingRectangle other) { return intersectsRectangle(ref other); }
 
 		/// <summary>
-		///   Determines whether the rectangle intersects with another rectangle
+		///     Determines whether the rectangle intersects with another rectangle
 		/// </summary>
 		/// <param name="other">
-		///   Other rectangle that will be checked for intersection
+		///     Other rectangle that will be checked for intersection
 		/// </param>
 		/// <param name="result">
-		///   Will be set to true if the rectangles intersects, otherwise false
+		///     Will be set to true if the rectangles intersects, otherwise false
 		/// </param>
-		public void Intersects(ref BoundingRectangle other, out bool result)
-		{
-			result = intersectsRectangle(ref other);
-		}
+		public void Intersects(ref BoundingRectangle other, out bool result) { result = intersectsRectangle(ref other); }
 
 		/// <summary>Determines whether another object is an identical bounding rectangle</summary>
 		/// <param name="otherObject">Other object that will be compared</param>
@@ -209,19 +198,13 @@ namespace Nuclectic.Game.Space
 		/// <param name="first">First bounding rectangle that will be compared</param>
 		/// <param name="second">Second bounding rectangle that will be compared</param>
 		/// <returns>True if the rectangles are different</returns>
-		public static bool operator !=(BoundingRectangle first, BoundingRectangle second)
-		{
-			return !(first == second);
-		}
+		public static bool operator !=(BoundingRectangle first, BoundingRectangle second) { return !(first == second); }
 
 		/// <summary>Checks two bounding rectangles for equality</summary>
 		/// <param name="first">First bounding rectangle that will be compared</param>
 		/// <param name="second">Second bounding rectangle that will be compared</param>
 		/// <returns>True if both rectangles are equal</returns>
-		public static bool operator ==(BoundingRectangle first, BoundingRectangle second)
-		{
-			return first.Equals(second);
-		}
+		public static bool operator ==(BoundingRectangle first, BoundingRectangle second) { return first.Equals(second); }
 
 		/// <summary>Gets a hash code for the bounding rectangle</summary>
 		/// <returns>The hash code of the bounding rectangle</returns>
@@ -263,7 +246,7 @@ namespace Nuclectic.Game.Space
 
 		/// <summary>Whether the bounding rectangle intersects with another rectangle</summary>
 		/// <param name="rectangle">
-		///   Other rectangle that will be checked for intersection
+		///     Other rectangle that will be checked for intersection
 		/// </param>
 		/// <returns>True if the rectangles intersect each other</returns>
 		private bool intersectsRectangle(ref BoundingRectangle rectangle)

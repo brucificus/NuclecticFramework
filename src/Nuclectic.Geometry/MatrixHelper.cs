@@ -44,7 +44,7 @@ namespace Nuclectic.Geometry
 		}
 
 		/// <summary>
-		///   Creates a new matrix from the given directional vectors and a translational
+		///     Creates a new matrix from the given directional vectors and a translational
 		/// </summary>
 		/// <param name="translation">Positional translation done by the matrix</param>
 		/// <param name="right">Vector that's pointing to the right in the matrix</param>
@@ -232,7 +232,7 @@ namespace Nuclectic.Geometry
 		/// <param name="row">Index of the row in which to set an element</param>
 		/// <param name="col">Index of the column to set</param>
 		/// <param name="value">
-		///   Value to set to the matrix element at the specified row and column
+		///     Value to set to the matrix element at the specified row and column
 		/// </param>
 		public static void Set(ref Matrix matrix, int row, int col, float value)
 		{

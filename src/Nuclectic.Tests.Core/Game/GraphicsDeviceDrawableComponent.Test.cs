@@ -39,7 +39,7 @@ namespace Nuclectic.Tests.Game
 		: TestFixtureBase
 	{
 		/// <summary>
-		///   Verifies that the constructor of the drawable component is working
+		///     Verifies that the constructor of the drawable component is working
 		/// </summary>
 		[Test]
 		public void TestConstructor()
@@ -52,8 +52,8 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Tests whether the Initialize() method throws an exception if the drawable
-		///   component is initialized without a graphics device service present.
+		///     Tests whether the Initialize() method throws an exception if the drawable
+		///     component is initialized without a graphics device service present.
 		/// </summary>
 		[Test]
 		public void TestThrowOnInitializeWithoutGraphicsDeviceService()
@@ -67,8 +67,8 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Tests whether the Initialize() method is working when it is called before
-		///   the graphics device has been created
+		///     Tests whether the Initialize() method is working when it is called before
+		///     the graphics device has been created
 		/// </summary>
 		[Test]
 		public void TestInitializeBeforeGraphicsDeviceCreation()
@@ -76,7 +76,7 @@ namespace Nuclectic.Tests.Game
 			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			{
 				GameServiceContainer services = new GameServiceContainer();
-				services.AddService(typeof(IGraphicsDeviceService), mockedGraphicsDeviceService);
+				services.AddService(typeof (IGraphicsDeviceService), mockedGraphicsDeviceService);
 
 				using (var testComponent = new GraphicsDeviceDrawableComponent(services))
 				{
@@ -94,8 +94,8 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Tests whether the Initialize() method is working when it is called after
-		///   the graphics device has been created
+		///     Tests whether the Initialize() method is working when it is called after
+		///     the graphics device has been created
 		/// </summary>
 		[Test]
 		public void TestInitializeAfterGraphicsDeviceCreation()
@@ -103,7 +103,7 @@ namespace Nuclectic.Tests.Game
 			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			{
 				GameServiceContainer services = new GameServiceContainer();
-				services.AddService(typeof(IGraphicsDeviceService), mockedGraphicsDeviceService);
+				services.AddService(typeof (IGraphicsDeviceService), mockedGraphicsDeviceService);
 
 				using (var testComponent = new GraphicsDeviceDrawableComponent(services))
 				{
@@ -118,7 +118,7 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Tests whether the drawable component survives a graphics device reset
+		///     Tests whether the drawable component survives a graphics device reset
 		/// </summary>
 		[Test]
 		public void TestGraphicsDeviceReset()
@@ -126,7 +126,7 @@ namespace Nuclectic.Tests.Game
 			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			{
 				GameServiceContainer services = new GameServiceContainer();
-				services.AddService(typeof(IGraphicsDeviceService), mockedGraphicsDeviceService);
+				services.AddService(typeof (IGraphicsDeviceService), mockedGraphicsDeviceService);
 
 				using (var testComponent = new GraphicsDeviceDrawableComponent(services))
 				{
@@ -145,7 +145,6 @@ namespace Nuclectic.Tests.Game
 			var foundMethods = typeof (Microsoft.Xna.Framework.Graphics.GraphicsDevice).GetTypeInfo().GetMethods().Where(m => m.Name == "Reset").ToArray();
 			Assert.IsEmpty(foundMethods, "MonoGame previously did not support GraphicsDevice.Reset, and now the method is present. Update Nuclectic.");
 		}
-
 	}
 } // namespace Nuclex.Game
 

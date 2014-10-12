@@ -26,9 +26,9 @@ namespace Nuclectic.Geometry.Lines
 {
 	/// <summary>Straight line situated in 2D space</summary>
 	/// <remarks>
-	///   This is the generalized interface to all kinds of lines (including rays and
-	///   line segments). Be careful not to mistake this for an infinite Line like it
-	///   is represented by the Line2 class.
+	///     This is the generalized interface to all kinds of lines (including rays and
+	///     line segments). Be careful not to mistake this for an infinite Line like it
+	///     is represented by the Line2 class.
 	/// </remarks>
 	public interface ILine2
 	{

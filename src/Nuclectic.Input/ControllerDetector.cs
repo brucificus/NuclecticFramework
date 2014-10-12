@@ -32,7 +32,7 @@ namespace Nuclectic.Input
 	public class ControllerDetector : IDisposable
 	{
 		/// <summary>
-		///   Called when the player pressed a button on one of the controllers
+		///     Called when the player pressed a button on one of the controllers
 		/// </summary>
 		public event EventHandler<ControllerEventArgs> ControllerDetected;
 
@@ -128,7 +128,7 @@ namespace Nuclectic.Input
 
 		/// <summary>Initializes a new controller detector</summary>
 		/// <param name="inputService">
-		///   Input service the detector uses to find out the controller
+		///     Input service the detector uses to find out the controller
 		/// </param>
 		public ControllerDetector(IInputService inputService)
 		{
@@ -163,8 +163,8 @@ namespace Nuclectic.Input
 
 		/// <summary>Stops monitoring input devices</summary>
 		/// <remarks>
-		///   After the detection event was triggered once, this is automatically called.
-		///   You do not need to explicitly call this unless you want to abort detection.
+		///     After the detection event was triggered once, this is automatically called.
+		///     You do not need to explicitly call this unless you want to abort detection.
 		/// </remarks>
 		public void Stop()
 		{

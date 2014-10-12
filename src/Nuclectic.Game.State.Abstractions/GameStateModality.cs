@@ -23,19 +23,19 @@ License along with this library
 namespace Nuclectic.Game.State
 {
 	/// <summary>
-	///   Possible behaviors of a game state in respect to the states its stacked on
+	///     Possible behaviors of a game state in respect to the states its stacked on
 	/// </summary>
 	public enum GameStateModality
 	{
 		/// <summary>
-		///   The game state takes exclusive of the screen does not require the state
-		///   below it in the stack to be updated as long as it's active.
+		///     The game state takes exclusive of the screen does not require the state
+		///     below it in the stack to be updated as long as it's active.
 		/// </summary>
 		Exclusive,
 
 		/// <summary>
-		///   The game state sits on top of the state below it in the stack, but does
-		///   not completely obscure it or requires it to continue being updated.
+		///     The game state sits on top of the state below it in the stack, but does
+		///     not completely obscure it or requires it to continue being updated.
 		/// </summary>
 		Popup
 	}

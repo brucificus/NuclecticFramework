@@ -36,7 +36,7 @@ namespace Nuclectic.Input
 
 		/// <summary>Index of the controller on which a button was pressed</summary>
 		/// <remarks>
-		///   If this is null, the player pressed a button/key on his mouse/keyboard.
+		///     If this is null, the player pressed a button/key on his mouse/keyboard.
 		/// </remarks>
 		public ExtendedPlayerIndex? PlayerIndex { get { return this.playerIndex; } }
 

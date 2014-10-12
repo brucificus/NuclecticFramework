@@ -29,32 +29,28 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Game
 {
-
 	/// <summary>Unit test for the component class</summary>
 	[TestFixture]
 	public class ComponentTest
 	{
-
 		#region interface IComponentSubscriber
 
 		/// <summary>Interface for a subscriber to the Component's events</summary>
 		public interface IComponentSubscriber
 		{
-
 			/// <summary>
-			///   Called when the value of the Enabled property has changed
+			///     Called when the value of the Enabled property has changed
 			/// </summary>
 			/// <param name="sender">Component whose Enabled property has changed</param>
 			/// <param name="arguments">Not used</param>
 			void EnabledChanged(object sender, EventArgs arguments);
 
 			/// <summary>
-			///   Called when the Component's update order has changed
+			///     Called when the Component's update order has changed
 			/// </summary>
 			/// <param name="sender">Component whose update order property has changed</param>
 			/// <param name="arguments">Not used</param>
 			void UpdateOrderChanged(object sender, EventArgs arguments);
-
 		}
 
 		#endregion // interface IComponentSubscriber
@@ -68,7 +64,7 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Tests whether the Initialize() method of the Component class can be called
+		///     Tests whether the Initialize() method of the Component class can be called
 		/// </summary>
 		[Test]
 		public void TestInitialize()
@@ -79,7 +75,7 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Tests whether the Update() method of the Component class can be called
+		///     Tests whether the Update() method of the Component class can be called
 		/// </summary>
 		[Test]
 		public void TestUpdate()
@@ -90,7 +86,7 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Tests whether the update order of the Component class can be changed
+		///     Tests whether the update order of the Component class can be changed
 		/// </summary>
 		[Test]
 		public void TestChangeUpdateOrder()
@@ -101,8 +97,8 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Tests whether changing the update order of the Component instance causes
-		///   the update order change event to be triggered
+		///     Tests whether changing the update order of the Component instance causes
+		///     the update order change event to be triggered
 		/// </summary>
 		[Test]
 		public void TestUpdateOrderChangeEvent()
@@ -118,7 +114,7 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Tests whether Component can be enabled or disabled
+		///     Tests whether Component can be enabled or disabled
 		/// </summary>
 		[Test]
 		public void TestEnableDisable()
@@ -131,8 +127,8 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Tests whether enabled or disabling the Component instance causes the
-		///   'enabled changed' event to be triggered
+		///     Tests whether enabled or disabling the Component instance causes the
+		///     'enabled changed' event to be triggered
 		/// </summary>
 		[Test]
 		public void TestEnabledChangeEvent()
@@ -154,19 +150,18 @@ namespace Nuclectic.Tests.Game
 		private Mock<IComponentSubscriber> mockSubscriber(Component component)
 		{
 			Mock<IComponentSubscriber> mockedSubscriber =
-			  new Mock<IComponentSubscriber>();
+				new Mock<IComponentSubscriber>();
 
 			component.EnabledChanged += new EventHandler<EventArgs>(
-			  mockedSubscriber.Object.EnabledChanged
-			);
+				mockedSubscriber.Object.EnabledChanged
+				);
 			component.UpdateOrderChanged += new EventHandler<EventArgs>(
-			  mockedSubscriber.Object.UpdateOrderChanged
-			);
+				mockedSubscriber.Object.UpdateOrderChanged
+				);
 
 			return mockedSubscriber;
 		}
 	}
-
 } // namespace Nuclex.Game
 
 #endif // UNITTEST

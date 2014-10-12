@@ -33,9 +33,9 @@ namespace Nuclectic.Tests.Mocks
 {
 	/// <summary>Helper for unit tests requiring a mocked graphics device</summary>
 	/// <remarks>
-	///   This doesn't actually mock the graphics device, but creates a real graphics
-	///   device on an invisible window. Tests have shown this method to be fast
-	///   enough for usage in a unit test.
+	///     This doesn't actually mock the graphics device, but creates a real graphics
+	///     device on an invisible window. Tests have shown this method to be fast
+	///     enough for usage in a unit test.
 	/// </remarks>
 	public class MockedGraphicsDeviceService : IMockedGraphicsDeviceService
 	{
@@ -43,17 +43,17 @@ namespace Nuclectic.Tests.Mocks
 		public event EventHandler<EventArgs> DeviceCreated;
 
 		/// <summary>
-		///   Will be triggered when the graphics device is about to be destroyed
+		///     Will be triggered when the graphics device is about to be destroyed
 		/// </summary>
 		public event EventHandler<EventArgs> DeviceDisposing;
 
 		/// <summary>
-		///   Will be triggered when the graphics device has completed a reset
+		///     Will be triggered when the graphics device has completed a reset
 		/// </summary>
 		public event EventHandler<EventArgs> DeviceReset;
 
 		/// <summary>
-		///   Will be triggered when the graphics device is about to reset itself
+		///     Will be triggered when the graphics device is about to reset itself
 		/// </summary>
 		public event EventHandler<EventArgs> DeviceResetting;
 
@@ -61,15 +61,15 @@ namespace Nuclectic.Tests.Mocks
 
 		/// <summary>Keeps a graphics device alive for RAII-like usage</summary>
 		/// <remarks>
-		///   RAII means "Resource Acquisition Is Initialization" and is a very widespread
-		///   pattern in languages with deterministic finalization (read: not .NET).
+		///     RAII means "Resource Acquisition Is Initialization" and is a very widespread
+		///     pattern in languages with deterministic finalization (read: not .NET).
 		/// </remarks>
 		private class GraphicsDeviceKeeper : IDisposable
 		{
 			/// <summary>Initializes a new graphics device keeper</summary>
 			/// <param name="dummyService">
-			///   Dummy graphics device service for whose graphics device the keeper
-			///   will be responsible
+			///     Dummy graphics device service for whose graphics device the keeper
+			///     will be responsible
 			/// </param>
 			public GraphicsDeviceKeeper(MockedGraphicsDeviceService dummyService) { this.dummyService = dummyService; }
 
@@ -84,8 +84,8 @@ namespace Nuclectic.Tests.Mocks
 			}
 
 			/// <summary>
-			///   Dummy graphics device service in which the graphics device needs to be
-			///   destroyed when the keeper is disposed
+			///     Dummy graphics device service in which the graphics device needs to be
+			///     destroyed when the keeper is disposed
 			/// </summary>
 			private MockedGraphicsDeviceService dummyService;
 		}
@@ -119,28 +119,28 @@ namespace Nuclectic.Tests.Mocks
 		public GraphicsDevice GraphicsDevice { get { return this.dummyGraphicsDevice; } }
 
 		/// <summary>
-		///   A service provider containing the mocked graphics device service
+		///     A service provider containing the mocked graphics device service
 		/// </summary>
 		public IServiceProvider ServiceProvider { get { return this.serviceContainer; } }
 
 		/// <summary>Creates a new graphics device</summary>
 		/// <returns>
-		///   An object implementing IDisposable that will destroy the graphics device
-		///   again as soon as its Dispose() method is called.
+		///     An object implementing IDisposable that will destroy the graphics device
+		///     again as soon as its Dispose() method is called.
 		/// </returns>
 		/// <remarks>
-		///   <para>
-		///     Make sure to call DestroyGraphicsDevice() either manually,
-		///     or by disposing the returned object. A typical usage of this method is
-		///     shown in the following code.
-		///   </para>
-		///   <example>
-		///     <code>
+		///     <para>
+		///         Make sure to call DestroyGraphicsDevice() either manually,
+		///         or by disposing the returned object. A typical usage of this method is
+		///         shown in the following code.
+		///     </para>
+		///     <example>
+		///         <code>
 		///       using(IDisposable keeper = CreateDevice()) {
 		///         GraphicsDevice.DoSomethingThatCouldFail();
 		///       }
 		///     </code>
-		///   </example>
+		///     </example>
 		/// </remarks>
 		public IDisposable CreateDevice()
 		{
@@ -235,7 +235,7 @@ namespace Nuclectic.Tests.Mocks
 		}
 
 		/// <summary>
-		///   Shuts down and disposes all resources used by the mocked graphics device service
+		///     Shuts down and disposes all resources used by the mocked graphics device service
 		/// </summary>
 		private void disposeEverything()
 		{
@@ -291,7 +291,7 @@ namespace Nuclectic.Tests.Mocks
 		private GraphicsDevice dummyGraphicsDevice;
 
 		/// <summary>
-		///   Empty presentation parameters used to initialize the dummy graphics device
+		///     Empty presentation parameters used to initialize the dummy graphics device
 		/// </summary>
 		private PresentationParameters emptyPresentationParameters;
 
@@ -310,7 +310,7 @@ namespace Nuclectic.Tests.Mocks
 		#region Implementation of IDisposable
 
 		/// <summary>
-		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+		///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
 		/// </summary>
 		public void Dispose() { DestroyDevice(); }
 

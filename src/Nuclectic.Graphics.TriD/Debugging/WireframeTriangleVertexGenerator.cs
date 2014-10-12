@@ -32,7 +32,7 @@ namespace Nuclectic.Graphics.TriD.Debugging
 		public const int VertexCount = 6;
 
 		/// <summary>
-		///   Outputs the vertices for a wireframe triangle into the specified array
+		///     Outputs the vertices for a wireframe triangle into the specified array
 		/// </summary>
 		/// <param name="vertices">Array to write the box vertices into</param>
 		/// <param name="startIndex">Index in the array to begin writing at</param>

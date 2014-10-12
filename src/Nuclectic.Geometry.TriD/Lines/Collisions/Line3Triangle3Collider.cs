@@ -29,30 +29,30 @@ namespace Nuclectic.Geometry.Lines.Collisions
 	{
 		/// <summary>Determines the contact location between a line and a triangle</summary>
 		/// <param name="lineOffset">
-		///   Offset of the line from the coordinate system's center
+		///     Offset of the line from the coordinate system's center
 		/// </param>
 		/// <param name="lineDirection">Direction of the line</param>
 		/// <param name="triangleA">
-		///   First corner point of triangle in counter-clockwise order
+		///     First corner point of triangle in counter-clockwise order
 		/// </param>
 		/// <param name="triangleB">
-		///   Second corner point of triangle in counter-clockwise order
+		///     Second corner point of triangle in counter-clockwise order
 		/// </param>
 		/// <param name="triangleC">
-		///   Third corner point of triangle in counter-clockwise order
+		///     Third corner point of triangle in counter-clockwise order
 		/// </param>
 		/// <returns>The point of intersection of the line with the triangle, if any</returns>
 		/// <remarks>
-		///   <para>
-		///     I saw this algorithm in an article to line/triangle intersections tests
-		///     by Christopher Bartlett. The material was stated to be free for learning
-		///     purposes, so I felt free to apply what I've learned here =)
-		///   </para>
-		///   <para>
-		///     There is no special case for when the line precisely touches one of
-		///     the triangle's corners. It will either enter and exit the triangle or
-		///     no contacts will be detected at all.
-		///   </para>
+		///     <para>
+		///         I saw this algorithm in an article to line/triangle intersections tests
+		///         by Christopher Bartlett. The material was stated to be free for learning
+		///         purposes, so I felt free to apply what I've learned here =)
+		///     </para>
+		///     <para>
+		///         There is no special case for when the line precisely touches one of
+		///         the triangle's corners. It will either enter and exit the triangle or
+		///         no contacts will be detected at all.
+		///     </para>
 		/// </remarks>
 		internal static LineContacts FindContacts(
 			Vector3 lineOffset, Vector3 lineDirection,

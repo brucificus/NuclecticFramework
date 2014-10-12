@@ -80,12 +80,12 @@ namespace Nuclectic.Game.State
 		void IGameState.Leave() { OnLeaving(); }
 
 		/// <summary>
-		///   Always true to indicate the game state is enabled and should be updated
+		///     Always true to indicate the game state is enabled and should be updated
 		/// </summary>
 		bool IUpdateable.Enabled { get { return true; } }
 
 		/// <summary>
-		///   Always 0 because game states have no ordering relative to each other
+		///     Always 0 because game states have no ordering relative to each other
 		/// </summary>
 		int IUpdateable.UpdateOrder { get { return 0; } }
 

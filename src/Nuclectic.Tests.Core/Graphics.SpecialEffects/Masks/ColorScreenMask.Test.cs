@@ -38,19 +38,18 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks
 		: TestFixtureBase
 	{
 		/// <summary>
-		///   Verifies that the constructor of the solid color screen mask class is working
+		///     Verifies that the constructor of the solid color screen mask class is working
 		/// </summary>
 		[Test]
 		public void TestConstructor()
 		{
 			using (var ownedColorScreenMask = MakeColorScreenMask())
 			{
-
 			}
 		}
 
 		/// <summary>
-		///   Tests whether the color property can be assigned and read from
+		///     Tests whether the color property can be assigned and read from
 		/// </summary>
 		[Test]
 		public void TestColorProperty()
@@ -65,7 +64,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks
 		}
 
 		/// <summary>
-		///   Tests whether the solid color screen mask is able to draw itself
+		///     Tests whether the solid color screen mask is able to draw itself
 		/// </summary>
 		[Test]
 		public void TestDraw()
@@ -97,7 +96,6 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks
 							service.GraphicsDevice, new Owned<Effect>(
 														effect, () =>
 														{
-
 															effect.Dispose();
 															contentManager.Dispose();
 															service.Dispose();

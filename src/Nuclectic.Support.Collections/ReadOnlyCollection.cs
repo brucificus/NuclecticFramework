@@ -44,20 +44,14 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Determines whether the List contains the specified item</summary>
 		/// <param name="item">Item that will be checked for</param>
 		/// <returns>True if the specified item is contained in the List</returns>
-		public bool Contains(TItem item)
-		{
-			return this.typedCollection.Contains(item);
-		}
+		public bool Contains(TItem item) { return this.typedCollection.Contains(item); }
 
 		/// <summary>Copies the contents of the List into an array</summary>
 		/// <param name="array">Array the List will be copied into</param>
 		/// <param name="arrayIndex">
-		///   Starting index at which to begin filling the destination array
+		///     Starting index at which to begin filling the destination array
 		/// </param>
-		public void CopyTo(TItem[] array, int arrayIndex)
-		{
-			this.typedCollection.CopyTo(array, arrayIndex);
-		}
+		public void CopyTo(TItem[] array, int arrayIndex) { this.typedCollection.CopyTo(array, arrayIndex); }
 
 		/// <summary>The number of items current contained in the List</summary>
 		public int Count { get { return this.typedCollection.Count; } }
@@ -67,10 +61,7 @@ namespace Nuclectic.Support.Collections
 
 		/// <summary>Returns a new enumerator over the contents of the List</summary>
 		/// <returns>The new List contents enumerator</returns>
-		public IEnumerator<TItem> GetEnumerator()
-		{
-			return this.typedCollection.GetEnumerator();
-		}
+		public IEnumerator<TItem> GetEnumerator() { return this.typedCollection.GetEnumerator(); }
 
 		#region ICollection<> implementation
 
@@ -107,10 +98,7 @@ namespace Nuclectic.Support.Collections
 
 		/// <summary>Returns a new enumerator over the contents of the List</summary>
 		/// <returns>The new List contents enumerator</returns>
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return this.objectCollection.GetEnumerator();
-		}
+		IEnumerator IEnumerable.GetEnumerator() { return this.objectCollection.GetEnumerator(); }
 
 		#endregion
 
@@ -119,12 +107,9 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Copies the contents of the List into an array</summary>
 		/// <param name="array">Array the List will be copied into</param>
 		/// <param name="index">
-		///   Starting index at which to begin filling the destination array
+		///     Starting index at which to begin filling the destination array
 		/// </param>
-		void ICollection.CopyTo(Array array, int index)
-		{
-			this.objectCollection.CopyTo(array, index);
-		}
+		void ICollection.CopyTo(Array array, int index) { this.objectCollection.CopyTo(array, index); }
 
 		/// <summary>Whether the List is synchronized for multi-threaded usage</summary>
 		bool ICollection.IsSynchronized { get { return this.objectCollection.IsSynchronized; } }

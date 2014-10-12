@@ -26,19 +26,19 @@ using Microsoft.Xna.Framework;
 namespace Nuclectic.Game.Component
 {
 	/// <summary>
-	///   Lightweight variant DrawableGameComponent that doesn't reference the Game class
+	///     Lightweight variant DrawableGameComponent that doesn't reference the Game class
 	/// </summary>
 	/// <remarks>
-	///   <para>
-	///     This is a lightweight version of DrawableGameComponent that can be used
-	///     without requiring a Game class to be present. Useful to get all the
-	///     advantages of the XNA GameServices architecture even when you have
-	///     initialized and manage the graphics device yourself.
-	///   </para>
-	///   <para>
-	///     The name of this class is the same as 'DrawableGameComponent' minus the
-	///     'Game' part as the Game reference is what this class removes from its namesake.
-	///   </para>
+	///     <para>
+	///         This is a lightweight version of DrawableGameComponent that can be used
+	///         without requiring a Game class to be present. Useful to get all the
+	///         advantages of the XNA GameServices architecture even when you have
+	///         initialized and manage the graphics device yourself.
+	///     </para>
+	///     <para>
+	///         The name of this class is the same as 'DrawableGameComponent' minus the
+	///         'Game' part as the Game reference is what this class removes from its namesake.
+	///     </para>
 	/// </remarks>
 	public class DrawableComponent : Component, IDrawable
 	{
@@ -56,8 +56,8 @@ namespace Nuclectic.Game.Component
 		public virtual void Draw(GameTime gameTime) { }
 
 		/// <summary>
-		///   Indicates when the drawable component should be drawn in relation to other
-		///   drawables. Has no effect by itself.
+		///     Indicates when the drawable component should be drawn in relation to other
+		///     drawables. Has no effect by itself.
 		/// </summary>
 		public int DrawOrder
 		{
@@ -105,8 +105,8 @@ namespace Nuclectic.Game.Component
 		}
 
 		/// <summary>
-		///   Used to determine the drawing order of this object in relation to other
-		///   objects in the same list.
+		///     Used to determine the drawing order of this object in relation to other
+		///     objects in the same list.
 		/// </summary>
 		private int drawOrder;
 

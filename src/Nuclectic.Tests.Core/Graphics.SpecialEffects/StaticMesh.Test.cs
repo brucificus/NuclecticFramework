@@ -31,40 +31,34 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Graphics.SpecialEffects
 {
-
 	/// <summary>Unit test for the static mesh graphics resource keeper</summary>
 	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
 	[RequiresSTA]
 	internal class StaticMeshTest
 		: TestFixtureBase
 	{
-
 		#region struct TestVertex
 
 		/// <summary>
-		///   Vertex used to unit-test the static mesh graphics resource keepr
+		///     Vertex used to unit-test the static mesh graphics resource keepr
 		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
 		private struct TestVertex : IVertexType
 		{
-
 			/// <summary>A vertex element of type Vector2</summary>
 			[VertexElement(VertexElementUsage.Position)]
 			public Vector3 Position;
+
 			/// <summary>A vertex element of type Color</summary>
 			[VertexElement(VertexElementUsage.Color)]
 			public Color Color;
 
 			/// <summary>Provides a declaration for this vertex type</summary>
-			VertexDeclaration IVertexType.VertexDeclaration
-			{
-				get { return TestVertex.VertexDeclaration; }
-			}
+			VertexDeclaration IVertexType.VertexDeclaration { get { return TestVertex.VertexDeclaration; } }
 
 			/// <summary>Vertex declaration for this vertex structure</summary>
 			public static readonly VertexDeclaration VertexDeclaration =
-			  new VertexDeclaration(VertexDeclarationHelper.BuildElementList<TestVertex>());
-
+				new VertexDeclaration(VertexDeclarationHelper.BuildElementList<TestVertex>());
 		}
 
 		#endregion // struct TestVertex
@@ -74,33 +68,26 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		/// <summary>Dummy static mesh class used for unit testing</summary>
 		private class TestStaticMesh : StaticMesh<TestVertex>
 		{
-
 			/// <summary>
-			///   Initializes a new static mesh that automatically determines its vertex format
+			///     Initializes a new static mesh that automatically determines its vertex format
 			/// </summary>
 			/// <param name="graphicsDevice">Graphics device the static mesh lives on</param>
 			/// <param name="vertexCount">Number of vertices in the static mesh</param>
-			public TestStaticMesh(GraphicsDevice graphicsDevice, int vertexCount) :
-				base(graphicsDevice, vertexCount) { }
+			public TestStaticMesh(GraphicsDevice graphicsDevice, int vertexCount)
+				:
+					base(graphicsDevice, vertexCount) { }
 
 			/// <summary>Selects the static meshes' vertex buffer</summary>
-			public new void Select()
-			{
-				base.Select();
-			}
+			public new void Select() { base.Select(); }
 
 			/// <summary>Vertex buffer containing the test meshes' vertices</summary>
-			public new VertexBuffer VertexBuffer
-			{
-				get { return base.VertexBuffer; }
-			}
-
+			public new VertexBuffer VertexBuffer { get { return base.VertexBuffer; } }
 		}
 
 		#endregion // class TestStaticMesh
 
 		/// <summary>
-		///   Verifies that the simple constructor of the static mesh class is working
+		///     Verifies that the simple constructor of the static mesh class is working
 		/// </summary>
 		[Test]
 		public void TestSimpleConstructor()
@@ -109,15 +96,15 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
 			{
 				using (
-				  TestStaticMesh test = new TestStaticMesh(
-					mockGraphicsDeviceService.GraphicsDevice, 4
-				  )
-				) { }
+					TestStaticMesh test = new TestStaticMesh(
+						mockGraphicsDeviceService.GraphicsDevice, 4
+						)
+					) { }
 			}
 		}
 
 		/// <summary>
-		///   Verifies that the constructor rolls back when an exception occurs in it
+		///     Verifies that the constructor rolls back when an exception occurs in it
 		/// </summary>
 		[Test]
 		public void TestThrowInConstructorRollback()
@@ -126,20 +113,20 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
 			{
 				Assert.Throws<ArgumentOutOfRangeException>(
-				  delegate()
-				  {
-					  using (
-						TestStaticMesh test = new TestStaticMesh(
-						  mockGraphicsDeviceService.GraphicsDevice, -1
-						)
-					  ) { }
-				  }
-				);
+														   delegate()
+														   {
+															   using (
+																   TestStaticMesh test = new TestStaticMesh(
+																	   mockGraphicsDeviceService.GraphicsDevice, -1
+																	   )
+																   ) { }
+														   }
+					);
 			}
 		}
 
 		/// <summary>
-		///   Tests whether the static meshes' Select() method is implemented correctly
+		///     Tests whether the static meshes' Select() method is implemented correctly
 		/// </summary>
 		[Test]
 		public void TestSelect()
@@ -148,10 +135,10 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 			using (IDisposable keeper = mockGraphicsDeviceService.CreateDevice())
 			{
 				using (
-				  TestStaticMesh test = new TestStaticMesh(
-					mockGraphicsDeviceService.GraphicsDevice, 4
-				  )
-				)
+					TestStaticMesh test = new TestStaticMesh(
+						mockGraphicsDeviceService.GraphicsDevice, 4
+						)
+					)
 				{
 					test.Select();
 
@@ -165,7 +152,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		}
 
 		/// <summary>
-		///   Only exists to prevent the compiler from complaining about unused fields
+		///     Only exists to prevent the compiler from complaining about unused fields
 		/// </summary>
 		protected void AvoidCompilerWarnings()
 		{
@@ -173,9 +160,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 			v.Color = Color.Red;
 			v.Position = Vector3.Zero;
 		}
-
 	}
-
 } // namespace Nuclex.Graphics.SpecialEffects
 
 #endif // UNITTEST

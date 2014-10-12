@@ -45,7 +45,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Verifies that the total surface area of a disc can be determined
+		///     Verifies that the total surface area of a disc can be determined
 		/// </summary>
 		[Test]
 		public void TestSurfaceArea()
@@ -56,7 +56,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Verifies that the circumference length of the disc can be determined
+		///     Verifies that the circumference length of the disc can be determined
 		/// </summary>
 		[Test]
 		public void TestCircumferenceLength()
@@ -76,7 +76,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether a tight-fitting bounding box for a disc can be obtained
+		///     Tests whether a tight-fitting bounding box for a disc can be obtained
 		/// </summary>
 		[Test]
 		public void TestBoundingBox()
@@ -93,7 +93,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether the closest point determination works for two-dimensional discs
+		///     Tests whether the closest point determination works for two-dimensional discs
 		/// </summary>
 		[Test]
 		public void TestClosestPointTo()
@@ -127,8 +127,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether random points on the perimeter of two-dimensional discs can
-		///   be obtained
+		///     Tests whether random points on the perimeter of two-dimensional discs can
+		///     be obtained
 		/// </summary>
 		[Test]
 		public void TestRandomPointOnPerimeter()
@@ -148,8 +148,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether random points on the perimeter of two-dimensional discs can
-		///   be obtained
+		///     Tests whether random points on the perimeter of two-dimensional discs can
+		///     be obtained
 		/// </summary>
 		[Test]
 		public void TestRandomPointWithin()

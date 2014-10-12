@@ -30,14 +30,14 @@ namespace Nuclectic.Fonts
 		IReadOnlyDictionary<char, int> CharacterMap { get; }
 
 		/// <summary>
-		///   Kerning table for adjusting the positions of specific character combinations
+		///     Kerning table for adjusting the positions of specific character combinations
 		/// </summary>
 		/// <remarks>
-		///   Certain character combination, such as the two consecutive characters 'AV'
-		///   have diagonal shapes that would cause the characters to visually appear
-		///   is if they were further apart from each other. Kerning adjusts the distances
-		///   between such characters to keep the perceived character distance at the
-		///   same level for all character combinations.
+		///     Certain character combination, such as the two consecutive characters 'AV'
+		///     have diagonal shapes that would cause the characters to visually appear
+		///     is if they were further apart from each other. Kerning adjusts the distances
+		///     between such characters to keep the perceived character distance at the
+		///     same level for all character combinations.
 		/// </remarks>
 		IReadOnlyDictionary<KerningPair, Vector2> KerningTable { get; }
 	}

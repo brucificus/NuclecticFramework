@@ -25,7 +25,7 @@ using Microsoft.Xna.Framework;
 namespace Nuclectic.UserInterface
 {
 	/// <summary>
-	///   Two-dimensional rectangle of combined fraction and offset coordinates
+	///     Two-dimensional rectangle of combined fraction and offset coordinates
 	/// </summary>
 	public struct UniRectangle
 	{
@@ -42,7 +42,7 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Initializes a new rectangle from the provided individual coordinates
+		///     Initializes a new rectangle from the provided individual coordinates
 		/// </summary>
 		/// <param name="x">X coordinate of the rectangle's left border</param>
 		/// <param name="y">Y coordinate of the rectangle's upper border</param>
@@ -56,17 +56,17 @@ namespace Nuclectic.UserInterface
 
 		/// <summary>Converts the rectangle into pure offset coordinates</summary>
 		/// <param name="containerSize">
-		///   Dimensions of the container the fractional part of the rectangle count for
+		///     Dimensions of the container the fractional part of the rectangle count for
 		/// </param>
 		/// <returns>A rectangle with the pure offset coordinates of the rectangle</returns>
 		public RectangleF ToOffset(Vector2 containerSize) { return ToOffset(containerSize.X, containerSize.Y); }
 
 		/// <summary>Converts the rectangle into pure offset coordinates</summary>
 		/// <param name="containerWidth">
-		///   Width of the container the fractional part of the rectangle counts for
+		///     Width of the container the fractional part of the rectangle counts for
 		/// </param>
 		/// <param name="containerHeight">
-		///   Height of the container the fractional part of the rectangle counts for
+		///     Height of the container the fractional part of the rectangle counts for
 		/// </param>
 		/// <returns>A rectangle with the pure offset coordinates of the rectangle</returns>
 		public RectangleF ToOffset(float containerWidth, float containerHeight)
@@ -167,7 +167,7 @@ namespace Nuclectic.UserInterface
 		public override int GetHashCode() { return this.Location.GetHashCode() ^ this.Size.GetHashCode(); }
 
 		/// <summary>
-		///   Returns a human-readable string representation for the unified rectangle
+		///     Returns a human-readable string representation for the unified rectangle
 		/// </summary>
 		/// <returns>The human-readable string representation of the unified rectangle</returns>
 		public override string ToString()

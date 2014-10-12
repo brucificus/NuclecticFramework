@@ -27,12 +27,10 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input.Devices
 {
-
 	/// <summary>Unit tests for the modifiable keyboard state</summary>
 	[TestFixture]
 	internal class KeyboardStateHelperTest
 	{
-
 		/// <summary>Tests whether the AddPressedKey() performs as expected</summary>
 		[Test]
 		public void TestAddPressedKey()
@@ -60,9 +58,7 @@ namespace Nuclectic.Tests.Input.Devices
 			Assert.IsFalse(state.IsKeyDown(Keys.C));
 			Assert.IsTrue(state.IsKeyDown(Keys.D));
 		}
-
 	}
-
 } // namespace Nuclex.Input.Devices
 
 #endif // UNITTEST

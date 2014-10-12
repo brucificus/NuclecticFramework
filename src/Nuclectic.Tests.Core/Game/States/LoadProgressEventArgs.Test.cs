@@ -31,7 +31,7 @@ namespace Nuclectic.Tests.Game.States
 	internal class LoadProgressEventArgsTest
 	{
 		/// <summary>
-		///   Tests whether an integer argument can be stored in the argument container
+		///     Tests whether an integer argument can be stored in the argument container
 		/// </summary>
 		[Test]
 		public void TestIntegerArgument()

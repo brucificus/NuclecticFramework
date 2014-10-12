@@ -5,23 +5,23 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Nuclectic.UserInterface.Visuals.Flat
 {
 	/// <summary>
-	///   Locates the opening between characters in a string that is nearest
-	///   to a user-defined location
+	///     Locates the opening between characters in a string that is nearest
+	///     to a user-defined location
 	/// </summary>
 	/// <remarks>
-	///   <para>
-	///     This is a class rather than a static class to prevent garbage production
-	///     which would then have to be cleaned up again by the garbage collector.
-	///     If you create an instance of it and keep reusing it, garbage and allocation
-	///     will amortize.
-	///   </para>
-	///   <para>
-	///     The method used to calculate the openings seems to be not terribly accurate.
-	///     As of XNA 3.1, SpriteFonts don't do kerning, so the only thing left would be
-	///     a variable space appended to the end of characters. This could be compensated
-	///     for by always appending character with a known length for which no kerning is
-	///     possible, for example, the pipe sign (|).
-	///   </para>
+	///     <para>
+	///         This is a class rather than a static class to prevent garbage production
+	///         which would then have to be cleaned up again by the garbage collector.
+	///         If you create an instance of it and keep reusing it, garbage and allocation
+	///         will amortize.
+	///     </para>
+	///     <para>
+	///         The method used to calculate the openings seems to be not terribly accurate.
+	///         As of XNA 3.1, SpriteFonts don't do kerning, so the only thing left would be
+	///         a variable space appended to the end of characters. This could be compensated
+	///         for by always appending character with a known length for which no kerning is
+	///         possible, for example, the pipe sign (|).
+	///     </para>
 	/// </remarks>
 	internal class OpeningLocator
 	{
@@ -29,8 +29,8 @@ namespace Nuclectic.UserInterface.Visuals.Flat
 		public OpeningLocator() { this.textBuilder = new StringBuilder(64); }
 
 		/// <summary>
-		///   Locates the opening between two letters that is closest to
-		///   the specified position
+		///     Locates the opening between two letters that is closest to
+		///     the specified position
 		/// </summary>
 		/// <param name="font">Font that opening search will use</param>
 		/// <param name="text">Text that will be searched for the opening</param>

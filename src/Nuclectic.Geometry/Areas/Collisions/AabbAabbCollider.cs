@@ -74,7 +74,7 @@ namespace Nuclectic.Geometry.Areas.Collisions
 		/// <param name="secondMin">Minimum coordinate of second box</param>
 		/// <param name="secondMax">Maximum coordinate of second box</param>
 		/// <param name="secondVelocity">
-		///   Velocity with which the second box is moving relative to the first box
+		///     Velocity with which the second box is moving relative to the first box
 		/// </param>
 		/// <returns>True if the second box will hit the first box</returns>
 		public static bool CheckContact(
@@ -88,25 +88,25 @@ namespace Nuclectic.Geometry.Areas.Collisions
 		/// <param name="secondMin">Minimum coordinate of second box</param>
 		/// <param name="secondMax">Maximum coordinate of second box</param>
 		/// <param name="secondVelocity">
-		///   Velocity with which the second box is moving relative to the first box
+		///     Velocity with which the second box is moving relative to the first box
 		/// </param>
 		/// <returns>The point of first contact, if any</returns>
 		/// <remarks>
-		///   <para>
-		///     Conventional tests that resort to stepping often fail to detect collisions
-		///     between fast-moving objects. This impact determination test will always
-		///     detect a collision if it occurs, giving the exact time of the impact.
-		///   </para>
-		///   <para>
-		///     This is a simplified test that assumes a linear trajectory and does
-		///     not take object rotation into account. It is well suited to use on
-		///     two bounding boxes in order to determine if a collision between the
-		///     shapes contained is possible at all.
-		///   </para>
-		///   <para>
-		///     Idea taken from the "Simple Intersection Tests for Games" article
-		///     on gamasutra by Gomez.
-		///   </para>
+		///     <para>
+		///         Conventional tests that resort to stepping often fail to detect collisions
+		///         between fast-moving objects. This impact determination test will always
+		///         detect a collision if it occurs, giving the exact time of the impact.
+		///     </para>
+		///     <para>
+		///         This is a simplified test that assumes a linear trajectory and does
+		///         not take object rotation into account. It is well suited to use on
+		///         two bounding boxes in order to determine if a collision between the
+		///         shapes contained is possible at all.
+		///     </para>
+		///     <para>
+		///         Idea taken from the "Simple Intersection Tests for Games" article
+		///         on gamasutra by Gomez.
+		///     </para>
 		/// </remarks>
 		public static float? FindContact(
 			Vector2 firstMin, Vector2 firstMax,

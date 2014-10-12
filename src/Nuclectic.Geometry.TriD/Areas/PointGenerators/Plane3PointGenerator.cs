@@ -51,17 +51,17 @@ namespace Nuclectic.Geometry.Areas.PointGenerators
 		/// <param name="normal">Normal of the plane</param>
 		/// <returns>A random point around or within the plane</returns>
 		/// <remarks>
-		///   <para>
-		///     Since the plane extends to infinity in each direction, the chance of hitting
-		///     a value outside of what can be expressed with a meager float (and actually,
-		///     any finite numbering system) is infinitely larger than being within the range
-		///     we can express, so we can assume the chance of the result being infinity is
-		///     about 1.
-		///   </para>
-		///   <para>
-		///     The same applies to both, finding a point on the plane's perimeter as well as
-		///     finding a point within the plane, so this method is used for both cases.
-		///   </para>
+		///     <para>
+		///         Since the plane extends to infinity in each direction, the chance of hitting
+		///         a value outside of what can be expressed with a meager float (and actually,
+		///         any finite numbering system) is infinitely larger than being within the range
+		///         we can express, so we can assume the chance of the result being infinity is
+		///         about 1.
+		///     </para>
+		///     <para>
+		///         The same applies to both, finding a point on the plane's perimeter as well as
+		///         finding a point within the plane, so this method is used for both cases.
+		///     </para>
 		/// </remarks>
 		private static Vector3 generateRandomPlanePoint(
 			IRandom randomNumberGenerator, Vector3 normal

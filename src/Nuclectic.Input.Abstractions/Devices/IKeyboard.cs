@@ -35,10 +35,10 @@ namespace Nuclectic.Input.Devices
 
 		/// <summary>Fired when the user has entered a character</summary>
 		/// <remarks>
-		///   This provides the complete, translated character the user has entered.
-		///   Handling of international keyboard layouts, shift key, accents and
-		///   other special cases is done by Windows according to the current users'
-		///   country and selected keyboard layout.
+		///     This provides the complete, translated character the user has entered.
+		///     Handling of international keyboard layouts, shift key, accents and
+		///     other special cases is done by Windows according to the current users'
+		///     country and selected keyboard layout.
 		/// </remarks>
 		event CharacterDelegate CharacterEntered;
 

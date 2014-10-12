@@ -23,7 +23,7 @@ License along with this library
 namespace Nuclectic.Game.Space
 {
 	/// <summary>
-	///   Interface for geometrical objects providing a bounding rectangle
+	///     Interface for geometrical objects providing a bounding rectangle
 	/// </summary>
 	public interface IBoundingRectangleProvider
 	{

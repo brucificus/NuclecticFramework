@@ -28,23 +28,23 @@ namespace Nuclectic.Game.Packing
 {
 	/// <summary>Packer using a custom algorithm by Markus 'Cygon' Ewald</summary>
 	/// <remarks>
-	///   <para>
-	///     Algorithm conceived by Markus Ewald (cygon at nuclex dot org), though
-	///     I'm quite sure I'm not the first one to come up with it :)
-	///   </para>
-	///   <para>
-	///     The algorithm always places rectangles as low as possible in the packing
-	///     area. So, for any new rectangle that is to be added, the packer has to
-	///     determine the X coordinate at which the rectangle can have the lowest
-	///     overall height without intersecting any other rectangles.
-	///   </para>
-	///   <para>
-	///     To quickly discover these locations, the packer uses a sophisticated
-	///     data structure that stores the upper silhouette of the packing area. When
-	///     a new rectangle needs to be added, only the silouette edges need to be
-	///     analyzed to find the position where the rectangle would achieve the lowest
-	///     placement possible in the packing area.
-	///   </para>
+	///     <para>
+	///         Algorithm conceived by Markus Ewald (cygon at nuclex dot org), though
+	///         I'm quite sure I'm not the first one to come up with it :)
+	///     </para>
+	///     <para>
+	///         The algorithm always places rectangles as low as possible in the packing
+	///         area. So, for any new rectangle that is to be added, the packer has to
+	///         determine the X coordinate at which the rectangle can have the lowest
+	///         overall height without intersecting any other rectangles.
+	///     </para>
+	///     <para>
+	///         To quickly discover these locations, the packer uses a sophisticated
+	///         data structure that stores the upper silhouette of the packing area. When
+	///         a new rectangle needs to be added, only the silouette edges need to be
+	///         analyzed to find the position where the rectangle would achieve the lowest
+	///         placement possible in the packing area.
+	///     </para>
 	/// </remarks>
 	public class CygonRectanglePacker : RectanglePacker
 	{

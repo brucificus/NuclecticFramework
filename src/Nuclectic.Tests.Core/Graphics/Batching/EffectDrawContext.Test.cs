@@ -46,7 +46,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 			/// <summary>Prepares the graphics device for drawing</summary>
 			/// <param name="pass">Index of the pass to begin rendering</param>
 			/// <remarks>
-			///   Should only be called between the normal Begin() and End() methods.
+			///     Should only be called between the normal Begin() and End() methods.
 			/// </remarks>
 			public override void Apply(int pass) { }
 
@@ -85,8 +85,8 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Verifies that the Begin() and End() methods of the drawing context are working
-		///   as expected
+		///     Verifies that the Begin() and End() methods of the drawing context are working
+		///     as expected
 		/// </summary>
 		[Test]
 		public void TestBeginEnd()
@@ -105,7 +105,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Verifies that the used effect can be obtained using the 'Effect' property
+		///     Verifies that the used effect can be obtained using the 'Effect' property
 		/// </summary>
 		[Test]
 		public void TestEffectRetrieval()
@@ -120,8 +120,8 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Verifies that testing the drawing context against itself results in 
-		///   the comparison reporting equality
+		///     Verifies that testing the drawing context against itself results in
+		///     the comparison reporting equality
 		/// </summary>
 		[Test]
 		public void TestEqualsWithSameObject()
@@ -136,8 +136,8 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Verifies that testing the drawing context against a different instance
-		///   results the comparison reporting inequality
+		///     Verifies that testing the drawing context against a different instance
+		///     results the comparison reporting inequality
 		/// </summary>
 		[Test]
 		public void TestEqualsWithDifferentObject()
@@ -154,8 +154,8 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Verifies that testing the drawing context against an instance of a different
-		///   drawing context is reported as inequality
+		///     Verifies that testing the drawing context against an instance of a different
+		///     drawing context is reported as inequality
 		/// </summary>
 		[Test]
 		public void TestEqualsWithIncpmpatibleDrawContext()

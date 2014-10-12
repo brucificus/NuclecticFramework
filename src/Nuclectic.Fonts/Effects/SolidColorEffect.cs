@@ -1435,9 +1435,6 @@ namespace Nuclectic.Fonts.Effects
 		/// <summary>Creates the effect for the specified graphics device</summary>
 		/// <param name="graphicsDevice"></param>
 		/// <returns></returns>
-		public static Effect Create(GraphicsDevice graphicsDevice)
-		{
-			return new Effect(graphicsDevice, EffectCode);
-		}
+		public static Effect Create(GraphicsDevice graphicsDevice) { return new Effect(graphicsDevice, EffectCode); }
 	}
 } // namespace Nuclex.Fonts

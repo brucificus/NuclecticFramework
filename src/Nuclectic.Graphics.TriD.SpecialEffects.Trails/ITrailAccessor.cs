@@ -32,14 +32,14 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails
 		/// <summary>Retrieves the queue storing a trail's sections</summary>
 		/// <param name="trail">Trail whose sections will be returned</param>
 		/// <param name="queue">
-		///   Will recieve the queue containing the sections that make up the trail
+		///     Will recieve the queue containing the sections that make up the trail
 		/// </param>
 		void GetQueue(ref TrailType trail, out Queue<ParticleType> queue);
 
 		/// <summary>Assigns the queue storing a trail's sections</summary>
 		/// <param name="trail">Trail whose sections will be assigned</param>
 		/// <param name="queue">
-		///   Queue containing the sections that will be assigned to the trail
+		///     Queue containing the sections that will be assigned to the trail
 		/// </param>
 		void SetQueue(ref TrailType trail, ref Queue<ParticleType> queue);
 	}

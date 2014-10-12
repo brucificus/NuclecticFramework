@@ -28,18 +28,15 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input.Devices
 {
-
 	/// <summary>Unit tests for the mocked keyboard</summary>
 	[TestFixture]
 	public class MockedKeyboardTest
 	{
-
 		#region interface IKeyboardSubscriber
 
 		/// <summary>Subscriber to the </summary>
 		public interface IKeyboardSubscriber
 		{
-
 			/// <summary>Called when a key has been pressed</summary>
 			/// <param name="key">Key that has been pressed</param>
 			void KeyPressed(Keys key);
@@ -51,7 +48,6 @@ namespace Nuclectic.Tests.Input.Devices
 			/// <summary>Called when a character has been entered</summary>
 			/// <param name="character">Character that has been entered</param>
 			void CharacterEntered(char character);
-
 		}
 
 		#endregion // interface IKeyboardSubscriber
@@ -194,7 +190,6 @@ namespace Nuclectic.Tests.Input.Devices
 			return subscriber;
 		}
 	}
-
 } // namespace Nuclex.Input.Devices
 
 #endif // UNITTEST

@@ -33,26 +33,26 @@ namespace Nuclectic.Input.Devices
 	internal static class TouchCollectionHelper
 	{
 		/// <summary>
-		/// Represents a method that can completely replace the private data of a given <see cref="TouchCollection"/>
+		///     Represents a method that can completely replace the private data of a given <see cref="TouchCollection" />
 		/// </summary>
-		/// <param name="touchCollection">The <see cref="TouchCollection"/> to modify</param>
-		/// <param name="privateCollectionNewValue">The new set of <see cref="TouchLocation"/> to assign into <paramref name="touchCollection"/></param>
+		/// <param name="touchCollection">The <see cref="TouchCollection" /> to modify</param>
+		/// <param name="privateCollectionNewValue">
+		///     The new set of <see cref="TouchLocation" /> to assign into
+		///     <paramref name="touchCollection" />
+		/// </param>
 		public delegate void SetPrivateCollectionDelegate(ref TouchCollection touchCollection, TouchLocation[] privateCollectionNewValue);
 
 		/// <summary>Initializes the static fields of the class</summary>
-		static TouchCollectionHelper()
-		{
-			SetPrivateCollection = createSetPrivateCollectionDelegate();
-		}
+		static TouchCollectionHelper() { SetPrivateCollection = createSetPrivateCollectionDelegate(); }
 
 		/// <summary>Removes all touch locations from the collection</summary>
 		/// <param name="touchCollection">Touch collection that will be cleared</param>
-		public static void Clear(ref TouchCollection touchCollection) { SetPrivateCollection(ref touchCollection, new TouchLocation[]{}); }
+		public static void Clear(ref TouchCollection touchCollection) { SetPrivateCollection(ref touchCollection, new TouchLocation[] {}); }
 
 		/// <summary>
-		/// Creates a delegate that can completely replace the private data of a given <see cref="TouchCollection"/>
+		///     Creates a delegate that can completely replace the private data of a given <see cref="TouchCollection" />
 		/// </summary>
-		/// <returns>A delegate that can completely replace the private data of a given <see cref="TouchCollection"/></returns>
+		/// <returns>A delegate that can completely replace the private data of a given <see cref="TouchCollection" /></returns>
 		private static SetPrivateCollectionDelegate createSetPrivateCollectionDelegate()
 		{
 			FieldInfo privateCollectionField = typeof (TouchCollection).GetTypeInfo().GetDeclaredField("_collection");
@@ -63,12 +63,12 @@ namespace Nuclectic.Input.Devices
 
 			Expression<SetPrivateCollectionDelegate> expression =
 				Expression.Lambda<SetPrivateCollectionDelegate>(
-														    Expression.Assign(
-																			  Expression.Field(instance, privateCollectionField),
-																			  value
-																),
-															instance,
-															value
+															    Expression.Assign(
+																				  Expression.Field(instance, privateCollectionField),
+																				  value
+																	),
+																instance,
+																value
 					);
 
 			return expression.Compile();

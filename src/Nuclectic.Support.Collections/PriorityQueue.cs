@@ -117,7 +117,7 @@ namespace Nuclectic.Support.Collections
 		#endregion // class Enumerator
 
 		/// <summary>
-		///   Initializes a new priority queue using IComparable for comparing items
+		///     Initializes a new priority queue using IComparable for comparing items
 		/// </summary>
 		public PriorityQueue()
 			: this(Comparer<TItem>.Default) { }
@@ -195,8 +195,8 @@ namespace Nuclectic.Support.Collections
 		public void CopyTo(Array array, int index) { Array.Copy(this.heap, 0, array, index, this.count); }
 
 		/// <summary>
-		///   Obtains an object that can be used to synchronize accesses to the priority queue
-		///   from different threads
+		///     Obtains an object that can be used to synchronize accesses to the priority queue
+		///     from different threads
 		/// </summary>
 		public object SyncRoot { get { return this; } }
 

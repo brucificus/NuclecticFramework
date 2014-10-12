@@ -44,7 +44,7 @@ namespace Nuclectic.Tests.Fonts
 		public class KerningPairTest
 		{
 			/// <summary>
-			///   Validates that the constructor of the kerning pair structure is working
+			///     Validates that the constructor of the kerning pair structure is working
 			/// </summary>
 			[Test]
 			public void TestConstructor()
@@ -56,7 +56,7 @@ namespace Nuclectic.Tests.Fonts
 			}
 
 			/// <summary>
-			///   Validates that the constructor of the kerning pair structure is working
+			///     Validates that the constructor of the kerning pair structure is working
 			/// </summary>
 			[Test]
 			public void TestGetHashCode()
@@ -82,7 +82,7 @@ namespace Nuclectic.Tests.Fonts
 			}
 
 			/// <summary>
-			///   Tests whether the Equals() method can cope with an incompatible object
+			///     Tests whether the Equals() method can cope with an incompatible object
 			/// </summary>
 			[Test]
 			public void TestEqualityCheckAgainstIncompatibleType()
@@ -99,7 +99,7 @@ namespace Nuclectic.Tests.Fonts
 		public void TestGetLineHeight() { Assert.Greater(this.vectorFont.LineHeight, 0); }
 
 		/// <summary>
-		///   Verifies that the characters of the vector font can be accessed
+		///     Verifies that the characters of the vector font can be accessed
 		/// </summary>
 		[Test]
 		public void TestCharacters()

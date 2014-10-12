@@ -30,19 +30,19 @@ namespace Nuclectic.UserInterface.Controls
 {
 	/// <summary>Represents an element in the user interface</summary>
 	/// <remarks>
-	///   <para>
-	///     Controls are always arranged in a tree where each control except the one at
-	///     the root of the tree has exactly one owner (the one at the root has no owner).
-	///     The design actively prevents you from assigning a control as child to
-	///     multiple parents.
-	///   </para>
-	///   <para>
-	///     The controls in the Nuclex.UserInterface library are fully independent of
-	///     their graphical representation. That means you can construct a dialog
-	///     without even having a graphics device in place, that you can move your
-	///     dialogs between different graphics devices and that you do not have to
-	///     even think about graphics device resets and similar trouble.
-	///   </para>
+	///     <para>
+	///         Controls are always arranged in a tree where each control except the one at
+	///         the root of the tree has exactly one owner (the one at the root has no owner).
+	///         The design actively prevents you from assigning a control as child to
+	///         multiple parents.
+	///     </para>
+	///     <para>
+	///         The controls in the Nuclex.UserInterface library are fully independent of
+	///         their graphical representation. That means you can construct a dialog
+	///         without even having a graphics device in place, that you can move your
+	///         dialogs between different graphics devices and that you do not have to
+	///         even think about graphics device resets and similar trouble.
+	///     </para>
 	/// </remarks>
 	public partial class Control : IHasScreen, IHasSettableScreen, ICommandProcessor
 	{
@@ -52,22 +52,22 @@ namespace Nuclectic.UserInterface.Controls
 
 		/// <summary>Initializes a new control</summary>
 		/// <param name="affectsOrdering">
-		///   Whether the control comes to the top of the hierarchy when clicked
+		///     Whether the control comes to the top of the hierarchy when clicked
 		/// </param>
 		/// <remarks>
-		///   <para>
-		///     The <paramref name="affectsOrdering" /> parameter should be set for windows
-		///     and other free-floating panels which exist in parallel and which the user
-		///     might want to put on top of their siblings by clicking them. If the user
-		///     clicks on a child control of such a panel/window control, the panel/window
-		///     control will also be moved into the foreground.
-		///   </para>
-		///   <para>
-		///     It should not be set for normal controls which usually have no overlap,
-		///     like buttons. Otherwise, a button placed on the desktop could overdraw a
-		///     window when the button is clicked. The behavior would be well-defined and
-		///     controlled, but the user probably doesn't expect this ;-)
-		///   </para>
+		///     <para>
+		///         The <paramref name="affectsOrdering" /> parameter should be set for windows
+		///         and other free-floating panels which exist in parallel and which the user
+		///         might want to put on top of their siblings by clicking them. If the user
+		///         clicks on a child control of such a panel/window control, the panel/window
+		///         control will also be moved into the foreground.
+		///     </para>
+		///     <para>
+		///         It should not be set for normal controls which usually have no overlap,
+		///         like buttons. Otherwise, a button placed on the desktop could overdraw a
+		///         window when the button is clicked. The behavior would be well-defined and
+		///         controlled, but the user probably doesn't expect this ;-)
+		///     </para>
 		/// </remarks>
 		protected Control(bool affectsOrdering)
 		{
@@ -80,25 +80,25 @@ namespace Nuclectic.UserInterface.Controls
 		public Collection<Control> Children { get { return this.children; } }
 
 		/// <summary>
-		///   True if clicking the control or its children moves the control into
-		///   the foreground of the drawing hierarchy
+		///     True if clicking the control or its children moves the control into
+		///     the foreground of the drawing hierarchy
 		/// </summary>
 		public bool AffectsOrdering { get { return this.affectsOrdering; } }
 
 		/// <summary>Parent control this control is contained in</summary>
 		/// <remarks>
-		///   Can be null, but this is only the case for free-floating controls that have
-		///   not been added into a Gui. The only control that really keeps this field
-		///   set to null whilst the Gui is active is the root control in the Gui class.
+		///     Can be null, but this is only the case for free-floating controls that have
+		///     not been added into a Gui. The only control that really keeps this field
+		///     set to null whilst the Gui is active is the root control in the Gui class.
 		/// </remarks>
 		public Control Parent { get { return this.parent; } }
 
 		/// <summary>Name that can be used to uniquely identify the control</summary>
 		/// <remarks>
-		///   This name acts as an unique identifier for a control. It primarily serves
-		///   as a means to programmatically identify the control and as a debugging aid.
-		///   Duplicate names are not allowed and will result in an exception being
-		///   thrown, the only exception is when the control's name is set to null.
+		///     This name acts as an unique identifier for a control. It primarily serves
+		///     as a means to programmatically identify the control and as a debugging aid.
+		///     Duplicate names are not allowed and will result in an exception being
+		///     thrown, the only exception is when the control's name is set to null.
 		/// </remarks>
 		public string Name
 		{
@@ -140,15 +140,15 @@ namespace Nuclectic.UserInterface.Controls
 		}
 
 		/// <summary>
-		///   Obtains the absolute boundaries of the control in screen coordinates
+		///     Obtains the absolute boundaries of the control in screen coordinates
 		/// </summary>
 		/// <returns>The control's absolute screen coordinate boundaries</returns>
 		/// <remarks>
-		///   This method resolves the unified coordinates into absolute screen coordinates
-		///   that can be used to do hit-testing and rendering. The control is required to
-		///   be part of a GUI hierarchy that is assigned to a screen for this to work
-		///   since otherwise, there's no absolute coordinate frame into which the
-		///   unified coordinates could be resolved.
+		///     This method resolves the unified coordinates into absolute screen coordinates
+		///     that can be used to do hit-testing and rendering. The control is required to
+		///     be part of a GUI hierarchy that is assigned to a screen for this to work
+		///     since otherwise, there's no absolute coordinate frame into which the
+		///     unified coordinates could be resolved.
 		/// </remarks>
 		public RectangleF GetAbsoluteBounds()
 		{
@@ -200,11 +200,11 @@ namespace Nuclectic.UserInterface.Controls
 		/// <summary>Called when a button on the gamepad has been pressed</summary>
 		/// <param name="button">Button that has been pressed</param>
 		/// <returns>
-		///   True if the button press was handled by the control, otherwise false.
+		///     True if the button press was handled by the control, otherwise false.
 		/// </returns>
 		/// <remarks>
-		///   If the control indicates that it didn't handle the key press, it will not
-		///   receive the associated key release notification.
+		///     If the control indicates that it didn't handle the key press, it will not
+		///     receive the associated key release notification.
 		/// </remarks>
 		protected virtual bool OnButtonPressed(Buttons button) { return false; }
 
@@ -221,9 +221,9 @@ namespace Nuclectic.UserInterface.Controls
 		/// <param name="button">Index of the button that has been pressed</param>
 		/// <returns>Whether the control has processed the mouse press</returns>
 		/// <remarks>
-		///   If this method states that a mouse press is processed by returning
-		///   true, that means the control did something with it and the mouse press
-		///   should not be acted upon by any other listener.
+		///     If this method states that a mouse press is processed by returning
+		///     true, that means the control did something with it and the mouse press
+		///     should not be acted upon by any other listener.
 		/// </remarks>
 		protected virtual void OnMousePressed(MouseButtons button) { }
 
@@ -232,12 +232,12 @@ namespace Nuclectic.UserInterface.Controls
 		protected virtual void OnMouseReleased(MouseButtons button) { }
 
 		/// <summary>
-		///   Called when the mouse has left the control and is no longer hovering over it
+		///     Called when the mouse has left the control and is no longer hovering over it
 		/// </summary>
 		protected virtual void OnMouseLeft() { }
 
 		/// <summary>
-		///   Called when the mouse has entered the control and is now hovering over it
+		///     Called when the mouse has entered the control and is now hovering over it
 		/// </summary>
 		protected virtual void OnMouseEntered() { }
 
@@ -248,14 +248,14 @@ namespace Nuclectic.UserInterface.Controls
 		/// <summary>Called when a key on the keyboard has been pressed down</summary>
 		/// <param name="keyCode">Code of the key that was pressed</param>
 		/// <returns>
-		///   True if the key press was handled by the control, otherwise false.
+		///     True if the key press was handled by the control, otherwise false.
 		/// </returns>
 		/// <remarks>
-		///   If the control indicates that it didn't handle the key press, it will not
-		///   receive the associated key release notification. This means that if you
-		///   return false from this method, you should under no circumstances do anything
-		///   with the information - you will not know when the key is released again
-		///   and another control might pick it up, causing a second key response.
+		///     If the control indicates that it didn't handle the key press, it will not
+		///     receive the associated key release notification. This means that if you
+		///     return false from this method, you should under no circumstances do anything
+		///     with the information - you will not know when the key is released again
+		///     and another control might pick it up, causing a second key response.
 		/// </remarks>
 		protected virtual bool OnKeyPressed(Keys keyCode) { return false; }
 
@@ -354,9 +354,9 @@ namespace Nuclectic.UserInterface.Controls
 
 		/// <summary>Child controls belonging to this control</summary>
 		/// <remarks>
-		///   Child controls are any controls that belong to this control. They don't
-		///   neccessarily need to be situated in this control's client area, but
-		///   their positioning will be relative to the parent's location.
+		///     Child controls are any controls that belong to this control. They don't
+		///     neccessarily need to be situated in this control's client area, but
+		///     their positioning will be relative to the parent's location.
 		/// </remarks>
 		private ParentingControlCollection children;
 	}

@@ -27,10 +27,10 @@ namespace Nuclectic.UserInterface.Controls
 {
 	/// <summary>Collection of GUI controls</summary>
 	/// <remarks>
-	///   This class is for internal use only. Do not expose it to the user. If it was
-	///   exposed, the user might decide to use it for storing his own controls, causing
-	///   exceptions because the collection tries to parent the controls which are already
-	///   belonging to another collection.
+	///     This class is for internal use only. Do not expose it to the user. If it was
+	///     exposed, the user might decide to use it for storing his own controls, causing
+	///     exceptions because the collection tries to parent the controls which are already
+	///     belonging to another collection.
 	/// </remarks>
 	internal class ParentingControlCollection : Collection<Control>, IHasSettableScreen
 	{
@@ -88,7 +88,7 @@ namespace Nuclectic.UserInterface.Controls
 		}
 
 		/// <summary>
-		///   Checks whether the provided name is already taken by a control
+		///     Checks whether the provided name is already taken by a control
 		/// </summary>
 		/// <param name="name">Id that will be checked</param>
 		/// <returns>True if the id is already taken, false otherwise</returns>
@@ -130,7 +130,7 @@ namespace Nuclectic.UserInterface.Controls
 
 		/// <summary>Moves the specified control to the start of the list</summary>
 		/// <param name="controlIndex">
-		///   Index of the control that will be moved to the start of the list
+		///     Index of the control that will be moved to the start of the list
 		/// </param>
 		internal void MoveToStart(int controlIndex)
 		{
@@ -175,12 +175,12 @@ namespace Nuclectic.UserInterface.Controls
 		}
 
 		/// <summary>
-		///   Determines whether the provided control is a parent of this control.
+		///     Determines whether the provided control is a parent of this control.
 		/// </summary>
 		/// <param name="control">Control to check for parentage</param>
 		/// <returns>True if the control is one of our parents, otherwise false</returns>
 		/// <remarks>
-		///   This method takes into account all ancestors up to the tree's root.
+		///     This method takes into account all ancestors up to the tree's root.
 		/// </remarks>
 		private bool isParent(Control control)
 		{

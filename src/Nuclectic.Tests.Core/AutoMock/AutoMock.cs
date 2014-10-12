@@ -36,7 +36,7 @@ using Moq;
 namespace Nuclectic.Tests.AutoMock
 {
 	/// <summary>
-	/// Wrapper around <see cref="Autofac"/> and <see cref="Moq"/>
+	///     Wrapper around <see cref="Autofac" /> and <see cref="Moq" />
 	/// </summary>
 	[SecurityCritical]
 	[DebuggerStepThrough, DebuggerNonUserCode]
@@ -44,20 +44,18 @@ namespace Nuclectic.Tests.AutoMock
 	{
 		private bool _disposed;
 
-		/// <summary> 
-		/// <see cref="MockRepository"/> instance responsible for expectations and mocks. 
+		/// <summary>
+		///     <see cref="MockRepository" /> instance responsible for expectations and mocks.
 		/// </summary>
 		public MockRepository MockRepository { [SecurityCritical] get; [SecurityCritical] private set; }
 
 		/// <summary>
-		/// <see cref="IContainer"/> that handles the component resolution.
+		///     <see cref="IContainer" /> that handles the component resolution.
 		/// </summary>
 		public IContainer Container { get; private set; }
 
 		private AutoMock(MockBehavior behavior)
-			: this(new MockRepository(behavior))
-		{
-		}
+			: this(new MockRepository(behavior)) { }
 
 		private AutoMock(MockRepository repository)
 		{
@@ -71,48 +69,36 @@ namespace Nuclectic.Tests.AutoMock
 		}
 
 		/// <summary>
-		/// Finalizes an instance of the <see cref="AutoMock"/> class.
+		///     Finalizes an instance of the <see cref="AutoMock" /> class.
 		/// </summary>
 		[SecuritySafeCritical]
-		~AutoMock()
-		{
-			Dispose(false);
-		}
+		~AutoMock() { Dispose(false); }
 
 		/// <summary>
-		/// Create new <see cref="AutoMock"/> instance with loose mock behavior.
+		///     Create new <see cref="AutoMock" /> instance with loose mock behavior.
 		/// </summary>
-		/// <seealso cref="MockRepository"/>
+		/// <seealso cref="MockRepository" />
 		/// <returns>Container initialized for loose behavior.</returns>
 		[SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
-		public static AutoMock GetLoose()
-		{
-			return new AutoMock(MockBehavior.Loose);
-		}
+		public static AutoMock GetLoose() { return new AutoMock(MockBehavior.Loose); }
 
 		/// <summary>
-		/// Create new <see cref="AutoMock"/> instance with strict mock behavior.
+		///     Create new <see cref="AutoMock" /> instance with strict mock behavior.
 		/// </summary>
-		/// <seealso cref="MockRepository"/>
+		/// <seealso cref="MockRepository" />
 		/// <returns>Container initialized for loose behavior.</returns>
 		[SuppressMessage("Microsoft.Design", "CA1024:UsePropertiesWhereAppropriate")]
-		public static AutoMock GetStrict()
-		{
-			return new AutoMock(MockBehavior.Strict);
-		}
+		public static AutoMock GetStrict() { return new AutoMock(MockBehavior.Strict); }
 
 		/// <summary>
-		/// Create new <see cref="AutoMock"/> instance that will create mocks with behavior defined by <c>repository</c>.
+		///     Create new <see cref="AutoMock" /> instance that will create mocks with behavior defined by <c>repository</c>.
 		/// </summary>
 		/// <param name="repository"></param>
 		/// <returns></returns>
-		public static AutoMock GetFromRepository(MockRepository repository)
-		{
-			return new AutoMock(repository);
-		}
+		public static AutoMock GetFromRepository(MockRepository repository) { return new AutoMock(repository); }
 
 		/// <summary>
-		/// Verifies mocks and disposes internal container.
+		///     Verifies mocks and disposes internal container.
 		/// </summary>
 		[SecuritySafeCritical]
 		public void Dispose()
@@ -122,13 +108,13 @@ namespace Nuclectic.Tests.AutoMock
 		}
 
 		/// <summary>
-		/// Handles disposal of managed and unmanaged resources.
+		///     Handles disposal of managed and unmanaged resources.
 		/// </summary>
 		/// <param name="disposing">
-		/// <see langword="true" /> to dispose of managed resources (during a manual execution
-		/// of <see cref="AutoMock.Dispose()"/>); or
-		/// <see langword="false" /> if this is getting run as part of finalization where
-		/// managed resources may have already been cleaned up.
+		///     <see langword="true" /> to dispose of managed resources (during a manual execution
+		///     of <see cref="AutoMock.Dispose()" />); or
+		///     <see langword="false" /> if this is getting run as part of finalization where
+		///     managed resources may have already been cleaned up.
 		/// </param>
 		private void Dispose(bool disposing)
 		{
@@ -160,13 +146,13 @@ namespace Nuclectic.Tests.AutoMock
 		}
 
 		/// <summary>
-		/// Gets or sets a value indicating whether all mocks are verified.
+		///     Gets or sets a value indicating whether all mocks are verified.
 		/// </summary>
 		/// <value><c>true</c> to verify all mocks. <c>false</c> (default) to verify only mocks marked Verifiable.</value>
 		public bool VerifyAll { get; set; }
 
 		/// <summary>
-		/// Finds (creating if needed) the actual mock for the provided type
+		///     Finds (creating if needed) the actual mock for the provided type
 		/// </summary>
 		/// <typeparam name="T">Type to mock</typeparam>
 		/// <param name="parameters">Optional parameters</param>
@@ -178,18 +164,15 @@ namespace Nuclectic.Tests.AutoMock
 		}
 
 		/// <summary>
-		/// Resolve the specified type in the container (register it if needed)
+		///     Resolve the specified type in the container (register it if needed)
 		/// </summary>
 		/// <typeparam name="T">Service</typeparam>
 		/// <param name="parameters">Optional parameters</param>
 		/// <returns>The service.</returns>
-		public T Create<T>(params Parameter[] parameters)
-		{
-			return Container.Resolve<T>(parameters);
-		}
+		public T Create<T>(params Parameter[] parameters) { return Container.Resolve<T>(parameters); }
 
 		/// <summary>
-		/// Resolve the specified type in the container (register it if needed)
+		///     Resolve the specified type in the container (register it if needed)
 		/// </summary>
 		/// <typeparam name="TService">Service</typeparam>
 		/// <typeparam name="TImplementation">The implementation of the service.</typeparam>
@@ -206,7 +189,7 @@ namespace Nuclectic.Tests.AutoMock
 		}
 
 		/// <summary>
-		/// Resolve the specified type in the container (register specified instance if needed)
+		///     Resolve the specified type in the container (register specified instance if needed)
 		/// </summary>
 		/// <typeparam name="TService">Service</typeparam>
 		/// <returns>The instance resolved from container.</returns>

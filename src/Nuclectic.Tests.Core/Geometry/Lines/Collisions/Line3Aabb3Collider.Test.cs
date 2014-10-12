@@ -34,7 +34,7 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 	public class Line3Aabb3ColliderTest
 	{
 		/// <summary>
-		///   Tests whether a close miss of the box results in no contacts being reported
+		///     Tests whether a close miss of the box results in no contacts being reported
 		/// </summary>
 		[Test]
 		public void TestCloseMiss()
@@ -49,8 +49,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether a close miss of the box with a diagonal line results in
-		///   no contacts being reported
+		///     Tests whether a close miss of the box with a diagonal line results in
+		///     no contacts being reported
 		/// </summary>
 		[Test]
 		public void TestDiagonalCloseMiss()
@@ -95,7 +95,7 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether a contact with a box defined by two corner points can be detected
+		///     Tests whether a contact with a box defined by two corner points can be detected
 		/// </summary>
 		[Test]
 		public void TestContactOnCornerDefinedBox()

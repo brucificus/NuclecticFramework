@@ -26,19 +26,19 @@ using Microsoft.Xna.Framework;
 namespace Nuclectic.Game.Component
 {
 	/// <summary>
-	///   Variant of the XNA GameComponent that doesn't reference the Game class
+	///     Variant of the XNA GameComponent that doesn't reference the Game class
 	/// </summary>
 	/// <remarks>
-	///   <para>
-	///     This is a lightweight version of GameComponent that can be used without
-	///     requiring a Game class to be present. Useful to get all the advantages
-	///     of the XNA GameServices architecture even when you have initialized and
-	///     manage the graphics device yourself.
-	///   </para>
-	///   <para>
-	///     The name of this class is the same as 'GameComponent' minus the 'Game' part
-	///     as the Game reference is what this class removes from its namesake.
-	///   </para>
+	///     <para>
+	///         This is a lightweight version of GameComponent that can be used without
+	///         requiring a Game class to be present. Useful to get all the advantages
+	///         of the XNA GameServices architecture even when you have initialized and
+	///         manage the graphics device yourself.
+	///     </para>
+	///     <para>
+	///         The name of this class is the same as 'GameComponent' minus the 'Game' part
+	///         as the Game reference is what this class removes from its namesake.
+	///     </para>
 	/// </remarks>
 	public class Component : IGameComponent, IUpdateable
 	{
@@ -59,8 +59,8 @@ namespace Nuclectic.Game.Component
 		public virtual void Update(GameTime gameTime) { }
 
 		/// <summary>
-		///   Indicates when the updateable component should be updated in relation to
-		///   other updateables. Has no effect by itself.
+		///     Indicates when the updateable component should be updated in relation to
+		///     other updateables. Has no effect by itself.
 		/// </summary>
 		public int UpdateOrder
 		{
@@ -76,7 +76,7 @@ namespace Nuclectic.Game.Component
 		}
 
 		/// <summary>
-		///   True when the updateable component is enabled and should be udpated.
+		///     True when the updateable component is enabled and should be udpated.
 		/// </summary>
 		public bool Enabled
 		{
@@ -110,8 +110,8 @@ namespace Nuclectic.Game.Component
 		}
 
 		/// <summary>
-		///   Used to determine the updating order of this object in relation to other
-		///   objects in the same list.
+		///     Used to determine the updating order of this object in relation to other
+		///     objects in the same list.
 		/// </summary>
 		private int updateOrder;
 

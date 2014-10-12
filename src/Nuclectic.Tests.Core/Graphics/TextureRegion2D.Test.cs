@@ -37,10 +37,7 @@ namespace Nuclectic.Tests.Graphics
 	{
 		/// <summary>Called before each test is run</summary>
 		[SetUp]
-		public void Setup()
-		{
-			this.mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService();
-		}
+		public void Setup() { this.mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService(); }
 
 		/// <summary>Called after each test has run</summary>
 		[TearDown]
@@ -54,7 +51,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the minimal constructor of the texture region works
+		///     Tests whether the minimal constructor of the texture region works
 		/// </summary>
 		[Test]
 		public void TestConstructor()
@@ -75,7 +72,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Test whether the explicit texture coordinate constructor is working
+		///     Test whether the explicit texture coordinate constructor is working
 		/// </summary>
 		[Test]
 		public void TestFloatConstructor()
@@ -96,7 +93,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Verifies that a texture region can be built from a texel values
+		///     Verifies that a texture region can be built from a texel values
 		/// </summary>
 		[Test]
 		public void TestFromTexelInts()
@@ -122,7 +119,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Verifies that a texture region can be built from a texel point structures
+		///     Verifies that a texture region can be built from a texel point structures
 		/// </summary>
 		[Test]
 		public void TestFromTexelPoints()
@@ -148,7 +145,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether two differing instances produce different hash codes
+		///     Tests whether two differing instances produce different hash codes
 		/// </summary>
 		[Test]
 		public void TestHashCodeOnDifferingInstances()
@@ -180,7 +177,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether two equivalent instances produce an identical hash code
+		///     Tests whether two equivalent instances produce an identical hash code
 		/// </summary>
 		[Test]
 		public void TestHashCodeOnEquivalentInstances()

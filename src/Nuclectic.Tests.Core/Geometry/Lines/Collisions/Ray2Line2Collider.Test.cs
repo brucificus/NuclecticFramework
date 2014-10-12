@@ -35,11 +35,11 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 	{
 		/// <summary>Ensures no collisions are reported between two parallel rays</summary>
 		/// <remarks>
-		///   Even if two rays start at exactly the same place, no collision will be reported
-		///   for parallel lines. Think of lines as infinitely thin - they do not take up any
-		///   space and it's infinitely unlikely to touch another line if you're not crossing
-		///   it. In addition to that, the contacts would be rays, not points and couldn't
-		///   be returned in the LineContacts structure.
+		///     Even if two rays start at exactly the same place, no collision will be reported
+		///     for parallel lines. Think of lines as infinitely thin - they do not take up any
+		///     space and it's infinitely unlikely to touch another line if you're not crossing
+		///     it. In addition to that, the contacts would be rays, not points and couldn't
+		///     be returned in the LineContacts structure.
 		/// </remarks>
 		[Test]
 		public void TestRayParallelToLine()

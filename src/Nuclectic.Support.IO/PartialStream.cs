@@ -30,13 +30,13 @@ namespace Nuclectic.Support.IO
 	{
 		/// <summary>Initializes a new partial stream</summary>
 		/// <param name="stream">
-		///   Stream the wrapper will make a limited region accessible of
+		///     Stream the wrapper will make a limited region accessible of
 		/// </param>
 		/// <param name="start">
-		///   Start index in the stream which becomes the beginning for the wrapper
+		///     Start index in the stream which becomes the beginning for the wrapper
 		/// </param>
 		/// <param name="length">
-		///   Length the wrapped stream should report and allow access to
+		///     Length the wrapped stream should report and allow access to
 		/// </param>
 		public PartialStream(Stream stream, long start, long length)
 		{
@@ -79,20 +79,20 @@ namespace Nuclectic.Support.IO
 		public override bool CanWrite { get { return this.stream.CanWrite; } }
 
 		/// <summary>
-		///   Clears all buffers for this stream and causes any buffered data to be written
-		///   to the underlying device.
+		///     Clears all buffers for this stream and causes any buffered data to be written
+		///     to the underlying device.
 		/// </summary>
 		public override void Flush() { this.stream.Flush(); }
 
 		/// <summary>Length of the stream in bytes</summary>
 		/// <exception cref="System.NotSupportedException">
-		///   The wrapped stream does not support seeking
+		///     The wrapped stream does not support seeking
 		/// </exception>
 		public override long Length { get { return this.length; } }
 
 		/// <summary>Absolute position of the file pointer within the stream</summary>
 		/// <exception cref="System.NotSupportedException">
-		///   The wrapped stream does not support seeking
+		///     The wrapped stream does not support seeking
 		/// </exception>
 		public override long Position
 		{
@@ -109,20 +109,20 @@ namespace Nuclectic.Support.IO
 		}
 
 		/// <summary>
-		///   Reads a sequence of bytes from the stream and advances the position of
-		///   the file pointer by the number of bytes read.
+		///     Reads a sequence of bytes from the stream and advances the position of
+		///     the file pointer by the number of bytes read.
 		/// </summary>
 		/// <param name="buffer">Buffer that will receive the data read from the stream</param>
 		/// <param name="offset">
-		///   Offset in the buffer at which the stream will place the data read
+		///     Offset in the buffer at which the stream will place the data read
 		/// </param>
 		/// <param name="count">Maximum number of bytes that will be read</param>
 		/// <returns>
-		///   The number of bytes that were actually read from the stream and written into
-		///   the provided buffer
+		///     The number of bytes that were actually read from the stream and written into
+		///     the provided buffer
 		/// </returns>
 		/// <exception cref="System.NotSupportedException">
-		///   The wrapped stream does not support reading
+		///     The wrapped stream does not support reading
 		/// </exception>
 		public override int Read(byte[] buffer, int offset, int count)
 		{
@@ -148,11 +148,11 @@ namespace Nuclectic.Support.IO
 
 		/// <summary>Changes the position of the file pointer</summary>
 		/// <param name="offset">
-		///   Offset to move the file pointer by, relative to the position indicated by
-		///   the <paramref name="origin" /> parameter.
+		///     Offset to move the file pointer by, relative to the position indicated by
+		///     the <paramref name="origin" /> parameter.
 		/// </param>
 		/// <param name="origin">
-		///   Reference point relative to which the file pointer is placed
+		///     Reference point relative to which the file pointer is placed
 		/// </param>
 		/// <returns>The new absolute position within the stream</returns>
 		public override long Seek(long offset, SeekOrigin origin)
@@ -181,28 +181,28 @@ namespace Nuclectic.Support.IO
 		/// <summary>Changes the length of the stream</summary>
 		/// <param name="value">New length the stream shall have</param>
 		/// <exception cref="System.NotSupportedException">
-		///   Always, the stream chainer does not support the SetLength() operation
+		///     Always, the stream chainer does not support the SetLength() operation
 		/// </exception>
 		public override void SetLength(long value) { throw new NotSupportedException("Resizing partial streams is not supported"); }
 
 		/// <summary>
-		///   Writes a sequence of bytes to the stream and advances the position of
-		///   the file pointer by the number of bytes written.
+		///     Writes a sequence of bytes to the stream and advances the position of
+		///     the file pointer by the number of bytes written.
 		/// </summary>
 		/// <param name="buffer">
-		///   Buffer containing the data that will be written to the stream
+		///     Buffer containing the data that will be written to the stream
 		/// </param>
 		/// <param name="offset">
-		///   Offset in the buffer at which the data to be written starts
+		///     Offset in the buffer at which the data to be written starts
 		/// </param>
 		/// <param name="count">Number of bytes that will be written into the stream</param>
 		/// <remarks>
-		///   The behavior of this method is as follows: If one or more chained streams
-		///   do not support seeking, all data is appended to the final stream in the
-		///   chain. Otherwise, writing will begin with the stream the current file pointer
-		///   offset falls into. If the end of that stream is reached, writing continues
-		///   in the next stream. On the last stream, writing more data into the stream
-		///   that it current size allows will enlarge the stream.
+		///     The behavior of this method is as follows: If one or more chained streams
+		///     do not support seeking, all data is appended to the final stream in the
+		///     chain. Otherwise, writing will begin with the stream the current file pointer
+		///     offset falls into. If the end of that stream is reached, writing continues
+		///     in the next stream. On the last stream, writing more data into the stream
+		///     that it current size allows will enlarge the stream.
 		/// </remarks>
 		public override void Write(byte[] buffer, int offset, int count)
 		{
@@ -241,8 +241,8 @@ namespace Nuclectic.Support.IO
 		}
 
 		/// <summary>
-		///   Constructs a NotSupportException for an error caused by the wrapped
-		///   stream having no seek support
+		///     Constructs a NotSupportException for an error caused by the wrapped
+		///     stream having no seek support
 		/// </summary>
 		/// <param name="action">Action that was tried to perform</param>
 		/// <returns>The newly constructed NotSupportedException</returns>
@@ -264,8 +264,8 @@ namespace Nuclectic.Support.IO
 
 		/// <summary>Zero-based position of the partial stream's file pointer</summary>
 		/// <remarks>
-		///   If the stream does not support seeking, the position will simply be counted
-		///   up until it reaches <see cref="PartialStream.length" />.
+		///     If the stream does not support seeking, the position will simply be counted
+		///     up until it reaches <see cref="PartialStream.length" />.
 		/// </remarks>
 		private long position;
 

@@ -32,7 +32,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks
 	internal class PositionVertexTest
 	{
 		/// <summary>
-		///   Verifies that the constructor of the position vertex class is working
+		///     Verifies that the constructor of the position vertex class is working
 		/// </summary>
 		[Test]
 		public void TestConstructor()

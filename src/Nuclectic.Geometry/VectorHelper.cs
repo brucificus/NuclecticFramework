@@ -101,18 +101,18 @@ namespace Nuclectic.Geometry
 		/// <param name="vector">Vector to which a perpendicular vector will be found</param>
 		/// <returns>A vector that is perpendicular to the input vector</returns>
 		/// <remarks>
-		///   <para>
-		///     This method does not care for the orientation of the resulting vector, so it
-		///     shouldn't be used for billboards or to orient a view matrix. On the other hand,
-		///     if you don't care for the orientation of the resulting vector, only that it is
-		///     perpendicular, this method can provide better numerical stability and
-		///     performance than a generic LookAt() method.
-		///   </para>
-		///   <para>
-		///     References:
-		///     http://www.gamedev.net/community/forums/topic.asp?topic_id=445164
-		///     http://www.gamedev.net/community/forums/topic.asp?topic_id=518142
-		///   </para>
+		///     <para>
+		///         This method does not care for the orientation of the resulting vector, so it
+		///         shouldn't be used for billboards or to orient a view matrix. On the other hand,
+		///         if you don't care for the orientation of the resulting vector, only that it is
+		///         perpendicular, this method can provide better numerical stability and
+		///         performance than a generic LookAt() method.
+		///     </para>
+		///     <para>
+		///         References:
+		///         http://www.gamedev.net/community/forums/topic.asp?topic_id=445164
+		///         http://www.gamedev.net/community/forums/topic.asp?topic_id=518142
+		///     </para>
 		/// </remarks>
 		public static Vector3 GetPerpendicularVector(Vector3 vector)
 		{
@@ -124,21 +124,21 @@ namespace Nuclectic.Geometry
 		/// <summary>Returns a vector that is perpendicular to the input vector</summary>
 		/// <param name="vector">Vector to which a perpendicular vector will be found</param>
 		/// <param name="perpendicular">
-		///   Output parameter that receives a vector perpendicular to the provided vector
+		///     Output parameter that receives a vector perpendicular to the provided vector
 		/// </param>
 		/// <remarks>
-		///   <para>
-		///     This method does not care for the orientation of the resulting vector, so it
-		///     shouldn't be used for billboards or to orient a view matrix. On the other hand,
-		///     if you don't care for the orientation of the resulting vector, only that it is
-		///     perpendicular, this method can provide better numerical stability and
-		///     performance than a generic LookAt() method.
-		///   </para>
-		///   <para>
-		///     References:
-		///     http://www.gamedev.net/community/forums/topic.asp?topic_id=445164
-		///     http://www.gamedev.net/community/forums/topic.asp?topic_id=518142
-		///   </para>
+		///     <para>
+		///         This method does not care for the orientation of the resulting vector, so it
+		///         shouldn't be used for billboards or to orient a view matrix. On the other hand,
+		///         if you don't care for the orientation of the resulting vector, only that it is
+		///         perpendicular, this method can provide better numerical stability and
+		///         performance than a generic LookAt() method.
+		///     </para>
+		///     <para>
+		///         References:
+		///         http://www.gamedev.net/community/forums/topic.asp?topic_id=445164
+		///         http://www.gamedev.net/community/forums/topic.asp?topic_id=518142
+		///     </para>
 		/// </remarks>
 		public static void GetPerpendicularVector(ref Vector3 vector, out Vector3 perpendicular)
 		{
@@ -171,18 +171,18 @@ namespace Nuclectic.Geometry
 		}
 
 		/// <summary>
-		///   Builds a vector consisting of the larger absolute values from both inputs
+		///     Builds a vector consisting of the larger absolute values from both inputs
 		/// </summary>
 		/// <param name="first">First vector to look for the larger absolute values in</param>
 		/// <param name="second">Second vector to look for the larger absolute values in</param>
 		/// <returns>
-		///   A vector consisting of the larger absolute values from both input vectors
+		///     A vector consisting of the larger absolute values from both input vectors
 		/// </returns>
 		/// <remarks>
-		///   This works similar to the Vector2.Max() method, but it will not use
-		///   the element from the input vector that has the greater value, but look
-		///   for the element with the greater absolute value. Thus, for the inputs
-		///   {-10, -1} and {1, 10} it would return {-10, 10}.
+		///     This works similar to the Vector2.Max() method, but it will not use
+		///     the element from the input vector that has the greater value, but look
+		///     for the element with the greater absolute value. Thus, for the inputs
+		///     {-10, -1} and {1, 10} it would return {-10, 10}.
 		/// </remarks>
 		public static Vector2 AbsMax(Vector2 first, Vector2 second)
 		{
@@ -193,18 +193,18 @@ namespace Nuclectic.Geometry
 		}
 
 		/// <summary>
-		///   Builds a vector consisting of the larger absolute values from both inputs
+		///     Builds a vector consisting of the larger absolute values from both inputs
 		/// </summary>
 		/// <param name="first">First vector to look for the larger absolute values in</param>
 		/// <param name="second">Second vector to look for the larger absolute values in</param>
 		/// <returns>
-		///   A vector consisting of the larger absolute values from both input vectors
+		///     A vector consisting of the larger absolute values from both input vectors
 		/// </returns>
 		/// <remarks>
-		///   This works similar to the Vector2.Max() method, but it will not use
-		///   the element from the input vector that has the greater value, but look
-		///   for the element with the greater absolute value. Thus, for the inputs
-		///   {-10, -1, 10} and {1, 10, -10} it would return {-10, 10, 10}.
+		///     This works similar to the Vector2.Max() method, but it will not use
+		///     the element from the input vector that has the greater value, but look
+		///     for the element with the greater absolute value. Thus, for the inputs
+		///     {-10, -1, 10} and {1, 10, -10} it would return {-10, 10, 10}.
 		/// </remarks>
 		public static Vector3 AbsMax(Vector3 first, Vector3 second)
 		{

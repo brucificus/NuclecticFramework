@@ -36,7 +36,7 @@ using Moq;
 
 namespace Nuclectic.Tests.AutoMock
 {
-	/// <summary> Resolves unknown interfaces and Mocks using the <see cref="MockRepository"/> from the scope. </summary>
+	/// <summary> Resolves unknown interfaces and Mocks using the <see cref="MockRepository" /> from the scope. </summary>
 	[DebuggerStepThrough, DebuggerNonUserCode]
 	internal class MoqRegistrationHandler : IRegistrationSource
 	{
@@ -52,13 +52,13 @@ namespace Nuclectic.Tests.AutoMock
 		}
 
 		/// <summary>
-		/// Retrieve a registration for an unregistered service, to be used
-		/// by the container.
+		///     Retrieve a registration for an unregistered service, to be used
+		///     by the container.
 		/// </summary>
 		/// <param name="service">The service that was requested.</param>
 		/// <param name="registrationAccessor"></param>
 		/// <returns>
-		/// Registrations for the service.
+		///     Registrations for the service.
 		/// </returns>
 		[SecuritySafeCritical]
 		public IEnumerable<IComponentRegistration> RegistrationsFor
@@ -122,7 +122,7 @@ namespace Nuclectic.Tests.AutoMock
 		public bool IsAdapterForIndividualComponents { get { return false; } }
 
 		/// <summary>
-		/// Creates a mock object.
+		///     Creates a mock object.
 		/// </summary>
 		/// <param name="context">The component context.</param>
 		/// <param name="typedService">The typed service.</param>

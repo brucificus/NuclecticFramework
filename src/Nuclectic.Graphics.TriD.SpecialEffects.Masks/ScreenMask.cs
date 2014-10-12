@@ -28,10 +28,10 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Masks
 	/// <summary>Mask that draws over the entire screen</summary>
 	/// <typeparam name="VertexType">Type of vertices used in the mask</typeparam>
 	/// <remarks>
-	///   A 'screen mask' draws over the entire screen with a polygon. This can be used
-	///   to provide damage feedback to the player (screen flashes red or, like in some
-	///   FPS games, the screen borders become red when the player's health is low) or
-	///   to generate post-processing effects.
+	///     A 'screen mask' draws over the entire screen with a polygon. This can be used
+	///     to provide damage feedback to the player (screen flashes red or, like in some
+	///     FPS games, the screen borders become red when the player's health is low) or
+	///     to generate post-processing effects.
 	/// </remarks>
 	public class ScreenMask<VertexType> : StaticMesh<VertexType>
 		where VertexType : struct, IVertexType
@@ -40,7 +40,7 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Masks
 		/// <param name="graphicsDevice">Graphics device the skybox cube lives on</param>
 		/// <param name="ownedEffect">The (owned) effect by which the screen mask will be rendered</param>
 		/// <param name="vertices">Vertices that make up the screen mask</param>
-		public ScreenMask(GraphicsDevice graphicsDevice, IOwned<Effect> ownedEffect, VertexType[/*4*/] vertices)
+		public ScreenMask(GraphicsDevice graphicsDevice, IOwned<Effect> ownedEffect, VertexType[ /*4*/] vertices)
 			: base(graphicsDevice, 4)
 		{
 			this.OwnedEffect = ownedEffect;
@@ -64,7 +64,11 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Masks
 		}
 
 		/// <summary>Immediately releases all resources owned by the instance</summary>
-		public override void Dispose() { OwnedEffect.Dispose(); base.Dispose(); }
+		public override void Dispose()
+		{
+			OwnedEffect.Dispose();
+			base.Dispose();
+		}
 
 		/// <summary>The (owned) effect being used to render the screen mask</summary>
 		protected IOwned<Effect> OwnedEffect;

@@ -26,18 +26,15 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input.Devices
 {
-
 	/// <summary>Unit tests for the window message based keyboard</summary>
 	[TestFixture]
 	internal class WindowMessageKeyboardTest
 	{
-
 		#region class TestKeyboardMessageSource
 
 		/// <summary>Dummy implementation of a keyboard message source</summary>
 		private class TestKeyboardMessageSource : IKeyboardMessageSource
 		{
-
 			/// <summary>Triggered when a key has been pressed down</summary>
 			public event KeyboardKeyEventDelegate KeyPressed { add { } remove { } }
 
@@ -46,7 +43,6 @@ namespace Nuclectic.Tests.Input.Devices
 
 			/// <summary>Triggered when the user has entered a character</summary>
 			public event KeyboardCharacterEventDelegate CharacterEntered { add { } remove { } }
-
 		}
 
 		#endregion // class TestKeyboardMessageSource
@@ -70,9 +66,7 @@ namespace Nuclectic.Tests.Input.Devices
 				StringAssert.Contains("keyboard", keyboard.Name.ToLower());
 			}
 		}
-
 	}
-
 } // namespace Nuclex.Input.Devices
 
 #endif // UNITTEST

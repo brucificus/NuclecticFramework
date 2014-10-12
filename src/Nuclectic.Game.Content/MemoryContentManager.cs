@@ -33,18 +33,18 @@ namespace Nuclectic.Game.Content
 {
 	/// <summary>Content manager for loading content from in-memory arrays</summary>
 	/// <remarks>
-	///   This is not much different from the resource content manager, since resources
-	///   are always loaded into a process and are "in-memory" as well, but this
-	///   content manager allows you to load content directly out of byte arrays.
+	///     This is not much different from the resource content manager, since resources
+	///     are always loaded into a process and are "in-memory" as well, but this
+	///     content manager allows you to load content directly out of byte arrays.
 	/// </remarks>
 	public class MemoryContentManager : ContentManager
 	{
 		/// <summary>
-		///   Initializes a new embedded content manager using a directly specified
-		///   graphics device service for the resources.
+		///     Initializes a new embedded content manager using a directly specified
+		///     graphics device service for the resources.
 		/// </summary>
 		/// <param name="graphicsDeviceService">
-		///   Graphics device service to load the content asset in
+		///     Graphics device service to load the content asset in
 		/// </param>
 		public MemoryContentManager(IGraphicsDeviceService graphicsDeviceService)
 			:
@@ -53,11 +53,11 @@ namespace Nuclectic.Game.Content
 				) { }
 
 		/// <summary>
-		///   Initializes a new embedded content manager using the provided game services
-		///   container for providing services for the loaded asset.
+		///     Initializes a new embedded content manager using the provided game services
+		///     container for providing services for the loaded asset.
 		/// </summary>
 		/// <param name="services">
-		///   Service container containing the services the asset may access
+		///     Service container containing the services the asset may access
 		/// </param>
 		public MemoryContentManager(IServiceProvider services)
 			:
@@ -68,17 +68,17 @@ namespace Nuclectic.Game.Content
 		/// <param name="content">Content that will be loaded as an asset</param>
 		/// <returns>The loaded asset</returns>
 		/// <remarks>
-		///   <para>
-		///     To mirror the behavior of the ResourceContentManager class, this method
-		///     calculates the SHA-1 of the provided array. Otherwise, you could request
-		///     the same asset two times and when you dispose one, the other requested
-		///     instance would still work, which does not match the behavior of
-		///     the ResourceContentManager.
-		///   </para>
-		///   <para>
-		///     It is recommended that you use the named LoadAsset method or control
-		///     asset lifetimes yourself by using the ReadAsset() method.
-		///   </para>
+		///     <para>
+		///         To mirror the behavior of the ResourceContentManager class, this method
+		///         calculates the SHA-1 of the provided array. Otherwise, you could request
+		///         the same asset two times and when you dispose one, the other requested
+		///         instance would still work, which does not match the behavior of
+		///         the ResourceContentManager.
+		///     </para>
+		///     <para>
+		///         It is recommended that you use the named LoadAsset method or control
+		///         asset lifetimes yourself by using the ReadAsset() method.
+		///     </para>
 		/// </remarks>
 		public AssetType Load<AssetType>(byte[] content) { return Load<AssetType>(content, getSha1(content)); }
 
@@ -88,8 +88,8 @@ namespace Nuclectic.Game.Content
 		/// <param name="uniqueName">Unique name of the resource</param>
 		/// <returns>The loaded asset</returns>
 		/// <remarks>
-		///   This class avoids the SHA-1 calculation under the promise that the caller
-		///   will provide a name that is unique for each loaded asset.
+		///     This class avoids the SHA-1 calculation under the promise that the caller
+		///     will provide a name that is unique for each loaded asset.
 		/// </remarks>
 		public AssetType Load<AssetType>(byte[] content, string uniqueName)
 		{
@@ -167,7 +167,7 @@ namespace Nuclectic.Game.Content
 		private byte[] content;
 
 		/// <summary>
-		///   SHA-1 hash provider used to calculate SHA-1 sums of asset data
+		///     SHA-1 hash provider used to calculate SHA-1 sums of asset data
 		/// </summary>
 		private global::PCLCrypto.IHashAlgorithmProvider sha1HashProvider;
 	}

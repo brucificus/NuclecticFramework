@@ -25,13 +25,13 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Nuclectic.Graphics.TriD.Batching
 {
 	/// <summary>
-	///   Uses a custom XNA effect for the primitives drawn by the PrimitiveBatch class
+	///     Uses a custom XNA effect for the primitives drawn by the PrimitiveBatch class
 	/// </summary>
 	public class EffectDrawContext : DrawContext
 	{
 		/// <summary>Initializes a new effect draw context</summary>
 		/// <param name="effect">
-		///   Effect that will be used for the primitives rendered with this context
+		///     Effect that will be used for the primitives rendered with this context
 		/// </param>
 		public EffectDrawContext(Effect effect) { this.effect = effect; }
 
@@ -44,11 +44,11 @@ namespace Nuclectic.Graphics.TriD.Batching
 
 		/// <summary>The basic effect being managed by the draw context</summary>
 		/// <remarks>
-		///   Warning: If you change the settings of this effect after you've already
-		///   queued other primitives to be drawn, those primitives might be affected
-		///   nontheless if they haven't been rendered yet. The recommended usage is to
-		///   initialize an effect once for each set of settings you need and then keep
-		///   using those instances without modifying them.
+		///     Warning: If you change the settings of this effect after you've already
+		///     queued other primitives to be drawn, those primitives might be affected
+		///     nontheless if they haven't been rendered yet. The recommended usage is to
+		///     initialize an effect once for each set of settings you need and then keep
+		///     using those instances without modifying them.
 		/// </remarks>
 		public Effect Effect { get { return this.effect; } }
 
@@ -56,11 +56,11 @@ namespace Nuclectic.Graphics.TriD.Batching
 		/// <param name="otherContext">Other context to check for equality</param>
 		/// <returns>True if the other context is identical to this one</returns>
 		/// <remarks>
-		///   Classes deriving from the EffectDrawContext should override this method
-		///   and do their own comparison - for example, two drawing contexts might
-		///   use the same effect instance, but apply different effect parameters before
-		///   rendering - in that case, an additional comparison of the draw context's
-		///   own settings needs to be performed here.
+		///     Classes deriving from the EffectDrawContext should override this method
+		///     and do their own comparison - for example, two drawing contexts might
+		///     use the same effect instance, but apply different effect parameters before
+		///     rendering - in that case, an additional comparison of the draw context's
+		///     own settings needs to be performed here.
 		/// </remarks>
 		public override bool Equals(DrawContext otherContext)
 		{
@@ -85,14 +85,14 @@ namespace Nuclectic.Graphics.TriD.Batching
 
 		/// <summary>Compares the effect parameters member by member</summary>
 		/// <param name="otherEffect">
-		///   Other effect that will be compared against the context's own effect
+		///     Other effect that will be compared against the context's own effect
 		/// </param>
 		/// <returns>True of all parameters of the other effect are equal</returns>
 		/// <remarks>
-		///   Override this to perform a comparison on the relevant parameters of
-		///   your custom effect. By default, this will return false, causing only
-		///   effect drawing contexts with the same effect object to be considered
-		///   for batching.
+		///     Override this to perform a comparison on the relevant parameters of
+		///     your custom effect. By default, this will return false, causing only
+		///     effect drawing contexts with the same effect object to be considered
+		///     for batching.
 		/// </remarks>
 		protected virtual bool CompareEffectParameters(Effect otherEffect) { return false; }
 

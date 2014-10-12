@@ -30,11 +30,11 @@ using Nuclectic.Support.Helpers.InteropServices.Marshal;
 namespace Nuclectic.Graphics.Helpers
 {
 	/// <summary>
-	///   Builds vertex declarations from vertex structures
+	///     Builds vertex declarations from vertex structures
 	/// </summary>
 	/// <remarks>
-	///   Based on ideas from Michael Popoloski's article on gamedev.net:
-	///   http://www.gamedev.net/reference/programming/features/xnaVertexElement/
+	///     Based on ideas from Michael Popoloski's article on gamedev.net:
+	///     http://www.gamedev.net/reference/programming/features/xnaVertexElement/
 	/// </remarks>
 	public static class VertexDeclarationHelper
 	{
@@ -43,20 +43,20 @@ namespace Nuclectic.Graphics.Helpers
 		/// <param name="right">Second vertex element list that will be merged</param>
 		/// <returns>The combined vertex element list from both inputs</returns>
 		/// <remarks>
-		///   <para>
-		///     No intelligence is applied to avoid duplicates or to adjust the usage index
-		///     of individual vertex elements. This method simply serves as a helper to merge
-		///     two vertex element lists from two structures that are used in seperate
-		///     vertex streams (but require a single vertex declaration containing the elements
-		///     of both streams).
-		///   </para>
-		///   <para>
-		///     <example>
-		///       This example shows how two vertex structures, each used in a different
-		///       vertex buffer, can be merged into a single vertex declaration that fetches
-		///       vertices from both vertex buffers, the positions from stream 0 and
-		///       the texture coordinates from stream 1
-		///       <code>
+		///     <para>
+		///         No intelligence is applied to avoid duplicates or to adjust the usage index
+		///         of individual vertex elements. This method simply serves as a helper to merge
+		///         two vertex element lists from two structures that are used in seperate
+		///         vertex streams (but require a single vertex declaration containing the elements
+		///         of both streams).
+		///     </para>
+		///     <para>
+		///         <example>
+		///             This example shows how two vertex structures, each used in a different
+		///             vertex buffer, can be merged into a single vertex declaration that fetches
+		///             vertices from both vertex buffers, the positions from stream 0 and
+		///             the texture coordinates from stream 1
+		///             <code>
 		///         struct PositionVertex {
 		///           [VertexElement(VertexElementUsage.Position)]
 		///           public Vector3 Position;
@@ -76,8 +76,8 @@ namespace Nuclectic.Graphics.Helpers
 		///           );
 		///         }
 		///       </code>
-		///     </example>
-		///   </para>
+		///         </example>
+		///     </para>
 		/// </remarks>
 		public static VertexElement[] Combine(VertexElement[] left, VertexElement[] right)
 		{
@@ -95,15 +95,15 @@ namespace Nuclectic.Graphics.Helpers
 		}
 
 		/// <summary>
-		///   Builds a vertex element list that can be used to construct a vertex declaration
-		///   from a vertex structure that has the vertex element attributes applied to it
+		///     Builds a vertex element list that can be used to construct a vertex declaration
+		///     from a vertex structure that has the vertex element attributes applied to it
 		/// </summary>
 		/// <typeparam name="VertexType">
-		///   Vertex structure with vertex element attributes applied to it
+		///     Vertex structure with vertex element attributes applied to it
 		/// </typeparam>
 		/// <returns>
-		///   A vertex element list that can be used to create a new vertex declaration matching
-		///   the provided vertex structure
+		///     A vertex element list that can be used to create a new vertex declaration matching
+		///     the provided vertex structure
 		/// </returns>
 		[Obsolete("Use VertexDefinitionBuilder")]
 		public static VertexElement[] BuildElementList<VertexType>() where VertexType : struct
@@ -125,7 +125,7 @@ namespace Nuclectic.Graphics.Helpers
 
 		/// <summary>Obtains the stride value for a vertex</summary>
 		/// <typeparam name="VertexType">
-		///   Vertex structure the stride value will be obtained for
+		///     Vertex structure the stride value will be obtained for
 		/// </typeparam>
 		/// <returns>The stride value for the specified vertex structure</returns>
 		internal static int GetStride<VertexType>(IMarshalSizeOf marshalSizeOf) where VertexType : struct

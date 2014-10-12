@@ -9,8 +9,8 @@
 		bool IsPressed(bool[] buttons);
 
 		/// <summary>
-		///   Determines whether the state of the specified button has changed
-		///   between two states
+		///     Determines whether the state of the specified button has changed
+		///     between two states
 		/// </summary>
 		/// <param name="previous">Previous state of the buttons</param>
 		/// <param name="current">Current state of the buttons</param>

@@ -34,7 +34,7 @@ namespace Nuclectic.Tests.Game.Packing
 	internal class OutOfSpaceExceptionTest
 	{
 		/// <summary>
-		///   Verifies that the exception's default constructor is working
+		///     Verifies that the exception's default constructor is working
 		/// </summary>
 		[Test]
 		public void TestDefaultConstructor()
@@ -46,7 +46,7 @@ namespace Nuclectic.Tests.Game.Packing
 		}
 
 		/// <summary>
-		///   Checks whether the exception correctly stores its inner exception
+		///     Checks whether the exception correctly stores its inner exception
 		/// </summary>
 		[Test]
 		public void TestInnerException()

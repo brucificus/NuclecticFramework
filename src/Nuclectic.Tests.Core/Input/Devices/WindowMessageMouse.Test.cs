@@ -27,18 +27,15 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input.Devices
 {
-
 	/// <summary>Unit tests for the window message based mouse</summary>
 	[TestFixture]
 	internal class WindowMessageMouseTest
 	{
-
 		#region class TestMouseMessageSource
 
 		/// <summary>Dummy implementation of a mouse message source</summary>
 		private class TestMouseMessageSource : IMouseMessageSource
 		{
-
 			/// <summary>Triggered when a mouse button has been pressed</summary>
 			public event MouseButtonEventDelegate MouseButtonPressed { add { } remove { } }
 
@@ -50,7 +47,6 @@ namespace Nuclectic.Tests.Input.Devices
 
 			/// <summary>Triggered when the mouse wheel has been rotated</summary>
 			public event MouseWheelEventDelegate MouseWheelRotated { add { } remove { } }
-
 		}
 
 		#endregion // class TestMouseMessageSource
@@ -86,9 +82,7 @@ namespace Nuclectic.Tests.Input.Devices
 				mouse.MoveTo(state.X, state.Y);
 			}
 		}
-
 	}
-
 } // namespace Nuclex.Input.Devices
 
 #endif // UNITTEST

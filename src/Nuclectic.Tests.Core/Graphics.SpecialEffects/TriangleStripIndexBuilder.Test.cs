@@ -32,8 +32,8 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 	internal class TriangleStripIndexBuilderTest
 	{
 		/// <summary>
-		///   Verifies that the number of indices required to draw a triangle strip of
-		///   a fixed size is calculated correctly
+		///     Verifies that the number of indices required to draw a triangle strip of
+		///     a fixed size is calculated correctly
 		/// </summary>
 		[Test]
 		public void TestAlternatingStripVertexCount()
@@ -47,8 +47,8 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		}
 
 		/// <summary>
-		///   Tests whether an alternating strip of triangle indices can be generated
-		///   for a grid of non-trivial size
+		///     Tests whether an alternating strip of triangle indices can be generated
+		///     for a grid of non-trivial size
 		/// </summary>
 		[Test]
 		public void TestBigAlternatingStripGeneration()
@@ -100,8 +100,8 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		}
 
 		/// <summary>
-		///   Tests whether an alternating strip of triangle indices can be generated
-		///   for a small grid (9 vertices)
+		///     Tests whether an alternating strip of triangle indices can be generated
+		///     for a small grid (9 vertices)
 		/// </summary>
 		[Test]
 		public void TestSmallAlternatingStripGeneration()
@@ -127,8 +127,8 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		}
 
 		/// <summary>
-		///   Tests whether an alternating strip of triangle indices can be generated
-		///   for a single quad (4 vertices)
+		///     Tests whether an alternating strip of triangle indices can be generated
+		///     for a single quad (4 vertices)
 		/// </summary>
 		[Test]
 		public void TestSingleQuadAlternatingStripGeneration()
@@ -147,8 +147,8 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown when a invalid segment count is
-		///   passed for the X axis
+		///     Verifies that an exception is thrown when a invalid segment count is
+		///     passed for the X axis
 		/// </summary>
 		[Test]
 		public void TestThrowOnInvalidSegmentsX()
@@ -159,8 +159,8 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown when a invalid segment count is
-		///   passed for the Z axis
+		///     Verifies that an exception is thrown when a invalid segment count is
+		///     passed for the Z axis
 		/// </summary>
 		[Test]
 		public void TestThrowOnInvalidSegmentsZ()

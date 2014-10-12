@@ -74,7 +74,7 @@ namespace Nuclectic.Geometry.Areas.Collisions
 		/// <param name="secondCenter">Center of the second disc</param>
 		/// <param name="secondRadius">Radius of the second disc</param>
 		/// <param name="secondVelocity">
-		///   Velocity with which the second disc is moving relative to the first disc
+		///     Velocity with which the second disc is moving relative to the first disc
 		/// </param>
 		/// <returns>True if the second disc will hit the first disc</returns>
 		public static bool CheckContact(
@@ -88,7 +88,7 @@ namespace Nuclectic.Geometry.Areas.Collisions
 		/// <param name="secondCenter">Center of the second disc</param>
 		/// <param name="secondRadius">Radius of the second disc</param>
 		/// <param name="secondVelocity">
-		///   Velocity with which the second disc is moving relative to the first disc
+		///     Velocity with which the second disc is moving relative to the first disc
 		/// </param>
 		/// <returns>The point of first contact, if any</returns>
 		public static float? FindContact(

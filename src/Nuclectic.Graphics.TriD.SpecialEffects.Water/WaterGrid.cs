@@ -31,10 +31,10 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Water
 		/// <summary>Initializes a new grid drawn as a single quad</summary>
 		/// <param name="graphicsDevice">Graphics device the grid will be created on</param>
 		/// <param name="min">
-		///   Lesser coordinates of the world region that will be covered by the grid
+		///     Lesser coordinates of the world region that will be covered by the grid
 		/// </param>
 		/// <param name="max">
-		///   Greater coordinates of the world region that will be covered by the grid
+		///     Greater coordinates of the world region that will be covered by the grid
 		/// </param>
 		public WaterGrid(GraphicsDevice graphicsDevice, Vector2 min, Vector2 max)
 			:
@@ -45,16 +45,16 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Water
 		/// <summary>Initializes a new grid consisting of one or more quads</summary>
 		/// <param name="graphicsDevice">Graphics device the grid will be created on</param>
 		/// <param name="min">
-		///   Lesser coordinates of the world region that will be covered by the grid
+		///     Lesser coordinates of the world region that will be covered by the grid
 		/// </param>
 		/// <param name="max">
-		///   Greater coordinates of the world region that will be covered by the grid
+		///     Greater coordinates of the world region that will be covered by the grid
 		/// </param>
 		/// <param name="segmentsX">
-		///   Number of segments the grid will have on the X axis
+		///     Number of segments the grid will have on the X axis
 		/// </param>
 		/// <param name="segmentsZ">
-		///   Number of segments the grid will have on the Z axis
+		///     Number of segments the grid will have on the Z axis
 		/// </param>
 		public WaterGrid(
 			GraphicsDevice graphicsDevice,
@@ -90,7 +90,7 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Water
 		}
 
 		/// <summary>
-		///   Immediately releases all resources owned by the instance
+		///     Immediately releases all resources owned by the instance
 		/// </summary>
 		public override void Dispose()
 		{
@@ -132,7 +132,7 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Water
 		public IndexBuffer IndexBuffer { get { return this.indexBuffer; } }
 
 		/// <summary>
-		///   Creates a flat plane of vertices optimized for triangle strip drawing
+		///     Creates a flat plane of vertices optimized for triangle strip drawing
 		/// </summary>
 		/// <param name="min">X and Y coordinates for the upper left side of the plane</param>
 		/// <param name="max">X and Y coordinates for the lower right side of the plane</param>
@@ -172,7 +172,7 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Water
 		}
 
 		/// <summary>
-		///   Calculates the number of indices required for the water surface
+		///     Calculates the number of indices required for the water surface
 		/// </summary>
 		/// <param name="segmentsX">Number of segments in X direction</param>
 		/// <param name="segmentsZ">Number of segments in Z direction</param>

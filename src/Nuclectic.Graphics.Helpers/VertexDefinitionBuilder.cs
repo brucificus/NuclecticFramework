@@ -15,15 +15,15 @@ namespace Nuclectic.Graphics.Helpers
 		public VertexDefinitionBuilder(IMarshalOffsetOf offsetOfProvider) { _offsetOfProvider = offsetOfProvider; }
 
 		/// <summary>
-		///   Builds a vertex element list that can be used to construct a vertex declaration
-		///   from a vertex structure that has the vertex element attributes applied to it
+		///     Builds a vertex element list that can be used to construct a vertex declaration
+		///     from a vertex structure that has the vertex element attributes applied to it
 		/// </summary>
 		/// <typeparam name="VertexType">
-		///   Vertex structure with vertex element attributes applied to it
+		///     Vertex structure with vertex element attributes applied to it
 		/// </typeparam>
 		/// <returns>
-		///   A vertex element list that can be used to create a new vertex declaration matching
-		///   the provided vertex structure
+		///     A vertex element list that can be used to create a new vertex declaration matching
+		///     the provided vertex structure
 		/// </returns>
 		public VertexElement[] BuildElementList<VertexType>() where VertexType : struct
 		{
@@ -90,11 +90,11 @@ namespace Nuclectic.Graphics.Helpers
 
 		/// <summary>Builds a vertex element from an attributed field in a structure</summary>
 		/// <param name="fieldInfo">
-		///   Reflected data on the field for which a vertex element will be built
+		///     Reflected data on the field for which a vertex element will be built
 		/// </param>
 		/// <param name="attribute">Vertex eelement attribute assigned to the field</param>
 		/// <param name="element">
-		///   Output parameter the newly built vertex element is stored in
+		///     Output parameter the newly built vertex element is stored in
 		/// </param>
 		private static void buildVertexElement(
 			FieldInfo fieldInfo, VertexElementAttribute attribute, ref VertexElement element
@@ -151,10 +151,10 @@ namespace Nuclectic.Graphics.Helpers
 
 
 		/// <summary>
-		///   Retrieves the vertex element attribute assigned to a field in a structure
+		///     Retrieves the vertex element attribute assigned to a field in a structure
 		/// </summary>
 		/// <param name="fieldInfo">
-		///   Informations about the vertex element field the attribute is retrieved for
+		///     Informations about the vertex element field the attribute is retrieved for
 		/// </param>
 		/// <returns>The vertex element attribute of the requested field</returns>
 		private static VertexElementAttribute getVertexElementAttribute(FieldInfo fieldInfo)

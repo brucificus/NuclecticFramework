@@ -28,13 +28,14 @@ namespace Nuclectic.Support.Collections
 {
 	/// <summary>Queue that dequeues items in order of their priority</summary>
 	/// <remarks>
-	///   This variant of the priority queue uses an external priority value. If the
-	///   priority data type implements the IComparable interface, the user does not
-	///   even
+	///     This variant of the priority queue uses an external priority value. If the
+	///     priority data type implements the IComparable interface, the user does not
+	///     even
 	/// </remarks>
-	public class PairPriorityQueue<TPriority, TItem> :
-		ICollection,
-		IEnumerable<PriorityItemPair<TPriority, TItem>>
+	public class PairPriorityQueue<TPriority, TItem>
+		:
+			ICollection,
+			IEnumerable<PriorityItemPair<TPriority, TItem>>
 	{
 		#region class PairComparer
 
@@ -123,8 +124,8 @@ namespace Nuclectic.Support.Collections
 		}
 
 		/// <summary>
-		///   Obtains an object that can be used to synchronize accesses to the priority queue
-		///   from different threads
+		///     Obtains an object that can be used to synchronize accesses to the priority queue
+		///     from different threads
 		/// </summary>
 		public object SyncRoot { get { return this.internalQueue.SyncRoot; } }
 

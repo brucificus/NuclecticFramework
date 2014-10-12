@@ -29,44 +29,37 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Game
 {
-
 	/// <summary>Unit test for the drawable component class</summary>
 	[TestFixture]
 	public class DrawableComponentTest
 	{
-
 		#region interface IDrawableComponentSubscriber
 
 		/// <summary>Interface for a subscriber to the DrawableComponent's events</summary>
 		public interface IDrawableComponentSubscriber
 		{
-
 			/// <summary>
-			///   Called when the component's drawing order has changed
+			///     Called when the component's drawing order has changed
 			/// </summary>
 			/// <param name="sender">Component whose drawing order property has changed</param>
 			/// <param name="arguments">Not used</param>
 			void DrawOrderChanged(object sender, EventArgs arguments);
 
 			/// <summary>
-			///   Called when the Component's visible property has changed
+			///     Called when the Component's visible property has changed
 			/// </summary>
 			/// <param name="sender">Component whose visible property has changed</param>
 			/// <param name="arguments">Not used</param>
 			void VisibleChanged(object sender, EventArgs arguments);
-
 		}
 
 		#endregion // interface IDrawableComponentSubscriber
 
 		/// <summary>
-		///   Verifies that the constructor of the drawable component is working
+		///     Verifies that the constructor of the drawable component is working
 		/// </summary>
 		[Test]
-		public void TestConstructor()
-		{
-			DrawableComponent testComponent = new DrawableComponent();
-		}
+		public void TestConstructor() { DrawableComponent testComponent = new DrawableComponent(); }
 
 		/// <summary>Tests whether the Initialize() method is working</summary>
 		[Test]
@@ -77,7 +70,7 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Tests whether the drawable component can draw itself
+		///     Tests whether the drawable component can draw itself
 		/// </summary>
 		[Test]
 		public void TestDraw()
@@ -97,8 +90,8 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Verifies that the DrawOrder change event is triggered when the drawing order
-		///   of the component is changed
+		///     Verifies that the DrawOrder change event is triggered when the drawing order
+		///     of the component is changed
 		/// </summary>
 		[Test]
 		public void TestDrawOrderChangedEvent()
@@ -124,8 +117,8 @@ namespace Nuclectic.Tests.Game
 		}
 
 		/// <summary>
-		///   Verifies that the visible change event is triggered when the visibility
-		///   of the component is changed
+		///     Verifies that the visible change event is triggered when the visibility
+		///     of the component is changed
 		/// </summary>
 		[Test]
 		public void TestVisibleChangedEvent()
@@ -134,9 +127,9 @@ namespace Nuclectic.Tests.Game
 			testComponent.Visible = false;
 
 			Mock<IDrawableComponentSubscriber> subscriber = mockSubscriber(testComponent);
-			subscriber.Setup(s=>s.VisibleChanged(It.IsAny<object>(), It.IsAny<EventArgs>())).Verifiable();
+			subscriber.Setup(s => s.VisibleChanged(It.IsAny<object>(), It.IsAny<EventArgs>())).Verifiable();
 			testComponent.Visible = true;
-			
+
 			subscriber.VerifyAll();
 		}
 
@@ -144,23 +137,22 @@ namespace Nuclectic.Tests.Game
 		/// <param name="drawableComponent">Component to mock an event subscriber for</param>
 		/// <returns>The mocked event subscriber</returns>
 		private Mock<IDrawableComponentSubscriber> mockSubscriber(
-		  DrawableComponent drawableComponent
-		)
+			DrawableComponent drawableComponent
+			)
 		{
 			Mock<IDrawableComponentSubscriber> mockedSubscriber =
-			  new Mock<IDrawableComponentSubscriber>();
+				new Mock<IDrawableComponentSubscriber>();
 
 			drawableComponent.DrawOrderChanged += new EventHandler<EventArgs>(
-			  mockedSubscriber.Object.DrawOrderChanged
-			);
+				mockedSubscriber.Object.DrawOrderChanged
+				);
 			drawableComponent.VisibleChanged += new EventHandler<EventArgs>(
-			  mockedSubscriber.Object.VisibleChanged
-			);
+				mockedSubscriber.Object.VisibleChanged
+				);
 
 			return mockedSubscriber;
 		}
 	}
-
 } // namespace Nuclex.Game
 
 #endif // UNITTEST

@@ -27,7 +27,6 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input.Devices
 {
-
 	/// <summary>Unit tests for the XNA (XINPUT) based chat pad class</summary>
 	[TestFixture]
 	internal class XnaKeyboardGamePadTest

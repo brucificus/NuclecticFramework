@@ -25,7 +25,7 @@ using System.Collections.Generic;
 namespace Nuclectic.Support.Collections
 {
 	/// <summary>
-	///   Compares two values in reverse or reverses the output of another comparer
+	///     Compares two values in reverse or reverses the output of another comparer
 	/// </summary>
 	/// <typeparam name="TCompared">Type of values to be compared</typeparam>
 	public class ReverseComparer<TCompared> : IComparer<TCompared>
@@ -35,7 +35,7 @@ namespace Nuclectic.Support.Collections
 			: this(Comparer<TCompared>.Default) { }
 
 		/// <summary>
-		///   Initializes the comparer to provide the inverse results of another comparer
+		///     Initializes the comparer to provide the inverse results of another comparer
 		/// </summary>
 		/// <param name="comparerToReverse">Comparer whose results will be inversed</param>
 		public ReverseComparer(IComparer<TCompared> comparerToReverse) { this.comparer = comparerToReverse; }

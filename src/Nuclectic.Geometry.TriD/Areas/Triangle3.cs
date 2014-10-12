@@ -52,25 +52,25 @@ namespace Nuclectic.Geometry.Areas
 
 		/// <summary>Surface area that the shape contains</summary>
 		/// <remarks>
-		///   <para>
-		///     Heron's triangle area formular states that, given s = (a + b + c) / s the
-		///     area of a triangle can be calculated as
-		///   </para>
-		///   <code>
-		///              _________________________________
-		///     area = \/ s * (s - a) * (s - b) * (s - c)   
-		///
-		///   </code>
-		///   <para>
-		///     In a paper by W. Kahan this method is proven to be numerically unstable
-		///     for floating point numbers. He recommends to use the following formula
-		///     instead, where the lengths a, b and c have to be sorted in ascending order.
-		///   </para>
-		///   <code>
-		///                     ______________________________________________________________
-		///     area = 0.25 * \/ (a + (b + c)) * (c - (a - b)) * (c + (a - b)) * (a + b - c))
-		///
-		///   </code>
+		///     <para>
+		///         Heron's triangle area formular states that, given s = (a + b + c) / s the
+		///         area of a triangle can be calculated as
+		///     </para>
+		///     <code>
+		///               _________________________________
+		///      area = \/ s * (s - a) * (s - b) * (s - c)   
+		/// 
+		///    </code>
+		///     <para>
+		///         In a paper by W. Kahan this method is proven to be numerically unstable
+		///         for floating point numbers. He recommends to use the following formula
+		///         instead, where the lengths a, b and c have to be sorted in ascending order.
+		///     </para>
+		///     <code>
+		///                      ______________________________________________________________
+		///      area = 0.25 * \/ (a + (b + c)) * (c - (a - b)) * (c + (a - b)) * (a + b - c))
+		/// 
+		///    </code>
 		/// </remarks>
 		public float Area
 		{

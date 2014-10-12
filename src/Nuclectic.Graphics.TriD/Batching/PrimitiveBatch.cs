@@ -28,10 +28,10 @@ namespace Nuclectic.Graphics.TriD.Batching
 	/// <summary>Collects vertices into batches to improve rendering performance</summary>
 	/// <typeparam name="VertexType">Type of vertices to be batched</typeparam>
 	/// <remarks>
-	///   This class is very similar to the SpriteBatch class, but instead of being
-	///   specialized for sprite rendering, it handles all kinds of primitives.
-	///   It is ideal for dynamic, CPU-calculated geometry such as particle systems,
-	///   fluid visualization or marching cube/tetrahedron-based geometry.
+	///     This class is very similar to the SpriteBatch class, but instead of being
+	///     specialized for sprite rendering, it handles all kinds of primitives.
+	///     It is ideal for dynamic, CPU-calculated geometry such as particle systems,
+	///     fluid visualization or marching cube/tetrahedron-based geometry.
 	/// </remarks>
 	public class PrimitiveBatch<VertexType> : IDisposable, IPrimitiveBatch<VertexType> where VertexType : struct, IVertexType
 	{
@@ -40,7 +40,7 @@ namespace Nuclectic.Graphics.TriD.Batching
 
 		/// <summary>Initializes a new primitive batcher</summary>
 		/// <param name="graphicsDevice">
-		///   Graphics device the primitive batcher will use
+		///     Graphics device the primitive batcher will use
 		/// </param>
 		public PrimitiveBatch(GraphicsDevice graphicsDevice)
 			:
@@ -50,7 +50,7 @@ namespace Nuclectic.Graphics.TriD.Batching
 
 		/// <summary>Initializes a new primitive batcher</summary>
 		/// <param name="batchDrawer">
-		///   Vertex batch drawer that will be used by the primitive batcher
+		///     Vertex batch drawer that will be used by the primitive batcher
 		/// </param>
 		internal PrimitiveBatch(IBatchDrawer<VertexType> batchDrawer)
 		{
@@ -60,7 +60,7 @@ namespace Nuclectic.Graphics.TriD.Batching
 		}
 
 		/// <summary>
-		///   Immediately releases all resources owned by the primitive batch
+		///     Immediately releases all resources owned by the primitive batch
 		/// </summary>
 		public void Dispose()
 		{
@@ -82,7 +82,7 @@ namespace Nuclectic.Graphics.TriD.Batching
 
 		/// <summary>Begins the drawing process</summary>
 		/// <param name="queueingStrategy">
-		///   By what criteria to queue primitives and when to draw them
+		///     By what criteria to queue primitives and when to draw them
 		/// </param>
 		public void Begin(QueueingStrategy queueingStrategy)
 		{
@@ -196,8 +196,8 @@ namespace Nuclectic.Graphics.TriD.Batching
 		/// <summary>Draws a series of indexed primitives</summary>
 		/// <param name="vertices">Primitive vertices</param>
 		/// <param name="startVertex">
-		///   Index in the vertex array of the first vertex. This vertex will become
-		///   the new index 0 for the index buffer.
+		///     Index in the vertex array of the first vertex. This vertex will become
+		///     the new index 0 for the index buffer.
 		/// </param>
 		/// <param name="vertexCount">Number of vertices to draw</param>
 		/// <param name="indices">Indices of the vertices to draw</param>
@@ -221,7 +221,7 @@ namespace Nuclectic.Graphics.TriD.Batching
 		/// <summary>Returns the default batch drawer for the target platform</summary>
 		/// <param name="graphicsDevice">Graphics device that batch drawer will use</param>
 		/// <returns>
-		///   A new instance of the default batch drawer for the target platform
+		///     A new instance of the default batch drawer for the target platform
 		/// </returns>
 		internal static IBatchDrawer<VertexType> GetDefaultBatchDrawer(
 			GraphicsDevice graphicsDevice

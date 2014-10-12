@@ -28,11 +28,11 @@ namespace Nuclectic.Graphics.TriD.Batching
 {
 	/// <summary>Queues vertices until the end of the drawing cycle</summary>
 	/// <remarks>
-	///   This queuer respects the order in which drawing commands were given and
-	///   tries to merge any consecutively issued primitives of the same type into
-	///   a single DrawPrimitive() call. This is ideal if you have a large number
-	///   of small objects that are rendered with the same settings (eg. a particle
-	///   system or letters in a bitmap/vector font system).
+	///     This queuer respects the order in which drawing commands were given and
+	///     tries to merge any consecutively issued primitives of the same type into
+	///     a single DrawPrimitive() call. This is ideal if you have a large number
+	///     of small objects that are rendered with the same settings (eg. a particle
+	///     system or letters in a bitmap/vector font system).
 	/// </remarks>
 	public partial class DeferredQueuer<VertexType> : Queuer<VertexType>
 		where VertexType : struct, IVertexType
@@ -79,7 +79,7 @@ namespace Nuclectic.Graphics.TriD.Batching
 
 		/// <summary>Initializes a new deferred primitive queuer</summary>
 		/// <param name="batchDrawer">
-		///   Batch drawer that will be used to render completed vertex batches
+		///     Batch drawer that will be used to render completed vertex batches
 		/// </param>
 		public DeferredQueuer(IBatchDrawer<VertexType> batchDrawer)
 			:
@@ -133,8 +133,8 @@ namespace Nuclectic.Graphics.TriD.Batching
 		/// <summary>Queues a series of indexed primitives</summary>
 		/// <param name="vertices">Primitive vertices</param>
 		/// <param name="startVertex">
-		///   Index in the vertex array of the first vertex. This vertex will become
-		///   the new index 0 for the index buffer.
+		///     Index in the vertex array of the first vertex. This vertex will become
+		///     the new index 0 for the index buffer.
 		/// </param>
 		/// <param name="vertexCount">Number of vertices to draw</param>
 		/// <param name="indices">Indices of the vertices to draw</param>
@@ -174,21 +174,21 @@ namespace Nuclectic.Graphics.TriD.Batching
 		}
 
 		/// <summary>
-		///   Queues the provided vertices for deferred rendering when there is enough
-		///   space left in the current batch to hold all vertices
+		///     Queues the provided vertices for deferred rendering when there is enough
+		///     space left in the current batch to hold all vertices
 		/// </summary>
 		/// <param name="vertices">Primitive vertices</param>
 		/// <param name="startVertex">
-		///   Index in the vertex array of the first vertex. This vertex will become
-		///   the new index 0 for the index buffer.
+		///     Index in the vertex array of the first vertex. This vertex will become
+		///     the new index 0 for the index buffer.
 		/// </param>
 		/// <param name="vertexCount">Number of vertices to draw</param>
 		/// <param name="type">Type of primitives to draw</param>
 		/// <param name="context">Desired graphics device settings for the primitives</param>
 		/// <remarks>
-		///   This is a special optimized method for adding vertices when the amount of
-		///   vertices to render does not exceed available batch space, which should be
-		///   the default usage of a vertex batcher.
+		///     This is a special optimized method for adding vertices when the amount of
+		///     vertices to render does not exceed available batch space, which should be
+		///     the default usage of a vertex batcher.
 		/// </remarks>
 		private void queueVerticesNoOverflow(
 			VertexType[] vertices, int startVertex, int vertexCount,
@@ -224,8 +224,8 @@ namespace Nuclectic.Graphics.TriD.Batching
 		/// <summary>Queues the provided indexed vertices for deferred rendering</summary>
 		/// <param name="vertices">Primitive vertices</param>
 		/// <param name="startVertex">
-		///   Index in the vertex array of the first vertex. This vertex will become
-		///   the new index 0 for the index buffer.
+		///     Index in the vertex array of the first vertex. This vertex will become
+		///     the new index 0 for the index buffer.
 		/// </param>
 		/// <param name="vertexCount">Number of vertices to draw</param>
 		/// <param name="indices">Indices of the vertices to draw</param>
@@ -234,9 +234,9 @@ namespace Nuclectic.Graphics.TriD.Batching
 		/// <param name="type">Type of primitives to draw</param>
 		/// <param name="context">Desired graphics device settings for the primitives</param>
 		/// <remarks>
-		///   This is a special optimized method for adding vertices when the amount of
-		///   vertices to render does not exceed available batch space, which should be
-		///   the default usage of a vertex batcher.
+		///     This is a special optimized method for adding vertices when the amount of
+		///     vertices to render does not exceed available batch space, which should be
+		///     the default usage of a vertex batcher.
 		/// </remarks>
 		private void queueIndexedVerticesNoOverflow(
 			VertexType[] vertices, int startVertex, int vertexCount,
@@ -322,8 +322,8 @@ namespace Nuclectic.Graphics.TriD.Batching
 		}
 
 		/// <summary>
-		///   Creates a new rendering operation if the drawing context or primitive type
-		///   have changed since the last call
+		///     Creates a new rendering operation if the drawing context or primitive type
+		///     have changed since the last call
 		/// </summary>
 		/// <param name="type">Primitive type of the upcoming vertices</param>
 		/// <param name="context">Drawing context used by the upcoming vertices</param>

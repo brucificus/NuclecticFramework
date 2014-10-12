@@ -32,9 +32,9 @@ namespace Nuclectic.Geometry.Volumes.PointGenerators
 		/// <param name="extents">Extents of the box</param>
 		/// <returns>A random point on the box' surface</returns>
 		/// <remarks>
-		///   The performance of this algorithm varies slightly depending on the face
-		///   that is chosen for the random point because a different number of
-		///   comparisons and subtractions will be performed.
+		///     The performance of this algorithm varies slightly depending on the face
+		///     that is chosen for the random point because a different number of
+		///     comparisons and subtractions will be performed.
 		/// </remarks>
 		public static Vector3 GenerateRandomPointOnSurface(
 			IRandom randomNumberGenerator, Vector3 extents

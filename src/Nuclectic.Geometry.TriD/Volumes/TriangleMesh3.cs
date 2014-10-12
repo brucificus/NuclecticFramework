@@ -34,9 +34,9 @@ namespace Nuclectic.Geometry.Volumes
 		/// <summary>Initializes a triangle mesh from a sequentiel list of triangles</summary>
 		/// <param name="vertices">Array of vertices to construct triangles from</param>
 		/// <remarks>
-		///   This variant of the constructor generates a mesh from the vertex array by
-		///   building triangles of every three vertices in the list. The triangles are
-		///   required to form a closed, convex hull.
+		///     This variant of the constructor generates a mesh from the vertex array by
+		///     building triangles of every three vertices in the list. The triangles are
+		///     required to form a closed, convex hull.
 		/// </remarks>
 		private TriangleMesh3(Vector3[] vertices)
 			: this(vertices, generateIndices(vertices.Length)) { }
@@ -45,10 +45,10 @@ namespace Nuclectic.Geometry.Volumes
 		/// <param name="vertices">Vertices to construct triangles from</param>
 		/// <param name="indices">Indices to the vertices to construct triangles from</param>
 		/// <remarks>
-		///   This variant of the constructor generates a mesh from the vertex array by
-		///   taking every three indices in the index array and then generating a triangle
-		///   by the three vertices with the given index. The triangles are required to
-		///   form a closed, convex hull.
+		///     This variant of the constructor generates a mesh from the vertex array by
+		///     taking every three indices in the index array and then generating a triangle
+		///     by the three vertices with the given index. The triangles are required to
+		///     form a closed, convex hull.
 		/// </remarks>
 		private TriangleMesh3(Vector3[] vertices, int[] indices)
 		{
@@ -64,10 +64,10 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Smallest box that encloses the volume in its entirety</summary>
 		/// <remarks>
-		///   This always produces an optimal box which means a tight-fitting box is generated
-		///   that will touch the volume on each of its six sides. As a side effect, it is very
-		///   likely that this box needs to be recalculated whenever the volume changes its
-		///   orientation.
+		///     This always produces an optimal box which means a tight-fitting box is generated
+		///     that will touch the volume on each of its six sides. As a side effect, it is very
+		///     likely that this box needs to be recalculated whenever the volume changes its
+		///     orientation.
 		/// </remarks>
 		public AxisAlignedBox3 BoundingBox
 		{
@@ -107,9 +107,9 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Smallest sphere that encloses the volume in its entirety</summary>
 		/// <remarks>
-		///   Bounding spheres have the advantage to not change even when the volume is
-		///   rotated. That makes them ideal for dynamic objects that are not keeping their
-		///   original orientation.
+		///     Bounding spheres have the advantage to not change even when the volume is
+		///     rotated. That makes them ideal for dynamic objects that are not keeping their
+		///     original orientation.
 		/// </remarks>
 		public Sphere3 BoundingSphere { get { throw new Exception("The method or operation is not implemented."); } }
 
@@ -217,9 +217,9 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Location at which mesh is placed in space</summary>
 		/// <remarks>
-		///   This doesn't take the center of mass or any other physical property into account,
-		///   it's merely an offset for the original vertex coordinates. Otherwise you would have
-		///   a hard time aligning your physical mesh with the visual one :)
+		///     This doesn't take the center of mass or any other physical property into account,
+		///     it's merely an offset for the original vertex coordinates. Otherwise you would have
+		///     a hard time aligning your physical mesh with the visual one :)
 		/// </remarks>
 		public Vector3 Location { get { return this.Transform.Translation; } set { this.Transform.Translation = value; } }
 
@@ -228,13 +228,13 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Compute or recompute the mass properties of this triangle mesh</summary>
 		/// <remarks>
-		///   <para>
-		///     The code has been translated to C# from David Eberly's document titled
-		///     "Polyhedral Mass Properties (Revisited)" which is in turn based on
-		///     Brian Mirtich's "Fast and accurate computation of polyhedral mass properties".
-		///     You can find David Eberly's document at
-		///       http://www.geometrictools.com/Documentation/PolyhedralMassProperties.pdf
-		///   </para>
+		///     <para>
+		///         The code has been translated to C# from David Eberly's document titled
+		///         "Polyhedral Mass Properties (Revisited)" which is in turn based on
+		///         Brian Mirtich's "Fast and accurate computation of polyhedral mass properties".
+		///         You can find David Eberly's document at
+		///         http://www.geometrictools.com/Documentation/PolyhedralMassProperties.pdf
+		///     </para>
 		/// </remarks>
 		private void computeMassProperties()
 		{
@@ -363,7 +363,7 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Accumulated surface of the triangles in this mesh</summary>
 		/// <remarks>
-		///   This is used to perform a binary search in the RandomPointOnSurface() method
+		///     This is used to perform a binary search in the RandomPointOnSurface() method
 		/// </remarks>
 		protected float[] accumulatedTriangleSurface;
 	}

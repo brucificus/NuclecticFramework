@@ -31,7 +31,7 @@ namespace Nuclectic.Tests.Geometry.Lines
 	public class LineContactsTest
 	{
 		/// <summary>
-		///   Verifies that the constructor for a single contact point is working
+		///     Verifies that the constructor for a single contact point is working
 		/// </summary>
 		[Test]
 		public void TestSingleContactConstructor()
@@ -44,7 +44,7 @@ namespace Nuclectic.Tests.Geometry.Lines
 		}
 
 		/// <summary>
-		///   Tests the constructor with normal entry and exit contact times
+		///     Tests the constructor with normal entry and exit contact times
 		/// </summary>
 		[Test]
 		public void TestFullConstructor()
@@ -61,8 +61,8 @@ namespace Nuclectic.Tests.Geometry.Lines
 		public void TestNoneConstant() { Assert.IsFalse(LineContacts.None.HasContact); }
 
 		/// <summary>
-		///   Verifies that the GetHashCode() method returns the same hash code for
-		///   two identical instances
+		///     Verifies that the GetHashCode() method returns the same hash code for
+		///     two identical instances
 		/// </summary>
 		[Test]
 		public void TestGetHashCode()
@@ -74,7 +74,7 @@ namespace Nuclectic.Tests.Geometry.Lines
 		}
 
 		/// <summary>
-		///   Verifies that the Equals() method is working correctly
+		///     Verifies that the Equals() method is working correctly
 		/// </summary>
 		[Test]
 		public void TestEqualityComparison()

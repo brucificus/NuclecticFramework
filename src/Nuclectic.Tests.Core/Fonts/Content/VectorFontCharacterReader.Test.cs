@@ -31,7 +31,7 @@ namespace Nuclectic.Tests.Fonts.Content
 	public class VectorFontCharacterReaderTest
 	{
 		/// <summary>
-		///   Tests whether the constructor if the vector font reader is working
+		///     Tests whether the constructor if the vector font reader is working
 		/// </summary>
 		[Test]
 		public void TestConstructor()

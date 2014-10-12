@@ -26,22 +26,22 @@ using Microsoft.Xna.Framework;
 namespace Nuclectic.Geometry.Lines.Collisions
 {
 	/// <summary>
-	///   Detects intersections of infinite 2D lines with 2D discs / circles
+	///     Detects intersections of infinite 2D lines with 2D discs / circles
 	/// </summary>
 	public static class Line2Disc2Collider
 	{
 		/// <summary>Determines the contact location between a line and a disc</summary>
 		/// <param name="lineOffset">
-		///   Offset of the line relative to the disc's center
+		///     Offset of the line relative to the disc's center
 		/// </param>
 		/// <param name="lineDirection">Direction and length of the line</param>
 		/// <param name="discRadius">Radius of the disc</param>
 		/// <returns>The point of intersection of the line with the disc, if any</returns>
 		/// <remarks>
-		///   <para>
-		///     Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
-		///     and used as a supporting function for the other line/sphere contact finders.
-		///   </para>
+		///     <para>
+		///         Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
+		///         and used as a supporting function for the other line/sphere contact finders.
+		///     </para>
 		/// </remarks>
 		internal static LineContacts FindContacts(
 			Vector2 lineOffset, Vector2 lineDirection, float discRadius
@@ -64,7 +64,7 @@ namespace Nuclectic.Geometry.Lines.Collisions
 
 		/// <summary>Determines the contact location between a line and a disc</summary>
 		/// <param name="lineOffset">
-		///   Offset of the line from the coordinate system's center
+		///     Offset of the line from the coordinate system's center
 		/// </param>
 		/// <param name="lineDirection">Direction and length of the line</param>
 		/// <param name="discCenter">Position of the disc </param>

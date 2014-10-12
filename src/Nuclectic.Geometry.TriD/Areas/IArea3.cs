@@ -26,11 +26,11 @@ namespace Nuclectic.Geometry.Areas
 {
 	/// <summary>Two-dimensional geometric body in 3D space</summary>
 	/// <remarks>
-	///   An area by definition and of course also in the context of this library is a
-	///   two-dimensional region. This region could a either be located in actual
-	///   2D space (like drawn on a piece of paper) or be located in as a flat object
-	///   in 3D space (like the piece of paper located in the real world). This
-	///   class represents the latter case, a 2D object in 3D space.
+	///     An area by definition and of course also in the context of this library is a
+	///     two-dimensional region. This region could a either be located in actual
+	///     2D space (like drawn on a piece of paper) or be located in as a flat object
+	///     in 3D space (like the piece of paper located in the real world). This
+	///     class represents the latter case, a 2D object in 3D space.
 	/// </remarks>
 	public interface IArea3
 	{

@@ -26,7 +26,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Nuclectic.Graphics.TriD.Batching
 {
 	/// <summary>
-	///   Sets up a BasicEffect instance for primitives drawn by the PrimitiveBatch class
+	///     Sets up a BasicEffect instance for primitives drawn by the PrimitiveBatch class
 	/// </summary>
 	public class BasicEffectDrawContext : EffectDrawContext, IDisposable
 	{
@@ -48,24 +48,24 @@ namespace Nuclectic.Graphics.TriD.Batching
 
 		/// <summary>The basic effect being managed by the draw context</summary>
 		/// <remarks>
-		///   Warning: If you change the settings of this effect after you've already
-		///   queued other primitives to be drawn, those primitives might be affected
-		///   nontheless if they haven't been rendered yet. The recommended usage is to
-		///   initialize an effect once for each set of settings you need and then keep
-		///   using those instances without modifying them.
+		///     Warning: If you change the settings of this effect after you've already
+		///     queued other primitives to be drawn, those primitives might be affected
+		///     nontheless if they haven't been rendered yet. The recommended usage is to
+		///     initialize an effect once for each set of settings you need and then keep
+		///     using those instances without modifying them.
 		/// </remarks>
 		public BasicEffect BasicEffect { get { return this.basicEffect; } }
 
 		/// <summary>Compares the effect parameters member by member</summary>
 		/// <param name="otherEffect">
-		///   Other effect that will be compared against the context's own effect
+		///     Other effect that will be compared against the context's own effect
 		/// </param>
 		/// <returns>True of all parameters of the other effect are equal</returns>
 		/// <remarks>
-		///   Override this to perform a comparison on the relevant parameters of
-		///   your custom effect. By default, this will return false, causing only
-		///   effect drawing contexts with the same effect object to be considered
-		///   for batching.
+		///     Override this to perform a comparison on the relevant parameters of
+		///     your custom effect. By default, this will return false, causing only
+		///     effect drawing contexts with the same effect object to be considered
+		///     for batching.
 		/// </remarks>
 		protected override bool CompareEffectParameters(Effect otherEffect)
 		{

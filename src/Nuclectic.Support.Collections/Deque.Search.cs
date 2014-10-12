@@ -27,7 +27,7 @@ namespace Nuclectic.Support.Collections
 	partial class Deque<TItem>
 	{
 		/// <summary>
-		///   Determines the index of the first occurence of the specified item in the deque
+		///     Determines the index of the first occurence of the specified item in the deque
 		/// </summary>
 		/// <param name="item">Item that will be located in the deque</param>
 		/// <returns>The index of the item or -1 if it wasn't found</returns>

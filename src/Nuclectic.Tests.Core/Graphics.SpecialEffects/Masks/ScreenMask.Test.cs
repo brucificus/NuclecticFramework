@@ -40,15 +40,15 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks
 		: TestFixtureBase
 	{
 		/// <summary>
-		///   Verifies that the constructor of the screen mask class is working
+		///     Verifies that the constructor of the screen mask class is working
 		/// </summary>
 		[Test]
-		public void TestConstructor() 
+		public void TestConstructor()
 		{
 			using (MakeColorScreenMask())
 			{
 				// Do nothing
-			} 
+			}
 		}
 
 		/// <summary>Tests whether the screen mask is able to draw itself</summary>
@@ -58,7 +58,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks
 			using (var testMask = MakeColorScreenMask())
 			{
 				testMask.Draw();
-			} 
+			}
 		}
 
 		private static ScreenMask<PositionVertex> MakeColorScreenMask()
@@ -82,7 +82,6 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Masks
 							service.GraphicsDevice, new Owned<Effect>(
 														effect, () =>
 														{
-
 															effect.Dispose();
 															contentManager.Dispose();
 															service.Dispose();

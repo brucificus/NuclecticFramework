@@ -41,8 +41,8 @@ namespace Nuclectic.Tests.Game.States
 			public TestGameState() { }
 
 			/// <summary>
-			///   Allows the game state to run logic such as updating the world,
-			///   checking for collisions, gathering input and playing audio.
+			///     Allows the game state to run logic such as updating the world,
+			///     checking for collisions, gathering input and playing audio.
 			/// </summary>
 			/// <param name="gameTime">Provides a snapshot of timing values</param>
 			public override void Update(GameTime gameTime) { ++this.UpdateCallCount; }
@@ -115,8 +115,8 @@ namespace Nuclectic.Tests.Game.States
 			public UnenterableGameState() { }
 
 			/// <summary>
-			///   Allows the game state to run logic such as updating the world,
-			///   checking for collisions, gathering input and playing audio.
+			///     Allows the game state to run logic such as updating the world,
+			///     checking for collisions, gathering input and playing audio.
 			/// </summary>
 			/// <param name="gameTime">Provides a snapshot of timing values</param>
 			public override void Update(GameTime gameTime) { }
@@ -134,13 +134,13 @@ namespace Nuclectic.Tests.Game.States
 		{
 			/// <summary>Initializes a new unresumable game state</summary>
 			/// <param name="gameStateService">
-			///   Game state manager the unresumable game state belongs to
+			///     Game state manager the unresumable game state belongs to
 			/// </param>
 			public ReentrantGameState(IManualGameStateService gameStateService) { this.gameStateService = gameStateService; }
 
 			/// <summary>
-			///   Allows the game state to run logic such as updating the world,
-			///   checking for collisions, gathering input and playing audio.
+			///     Allows the game state to run logic such as updating the world,
+			///     checking for collisions, gathering input and playing audio.
 			/// </summary>
 			/// <param name="gameTime">Provides a snapshot of timing values</param>
 			public override void Update(GameTime gameTime) { }
@@ -155,7 +155,7 @@ namespace Nuclectic.Tests.Game.States
 		#endregion // class ReentrantGameState
 
 		/// <summary>
-		///   Verifies that the constructor of the game state manager is working
+		///     Verifies that the constructor of the game state manager is working
 		/// </summary>
 		[Test]
 		public void TestDefaultConstructor()
@@ -165,8 +165,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Verifies that the constructor of the game state manager accepting
-		///   a reference to the GameServiceCollection is working
+		///     Verifies that the constructor of the game state manager accepting
+		///     a reference to the GameServiceCollection is working
 		/// </summary>
 		[Test]
 		public void TestGameServiceConstructor()
@@ -182,8 +182,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether disposing the game state manager causes it to leave
-		///   the active game state
+		///     Tests whether disposing the game state manager causes it to leave
+		///     the active game state
 		/// </summary>
 		[Test]
 		public void TestLeaveOnDisposal()
@@ -200,8 +200,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether disposing the game state manager disposes the currently
-		///   active game states when it is disposed itself.
+		///     Tests whether disposing the game state manager disposes the currently
+		///     active game states when it is disposed itself.
 		/// </summary>
 		/// <param name="disposalEnabled">Whether to run the test with enabled disposal</param>
 		[Test, TestCase(true), TestCase(false)]
@@ -228,8 +228,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Verifies that the Pause() and Resume() methods are propagated to
-		///   the topmost game state on the stack
+		///     Verifies that the Pause() and Resume() methods are propagated to
+		///     the topmost game state on the stack
 		/// </summary>
 		[Test]
 		public void TestPauseAndResume()
@@ -260,7 +260,7 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Verifies that the Push() method respects the modality parameter
+		///     Verifies that the Push() method respects the modality parameter
 		/// </summary>
 		/// <param name="modality">Modality that will be tested</param>
 		[Test, TestCase(GameStateModality.Exclusive), TestCase(GameStateModality.Popup)]
@@ -304,8 +304,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Verifies that an exception whilst pushing a state on the stack leaves the
-		///   game state manager unchanged
+		///     Verifies that an exception whilst pushing a state on the stack leaves the
+		///     game state manager unchanged
 		/// </summary>
 		[Test]
 		public void TestPushUnenterableState()
@@ -331,8 +331,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Tests whether the game state manager correctly handles a reentrant call
-		///   to Push() from a pushed game state
+		///     Tests whether the game state manager correctly handles a reentrant call
+		///     to Push() from a pushed game state
 		/// </summary>
 		[Test]
 		public void TestReeantrantPush()
@@ -376,8 +376,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Verifies that the game state manager correctly rolls back its update
-		///   and draw lists when an exclusive state is popped from the stack
+		///     Verifies that the game state manager correctly rolls back its update
+		///     and draw lists when an exclusive state is popped from the stack
 		/// </summary>
 		[Test]
 		public void TestUpdateAndDrawListRollbackInPop()
@@ -416,8 +416,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Verifies that the game state manager correctly rolls back its update
-		///   and draw lists when an exclusive state is popped from the stack
+		///     Verifies that the game state manager correctly rolls back its update
+		///     and draw lists when an exclusive state is popped from the stack
 		/// </summary>
 		[Test]
 		public void TestUpdateAndDrawListRollbackInSwitch()
@@ -481,8 +481,8 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Verifies that switch only replaces the active game state,
-		///   not the whole stack
+		///     Verifies that switch only replaces the active game state,
+		///     not the whole stack
 		/// </summary>
 		[Test]
 		public void TestSwitchOnlyChangesActiveState()
@@ -506,7 +506,7 @@ namespace Nuclectic.Tests.Game.States
 		}
 
 		/// <summary>
-		///   Verifies that the active game state can be queried
+		///     Verifies that the active game state can be queried
 		/// </summary>
 		[Test]
 		public void TestActiveState()

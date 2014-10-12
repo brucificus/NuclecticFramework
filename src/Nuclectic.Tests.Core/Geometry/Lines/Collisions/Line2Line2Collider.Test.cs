@@ -31,13 +31,13 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Geometry.Lines.Collisions
 {
 	/// <summary>
-	///   Unit test for the 2D infinite line vs. 2d infinite line interference detector
+	///     Unit test for the 2D infinite line vs. 2d infinite line interference detector
 	/// </summary>
 	[TestFixture]
 	public class Line2Line2ColliderTest
 	{
 		/// <summary>
-		///   Ensures no collisions are reported between two horizontal parallel lines
+		///     Ensures no collisions are reported between two horizontal parallel lines
 		/// </summary>
 		[Test]
 		public void TestHorizontalParallelLines()
@@ -51,7 +51,7 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Ensures no collisions are reported between two vertical parallel lines
+		///     Ensures no collisions are reported between two vertical parallel lines
 		/// </summary>
 		[Test]
 		public void TestVerticalParallelLines()
@@ -65,8 +65,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Verifies that the intersection of two lines crossing each other
-		///   orthogonally is detected
+		///     Verifies that the intersection of two lines crossing each other
+		///     orthogonally is detected
 		/// </summary>
 		[Test]
 		public void TestOrthogonallyCrossingLines()
@@ -88,8 +88,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Verifies that the intersection of two lines crossing each other
-		///   diagonally is detected
+		///     Verifies that the intersection of two lines crossing each other
+		///     diagonally is detected
 		/// </summary>
 		[Test]
 		public void TestDiagonallyCrossingLines()

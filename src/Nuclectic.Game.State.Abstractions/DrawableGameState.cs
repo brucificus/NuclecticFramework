@@ -39,12 +39,12 @@ namespace Nuclectic.Game.State
 		public abstract void Draw(GameTime gameTime);
 
 		/// <summary>
-		///   Always 0 because game states have no ordering relative to each other
+		///     Always 0 because game states have no ordering relative to each other
 		/// </summary>
 		int IDrawable.DrawOrder { get { return 0; } }
 
 		/// <summary>
-		///   Always true to indicate the game state is visible and should be drawn
+		///     Always true to indicate the game state is visible and should be drawn
 		/// </summary>
 		bool IDrawable.Visible { get { return true; } }
 	}

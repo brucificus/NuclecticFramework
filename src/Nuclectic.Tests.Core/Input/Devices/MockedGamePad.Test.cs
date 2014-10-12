@@ -30,12 +30,10 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input.Devices
 {
-
 	/// <summary>Unit tests for the mocked game pad</summary>
 	[TestFixture]
 	public class MockedGamePadTest
 	{
-
 		/// <summary>Verifies that the constructor is working</summary>
 		[Test]
 		public void TestConstructor()
@@ -132,18 +130,18 @@ namespace Nuclectic.Tests.Input.Devices
 
 		/// <summary>Verifies that the buttons on the game pad can be pressed</summary>
 		[
-		  Test,
-		  TestCase(Buttons.A),
-		  TestCase(Buttons.B),
-		  TestCase(Buttons.X),
-		  TestCase(Buttons.Y),
-		  TestCase(Buttons.LeftShoulder),
-		  TestCase(Buttons.RightShoulder),
-		  TestCase(Buttons.Back),
-		  TestCase(Buttons.Start),
-		  TestCase(Buttons.LeftStick),
-		  TestCase(Buttons.RightStick),
-		  TestCase(Buttons.BigButton)
+			Test,
+			TestCase(Buttons.A),
+			TestCase(Buttons.B),
+			TestCase(Buttons.X),
+			TestCase(Buttons.Y),
+			TestCase(Buttons.LeftShoulder),
+			TestCase(Buttons.RightShoulder),
+			TestCase(Buttons.Back),
+			TestCase(Buttons.Start),
+			TestCase(Buttons.LeftStick),
+			TestCase(Buttons.RightStick),
+			TestCase(Buttons.BigButton)
 		]
 		public void TestButtons(Buttons button)
 		{
@@ -197,7 +195,7 @@ namespace Nuclectic.Tests.Input.Devices
 		{
 			var gamePad = new MockedGamePad();
 
-			foreach (ExtendedAxes axis in Enum.GetValues(typeof(ExtendedAxes)))
+			foreach (ExtendedAxes axis in Enum.GetValues(typeof (ExtendedAxes)))
 			{
 				gamePad.AvailableAxes = axis;
 
@@ -213,7 +211,7 @@ namespace Nuclectic.Tests.Input.Devices
 		{
 			var gamePad = new MockedGamePad();
 
-			foreach (ExtendedSliders slider in Enum.GetValues(typeof(ExtendedSliders)))
+			foreach (ExtendedSliders slider in Enum.GetValues(typeof (ExtendedSliders)))
 			{
 				gamePad.AvailableSliders = slider;
 
@@ -225,11 +223,11 @@ namespace Nuclectic.Tests.Input.Devices
 
 		/// <summary>Verifies that the directional pad can be simulated</summary>
 		[
-		  Test,
-		  TestCase(Buttons.DPadUp),
-		  TestCase(Buttons.DPadDown),
-		  TestCase(Buttons.DPadLeft),
-		  TestCase(Buttons.DPadRight)
+			Test,
+			TestCase(Buttons.DPadUp),
+			TestCase(Buttons.DPadDown),
+			TestCase(Buttons.DPadLeft),
+			TestCase(Buttons.DPadRight)
 		]
 		public void TestDirectionalPad(Buttons button)
 		{
@@ -241,34 +239,34 @@ namespace Nuclectic.Tests.Input.Devices
 			switch (button)
 			{
 				case Buttons.DPadUp:
-					{
-						Assert.AreEqual(ButtonState.Pressed, state.DPad.Up);
-						Assert.AreEqual(ButtonState.Released, state.DPad.Down);
-						break;
-					}
+				{
+					Assert.AreEqual(ButtonState.Pressed, state.DPad.Up);
+					Assert.AreEqual(ButtonState.Released, state.DPad.Down);
+					break;
+				}
 				case Buttons.DPadDown:
-					{
-						Assert.AreEqual(ButtonState.Pressed, state.DPad.Down);
-						Assert.AreEqual(ButtonState.Released, state.DPad.Up);
-						break;
-					}
+				{
+					Assert.AreEqual(ButtonState.Pressed, state.DPad.Down);
+					Assert.AreEqual(ButtonState.Released, state.DPad.Up);
+					break;
+				}
 				case Buttons.DPadLeft:
-					{
-						Assert.AreEqual(ButtonState.Pressed, state.DPad.Left);
-						Assert.AreEqual(ButtonState.Released, state.DPad.Right);
-						break;
-					}
+				{
+					Assert.AreEqual(ButtonState.Pressed, state.DPad.Left);
+					Assert.AreEqual(ButtonState.Released, state.DPad.Right);
+					break;
+				}
 				case Buttons.DPadRight:
-					{
-						Assert.AreEqual(ButtonState.Pressed, state.DPad.Right);
-						Assert.AreEqual(ButtonState.Released, state.DPad.Left);
-						break;
-					}
+				{
+					Assert.AreEqual(ButtonState.Pressed, state.DPad.Right);
+					Assert.AreEqual(ButtonState.Released, state.DPad.Left);
+					break;
+				}
 			}
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if an invalid axis is moved
+		///     Verifies that an exception is thrown if an invalid axis is moved
 		/// </summary>
 		[Test]
 		public void MovingInvalidAxisCausesException()
@@ -276,12 +274,12 @@ namespace Nuclectic.Tests.Input.Devices
 			var gamePad = new MockedGamePad();
 
 			Assert.Throws<ArgumentException>(
-			  delegate() { gamePad.MoveAxis(ExtendedAxes.X | ExtendedAxes.Y, 0); }
-			);
+											 delegate() { gamePad.MoveAxis(ExtendedAxes.X | ExtendedAxes.Y, 0); }
+				);
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if an unavailable axis is moved
+		///     Verifies that an exception is thrown if an unavailable axis is moved
 		/// </summary>
 		[Test]
 		public void MovingUnavailableAxisCausesException()
@@ -290,12 +288,12 @@ namespace Nuclectic.Tests.Input.Devices
 			gamePad.AvailableAxes = 0;
 
 			Assert.Throws<ArgumentException>(
-			  delegate() { gamePad.MoveAxis(ExtendedAxes.X, 0); }
-			);
+											 delegate() { gamePad.MoveAxis(ExtendedAxes.X, 0); }
+				);
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if an invalid slider is moved
+		///     Verifies that an exception is thrown if an invalid slider is moved
 		/// </summary>
 		[Test]
 		public void MovingInvalidSliderCausesException()
@@ -303,12 +301,12 @@ namespace Nuclectic.Tests.Input.Devices
 			var gamePad = new MockedGamePad();
 
 			Assert.Throws<ArgumentException>(
-			  delegate() { gamePad.MoveSlider(ExtendedSliders.Force1 | ExtendedSliders.Force2, 0); }
-			);
+											 delegate() { gamePad.MoveSlider(ExtendedSliders.Force1 | ExtendedSliders.Force2, 0); }
+				);
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if an unavailable slider is moved
+		///     Verifies that an exception is thrown if an unavailable slider is moved
 		/// </summary>
 		[Test]
 		public void MovingUnavailableSliderCausesException()
@@ -317,12 +315,12 @@ namespace Nuclectic.Tests.Input.Devices
 			gamePad.AvailableSliders = 0;
 
 			Assert.Throws<ArgumentException>(
-			  delegate() { gamePad.MoveSlider(ExtendedSliders.Slider1, 0); }
-			);
+											 delegate() { gamePad.MoveSlider(ExtendedSliders.Slider1, 0); }
+				);
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if an invalid button is pressed
+		///     Verifies that an exception is thrown if an invalid button is pressed
 		/// </summary>
 		[Test]
 		public void PressingInvalidButtonsCausesException()
@@ -330,15 +328,15 @@ namespace Nuclectic.Tests.Input.Devices
 			var gamePad = new MockedGamePad();
 
 			Assert.Throws<ArgumentOutOfRangeException>(
-			  delegate() { gamePad.Press(-1); }
-			);
+													   delegate() { gamePad.Press(-1); }
+				);
 			Assert.Throws<ArgumentOutOfRangeException>(
-			  delegate() { gamePad.Press(129); }
-			);
+													   delegate() { gamePad.Press(129); }
+				);
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if an invalid button is pressed
+		///     Verifies that an exception is thrown if an invalid button is pressed
 		/// </summary>
 		[Test]
 		public void ReleasingInvalidButtonsCausesException()
@@ -346,17 +344,17 @@ namespace Nuclectic.Tests.Input.Devices
 			var gamePad = new MockedGamePad();
 
 			Assert.Throws<ArgumentOutOfRangeException>(
-			  delegate() { gamePad.Release(-1); }
-			);
+													   delegate() { gamePad.Release(-1); }
+				);
 			Assert.Throws<ArgumentOutOfRangeException>(
-			  delegate() { gamePad.Release(129); }
-			);
+													   delegate() { gamePad.Release(129); }
+				);
 		}
 
 		/// <summary>Verifies that the extended sliders on the game pad can be moved</summary>
 		[
-		  Test,
-		  TestCase(0), TestCase(1), TestCase(2), TestCase(3)
+			Test,
+			TestCase(0), TestCase(1), TestCase(2), TestCase(3)
 		]
 		public void TestPovs(int pov)
 		{
@@ -367,9 +365,7 @@ namespace Nuclectic.Tests.Input.Devices
 			gamePad.Update();
 			Assert.AreEqual(12345, gamePad.GetExtendedState().GetPov(pov));
 		}
-
 	}
-
 } // namespace Nuclex.Input.Devices
 
 #endif // UNITTEST

@@ -36,12 +36,12 @@ namespace Nuclectic.Graphics.TriD.Debugging
 		/// <param name="vertices">Array to write the arrow vertices into</param>
 		/// <param name="startIndex">Index in the array to begin writing at</param>
 		/// <param name="origin">
-		///   Location at which to draw the arrow (this will form the exact center of
-		///   the drawn arrow's base)
+		///     Location at which to draw the arrow (this will form the exact center of
+		///     the drawn arrow's base)
 		/// </param>
 		/// <param name="direction">
-		///   Direction the arrow is pointing into. The arrow's size is relative to
-		///   the length of this vector.
+		///     Direction the arrow is pointing into. The arrow's size is relative to
+		///     the length of this vector.
 		/// </param>
 		/// <param name="color">Color for the arrow</param>
 		internal static void Generate(

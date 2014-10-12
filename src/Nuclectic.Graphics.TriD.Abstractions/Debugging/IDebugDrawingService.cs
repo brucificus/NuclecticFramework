@@ -29,8 +29,8 @@ namespace Nuclectic.Graphics.TriD.Debugging
 	{
 		/// <summary>Concatenated View and Projection matrices to use</summary>
 		/// <remarks>
-		///   Update this once per frame to have your debug overlays appear in the
-		///   right places. Simply set it to (View * Projection) of your camera.
+		///     Update this once per frame to have your debug overlays appear in the
+		///     right places. Simply set it to (View * Projection) of your camera.
 		/// </remarks>
 		Matrix ViewProjection { get; set; }
 
@@ -80,7 +80,7 @@ namespace Nuclectic.Graphics.TriD.Debugging
 
 		/// <summary>Draws text onto the screen at pixel coordinates</summary>
 		/// <param name="position">
-		///   Location on the screen, in pixels, where the text should be drawn.
+		///     Location on the screen, in pixels, where the text should be drawn.
 		/// </param>
 		/// <param name="text">String to be drawn</param>
 		/// <param name="color">Color the text should have</param>

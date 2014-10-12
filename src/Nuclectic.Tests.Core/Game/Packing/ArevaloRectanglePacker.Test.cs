@@ -56,8 +56,8 @@ namespace Nuclectic.Tests.Game.Packing
 		}
 
 		/// <summary>
-		///   Tests whether the packer throws the appropriate exception if a rectangle
-		///   is too large to fit in the packing area
+		///     Tests whether the packer throws the appropriate exception if a rectangle
+		///     is too large to fit in the packing area
 		/// </summary>
 		[Test]
 		public void TestThrowOnTooLargeRectangle()
@@ -69,7 +69,7 @@ namespace Nuclectic.Tests.Game.Packing
 		}
 
 		/// <summary>
-		///   Verifies that the packer can pack a rectangle that barely fits in the packing area
+		///     Verifies that the packer can pack a rectangle that barely fits in the packing area
 		/// </summary>
 		[Test]
 		public void TestBarelyFittingRectangle()

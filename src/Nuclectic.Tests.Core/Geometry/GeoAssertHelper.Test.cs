@@ -45,8 +45,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Tests whether the almost equal check detects an X component in a vector that
-		///   is just barely too low
+		///     Tests whether the almost equal check detects an X component in a vector that
+		///     is just barely too low
 		/// </summary>
 		[Test]
 		public void TestThrowOnAlmostEqualWithTooLowXInVector()
@@ -59,8 +59,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Tests whether the almost equal check detects an X component in a vector that
-		///   is just barely too high
+		///     Tests whether the almost equal check detects an X component in a vector that
+		///     is just barely too high
 		/// </summary>
 		[Test]
 		public void TestThrowOnAlmostEqualWithTooHighXInVector()
@@ -73,8 +73,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Tests whether the almost equal check detects an Y component in a vector that
-		///   is just barely too low
+		///     Tests whether the almost equal check detects an Y component in a vector that
+		///     is just barely too low
 		/// </summary>
 		[Test]
 		public void TestThrowOnAlmostEqualWithTooLowYInVector()
@@ -87,8 +87,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Tests whether the almost equal check detects an Y component in a vector that
-		///   is just barely too high
+		///     Tests whether the almost equal check detects an Y component in a vector that
+		///     is just barely too high
 		/// </summary>
 		[Test]
 		public void TestThrowOnAlmostEqualWithTooHighYInVector()
@@ -101,8 +101,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Tests whether the almost equal check detects an Z component in a vector that
-		///   is just barely too low
+		///     Tests whether the almost equal check detects an Z component in a vector that
+		///     is just barely too low
 		/// </summary>
 		[Test]
 		public void TestThrowOnAlmostEqualWithTooLowZInVector()
@@ -115,8 +115,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Tests whether the almost equal check detects an Z component in a vector that
-		///   is just barely too high
+		///     Tests whether the almost equal check detects an Z component in a vector that
+		///     is just barely too high
 		/// </summary>
 		[Test]
 		public void TestThrowOnAlmostEqualWithTooHighZInVector()
@@ -129,8 +129,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the AreAlmostEqual() helper works correctly when comparing
-		///   two axis aligned boxes
+		///     Verifies that the AreAlmostEqual() helper works correctly when comparing
+		///     two axis aligned boxes
 		/// </summary>
 		[Test]
 		public void TestAlmostEqualWithAxisAlignedBoxes()
@@ -150,8 +150,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Verifies that the AreAlmostEqual() helper throws an exception when the compared
-		///   boxes differ by more than the allowed amount
+		///     Verifies that the AreAlmostEqual() helper throws an exception when the compared
+		///     boxes differ by more than the allowed amount
 		/// </summary>
 		[Test]
 		public void TestThrowOnAlmostEqualWithTooLargeAxisAlignedBox()
@@ -173,8 +173,8 @@ namespace Nuclectic.Tests.Geometry
 		}
 
 		/// <summary>
-		///   Adjusts a floating point value by the specified amount of neighbouring
-		///   representable values
+		///     Adjusts a floating point value by the specified amount of neighbouring
+		///     representable values
 		/// </summary>
 		/// <param name="value">Floating point value to be adjusted</param>
 		/// <param name="ulps">Numbers of neighbouring representable values to step</param>
@@ -182,8 +182,8 @@ namespace Nuclectic.Tests.Geometry
 		private static float adjust(float value, int ulps) { return FloatHelper.ReinterpretAsFloat(FloatHelper.ReinterpretAsInt(value) + ulps); }
 
 		/// <summary>
-		///   Adjusts a double precision floating point value by the specified amount of
-		///   neighbouring representable values
+		///     Adjusts a double precision floating point value by the specified amount of
+		///     neighbouring representable values
 		/// </summary>
 		/// <param name="value">Double precision floating point value to be adjusted</param>
 		/// <param name="ulps">Numbers of neighbouring representable values to step</param>

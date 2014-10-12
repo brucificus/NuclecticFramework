@@ -23,38 +23,38 @@ License along with this library
 namespace Nuclectic.Graphics.TriD.Batching
 {
 	/// <summary>
-	///   Strategies by which the primitive batcher can consolidate vertices
+	///     Strategies by which the primitive batcher can consolidate vertices
 	/// </summary>
 	public enum QueueingStrategy
 	{
 		/// <summary>Immediately draws any primitives sent to the batcher.</summary>
 		/// <remarks>
-		///   This results in rather poor performance but keeps the drawing order
-		///   unchanged even when multiple primitve batchers are used to draw at
-		///   the same time.
+		///     This results in rather poor performance but keeps the drawing order
+		///     unchanged even when multiple primitve batchers are used to draw at
+		///     the same time.
 		/// </remarks>
 		Immediate,
 
 		/// <summary>
-		///   The vertex batcher caches any drawing commands until a batch is full
-		///   or the End() method is called.
+		///     The vertex batcher caches any drawing commands until a batch is full
+		///     or the End() method is called.
 		/// </summary>
 		/// <remarks>
-		///   This will greatly improve rendering performance compared to immediate
-		///   drawing. However, using multiple primitve batchers at the same time
-		///   will result in an undefined drawing order (if there are no overlaps or
-		///   the depth buffer is enabled, this won't matter)
+		///     This will greatly improve rendering performance compared to immediate
+		///     drawing. However, using multiple primitve batchers at the same time
+		///     will result in an undefined drawing order (if there are no overlaps or
+		///     the depth buffer is enabled, this won't matter)
 		/// </remarks>
 		Deferred,
 
 		/// <summary>
-		///   Caches all drawing commands and sorts the primitives queued for drawing
-		///   by the context they use.
+		///     Caches all drawing commands and sorts the primitives queued for drawing
+		///     by the context they use.
 		/// </summary>
 		/// <remarks>
-		///   This is the fastest mode for many small objects. However, drawing order
-		///   will be undefined, requiring either a zero overlap guarantee for any
-		///   vertices drawn or the depth buffer to be enabled.
+		///     This is the fastest mode for many small objects. However, drawing order
+		///     will be undefined, requiring either a zero overlap guarantee for any
+		///     vertices drawn or the depth buffer to be enabled.
 		/// </remarks>
 		Context
 	}

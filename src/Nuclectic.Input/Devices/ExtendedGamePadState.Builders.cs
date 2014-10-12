@@ -31,11 +31,11 @@ namespace Nuclectic.Input.Devices
 		/// <summary>Initializes a new extended game pas state to the provided values</summary>
 		/// <param name="availableAxes">Bit mask of the axes made available in the state</param>
 		/// <param name="axes">
-		///   Values of all 24 axes in the order they appear in the ExtendedAxes enumeration
+		///     Values of all 24 axes in the order they appear in the ExtendedAxes enumeration
 		/// </param>
 		/// <param name="availableSliders">Bit mask of the slider provided by the state</param>
 		/// <param name="sliders">
-		///   Values of all 8 sliders in the order they appear in the ExtendedSliders enumeration
+		///     Values of all 8 sliders in the order they appear in the ExtendedSliders enumeration
 		/// </param>
 		/// <param name="buttonCount">Number of buttons provided by the state</param>
 		/// <param name="buttons">State of all 128 buttons in the state</param>
@@ -114,10 +114,10 @@ namespace Nuclectic.Input.Devices
 		}
 
 		/// <summary>
-		///   Initializes a new extended game pad state from a standard game pad state
+		///     Initializes a new extended game pad state from a standard game pad state
 		/// </summary>
 		/// <param name="gamePadState">
-		///   Standard game pad state the extended game pad state is initialized from
+		///     Standard game pad state the extended game pad state is initialized from
 		/// </param>
 		public ExtendedGamePadState(ref GamePadState gamePadState)
 		{
@@ -188,11 +188,11 @@ namespace Nuclectic.Input.Devices
 		}
 
 		/// <summary>
-		///   Initializes a new extended game pad state from a DirectInput joystick state
+		///     Initializes a new extended game pad state from a DirectInput joystick state
 		/// </summary>
 		/// <param name="converter">DirectInput converter used to fill the state</param>
 		/// <param name="joystickState">
-		///   Joystick state from which the extended game pad state will be built
+		///     Joystick state from which the extended game pad state will be built
 		/// </param>
 		public ExtendedGamePadState(
 			IDirectInputConverter converter, IJoystickState joystickState

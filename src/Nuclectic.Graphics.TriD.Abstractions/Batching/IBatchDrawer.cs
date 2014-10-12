@@ -25,17 +25,17 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Nuclectic.Graphics.TriD.Batching
 {
 	/// <summary>
-	///   Draws batches of primitives using the most efficient method available
-	///   on the platform the game is running on
+	///     Draws batches of primitives using the most efficient method available
+	///     on the platform the game is running on
 	/// </summary>
 	public interface IBatchDrawer<VertexType> where VertexType : struct, IVertexType
 	{
 		/// <summary>
-		///   Maximum number of vertices or indices a single batch is allowed to have
+		///     Maximum number of vertices or indices a single batch is allowed to have
 		/// </summary>
 		/// <remarks>
-		///   This value must not change once the batch drawer is passed to a queuer
-		///   since the queuers will size the vertex arrays according to this number.
+		///     This value must not change once the batch drawer is passed to a queuer
+		///     since the queuers will size the vertex arrays according to this number.
 		/// </remarks>
 		int MaximumBatchSize { get; }
 
@@ -58,12 +58,12 @@ namespace Nuclectic.Graphics.TriD.Batching
 
 		/// <summary>Draws a batch of indexed primitives</summary>
 		/// <param name="startVertex">
-		///   Index of the first vertex in the vertex array. This vertex will become
-		///   the new index 0 for the index buffer.
+		///     Index of the first vertex in the vertex array. This vertex will become
+		///     the new index 0 for the index buffer.
 		/// </param>
 		/// <param name="vertexCount">Number of vertices used in the call</param>
 		/// <param name="startIndex">
-		///   Position at which to begin processing the index array
+		///     Position at which to begin processing the index array
 		/// </param>
 		/// <param name="indexCount">Number of indices that will be processed</param>
 		/// <param name="type">Type of primitives to draw</param>

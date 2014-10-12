@@ -41,27 +41,27 @@ namespace Nuclectic.Tests.Geometry.Areas
 		private class BrokenRandom : IRandom
 		{
 			/// <summary>
-			///   Returns a nonnegative random number less than the specified maximum
+			///     Returns a nonnegative random number less than the specified maximum
 			/// </summary>
 			/// <param name="maximumValue">
-			///   The exclusive upper bound of the random number to be generated. maxValue must
-			///   be greater than or equal to zero
+			///     The exclusive upper bound of the random number to be generated. maxValue must
+			///     be greater than or equal to zero
 			/// </param>
 			/// <returns>
-			///   A 32-bit signed integer greater than or equal to zero, and less than maxValue;
-			///   that is, the range of return values ordinarily includes zero but not maxValue.
-			///   However, if maxValue equals zero, maxValue is returned
+			///     A 32-bit signed integer greater than or equal to zero, and less than maxValue;
+			///     that is, the range of return values ordinarily includes zero but not maxValue.
+			///     However, if maxValue equals zero, maxValue is returned
 			/// </returns>
 			/// <exception cref="System.ArgumentOutOfRangeException">
-			///   maximumValue is less than zero
+			///     maximumValue is less than zero
 			/// </exception>
 			public int Next(int maximumValue) { return -maximumValue; // Intentional misbehavior
 			}
 
 			/// <summary>Returns a random number between 0.0 and 1.0</summary>
 			/// <returns>
-			///   A double-precision floating point number greater than or equal to 0.0,
-			///   and less than 1.0
+			///     A double-precision floating point number greater than or equal to 0.0,
+			///     and less than 1.0
 			/// </returns>
 			public double NextDouble() { return 0.0; }
 		}
@@ -119,7 +119,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Validates that a plane's side determination helper is working as expected
+		///     Validates that a plane's side determination helper is working as expected
 		/// </summary>
 		[Test]
 		public void TestSideDetermination()
@@ -136,8 +136,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Verifies that the bounding box calculation of the plane class is working
-		///   for planes perfectly aligned to the Y/Z axes
+		///     Verifies that the bounding box calculation of the plane class is working
+		///     for planes perfectly aligned to the Y/Z axes
 		/// </summary>
 		[Test]
 		public void TestBoundingBoxCalculationForXPlane()
@@ -153,8 +153,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Verifies that the bounding box calculation of the plane class is working
-		///   for planes perfectly aligned to the X/Z axes
+		///     Verifies that the bounding box calculation of the plane class is working
+		///     for planes perfectly aligned to the X/Z axes
 		/// </summary>
 		[Test]
 		public void TestBoundingBoxCalculationForYPlane()
@@ -170,8 +170,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Verifies that the bounding box calculation of the plane class is working
-		///   for planes perfectly aligned to the X/Y axes
+		///     Verifies that the bounding box calculation of the plane class is working
+		///     for planes perfectly aligned to the X/Y axes
 		/// </summary>
 		[Test]
 		public void TestBoundingBoxCalculationForZPlane()
@@ -187,8 +187,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Verifies that the bounding box calculation of the plane class is working
-		///   for planes
+		///     Verifies that the bounding box calculation of the plane class is working
+		///     for planes
 		/// </summary>
 		[Test]
 		public void TestBoundingBoxCalculation()
@@ -206,8 +206,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether the plane class is able to locate the closest point on the plane
-		///   to an arbitrary point
+		///     Tests whether the plane class is able to locate the closest point on the plane
+		///     to an arbitrary point
 		/// </summary>
 		[Test]
 		public void TestClosestPointToPlane()
@@ -232,8 +232,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether the plane class can find a random point on the plane's perimeter
-		///   for a plane perfectly aligned to the Y/Z axes
+		///     Tests whether the plane class can find a random point on the plane's perimeter
+		///     for a plane perfectly aligned to the Y/Z axes
 		/// </summary>
 		[Test]
 		public void TestRandomPointOnPerimeterForXPlane()
@@ -252,8 +252,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether the plane class can find a random point on the plane's perimeter
-		///   for a plane perfectly aligned to the X/Z axes
+		///     Tests whether the plane class can find a random point on the plane's perimeter
+		///     for a plane perfectly aligned to the X/Z axes
 		/// </summary>
 		[Test]
 		public void TestRandomPointOnPerimeterForYPlane()
@@ -272,8 +272,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether the plane class can find a random point on the plane's perimeter
-		///   for a plane perfectly aligned to the X/Y axes
+		///     Tests whether the plane class can find a random point on the plane's perimeter
+		///     for a plane perfectly aligned to the X/Y axes
 		/// </summary>
 		[Test]
 		public void TestRandomPointOnPerimeterForZPlane()
@@ -292,7 +292,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether the plane class can find a random point on the plane's perimeter
+		///     Tests whether the plane class can find a random point on the plane's perimeter
 		/// </summary>
 		[Test]
 		public void TestRandomPointOnPerimeter()
@@ -320,8 +320,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether the plane class can find a random point within the plane
-		///   for a plane perfectly aligned to the Y/Z axes
+		///     Tests whether the plane class can find a random point within the plane
+		///     for a plane perfectly aligned to the Y/Z axes
 		/// </summary>
 		[Test]
 		public void TestRandomPointWithinForXPlane()
@@ -340,8 +340,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether the plane class can find a random point within the plane
-		///   for a plane perfectly aligned to the X/Z axes
+		///     Tests whether the plane class can find a random point within the plane
+		///     for a plane perfectly aligned to the X/Z axes
 		/// </summary>
 		[Test]
 		public void TestRandomPointWithinForYPlane()
@@ -360,8 +360,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether the plane class can find a random point within the plane
-		///   for a plane perfectly aligned to the X/Y axes
+		///     Tests whether the plane class can find a random point within the plane
+		///     for a plane perfectly aligned to the X/Y axes
 		/// </summary>
 		[Test]
 		public void TestRandomPointWithinForZPlane()
@@ -380,7 +380,7 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether the plane class can find a random point within the plane
+		///     Tests whether the plane class can find a random point within the plane
 		/// </summary>
 		[Test]
 		public void TestRandomPointWithin()
@@ -409,8 +409,8 @@ namespace Nuclectic.Tests.Geometry.Areas
 		}
 
 		/// <summary>
-		///   Tests whether the plane class throws an exception if the random number generator
-		///   is malfunctioning (talk about edge cases...)
+		///     Tests whether the plane class throws an exception if the random number generator
+		///     is malfunctioning (talk about edge cases...)
 		/// </summary>
 		[Test]
 		public void TestThrowOnRandomPointOnPerimeterWithBrokenRandom()

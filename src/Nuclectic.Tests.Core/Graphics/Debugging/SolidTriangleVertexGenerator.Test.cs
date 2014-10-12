@@ -28,12 +28,10 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Graphics.Debugging
 {
-
 	/// <summary>Unit tests for the solid triangle vertex generator</summary>
 	[TestFixture]
 	internal class SolidTriangleVertexGeneratorTest
 	{
-
 		/// <summary>Verifies that the vertex generator can create a triangle</summary>
 		[Test]
 		public void TestTriangleGeneration()
@@ -42,20 +40,18 @@ namespace Nuclectic.Tests.Graphics.Debugging
 			VertexPositionColor[] vertices = new VertexPositionColor[count + 1];
 
 			SolidTriangleVertexGenerator.Generate(
-			  vertices, 1,
-			  new Vector3(10.0f, 20.0f, 30.0f),
-			  new Vector3(20.0f, 30.0f, 10.0f),
-			  new Vector3(30.0f, 10.0f, 20.0f),
-			  Color.Blue
-			);
+												  vertices, 1,
+												  new Vector3(10.0f, 20.0f, 30.0f),
+												  new Vector3(20.0f, 30.0f, 10.0f),
+												  new Vector3(30.0f, 10.0f, 20.0f),
+												  Color.Blue
+				);
 
 			Assert.AreEqual(Vector3.Zero, vertices[0].Position);
 			Assert.AreNotEqual(Vector3.Zero, vertices[1].Position);
 			Assert.AreNotEqual(Vector3.Zero, vertices[count - 1].Position);
 		}
-
 	}
-
 } // namespace Nuclex.Graphics
 
 #endif // UNITTEST

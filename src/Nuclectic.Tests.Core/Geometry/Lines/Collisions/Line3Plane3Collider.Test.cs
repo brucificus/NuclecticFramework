@@ -34,8 +34,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 	public class Line3Plane3ColliderTest
 	{
 		/// <summary>
-		///   Verifies that a line that is above and parallel to a plane does not
-		///   register as a contact
+		///     Verifies that a line that is above and parallel to a plane does not
+		///     register as a contact
 		/// </summary>
 		[Test]
 		public void TestParallelLineAbovePlane()
@@ -49,8 +49,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Verifies that a line that is above and parallel to a plane does not
-		///   register as a contact
+		///     Verifies that a line that is above and parallel to a plane does not
+		///     register as a contact
 		/// </summary>
 		[Test]
 		public void TestParallelLineBelowPlane()
@@ -64,7 +64,7 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether a contact is detected for a line crossing a plane orthogonally
+		///     Tests whether a contact is detected for a line crossing a plane orthogonally
 		/// </summary>
 		[Test]
 		public void TestLineCrossingPlaneOrthogonally()
@@ -86,7 +86,7 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether a contact is detected for a line crossing a plane diagonally
+		///     Tests whether a contact is detected for a line crossing a plane diagonally
 		/// </summary>
 		[Test]
 		public void TestLineCrossingPlaneDiagonally()

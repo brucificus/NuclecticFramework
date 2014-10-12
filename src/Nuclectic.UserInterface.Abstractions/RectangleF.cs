@@ -58,8 +58,8 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Pushes the edges of the Rectangle out by the horizontal and
-		///   vertical values specified
+		///     Pushes the edges of the Rectangle out by the horizontal and
+		///     vertical values specified
 		/// </summary>
 		/// <param name="horizontalAmount">Value to push the sides out by</param>
 		/// <param name="verticalAmount">Value to push the top and bottom out by</param>
@@ -74,25 +74,25 @@ namespace Nuclectic.UserInterface
 		/// <summary>Determines whether the rectangle contains a specified Point</summary>
 		/// <param name="point">The point to evaluate</param>
 		/// <returns>
-		///   True if the specified point is contained within this rectangle; false otherwise
+		///     True if the specified point is contained within this rectangle; false otherwise
 		/// </returns>
 		public bool Contains(Vector2 point) { return Contains(point.X, point.Y); }
 
 		/// <summary>Determines whether the rectangle contains a specified Point</summary>
 		/// <param name="point">The point to evaluate</param>
 		/// <param name="result">
-		///   True if the specified point is contained within this rectangle; false otherwise
+		///     True if the specified point is contained within this rectangle; false otherwise
 		/// </param>
 		public void Contains(ref Vector2 point, out bool result) { result = Contains(point.X, point.Y); }
 
 		/// <summary>
-		///   Determines whether this Rectangle contains a specified point represented by
-		///   its x- and y-coordinates
+		///     Determines whether this Rectangle contains a specified point represented by
+		///     its x- and y-coordinates
 		/// </summary>
 		/// <param name="x">The x-coordinate of the specified point</param>
 		/// <param name="y">The y-coordinate of the specified point</param>
 		/// <returns>
-		///   True if the specified point is contained within this rectangle; false otherwise
+		///     True if the specified point is contained within this rectangle; false otherwise
 		/// </returns>
 		public bool Contains(float x, float y)
 		{
@@ -104,11 +104,11 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Determines whether the rectangle contains another rectangle in its entirety
+		///     Determines whether the rectangle contains another rectangle in its entirety
 		/// </summary>
 		/// <param name="other">The rectangle to evaluate</param>
 		/// <returns>
-		///   True if the rectangle entirely contains the specified rectangle; false otherwise
+		///     True if the rectangle entirely contains the specified rectangle; false otherwise
 		/// </returns>
 		public bool Contains(RectangleF other)
 		{
@@ -118,12 +118,12 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Determines whether this rectangle entirely contains a specified rectangle
+		///     Determines whether this rectangle entirely contains a specified rectangle
 		/// </summary>
 		/// <param name="other">The rectangle to evaluate</param>
 		/// <param name="result">
-		///   On exit, is true if this rectangle entirely contains the specified rectangle,
-		///   or false if not
+		///     On exit, is true if this rectangle entirely contains the specified rectangle,
+		///     or false if not
 		/// </param>
 		public void Contains(ref RectangleF other, out bool result)
 		{
@@ -135,11 +135,11 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Determines whether a specified rectangle intersects with this rectangle
+		///     Determines whether a specified rectangle intersects with this rectangle
 		/// </summary>
 		/// <param name="rectangle">The rectangle to evaluate</param>
 		/// <returns>
-		///   True if the specified rectangle intersects with this one; false otherwise
+		///     True if the specified rectangle intersects with this one; false otherwise
 		/// </returns>
 		public bool Intersects(RectangleF rectangle)
 		{
@@ -149,11 +149,11 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Determines whether a specified rectangle intersects with this rectangle
+		///     Determines whether a specified rectangle intersects with this rectangle
 		/// </summary>
 		/// <param name="rectangle">The rectangle to evaluate</param>
 		/// <param name="result">
-		///   True if the specified rectangle intersects with this one; false otherwise
+		///     True if the specified rectangle intersects with this one; false otherwise
 		/// </param>
 		public void Intersects(ref RectangleF rectangle, out bool result)
 		{
@@ -165,11 +165,11 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Determines whether the specified rectangle is equal to this rectangle
+		///     Determines whether the specified rectangle is equal to this rectangle
 		/// </summary>
 		/// <param name="other">The rectangle to compare with this rectangle</param>
 		/// <returns>
-		///   True if the specified rectangle is equal to the this rectangle; false otherwise
+		///     True if the specified rectangle is equal to the this rectangle; false otherwise
 		/// </returns>
 		public bool Equals(RectangleF other)
 		{
@@ -181,12 +181,12 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Returns a value that indicates whether the current instance is equal to a
-		///   specified object
+		///     Returns a value that indicates whether the current instance is equal to a
+		///     specified object
 		/// </summary>
 		/// <param name="other">Object to make the comparison with</param>
 		/// <returns>
-		///   True if the current instance is equal to the specified object; false otherwise
+		///     True if the current instance is equal to the specified object; false otherwise
 		/// </returns>
 		public override bool Equals(object other)
 		{

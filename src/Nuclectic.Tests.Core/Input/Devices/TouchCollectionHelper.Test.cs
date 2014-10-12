@@ -27,13 +27,12 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input.Devices
 {
-
 	/// <summary>Unit tests for the touch collection helper</summary>
 	[TestFixture]
 	internal class TouchCollectionHelperTest
 	{
 		/// <summary>
-		///   Verifies that touch location can be added to a touch collection
+		///     Verifies that touch location can be added to a touch collection
 		/// </summary>
 		[Test]
 		public void TestAddTouchLocationThenClear()
@@ -41,10 +40,10 @@ namespace Nuclectic.Tests.Input.Devices
 			var touches = new TouchCollection();
 
 			TouchCollectionHelper.AddTouchLocation(
-			  ref touches, 1,
-			  TouchLocationState.Pressed, 12, 34,
-			  TouchLocationState.Released, 56, 78
-			);
+												   ref touches, 1,
+												   TouchLocationState.Pressed, 12, 34,
+												   TouchLocationState.Released, 56, 78
+				);
 
 			Assert.AreEqual(1, touches.Count);
 
@@ -58,9 +57,7 @@ namespace Nuclectic.Tests.Input.Devices
 			TouchCollectionHelper.Clear(ref touches);
 			Assert.AreEqual(0, touches.Count);
 		}
-
 	}
-
 } // namespace Nuclex.Input.Devices
 
 #endif // UNITTEST

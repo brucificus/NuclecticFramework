@@ -34,8 +34,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 	public class Ray2Disc2ColliderTest
 	{
 		/// <summary>
-		///   Verifies that the right contacts are returned for a ray that starts
-		///   inside of the disc
+		///     Verifies that the right contacts are returned for a ray that starts
+		///     inside of the disc
 		/// </summary>
 		[Test]
 		public void TestRayStartingInside()
@@ -55,8 +55,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Verifies that no contacts are returned for a ray whose starting point
-		///   lies behind the disc
+		///     Verifies that no contacts are returned for a ray whose starting point
+		///     lies behind the disc
 		/// </summary>
 		[Test]
 		public void TestRayStartingBehind()
@@ -69,8 +69,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Verifies that a ray starting inside an absolutely positioned disc is
-		///   correctly handled by the intersection detector
+		///     Verifies that a ray starting inside an absolutely positioned disc is
+		///     correctly handled by the intersection detector
 		/// </summary>
 		[Test]
 		public void TestRayStartingInsideWithAbsoluteDiscPosition()
@@ -91,8 +91,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Verifies that a ray starting behind an absolutely positioned disc causes
-		///   no contacts to be returned by the intersection detector
+		///     Verifies that a ray starting behind an absolutely positioned disc causes
+		///     no contacts to be returned by the intersection detector
 		/// </summary>
 		[Test]
 		public void TestRayStartingBehindWithAbsoluteDiscPosition()

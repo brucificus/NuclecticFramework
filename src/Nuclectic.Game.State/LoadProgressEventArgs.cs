@@ -7,7 +7,7 @@ namespace Nuclectic.Game.State
 	{
 		/// <summary>Initializes a new load progress event argument container</summary>
 		/// <param name="progress">
-		///   Progress that will be reported to the event subscribers
+		///     Progress that will be reported to the event subscribers
 		/// </param>
 		public LoadProgressEventArgs(float progress) { this.progress = progress; }
 

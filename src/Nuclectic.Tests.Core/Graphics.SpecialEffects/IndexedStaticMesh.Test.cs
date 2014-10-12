@@ -40,7 +40,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		#region struct TestVertex
 
 		/// <summary>
-		///   Vertex used to unit-test the static mesh graphics resource keepr
+		///     Vertex used to unit-test the static mesh graphics resource keepr
 		/// </summary>
 		private struct TestVertex : IVertexType
 		{
@@ -68,7 +68,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		private class TestIndexedStaticMesh : IndexedStaticMesh<TestVertex>
 		{
 			/// <summary>
-			///   Initializes a new static mesh that automatically determines its vertex format
+			///     Initializes a new static mesh that automatically determines its vertex format
 			/// </summary>
 			/// <param name="graphicsDevice">Graphics device the static mesh lives on</param>
 			/// <param name="vertexCount">Number of vertices used by the static mesh</param>
@@ -89,7 +89,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		#endregion // class TestStaticMesh
 
 		/// <summary>
-		///   Verifies that the simple constructor of the static mesh class is working
+		///     Verifies that the simple constructor of the static mesh class is working
 		/// </summary>
 		[Test]
 		public void TestSimpleConstructor()
@@ -104,7 +104,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		}
 
 		/// <summary>
-		///   Verifies that the simple constructor rolls back when an exception occurs in it
+		///     Verifies that the simple constructor rolls back when an exception occurs in it
 		/// </summary>
 		[Test]
 		public void TestThrowInSimpleConstructorRollback()
@@ -126,7 +126,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		}
 
 		/// <summary>
-		///   Tests whether the static meshes' Select() method is implemented correctly
+		///     Tests whether the static meshes' Select() method is implemented correctly
 		/// </summary>
 		[Test]
 		public void TestSelect()
@@ -150,7 +150,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects
 		}
 
 		/// <summary>
-		///   Only exists to prevent the compiler from complaining about unused fields
+		///     Only exists to prevent the compiler from complaining about unused fields
 		/// </summary>
 		protected void AvoidCompilerWarnings()
 		{

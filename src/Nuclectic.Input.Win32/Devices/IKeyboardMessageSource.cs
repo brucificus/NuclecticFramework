@@ -23,7 +23,7 @@ License along with this library
 namespace Nuclectic.Input.Devices
 {
 	/// <summary>
-	///   Sends out notifications for intercepted window messages related to the keyboard
+	///     Sends out notifications for intercepted window messages related to the keyboard
 	/// </summary>
 	public interface IKeyboardMessageSource
 	{

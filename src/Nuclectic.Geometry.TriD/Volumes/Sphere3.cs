@@ -53,10 +53,10 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Smallest box that encloses the volume in its entirety</summary>
 		/// <remarks>
-		///   This always produces an optimal box which means a tight-fitting box is generated
-		///   that will touch the volume on each of its six sides. As a side effect, it is very
-		///   likely that this box needs to be recalculated whenever the volume changes its
-		///   orientation.
+		///     This always produces an optimal box which means a tight-fitting box is generated
+		///     that will touch the volume on each of its six sides. As a side effect, it is very
+		///     likely that this box needs to be recalculated whenever the volume changes its
+		///     orientation.
 		/// </remarks>
 		public AxisAlignedBox3 BoundingBox
 		{
@@ -71,9 +71,9 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Smallest sphere that encloses the volume in its entirety</summary>
 		/// <remarks>
-		///   Bounding spheres have the advantage to not change even when the volume is
-		///   rotated. That makes them ideal for dynamic objects that are not keeping their
-		///   original orientation.
+		///     Bounding spheres have the advantage to not change even when the volume is
+		///     rotated. That makes them ideal for dynamic objects that are not keeping their
+		///     original orientation.
 		/// </remarks>
 		public Sphere3 BoundingSphere
 		{
@@ -183,21 +183,21 @@ namespace Nuclectic.Geometry.Volumes
 		/// <param name="sphere">Sphere that will be checked for intersection</param>
 		/// <returns>The point of first contact, if any</returns>
 		/// <remarks>
-		///   <para>
-		///     Conventional tests that resort to stepping often fail to detect collisions
-		///     between fast-moving objects. This impact determination test will always
-		///     detect a collision if it occurs, giving the exact time of the impact.
-		///   </para>
-		///   <para>
-		///     This is a simplified test that assumes a linear trajectory and does
-		///     not take off-center object rotation into account. It is well suited to use
-		///     on two bounding spheres in order to determine if a collision between the
-		///     shape contained is possible at all.
-		///   </para>
-		///   <para>
-		///     Ideas taken from the "Simple Intersection Tests for Games" article
-		///     on gamasutra by Gomez.
-		///   </para>
+		///     <para>
+		///         Conventional tests that resort to stepping often fail to detect collisions
+		///         between fast-moving objects. This impact determination test will always
+		///         detect a collision if it occurs, giving the exact time of the impact.
+		///     </para>
+		///     <para>
+		///         This is a simplified test that assumes a linear trajectory and does
+		///         not take off-center object rotation into account. It is well suited to use
+		///         on two bounding spheres in order to determine if a collision between the
+		///         shape contained is possible at all.
+		///     </para>
+		///     <para>
+		///         Ideas taken from the "Simple Intersection Tests for Games" article
+		///         on gamasutra by Gomez.
+		///     </para>
 		/// </remarks>
 		public float[] LocateImpact(Vector3 thisVelocity, Sphere3 sphere)
 		{

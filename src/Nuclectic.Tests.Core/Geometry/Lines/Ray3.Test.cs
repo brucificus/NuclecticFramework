@@ -555,8 +555,8 @@ namespace Nuclectic.Tests.Geometry.Lines
 		}
 
 		/// <summary>
-		///   Ensures that the contact finding method can find a direct orthogonal ray
-		///   passing through the triangle
+		///     Ensures that the contact finding method can find a direct orthogonal ray
+		///     passing through the triangle
 		/// </summary>
 		[Test]
 		public void TestFindOrthogonalContactOnTriangle()
@@ -584,8 +584,8 @@ namespace Nuclectic.Tests.Geometry.Lines
 		}
 
 		/// <summary>
-		///   Ensures that the contact finding method can detect contacts with rays
-		///   touching the outside of the triangle
+		///     Ensures that the contact finding method can detect contacts with rays
+		///     touching the outside of the triangle
 		/// </summary>
 		[Test]
 		public void TestFindSideContactOnTriangle()

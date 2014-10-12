@@ -32,7 +32,7 @@ namespace Nuclectic.Graphics.TriD.Debugging
 		internal const int VertexCount = 3;
 
 		/// <summary>
-		///   Outputs the vertices for a solid triangle into the specified array
+		///     Outputs the vertices for a solid triangle into the specified array
 		/// </summary>
 		/// <param name="vertices">Array to write the triangle vertices into</param>
 		/// <param name="startIndex">Index in the array to begin writing at</param>

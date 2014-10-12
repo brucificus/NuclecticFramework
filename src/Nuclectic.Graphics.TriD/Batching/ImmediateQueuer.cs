@@ -26,18 +26,18 @@ namespace Nuclectic.Graphics.TriD.Batching
 {
 	/// <summary>Draws any vertices sent to it immediately</summary>
 	/// <remarks>
-	///   This is the simplest possible queuer. It will draw any vertices handed to
-	///   it immediately. This causes a large number of DrawPrimitive() calls, which
-	///   will have a drastic impact on performance (DirectX 9.0 level games are expected
-	///   to have only a few hundred DrawPrimitive calls per frame). It is advisable to
-	///   use this queuer only if you have a very few primitive batches to draw.
+	///     This is the simplest possible queuer. It will draw any vertices handed to
+	///     it immediately. This causes a large number of DrawPrimitive() calls, which
+	///     will have a drastic impact on performance (DirectX 9.0 level games are expected
+	///     to have only a few hundred DrawPrimitive calls per frame). It is advisable to
+	///     use this queuer only if you have a very few primitive batches to draw.
 	/// </remarks>
 	public class ImmediateQueuer<VertexType> : Queuer<VertexType>
 		where VertexType : struct, IVertexType
 	{
 		/// <summary>Initializes a new immediate primitive queuer</summary>
 		/// <param name="batchDrawer">
-		///   Batch drawer that will be used to render completed vertex batches
+		///     Batch drawer that will be used to render completed vertex batches
 		/// </param>
 		public ImmediateQueuer(IBatchDrawer<VertexType> batchDrawer)
 			:
@@ -46,8 +46,8 @@ namespace Nuclectic.Graphics.TriD.Batching
 		/// <summary>Queues a series of indexed primitives</summary>
 		/// <param name="vertices">Primitive vertices</param>
 		/// <param name="startVertex">
-		///   Index in the vertex array of the first vertex. This vertex will become
-		///   the new index 0 for the index buffer.
+		///     Index in the vertex array of the first vertex. This vertex will become
+		///     the new index 0 for the index buffer.
 		/// </param>
 		/// <param name="vertexCount">Number of vertices to draw</param>
 		/// <param name="indices">Indices of the vertices to draw</param>

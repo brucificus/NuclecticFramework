@@ -30,7 +30,7 @@ namespace Nuclectic.Input.Devices
 	{
 		/// <summary>Retrieves the state of the specified button</summary>
 		/// <param name="buttonIndex">
-		///   Index of the button whose state will be retrieved
+		///     Index of the button whose state will be retrieved
 		/// </param>
 		/// <returns>The state of the queried button</returns>
 		public ButtonState GetButton(int buttonIndex) { return IsButtonDown(buttonIndex) ? ButtonState.Pressed : ButtonState.Released; }
@@ -295,8 +295,8 @@ namespace Nuclectic.Input.Devices
 		/// <param name="dpad">Directional pad state that will be converted</param>
 		/// <returns>The equivalent PoV controller pad state</returns>
 		/// <remarks>
-		///   Conflicting states (eg. directional pad 'down' and 'up' at the same time)
-		///   are resolved as if the specific axis was neutral.
+		///     Conflicting states (eg. directional pad 'down' and 'up' at the same time)
+		///     are resolved as if the specific axis was neutral.
 		/// </remarks>
 		public static int PovFromDpad(GamePadDPad dpad)
 		{
@@ -356,7 +356,7 @@ namespace Nuclectic.Input.Devices
 		}
 
 		/// <summary>
-		///   Converts an extended button bit mask into the XNA's own button mask
+		///     Converts an extended button bit mask into the XNA's own button mask
 		/// </summary>
 		/// <param name="extendedButtons1">Button bit mask that will be converted</param>
 		/// <returns>Equivalent XNA button mask for the provided button bit mask</returns>
@@ -378,7 +378,7 @@ namespace Nuclectic.Input.Devices
 		}
 
 		/// <summary>
-		///   Converts XNA's own button mask into an extended button bit mask
+		///     Converts XNA's own button mask into an extended button bit mask
 		/// </summary>
 		/// <param name="buttons">XNA button mask that will be converted</param>
 		/// <returns>Equivalent extended button bit mask for the provided button mask</returns>
@@ -398,13 +398,13 @@ namespace Nuclectic.Input.Devices
 		}
 
 		/// <summary>
-		///   Order in which the buttons in the extended state map to XNAs Buttons enumeration
+		///     Order in which the buttons in the extended state map to XNAs Buttons enumeration
 		/// </summary>
 		/// <remarks>
-		///   Tested this with an XBox 360 game pad. An older game pad used a completely
-		///   arbitrary order and there's no way to find out which button resembles what,
-		///   so I'm hoping that the XBox 360's DirectInput driver sets an inofficial
-		///   standard and others copy the order in which its buttons are listed.
+		///     Tested this with an XBox 360 game pad. An older game pad used a completely
+		///     arbitrary order and there's no way to find out which button resembles what,
+		///     so I'm hoping that the XBox 360's DirectInput driver sets an inofficial
+		///     standard and others copy the order in which its buttons are listed.
 		/// </remarks>
 		public static readonly Buttons[] ButtonOrder = new Buttons[]
 		{
@@ -434,8 +434,8 @@ namespace Nuclectic.Input.Devices
 		/// <param name="value">Value whose bits will be counted</param>
 		/// <returns>The number of bits set in the unsigned integer</returns>
 		/// <remarks>
-		///   Based on a trick revealed here:
-		///   http://stackoverflow.com/questions/109023
+		///     Based on a trick revealed here:
+		///     http://stackoverflow.com/questions/109023
 		/// </remarks>
 		private static int countBits(uint value)
 		{

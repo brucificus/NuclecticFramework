@@ -471,8 +471,8 @@ namespace Nuclectic.Tests.Geometry.Lines
 		}
 
 		/// <summary>
-		///   Ensures that the contact finding method works for triangles that are directly
-		///   pierced by an orthogonal line
+		///     Ensures that the contact finding method works for triangles that are directly
+		///     pierced by an orthogonal line
 		/// </summary>
 		[Test]
 		public void TestFindOrthogonalContactsOnTriangle()
@@ -501,8 +501,8 @@ namespace Nuclectic.Tests.Geometry.Lines
 		}
 
 		/// <summary>
-		///   Ensures that the contact finding method works for triangles that are touched
-		///   on their sides by a line
+		///     Ensures that the contact finding method works for triangles that are touched
+		///     on their sides by a line
 		/// </summary>
 		[Test]
 		public void TestFindSideContactsOnTriangle()

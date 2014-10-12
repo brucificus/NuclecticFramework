@@ -30,24 +30,24 @@ namespace Nuclectic.Geometry.Lines.Collisions
 	{
 		/// <summary>Determines the points of contact between a line and a sphere</summary>
 		/// <param name="lineOffset">
-		///   Offset of the line from the coordinate system's center
+		///     Offset of the line from the coordinate system's center
 		/// </param>
 		/// <param name="lineDirection">Vector indicating the line's direction</param>
 		/// <param name="sphereRadius">Radius of the sphere</param>
 		/// <returns>
-		///   The locations at which the line enters and leaves the sphere, if any
+		///     The locations at which the line enters and leaves the sphere, if any
 		/// </returns>
 		/// <remarks>
-		///   <para>
-		///     This variant of the algorithm either returns two contacts or none. There is no
-		///     special case for when the line exactly touches the circumference of the sphere,
-		///     thus producing a single contact. This case will be handled as if no contact
-		///     occured at all.
-		///   </para>
-		///   <para>
-		///     Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
-		///     and used as a supporting function for the other line/sphere contact finders.
-		///   </para>
+		///     <para>
+		///         This variant of the algorithm either returns two contacts or none. There is no
+		///         special case for when the line exactly touches the circumference of the sphere,
+		///         thus producing a single contact. This case will be handled as if no contact
+		///         occured at all.
+		///     </para>
+		///     <para>
+		///         Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
+		///         and used as a supporting function for the other line/sphere contact finders.
+		///     </para>
 		/// </remarks>
 		public static LineContacts FindContacts(
 			Vector3 lineOffset, Vector3 lineDirection, float sphereRadius
@@ -75,11 +75,11 @@ namespace Nuclectic.Geometry.Lines.Collisions
 		/// <param name="lineOffset">Offset of the line from the sphere's center</param>
 		/// <param name="lineDirection">Vector indicating the line's direction</param>
 		/// <param name="sphereCenter">
-		///   Absolute coordinates of the sphere's center point
+		///     Absolute coordinates of the sphere's center point
 		/// </param>
 		/// <param name="sphereRadius">Radius of the sphere</param>
 		/// <returns>
-		///   The locations at which the line enters and leaves the sphere, if any
+		///     The locations at which the line enters and leaves the sphere, if any
 		/// </returns>
 		public static LineContacts FindContacts(
 			Vector3 lineOffset, Vector3 lineDirection, Vector3 sphereCenter, float sphereRadius

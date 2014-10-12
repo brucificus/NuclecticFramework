@@ -28,14 +28,14 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects
 	public static class TriangleStripIndexBuilder
 	{
 		/// <summary>
-		///   Calculates the number of vertex indices required to draw an alternating
-		///   triangle strip of the requested size
+		///     Calculates the number of vertex indices required to draw an alternating
+		///     triangle strip of the requested size
 		/// </summary>
 		/// <param name="segmentsX">
-		///   Number of segments the strip should have on the X axis
+		///     Number of segments the strip should have on the X axis
 		/// </param>
 		/// <param name="segmentsZ">
-		///   Number of segments the strip should have on the Y axis
+		///     Number of segments the strip should have on the Y axis
 		/// </param>
 		/// <returns>The number of indices required for the strip</returns>
 		public static int CountAlternatingStripIndices(int segmentsX, int segmentsZ)
@@ -46,16 +46,16 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects
 		}
 
 		/// <summary>
-		///   Builds the index buffer for a grid of vertices drawn as a triangle strip
+		///     Builds the index buffer for a grid of vertices drawn as a triangle strip
 		/// </summary>
 		/// <param name="segmentsX">Number of horizontal subdivisions in the plane</param>
 		/// <param name="segmentsZ">Number of vertical subdivisions in the plane</param>
 		/// <remarks>
-		///   <para>
-		///     This method builds indices to draw a grid of vertices with alternating
-		///     split diagonals for each line of quads.
-		///   </para>
-		///   <code>
+		///     <para>
+		///         This method builds indices to draw a grid of vertices with alternating
+		///         split diagonals for each line of quads.
+		///     </para>
+		///     <code>
 		///     k-l-m-n-o
 		///     |/|/|/|/|
 		///     f-g-h-i-j
@@ -66,17 +66,17 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects
 		///     |\|\|\|\|
 		///     0-1-2-3-4
 		///   </code>
-		///   <para>
-		///     Rows are drawn alternating diretion between left to right and 
-		///     right to left. Only a single, small degenerate triangle is required
-		///     between two rows to move into the next row, resulting in (segmentsZ - 1)
-		///     degenerate triangles for the whole grid.
-		///   </para>
-		///   <para>
-		///     This method is ideal for graphics cards with a limited vertex cache
-		///     because it only requires space for (segmentsX + 1) vertices in
-		///     the vertex cache to reach optimum caching performance.
-		///   </para>
+		///     <para>
+		///         Rows are drawn alternating diretion between left to right and
+		///         right to left. Only a single, small degenerate triangle is required
+		///         between two rows to move into the next row, resulting in (segmentsZ - 1)
+		///         degenerate triangles for the whole grid.
+		///     </para>
+		///     <para>
+		///         This method is ideal for graphics cards with a limited vertex cache
+		///         because it only requires space for (segmentsX + 1) vertices in
+		///         the vertex cache to reach optimum caching performance.
+		///     </para>
 		/// </remarks>
 		public static short[] BuildAlternatingStrip(int segmentsX, int segmentsZ)
 		{

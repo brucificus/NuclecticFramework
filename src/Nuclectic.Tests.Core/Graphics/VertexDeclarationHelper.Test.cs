@@ -38,8 +38,8 @@ namespace Nuclectic.Tests.Graphics
 		#region struct TestVertex
 
 		/// <summary>
-		///   A vertex used to unit-test the format auto-detection of
-		///   the vertex declaration helper
+		///     A vertex used to unit-test the format auto-detection of
+		///     the vertex declaration helper
 		/// </summary>
 		internal struct TestVertex : IVertexType
 		{
@@ -87,8 +87,8 @@ namespace Nuclectic.Tests.Graphics
 		#region struct UnknownTypeVertex
 
 		/// <summary>
-		///   A vertex containing a data type not recognized by the format auto-detection of
-		///   the vertex declaration helper
+		///     A vertex containing a data type not recognized by the format auto-detection of
+		///     the vertex declaration helper
 		/// </summary>
 		private struct UnknownTypeVertex
 		{
@@ -111,7 +111,7 @@ namespace Nuclectic.Tests.Graphics
 		#region struct UnattributedFieldVertex
 
 		/// <summary>
-		///   A vertex type containing a field without a vertex element attribute
+		///     A vertex type containing a field without a vertex element attribute
 		/// </summary>
 		private struct UnattributedFieldVertex
 		{
@@ -127,7 +127,7 @@ namespace Nuclectic.Tests.Graphics
 		#region struct SecondStreamVertex
 
 		/// <summary>
-		///   A vertex containing an additional data element to be used as second vertex stream
+		///     A vertex containing an additional data element to be used as second vertex stream
 		/// </summary>
 		private struct SecondStreamVertex
 		{
@@ -141,7 +141,7 @@ namespace Nuclectic.Tests.Graphics
 		#region struct GapVertex
 
 		/// <summary>
-		///   A vertex in which not all elements are used by the shader
+		///     A vertex in which not all elements are used by the shader
 		/// </summary>
 		private struct GapVertex
 		{
@@ -160,7 +160,7 @@ namespace Nuclectic.Tests.Graphics
 		#endregion // struct GapVertex
 
 		/// <summary>
-		///   Verifies that the stride of a vertex structure can be determined
+		///     Verifies that the stride of a vertex structure can be determined
 		/// </summary>
 		[Test]
 		public void TestStrideDetermination()
@@ -170,8 +170,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the vertex declaration helper fails is provieed with two
-		///   null references instead of two vertex element lists
+		///     Tests whether the vertex declaration helper fails is provieed with two
+		///     null references instead of two vertex element lists
 		/// </summary>
 		[Test]
 		public void TestThrowOnCombineNull()
@@ -182,8 +182,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the vertex declaration helper is able to combine two vertex element
-		///   lists into a single one
+		///     Tests whether the vertex declaration helper is able to combine two vertex element
+		///     lists into a single one
 		/// </summary>
 		[Test]
 		public void TestCombine()
@@ -202,7 +202,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the vertex declaration helper fails on empty vertices
+		///     Tests whether the vertex declaration helper fails on empty vertices
 		/// </summary>
 		[Test]
 		public void TestThrowOnEmptyVertex()
@@ -213,8 +213,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the vertex declaration helper fails when format auto-detection
-		///   is used on unknown data types
+		///     Tests whether the vertex declaration helper fails when format auto-detection
+		///     is used on unknown data types
 		/// </summary>
 		[Test]
 		public void TestThrowOnUnknownTypeVertex()
@@ -230,8 +230,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the vertex declaration helper fails when no field of
-		///   a Vertex has have the vertex element attribute assigned to it
+		///     Tests whether the vertex declaration helper fails when no field of
+		///     a Vertex has have the vertex element attribute assigned to it
 		/// </summary>
 		[Test]
 		public void TestThrowOnUnattributedFieldVertex()
@@ -266,8 +266,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether a vertex containing a field in its middle that isn't seen by
-		///   the vertex shader is processed correctly
+		///     Tests whether a vertex containing a field in its middle that isn't seen by
+		///     the vertex shader is processed correctly
 		/// </summary>
 		[Test]
 		public void TestGapVertexElements()
@@ -279,8 +279,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Only serves to satisfy the compiler. Otherwise, warning CS0414 would occur
-		///   since the fields of the private vertex structures are never assigned to
+		///     Only serves to satisfy the compiler. Otherwise, warning CS0414 would occur
+		///     since the fields of the private vertex structures are never assigned to
 		/// </summary>
 		protected void EliminateCompilerWarnings()
 		{

@@ -29,18 +29,15 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input.Devices
 {
-
 	/// <summary>Unit tests for the XNA (XINPUT) game pad</summary>
 	[TestFixture]
 	public class XnaGamePadTest
 	{
-
 		#region interface IGamePadSubscriber
 
 		/// <summary>Subscriber for the game pad's events</summary>
 		public interface IGamePadSubscriber
 		{
-
 			/// <summary>Called when a button on the game pad is pressed</summary>
 			/// <param name="buttons">Button that has been pressed</param>
 			void ButtonPressed(Buttons buttons);
@@ -58,7 +55,6 @@ namespace Nuclectic.Tests.Input.Devices
 			/// <param name="buttons1">Button or buttons that have been released</param>
 			/// <param name="buttons2">Button or buttons that have been released</param>
 			void ExtendedButtonReleased(ulong buttons1, ulong buttons2);
-
 		}
 
 		#endregion interface IGamePadSubscriber
@@ -68,18 +64,14 @@ namespace Nuclectic.Tests.Input.Devices
 		/// <summary>Implementation of a game pad for unit testing</summary>
 		private class TestGamePad : XnaGamePad
 		{
-
 			/// <summary>Initializs a new test game pad</summary>
-			public TestGamePad() : base(PlayerIndex.One) { }
+			public TestGamePad()
+				: base(PlayerIndex.One) { }
 
 			/// <summary>Checks for state changes and triggers the corresponding events</summary>
 			/// <param name="previous">Previous state of the game pad</param>
 			/// <param name="current">Current state of the game pad</param>
-			public new void GenerateEvents(ref GamePadState previous, ref GamePadState current)
-			{
-				base.GenerateEvents(ref previous, ref current);
-			}
-
+			public new void GenerateEvents(ref GamePadState previous, ref GamePadState current) { base.GenerateEvents(ref previous, ref current); }
 		}
 
 		#endregion // class TestGamePad
@@ -127,18 +119,18 @@ namespace Nuclectic.Tests.Input.Devices
 		/// <param name="button">Button that the detection will be tested with</param>
 		/// <param name="extendedButtonIndex">Index of the button in the extended state</param>
 		[
-		  Test,
-		  TestCase(Buttons.A, 0),
-		  TestCase(Buttons.B, 1),
-		  TestCase(Buttons.X, 2),
-		  TestCase(Buttons.Y, 3),
-		  TestCase(Buttons.LeftShoulder, 4),
-		  TestCase(Buttons.RightShoulder, 5),
-		  TestCase(Buttons.Back, 6),
-		  TestCase(Buttons.Start, 7),
-		  TestCase(Buttons.LeftStick, 8),
-		  TestCase(Buttons.RightStick, 9),
-		  TestCase(Buttons.BigButton, 10)
+			Test,
+			TestCase(Buttons.A, 0),
+			TestCase(Buttons.B, 1),
+			TestCase(Buttons.X, 2),
+			TestCase(Buttons.Y, 3),
+			TestCase(Buttons.LeftShoulder, 4),
+			TestCase(Buttons.RightShoulder, 5),
+			TestCase(Buttons.Back, 6),
+			TestCase(Buttons.Start, 7),
+			TestCase(Buttons.LeftStick, 8),
+			TestCase(Buttons.RightStick, 9),
+			TestCase(Buttons.BigButton, 10)
 		]
 		public void TestStateChangeDetection(Buttons button, int extendedButtonIndex)
 		{
@@ -177,11 +169,11 @@ namespace Nuclectic.Tests.Input.Devices
 		private static GamePadState makeGamePadState(Buttons pressedButton)
 		{
 			return new GamePadState(
-			  new GamePadThumbSticks(),
-			  new GamePadTriggers(),
-			  new GamePadButtons(pressedButton),
-			  new GamePadDPad()
-			);
+				new GamePadThumbSticks(),
+				new GamePadTriggers(),
+				new GamePadButtons(pressedButton),
+				new GamePadDPad()
+				);
 		}
 	}
 } // namespace Nuclex.Input.Devices

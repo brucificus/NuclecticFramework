@@ -99,7 +99,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		#endregion // class Creator
 
 		/// <summary>
-		///   Verifies that the constructor of the user primitive batch drawer works
+		///     Verifies that the constructor of the user primitive batch drawer works
 		/// </summary>
 		[Test]
 		public void TestConstructor()
@@ -111,7 +111,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Tests whethe the MaximumBatchSize property of the batcher can be accessed
+		///     Tests whethe the MaximumBatchSize property of the batcher can be accessed
 		/// </summary>
 		[Test]
 		public void TestMaximumBatchSize()
@@ -123,7 +123,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Tests whether the Select() method without vertex indices is working
+		///     Tests whether the Select() method without vertex indices is working
 		/// </summary>
 		[Test]
 		public void TestSelectWithoutIndices()
@@ -137,7 +137,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Tests whether the Select() method without vertex indices is working
+		///     Tests whether the Select() method without vertex indices is working
 		/// </summary>
 		[Test]
 		public void TestSelectMultipleWithoutIndices()
@@ -156,7 +156,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Tests whether the Select() method with vertex indices is working
+		///     Tests whether the Select() method with vertex indices is working
 		/// </summary>
 		[Test]
 		public void TestSelectWithIndices()
@@ -171,7 +171,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Tests whether the Select() method with vertex indices is working
+		///     Tests whether the Select() method with vertex indices is working
 		/// </summary>
 		[Test]
 		public void TestSelectMultipleWithIndices()
@@ -191,7 +191,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Tests whether the Draw() method without vertex indices is working
+		///     Tests whether the Draw() method without vertex indices is working
 		/// </summary>
 		[Test]
 		public void TestDrawWithoutIndices()
@@ -213,7 +213,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Tests whether the Draw() method with vertex indices is working
+		///     Tests whether the Draw() method with vertex indices is working
 		/// </summary>
 		[Test]
 		public void TestDrawWithIndices()

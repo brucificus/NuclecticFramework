@@ -105,7 +105,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Tests whether the no game pad class' extended events can be subscribed
+		///     Tests whether the no game pad class' extended events can be subscribed
 		/// </summary>
 		[Test]
 		public void TestExtendedEvents()

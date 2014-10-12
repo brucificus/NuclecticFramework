@@ -34,11 +34,11 @@ namespace Nuclectic.UserInterface.Visuals.Flat.Renderers
 		private const string Style = "list";
 
 		/// <summary>
-		///   Renders the specified control using the provided graphics interface
+		///     Renders the specified control using the provided graphics interface
 		/// </summary>
 		/// <param name="control">Control that will be rendered</param>
 		/// <param name="graphics">
-		///   Graphics interface that will be used to draw the control
+		///     Graphics interface that will be used to draw the control
 		/// </param>
 		public void Render(
 			Controls.Desktop.ListControl control, IFlatGuiGraphics graphics
@@ -97,13 +97,13 @@ namespace Nuclectic.UserInterface.Visuals.Flat.Renderers
 
 		/// <summary>Calculates the list row the cursor is in</summary>
 		/// <param name="bounds">
-		///   Boundaries of the control, should be in absolute coordinates
+		///     Boundaries of the control, should be in absolute coordinates
 		/// </param>
 		/// <param name="thumbPosition">
-		///   Position of the thumb in the list's slider
+		///     Position of the thumb in the list's slider
 		/// </param>
 		/// <param name="itemCount">
-		///   Number of items contained in the list
+		///     Number of items contained in the list
 		/// </param>
 		/// <param name="y">Vertical position of the cursor</param>
 		/// <returns>The row the cursor is over</returns>
@@ -128,7 +128,7 @@ namespace Nuclectic.UserInterface.Visuals.Flat.Renderers
 
 		/// <summary>Determines the height of a row displayed in the list</summary>
 		/// <param name="bounds">
-		///   Boundaries of the control, should be in absolute coordinates
+		///     Boundaries of the control, should be in absolute coordinates
 		/// </param>
 		/// <returns>The height of a single row in the list</returns>
 		public float GetRowHeight(RectangleF bounds)

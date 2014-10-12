@@ -38,8 +38,8 @@ namespace Nuclectic.Input.Devices
 
 		/// <summary>Whether the touch panel is connected</summary>
 		/// <remarks>
-		///   If the touch panel is not connected, all data in the state will
-		///   be neutral
+		///     If the touch panel is not connected, all data in the state will
+		///     be neutral
 		/// </remarks>
 		public bool IsAttached { get { return this.isAttached; } }
 

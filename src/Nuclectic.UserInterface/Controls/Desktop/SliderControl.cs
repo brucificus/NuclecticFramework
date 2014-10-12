@@ -27,9 +27,9 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 {
 	/// <summary>Base class for a slider that can be moved using the mouse</summary>
 	/// <remarks>
-	///   Implements the common functionality for a slider moving either the direction
-	///   of the X or the Y axis (but not both). Derive any scroll bar-like controls
-	///   from this class to simplify their implementation.
+	///     Implements the common functionality for a slider moving either the direction
+	///     of the X or the Y axis (but not both). Derive any scroll bar-like controls
+	///     from this class to simplify their implementation.
 	/// </remarks>
 	public abstract class SliderControl : Control
 	{
@@ -104,7 +104,7 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 		}
 
 		/// <summary>
-		///   Called when the mouse has left the control and is no longer hovering over it
+		///     Called when the mouse has left the control and is no longer hovering over it
 		/// </summary>
 		protected override void OnMouseLeft() { this.mouseOverThumb = false; }
 

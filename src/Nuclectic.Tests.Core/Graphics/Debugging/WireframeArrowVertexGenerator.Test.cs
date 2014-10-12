@@ -28,12 +28,10 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Graphics.Debugging
 {
-
 	/// <summary>Unit tests for the wireframe arrow vertex generator</summary>
 	[TestFixture]
 	internal class WireframeArrowVertexGeneratorTest
 	{
-
 		/// <summary>Verifies that the vertex generator can create an arrow</summary>
 		[Test]
 		public void TestArrowGeneration()
@@ -42,18 +40,16 @@ namespace Nuclectic.Tests.Graphics.Debugging
 			VertexPositionColor[] vertices = new VertexPositionColor[count + 1];
 
 			WireframeArrowVertexGenerator.Generate(
-			  vertices, 1,
-			  new Vector3(10.0f, 20.0f, 30.0f), Vector3.Forward,
-			  Color.Blue
-			);
+												   vertices, 1,
+												   new Vector3(10.0f, 20.0f, 30.0f), Vector3.Forward,
+												   Color.Blue
+				);
 
 			Assert.AreEqual(Vector3.Zero, vertices[0].Position);
 			Assert.AreNotEqual(Vector3.Zero, vertices[1].Position);
 			Assert.AreNotEqual(Vector3.Zero, vertices[count - 1].Position);
 		}
-
 	}
-
 } // namespace Nuclex.Graphics
 
 #endif // UNITTEST

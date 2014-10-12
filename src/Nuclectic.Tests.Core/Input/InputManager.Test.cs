@@ -30,18 +30,15 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input
 {
-
 	/// <summary>Unit tests for the input manager</summary>
 	[TestFixture, Ignore("Fails because MonoGame doesn't behave without a window to host the Game, so we need to take their approach for testing.")]
 	public class InputManagerTest
 	{
-
 		#region interface IUpdateableSubscriber
 
 		/// <summary>Subscriber to an updateable object</summary>
 		public interface IUpdateableSubscriber
 		{
-
 			/// <summary>Called when the updateable's update order has been changed</summary>
 			/// <param name="sender">Updateable who's update order changed</param>
 			/// <param name="arguments">Not used</param>
@@ -51,7 +48,6 @@ namespace Nuclectic.Tests.Input
 			/// <param name="sender">Updateable that has been enabled or disabled</param>
 			/// <param name="arguments">Not used</param>
 			void EnabledChanged(object sender, EventArgs arguments);
-
 		}
 
 		#endregion // interface IUpdateableSubscriber
@@ -74,10 +70,10 @@ namespace Nuclectic.Tests.Input
 
 			using (var manager = CreateDummyInputManager())
 			{
-				Assert.IsNotNull(services.GetService(typeof(IInputService)));
+				Assert.IsNotNull(services.GetService(typeof (IInputService)));
 			}
 
-			Assert.IsNull(services.GetService(typeof(IInputService)));
+			Assert.IsNull(services.GetService(typeof (IInputService)));
 		}
 
 		/// <summary>Verifies that the keyboards collection isn't empty</summary>
@@ -216,7 +212,7 @@ namespace Nuclectic.Tests.Input
 		}
 
 		/// <summary>
-		///   Verifies that input manager implements the IGameComponent interface
+		///     Verifies that input manager implements the IGameComponent interface
 		/// </summary>
 		[Test]
 		public void TestInitializeGameComponent()
@@ -228,7 +224,7 @@ namespace Nuclectic.Tests.Input
 		}
 
 		/// <summary>
-		///   Verifies that input manager provides an enabled property
+		///     Verifies that input manager provides an enabled property
 		/// </summary>
 		[Test]
 		public void TestEnabledProperty()
@@ -240,12 +236,12 @@ namespace Nuclectic.Tests.Input
 		}
 
 		/// <summary>
-		///   Verifies that the input manager can be updated via the IUpdateable interface
+		///     Verifies that the input manager can be updated via the IUpdateable interface
 		/// </summary>
 		[Test]
 		public void TestUpdateViaIUpdateable()
 		{
-			using(var manager = CreateDummyInputManager())
+			using (var manager = CreateDummyInputManager())
 			{
 				((IUpdateable)manager).Update(new GameTime());
 			}
@@ -256,7 +252,6 @@ namespace Nuclectic.Tests.Input
 			return new InputManager(new NoDirectInputManager(), new NoKeyboardSoloFactory(), new NoMouseFactory());
 		}
 	}
-
 } // namespace Nuclex.Input
 
 #endif // UNITTEST

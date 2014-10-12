@@ -40,7 +40,7 @@ namespace Nuclectic.Game.State
 
 		/// <summary>Initializes a new game state manager</summary>
 		/// <param name="gameServices">
-		///   Services container the game state manager will add itself to
+		///     Services container the game state manager will add itself to
 		/// </param>
 		public ManualGameStateManager(GameServiceContainer gameServices)
 			:
@@ -67,8 +67,8 @@ namespace Nuclectic.Game.State
 		}
 
 		/// <summary>
-		///   Whether the game state manager should automatically dispose game states
-		///   that are dropped from its stack
+		///     Whether the game state manager should automatically dispose game states
+		///     that are dropped from its stack
 		/// </summary>
 		public bool DisposeDroppedStates { get { return this.disposeDroppedStates; } set { this.disposeDroppedStates = value; } }
 
@@ -97,7 +97,7 @@ namespace Nuclectic.Game.State
 		/// <summary>Pushes the specified state onto the state stack</summary>
 		/// <param name="state">State that will be pushed onto the stack</param>
 		/// <param name="modality">
-		///   Behavior of the game state in relation to the state(s) below it on the stack
+		///     Behavior of the game state in relation to the state(s) below it on the stack
 		/// </param>
 		public void Push(IGameState state, GameStateModality modality)
 		{
@@ -173,18 +173,18 @@ namespace Nuclectic.Game.State
 		/// <param name="state">State the game will be switched to</param>
 		/// <returns>The game state that was replaced on the stack</returns>
 		/// <remarks>
-		///   This replaces the running game state on the stack with the specified state.
+		///     This replaces the running game state on the stack with the specified state.
 		/// </remarks>
 		public IGameState Switch(IGameState state) { return Switch(state, GameStateModality.Exclusive); }
 
 		/// <summary>Switches the game to the specified state</summary>
 		/// <param name="state">State the game will be switched to</param>
 		/// <param name="modality">
-		///   Behavior of the game state in relation to the state(s) below it on the stack
+		///     Behavior of the game state in relation to the state(s) below it on the stack
 		/// </param>
 		/// <returns>The game state that was replaced on the stack</returns>
 		/// <remarks>
-		///   This replaces the running game state on the stack with the specified state.
+		///     This replaces the running game state on the stack with the specified state.
 		/// </remarks>
 		public IGameState Switch(IGameState state, GameStateModality modality)
 		{
@@ -283,8 +283,8 @@ namespace Nuclectic.Game.State
 		}
 
 		/// <summary>
-		///   Disposes the specified state if disposal is enabled and the state implements
-		///   the IDisposable interface
+		///     Disposes the specified state if disposal is enabled and the state implements
+		///     the IDisposable interface
 		/// </summary>
 		/// <param name="state">State that will be disposed if desired and supported</param>
 		private void disposeIfSupportedAndDesired(IGameState state)
@@ -300,9 +300,9 @@ namespace Nuclectic.Game.State
 		}
 
 		/// <summary>
-		///   Rebuilds the updateable and drawable lists by recursively going up
-		///   the stacked game states until the top or an exclusive game state
-		///   is reached
+		///     Rebuilds the updateable and drawable lists by recursively going up
+		///     the stacked game states until the top or an exclusive game state
+		///     is reached
 		/// </summary>
 		/// <param name="index">Index of the game state to start at</param>
 		private void rebuildUpdateableAndDrawableListRecursively(int index)
@@ -321,11 +321,11 @@ namespace Nuclectic.Game.State
 		}
 
 		/// <summary>
-		///   Removes the specified state from the update and draw lists if it is on
-		///   the top of those lists
+		///     Removes the specified state from the update and draw lists if it is on
+		///     the top of those lists
 		/// </summary>
 		/// <param name="state">
-		///   State that will be removed from the update and draw lists
+		///     State that will be removed from the update and draw lists
 		/// </param>
 		private void removeFromUpdateableAndDrawableList(IGameState state)
 		{
@@ -381,7 +381,7 @@ namespace Nuclectic.Game.State
 		}
 
 		/// <summary>
-		///   Game service container the game state manager has registered itself in
+		///     Game service container the game state manager has registered itself in
 		/// </summary>
 		private GameServiceContainer gameServices;
 
@@ -390,9 +390,9 @@ namespace Nuclectic.Game.State
 
 		/// <summary>Currently active game states</summary>
 		/// <remarks>
-		///   The game state manager supports multiple active game states. For example,
-		///   a menu might appear on top of the running game. Only the topmost active
-		///   state receives input through the game 
+		///     The game state manager supports multiple active game states. For example,
+		///     a menu might appear on top of the running game. Only the topmost active
+		///     state receives input through the game
 		/// </remarks>
 		private List<KeyValuePair<IGameState, GameStateModality>> gameStates;
 

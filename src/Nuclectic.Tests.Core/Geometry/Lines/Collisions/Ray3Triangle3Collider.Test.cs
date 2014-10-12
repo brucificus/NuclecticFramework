@@ -34,7 +34,7 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 	public class Ray3Triangle3ColliderTest
 	{
 		/// <summary>
-		///   Verifies that no contact is detected if the ray begins behind the triangle
+		///     Verifies that no contact is detected if the ray begins behind the triangle
 		/// </summary>
 		[Test]
 		public void TestRayStartingBehind()
@@ -48,8 +48,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether the contact finder reports the correct locations for a line
-		///   that crosses a triangle through its center 
+		///     Tests whether the contact finder reports the correct locations for a line
+		///     that crosses a triangle through its center
 		/// </summary>
 		[Test]
 		public void TestHitThroughCenter()

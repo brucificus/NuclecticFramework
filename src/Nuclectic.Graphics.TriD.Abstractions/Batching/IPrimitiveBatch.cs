@@ -6,7 +6,7 @@ namespace Nuclectic.Graphics.TriD.Batching
 	{
 		/// <summary>Begins the drawing process</summary>
 		/// <param name="queueingStrategy">
-		///   By what criteria to queue primitives and when to draw them
+		///     By what criteria to queue primitives and when to draw them
 		/// </param>
 		void Begin(QueueingStrategy queueingStrategy);
 
@@ -53,8 +53,8 @@ namespace Nuclectic.Graphics.TriD.Batching
 		/// <summary>Draws a series of indexed primitives</summary>
 		/// <param name="vertices">Primitive vertices</param>
 		/// <param name="startVertex">
-		///   Index in the vertex array of the first vertex. This vertex will become
-		///   the new index 0 for the index buffer.
+		///     Index in the vertex array of the first vertex. This vertex will become
+		///     the new index 0 for the index buffer.
 		/// </param>
 		/// <param name="vertexCount">Number of vertices to draw</param>
 		/// <param name="indices">Indices of the vertices to draw</param>

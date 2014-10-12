@@ -25,7 +25,7 @@ using Microsoft.Xna.Framework;
 namespace Nuclectic.Geometry.Lines.Collisions
 {
 	/// <summary>
-	///   Detects intersections of infinite 2D lines with 2D axis-aligned boxes
+	///     Detects intersections of infinite 2D lines with 2D axis-aligned boxes
 	/// </summary>
 	public static class Line2Aabb2Collider
 	{
@@ -35,8 +35,8 @@ namespace Nuclectic.Geometry.Lines.Collisions
 		/// <param name="boxExtents">Extents of the box (half of the box' dimensions)</param>
 		/// <returns>The contact points, if any, between the line and the box</returns>
 		/// <remarks>
-		///   Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
-		///   and used as a supporting function for the other line/box contact finders.
+		///     Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
+		///     and used as a supporting function for the other line/box contact finders.
 		/// </remarks>
 		public static LineContacts FindContacts(
 			Vector2 lineOffset, Vector2 lineDirection, Vector2 boxExtents
@@ -93,8 +93,8 @@ namespace Nuclectic.Geometry.Lines.Collisions
 		/// <param name="exitTime">Time of exit from the plane</param>
 		/// <returns>True if the line segment actually intersects with the plane</returns>
 		/// <remarks>
-		///   Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
-		///   and used as a supporting function for the other line/box contact finders.
+		///     Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
+		///     and used as a supporting function for the other line/box contact finders.
 		/// </remarks>
 		private static bool clip(
 			float denominator, float numerator,

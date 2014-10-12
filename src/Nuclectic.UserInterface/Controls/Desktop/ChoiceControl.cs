@@ -27,9 +27,9 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 {
 	/// <summary>Control displaying an exclusive choice the user can select</summary>
 	/// <remarks>
-	///   The choice control is equivalent to a radio button - if more than one
-	///   choice control is on a dialog, only one can be selected at a time.
-	///   To have several choice groups on a dialog, use panels to group them.
+	///     The choice control is equivalent to a radio button - if more than one
+	///     choice control is on a dialog, only one can be selected at a time.
+	///     To have several choice groups on a dialog, use panels to group them.
 	/// </remarks>
 	public class ChoiceControl : PressableControl
 	{

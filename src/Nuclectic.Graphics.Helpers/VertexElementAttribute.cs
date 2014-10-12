@@ -26,11 +26,11 @@ using Microsoft.Xna.Framework.Graphics;
 namespace Nuclectic.Graphics.Helpers
 {
 	/// <summary>
-	///   Describes the usage and purpose of an element in a vertex structure
+	///     Describes the usage and purpose of an element in a vertex structure
 	/// </summary>
 	/// <remarks>
-	///   Based on ideas from Michael Popoloski's article on gamedev.net:
-	///   http://www.gamedev.net/reference/programming/features/xnaVertexElement/
+	///     Based on ideas from Michael Popoloski's article on gamedev.net:
+	///     http://www.gamedev.net/reference/programming/features/xnaVertexElement/
 	/// </remarks>
 	[AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
 	public sealed class VertexElementAttribute : Attribute
@@ -52,10 +52,10 @@ namespace Nuclectic.Graphics.Helpers
 
 		/// <summary>Index of the vertex buffer that will contain this element</summary>
 		/// <remarks>
-		///   Data for vertices can come from multiple vertex buffers. For example, you can store
-		///   the positions of your vertices in one vertex buffer and then store the texture
-		///   coordinates in an entirely different vertex buffer, only to combine them at rendering
-		///   time by using the two vertex buffers simultaneously two feed your shader.
+		///     Data for vertices can come from multiple vertex buffers. For example, you can store
+		///     the positions of your vertices in one vertex buffer and then store the texture
+		///     coordinates in an entirely different vertex buffer, only to combine them at rendering
+		///     time by using the two vertex buffers simultaneously two feed your shader.
 		/// </remarks>
 		public int Stream { get { return this.stream; } set { this.stream = value; } }
 

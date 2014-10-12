@@ -27,11 +27,11 @@ namespace Nuclectic.UserInterface.Visuals.Flat.Renderers
 		IFlatControlRenderer<Controls.Arcade.PanelControl>
 	{
 		/// <summary>
-		///   Renders the specified control using the provided graphics interface
+		///     Renders the specified control using the provided graphics interface
 		/// </summary>
 		/// <param name="control">Control that will be rendered</param>
 		/// <param name="graphics">
-		///   Graphics interface that will be used to draw the control
+		///     Graphics interface that will be used to draw the control
 		/// </param>
 		public void Render(
 			Controls.Arcade.PanelControl control, IFlatGuiGraphics graphics

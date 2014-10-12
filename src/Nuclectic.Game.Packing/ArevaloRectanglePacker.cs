@@ -28,47 +28,47 @@ namespace Nuclectic.Game.Packing
 {
 	/// <summary>Rectangle packer using an algorithm by Javier Arevalo</summary>
 	/// <remarks>
-	///   <para>
-	///     Original code by Javier Arevalo (jare at iguanademos dot com). Rewritten
-	///     to C# / .NET by Markus Ewald (cygon at nuclex dot org). The following comments
-	///     were written by the original author when he published his algorithm.
-	///   </para>
-	///   <para>
-	///     You have a bunch of rectangular pieces. You need to arrange them in a
-	///     rectangular surface so that they don't overlap, keeping the total area of the
-	///     rectangle as small as possible. This is fairly common when arranging characters
-	///     in a bitmapped font, lightmaps for a 3D engine, and I guess other situations as
-	///     well.
-	///   </para>
-	///   <para>
-	///     The idea of this algorithm is that, as we add rectangles, we can pre-select
-	///     "interesting" places where we can try to add the next rectangles. For optimal
-	///     results, the rectangles should be added in order. I initially tried using area
-	///     as a sorting criteria, but it didn't work well with very tall or very flat
-	///     rectangles. I then tried using the longest dimension as a selector, and it
-	///     worked much better. So much for intuition...
-	///   </para>
-	///   <para>
-	///     These "interesting" places are just to the right and just below the currently
-	///     added rectangle. The first rectangle, obviously, goes at the top left, the next
-	///     one would go either to the right or below this one, and so on. It is a weird way
-	///     to do it, but it seems to work very nicely.
-	///   </para>
-	///   <para>
-	///     The way we search here is fairly brute-force, the fact being that for most
-	///     offline purposes the performance seems more than adequate. I have generated a
-	///     japanese font with around 8500 characters and all the time was spent generating
-	///     the bitmaps.
-	///   </para>
-	///   <para>
-	///     Also, for all we care, we could grow the parent rectangle in a different way
-	///     than power of two. It just happens that power of 2 is very convenient for
-	///     graphics hardware textures.
-	///   </para>
-	///   <para>
-	///     I'd be interested in hearing of other approaches to this problem. Make sure
-	///     to post them on http://www.flipcode.com
-	///   </para>
+	///     <para>
+	///         Original code by Javier Arevalo (jare at iguanademos dot com). Rewritten
+	///         to C# / .NET by Markus Ewald (cygon at nuclex dot org). The following comments
+	///         were written by the original author when he published his algorithm.
+	///     </para>
+	///     <para>
+	///         You have a bunch of rectangular pieces. You need to arrange them in a
+	///         rectangular surface so that they don't overlap, keeping the total area of the
+	///         rectangle as small as possible. This is fairly common when arranging characters
+	///         in a bitmapped font, lightmaps for a 3D engine, and I guess other situations as
+	///         well.
+	///     </para>
+	///     <para>
+	///         The idea of this algorithm is that, as we add rectangles, we can pre-select
+	///         "interesting" places where we can try to add the next rectangles. For optimal
+	///         results, the rectangles should be added in order. I initially tried using area
+	///         as a sorting criteria, but it didn't work well with very tall or very flat
+	///         rectangles. I then tried using the longest dimension as a selector, and it
+	///         worked much better. So much for intuition...
+	///     </para>
+	///     <para>
+	///         These "interesting" places are just to the right and just below the currently
+	///         added rectangle. The first rectangle, obviously, goes at the top left, the next
+	///         one would go either to the right or below this one, and so on. It is a weird way
+	///         to do it, but it seems to work very nicely.
+	///     </para>
+	///     <para>
+	///         The way we search here is fairly brute-force, the fact being that for most
+	///         offline purposes the performance seems more than adequate. I have generated a
+	///         japanese font with around 8500 characters and all the time was spent generating
+	///         the bitmaps.
+	///     </para>
+	///     <para>
+	///         Also, for all we care, we could grow the parent rectangle in a different way
+	///         than power of two. It just happens that power of 2 is very convenient for
+	///         graphics hardware textures.
+	///     </para>
+	///     <para>
+	///         I'd be interested in hearing of other approaches to this problem. Make sure
+	///         to post them on http://www.flipcode.com
+	///     </para>
 	/// </remarks>
 	public class ArevaloRectanglePacker : RectanglePacker
 	{
@@ -76,12 +76,12 @@ namespace Nuclectic.Game.Packing
 
 		/// <summary>Compares the 'rank' of anchoring points</summary>
 		/// <remarks>
-		///   Anchoring points are potential locations for the placement of new rectangles.
-		///   Each time a rectangle is inserted, an anchor point is generated on its upper
-		///   right end and another one at its lower left end. The anchor points are kept
-		///   in a list that is ordered by their closeness to the upper left corner of the
-		///   packing area (their 'rank') so the packer favors positions that are closer to
-		///   the upper left for new rectangles.
+		///     Anchoring points are potential locations for the placement of new rectangles.
+		///     Each time a rectangle is inserted, an anchor point is generated on its upper
+		///     right end and another one at its lower left end. The anchor points are kept
+		///     in a list that is ordered by their closeness to the upper left corner of the
+		///     packing area (their 'rank') so the packer favors positions that are closer to
+		///     the upper left for new rectangles.
 		/// </remarks>
 		private class AnchorRankComparer : IComparer<Point>
 		{
@@ -174,9 +174,9 @@ namespace Nuclectic.Game.Packing
 		}
 
 		/// <summary>
-		///   Optimizes the rectangle's placement by moving it either left or up to fill
-		///   any gaps resulting from rectangles blocking the anchors of the most optimal
-		///   placements.
+		///     Optimizes the rectangle's placement by moving it either left or up to fill
+		///     any gaps resulting from rectangles blocking the anchors of the most optimal
+		///     placements.
 		/// </summary>
 		/// <param name="placement">Placement to be optimized</param>
 		/// <param name="rectangleWidth">Width of the rectangle to be optimized</param>
@@ -216,16 +216,16 @@ namespace Nuclectic.Game.Packing
 		}
 
 		/// <summary>
-		///   Searches for a free anchor and recursively enlarges the packing area
-		///   if none can be found.
+		///     Searches for a free anchor and recursively enlarges the packing area
+		///     if none can be found.
 		/// </summary>
 		/// <param name="rectangleWidth">Width of the rectangle to be placed</param>
 		/// <param name="rectangleHeight">Height of the rectangle to be placed</param>
 		/// <param name="testedPackingAreaWidth">Width of the tested packing area</param>
 		/// <param name="testedPackingAreaHeight">Height of the tested packing area</param>
 		/// <returns>
-		///   Index of the anchor the rectangle is to be placed at or -1 if the rectangle
-		///   does not fit in the packing area anymore.
+		///     Index of the anchor the rectangle is to be placed at or -1 if the rectangle
+		///     does not fit in the packing area anymore.
 		/// </returns>
 		private int selectAnchorRecursive(
 			int rectangleWidth, int rectangleHeight,
@@ -321,8 +321,8 @@ namespace Nuclectic.Game.Packing
 		}
 
 		/// <summary>
-		///   Determines whether the rectangle can be placed in the packing area
-		///   at its current location.
+		///     Determines whether the rectangle can be placed in the packing area
+		///     at its current location.
 		/// </summary>
 		/// <param name="rectangle">Rectangle whose position to check</param>
 		/// <param name="testedPackingAreaWidth">Total width of the packing area</param>
@@ -359,8 +359,8 @@ namespace Nuclectic.Game.Packing
 		/// <summary>Inserts a new anchor point into the anchor list</summary>
 		/// <param name="anchor">Anchor point that will be inserted</param>
 		/// <remarks>
-		///   This method tries to keep the anchor list ordered by ranking the anchors
-		///   depending on the distance from the top left corner in the packing area.
+		///     This method tries to keep the anchor list ordered by ranking the anchors
+		///     depending on the distance from the top left corner in the packing area.
 		/// </remarks>
 		private void insertAnchor(Point anchor)
 		{

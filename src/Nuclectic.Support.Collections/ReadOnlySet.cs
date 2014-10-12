@@ -31,20 +31,20 @@ namespace Nuclectic.Support.Collections
 	public class ReadOnlySet<TItem> : ISet<TItem>, ICollection<TItem>
 	{
 		/// <summary>
-		///   Initializes a new observable set forwarding operations to the specified set
+		///     Initializes a new observable set forwarding operations to the specified set
 		/// </summary>
 		/// <param name="set">Set operations will be forwarded to</param>
 		public ReadOnlySet(ISet<TItem> set) { this.set = set; }
 
 		/// <summary>
-		///   Determines whether the current set is a proper (strict) subset of a collection
+		///     Determines whether the current set is a proper (strict) subset of a collection
 		/// </summary>
 		/// <param name="other">Collection against which the set will be tested</param>
 		/// <returns>True if the set is a proper subset of the specified collection</returns>
 		public bool IsProperSubsetOf(IEnumerable<TItem> other) { return this.set.IsProperSubsetOf(other); }
 
 		/// <summary>
-		///   Determines whether the current set is a proper (strict) superset of a collection
+		///     Determines whether the current set is a proper (strict) superset of a collection
 		/// </summary>
 		/// <param name="other">Collection against which the set will be tested</param>
 		/// <returns>True if the set is a proper superset of the specified collection</returns>
@@ -61,16 +61,16 @@ namespace Nuclectic.Support.Collections
 		public bool IsSupersetOf(IEnumerable<TItem> other) { return this.set.IsSupersetOf(other); }
 
 		/// <summary>
-		///   Determines if the set shares at least one common element with the collection
+		///     Determines if the set shares at least one common element with the collection
 		/// </summary>
 		/// <param name="other">Collection the set will be tested against</param>
 		/// <returns>
-		///   True if the set shares at least one common element with the collection
+		///     True if the set shares at least one common element with the collection
 		/// </returns>
 		public bool Overlaps(IEnumerable<TItem> other) { return this.set.Overlaps(other); }
 
 		/// <summary>
-		///   Determines whether the set contains the same elements as the specified collection
+		///     Determines whether the set contains the same elements as the specified collection
 		/// </summary>
 		/// <param name="other">Collection the set will be tested against</param>
 		/// <returns>True if the set contains the same elements as the collection</returns>
@@ -84,7 +84,7 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Copies the contents of the set into an array</summary>
 		/// <param name="array">Array the set's contents will be copied to</param>
 		/// <param name="arrayIndex">
-		///   Index in the array the first copied element will be written to
+		///     Index in the array the first copied element will be written to
 		/// </param>
 		public void CopyTo(TItem[] array, int arrayIndex) { this.set.CopyTo(array, arrayIndex); }
 
@@ -104,8 +104,8 @@ namespace Nuclectic.Support.Collections
 		IEnumerator IEnumerable.GetEnumerator() { return this.set.GetEnumerator(); }
 
 		/// <summary>
-		///   Modifies the current set so that it contains only elements that are present either
-		///   in the current set or in the specified collection, but not both
+		///     Modifies the current set so that it contains only elements that are present either
+		///     in the current set or in the specified collection, but not both
 		/// </summary>
 		/// <param name="other">Collection the set will be excepted with</param>
 		void ISet<TItem>.SymmetricExceptWith(IEnumerable<TItem> other)
@@ -116,8 +116,8 @@ namespace Nuclectic.Support.Collections
 		}
 
 		/// <summary>
-		///   Modifies the current set so that it contains all elements that are present in both
-		///   the current set and in the specified collection
+		///     Modifies the current set so that it contains all elements that are present in both
+		///     the current set and in the specified collection
 		/// </summary>
 		/// <param name="other">Collection an union will be built with</param>
 		void ISet<TItem>.UnionWith(IEnumerable<TItem> other)
@@ -138,7 +138,7 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Removes an item from the set</summary>
 		/// <param name="item">Item that will be removed from the set</param>
 		/// <returns>
-		///   True if the item was contained in the set and is now removed
+		///     True if the item was contained in the set and is now removed
 		/// </returns>
 		bool ICollection<TItem>.Remove(TItem item)
 		{
@@ -150,7 +150,7 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Adds an item to the set</summary>
 		/// <param name="item">Item that will be added to the set</param>
 		/// <returns>
-		///   True if the element was added, false if it was already contained in the set
+		///     True if the element was added, false if it was already contained in the set
 		/// </returns>
 		bool ISet<TItem>.Add(TItem item)
 		{
@@ -169,7 +169,7 @@ namespace Nuclectic.Support.Collections
 		}
 
 		/// <summary>
-		///   Only keeps those elements in this set that are contained in the collection
+		///     Only keeps those elements in this set that are contained in the collection
 		/// </summary>
 		/// <param name="other">Other set this set will be filtered by</param>
 		void ISet<TItem>.IntersectWith(IEnumerable<TItem> other)

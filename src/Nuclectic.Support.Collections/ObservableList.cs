@@ -53,9 +53,9 @@ namespace Nuclectic.Support.Collections
 
 		/// <summary>Raised when the collection is about to be cleared</summary>
 		/// <remarks>
-		///   This could be covered by calling ItemRemoved for each item currently
-		///   contained in the collection, but it is often simpler and more efficient
-		///   to process the clearing of the entire collection as a special operation.
+		///     This could be covered by calling ItemRemoved for each item currently
+		///     contained in the collection, but it is often simpler and more efficient
+		///     to process the clearing of the entire collection as a special operation.
 		/// </remarks>
 		public event EventHandler Clearing;
 
@@ -68,16 +68,14 @@ namespace Nuclectic.Support.Collections
 #endif
 
 		/// <summary>
-		///   Initializes a new instance of the ObservableList class that is empty.
+		///     Initializes a new instance of the ObservableList class that is empty.
 		/// </summary>
 		public ObservableList()
-			: this(new List<TItem>())
-		{
-		}
+			: this(new List<TItem>()) { }
 
 		/// <summary>
-		///   Initializes a new instance of the ObservableList class as a wrapper
-		///   for the specified list.
+		///     Initializes a new instance of the ObservableList class as a wrapper
+		///     for the specified list.
 		/// </summary>
 		/// <param name="list">The list that is wrapped by the new collection.</param>
 		/// <exception cref="System.ArgumentNullException">List is null</exception>
@@ -90,10 +88,7 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Determines the index of the specified item in the list</summary>
 		/// <param name="item">Item whose index will be determined</param>
 		/// <returns>The index of the item in the list or -1 if not found</returns>
-		public int IndexOf(TItem item)
-		{
-			return this.typedList.IndexOf(item);
-		}
+		public int IndexOf(TItem item) { return this.typedList.IndexOf(item); }
 
 		/// <summary>Inserts an item into the list at the specified index</summary>
 		/// <param name="index">Index the item will be insertted at</param>
@@ -146,20 +141,14 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Checks whether the list contains the specified item</summary>
 		/// <param name="item">Item the list will be checked for</param>
 		/// <returns>True if the list contains the specified items</returns>
-		public bool Contains(TItem item)
-		{
-			return this.typedList.Contains(item);
-		}
+		public bool Contains(TItem item) { return this.typedList.Contains(item); }
 
 		/// <summary>Copies the contents of the list into an array</summary>
 		/// <param name="array">Array the list will be copied into</param>
 		/// <param name="arrayIndex">
-		///   Index in the target array where the first item will be copied to
+		///     Index in the target array where the first item will be copied to
 		/// </param>
-		public void CopyTo(TItem[] array, int arrayIndex)
-		{
-			this.typedList.CopyTo(array, arrayIndex);
-		}
+		public void CopyTo(TItem[] array, int arrayIndex) { this.typedList.CopyTo(array, arrayIndex); }
 
 		/// <summary>Total number of items in the list</summary>
 		public int Count { get { return this.typedList.Count; } }
@@ -170,7 +159,7 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Removes the specified item from the list</summary>
 		/// <param name="item">Item that will be removed from the list</param>
 		/// <returns>
-		///   True if the item was found and removed from the list, false otherwise
+		///     True if the item was found and removed from the list, false otherwise
 		/// </returns>
 		public bool Remove(TItem item)
 		{
@@ -189,19 +178,13 @@ namespace Nuclectic.Support.Collections
 
 		/// <summary>Returns an enumerator for the items in the list</summary>
 		/// <returns>An enumerator for the list's items</returns>
-		public IEnumerator<TItem> GetEnumerator()
-		{
-			return this.typedList.GetEnumerator();
-		}
+		public IEnumerator<TItem> GetEnumerator() { return this.typedList.GetEnumerator(); }
 
 		#region IEnumerable implementation
 
 		/// <summary>Returns an enumerator for the items in the list</summary>
 		/// <returns>An enumerator for the list's items</returns>
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return this.objectList.GetEnumerator();
-		}
+		IEnumerator IEnumerable.GetEnumerator() { return this.objectList.GetEnumerator(); }
 
 		#endregion // IEnumerable implementation
 
@@ -210,12 +193,9 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Copies the contents of the list into an array</summary>
 		/// <param name="array">Array the list will be copied into</param>
 		/// <param name="arrayIndex">
-		///   Index in the target array where the first item will be copied to
+		///     Index in the target array where the first item will be copied to
 		/// </param>
-		void ICollection.CopyTo(Array array, int arrayIndex)
-		{
-			this.objectList.CopyTo(array, arrayIndex);
-		}
+		void ICollection.CopyTo(Array array, int arrayIndex) { this.objectList.CopyTo(array, arrayIndex); }
 
 		/// <summary>Whether this list performs thread synchronization</summary>
 		bool ICollection.IsSynchronized { get { return this.objectList.IsSynchronized; } }
@@ -230,7 +210,7 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Adds an item to the list</summary>
 		/// <param name="value">Item that will be added to the list</param>
 		/// <returns>
-		///   The position at which the item has been inserted or -1 if the item was not inserted
+		///     The position at which the item has been inserted or -1 if the item was not inserted
 		/// </returns>
 		int IList.Add(object value)
 		{
@@ -243,18 +223,12 @@ namespace Nuclectic.Support.Collections
 		/// <summary>Checks whether the list contains the specified item</summary>
 		/// <param name="item">Item the list will be checked for</param>
 		/// <returns>True if the list contains the specified items</returns>
-		bool IList.Contains(object item)
-		{
-			return this.objectList.Contains(item);
-		}
+		bool IList.Contains(object item) { return this.objectList.Contains(item); }
 
 		/// <summary>Determines the index of the specified item in the list</summary>
 		/// <param name="item">Item whose index will be determined</param>
 		/// <returns>The index of the item in the list or -1 if not found</returns>
-		int IList.IndexOf(object item)
-		{
-			return this.objectList.IndexOf(item);
-		}
+		int IList.IndexOf(object item) { return this.objectList.IndexOf(item); }
 
 		/// <summary>Inserts an item into the list at the specified index</summary>
 		/// <param name="index">Index the item will be insertted at</param>

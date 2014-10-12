@@ -184,8 +184,8 @@ namespace Nuclectic.Geometry.Lines
 		}
 
 		/// <summary>
-		///   Limits the contact positions found in a line to the subsection of
-		///   the line covered by the line segment
+		///     Limits the contact positions found in a line to the subsection of
+		///     the line covered by the line segment
 		/// </summary>
 		/// <param name="contacts">Contacts that will be limited to the line segment</param>
 		private static void limitContactToRay(ref LineContacts contacts)

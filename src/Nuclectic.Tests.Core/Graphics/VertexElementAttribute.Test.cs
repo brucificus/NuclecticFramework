@@ -72,7 +72,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether the usage and format properties are stored by the attribute
+		///     Tests whether the usage and format properties are stored by the attribute
 		/// </summary>
 		[Test]
 		public void TestUsageAndFormatConstructor()
@@ -117,8 +117,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Only serves to satisfy the compiler. Otherwise, warning CS0414 would occur
-		///   since the fields of the private TestVertex structure are never assigned to
+		///     Only serves to satisfy the compiler. Otherwise, warning CS0414 would occur
+		///     since the fields of the private TestVertex structure are never assigned to
 		/// </summary>
 		protected void EliminateCompilerWarnings()
 		{
@@ -130,14 +130,14 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Retrieves the vertex element attribute assigned to a field in a structure
+		///     Retrieves the vertex element attribute assigned to a field in a structure
 		/// </summary>
 		/// <typeparam name="VertexType">
-		///   Structure that contains the field of which the vertex element attribute will
-		///   be retrieved
+		///     Structure that contains the field of which the vertex element attribute will
+		///     be retrieved
 		/// </typeparam>
 		/// <param name="fieldName">
-		///   Name of the field to retrieve the vertex element attribute for
+		///     Name of the field to retrieve the vertex element attribute for
 		/// </param>
 		/// <returns>The vertex element attribute of the requested field</returns>
 		private static VertexElementAttribute getVertexElementAttribute<VertexType>(

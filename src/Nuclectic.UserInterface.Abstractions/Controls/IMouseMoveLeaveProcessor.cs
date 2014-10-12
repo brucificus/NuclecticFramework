@@ -3,7 +3,7 @@ namespace Nuclectic.UserInterface.Controls
 	public interface IMouseMoveLeaveProcessor
 	{
 		/// <summary>
-		///   Called when the mouse has left the control and is no longer hovering over it
+		///     Called when the mouse has left the control and is no longer hovering over it
 		/// </summary>
 		void ProcessMouseLeave();
 

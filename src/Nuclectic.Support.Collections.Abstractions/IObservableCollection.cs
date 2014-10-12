@@ -39,9 +39,9 @@ namespace Nuclectic.Support.Collections
 
 		/// <summary>Raised when the collection is about to be cleared</summary>
 		/// <remarks>
-		///   This could be covered by calling ItemRemoved for each item currently
-		///   contained in the collection, but it is often simpler and more efficient
-		///   to process the clearing of the entire collection as a special operation.
+		///     This could be covered by calling ItemRemoved for each item currently
+		///     contained in the collection, but it is often simpler and more efficient
+		///     to process the clearing of the entire collection as a special operation.
 		/// </remarks>
 		event EventHandler Clearing;
 

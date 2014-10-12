@@ -23,7 +23,7 @@ License along with this library
 namespace Nuclectic.Geometry.Lines
 {
 	/// <summary>
-	///   Stores the times of first and last contact determined in an intersection test
+	///     Stores the times of first and last contact determined in an intersection test
 	/// </summary>
 	public struct LineContacts
 	{
@@ -62,7 +62,7 @@ namespace Nuclectic.Geometry.Lines
 		public bool HasContact { get { return !float.IsNaN(EntryTime); } }
 
 		/// <summary>
-		///   Determines whether this instance is identical to another instance
+		///     Determines whether this instance is identical to another instance
 		/// </summary>
 		/// <param name="otherObject">Other instance of compare against</param>
 		/// <returns>True if both instances are identical</returns>

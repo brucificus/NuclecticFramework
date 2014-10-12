@@ -52,13 +52,13 @@ namespace Nuclectic.Input.Devices
 		}
 
 		/// <summary>
-		///   Creates a delegate for adding a pressed key to a keyboard state
+		///     Creates a delegate for adding a pressed key to a keyboard state
 		/// </summary>
 		/// <returns>A delegate that can be used to add a pressed key</returns>
 		private static AddPressedKeyDelegate createAddPressedKeyDelegate()
 		{
-			MethodInfo addPressedKeyMethod = typeof(KeyboardState).GetTypeInfo().GetDeclaredMethod("InternalSetKey");
-			
+			MethodInfo addPressedKeyMethod = typeof (KeyboardState).GetTypeInfo().GetDeclaredMethod("InternalSetKey");
+
 			Type byrefKeyboardState = typeof (KeyboardState).MakeByRefType();
 
 			ParameterExpression instance = Expression.Parameter(byrefKeyboardState, "instance");
@@ -74,12 +74,12 @@ namespace Nuclectic.Input.Devices
 		}
 
 		/// <summary>
-		///   Creates a delegate for removing a pressed key from a keyboard state
+		///     Creates a delegate for removing a pressed key from a keyboard state
 		/// </summary>
 		/// <returns>A delegate that can be used to remove a pressed key</returns>
 		private static RemovePressedKeyDelegate createRemovePressedKeyDelegate()
 		{
-			MethodInfo addPressedKeyMethod = typeof(KeyboardState).GetTypeInfo().GetDeclaredMethod("InternalClearKey");
+			MethodInfo addPressedKeyMethod = typeof (KeyboardState).GetTypeInfo().GetDeclaredMethod("InternalClearKey");
 			Type byrefKeyboardState = typeof (KeyboardState).MakeByRefType();
 
 			ParameterExpression instance = Expression.Parameter(byrefKeyboardState, "instance");

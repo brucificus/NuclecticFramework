@@ -27,15 +27,15 @@ using Nuclectic.Support.Collections;
 namespace Nuclectic.Graphics.TriD.Batching
 {
 	/// <summary>
-	///   Queues vertices until the end of the drawing cycle and sorts them
-	///   by their drawing context.
+	///     Queues vertices until the end of the drawing cycle and sorts them
+	///     by their drawing context.
 	/// </summary>
 	public class DrawContextQueuer<VertexType> : Queuer<VertexType>
 		where VertexType : struct, IVertexType
 	{
 		/// <summary>Initializes a new draw context primitive queuer</summary>
 		/// <param name="batchDrawer">
-		///   Batch drawer that will be used to render completed vertex batches
+		///     Batch drawer that will be used to render completed vertex batches
 		/// </param>
 		public DrawContextQueuer(IBatchDrawer<VertexType> batchDrawer)
 			:
@@ -50,8 +50,8 @@ namespace Nuclectic.Graphics.TriD.Batching
 		/// <summary>Queues a series of indexed primitives</summary>
 		/// <param name="vertices">Primitive vertices</param>
 		/// <param name="startVertex">
-		///   Index in the vertex array of the first vertex. This vertex will become
-		///   the new index 0 for the index buffer.
+		///     Index in the vertex array of the first vertex. This vertex will become
+		///     the new index 0 for the index buffer.
 		/// </param>
 		/// <param name="vertexCount">Number of vertices to draw</param>
 		/// <param name="indices">Indices of the vertices to draw</param>

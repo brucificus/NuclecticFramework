@@ -33,7 +33,7 @@ namespace Nuclectic.Tests.Graphics
 	internal class VertexHelperTest
 	{
 		/// <summary>
-		///   Verifies that the primitive count for a line strip is correctly calculated
+		///     Verifies that the primitive count for a line strip is correctly calculated
 		/// </summary>
 		[Test]
 		public void TestLineStripPrimitiveCount()
@@ -45,7 +45,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Verifies that the primitive count for a line list is correctly calculated
+		///     Verifies that the primitive count for a line list is correctly calculated
 		/// </summary>
 		[Test]
 		public void TestLineListPrimitiveCount()
@@ -57,7 +57,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Verifies that the primitive count for a triangle strip is correctly calculated
+		///     Verifies that the primitive count for a triangle strip is correctly calculated
 		/// </summary>
 		[Test]
 		public void TestTriangleStripPrimitiveCount()
@@ -69,7 +69,7 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Verifies that the primitive count for a triangle strip is correctly calculated
+		///     Verifies that the primitive count for a triangle strip is correctly calculated
 		/// </summary>
 		[Test]
 		public void TestTriangleListPrimitiveCount()
@@ -81,8 +81,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether passing an invalid primitive type to the GetPrimitiveCount()
-		///   method causes it to throw the right exception
+		///     Tests whether passing an invalid primitive type to the GetPrimitiveCount()
+		///     method causes it to throw the right exception
 		/// </summary>
 		[Test]
 		public void TestInvalidTypePrimitiveCount()
@@ -93,8 +93,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Verifies that the helper can determine whether a vertex count is valid
-		///   for a line strip
+		///     Verifies that the helper can determine whether a vertex count is valid
+		///     for a line strip
 		/// </summary>
 		[Test]
 		public void TestIsValidVertexCountWithLineStrip()
@@ -104,8 +104,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Verifies that the helper can determine whether a vertex count is valid
-		///   for a line list
+		///     Verifies that the helper can determine whether a vertex count is valid
+		///     for a line list
 		/// </summary>
 		[Test]
 		public void TestIsValidVertexCountWithLineList()
@@ -115,8 +115,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Verifies that the helper can determine whether a vertex count is valid
-		///   for a triangle strip
+		///     Verifies that the helper can determine whether a vertex count is valid
+		///     for a triangle strip
 		/// </summary>
 		[Test]
 		public void TestIsValidVertexCountWithTriangleStrip()
@@ -126,8 +126,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Verifies that the helper can determine whether a vertex count is valid
-		///   for a triangle list
+		///     Verifies that the helper can determine whether a vertex count is valid
+		///     for a triangle list
 		/// </summary>
 		[Test]
 		public void TestIsValidVertexCountWithTriangleList()
@@ -137,8 +137,8 @@ namespace Nuclectic.Tests.Graphics
 		}
 
 		/// <summary>
-		///   Tests whether passing an invalid primitive type to the IsValidVertexCount()
-		///   method causes it to throw the right exception
+		///     Tests whether passing an invalid primitive type to the IsValidVertexCount()
+		///     method causes it to throw the right exception
 		/// </summary>
 		[Test]
 		public void TestIsValidVertexCountWithInvalidPrimitiveType()

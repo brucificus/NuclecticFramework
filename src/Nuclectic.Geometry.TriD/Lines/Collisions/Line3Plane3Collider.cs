@@ -29,15 +29,15 @@ namespace Nuclectic.Geometry.Lines.Collisions
 	{
 		/// <summary>Determines where a line will hit a plane, if at all</summary>
 		/// <param name="lineOffset">
-		///   Offset of the line from the coordinate system's center
+		///     Offset of the line from the coordinate system's center
 		/// </param>
 		/// <param name="lineDirection">Direction and length of the line</param>
 		/// <param name="planeOffset">
-		///   Offset of the plane from the coordinate system's center
+		///     Offset of the plane from the coordinate system's center
 		/// </param>
 		/// <param name="planeNormal">Normal vector of the plane</param>
 		/// <returns>
-		///   The intersection point between the line and the plane, if they touch
+		///     The intersection point between the line and the plane, if they touch
 		/// </returns>
 		public static LineContacts FindContacts(
 			Vector3 lineOffset, Vector3 lineDirection,

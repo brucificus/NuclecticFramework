@@ -9,7 +9,7 @@
 		int GetDirection(int[] povs);
 
 		/// <summary>
-		///   Reports whether the state of the point-of-view controller has changed
+		///     Reports whether the state of the point-of-view controller has changed
 		/// </summary>
 		/// <param name="previous">Previous states of the PoV controllers</param>
 		/// <param name="current">Current states of the PoV controllers</param>

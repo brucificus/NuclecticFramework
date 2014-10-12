@@ -48,21 +48,18 @@ namespace Nuclectic.Support.Helpers
 
 		/// <summary>Clears the contents of a string builder</summary>
 		/// <param name="builder">String builder that will be cleared</param>
-		public static void Clear(this StringBuilder builder)
-		{
-			builder.Remove(0, builder.Length);
-		}
+		public static void Clear(this StringBuilder builder) { builder.Remove(0, builder.Length); }
 
 		/// <summary>
-		///   Appends an integer to a string builder without generating garbage
+		///     Appends an integer to a string builder without generating garbage
 		/// </summary>
 		/// <param name="builder">String builder to which an integer will be appended</param>
 		/// <param name="value">Byte that will be appended to the string builder</param>
 		/// <param name="garbagePolicy">How to behave regarding the garbage collector</param>
 		/// <remarks>
-		///   The normal StringBuilder.Append() method generates garbage when converting
-		///   integer arguments whereas this method will avoid any garbage, albeit probably
-		///   with a small performance impact compared to the built-in method.
+		///     The normal StringBuilder.Append() method generates garbage when converting
+		///     integer arguments whereas this method will avoid any garbage, albeit probably
+		///     with a small performance impact compared to the built-in method.
 		/// </remarks>
 		public static void Append(
 			this StringBuilder builder, byte value, GarbagePolicy garbagePolicy
@@ -79,15 +76,15 @@ namespace Nuclectic.Support.Helpers
 		}
 
 		/// <summary>
-		///   Appends an integer to a string builder without generating garbage
+		///     Appends an integer to a string builder without generating garbage
 		/// </summary>
 		/// <param name="builder">String builder to which an integer will be appended</param>
 		/// <param name="value">Integer that will be appended to the string builder</param>
 		/// <param name="garbagePolicy">How to behave regarding the garbage collector</param>
 		/// <remarks>
-		///   The normal StringBuilder.Append() method generates garbage when converting
-		///   integer arguments whereas this method will avoid any garbage, albeit probably
-		///   with a small performance impact compared to the built-in method.
+		///     The normal StringBuilder.Append() method generates garbage when converting
+		///     integer arguments whereas this method will avoid any garbage, albeit probably
+		///     with a small performance impact compared to the built-in method.
 		/// </remarks>
 		public static void Append(
 			this StringBuilder builder, int value, GarbagePolicy garbagePolicy
@@ -112,15 +109,15 @@ namespace Nuclectic.Support.Helpers
 		}
 
 		/// <summary>
-		///   Appends an long integer to a string builder without generating garbage
+		///     Appends an long integer to a string builder without generating garbage
 		/// </summary>
 		/// <param name="builder">String builder to which an integer will be appended</param>
 		/// <param name="value">Long integer that will be appended to the string builder</param>
 		/// <param name="garbagePolicy">How to behave regarding the garbage collector</param>
 		/// <remarks>
-		///   The normal StringBuilder.Append() method generates garbage when converting
-		///   integer arguments whereas this method will avoid any garbage, albeit probably
-		///   with a small performance impact compared to the built-in method.
+		///     The normal StringBuilder.Append() method generates garbage when converting
+		///     integer arguments whereas this method will avoid any garbage, albeit probably
+		///     with a small performance impact compared to the built-in method.
 		/// </remarks>
 		public static void Append(
 			this StringBuilder builder, long value, GarbagePolicy garbagePolicy
@@ -145,16 +142,16 @@ namespace Nuclectic.Support.Helpers
 		}
 
 		/// <summary>
-		///   Appends a floating point value to a string builder without generating garbage
+		///     Appends a floating point value to a string builder without generating garbage
 		/// </summary>
 		/// <param name="builder">String builder the value will be appended to</param>
 		/// <param name="value">Value that will be appended to the string builder</param>
 		/// <param name="garbagePolicy">How to behave regarding the garbage collector</param>
 		/// <returns>Whether the value was inside the algorithm's supported range</returns>
 		/// <remarks>
-		///   Uses an algorithm that covers the sane range of possible values but will
-		///   fail to render extreme values, NaNs and infinity. In these cases, false
-		///   is returned and the traditional double.ToString() method can be used.
+		///     Uses an algorithm that covers the sane range of possible values but will
+		///     fail to render extreme values, NaNs and infinity. In these cases, false
+		///     is returned and the traditional double.ToString() method can be used.
 		/// </remarks>
 		public static bool Append(
 			this StringBuilder builder, float value, GarbagePolicy garbagePolicy
@@ -172,16 +169,16 @@ namespace Nuclectic.Support.Helpers
 		}
 
 		/// <summary>
-		///   Appends a floating point value to a string builder without generating garbage
+		///     Appends a floating point value to a string builder without generating garbage
 		/// </summary>
 		/// <param name="builder">String builder the value will be appended to</param>
 		/// <param name="value">Value that will be appended to the string builder</param>
 		/// <param name="decimalPlaces">Maximum number of decimal places to display</param>
 		/// <returns>Whether the value was inside the algorithm's supported range</returns>
 		/// <remarks>
-		///   Uses an algorithm that covers the sane range of possible values but will
-		///   fail to render extreme values, NaNs and infinity. In these cases, false
-		///   is returned and the traditional double.ToString() method can be used.
+		///     Uses an algorithm that covers the sane range of possible values but will
+		///     fail to render extreme values, NaNs and infinity. In these cases, false
+		///     is returned and the traditional double.ToString() method can be used.
 		/// </remarks>
 		public static bool Append(this StringBuilder builder, float value, int decimalPlaces)
 		{
@@ -274,17 +271,17 @@ namespace Nuclectic.Support.Helpers
 		}
 
 		/// <summary>
-		///   Appends a double precision floating point value to a string builder
-		///   without generating garbage
+		///     Appends a double precision floating point value to a string builder
+		///     without generating garbage
 		/// </summary>
 		/// <param name="builder">String builder the value will be appended to</param>
 		/// <param name="value">Value that will be appended to the string builder</param>
 		/// <param name="garbagePolicy">How to behave regarding the garbage collector</param>
 		/// <returns>Whether the value was inside the algorithm's supported range</returns>
 		/// <remarks>
-		///   Uses an algorithm that covers the sane range of possible values but will
-		///   fail to render extreme values, NaNs and infinity. In these cases, false
-		///   is returned and the traditional double.ToString() method can be used.
+		///     Uses an algorithm that covers the sane range of possible values but will
+		///     fail to render extreme values, NaNs and infinity. In these cases, false
+		///     is returned and the traditional double.ToString() method can be used.
 		/// </remarks>
 		public static bool Append(
 			this StringBuilder builder, double value, GarbagePolicy garbagePolicy
@@ -302,17 +299,17 @@ namespace Nuclectic.Support.Helpers
 		}
 
 		/// <summary>
-		///   Appends a double precision floating point value to a string builder
-		///   without generating garbage
+		///     Appends a double precision floating point value to a string builder
+		///     without generating garbage
 		/// </summary>
 		/// <param name="builder">String builder the value will be appended to</param>
 		/// <param name="value">Value that will be appended to the string builder</param>
 		/// <param name="decimalPlaces">Maximum number of decimal places to display</param>
 		/// <returns>Whether the value was inside the algorithm's supported range</returns>
 		/// <remarks>
-		///   Uses an algorithm that covers the sane range of possible values but will
-		///   fail to render extreme values, NaNs and infinity. In these cases, false
-		///   is returned and the traditional double.ToString() method can be used.
+		///     Uses an algorithm that covers the sane range of possible values but will
+		///     fail to render extreme values, NaNs and infinity. In these cases, false
+		///     is returned and the traditional double.ToString() method can be used.
 		/// </remarks>
 		public static bool Append(this StringBuilder builder, double value, int decimalPlaces)
 		{

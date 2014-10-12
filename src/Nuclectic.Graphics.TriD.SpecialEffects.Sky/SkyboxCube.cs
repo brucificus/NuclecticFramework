@@ -28,16 +28,16 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Sky
 {
 	/// <summary>Renders a skybox consisting of 6 separate faces</summary>
 	/// <remarks>
-	///   <para>
-	///     This class doesn't make any assumptions about the effect and texture you're
-	///     using to render the sky box, it simply takes care of the vertex buffer setup
-	///     and allows you to conveniently render a skybox using your own textures,
-	///     effects and graphics device settings.
-	///   </para>
-	///   <para>
-	///     The skybox vertices do not provide any texture coordinates because the
-	///     texture 
-	///   </para>
+	///     <para>
+	///         This class doesn't make any assumptions about the effect and texture you're
+	///         using to render the sky box, it simply takes care of the vertex buffer setup
+	///         and allows you to conveniently render a skybox using your own textures,
+	///         effects and graphics device settings.
+	///     </para>
+	///     <para>
+	///         The skybox vertices do not provide any texture coordinates because the
+	///         texture
+	///     </para>
 	/// </remarks>
 	public class SkyboxCube : IDisposable
 	{
@@ -54,7 +54,7 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Sky
 		}
 
 		/// <summary>
-		///   Immediately releases all resources owned by the instance
+		///     Immediately releases all resources owned by the instance
 		/// </summary>
 		public void Dispose()
 		{
@@ -66,8 +66,8 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Sky
 		}
 
 		/// <summary>
-		///   Prepares the skybox for drawing by selecting its vertex buffer and adjusting
-		///   the state of the graphics device as neccessary
+		///     Prepares the skybox for drawing by selecting its vertex buffer and adjusting
+		///     the state of the graphics device as neccessary
 		/// </summary>
 		public void AssignVertexBuffer() { this.graphicsDevice.SetVertexBuffer(this.vertexBuffer); }
 

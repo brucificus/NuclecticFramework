@@ -60,12 +60,12 @@ namespace Nuclectic.UserInterface.Controls
 		}
 
 		/// <summary>
-		///   Called when the mouse has entered the control and is now hovering over it
+		///     Called when the mouse has entered the control and is now hovering over it
 		/// </summary>
 		protected override void OnMouseEntered() { this.mouseHovering = true; }
 
 		/// <summary>
-		///   Called when the mouse has left the control and is no longer hovering over it
+		///     Called when the mouse has left the control and is no longer hovering over it
 		/// </summary>
 		protected override void OnMouseLeft()
 		{
@@ -116,7 +116,7 @@ namespace Nuclectic.UserInterface.Controls
 		/// <summary>Called when a button on the gamepad has been pressed</summary>
 		/// <param name="button">Button that has been pressed</param>
 		/// <returns>
-		///   True if the button press was handled by the control, otherwise false.
+		///     True if the button press was handled by the control, otherwise false.
 		/// </returns>
 		protected override bool OnButtonPressed(Buttons button)
 		{
@@ -155,7 +155,7 @@ namespace Nuclectic.UserInterface.Controls
 		/// <summary>Called when a key on the keyboard has been pressed down</summary>
 		/// <param name="keyCode">Code of the key that was pressed</param>
 		/// <returns>
-		///   True if the key press was handled by the control, otherwise false.
+		///     True if the key press was handled by the control, otherwise false.
 		/// </returns>
 		protected override bool OnKeyPressed(Keys keyCode)
 		{
@@ -212,8 +212,8 @@ namespace Nuclectic.UserInterface.Controls
 
 		/// <summary>Called when the control is pressed</summary>
 		/// <remarks>
-		///   If you were to implement a button, for example, you could trigger a 'Pressed'
-		///   event here are call a user-provided delegate, depending on your design.
+		///     If you were to implement a button, for example, you could trigger a 'Pressed'
+		///     event here are call a user-provided delegate, depending on your design.
 		/// </remarks>
 		protected virtual void OnPressed() { }
 
@@ -222,7 +222,7 @@ namespace Nuclectic.UserInterface.Controls
 
 		/// <summary>Looks up the equivalent key to the gamepad button</summary>
 		/// <param name="button">
-		///   Gamepad button for which the equivalent key on the keyboard will be found
+		///     Gamepad button for which the equivalent key on the keyboard will be found
 		/// </param>
 		/// <returns>The key that is equivalent to the specified gamepad button</returns>
 		private static Keys keyFromButton(Buttons button)

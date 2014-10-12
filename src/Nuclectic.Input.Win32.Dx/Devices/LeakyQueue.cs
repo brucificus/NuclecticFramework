@@ -6,7 +6,7 @@ namespace Nuclectic.Input.Devices
 	/// <summary>Specialized queue which lets users access its raw data</summary>
 	/// <typeparam name="ItemType">Type of items the queue will contain</typeparam>
 	/// <remarks>
-	///   No, it doesn't leak memory. It leaks implementation details. :o)
+	///     No, it doesn't leak memory. It leaks implementation details. :o)
 	/// </remarks>
 	internal class LeakyQueue<ItemType>
 	{
@@ -123,10 +123,10 @@ namespace Nuclectic.Input.Devices
 		}
 
 		/// <summary>
-		///   Ensures that the is space for at least one more item available
+		///     Ensures that the is space for at least one more item available
 		/// </summary>
 		/// <remarks>
-		///   Call this before manually inserting an item into the queue
+		///     Call this before manually inserting an item into the queue
 		/// </remarks>
 		public void EnsureSlotAvailable()
 		{

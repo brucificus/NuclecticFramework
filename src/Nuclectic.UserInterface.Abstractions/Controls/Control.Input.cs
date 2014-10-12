@@ -33,8 +33,8 @@ namespace Nuclectic.UserInterface.Controls
 		/// <summary>Called when a button on the game pad has been pressed</summary>
 		/// <param name="button">Button that has been pressed</param>
 		/// <returns>
-		///   True if the button press was processed by the control and future game pad
-		///   input belongs to the control until all buttons are released again
+		///     True if the button press was processed by the control and future game pad
+		///     input belongs to the control until all buttons are released again
 		/// </returns>
 		public bool ProcessButtonPress(Buttons button)
 		{
@@ -147,7 +147,7 @@ namespace Nuclectic.UserInterface.Controls
 		}
 
 		/// <summary>
-		///   Called when the mouse has left the control and is no longer hovering over it
+		///     Called when the mouse has left the control and is no longer hovering over it
 		/// </summary>
 		public void ProcessMouseLeave()
 		{
@@ -401,7 +401,7 @@ namespace Nuclectic.UserInterface.Controls
 		/// <summary>Called when a key on the keyboard has been pressed down</summary>
 		/// <param name="keyCode">Code of the key that was pressed</param>
 		/// <param name="repetition">
-		///   Whether the key press is due to the user holding down a key
+		///     Whether the key press is due to the user holding down a key
 		/// </param>
 		public bool ProcessKeyPress(Keys keyCode, bool repetition)
 		{
@@ -518,7 +518,7 @@ namespace Nuclectic.UserInterface.Controls
 		}
 
 		/// <summary>
-		///   Whether any keys, mouse buttons or game pad buttons are beind held pressed
+		///     Whether any keys, mouse buttons or game pad buttons are beind held pressed
 		/// </summary>
 		private bool anyKeysOrButtonsPressed
 		{

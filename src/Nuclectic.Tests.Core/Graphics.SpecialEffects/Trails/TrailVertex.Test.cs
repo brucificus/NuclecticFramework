@@ -32,7 +32,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Trails
 	internal class TrailVertexTest
 	{
 		/// <summary>
-		///   Verifies that the constructor of the trail vertex class is working
+		///     Verifies that the constructor of the trail vertex class is working
 		/// </summary>
 		[Test]
 		public void TestConstructor()

@@ -26,10 +26,10 @@ namespace Nuclectic.Game.Packing
 {
 	/// <summary>Simplified packer for rectangles which don't vary greatly in size</summary>
 	/// <remarks>
-	///   This is a highly performant packer that sacrifices space efficiency for
-	///   low memory usage and runtime performance. It achieves good results with
-	///   near-uniform sized rectangles but will waste lots of space with rectangles
-	///   of varying dimensions.
+	///     This is a highly performant packer that sacrifices space efficiency for
+	///     low memory usage and runtime performance. It achieves good results with
+	///     near-uniform sized rectangles but will waste lots of space with rectangles
+	///     of varying dimensions.
 	/// </remarks>
 	public class SimpleRectanglePacker : RectanglePacker
 	{

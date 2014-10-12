@@ -23,8 +23,8 @@ License along with this library
 namespace Nuclectic.UserInterface.Input
 {
 	/// <summary>
-	///   Interface for input capturers that monitor user input and forward it to
-	///   a freely settable input receiver
+	///     Interface for input capturers that monitor user input and forward it to
+	///     a freely settable input receiver
 	/// </summary>
 	public interface IInputCapturer
 	{

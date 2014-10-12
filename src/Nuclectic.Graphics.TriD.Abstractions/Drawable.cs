@@ -31,7 +31,7 @@ namespace Nuclectic.Graphics.TriD
 	{
 		/// <summary>Initializes a new drawable object.</summary>
 		/// <param name="graphicsDeviceService">
-		///   Graphics device this drawable object will be bound to
+		///     Graphics device this drawable object will be bound to
 		/// </param>
 		public Drawable(IGraphicsDeviceService graphicsDeviceService)
 		{
@@ -49,8 +49,8 @@ namespace Nuclectic.Graphics.TriD
 
 		/// <summary>Immediately releases all resources owned by this instance</summary>
 		/// <remarks>
-		///   This method is not suitable for being called during a GC run, it is intended
-		///   for manual usage when you actually want to get rid of the Drawable object.
+		///     This method is not suitable for being called during a GC run, it is intended
+		///     for manual usage when you actually want to get rid of the Drawable object.
 		/// </remarks>
 		public virtual void Dispose()
 		{
@@ -73,11 +73,11 @@ namespace Nuclectic.Graphics.TriD
 		/// <param name="serviceProvider">Service provider to look in</param>
 		/// <returns>The graphics device service, if it was available</returns>
 		/// <remarks>
-		///   This method is included in the Drawable class to allow deriving classes
-		///   to expect an IServerProvider as their constructor argument and still
-		///   initialize Drawable, their base class, with a graphics device service.
-		///   <example>
-		///     <code>
+		///     This method is included in the Drawable class to allow deriving classes
+		///     to expect an IServerProvider as their constructor argument and still
+		///     initialize Drawable, their base class, with a graphics device service.
+		///     <example>
+		///         <code>
 		///       public class MyDrawable : Drawable {
 		/// 
 		///         public MyDrawable(IServiceProvider serviceProvider) :
@@ -85,7 +85,7 @@ namespace Nuclectic.Graphics.TriD
 		///      
 		///       }
 		///     </code>
-		///   </example>
+		///     </example>
 		/// </remarks>
 		protected static IGraphicsDeviceService GetGraphicsDeviceService(
 			IServiceProvider serviceProvider
@@ -105,12 +105,12 @@ namespace Nuclectic.Graphics.TriD
 		protected IGraphicsDeviceService GraphicsDeviceService { get { return this.graphicsDeviceService; } }
 
 		/// <summary>
-		///   Called when the object needs to set up graphics resources. Override to
-		///   set up any object specific graphics resources.
+		///     Called when the object needs to set up graphics resources. Override to
+		///     set up any object specific graphics resources.
 		/// </summary>
 		/// <param name="createAllContent">
-		///   True if all graphics resources need to be set up; false if only
-		///   manual resources need to be set up.
+		///     True if all graphics resources need to be set up; false if only
+		///     manual resources need to be set up.
 		/// </param>
 		[
 			Obsolete(
@@ -121,18 +121,18 @@ namespace Nuclectic.Graphics.TriD
 		protected virtual void LoadGraphicsContent(bool createAllContent) { }
 
 		/// <summary>
-		///   Called when graphics resources need to be loaded. Override this method to load
-		///   any game-specific graphics resources.
+		///     Called when graphics resources need to be loaded. Override this method to load
+		///     any game-specific graphics resources.
 		/// </summary>
 		protected virtual void LoadContent() { }
 
 		/// <summary>
-		///   Called when graphics resources should be released. Override to
-		///   handle component specific graphics resources.
+		///     Called when graphics resources should be released. Override to
+		///     handle component specific graphics resources.
 		/// </summary>
 		/// <param name="destroyAllContent">
-		///   True if all graphics resources should be released; false if only
-		///   manual resources should be released.
+		///     True if all graphics resources should be released; false if only
+		///     manual resources should be released.
 		/// </param>
 		[
 			Obsolete(
@@ -143,13 +143,13 @@ namespace Nuclectic.Graphics.TriD
 		protected virtual void UnloadGraphicsContent(bool destroyAllContent) { }
 
 		/// <summary>
-		///   Called when graphics resources need to be unloaded. Override this method to unload
-		///   any game-specific graphics resources.
+		///     Called when graphics resources need to be unloaded. Override this method to unload
+		///     any game-specific graphics resources.
 		/// </summary>
 		protected virtual void UnloadContent() { }
 
 		/// <summary>
-		///   Subscribes this component to the events of the graphics device service.
+		///     Subscribes this component to the events of the graphics device service.
 		/// </summary>
 		private void subscribeToGraphicsDeviceService()
 		{
@@ -172,7 +172,7 @@ namespace Nuclectic.Graphics.TriD
 		}
 
 		/// <summary>
-		///   Unsubscribes this component from the events of the graphics device service.
+		///     Unsubscribes this component from the events of the graphics device service.
 		/// </summary>
 		private void unsubscribeFromGraphicsDeviceService()
 		{

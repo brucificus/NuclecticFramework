@@ -23,7 +23,7 @@ License along with this library
 namespace Nuclectic.Input.Devices
 {
 	/// <summary>
-	///   Sends out notifications for intercepted window messages related to the mouse
+	///     Sends out notifications for intercepted window messages related to the mouse
 	/// </summary>
 	public interface IMouseMessageSource
 	{

@@ -34,8 +34,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 	public class Line3Sphere3ColliderTest
 	{
 		/// <summary>
-		///   Tests whether a line that is barely outside of the sphere is correctly
-		///   identified as a non-hit
+		///     Tests whether a line that is barely outside of the sphere is correctly
+		///     identified as a non-hit
 		/// </summary>
 		[Test]
 		public void TestCloseMiss()
@@ -49,8 +49,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether a line that crosses the sphere through its center causes
-		///   to right contact points to be reported
+		///     Tests whether a line that crosses the sphere through its center causes
+		///     to right contact points to be reported
 		/// </summary>
 		[Test]
 		public void TestCenterCrossing()

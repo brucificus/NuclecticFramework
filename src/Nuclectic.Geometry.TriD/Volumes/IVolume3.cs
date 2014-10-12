@@ -33,24 +33,24 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Smallest axis-aligned box that completely encloses the volume</summary>
 		/// <remarks>
-		///   This always produces an optimal box which means a tight-fitting box is generated
-		///   that will touch the volume on each of its six sides. As a side effect, it is very
-		///   likely that this box needs to be recalculated whenever the volume changes its
-		///   orientation.
+		///     This always produces an optimal box which means a tight-fitting box is generated
+		///     that will touch the volume on each of its six sides. As a side effect, it is very
+		///     likely that this box needs to be recalculated whenever the volume changes its
+		///     orientation.
 		/// </remarks>
 		AxisAlignedBox3 BoundingBox { get; }
 
 		/// <summary>Smallest sphere that completely encloses the volume</summary>
 		/// <remarks>
-		///   Bounding spheres have the advantage to not change even when the volume is
-		///   rotated. That makes them ideal for dynamic objects that are not keeping their
-		///   original orientation.
+		///     Bounding spheres have the advantage to not change even when the volume is
+		///     rotated. That makes them ideal for dynamic objects that are not keeping their
+		///     original orientation.
 		/// </remarks>
 		Sphere3 BoundingSphere { get; }
 
 		/// <summary>Amount of mass that the volume contains</summary>
 		/// <remarks>
-		///   This is the mass the volume would have at a material density of 1.0
+		///     This is the mass the volume would have at a material density of 1.0
 		/// </remarks>
 		float Mass { get; }
 

@@ -34,8 +34,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 	public class Ray2Triangle2ColliderTest
 	{
 		/// <summary>
-		///   Tests whether the contact finder reports the correct locations for a ray
-		///   that starts inside a triangle.
+		///     Tests whether the contact finder reports the correct locations for a ray
+		///     that starts inside a triangle.
 		/// </summary>
 		[Test]
 		public void TestRayStartingInside()
@@ -57,8 +57,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 
 
 		/// <summary>
-		///   Tests whether the contact finder reports the correct locations for a ray
-		///   that starts behind a triangle.
+		///     Tests whether the contact finder reports the correct locations for a ray
+		///     that starts behind a triangle.
 		/// </summary>
 		[Test]
 		public void TestRayStartingBehind()

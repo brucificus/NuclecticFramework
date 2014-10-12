@@ -134,13 +134,13 @@ namespace Nuclectic.Graphics.Helpers
 		#endregion // class DummyGraphicsDeviceService
 
 		/// <summary>
-		///   Creates a service provider containing only the graphics device service
+		///     Creates a service provider containing only the graphics device service
 		/// </summary>
 		/// <param name="graphicsDeviceService">
-		///   Graphics device service that will be provided by the service provider
+		///     Graphics device service that will be provided by the service provider
 		/// </param>
 		/// <returns>
-		///   A new service provider that provides the graphics device service
+		///     A new service provider that provides the graphics device service
 		/// </returns>
 		public static IServiceProvider MakePrivateServiceProvider(
 			IGraphicsDeviceService graphicsDeviceService
@@ -154,16 +154,16 @@ namespace Nuclectic.Graphics.Helpers
 		}
 
 		/// <summary>
-		///   Creates a dummy graphics device service for the provided graphics device
+		///     Creates a dummy graphics device service for the provided graphics device
 		/// </summary>
 		/// <param name="graphicsDevice">
-		///   Graphics device the dummy service is created around
+		///     Graphics device the dummy service is created around
 		/// </param>
 		/// <returns>A new dummy service for the provided graphics device</returns>
 		/// <remarks>
-		///   The dummy graphics device service is in all terms equal to the real thing,
-		///   except that it will trigger the service's events *after* the graphics device
-		///   might have already notified other subscribers.
+		///     The dummy graphics device service is in all terms equal to the real thing,
+		///     except that it will trigger the service's events *after* the graphics device
+		///     might have already notified other subscribers.
 		/// </remarks>
 		public static IGraphicsDeviceService MakeDummyGraphicsDeviceService(
 			GraphicsDevice graphicsDevice

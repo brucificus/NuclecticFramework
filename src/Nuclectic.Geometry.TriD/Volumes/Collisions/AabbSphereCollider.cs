@@ -35,8 +35,8 @@ namespace Nuclectic.Geometry.Volumes.Collisions
 		/// <param name="sphereRadius">Radius to the sphere to test</param>
 		/// <returns>True if the axis aligned box intersects with the sphere</returns>
 		/// <remarks>
-		///   Idea taken from the "Simple Intersection Tests for Games" article
-		///   on gamasutra by Gomez.
+		///     Idea taken from the "Simple Intersection Tests for Games" article
+		///     on gamasutra by Gomez.
 		/// </remarks>
 		public static bool CheckContact(
 			Vector3 aabbMin, Vector3 aabbMax, Vector3 sphereCenter, float sphereRadius

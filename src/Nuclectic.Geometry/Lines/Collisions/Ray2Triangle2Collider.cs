@@ -31,13 +31,13 @@ namespace Nuclectic.Geometry.Lines.Collisions
 		/// <param name="rayStart">Starting point of the ray</param>
 		/// <param name="rayDirection">Direction into which the ray extends</param>
 		/// <param name="triangleA">
-		///   First corner point of triangle in counter-clockwise order
+		///     First corner point of triangle in counter-clockwise order
 		/// </param>
 		/// <param name="triangleB">
-		///   Second corner point of triangle in counter-clockwise order
+		///     Second corner point of triangle in counter-clockwise order
 		/// </param>
 		/// <param name="triangleC">
-		///   Third corner point of triangle in counter-clockwise order
+		///     Third corner point of triangle in counter-clockwise order
 		/// </param>
 		/// <returns>The intersection points between the ray and the box, if any</returns>
 		public static LineContacts FindContacts(

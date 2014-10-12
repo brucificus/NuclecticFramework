@@ -32,7 +32,7 @@ namespace Nuclectic.Tests.Game.Space
 	internal class BoundingRectangleTest
 	{
 		/// <summary>
-		///   Verifies that the bounding rectangle's default constructor is working
+		///     Verifies that the bounding rectangle's default constructor is working
 		/// </summary>
 		[Test]
 		public void TestDefaultConstructor()
@@ -43,9 +43,8 @@ namespace Nuclectic.Tests.Game.Space
 		}
 
 		/// <summary>
-		///   Verifies that the bounding rectangle's constructor from two vectors is working
+		///     Verifies that the bounding rectangle's constructor from two vectors is working
 		/// </summary>
-		/// 
 		[Test]
 		public void TestVectorConstructor()
 		{
@@ -58,10 +57,9 @@ namespace Nuclectic.Tests.Game.Space
 		}
 
 		/// <summary>
-		///   Verifies that the bounding rectangle's constructor from individual
-		///   coordinates is working
+		///     Verifies that the bounding rectangle's constructor from individual
+		///     coordinates is working
 		/// </summary>
-		/// 
 		[Test]
 		public void TestCoordinateConstructor()
 		{
@@ -76,7 +74,7 @@ namespace Nuclectic.Tests.Game.Space
 		}
 
 		/// <summary>
-		///   Verifies that the hash code generation of the bounding rectangle works
+		///     Verifies that the hash code generation of the bounding rectangle works
 		/// </summary>
 		[Test]
 		public void TestHashCode()
@@ -106,7 +104,7 @@ namespace Nuclectic.Tests.Game.Space
 		}
 
 		/// <summary>
-		///   Tests whether the equality comparison of boxed instances is working
+		///     Tests whether the equality comparison of boxed instances is working
 		/// </summary>
 		[Test]
 		public void TestEqualsObject()
@@ -121,7 +119,7 @@ namespace Nuclectic.Tests.Game.Space
 		}
 
 		/// <summary>
-		///   Tests whether the equality comparison against null is handled correctly
+		///     Tests whether the equality comparison against null is handled correctly
 		/// </summary>
 		[Test]
 		public void TestEqualsNull()
@@ -131,7 +129,7 @@ namespace Nuclectic.Tests.Game.Space
 		}
 
 		/// <summary>
-		///   Tests whether the equality comparison against null is handled correctly
+		///     Tests whether the equality comparison against null is handled correctly
 		/// </summary>
 		[Test]
 		public void TestEqualsWithIncompatibleObject()
@@ -264,7 +262,7 @@ namespace Nuclectic.Tests.Game.Space
 		}
 
 		/// <summary>
-		///   Verifies that the intersection check with other rectangles is working
+		///     Verifies that the intersection check with other rectangles is working
 		/// </summary>
 		[Test]
 		public void TestIntersectsRectangle()
@@ -284,7 +282,7 @@ namespace Nuclectic.Tests.Game.Space
 		}
 
 		/// <summary>
-		///   Verifies that the intersection check with other rectangles is working
+		///     Verifies that the intersection check with other rectangles is working
 		/// </summary>
 		[Test]
 		public void TestIntersectsRectangleByReference()

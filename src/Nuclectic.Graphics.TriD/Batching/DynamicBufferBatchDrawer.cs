@@ -28,22 +28,23 @@ using Nuclectic.Graphics.Helpers;
 namespace Nuclectic.Graphics.TriD.Batching
 {
 	/// <summary>Draws batched vertices using a dynamic vertex buffer</summary>
-	public class DynamicBufferBatchDrawer<VertexType> :
-		IBatchDrawer<VertexType>,
-		IDisposable
+	public class DynamicBufferBatchDrawer<VertexType>
+		:
+			IBatchDrawer<VertexType>,
+			IDisposable
 		where VertexType : struct, IVertexType
 	{
 		/// <summary>Number of regions the vertex buffer is divided into</summary>
 		public const int Divisions = 4;
 
 		/// <summary>
-		///   Equivalent to SetDataOptions.Discard if supported by the target platform
+		///     Equivalent to SetDataOptions.Discard if supported by the target platform
 		/// </summary>
 		private const SetDataOptions DiscardIfPossible = SetDataOptions.None;
 
 		/// <summary>Initializes a new dynamic vertex buffer based batch drawer</summary>
 		/// <param name="graphicsDevice">
-		///   Graphics device that will be used for rendering
+		///     Graphics device that will be used for rendering
 		/// </param>
 		public DynamicBufferBatchDrawer(GraphicsDevice graphicsDevice)
 		{
@@ -88,7 +89,7 @@ namespace Nuclectic.Graphics.TriD.Batching
 		}
 
 		/// <summary>
-		///   Maximum number of vertices or indices a single batch is allowed to have
+		///     Maximum number of vertices or indices a single batch is allowed to have
 		/// </summary>
 		public int MaximumBatchSize { get { return PrimitiveBatch<VertexType>.BatchSize; } }
 
@@ -160,12 +161,12 @@ namespace Nuclectic.Graphics.TriD.Batching
 
 		/// <summary>Draws a batch of indexed primitives</summary>
 		/// <param name="startVertex">
-		///   Index of the first vertex in the vertex array. This vertex will become
-		///   the new index 0 for the index buffer.
+		///     Index of the first vertex in the vertex array. This vertex will become
+		///     the new index 0 for the index buffer.
 		/// </param>
 		/// <param name="vertexCount">Number of vertices used in the call</param>
 		/// <param name="startIndex">
-		///   Position at which to begin processing the index array
+		///     Position at which to begin processing the index array
 		/// </param>
 		/// <param name="indexCount">Number of indices that will be processed</param>
 		/// <param name="type">Type of primitives to draw</param>

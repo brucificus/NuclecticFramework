@@ -74,9 +74,9 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 		/// <summary>Called when a mouse button has been pressed down</summary>
 		/// <param name="button">Index of the button that has been pressed</param>
 		/// <remarks>
-		///   If this method states that a mouse press is processed by returning
-		///   true, that means the control did something with it and the mouse press
-		///   should not be acted upon by any other listener.
+		///     If this method states that a mouse press is processed by returning
+		///     true, that means the control did something with it and the mouse press
+		///     should not be acted upon by any other listener.
 		/// </remarks>
 		protected override void OnMousePressed(MouseButtons button)
 		{
@@ -96,11 +96,11 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 		/// <summary>Called when the user has clicked on a row in the list</summary>
 		/// <param name="row">Row the user has clicked on</param>
 		/// <remarks>
-		///   The default behavior of the list control in multi select mode is to
-		///   toggle items that are clicked between selected and unselected. If you
-		///   need different behavior (for example, dragging a selected region or
-		///   selecting sequences of items by holding the shift key), you can override
-		///   this method and handle the selection behavior yourself.
+		///     The default behavior of the list control in multi select mode is to
+		///     toggle items that are clicked between selected and unselected. If you
+		///     need different behavior (for example, dragging a selected region or
+		///     selecting sequences of items by holding the shift key), you can override
+		///     this method and handle the selection behavior yourself.
 		/// </remarks>
 		protected virtual void OnRowClicked(int row)
 		{
@@ -206,7 +206,7 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 		private void selectionAdded(object sender, ItemEventArgs<int> arguments) { OnSelectionChanged(); }
 
 		/// <summary>
-		///   Called when an entry is removed from the list of selected items
+		///     Called when an entry is removed from the list of selected items
 		/// </summary>
 		/// <param name="sender">List from which an item was removed</param>
 		/// <param name="arguments">Contains the removed item</param>
@@ -233,7 +233,7 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 		}
 
 		/// <summary>
-		///   Can be set by renderers to enable selection of list items by mouse
+		///     Can be set by renderers to enable selection of list items by mouse
 		/// </summary>
 		public IListRowLocator ListRowLocator
 		{
@@ -249,8 +249,8 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 		}
 
 		/// <summary>
-		///   Row locator through which the list can detect which row the mouse has
-		///   been pressed down on
+		///     Row locator through which the list can detect which row the mouse has
+		///     been pressed down on
 		/// </summary>
 		private IListRowLocator listRowLocator;
 

@@ -98,10 +98,10 @@ namespace Nuclectic.Tests.Input.Devices
 
 		/// <summary>Requires a joystick to be attached to the system</summary>
 		/// <remarks>
-		///   Requiring hardware for a unit test is a big no-no, but SlimDX' wrappers arent
-		///   all based on funky interfaces, so there's no way to mock the darn thing.
-		///   Adding another layer of abstraction would only mean having no test coverage
-		///   for that layer of abstraction.
+		///     Requiring hardware for a unit test is a big no-no, but SlimDX' wrappers arent
+		///     all based on funky interfaces, so there's no way to mock the darn thing.
+		///     Adding another layer of abstraction would only mean having no test coverage
+		///     for that layer of abstraction.
 		/// </remarks>
 		private void requireAttachedJoystick()
 		{

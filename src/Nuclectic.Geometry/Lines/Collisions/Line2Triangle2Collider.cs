@@ -29,25 +29,25 @@ namespace Nuclectic.Geometry.Lines.Collisions
 	{
 		/// <summary>Determines the contact location between a line and a triangle</summary>
 		/// <param name="lineOffset">
-		///   Offset of the line from the coordinate system's center
+		///     Offset of the line from the coordinate system's center
 		/// </param>
 		/// <param name="lineDirection">Direction and length of the line</param>
 		/// <param name="triangleA">
-		///   First corner point of triangle in counter-clockwise order
+		///     First corner point of triangle in counter-clockwise order
 		/// </param>
 		/// <param name="triangleB">
-		///   Second corner point of triangle in counter-clockwise order
+		///     Second corner point of triangle in counter-clockwise order
 		/// </param>
 		/// <param name="triangleC">
-		///   Third corner point of triangle in counter-clockwise order
+		///     Third corner point of triangle in counter-clockwise order
 		/// </param>
 		/// <returns>The point of intersection of the line with the triangle, if any</returns>
 		/// <remarks>
-		///   Everyone seems to know how to do 3D line / triangle intersections, but there
-		///   are no resources whatsoever on 2D line / triangle intersections. The code in here
-		///   is hand-written by myself. Instead of fancy math tricks, it simply tries to be
-		///   efficient using the existing code. It requires 4 line checks to find the accurate
-		///   intersection point with the triangle.
+		///     Everyone seems to know how to do 3D line / triangle intersections, but there
+		///     are no resources whatsoever on 2D line / triangle intersections. The code in here
+		///     is hand-written by myself. Instead of fancy math tricks, it simply tries to be
+		///     efficient using the existing code. It requires 4 line checks to find the accurate
+		///     intersection point with the triangle.
 		/// </remarks>
 		internal static LineContacts FindContacts(
 			Vector2 lineOffset, Vector2 lineDirection,
@@ -135,12 +135,12 @@ namespace Nuclectic.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Finds out whether a reported contact point lies within a line segment
+		///     Finds out whether a reported contact point lies within a line segment
 		/// </summary>
 		/// <param name="contacts">Reported contact point that will be checked</param>
 		/// <param name="length">
-		///   Length of the line segment against which the test that created the contact
-		///   point was made
+		///     Length of the line segment against which the test that created the contact
+		///     point was made
 		/// </param>
 		/// <returns>True if the contact point is within the line segment</returns>
 		private static bool isWithin(LineContacts contacts, float length)

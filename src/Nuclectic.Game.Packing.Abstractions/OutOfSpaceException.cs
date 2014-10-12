@@ -26,9 +26,9 @@ namespace Nuclectic.Game.Packing
 {
 	/// <summary>Insufficient space left in packing area to contain a given object</summary>
 	/// <remarks>
-	///   An exception being sent to you from deep space. Erm, no, wait, it's an exception
-	///   that occurs when a packing algorithm runs out of space and is unable to fit
-	///   the object you tried to pack into the remaining packing area.
+	///     An exception being sent to you from deep space. Erm, no, wait, it's an exception
+	///     that occurs when a packing algorithm runs out of space and is unable to fit
+	///     the object you tried to pack into the remaining packing area.
 	/// </remarks>
 	public class OutOfSpaceException : Exception
 	{

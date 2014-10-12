@@ -35,19 +35,16 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Fonts
 {
-
 	/// <summary>Unit tests for the text batcher</summary>
 	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
 	public class TextBatchTest
 		: TestFixtureBase
 	{
-
 		#region class TestText
 
 		/// <summary>Test implemented of a text mesh for the unit test</summary>
 		private class TestText : Text
 		{
-
 			/// <summary>Initializes a new test text mesh</summary>
 			public TestText()
 			{
@@ -57,7 +54,6 @@ namespace Nuclectic.Tests.Fonts
 				this.width = 12.34f;
 				this.height = 56.78f;
 			}
-
 		}
 
 		#endregion // class TestText
@@ -70,7 +66,7 @@ namespace Nuclectic.Tests.Fonts
 			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService())
 			{
 				var servicesProvider = GraphicsDeviceServiceHelper.MakePrivateServiceProvider(mockedGraphicsDeviceService);
-				
+
 				using (var contentManager = new ResourceContentManager(servicesProvider, TextBatchResources.ResourceManager))
 				using (var effect = contentManager.Load<Effect>("DefaultTextEffect"))
 				using (var textBatch = new TextBatch(mockedGraphicsDeviceService.GraphicsDevice, effect))
@@ -82,7 +78,7 @@ namespace Nuclectic.Tests.Fonts
 
 
 		/// <summary>
-		///   Verifies that the view/projection matrix is saved by the text batcher
+		///     Verifies that the view/projection matrix is saved by the text batcher
 		/// </summary>
 		[Test]
 		[RequiresSTA]
@@ -97,11 +93,11 @@ namespace Nuclectic.Tests.Fonts
 				using (var textBatch = new TextBatch(mockedGraphicsDeviceService.GraphicsDevice, effect))
 				{
 					Matrix testMatrix = new Matrix(
-					  1.1f, 1.2f, 1.3f, 1.4f,
-					  2.1f, 2.2f, 2.3f, 2.4f,
-					  3.1f, 3.2f, 3.3f, 3.4f,
-					  4.1f, 4.2f, 4.3f, 4.4f
-					);
+						1.1f, 1.2f, 1.3f, 1.4f,
+						2.1f, 2.2f, 2.3f, 2.4f,
+						3.1f, 3.2f, 3.3f, 3.4f,
+						4.1f, 4.2f, 4.3f, 4.4f
+						);
 
 					textBatch.ViewProjection = testMatrix;
 					Assert.AreEqual(testMatrix, textBatch.ViewProjection);
@@ -110,8 +106,8 @@ namespace Nuclectic.Tests.Fonts
 		}
 
 		/// <summary>
-		///   Tests whether the Begin() and End() methods can be called without any
-		///   drawing commands inbetween
+		///     Tests whether the Begin() and End() methods can be called without any
+		///     drawing commands inbetween
 		/// </summary>
 		[Test]
 		[RequiresSTA]
@@ -132,7 +128,7 @@ namespace Nuclectic.Tests.Fonts
 		}
 
 		/// <summary>
-		///   Tests the text drawing method using the default transformation matrix
+		///     Tests the text drawing method using the default transformation matrix
 		/// </summary>
 		[Test]
 		[RequiresSTA]
@@ -162,7 +158,7 @@ namespace Nuclectic.Tests.Fonts
 		}
 
 		/// <summary>
-		///   Tests the text drawing method using a custom transformation matrix
+		///     Tests the text drawing method using a custom transformation matrix
 		/// </summary>
 		[Test]
 		[RequiresSTA]
@@ -178,11 +174,11 @@ namespace Nuclectic.Tests.Fonts
 				{
 					TestText test = new TestText();
 					Matrix testMatrix = new Matrix(
-					  1.1f, 1.2f, 1.3f, 1.4f,
-					  2.1f, 2.2f, 2.3f, 2.4f,
-					  3.1f, 3.2f, 3.3f, 3.4f,
-					  4.1f, 4.2f, 4.3f, 4.4f
-					);
+						1.1f, 1.2f, 1.3f, 1.4f,
+						2.1f, 2.2f, 2.3f, 2.4f,
+						3.1f, 3.2f, 3.3f, 3.4f,
+						4.1f, 4.2f, 4.3f, 4.4f
+						);
 
 					textBatch.Begin();
 					try
@@ -198,7 +194,7 @@ namespace Nuclectic.Tests.Fonts
 		}
 
 		/// <summary>
-		///   Tests the text drawing method using a custom effect
+		///     Tests the text drawing method using a custom effect
 		/// </summary>
 		[Test]
 		[RequiresSTA]
@@ -231,10 +227,8 @@ namespace Nuclectic.Tests.Fonts
 					}
 				}
 			}
-
 		}
 	}
-
 } // namespace Nuclex.Fonts
 
 #endif // UNITTEST

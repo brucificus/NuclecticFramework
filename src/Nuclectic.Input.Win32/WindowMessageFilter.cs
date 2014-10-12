@@ -30,11 +30,12 @@ using Keys = Microsoft.Xna.Framework.Input.Keys;
 namespace Nuclectic.Input
 {
 	/// <summary>Filters window message before they arrive at the XNA window</summary>
-	internal class WindowMessageFilter :
-		IMessageFilter,
-		IKeyboardMessageSource,
-		IMouseMessageSource,
-		IDisposable
+	internal class WindowMessageFilter
+		:
+			IMessageFilter,
+			IKeyboardMessageSource,
+			IMouseMessageSource,
+			IDisposable
 	{
 		/// <summary>Flags that will be added to the result of WM_GETDLGCODE</summary>
 		private const int DlgCodeFlags =
@@ -87,11 +88,11 @@ namespace Nuclectic.Input
 
 		/// <summary>Filters out a message before it is dispatched</summary>
 		/// <param name="message">
-		///   Message that will be dispatched. You must not modify this message.
+		///     Message that will be dispatched. You must not modify this message.
 		/// </param>
 		/// <returns>
-		///   True if the message has been processed by the filter and should not be
-		///   dispatched or false to continue processing of the message.
+		///     True if the message has been processed by the filter and should not be
+		///     dispatched or false to continue processing of the message.
 		/// </returns>
 		bool IMessageFilter.PreFilterMessage(ref Message message)
 		{
@@ -442,8 +443,8 @@ namespace Nuclectic.Input
 		}
 
 		/// <summary>
-		///   Provides Informations about how the mouse cusor should be tracked on
-		///   the window to the TrackMouseEvent() function.
+		///     Provides Informations about how the mouse cusor should be tracked on
+		///     the window to the TrackMouseEvent() function.
 		/// </summary>
 		private UnsafeNativeMethods.TRACKMOUSEEVENT mouseEventTrackData;
 

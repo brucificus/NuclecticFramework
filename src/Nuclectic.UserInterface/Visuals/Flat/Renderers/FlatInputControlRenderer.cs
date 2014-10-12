@@ -34,11 +34,11 @@ namespace Nuclectic.UserInterface.Visuals.Flat.Renderers
 		private const string Style = "input.normal";
 
 		/// <summary>
-		///   Renders the specified control using the provided graphics interface
+		///     Renders the specified control using the provided graphics interface
 		/// </summary>
 		/// <param name="control">Control that will be rendered</param>
 		/// <param name="graphics">
-		///   Graphics interface that will be used to draw the control
+		///     Graphics interface that will be used to draw the control
 		/// </param>
 		public void Render(
 			Controls.Desktop.InputControl control, IFlatGuiGraphics graphics
@@ -101,23 +101,20 @@ namespace Nuclectic.UserInterface.Visuals.Flat.Renderers
 		}
 
 		/// <summary>
-		///   Calculates which opening between two letters is closest to a position
+		///     Calculates which opening between two letters is closest to a position
 		/// </summary>
 		/// <param name="bounds">
-		///   Boundaries of the control, should be in absolute coordinates
+		///     Boundaries of the control, should be in absolute coordinates
 		/// </param>
 		/// <param name="text">Text in which the opening will be looked for</param>
 		/// <param name="position">
-		///   Position to which the closest opening will be found,
-		///   should be in absolute coordinates
+		///     Position to which the closest opening will be found,
+		///     should be in absolute coordinates
 		/// </param>
 		/// <returns>The index of the opening closest to the provided position</returns>
 		public int GetClosestOpening(
 			RectangleF bounds, string text, Vector2 position
-			)
-		{
-			return this.graphics.GetClosestOpening("input.normal", bounds, text, position);
-		}
+			) { return this.graphics.GetClosestOpening("input.normal", bounds, text, position); }
 
 		// TODO: Find a better solution than remembering the graphics interface here
 		//   Otherwise the renderer could try to renderer when no frame is being drawn.

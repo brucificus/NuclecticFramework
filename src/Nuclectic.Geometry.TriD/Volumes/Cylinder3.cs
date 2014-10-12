@@ -28,8 +28,8 @@ namespace Nuclectic.Geometry.Volumes
 {
 	/// <summary>Three-dimensional cylinder with arbitrary orientation</summary>
 	/// <remarks>
-	///   With an identity matrix, the cylinder extents along the Y axis in both directions,
-	///   the translational part of the matrix will be equivalent to the cylinder's center.
+	///     With an identity matrix, the cylinder extents along the Y axis in both directions,
+	///     the translational part of the matrix will be equivalent to the cylinder's center.
 	/// </remarks>
 	[DataContract]
 	public class Cylinder3 : IVolume3
@@ -58,18 +58,18 @@ namespace Nuclectic.Geometry.Volumes
 
 		/// <summary>Smallest box that encloses the volume in its entirety</summary>
 		/// <remarks>
-		///   This always produces an optimal box which means a tight-fitting box is generated
-		///   that will touch the volume on each of its six sides. As a side effect, it is very
-		///   likely that this box needs to be recalculated whenever the volume changes its
-		///   orientation.
+		///     This always produces an optimal box which means a tight-fitting box is generated
+		///     that will touch the volume on each of its six sides. As a side effect, it is very
+		///     likely that this box needs to be recalculated whenever the volume changes its
+		///     orientation.
 		/// </remarks>
 		public AxisAlignedBox3 BoundingBox { get { throw new NotImplementedException("Not implemented yet"); } }
 
 		/// <summary>Smallest sphere that encloses the volume in its entirety</summary>
 		/// <remarks>
-		///   Bounding spheres have the advantage to not change even when the volume is
-		///   rotated. That makes them ideal for dynamic objects that are not keeping their
-		///   original orientation.
+		///     Bounding spheres have the advantage to not change even when the volume is
+		///     rotated. That makes them ideal for dynamic objects that are not keeping their
+		///     original orientation.
 		/// </remarks>
 		public Sphere3 BoundingSphere
 		{
@@ -232,19 +232,19 @@ namespace Nuclectic.Geometry.Volumes
 		/// <param name="location">Location to which to determine the closest point</param>
 		/// <returns>The closest point to the given location</returns>
 		/// <remarks>
-		///   <para>
-		///     This method works entirely in the cylinder's coordinate frame. To use
-		///     this function on a cylinder that is not axis-aligned, translate the
-		///     reference location into the cylinder's coordinate frame before and
-		///     apply the cylinder's transformation matrix to the result.
-		///   </para>
-		///   <para>
-		///     This design decision allows algorithms which are not interested in
-		///     rotating the resulting closest point back into the global coodinate frame
-		///     to save some time (think of intersection tests as an example). For a
-		///     convenient closest point determination see the appropriate instance
-		///     method of this class.
-		///   </para>
+		///     <para>
+		///         This method works entirely in the cylinder's coordinate frame. To use
+		///         this function on a cylinder that is not axis-aligned, translate the
+		///         reference location into the cylinder's coordinate frame before and
+		///         apply the cylinder's transformation matrix to the result.
+		///     </para>
+		///     <para>
+		///         This design decision allows algorithms which are not interested in
+		///         rotating the resulting closest point back into the global coodinate frame
+		///         to save some time (think of intersection tests as an example). For a
+		///         convenient closest point determination see the appropriate instance
+		///         method of this class.
+		///     </para>
 		/// </remarks>
 		public static Vector3 GetClosestPoint(
 			float cylinderRadius, float cylinderLength, Vector3 location

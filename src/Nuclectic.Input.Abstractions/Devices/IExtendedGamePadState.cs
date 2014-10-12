@@ -6,7 +6,7 @@ namespace Nuclectic.Input.Devices
 	{
 		/// <summary>Retrieves the state of the specified button</summary>
 		/// <param name="buttonIndex">
-		///   Index of the button whose state will be retrieved
+		///     Index of the button whose state will be retrieved
 		/// </param>
 		/// <returns>The state of the queried button</returns>
 		ButtonState GetButton(int buttonIndex);

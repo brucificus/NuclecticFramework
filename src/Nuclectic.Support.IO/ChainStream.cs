@@ -28,21 +28,21 @@ namespace Nuclectic.Support.IO
 {
 	/// <summary>Chains a series of independent streams into a single stream</summary>
 	/// <remarks>
-	///   <para>
-	///     This class can be used to chain multiple independent streams into a single
-	///     stream that acts as if its chained streams were only one combined stream.
-	///     It is useful to avoid creating huge memory streams or temporary files when
-	///     you just need to prepend or append some data to a stream or if you need to
-	///     read a file that was split into several parts as if it was a single file.
-	///   </para>
-	///   <para>
-	///     It is not recommended to change the size of any chained stream after it
-	///     has become part of a stream chainer, though the stream chainer will do its
-	///     best to cope with the changes as they occur. Increasing the length of a
-	///     chained stream is generally not an issue for streams that support seeking,
-	///     but reducing the length might invalidate the stream chainer's file pointer,
-	///     resulting in an IOException when Read() or Write() is next called.
-	///   </para>
+	///     <para>
+	///         This class can be used to chain multiple independent streams into a single
+	///         stream that acts as if its chained streams were only one combined stream.
+	///         It is useful to avoid creating huge memory streams or temporary files when
+	///         you just need to prepend or append some data to a stream or if you need to
+	///         read a file that was split into several parts as if it was a single file.
+	///     </para>
+	///     <para>
+	///         It is not recommended to change the size of any chained stream after it
+	///         has become part of a stream chainer, though the stream chainer will do its
+	///         best to cope with the changes as they occur. Increasing the length of a
+	///         chained stream is generally not an issue for streams that support seeking,
+	///         but reducing the length might invalidate the stream chainer's file pointer,
+	///         resulting in an IOException when Read() or Write() is next called.
+	///     </para>
 	/// </remarks>
 	public class ChainStream : Stream
 	{
@@ -65,8 +65,8 @@ namespace Nuclectic.Support.IO
 		public override bool CanWrite { get { return this.allStreamsCanWrite; } }
 
 		/// <summary>
-		///   Clears all buffers for this stream and causes any buffered data to be written
-		///   to the underlying device.
+		///     Clears all buffers for this stream and causes any buffered data to be written
+		///     to the underlying device.
 		/// </summary>
 		public override void Flush()
 		{
@@ -78,7 +78,7 @@ namespace Nuclectic.Support.IO
 
 		/// <summary>Length of the stream in bytes</summary>
 		/// <exception cref="System.NotSupportedException">
-		///   At least one of the chained streams does not support seeking
+		///     At least one of the chained streams does not support seeking
 		/// </exception>
 		public override long Length
 		{
@@ -102,7 +102,7 @@ namespace Nuclectic.Support.IO
 
 		/// <summary>Absolute position of the file pointer within the stream</summary>
 		/// <exception cref="System.NotSupportedException">
-		///   At least one of the chained streams does not support seeking
+		///     At least one of the chained streams does not support seeking
 		/// </exception>
 		public override long Position
 		{
@@ -119,20 +119,20 @@ namespace Nuclectic.Support.IO
 		}
 
 		/// <summary>
-		///   Reads a sequence of bytes from the stream and advances the position of
-		///   the file pointer by the number of bytes read.
+		///     Reads a sequence of bytes from the stream and advances the position of
+		///     the file pointer by the number of bytes read.
 		/// </summary>
 		/// <param name="buffer">Buffer that will receive the data read from the stream</param>
 		/// <param name="offset">
-		///   Offset in the buffer at which the stream will place the data read
+		///     Offset in the buffer at which the stream will place the data read
 		/// </param>
 		/// <param name="count">Maximum number of bytes that will be read</param>
 		/// <returns>
-		///   The number of bytes that were actually read from the stream and written into
-		///   the provided buffer
+		///     The number of bytes that were actually read from the stream and written into
+		///     the provided buffer
 		/// </returns>
 		/// <exception cref="System.NotSupportedException">
-		///   The chained stream at the current position does not support reading
+		///     The chained stream at the current position does not support reading
 		/// </exception>
 		public override int Read(byte[] buffer, int offset, int count)
 		{
@@ -225,11 +225,11 @@ namespace Nuclectic.Support.IO
 
 		/// <summary>Changes the position of the file pointer</summary>
 		/// <param name="offset">
-		///   Offset to move the file pointer by, relative to the position indicated by
-		///   the <paramref name="origin" /> parameter.
+		///     Offset to move the file pointer by, relative to the position indicated by
+		///     the <paramref name="origin" /> parameter.
 		/// </param>
 		/// <param name="origin">
-		///   Reference point relative to which the file pointer is placed
+		///     Reference point relative to which the file pointer is placed
 		/// </param>
 		/// <returns>The new absolute position within the stream</returns>
 		public override long Seek(long offset, SeekOrigin origin)
@@ -258,28 +258,28 @@ namespace Nuclectic.Support.IO
 		/// <summary>Changes the length of the stream</summary>
 		/// <param name="value">New length the stream shall have</param>
 		/// <exception cref="System.NotSupportedException">
-		///   Always, the stream chainer does not support the SetLength() operation
+		///     Always, the stream chainer does not support the SetLength() operation
 		/// </exception>
 		public override void SetLength(long value) { throw new NotSupportedException("Resizing chained streams is not supported"); }
 
 		/// <summary>
-		///   Writes a sequence of bytes to the stream and advances the position of
-		///   the file pointer by the number of bytes written.
+		///     Writes a sequence of bytes to the stream and advances the position of
+		///     the file pointer by the number of bytes written.
 		/// </summary>
 		/// <param name="buffer">
-		///   Buffer containing the data that will be written to the stream
+		///     Buffer containing the data that will be written to the stream
 		/// </param>
 		/// <param name="offset">
-		///   Offset in the buffer at which the data to be written starts
+		///     Offset in the buffer at which the data to be written starts
 		/// </param>
 		/// <param name="count">Number of bytes that will be written into the stream</param>
 		/// <remarks>
-		///   The behavior of this method is as follows: If one or more chained streams
-		///   do not support seeking, all data is appended to the final stream in the
-		///   chain. Otherwise, writing will begin with the stream the current file pointer
-		///   offset falls into. If the end of that stream is reached, writing continues
-		///   in the next stream. On the last stream, writing more data into the stream
-		///   that it current size allows will enlarge the stream.
+		///     The behavior of this method is as follows: If one or more chained streams
+		///     do not support seeking, all data is appended to the final stream in the
+		///     chain. Otherwise, writing will begin with the stream the current file pointer
+		///     offset falls into. If the end of that stream is reached, writing continues
+		///     in the next stream. On the last stream, writing more data into the stream
+		///     that it current size allows will enlarge the stream.
 		/// </remarks>
 		public override void Write(byte[] buffer, int offset, int count)
 		{
@@ -370,15 +370,15 @@ namespace Nuclectic.Support.IO
 		}
 
 		/// <summary>
-		///   Finds the stream index and local offset for an absolute position within
-		///   the combined streams.
+		///     Finds the stream index and local offset for an absolute position within
+		///     the combined streams.
 		/// </summary>
 		/// <param name="overallPosition">Absolute position within the combined streams</param>
 		/// <param name="streamIndex">
-		///   Index of the stream the overall position falls into
+		///     Index of the stream the overall position falls into
 		/// </param>
 		/// <param name="streamPosition">
-		///   Local position within the stream indicated by <paramref name="streamIndex" />
+		///     Local position within the stream indicated by <paramref name="streamIndex" />
 		/// </param>
 		private void findStreamIndexAndOffset(
 			long overallPosition, out int streamIndex, out long streamPosition
@@ -413,20 +413,20 @@ namespace Nuclectic.Support.IO
 
 		/// <summary>Determines the capabilities of the chained streams</summary>
 		/// <remarks>
-		///   <para>
-		///     Theoretically, it would be possible to create a stream chainer that supported
-		///     writing only when the file pointer was on a chained stream with write support,
-		///     that could seek within the beginning of the stream until the first chained
-		///     stream with no seek capability was encountered and so on.
-		///   </para>
-		///   <para>
-		///     However, the interface of the Stream class requires us to make a definitive
-		///     statement as to whether the Stream supports seeking, reading and writing.
-		///     We can't return "maybe" or "mostly" in CanSeek, so the only sane choice that
-		///     doesn't violate the Stream interface is to implement these capabilities as
-		///     all or nothing - either all streams support a feature, or the stream chainer
-		///     will report the feature as unsupported.
-		///   </para>
+		///     <para>
+		///         Theoretically, it would be possible to create a stream chainer that supported
+		///         writing only when the file pointer was on a chained stream with write support,
+		///         that could seek within the beginning of the stream until the first chained
+		///         stream with no seek capability was encountered and so on.
+		///     </para>
+		///     <para>
+		///         However, the interface of the Stream class requires us to make a definitive
+		///         statement as to whether the Stream supports seeking, reading and writing.
+		///         We can't return "maybe" or "mostly" in CanSeek, so the only sane choice that
+		///         doesn't violate the Stream interface is to implement these capabilities as
+		///         all or nothing - either all streams support a feature, or the stream chainer
+		///         will report the feature as unsupported.
+		///     </para>
 		/// </remarks>
 		private void determineCapabilities()
 		{
@@ -443,8 +443,8 @@ namespace Nuclectic.Support.IO
 		}
 
 		/// <summary>
-		///   Constructs a NotSupportException for an error caused by one of the chained
-		///   streams having no seek support
+		///     Constructs a NotSupportException for an error caused by one of the chained
+		///     streams having no seek support
 		/// </summary>
 		/// <param name="action">Action that was tried to perform</param>
 		/// <returns>The newly constructed NotSupportedException</returns>
@@ -466,19 +466,19 @@ namespace Nuclectic.Support.IO
 
 		/// <summary>Stream we're currently reading from if seeking is not supported</summary>
 		/// <remarks>
-		///   If seeking is not supported, the stream chainer will read from each stream
-		///   until the end was reached
-		///   sequentially
+		///     If seeking is not supported, the stream chainer will read from each stream
+		///     until the end was reached
+		///     sequentially
 		/// </remarks>
 		private int activeReadStreamIndex;
 
 		/// <summary>Position in the current read stream if seeking is not supported</summary>
 		/// <remarks>
-		///   If there is a mix of streams supporting seeking and not supporting seeking, we
-		///   need to keep track of the read index for those streams that do. If, for example,
-		///   the last stream is written to and read from in succession, the file pointer
-		///   of that stream would have been moved to the end by the write attempt, skipping
-		///   data that should have been read in the following read attempt.
+		///     If there is a mix of streams supporting seeking and not supporting seeking, we
+		///     need to keep track of the read index for those streams that do. If, for example,
+		///     the last stream is written to and read from in succession, the file pointer
+		///     of that stream would have been moved to the end by the write attempt, skipping
+		///     data that should have been read in the following read attempt.
 		/// </remarks>
 		private long activeReadStreamPosition;
 

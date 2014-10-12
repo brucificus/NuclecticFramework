@@ -27,36 +27,36 @@ namespace Nuclectic.Graphics.TriD
 {
 	/// <summary>Stores the location and orientation of a camera in a 3D scene</summary>
 	/// <remarks>
-	///   <para>
-	///     The view matrix contains the camera's inverted location and orientation.
-	///     Whereas a normal matrix stores the position and orientation of an object
-	///     and converts coordinates in the object's coordinate frame into world
-	///     coordinates, the camera's view matrix is inverted and thus converts
-	///     world coordinates into coordinates of the camera's local coordinate frame.
-	///   </para>
-	///   <para>
-	///     The projection matrix converts coordinates in the camera's coordinate
-	///     frame (calculated by transforming world coordiantes through the camera's
-	///     view matrix) into screen coordinates. Thus, it 'projects' 3D coordinates
-	///     onto a flat plane, usually the screen.
-	///   </para>
+	///     <para>
+	///         The view matrix contains the camera's inverted location and orientation.
+	///         Whereas a normal matrix stores the position and orientation of an object
+	///         and converts coordinates in the object's coordinate frame into world
+	///         coordinates, the camera's view matrix is inverted and thus converts
+	///         world coordinates into coordinates of the camera's local coordinate frame.
+	///     </para>
+	///     <para>
+	///         The projection matrix converts coordinates in the camera's coordinate
+	///         frame (calculated by transforming world coordiantes through the camera's
+	///         view matrix) into screen coordinates. Thus, it 'projects' 3D coordinates
+	///         onto a flat plane, usually the screen.
+	///     </para>
 	/// </remarks>
 	public class Camera : ICamera
 	{
 		/// <summary>Speed at which the camera moves through the scene</summary>
 		/// <remarks>
-		///   This value is in world units per second and depends on the scale of
-		///   the scene - but since games universally adopt world units to whatever
-		///   unit is most fitting to the game, this default should provide adequate
-		///   movement speed in all cases.
+		///     This value is in world units per second and depends on the scale of
+		///     the scene - but since games universally adopt world units to whatever
+		///     unit is most fitting to the game, this default should provide adequate
+		///     movement speed in all cases.
 		/// </remarks>
 		private const float MovementSpeed = 100.0f;
 
 		/// <summary>Initializes a new camera with the provided matrices</summary>
 		/// <param name="view">View matrix defining the position of the camera</param>
 		/// <param name="projection">
-		///   Projection matrix controlling the type of projection that is
-		///   performed to convert the scene to 2D coordinates.
+		///     Projection matrix controlling the type of projection that is
+		///     performed to convert the scene to 2D coordinates.
 		/// </param>
 		public Camera(Matrix view, Matrix projection)
 		{
@@ -128,22 +128,22 @@ namespace Nuclectic.Graphics.TriD
 		//}
 
 		/// <summary>
-		///   Debugging aid that allows the camera to be moved around by the keyboard
-		///   or the game pad
+		///     Debugging aid that allows the camera to be moved around by the keyboard
+		///     or the game pad
 		/// </summary>
 		/// <param name="gameTime">Game time to use for scaling the movements</param>
 		/// <param name="keyboardState">Current state of the keyboard</param>
 		/// <param name="gamepadState">Current state of the gamepad</param>
 		/// <remarks>
-		///   <para>
-		///     This is only intended as a debugging aid and should not be used for the actual
-		///     player controls. As long as you don't rebuild the camera matrix each frame
-		///     (which is not a good idea anyway) this will allow you to control the camera
-		///     in the style of the old "Descent" game series.
-		///   </para>
-		///   <para>
-		///     To enable the camera controls, simply call this method from your main loop!
-		///   </para>
+		///     <para>
+		///         This is only intended as a debugging aid and should not be used for the actual
+		///         player controls. As long as you don't rebuild the camera matrix each frame
+		///         (which is not a good idea anyway) this will allow you to control the camera
+		///         in the style of the old "Descent" game series.
+		///     </para>
+		///     <para>
+		///         To enable the camera controls, simply call this method from your main loop!
+		///     </para>
 		/// </remarks>
 		public void HandleControls(
 			GameTime gameTime, KeyboardState keyboardState, GamePadState gamepadState
@@ -158,8 +158,8 @@ namespace Nuclectic.Graphics.TriD
 		/// <summary>Processes any keyboard input for the debugging aid</summary>
 		/// <param name="keyboardState">Current state of the keyboard</param>
 		/// <param name="delta">
-		///   Scales the strength of input, should be based on the time passed since
-		///   the last frame was drawn
+		///     Scales the strength of input, should be based on the time passed since
+		///     the last frame was drawn
 		/// </param>
 		private void handleKeyboardControls(KeyboardState keyboardState, float delta)
 		{
@@ -196,8 +196,8 @@ namespace Nuclectic.Graphics.TriD
 		/// <summary>Processes any gamepad input for the debugging aid</summary>
 		/// <param name="gamepadState">Current state of the gamepad</param>
 		/// <param name="delta">
-		///   Scales the strength of input, should be based on the time passed since
-		///   the last frame was drawn
+		///     Scales the strength of input, should be based on the time passed since
+		///     the last frame was drawn
 		/// </param>
 		private void handleGamePadControls(GamePadState gamepadState, float delta)
 		{
@@ -229,8 +229,8 @@ namespace Nuclectic.Graphics.TriD
 
 		/// <summary>Returns a default orthographic camera</summary>
 		/// <remarks>
-		///   Mainly intended as an aid in unit testing and for some quick verifications
-		///   of algorithms requiring a camera
+		///     Mainly intended as an aid in unit testing and for some quick verifications
+		///     of algorithms requiring a camera
 		/// </remarks>
 		public static Camera CreateDefaultOrthographic()
 		{
@@ -244,20 +244,20 @@ namespace Nuclectic.Graphics.TriD
 		public Matrix View;
 
 		/// <summary>
-		///   Controls the projection of 3D coordinates to the render target surface
+		///     Controls the projection of 3D coordinates to the render target surface
 		/// </summary>
 		/// <remarks>
-		///   The term 'projection' comes from the fact that this matrix is projecting
-		///   3D coordinates onto a flat surface, normally either the screen or some
-		///   render target texture. Typical projection matrices perform either an
-		///   orthogonal projection (CAD-like) or perspective projections (things get
-		///   smaller the farther away they are).
+		///     The term 'projection' comes from the fact that this matrix is projecting
+		///     3D coordinates onto a flat surface, normally either the screen or some
+		///     render target texture. Typical projection matrices perform either an
+		///     orthogonal projection (CAD-like) or perspective projections (things get
+		///     smaller the farther away they are).
 		/// </remarks>
 		public Matrix Projection;
 
 		/// <summary>
-		///   Default world up vector for the camera, copied to a variable here because the
-		///   Matrix.CreateLookAt() method needs a reference to a Vector3.
+		///     Default world up vector for the camera, copied to a variable here because the
+		///     Matrix.CreateLookAt() method needs a reference to a Vector3.
 		/// </summary>
 		private static Vector3 up = Vector3.Up;
 	}

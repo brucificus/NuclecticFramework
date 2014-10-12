@@ -41,7 +41,7 @@ namespace Nuclectic.UserInterface
 
 		/// <summary>Converts the vector into pure offset coordinates</summary>
 		/// <param name="containerSize">
-		///   Dimensions of the container the relative part of the vector counts for
+		///     Dimensions of the container the relative part of the vector counts for
 		/// </param>
 		/// <returns>An XNA vector with the pure offset coordinates of the vector</returns>
 		public Vector2 ToOffset(Vector2 containerSize)
@@ -51,10 +51,10 @@ namespace Nuclectic.UserInterface
 
 		/// <summary>Converts the vector into pure offset coordinates</summary>
 		/// <param name="containerWidth">
-		///   Width of the container the fractional part of the vector counts for
+		///     Width of the container the fractional part of the vector counts for
 		/// </param>
 		/// <param name="containerHeight">
-		///   Height of the container the fractional part of the vector counts for
+		///     Height of the container the fractional part of the vector counts for
 		/// </param>
 		/// <returns>An XNA vector with the pure offset coordinates of the vector</returns>
 		public Vector2 ToOffset(float containerWidth, float containerHeight)
@@ -166,7 +166,7 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Returns a human-readable string representation for the unified vector
+		///     Returns a human-readable string representation for the unified vector
 		/// </summary>
 		/// <returns>The human-readable string representation of the unified vector</returns>
 		public override string ToString()

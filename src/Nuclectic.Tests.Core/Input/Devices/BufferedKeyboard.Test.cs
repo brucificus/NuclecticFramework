@@ -28,51 +28,32 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input.Devices
 {
-
 	/// <summary>Unit tests for the buffered keyboard class</summary>
 	[TestFixture]
-	public  class BufferedKeyboardTest
+	public class BufferedKeyboardTest
 	{
-
 		#region class TestBufferedKeyboard
 
 		/// <summary>Test implementation of a buffered keyboard</summary>
 		private class TestBufferedKeyboard : BufferedKeyboard
 		{
-
 			/// <summary>Whether the input device is connected to the system</summary>
-			public override bool IsAttached
-			{
-				get { return true; }
-			}
+			public override bool IsAttached { get { return true; } }
 
 			/// <summary>Human-readable name of the input device</summary>
-			public override string Name
-			{
-				get { return "Test keyboard"; }
-			}
+			public override string Name { get { return "Test keyboard"; } }
 
 			/// <summary>Records a key press in the event queue</summary>
 			/// <param name="key">Key that has been pressed</param>
-			public new void BufferKeyPress(Keys key)
-			{
-				base.BufferKeyPress(key);
-			}
+			public new void BufferKeyPress(Keys key) { base.BufferKeyPress(key); }
 
 			/// <summary>Records a key release in the event queue</summary>
 			/// <param name="key">Key that has been released</param>
-			public new void BufferKeyRelease(Keys key)
-			{
-				base.BufferKeyRelease(key);
-			}
+			public new void BufferKeyRelease(Keys key) { base.BufferKeyRelease(key); }
 
 			/// <summary>Records a character in the event queue</summary>
 			/// <param name="character">Character that has been entered</param>
-			public new void BufferCharacterEntry(char character)
-			{
-				base.BufferCharacterEntry(character);
-			}
-
+			public new void BufferCharacterEntry(char character) { base.BufferCharacterEntry(character); }
 		}
 
 		#endregion // class TestBufferedKeyboard
@@ -82,7 +63,6 @@ namespace Nuclectic.Tests.Input.Devices
 		/// <summary>Subscriber to the </summary>
 		public interface IKeyboardSubscriber
 		{
-
 			/// <summary>Called when a key has been pressed</summary>
 			/// <param name="key">Key that has been pressed</param>
 			void KeyPressed(Keys key);
@@ -94,7 +74,6 @@ namespace Nuclectic.Tests.Input.Devices
 			/// <summary>Called when a character has been entered</summary>
 			/// <param name="character">Character that has been entered</param>
 			void CharacterEntered(char character);
-
 		}
 
 		#endregion // interface IKeyboardSubscriber

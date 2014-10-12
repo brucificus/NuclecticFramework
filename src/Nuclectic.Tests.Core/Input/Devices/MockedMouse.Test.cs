@@ -28,18 +28,15 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input.Devices
 {
-
 	/// <summary>Unit tests for the mocked mouse</summary>
 	[TestFixture]
 	public class MockedMouseTest
 	{
-
 		#region interface IMouseSubscriber
 
 		/// <summary>Subscriber to the events of a mouse</summary>
 		public interface IMouseSubscriber
 		{
-
 			/// <summary>Called when a mouse button has been pressed</summary>
 			/// <param name="buttons">Button which has been pressed</param>
 			void ButtonPressed(MouseButtons buttons);
@@ -56,7 +53,6 @@ namespace Nuclectic.Tests.Input.Devices
 			/// <summary>Called when the mouse wheel has been rotated</summary>
 			/// <param name="ticks">Number of ticks the mouse wheel was rotated</param>
 			void WheelRotated(float ticks);
-
 		}
 
 		#endregion // interface IMouseSubscriber
@@ -171,7 +167,6 @@ namespace Nuclectic.Tests.Input.Devices
 			return subscriber;
 		}
 	}
-
 } // namespace Nuclex.Input.Devices
 
 #endif // UNITTEST

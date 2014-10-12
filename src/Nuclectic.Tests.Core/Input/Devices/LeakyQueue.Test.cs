@@ -32,7 +32,7 @@ namespace Nuclectic.Tests.Input.Devices
 	internal class LeakyQueueTest
 	{
 		/// <summary>
-		///   Verifies that the constructor of the leaky queue is working
+		///     Verifies that the constructor of the leaky queue is working
 		/// </summary>
 		[Test]
 		public void DefaultConstructorCanBeUsed()
@@ -55,8 +55,8 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Ensures that an exception is thrown if a leaky queue is constructed with
-		///   an invalid capacity
+		///     Ensures that an exception is thrown if a leaky queue is constructed with
+		///     an invalid capacity
 		/// </summary>
 		[Test]
 		public void InvalidCapacityInConstructorThrowsException()
@@ -111,7 +111,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that the Contains() method can detect if an item is in the queue
+		///     Verifies that the Contains() method can detect if an item is in the queue
 		/// </summary>
 		[Test]
 		public void ContainsMethodFindsSearchedItem()
@@ -140,7 +140,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that the Contains() method also works on null items
+		///     Verifies that the Contains() method also works on null items
 		/// </summary>
 		[Test]
 		public void ContainsMethodFindsNullItems()
@@ -169,7 +169,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if you attempt to dequeue from an empty queue
+		///     Verifies that an exception is thrown if you attempt to dequeue from an empty queue
 		/// </summary>
 		[Test]
 		public void DequeuingFromEmptyQueueCausesException()
@@ -182,8 +182,8 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if you attempt to advance the head of
-		///   an empty queue
+		///     Verifies that an exception is thrown if you attempt to advance the head of
+		///     an empty queue
 		/// </summary>
 		[Test]
 		public void AdvancingHeadOfEmptyQueueCausesException()
@@ -196,8 +196,8 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that an queue is able to ensure that there's space for one more
-		///   item in it
+		///     Verifies that an queue is able to ensure that there's space for one more
+		///     item in it
 		/// </summary>
 		[Test]
 		public void QueueCanEnsureCapacityForOneMoreSlot()
@@ -219,8 +219,8 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if the user attempts to Peek() into
-		///   an empty queue
+		///     Verifies that an exception is thrown if the user attempts to Peek() into
+		///     an empty queue
 		/// </summary>
 		[Test]
 		public void PeekInEmptyQueueThrowsException()
@@ -233,8 +233,8 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that Peek() only looks at the oldest item in the queue but doesn't
-		///   dequeue it
+		///     Verifies that Peek() only looks at the oldest item in the queue but doesn't
+		///     dequeue it
 		/// </summary>
 		[Test]
 		public void PeekDoesNotDequeueItem()
@@ -248,7 +248,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that the queue's head can be advanced
+		///     Verifies that the queue's head can be advanced
 		/// </summary>
 		[Test]
 		public void QueueHeadCanBeAdvanced()
@@ -263,8 +263,8 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if the user attempts to advance
-		///   the head of an empty queue
+		///     Verifies that an exception is thrown if the user attempts to advance
+		///     the head of an empty queue
 		/// </summary>
 		[Test]
 		public void AdvancingHeadOnEmptyQueueCausesException()
@@ -277,9 +277,9 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that an queue's tail can be advanced without actually putting
-		///   items in the queue (required if enqueuing entails merely changing the state
-		///   of an item slot in the queue.
+		///     Verifies that an queue's tail can be advanced without actually putting
+		///     items in the queue (required if enqueuing entails merely changing the state
+		///     of an item slot in the queue.
 		/// </summary>
 		[Test]
 		public void TailCanBeAdvancedWithoutQueueing()
@@ -296,7 +296,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Tests whether the head and tail indices in the queue can be retrieved
+		///     Tests whether the head and tail indices in the queue can be retrieved
 		/// </summary>
 		[Test]
 		public void HeadAndTailIndexCanBeQueried()
@@ -323,7 +323,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that a queue can be turned into an array
+		///     Verifies that a queue can be turned into an array
 		/// </summary>
 		[Test]
 		public void QueueCanBeConvertedIntoArray()
@@ -342,7 +342,7 @@ namespace Nuclectic.Tests.Input.Devices
 		}
 
 		/// <summary>
-		///   Verifies that a queue that is wrapped can be turned into an array
+		///     Verifies that a queue that is wrapped can be turned into an array
 		/// </summary>
 		[Test]
 		public void InternallyWrappedQueueCanBeConvertedIntoArray()

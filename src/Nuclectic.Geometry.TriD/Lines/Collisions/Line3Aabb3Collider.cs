@@ -33,8 +33,8 @@ namespace Nuclectic.Geometry.Lines.Collisions
 		/// <param name="boxExtents">Extents of the box (half of the box' dimensions)</param>
 		/// <returns>The contact points, if any, between the line and the box</returns>
 		/// <remarks>
-		///   Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
-		///   and used as a supporting function for the other line/box contact finders.
+		///     Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
+		///     and used as a supporting function for the other line/box contact finders.
 		/// </remarks>
 		public static LineContacts FindContacts(
 			Vector3 lineOffset, Vector3 lineDirection, Vector3 boxExtents
@@ -93,8 +93,8 @@ namespace Nuclectic.Geometry.Lines.Collisions
 		/// <param name="exitTime">Time of exit from the plane</param>
 		/// <returns>True if the line segment actually intersects with the plane</returns>
 		/// <remarks>
-		///   Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
-		///   and used as a supporting function for the other line/box contact finders.
+		///     Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
+		///     and used as a supporting function for the other line/box contact finders.
 		/// </remarks>
 		private static bool clip(
 			float denominator, float numerator,

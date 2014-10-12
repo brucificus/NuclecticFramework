@@ -92,8 +92,8 @@ namespace Nuclectic.Support.Collections
 		}
 
 		/// <summary>
-		///   Shifts all items before the insertion point to the left and inserts
-		///   the item at the specified index
+		///     Shifts all items before the insertion point to the left and inserts
+		///     the item at the specified index
 		/// </summary>
 		/// <param name="index">Index the item will be inserted at</param>
 		/// <param name="item">Item that will be inserted</param>
@@ -179,8 +179,8 @@ namespace Nuclectic.Support.Collections
 		}
 
 		/// <summary>
-		///   Shifts all items after the insertion point to the right and inserts
-		///   the item at the specified index
+		///     Shifts all items after the insertion point to the right and inserts
+		///     the item at the specified index
 		/// </summary>
 		/// <param name="index">Index the item will be inserted at</param>
 		/// <param name="item">Item that will be inserted</param>

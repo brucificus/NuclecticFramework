@@ -31,35 +31,31 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Graphics.Debugging
 {
-
 	/// <summary>Unit tests for the debug drawer</summary>
 	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
 	[RequiresSTA]
 	internal class DebugDrawerTest
 		: TestFixtureBase
 	{
-
 		/// <summary>
-		///   Tests whether an instance of the debug drawer can be constructed
+		///     Tests whether an instance of the debug drawer can be constructed
 		/// </summary>
 		[Test]
-		public void TestConstructor()
-		{
-			Assert.IsNotNull(this.debugDrawer); // nonsense ;-)
+		public void TestConstructor() { Assert.IsNotNull(this.debugDrawer); // nonsense ;-)
 		}
 
 		/// <summary>
-		///   Verifies that the view/projection matrix is saved by the debug drawer
+		///     Verifies that the view/projection matrix is saved by the debug drawer
 		/// </summary>
 		[Test]
 		public void TestViewProjectionMatrix()
 		{
 			Matrix testMatrix = new Matrix(
-			  1.1f, 1.2f, 1.3f, 1.4f,
-			  2.1f, 2.2f, 2.3f, 2.4f,
-			  3.1f, 3.2f, 3.3f, 3.4f,
-			  4.1f, 4.2f, 4.3f, 4.4f
-			);
+				1.1f, 1.2f, 1.3f, 1.4f,
+				2.1f, 2.2f, 2.3f, 2.4f,
+				3.1f, 3.2f, 3.3f, 3.4f,
+				4.1f, 4.2f, 4.3f, 4.4f
+				);
 
 			this.debugDrawer.ViewProjection = testMatrix;
 			Assert.AreEqual(testMatrix, this.debugDrawer.ViewProjection);
@@ -88,8 +84,8 @@ namespace Nuclectic.Tests.Graphics.Debugging
 			for (int triangle = 0; triangle <= trianglesRequired; ++triangle)
 			{
 				this.debugDrawer.DrawTriangle(
-				  Vector3.Zero, Vector3.UnitX, Vector3.UnitY, Color.White
-				);
+											  Vector3.Zero, Vector3.UnitX, Vector3.UnitY, Color.White
+					);
 			}
 
 			// No exception means success
@@ -104,8 +100,8 @@ namespace Nuclectic.Tests.Graphics.Debugging
 			for (int triangle = 0; triangle <= trianglesRequired; ++triangle)
 			{
 				this.debugDrawer.DrawSolidTriangle(
-				  Vector3.Zero, Vector3.UnitX, Vector3.UnitY, Color.White
-				);
+												   Vector3.Zero, Vector3.UnitX, Vector3.UnitY, Color.White
+					);
 			}
 
 			// No exception means success
@@ -185,11 +181,11 @@ namespace Nuclectic.Tests.Graphics.Debugging
 		{
 			this.debugDrawer.DrawLine(Vector3.Zero, Vector3.One, Color.White);
 			this.debugDrawer.DrawTriangle(
-			  Vector3.Zero, Vector3.UnitX, Vector3.UnitY, Color.White
-			);
+										  Vector3.Zero, Vector3.UnitX, Vector3.UnitY, Color.White
+				);
 			this.debugDrawer.DrawSolidTriangle(
-			  Vector3.Zero, Vector3.UnitX, Vector3.UnitY, Color.White
-			);
+											   Vector3.Zero, Vector3.UnitX, Vector3.UnitY, Color.White
+				);
 			this.debugDrawer.DrawBox(-Vector3.One, Vector3.One, Color.White);
 			this.debugDrawer.DrawSolidBox(-Vector3.One, Vector3.One, Color.White);
 			this.debugDrawer.DrawArrow(Vector3.Zero, Vector3.Forward, Color.White);
@@ -229,11 +225,10 @@ namespace Nuclectic.Tests.Graphics.Debugging
 
 		/// <summary>Mocked graphics device service used by the test</summary>
 		private IMockedGraphicsDeviceService mockedGraphicsDeviceService;
+
 		/// <summary>Debug drawer being tested</summary>
 		private DebugDrawer debugDrawer;
-
 	}
-
 } // namespace Nuclex.Graphics
 
 #endif // UNITTEST

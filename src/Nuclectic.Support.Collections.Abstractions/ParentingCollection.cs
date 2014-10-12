@@ -27,9 +27,9 @@ namespace Nuclectic.Support.Collections
 {
 	/// <summary>Collection that automatically assigns an owner to all its elements</summary>
 	/// <remarks>
-	///   This collection automatically assigns a parent object to elements that
-	///   are managed in it. The elements have to derive from the Parentable&lt;&gt;
-	///   base class.
+	///     This collection automatically assigns a parent object to elements that
+	///     are managed in it. The elements have to derive from the Parentable&lt;&gt;
+	///     base class.
 	/// </remarks>
 	/// <typeparam name="TParent">Type of the parent object to assign to items</typeparam>
 	/// <typeparam name="TItem">Type of the items being managed in the collection</typeparam>
@@ -84,17 +84,17 @@ namespace Nuclectic.Support.Collections
 
 		/// <summary>Disposes all items contained in the collection</summary>
 		/// <remarks>
-		///   <para>
-		///     This method is intended to support collections that need to dispose their
-		///     items. It will unparent all of the collection's items and call Dispose()
-		///     on any item that implements IDisposable.
-		///   </para>
-		///   <para>
-		///     Do not call this method from your destructor as it will access the
-		///     contained items in order to unparent and to Dispose() them, which leads
-		///     to undefined behavior since the object might have already been collected
-		///     by the GC. Call it only if your object is being manually disposed.
-		///   </para>
+		///     <para>
+		///         This method is intended to support collections that need to dispose their
+		///         items. It will unparent all of the collection's items and call Dispose()
+		///         on any item that implements IDisposable.
+		///     </para>
+		///     <para>
+		///         Do not call this method from your destructor as it will access the
+		///         contained items in order to unparent and to Dispose() them, which leads
+		///         to undefined behavior since the object might have already been collected
+		///         by the GC. Call it only if your object is being manually disposed.
+		///     </para>
 		/// </remarks>
 		protected void DisposeItems()
 		{

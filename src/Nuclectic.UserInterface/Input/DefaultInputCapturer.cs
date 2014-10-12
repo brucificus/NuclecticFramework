@@ -84,20 +84,20 @@ namespace Nuclectic.UserInterface.Input
 		#endregion // class DummyInputReceiver
 
 		/// <summary>
-		///   Initializes a new input capturer, taking the input service from a service provider
+		///     Initializes a new input capturer, taking the input service from a service provider
 		/// </summary>
 		/// <param name="serviceProvider">
-		///   Service provider the input capturer will take the input service from
+		///     Service provider the input capturer will take the input service from
 		/// </param>
 		public DefaultInputCapturer(IServiceProvider serviceProvider)
 			:
 				this(getInputService(serviceProvider)) { }
 
 		/// <summary>
-		///   Initializes a new input capturer using the specified input service
+		///     Initializes a new input capturer using the specified input service
 		/// </summary>
 		/// <param name="inputService">
-		///   Input service the capturer will subscribe to
+		///     Input service the capturer will subscribe to
 		/// </param>
 		public DefaultInputCapturer(IInputService inputService)
 		{
@@ -157,13 +157,13 @@ namespace Nuclectic.UserInterface.Input
 
 		/// <summary>Changes the controller which can interact with the GUI</summary>
 		/// <param name="playerIndex">
-		///   Index of the player whose controller will be allowed to interact with the GUI
+		///     Index of the player whose controller will be allowed to interact with the GUI
 		/// </param>
 		public void ChangePlayerIndex(PlayerIndex playerIndex) { ChangePlayerIndex((ExtendedPlayerIndex)playerIndex); }
 
 		/// <summary>Changes the controller which can interact with the GUI</summary>
 		/// <param name="playerIndex">
-		///   Index of the player whose controller will be allowed to interact with the GUI
+		///     Index of the player whose controller will be allowed to interact with the GUI
 		/// </param>
 		public void ChangePlayerIndex(ExtendedPlayerIndex playerIndex)
 		{
@@ -308,7 +308,7 @@ namespace Nuclectic.UserInterface.Input
 
 		/// <summary>Retrieves the input service from a service provider</summary>
 		/// <param name="serviceProvider">
-		///   Service provider the service is taken from
+		///     Service provider the service is taken from
 		/// </param>
 		/// <returns>The input service stored in the service provider</returns>
 		private static IInputService getInputService(IServiceProvider serviceProvider)
@@ -334,8 +334,8 @@ namespace Nuclectic.UserInterface.Input
 
 		/// <summary>Current receiver of input events</summary>
 		/// <remarks>
-		///   Always valid. If no input receiver is assigned, this field will be set
-		///   to a dummy receiver.
+		///     Always valid. If no input receiver is assigned, this field will be set
+		///     to a dummy receiver.
 		/// </remarks>
 		private IInputReceiver inputReceiver;
 

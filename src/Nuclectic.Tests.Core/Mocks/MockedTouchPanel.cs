@@ -24,55 +24,40 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Microsoft.Xna.Framework.Input.Touch;
 using Nuclectic.Input.Devices;
 
 namespace Nuclex.Input.Devices
 {
-
 	/// <summary>Code-controllable touch panel for unit testing</summary>
 	public class MockedTouchPanel : TouchPanelBase
 	{
-
 		/// <summary>Initializes a new mocked touch panel</summary>
-		public MockedTouchPanel()
-		{
-			this.states = new Queue<TouchState>();
-		}
+		public MockedTouchPanel() { this.states = new Queue<TouchState>(); }
 
 		/// <summary>Whether the input device is connected to the system</summary>
-		public override bool IsAttached
-		{
-			get { return this.isAttached; }
-		}
+		public override bool IsAttached { get { return this.isAttached; } }
 
 		/// <summary>Human-readable name of the input device</summary>
-		public override string Name
-		{
-			get { return "Mocked touch panel"; }
-		}
+		public override string Name { get { return "Mocked touch panel"; } }
 
 		/// <summary>Retrieves the current state of the touch panel</summary>
 		/// <returns>The current state of the touch panel</returns>
-		public override ITouchState GetState()
-		{
-			return this.current;
-		}
+		public override ITouchState GetState() { return this.current; }
 
 		/// <summary>Updates the state of the input device</summary>
 		/// <remarks>
-		///   <para>
-		///     If this method is called with no snapshots in the queue, it will take
-		///     an immediate snapshot and make it the current state. This way, you
-		///     can use the input devices without caring for the snapshot system if
-		///     you wish.
-		///   </para>
-		///   <para>
-		///     If this method is called while one or more snapshots are waiting in
-		///     the queue, this method takes the next snapshot from the queue and makes
-		///     it the current state.
-		///   </para>
+		///     <para>
+		///         If this method is called with no snapshots in the queue, it will take
+		///         an immediate snapshot and make it the current state. This way, you
+		///         can use the input devices without caring for the snapshot system if
+		///         you wish.
+		///     </para>
+		///     <para>
+		///         If this method is called while one or more snapshots are waiting in
+		///         the queue, this method takes the next snapshot from the queue and makes
+		///         it the current state.
+		///     </para>
 		/// </remarks>
 		public override void Update()
 		{
@@ -92,32 +77,20 @@ namespace Nuclex.Input.Devices
 
 		/// <summary>Takes a snapshot of the current state of the input device</summary>
 		/// <remarks>
-		///   This snapshot will be queued until the user calls the Update() method,
-		///   where the next polled snapshot will be taken from the queue and provided
-		///   to the user.
+		///     This snapshot will be queued until the user calls the Update() method,
+		///     where the next polled snapshot will be taken from the queue and provided
+		///     to the user.
 		/// </remarks>
-		public override void TakeSnapshot()
-		{
-			this.states.Enqueue(buildState());
-		}
+		public override void TakeSnapshot() { this.states.Enqueue(buildState()); }
 
 		/// <summary>Maximum number of simultaneous touches the panel supports</summary>
-		public override int MaximumTouchCount
-		{
-			get { return TouchPanel.GetCapabilities().MaximumTouchCount; }
-		}
+		public override int MaximumTouchCount { get { return TouchPanel.GetCapabilities().MaximumTouchCount; } }
 
 		/// <summary>Attaches (connects) the game pad</summary>
-		public void Attach()
-		{
-			this.isAttached = true;
-		}
+		public void Attach() { this.isAttached = true; }
 
 		/// <summary>Detaches (disconnects) the game pad</summary>
-		public void Detach()
-		{
-			this.isAttached = false;
-		}
+		public void Detach() { this.isAttached = false; }
 
 		/// <summary>Presses down on the touch panel at the specified location</summary>
 		/// <param name="id">ID this touch can be tracked with</param>
@@ -126,15 +99,15 @@ namespace Nuclex.Input.Devices
 		public void Press(int id, float x, float y)
 		{
 			TouchCollectionHelper.AddTouchLocation(
-			  ref this.touchCollection,
-			  id,
-			  TouchLocationState.Pressed,
-			  x,
-			  y,
-			  TouchLocationState.Invalid,
-			  -1.0f,
-			  -1.0f
-			);
+												   ref this.touchCollection,
+												   id,
+												   TouchLocationState.Pressed,
+												   x,
+												   y,
+												   TouchLocationState.Invalid,
+												   -1.0f,
+												   -1.0f
+				);
 		}
 
 		/// <summary>Releases the touch with the specified id</summary>
@@ -142,15 +115,15 @@ namespace Nuclex.Input.Devices
 		public void Release(int id)
 		{
 			TouchCollectionHelper.AddTouchLocation(
-			  ref this.touchCollection,
-			  id,
-			  TouchLocationState.Released,
-			  -1.0f,
-			  -1.0f,
-			  TouchLocationState.Invalid,
-			  -1.0f,
-			  -1.0f
-			);
+												   ref this.touchCollection,
+												   id,
+												   TouchLocationState.Released,
+												   -1.0f,
+												   -1.0f,
+												   TouchLocationState.Invalid,
+												   -1.0f,
+												   -1.0f
+				);
 		}
 
 		/// <summary>Moves an existing touch to a different location</summary>
@@ -160,15 +133,15 @@ namespace Nuclex.Input.Devices
 		public void Move(int id, float x, float y)
 		{
 			TouchCollectionHelper.AddTouchLocation(
-			  ref this.touchCollection,
-			  id,
-			  TouchLocationState.Moved,
-			  x,
-			  y,
-			  TouchLocationState.Invalid,
-			  -1.0f,
-			  -1.0f
-			);
+												   ref this.touchCollection,
+												   id,
+												   TouchLocationState.Moved,
+												   x,
+												   y,
+												   TouchLocationState.Invalid,
+												   -1.0f,
+												   -1.0f
+				);
 		}
 
 		/// <summary>Builds a touch state from the current touches</summary>
@@ -191,9 +164,5 @@ namespace Nuclex.Input.Devices
 
 		/// <summary>Collection of touch events for the next state being built</summary>
 		private TouchCollection touchCollection;
-
 	}
-
 } // namespace Nuclex.Input.Devices
-
-

@@ -28,9 +28,9 @@ namespace Nuclectic.Input
 {
 	/// <summary>Provides access to the game's input devices</summary>
 	/// <remarks>
-	///   This interface provides a uniform way to access all input devices available
-	///   to the system. It also allows XNA games to interface with standard game pads
-	///   and joysticks through DirectInput.
+	///     This interface provides a uniform way to access all input devices available
+	///     to the system. It also allows XNA games to interface with standard game pads
+	///     and joysticks through DirectInput.
 	/// </remarks>
 	public interface IInputService
 	{
@@ -63,10 +63,10 @@ namespace Nuclectic.Input
 		/// <param name="playerIndex">Player whose game pad will be returned</param>
 		/// <returns>The game pad of the specified player</returns>
 		/// <remarks>
-		///   This will only return the XINPUT devices (aka XBox 360 controllers)
-		///   attached. Any standard game pads attached to a PC can only be
-		///   returned through the ExtendedPlayerIndex overload where they will
-		///   take the places of game pads for player 5 and upwards.
+		///     This will only return the XINPUT devices (aka XBox 360 controllers)
+		///     attached. Any standard game pads attached to a PC can only be
+		///     returned through the ExtendedPlayerIndex overload where they will
+		///     take the places of game pads for player 5 and upwards.
 		/// </remarks>
 		IGamePad GetGamePad(PlayerIndex playerIndex);
 
@@ -81,25 +81,25 @@ namespace Nuclectic.Input
 
 		/// <summary>Updates the state of all input devices</summary>
 		/// <remarks>
-		///   <para>
-		///     If this method is called with no snapshots in the queue, it will
-		///     query the state of all input devices immediately, raising events
-		///     for any changed states. This way, you can ignore the entire
-		///     snapshot system if you just want basic input device access.
-		///   </para>
-		///   <para>
-		///     If this method is called while one or more snapshots are waiting in
-		///     the queue, this method takes the next snapshot from the queue and makes
-		///     it the current state of all active devices.
-		///   </para>
+		///     <para>
+		///         If this method is called with no snapshots in the queue, it will
+		///         query the state of all input devices immediately, raising events
+		///         for any changed states. This way, you can ignore the entire
+		///         snapshot system if you just want basic input device access.
+		///     </para>
+		///     <para>
+		///         If this method is called while one or more snapshots are waiting in
+		///         the queue, this method takes the next snapshot from the queue and makes
+		///         it the current state of all active devices.
+		///     </para>
 		/// </remarks>
 		void Update();
 
 		/// <summary>Takes a snapshot of the current state of all input devices</summary>
 		/// <remarks>
-		///   This snapshot will be queued until the user calls the Update() method,
-		///   where the next polled snapshot will be taken from the queue and provided
-		///   to the user.
+		///     This snapshot will be queued until the user calls the Update() method,
+		///     where the next polled snapshot will be taken from the queue and provided
+		///     to the user.
 		/// </remarks>
 		void TakeSnapshot();
 

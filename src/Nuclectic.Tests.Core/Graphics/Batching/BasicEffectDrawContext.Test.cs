@@ -52,7 +52,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		[Test]
 		public void TestConstructor()
 		{
-			using(var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
+			using (var service = PrepareGlobalExclusiveMockedGraphicsDeviceService(callCreateDeviceOnInit: false))
 			using (IDisposable keeper = service.CreateDevice())
 			using (IDisposable context = new BasicEffectDrawContext(service.GraphicsDevice))
 			{
@@ -61,8 +61,8 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Verifies that testing the drawing context against a different instance
-		///   results the comparison reporting inequality
+		///     Verifies that testing the drawing context against a different instance
+		///     results the comparison reporting inequality
 		/// </summary>
 		[Test]
 		public void TestEqualsWithDifferentObject()
@@ -77,8 +77,8 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Verifies that testing the drawing context against another drawing context with
-		///   an incompatible effect type results in the comparison reporting inequality
+		///     Verifies that testing the drawing context against another drawing context with
+		///     an incompatible effect type results in the comparison reporting inequality
 		/// </summary>
 		[Test]
 		public void TestEqualsWithIncompatibleEffect()
@@ -94,7 +94,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Verifies that the used effect can be obtained using the 'BasicEffect' property
+		///     Verifies that the used effect can be obtained using the 'BasicEffect' property
 		/// </summary>
 		[Test]
 		public void TestEffectRetrieval()

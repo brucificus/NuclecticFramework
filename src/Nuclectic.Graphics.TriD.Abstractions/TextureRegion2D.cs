@@ -28,8 +28,8 @@ namespace Nuclectic.Graphics.TriD
 {
 	/// <summary>Represents a limited region of a texture</summary>
 	/// <remarks>
-	///   This is similar to .NET's ArraySegment class, only that it applies to
-	///   a two-dimensional texture instead of a one-dimensional array.
+	///     This is similar to .NET's ArraySegment class, only that it applies to
+	///     a two-dimensional texture instead of a one-dimensional array.
 	/// </remarks>
 	public struct TextureRegion2D
 	{
@@ -105,11 +105,11 @@ namespace Nuclectic.Graphics.TriD
 		}
 
 		/// <summary>
-		///   Determines whether the specified object is equal to the current instance
+		///     Determines whether the specified object is equal to the current instance
 		/// </summary>
 		/// <returns>
-		///   True if the specified object is a <see cref="TextureRegion2D" /> structure and is
-		///   equal to the current instance; otherwise, false
+		///     True if the specified object is a <see cref="TextureRegion2D" /> structure and is
+		///     equal to the current instance; otherwise, false
 		/// </returns>
 		/// <param name="other">The object to be compared with the current instance</param>
 		public override bool Equals(object other)
@@ -120,16 +120,16 @@ namespace Nuclectic.Graphics.TriD
 		}
 
 		/// <summary>
-		///   Determines whether the specified <see cref="TextureRegion2D" /> structure is equal
-		///   to the current instance
+		///     Determines whether the specified <see cref="TextureRegion2D" /> structure is equal
+		///     to the current instance
 		/// </summary>
 		/// <returns>
-		///   True if the specified <see cref="TextureRegion2D" /> structure is equal to the
-		///   current instance; otherwise, false
+		///     True if the specified <see cref="TextureRegion2D" /> structure is equal to the
+		///     current instance; otherwise, false
 		/// </returns>
 		/// <param name="other">
-		///   The <see cref="TextureRegion2D" /> structure to be compared with
-		///   the current instance
+		///     The <see cref="TextureRegion2D" /> structure to be compared with
+		///     the current instance
 		/// </param>
 		public bool Equals(TextureRegion2D other)
 		{
@@ -140,16 +140,16 @@ namespace Nuclectic.Graphics.TriD
 		}
 
 		/// <summary>
-		///   Indicates whether two <see cref="TextureRegion2D" /> structures are equal
+		///     Indicates whether two <see cref="TextureRegion2D" /> structures are equal
 		/// </summary>
 		/// <returns>True if a is equal to b; otherwise, false</returns>
 		/// <param name="left">
-		///   The <see cref="TextureRegion2D" /> structure on the left side of the
-		///   equality operator
+		///     The <see cref="TextureRegion2D" /> structure on the left side of the
+		///     equality operator
 		/// </param>
 		/// <param name="right">
-		///   The <see cref="TextureRegion2D" /> structure on the right side of the
-		///   equality operator
+		///     The <see cref="TextureRegion2D" /> structure on the right side of the
+		///     equality operator
 		/// </param>
 		public static bool operator ==(TextureRegion2D left, TextureRegion2D right)
 		{
@@ -160,16 +160,16 @@ namespace Nuclectic.Graphics.TriD
 		}
 
 		/// <summary>
-		///   Indicates whether two <see cref="TextureRegion2D" /> structures are unequal
+		///     Indicates whether two <see cref="TextureRegion2D" /> structures are unequal
 		/// </summary>
 		/// <returns>True if a is not equal to b; otherwise, false</returns>
 		/// <param name="left">
-		///   The <see cref="TextureRegion2D" /> structure on the left side of the
-		///   inequality operator
+		///     The <see cref="TextureRegion2D" /> structure on the left side of the
+		///     inequality operator
 		/// </param>
 		/// <param name="right">
-		///   The <see cref="TextureRegion2D" /> structure on the right side of the
-		///   inequality operator
+		///     The <see cref="TextureRegion2D" /> structure on the right side of the
+		///     inequality operator
 		/// </param>
 		public static bool operator !=(TextureRegion2D left, TextureRegion2D right)
 		{
@@ -206,15 +206,15 @@ namespace Nuclectic.Graphics.TriD
 
 		/// <summary>Minimum coordinates of the region on the texture</summary>
 		/// <remarks>
-		///   These coordinates are normalized: 0,0 is the lower left corner and
-		///   1,1 is the upper right corner.
+		///     These coordinates are normalized: 0,0 is the lower left corner and
+		///     1,1 is the upper right corner.
 		/// </remarks>
 		public Vector2 Min;
 
 		/// <summary>Maximum coordinates of the region on the texture</summary>
 		/// <remarks>
-		///   These coordinates are normalized: 0,0 is the lower left corner and
-		///   1,1 is the upper right corner.
+		///     These coordinates are normalized: 0,0 is the lower left corner and
+		///     1,1 is the upper right corner.
 		/// </remarks>
 		public Vector2 Max;
 	}

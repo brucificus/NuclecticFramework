@@ -42,8 +42,8 @@ namespace Nuclectic.Tests.Fonts
 		: TestFixtureBase
 	{
 		/// <summary>
-		///   Verifies that two text contexts which should produce the exact same result
-		///   compare as equal
+		///     Verifies that two text contexts which should produce the exact same result
+		///     compare as equal
 		/// </summary>
 		[Test]
 		public void TestIdenticalEffectParameters()
@@ -66,7 +66,7 @@ namespace Nuclectic.Tests.Fonts
 		}
 
 		/// <summary>
-		///   Verifies that two text contexts with different matrices compare as inequal
+		///     Verifies that two text contexts with different matrices compare as inequal
 		/// </summary>
 		[Test]
 		public void TestDifferentMatrices()
@@ -95,7 +95,7 @@ namespace Nuclectic.Tests.Fonts
 		}
 
 		/// <summary>
-		///   Verifies that two text contexts with different color compare as inequal
+		///     Verifies that two text contexts with different color compare as inequal
 		/// </summary>
 		[Test]
 		public void TestDifferentColors()
@@ -118,8 +118,8 @@ namespace Nuclectic.Tests.Fonts
 		}
 
 		/// <summary>
-		///   Verifies that the text context can be compared against another context of
-		///   a different type
+		///     Verifies that the text context can be compared against another context of
+		///     a different type
 		/// </summary>
 		[Test]
 		public void TestDifferentEffects()
@@ -143,8 +143,8 @@ namespace Nuclectic.Tests.Fonts
 		}
 
 		/// <summary>
-		///   Verifies that the text context can be compared against another context of
-		///   a different type
+		///     Verifies that the text context can be compared against another context of
+		///     a different type
 		/// </summary>
 		[Test]
 		public void TestDifferentContexts()
@@ -166,8 +166,8 @@ namespace Nuclectic.Tests.Fonts
 		}
 
 		/// <summary>
-		///   Tests the Begin() and End() methods of the draw context without any rendering
-		///   taking place inbetween them
+		///     Tests the Begin() and End() methods of the draw context without any rendering
+		///     taking place inbetween them
 		/// </summary>
 		[Test]
 		public void TestBeginEnd()

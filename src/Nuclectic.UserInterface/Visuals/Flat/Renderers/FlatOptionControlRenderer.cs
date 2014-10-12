@@ -27,11 +27,11 @@ namespace Nuclectic.UserInterface.Visuals.Flat.Renderers
 		IFlatControlRenderer<Controls.Desktop.OptionControl>
 	{
 		/// <summary>
-		///   Renders the specified control using the provided graphics interface
+		///     Renders the specified control using the provided graphics interface
 		/// </summary>
 		/// <param name="control">Control that will be rendered</param>
 		/// <param name="graphics">
-		///   Graphics interface that will be used to draw the control
+		///     Graphics interface that will be used to draw the control
 		/// </param>
 		public void Render(
 			Controls.Desktop.OptionControl control, IFlatGuiGraphics graphics
@@ -80,8 +80,8 @@ namespace Nuclectic.UserInterface.Visuals.Flat.Renderers
 
 		/// <summary>Names of the states the option control can be in</summary>
 		/// <remarks>
-		///   Storing this as full strings instead of building them dynamically prevents
-		///   any garbage from forming during rendering.
+		///     Storing this as full strings instead of building them dynamically prevents
+		///     any garbage from forming during rendering.
 		/// </remarks>
 		private static readonly string[] states = new string[]
 		{

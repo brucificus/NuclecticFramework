@@ -34,17 +34,18 @@ using System.Threading;
 namespace Nuclectic.Support
 {
 	/// <summary>
-	/// Base class for disposable objects.
+	///     Base class for disposable objects.
 	/// </summary>
 	public class Disposable : IDisposable
 	{
-		const int DisposedFlag = 1;
-		int _isDisposed;
+		private const int DisposedFlag = 1;
+		private int _isDisposed;
 
 		/// <summary>
-		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+		///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
 		/// </summary>
-		[SuppressMessage("Microsoft.Design", "CA1063:ImplementIDisposableCorrectly", Justification = "Dispose is implemented correctly, FxCop just doesn't see it.")]
+		[SuppressMessage("Microsoft.Design", "CA1063:ImplementIDisposableCorrectly",
+			Justification = "Dispose is implemented correctly, FxCop just doesn't see it.")]
 		public void Dispose()
 		{
 			var wasDisposed = Interlocked.Exchange(ref _isDisposed, DisposedFlag);
@@ -56,15 +57,18 @@ namespace Nuclectic.Support
 		}
 
 		/// <summary>
-		/// Releases unmanaged and - optionally - managed resources
+		///     Releases unmanaged and - optionally - managed resources
 		/// </summary>
-		/// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+		/// <param name="disposing">
+		///     <c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only
+		///     unmanaged resources.
+		/// </param>
 		protected virtual void Dispose(bool disposing)
 		{
 		}
 
 		/// <summary>
-		/// Returns true if the current instance has been disposed; otherwise false;
+		///     Returns true if the current instance has been disposed; otherwise false;
 		/// </summary>
 		protected bool IsDisposed
 		{

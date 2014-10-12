@@ -32,7 +32,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 	internal class SkyboxVertexTest
 	{
 		/// <summary>
-		///   Verifies that the constructor of the water vertex class is working
+		///     Verifies that the constructor of the water vertex class is working
 		/// </summary>
 		[Test]
 		public void TestConstructor()

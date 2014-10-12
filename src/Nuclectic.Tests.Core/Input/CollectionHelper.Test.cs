@@ -28,16 +28,16 @@ using NUnit.Framework;
 
 namespace Nuclectic.Tests.Input
 {
-
 	/// <summary>Unit tests for the collection helper</summary>
 	[TestFixture]
 	internal class CollectionHelperTest
 	{
-
 		#region class Test
 
 		/// <summary>Test implementation of the IDisposable interface</summary>
-		private class Test { }
+		private class Test
+		{
+		}
 
 		#endregion // class Test
 
@@ -46,16 +46,11 @@ namespace Nuclectic.Tests.Input
 		/// <summary>Test implementation of the IDisposable interface</summary>
 		private class TestDisposable : Test, IDisposable
 		{
-
 			/// <summary>Called to dispose the instance</summary>
-			public void Dispose()
-			{
-				++this.DisposeCallCount;
-			}
+			public void Dispose() { ++this.DisposeCallCount; }
 
 			/// <summary>Number of times the Dispose() method has been called</summary>
 			public int DisposeCallCount;
-
 		}
 
 		#endregion // class TestDisposable
@@ -64,7 +59,7 @@ namespace Nuclectic.Tests.Input
 		[Test]
 		public void TestGetIfExists()
 		{
-			var ints = new List<int>(new int[] { 10, 20, 30, 40 });
+			var ints = new List<int>(new int[] {10, 20, 30, 40});
 
 			Assert.AreEqual(10, CollectionHelper.GetIfExists(ints, 0));
 			Assert.AreEqual(20, CollectionHelper.GetIfExists(ints, 1));
@@ -90,9 +85,7 @@ namespace Nuclectic.Tests.Input
 			CollectionHelper.DisposeItems(tests);
 			Assert.AreEqual(1, disposable.DisposeCallCount);
 		}
-
 	}
-
 } // namespace Nuclex.Input
 
 #endif // UNITTEST

@@ -31,7 +31,7 @@ namespace Nuclectic.Fonts
 		public VertexPositionNormalTexture[] Vertices { get { return this.vertices; } }
 
 		/// <summary>
-		///   Indices describing which vertices to connect by lines or triangles
+		///     Indices describing which vertices to connect by lines or triangles
 		/// </summary>
 		public short[] Indices { get { return this.indices; } }
 
@@ -48,7 +48,7 @@ namespace Nuclectic.Fonts
 		protected VertexPositionNormalTexture[] vertices;
 
 		/// <summary>
-		///   Indices describing which vertices to connect by lines or triangles
+		///     Indices describing which vertices to connect by lines or triangles
 		/// </summary>
 		protected short[] indices;
 

@@ -30,17 +30,17 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 {
 	/// <summary>Control through which the user can enter text</summary>
 	/// <remarks>
-	///   <para>
-	///     Through this control, users can be asked to enter an arbitrary string
-	///     of characters, their name for example. Desktop users can enter text through
-	///     their normal keyboard where Windows' own key translation is used to
-	///     support regional settings and custom keyboard layouts.
-	///   </para>
-	///   <para>
-	///     XBox 360 users will open the virtual keyboard when the input box gets
-	///     the input focus and can add characters by selecting them from the virtual
-	///     keyboard's character matrix.
-	///   </para>
+	///     <para>
+	///         Through this control, users can be asked to enter an arbitrary string
+	///         of characters, their name for example. Desktop users can enter text through
+	///         their normal keyboard where Windows' own key translation is used to
+	///         support regional settings and custom keyboard layouts.
+	///     </para>
+	///     <para>
+	///         XBox 360 users will open the virtual keyboard when the input box gets
+	///         the input focus and can add characters by selecting them from the virtual
+	///         keyboard's character matrix.
+	///     </para>
 	/// </remarks>
 	public class InputControl : Control, IWritable
 	{
@@ -102,10 +102,10 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 
 		/// <summary>Elapsed milliseconds since the user last moved the caret</summary>
 		/// <remarks>
-		///   This is an unusual property for an input box to have. It is retrieved by
-		///   the renderer and could be used for several purposes, such as lighting up
-		///   a control when text is entered to provide better visual tracking or
-		///   preventing the cursor from blinking whilst the user is typing.
+		///     This is an unusual property for an input box to have. It is retrieved by
+		///     the renderer and could be used for several purposes, such as lighting up
+		///     a control when text is entered to provide better visual tracking or
+		///     preventing the cursor from blinking whilst the user is typing.
 		/// </remarks>
 		public int MillisecondsSinceLastCaretMovement { get { return Environment.TickCount - this.lastCaretMovementTicks; } }
 
@@ -128,11 +128,11 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 		/// <summary>Called when a key on the keyboard has been pressed down</summary>
 		/// <param name="keyCode">Code of the key that was pressed</param>
 		/// <returns>
-		///   True if the key press was handles by the control, otherwise false.
+		///     True if the key press was handles by the control, otherwise false.
 		/// </returns>
 		/// <remarks>
-		///   If the control indicates that it didn't handle the key press, it will not
-		///   receive the associated key release notification.
+		///     If the control indicates that it didn't handle the key press, it will not
+		///     receive the associated key release notification.
 		/// </remarks>
 		protected override bool OnKeyPressed(Keys keyCode)
 		{
@@ -293,7 +293,7 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 
 		/// <summary>Updates the tick count when the caret was last moved</summary>
 		/// <remarks>
-		///   Used to prevent the caret from blinking when 
+		///     Used to prevent the caret from blinking when
 		/// </remarks>
 		private void updateLastCaretMovementTicks() { this.lastCaretMovementTicks = Environment.TickCount; }
 
@@ -307,7 +307,7 @@ namespace Nuclectic.UserInterface.Controls.Desktop
 		public bool Enabled;
 
 		/// <summary>
-		///   Can be set by renderers to enable cursor positioning by the mouse
+		///     Can be set by renderers to enable cursor positioning by the mouse
 		/// </summary>
 		public IOpeningLocator OpeningLocator;
 

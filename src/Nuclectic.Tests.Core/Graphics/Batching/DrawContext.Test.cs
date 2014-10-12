@@ -41,7 +41,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 			/// <summary>Prepares the graphics device for drawing</summary>
 			/// <param name="pass">Index of the pass to begin rendering</param>
 			/// <remarks>
-			///   Should only be called between the normal Begin() and End() methods.
+			///     Should only be called between the normal Begin() and End() methods.
 			/// </remarks>
 			public override void Apply(int pass) { }
 
@@ -54,7 +54,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		#endregion // class TestDrawContext
 
 		/// <summary>
-		///   Compares the test drawing context against an incompatible object
+		///     Compares the test drawing context against an incompatible object
 		/// </summary>
 		[Test]
 		public void TestEqualsWithIncompatibleObject()
@@ -64,8 +64,8 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Verifies that testing the drawing context against itself results in 
-		///   the comparison reporting equality
+		///     Verifies that testing the drawing context against itself results in
+		///     the comparison reporting equality
 		/// </summary>
 		[Test]
 		public void TestEqualsWithSameObject()
@@ -75,8 +75,8 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Verifies that testing the drawing context against a different instance
-		///   results the comparison reporting inequality
+		///     Verifies that testing the drawing context against a different instance
+		///     results the comparison reporting inequality
 		/// </summary>
 		[Test]
 		public void TestEqualsWithDifferentObject()
@@ -87,7 +87,7 @@ namespace Nuclectic.Tests.Graphics.Batching
 		}
 
 		/// <summary>
-		///   Tests the hash code calculation method of the drawing context
+		///     Tests the hash code calculation method of the drawing context
 		/// </summary>
 		[Test]
 		public void TestGetHashcode()

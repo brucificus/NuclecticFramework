@@ -30,13 +30,13 @@ using NUnit.Framework;
 namespace Nuclectic.Tests.Geometry.Lines.Collisions
 {
 	/// <summary>
-	///   Unit test for the 2D infinite line to 2D triangle interference detector
+	///     Unit test for the 2D infinite line to 2D triangle interference detector
 	/// </summary>
 	[TestFixture]
 	public class Line2Triangle2ColliderTest
 	{
 		/// <summary>
-		///   Tests whether a line that closely misses a triangle is detected as such
+		///     Tests whether a line that closely misses a triangle is detected as such
 		/// </summary>
 		[Test]
 		public void TestCloseMiss()
@@ -50,8 +50,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether the contact finder reports the correct locations for a line
-		///   that crosses a triangle through its center from left to right
+		///     Tests whether the contact finder reports the correct locations for a line
+		///     that crosses a triangle through its center from left to right
 		/// </summary>
 		[Test]
 		public void TestHitLeftToRight()
@@ -72,8 +72,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether the contact finder reports the correct locations for a line
-		///   that crosses a triangle through its center from right to left
+		///     Tests whether the contact finder reports the correct locations for a line
+		///     that crosses a triangle through its center from right to left
 		/// </summary>
 		[Test]
 		public void TestHitRightToLeft()
@@ -94,8 +94,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether the contact finder reports the correct locations for a line
-		///   that crosses a triangle through its center from top to bottom
+		///     Tests whether the contact finder reports the correct locations for a line
+		///     that crosses a triangle through its center from top to bottom
 		/// </summary>
 		[Test]
 		public void TestHitTopToBottom()
@@ -116,8 +116,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether the contact finder reports the correct locations for a line
-		///   that crosses a triangle through its center from bottom to top
+		///     Tests whether the contact finder reports the correct locations for a line
+		///     that crosses a triangle through its center from bottom to top
 		/// </summary>
 		[Test]
 		public void TestHitBottomToTop()
@@ -138,8 +138,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether the contact finder reports the correct locations for a line
-		///   that crosses a triangle through its center from right to bottom
+		///     Tests whether the contact finder reports the correct locations for a line
+		///     that crosses a triangle through its center from right to bottom
 		/// </summary>
 		[Test]
 		public void TestHitRightToBottom()
@@ -162,8 +162,8 @@ namespace Nuclectic.Tests.Geometry.Lines.Collisions
 		}
 
 		/// <summary>
-		///   Tests whether the contact finder reports the correct locations for a line
-		///   that crosses a triangle through its center from bottom to right
+		///     Tests whether the contact finder reports the correct locations for a line
+		///     that crosses a triangle through its center from bottom to right
 		/// </summary>
 		[Test]
 		public void TestHitBottomToRight()

@@ -23,7 +23,7 @@ License along with this library
 namespace Nuclectic.Graphics.TriD.Batching
 {
 	/// <summary>
-	///   Controls the graphics device settings during the rendering process
+	///     Controls the graphics device settings during the rendering process
 	/// </summary>
 	public abstract class DrawContext
 	{
@@ -40,11 +40,11 @@ namespace Nuclectic.Graphics.TriD.Batching
 		public abstract bool Equals(DrawContext otherContext);
 
 		/// <summary>
-		///   Tests whether another object is a draw context with identical settings
+		///     Tests whether another object is a draw context with identical settings
 		/// </summary>
 		/// <param name="other">Object to check for equality</param>
 		/// <returns>
-		///   True if the other context is a draw context identical to this one
+		///     True if the other context is a draw context identical to this one
 		/// </returns>
 		public override bool Equals(object other)
 		{
@@ -57,8 +57,8 @@ namespace Nuclectic.Graphics.TriD.Batching
 		}
 
 		/// <summary>
-		///   Returns a hashcode that is not guaranteed to be unique but will be equal for
-		///   all instances of the class that are in an identical state
+		///     Returns a hashcode that is not guaranteed to be unique but will be equal for
+		///     all instances of the class that are in an identical state
 		/// </summary>
 		/// <returns>The hashcode of the object</returns>
 		public override int GetHashCode() { return base.GetHashCode(); }

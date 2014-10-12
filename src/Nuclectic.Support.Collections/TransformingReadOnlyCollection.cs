@@ -28,26 +28,26 @@ namespace Nuclectic.Support.Collections
 {
 	/// <summary>Collection that transforms the contents of another collection.</summary>
 	/// <typeparam name="TContainedItem">
-	///   Type of the items contained in the wrapped collection.
+	///     Type of the items contained in the wrapped collection.
 	/// </typeparam>
 	/// <typeparam name="TExposedItem">
-	///   Type this collection exposes its items as.
+	///     Type this collection exposes its items as.
 	/// </typeparam>
 	/// <remarks>
-	///   <para>
-	///     This collection is useful if you want to expose the objects of an arbitrary
-	///     collection under a different type. It can be used, for example, to construct
-	///     wrappers for the items in a collection on-the-fly, eliminating the need to
-	///     manage the wrappers in parallel to the real items and improving performance
-	///     by only constructing a wrapper when an item is actually requested.
-	///   </para>
-	///   <para>
-	///     Another common use would be if you have a private collection of a non-public
-	///     type that's derived from some publicly visible type. By using this collection,
-	///     you can return the items under the publicly visible type while still having
-	///     your private collection under the non-public type, eliminating the need to
-	///     downcast each time you need to access elements of the non-public type.
-	///   </para>
+	///     <para>
+	///         This collection is useful if you want to expose the objects of an arbitrary
+	///         collection under a different type. It can be used, for example, to construct
+	///         wrappers for the items in a collection on-the-fly, eliminating the need to
+	///         manage the wrappers in parallel to the real items and improving performance
+	///         by only constructing a wrapper when an item is actually requested.
+	///     </para>
+	///     <para>
+	///         Another common use would be if you have a private collection of a non-public
+	///         type that's derived from some publicly visible type. By using this collection,
+	///         you can return the items under the publicly visible type while still having
+	///         your private collection under the non-public type, eliminating the need to
+	///         downcast each time you need to access elements of the non-public type.
+	///     </para>
 	/// </remarks>
 	public abstract partial class TransformingReadOnlyCollection<
 		TContainedItem, TExposedItem
@@ -56,8 +56,8 @@ namespace Nuclectic.Support.Collections
 		#region class TransformingEnumerator
 
 		/// <summary>
-		///   An enumerator that transforms the items returned by an enumerator of the
-		///   wrapped collection into the exposed type on-the-fly.
+		///     An enumerator that transforms the items returned by an enumerator of the
+		///     wrapped collection into the exposed type on-the-fly.
 		/// </summary>
 		private class TransformingEnumerator : IEnumerator<TExposedItem>
 		{
@@ -77,37 +77,37 @@ namespace Nuclectic.Support.Collections
 			public void Dispose() { this.containedTypeEnumerator.Dispose(); }
 
 			/// <summary>
-			///   The element in the collection at the current position of the enumerator.
+			///     The element in the collection at the current position of the enumerator.
 			/// </summary>
 			public TExposedItem Current { get { return this.transformer.Transform(this.containedTypeEnumerator.Current); } }
 
 			/// <summary>Gets the current element in the collection.</summary>
 			/// <returns>The current element in the collection.</returns>
 			/// <exception cref="System.InvalidOperationException">
-			///   The enumerator is positioned before the first element of the collection
-			///   or after the last element.
+			///     The enumerator is positioned before the first element of the collection
+			///     or after the last element.
 			/// </exception>
 			public bool MoveNext() { return this.containedTypeEnumerator.MoveNext(); }
 
 			/// <summary>
-			///   Sets the enumerator to its initial position, which is before the first element
-			///   in the collection.
+			///     Sets the enumerator to its initial position, which is before the first element
+			///     in the collection.
 			/// </summary>
 			/// <exception cref="System.InvalidOperationException">
-			///   The collection was modified after the enumerator was created.
+			///     The collection was modified after the enumerator was created.
 			/// </exception>
 			public void Reset() { this.containedTypeEnumerator.Reset(); }
 
 			/// <summary>The current element in the collection.</summary>
 			/// <exception cref="System.InvalidOperationException">
-			///   The enumerator is positioned before the first element of the collection
-			///   or after the last element.
+			///     The enumerator is positioned before the first element of the collection
+			///     or after the last element.
 			/// </exception>
 			object IEnumerator.Current { get { return Current; } }
 
 			/// <summary>
-			///   Collection that owns this enumerator; required to invoke the item
-			///   transformation method.
+			///     Collection that owns this enumerator; required to invoke the item
+			///     transformation method.
 			/// </summary>
 			private TransformingReadOnlyCollection<TContainedItem, TExposedItem> transformer;
 
@@ -119,52 +119,52 @@ namespace Nuclectic.Support.Collections
 
 		/// <summary>Initializes a new transforming collection wrapper</summary>
 		/// <param name="items">
-		///   Internal list of items that are transformed into the exposed type when
-		///   accessed through the TransformingReadOnlyCollection.
+		///     Internal list of items that are transformed into the exposed type when
+		///     accessed through the TransformingReadOnlyCollection.
 		/// </param>
 		public TransformingReadOnlyCollection(IList<TContainedItem> items) { this.items = items; }
 
 		/// <summary>
-		///   Determines whether an element is in the TransformingReadOnlyCollection
+		///     Determines whether an element is in the TransformingReadOnlyCollection
 		/// </summary>
 		/// <param name="item">
-		///   The object to locate in the TransformingReadOnlyCollection.
-		///   The value can be null for reference types.
+		///     The object to locate in the TransformingReadOnlyCollection.
+		///     The value can be null for reference types.
 		/// </param>
 		/// <returns>
-		///   True if value is found in the TransformingReadOnlyCollection; otherwise, false.
+		///     True if value is found in the TransformingReadOnlyCollection; otherwise, false.
 		/// </returns>
 		/// <remarks>
-		///   The default implementation of this method is very unoptimized and will
-		///   enumerate all the items in the collection, transforming one after another
-		///   to check whether the transformed item matches the item the user was
-		///   looking for. It is recommended to provide a custom implementation of
-		///   this method, if possible.
+		///     The default implementation of this method is very unoptimized and will
+		///     enumerate all the items in the collection, transforming one after another
+		///     to check whether the transformed item matches the item the user was
+		///     looking for. It is recommended to provide a custom implementation of
+		///     this method, if possible.
 		/// </remarks>
 		public virtual bool Contains(TExposedItem item) { return (IndexOf(item) != -1); }
 
 		/// <summary>
-		///   Copies the entire TransformingReadOnlyCollection to a compatible one-dimensional
-		///   System.Array, starting at the specified index of the target array.
+		///     Copies the entire TransformingReadOnlyCollection to a compatible one-dimensional
+		///     System.Array, starting at the specified index of the target array.
 		/// </summary>
 		/// <param name="array">
-		///   The one-dimensional System.Array that is the destination of the elements copied
-		///   from the TransformingReadOnlyCollection. The System.Array must have
-		///   zero-based indexing.
+		///     The one-dimensional System.Array that is the destination of the elements copied
+		///     from the TransformingReadOnlyCollection. The System.Array must have
+		///     zero-based indexing.
 		/// </param>
 		/// <param name="index">
-		///   The zero-based index in array at which copying begins.
+		///     The zero-based index in array at which copying begins.
 		/// </param>
 		/// <exception cref="System.ArgumentException">
-		///   Index is equal to or greater than the length of array or the number of elements
-		///   in the source TransformingReadOnlyCollection is greater than the available space
-		///   from index to the end of the destination array.
+		///     Index is equal to or greater than the length of array or the number of elements
+		///     in the source TransformingReadOnlyCollection is greater than the available space
+		///     from index to the end of the destination array.
 		/// </exception>
 		/// <exception cref="System.ArgumentOutOfRangeException">
-		///   Index is less than zero.
+		///     Index is less than zero.
 		/// </exception>
 		/// <exception cref="System.ArgumentNullException">
-		///   Array is null.
+		///     Array is null.
 		/// </exception>
 		public void CopyTo(TExposedItem[] array, int index)
 		{
@@ -182,31 +182,31 @@ namespace Nuclectic.Support.Collections
 		}
 
 		/// <summary>
-		///   Returns an enumerator that iterates through the TransformingReadOnlyCollection.
+		///     Returns an enumerator that iterates through the TransformingReadOnlyCollection.
 		/// </summary>
 		/// <returns>
-		///   An enumerator or the TransformingReadOnlyCollection.
+		///     An enumerator or the TransformingReadOnlyCollection.
 		/// </returns>
 		public IEnumerator<TExposedItem> GetEnumerator() { return new TransformingEnumerator(this, this.items.GetEnumerator()); }
 
 		/// <summary>
-		///   Searches for the specified object and returns the zero-based index of the
-		///   first occurrence within the entire TransformingReadOnlyCollection.
+		///     Searches for the specified object and returns the zero-based index of the
+		///     first occurrence within the entire TransformingReadOnlyCollection.
 		/// </summary>
 		/// <param name="item">
-		///   The object to locate in the TransformingReadOnlyCollection. The value can
-		///   be null for reference types.
+		///     The object to locate in the TransformingReadOnlyCollection. The value can
+		///     be null for reference types.
 		/// </param>
 		/// <returns>
-		///   The zero-based index of the first occurrence of item within the entire
-		///   TransformingReadOnlyCollection, if found; otherwise, -1.
+		///     The zero-based index of the first occurrence of item within the entire
+		///     TransformingReadOnlyCollection, if found; otherwise, -1.
 		/// </returns>
 		/// <remarks>
-		///   The default implementation of this method is very unoptimized and will
-		///   enumerate all the items in the collection, transforming one after another
-		///   to check whether the transformed item matches the item the user was
-		///   looking for. It is recommended to provide a custom implementation of
-		///   this method, if possible.
+		///     The default implementation of this method is very unoptimized and will
+		///     enumerate all the items in the collection, transforming one after another
+		///     to check whether the transformed item matches the item the user was
+		///     looking for. It is recommended to provide a custom implementation of
+		///     this method, if possible.
 		/// </remarks>
 		public int IndexOf(TExposedItem item)
 		{
@@ -236,7 +236,7 @@ namespace Nuclectic.Support.Collections
 		}
 
 		/// <summary>
-		///   The number of elements contained in the TransformingReadOnlyCollection instance
+		///     The number of elements contained in the TransformingReadOnlyCollection instance
 		/// </summary>
 		public int Count { get { return this.items.Count; } }
 
@@ -244,8 +244,8 @@ namespace Nuclectic.Support.Collections
 		/// <param name="index">The zero-based index of the element to get.</param>
 		/// <returns>The element at the specified index.</returns>
 		/// <exception cref="System.ArgumentOutOfRangeException">
-		///    Index is less than zero or index is equal to or greater than
-		///    TransformingReadOnlyCollection.Count.
+		///     Index is less than zero or index is equal to or greater than
+		///     TransformingReadOnlyCollection.Count.
 		/// </exception>
 		public TExposedItem this[int index] { get { return Transform(this.items[index]); } }
 
@@ -256,10 +256,10 @@ namespace Nuclectic.Support.Collections
 		/// <param name="item">Item to be transformed</param>
 		/// <returns>The transformed item</returns>
 		/// <remarks>
-		///   This method is used to transform an item in the wrapped collection into
-		///   the exposed item type whenever the user accesses an item. Expect it to
-		///   be called frequently, because the TransformingReadOnlyCollection does
-		///   not cache or otherwise store the transformed items.
+		///     This method is used to transform an item in the wrapped collection into
+		///     the exposed item type whenever the user accesses an item. Expect it to
+		///     be called frequently, because the TransformingReadOnlyCollection does
+		///     not cache or otherwise store the transformed items.
 		/// </remarks>
 		protected abstract TExposedItem Transform(TContainedItem item);
 

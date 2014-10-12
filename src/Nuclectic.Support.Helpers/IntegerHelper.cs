@@ -83,8 +83,8 @@ namespace Nuclectic.Support.Helpers
 		/// <param name="value">Value whose bits will be counted</param>
 		/// <returns>The number of bits set in the unsigned integer</returns>
 		/// <remarks>
-		///   Based on a trick revealed here:
-		///   http://stackoverflow.com/questions/109023
+		///     Based on a trick revealed here:
+		///     http://stackoverflow.com/questions/109023
 		/// </remarks>
 		public static int CountBits(this uint value)
 		{
@@ -105,8 +105,8 @@ namespace Nuclectic.Support.Helpers
 		/// <param name="value">Value whose bits will be counted</param>
 		/// <returns>The number of bits set in the unsigned long integer</returns>
 		/// <remarks>
-		///   Based on a trick revealed here:
-		///   http://stackoverflow.com/questions/2709430
+		///     Based on a trick revealed here:
+		///     http://stackoverflow.com/questions/2709430
 		/// </remarks>
 		public static int CountBits(this ulong value)
 		{

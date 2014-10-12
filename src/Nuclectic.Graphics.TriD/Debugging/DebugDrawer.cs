@@ -30,30 +30,30 @@ namespace Nuclectic.Graphics.TriD.Debugging
 {
 	/// <summary>Game component for overlaying debugging informations on the scene</summary>
 	/// <remarks>
-	///   <para>
-	///     This game component is mainly intended to debugging purposes. It will
-	///     accept all kinds of geometry drawing commands whilst a frame is being drawn
-	///     and will overlay this debugging geometry on everything else within the scene
-	///     just at the end of the drawing queue.
-	///   </para>
-	///   <para>
-	///     The DebugDrawer uses the GameComponent's DrawingOrder property to let itself
-	///     be drawn last. If you cannot call base.Draw() in your Game class last
-	///     (that's the line that invokes the Draw() methods of all
-	///     DrawableGameComponents), you can also create a DebugDrawer without adding
-	///     it to the GameComponents collection and invoke its Draw() method yourself
-	///     at the very end of your rendering process.
-	///   </para>
+	///     <para>
+	///         This game component is mainly intended to debugging purposes. It will
+	///         accept all kinds of geometry drawing commands whilst a frame is being drawn
+	///         and will overlay this debugging geometry on everything else within the scene
+	///         just at the end of the drawing queue.
+	///     </para>
+	///     <para>
+	///         The DebugDrawer uses the GameComponent's DrawingOrder property to let itself
+	///         be drawn last. If you cannot call base.Draw() in your Game class last
+	///         (that's the line that invokes the Draw() methods of all
+	///         DrawableGameComponents), you can also create a DebugDrawer without adding
+	///         it to the GameComponents collection and invoke its Draw() method yourself
+	///         at the very end of your rendering process.
+	///     </para>
 	/// </remarks>
 	public class DebugDrawer : Drawable, IDebugDrawingService
 	{
 		/// <summary>Maximum number of vertices allowed for debugging overlays</summary>
 		/// <remarks>
-		///   Controls the size of the vertex buffer used for storing the vertices
-		///   of the DebugDrawer. If debugging overlays are drawn after this many
-		///   vertices have already been generated, the drawing operations will
-		///   silently fail and a short text message on the screen will show that
-		///   not all debugging overlays could be drawn.
+		///     Controls the size of the vertex buffer used for storing the vertices
+		///     of the DebugDrawer. If debugging overlays are drawn after this many
+		///     vertices have already been generated, the drawing operations will
+		///     silently fail and a short text message on the screen will show that
+		///     not all debugging overlays could be drawn.
 		/// </remarks>
 		internal const int MaximumDebugVertexCount = 8192;
 
@@ -87,7 +87,7 @@ namespace Nuclectic.Graphics.TriD.Debugging
 
 		/// <summary>Initializes a new debug drawer component</summary>
 		/// <param name="graphicsDeviceService">
-		///   Graphics device service the debug drawer will use for rendering
+		///     Graphics device service the debug drawer will use for rendering
 		/// </param>
 		public DebugDrawer(IGraphicsDeviceService graphicsDeviceService, Effect fillEffect, SpriteFont font)
 			:
@@ -103,9 +103,9 @@ namespace Nuclectic.Graphics.TriD.Debugging
 
 		/// <summary>Resets the contents of the debug drawer</summary>
 		/// <remarks>
-		///   Reset() will be called automatically after a frame has been rendered.
-		///   Only use this method if you actually plan to discard everything
-		///   added to the debug drawer so far inmidst of the drawing process.
+		///     Reset() will be called automatically after a frame has been rendered.
+		///     Only use this method if you actually plan to discard everything
+		///     added to the debug drawer so far inmidst of the drawing process.
 		/// </remarks>
 		public void Reset()
 		{
@@ -117,8 +117,8 @@ namespace Nuclectic.Graphics.TriD.Debugging
 
 		/// <summary>Concatenated View and Projection matrices to use</summary>
 		/// <remarks>
-		///   Update this once per frame to have your debug overlays appear in the
-		///   right places. Simply set it to (View * Projection) of your camera.
+		///     Update this once per frame to have your debug overlays appear in the
+		///     right places. Simply set it to (View * Projection) of your camera.
 		/// </remarks>
 		public Matrix ViewProjection { get { return this.viewProjection; } set { this.viewProjection = value; } }
 
@@ -295,12 +295,12 @@ namespace Nuclectic.Graphics.TriD.Debugging
 
 		/// <summary>Draws a wireframe arrow into the scene to visualize a vector</summary>
 		/// <param name="origin">
-		///   Location at which to draw the arrow (this will form the exact center of
-		///   the drawn arrow's base)
+		///     Location at which to draw the arrow (this will form the exact center of
+		///     the drawn arrow's base)
 		/// </param>
 		/// <param name="direction">
-		///   Direction the arrow is pointing into. The arrow's size is relative to
-		///   the length of this vector.
+		///     Direction the arrow is pointing into. The arrow's size is relative to
+		///     the length of this vector.
 		/// </param>
 		/// <param name="color">Color of the wireframe to draw</param>
 		public void DrawArrow(Vector3 origin, Vector3 direction, Color color)
@@ -326,12 +326,12 @@ namespace Nuclectic.Graphics.TriD.Debugging
 
 		/// <summary>Draws a solid arrow into the scene to visualize a vector</summary>
 		/// <param name="origin">
-		///   Location at which to draw the arrow (this will form the exact center of
-		///   the drawn arrow's base)
+		///     Location at which to draw the arrow (this will form the exact center of
+		///     the drawn arrow's base)
 		/// </param>
 		/// <param name="direction">
-		///   Direction the arrow is pointing into. The arrow's size is relative to
-		///   the length of this vector.
+		///     Direction the arrow is pointing into. The arrow's size is relative to
+		///     the length of this vector.
 		/// </param>
 		/// <param name="color">Color of the arrow</param>
 		public void DrawSolidArrow(Vector3 origin, Vector3 direction, Color color)
@@ -357,7 +357,7 @@ namespace Nuclectic.Graphics.TriD.Debugging
 
 		/// <summary>Draws text onto the screen at pixel coordinates</summary>
 		/// <param name="position">
-		///   Location on the screen, in pixels, where the text should be drawn.
+		///     Location on the screen, in pixels, where the text should be drawn.
 		/// </param>
 		/// <param name="text">String to be drawn</param>
 		/// <param name="color">Color the text should have</param>
@@ -456,18 +456,18 @@ namespace Nuclectic.Graphics.TriD.Debugging
 
 		/// <summary>Buffer for constructing temporary vertices</summary>
 		/// <remarks>
-		///   <para>
-		///     This array is filled from two sides: Triangles start at index 0 and
-		///     are appended as normal while lines start at MaximumDebugVertexCount
-		///     and are appended backwards. When the two list meet at the center
-		///     of the array, the vertex list is full.
-		///   </para>
-		///   <para>
-		///     We don't need a fancy drawing operation queue because the ordering of
-		///     the debugging primitives does not matter. We simply draw all of the
-		///     triangles and proceed with the lines, letting the z-buffer take care
-		///     of the rest.
-		///   </para>
+		///     <para>
+		///         This array is filled from two sides: Triangles start at index 0 and
+		///         are appended as normal while lines start at MaximumDebugVertexCount
+		///         and are appended backwards. When the two list meet at the center
+		///         of the array, the vertex list is full.
+		///     </para>
+		///     <para>
+		///         We don't need a fancy drawing operation queue because the ordering of
+		///         the debugging primitives does not matter. We simply draw all of the
+		///         triangles and proceed with the lines, letting the z-buffer take care
+		///         of the rest.
+		///     </para>
 		/// </remarks>
 		private VertexPositionColor[] queuedVertices;
 
@@ -488,20 +488,20 @@ namespace Nuclectic.Graphics.TriD.Debugging
 
 		/// <summary>Index for the next triangle in the vertex array</summary>
 		/// <remarks>
-		///   Counts from 0 up to MaximumDebugVertexCount, increased in multiples of 3.
+		///     Counts from 0 up to MaximumDebugVertexCount, increased in multiples of 3.
 		/// </remarks>
 		private int triangleIndex;
 
 		/// <summary>Index for the next line in the vertex array</summary>
-		/// <remarks> 
-		///   Counts in reverse from MaximumDebugVertexCount to 0,
-		///   decreased in multiples of 2.
+		/// <remarks>
+		///     Counts in reverse from MaximumDebugVertexCount to 0,
+		///     decreased in multiples of 2.
 		/// </remarks>
 		private int lineIndex;
 
 		/// <summary>
-		///   Flag indicating that the user has attempted to draw more primitives
-		///   than our vertex array can hold.
+		///     Flag indicating that the user has attempted to draw more primitives
+		///     than our vertex array can hold.
 		/// </summary>
 		private bool overflowed;
 	}

@@ -35,12 +35,13 @@ namespace Nuclectic.UserInterface
 	//   one and assigns our's back?
 
 	/// <summary>Manages the state of the user interfaces and renders it</summary>
-	public class GuiManager :
-		IGameComponent,
-		IUpdateable,
-		IDrawable,
-		IDisposable,
-		IGuiService
+	public class GuiManager
+		:
+			IGameComponent,
+			IUpdateable,
+			IDrawable,
+			IDisposable,
+			IGuiService
 	{
 		/// <summary>Fired when the DrawOrder property changes</summary>
 		public event EventHandler<EventArgs> DrawOrderChanged;
@@ -55,11 +56,11 @@ namespace Nuclectic.UserInterface
 		event EventHandler<EventArgs> IUpdateable.EnabledChanged { add { } remove { } }
 
 		/// <summary>
-		///   Initializes a new GUI manager using the XNA service container
+		///     Initializes a new GUI manager using the XNA service container
 		/// </summary>
 		/// <param name="gameServices">
-		///   Game service container the GuiManager will register itself in and
-		///   to take the services it consumes from.
+		///     Game service container the GuiManager will register itself in and
+		///     to take the services it consumes from.
 		/// </param>
 		public GuiManager(GameServiceContainer gameServices)
 		{
@@ -74,16 +75,16 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Initializes a new GUI manager without using the XNA service container
+		///     Initializes a new GUI manager without using the XNA service container
 		/// </summary>
 		/// <param name="graphicsDeviceService">
-		///   Graphics device service the GUI will be rendered with
+		///     Graphics device service the GUI will be rendered with
 		/// </param>
 		/// <param name="inputService">
-		///   Input service used to read data from the input devices
+		///     Input service used to read data from the input devices
 		/// </param>
 		/// <remarks>
-		///   This constructor is provided for users of dependency injection frameworks.
+		///     This constructor is provided for users of dependency injection frameworks.
 		/// </remarks>
 		public GuiManager(
 			IGraphicsDeviceService graphicsDeviceService,
@@ -96,18 +97,18 @@ namespace Nuclectic.UserInterface
 
 		/// <summary>Initializes a new GUI manager using explicit services</summary>
 		/// <param name="gameServices">
-		///   Game service container the GuiManager will register itself in
+		///     Game service container the GuiManager will register itself in
 		/// </param>
 		/// <param name="graphicsDeviceService">
-		///   Graphics device service the GUI will be rendered with
+		///     Graphics device service the GUI will be rendered with
 		/// </param>
 		/// <param name="inputService">
-		///   Input service used to read data from the input devices
+		///     Input service used to read data from the input devices
 		/// </param>
 		/// <remarks>
-		///   This constructor is provided for users of dependency injection frameworks
-		///   or if you just want to be more explicit in stating which manager consumes
-		///   what services.
+		///     This constructor is provided for users of dependency injection frameworks
+		///     or if you just want to be more explicit in stating which manager consumes
+		///     what services.
 		/// </remarks>
 		public GuiManager(
 			GameServiceContainer gameServices,
@@ -217,10 +218,10 @@ namespace Nuclectic.UserInterface
 
 		/// <summary>GUI that is being rendered</summary>
 		/// <remarks>
-		///   The GUI manager renders one GUI full-screen onto the primary render target
-		///   (the backbuffer). This property holds the GUI that is being managed by
-		///   the GUI manager component. You can replace it at any time, for example,
-		///   if the player opens or closes your ingame menu.
+		///     The GUI manager renders one GUI full-screen onto the primary render target
+		///     (the backbuffer). This property holds the GUI that is being managed by
+		///     the GUI manager component. You can replace it at any time, for example,
+		///     if the player opens or closes your ingame menu.
 		/// </remarks>
 		public IScreen Screen
 		{
@@ -241,11 +242,11 @@ namespace Nuclectic.UserInterface
 
 		/// <summary>Input capturer that collects data from the input devices</summary>
 		/// <remarks>
-		///   The GuiManager will dispose its input capturer together with itself. If you
-		///   want to keep the input capturer, unset it before disposing the GuiManager.
-		///   If you want to replace the GuiManager's input capturer after it has constructed
-		///   the default one, you should dispose the GuiManager's default input capturer
-		///   after assigning your own.
+		///     The GuiManager will dispose its input capturer together with itself. If you
+		///     want to keep the input capturer, unset it before disposing the GuiManager.
+		///     If you want to replace the GuiManager's input capturer after it has constructed
+		///     the default one, you should dispose the GuiManager's default input capturer
+		///     after assigning your own.
 		/// </remarks>
 		public Input.IInputCapturer InputCapturer
 		{
@@ -272,11 +273,11 @@ namespace Nuclectic.UserInterface
 
 		/// <summary>Visualizer that draws the GUI onto the screen</summary>
 		/// <remarks>
-		///   The GuiManager will dispose its visualizer together with itself. If you want
-		///   to keep the visualizer, unset it before disposing the GuiManager. If you want
-		///   to replace the GuiManager's visualizer after it has constructed the default
-		///   one, you should dispose the GuiManager's default visualizer after assigning
-		///   your own.
+		///     The GuiManager will dispose its visualizer together with itself. If you want
+		///     to keep the visualizer, unset it before disposing the GuiManager. If you want
+		///     to replace the GuiManager's visualizer after it has constructed the default
+		///     one, you should dispose the GuiManager's default visualizer after assigning
+		///     your own.
 		/// </remarks>
 		public Visuals.IGuiVisualizer Visualizer
 		{
@@ -316,8 +317,8 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   Indicates when the game component should be updated relative to other game
-		///   components. Lower values are updated first.
+		///     Indicates when the game component should be updated relative to other game
+		///     components. Lower values are updated first.
 		/// </summary>
 		public int UpdateOrder
 		{
@@ -333,8 +334,8 @@ namespace Nuclectic.UserInterface
 		}
 
 		/// <summary>
-		///   The order in which to draw this object relative to other objects. Objects
-		///   with a lower value are drawn first.
+		///     The order in which to draw this object relative to other objects. Objects
+		///     with a lower value are drawn first.
 		/// </summary>
 		public int DrawOrder
 		{
@@ -395,7 +396,7 @@ namespace Nuclectic.UserInterface
 
 		/// <summary>Retrieves the input service from a service provider</summary>
 		/// <param name="serviceProvider">
-		///   Service provider the input service is retrieved from
+		///     Service provider the input service is retrieved from
 		/// </param>
 		/// <returns>The retrieved input service</returns>
 		private static IInputService getInputService(IServiceProvider serviceProvider)
@@ -418,7 +419,7 @@ namespace Nuclectic.UserInterface
 
 		/// <summary>Retrieves the graphics device service from a service provider</summary>
 		/// <param name="serviceProvider">
-		///   Service provider the graphics device service is retrieved from
+		///     Service provider the graphics device service is retrieved from
 		/// </param>
 		/// <returns>The retrieved graphics device service</returns>
 		private static IGraphicsDeviceService getGraphicsDeviceService(
@@ -464,7 +465,7 @@ namespace Nuclectic.UserInterface
 		private Input.IInputCapturer inputCapturer;
 
 		/// <summary>
-		///   The IInputCapturer under its IUpdateable interface, if implemented
+		///     The IInputCapturer under its IUpdateable interface, if implemented
 		/// </summary>
 		private IUpdateable updateableInputCapturer;
 
@@ -472,7 +473,7 @@ namespace Nuclectic.UserInterface
 		private Visuals.IGuiVisualizer guiVisualizer;
 
 		/// <summary>
-		///   The IGuiVisualizer under its IUpdateable interface, if implemented
+		///     The IGuiVisualizer under its IUpdateable interface, if implemented
 		/// </summary>
 		private IUpdateable updateableGuiVisualizer;
 

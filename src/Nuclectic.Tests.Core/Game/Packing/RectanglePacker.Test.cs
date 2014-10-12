@@ -37,11 +37,11 @@ namespace Nuclectic.Tests.Game.Packing
 		/// <param name="packer">Packer with a packing area of 70x70 units</param>
 		/// <returns>The efficiency factor of the packer</returns>
 		/// <remarks>
-		///   A perfect packer would achieve an efficiency rating of 1.0. This is
-		///   impossible however since the 24 squares cannot all be packed into
-		///   the 70x70 square with no overlap (Bitner &amp; Reingold 1975). The closer
-		///   the efficiency rating is to 1.0, the better, with 0.99 being the
-		///   mathematically best rating achievable.
+		///     A perfect packer would achieve an efficiency rating of 1.0. This is
+		///     impossible however since the 24 squares cannot all be packed into
+		///     the 70x70 square with no overlap (Bitner &amp; Reingold 1975). The closer
+		///     the efficiency rating is to 1.0, the better, with 0.99 being the
+		///     mathematically best rating achievable.
 		/// </remarks>
 		protected float CalculateEfficiency(RectanglePacker packer)
 		{
@@ -64,8 +64,8 @@ namespace Nuclectic.Tests.Game.Packing
 
 		/// <summary>Benchmarks the provided rectangle packer using random data</summary>
 		/// <param name="buildPacker">
-		///   Rectangle packer build method returning new rectangle packers
-		///   with an area of 1024 x 1024
+		///     Rectangle packer build method returning new rectangle packers
+		///     with an area of 1024 x 1024
 		/// </param>
 		/// <returns>The achieved benchmark score</returns>
 		protected float Benchmark(RectanglePackerBuilder buildPacker)

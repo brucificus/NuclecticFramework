@@ -31,9 +31,9 @@ namespace Nuclectic.Support.Collections
 
 		/// <summary>Invoked whenever the instance's owner changes</summary>
 		/// <remarks>
-		///   When items are parented for the first time, the oldParent argument will
-		///   be null. Also, if the element is removed from the collection, the
-		///   current parent will be null.
+		///     When items are parented for the first time, the oldParent argument will
+		///     be null. Also, if the element is removed from the collection, the
+		///     current parent will be null.
 		/// </remarks>
 		/// <param name="oldParent">Previous owner of the instance</param>
 		protected virtual void OnParentChanged(TParent oldParent) { }

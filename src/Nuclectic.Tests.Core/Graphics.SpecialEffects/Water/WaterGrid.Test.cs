@@ -37,7 +37,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		: TestFixtureBase
 	{
 		/// <summary>
-		///   Verifies that the simple constructor of the Grid class is working
+		///     Verifies that the simple constructor of the Grid class is working
 		/// </summary>
 		[Test]
 		public void TestSimpleConstructor()
@@ -54,7 +54,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		}
 
 		/// <summary>
-		///   Verifies that the full constructor of the Grid class is working
+		///     Verifies that the full constructor of the Grid class is working
 		/// </summary>
 		[Test]
 		public void TestFullConstructor()
@@ -72,8 +72,8 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if an invalid segment count for
-		///   the X axis is specified
+		///     Verifies that an exception is thrown if an invalid segment count for
+		///     the X axis is specified
 		/// </summary>
 		[Test]
 		public void TestThrowOnInvalidSegmentCountX()
@@ -93,8 +93,8 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		}
 
 		/// <summary>
-		///   Verifies that an exception is thrown if an invalid segment count for
-		///   the Y axis is specified
+		///     Verifies that an exception is thrown if an invalid segment count for
+		///     the Y axis is specified
 		/// </summary>
 		[Test]
 		public void TestThrowOnInvalidSegmentCountY()
@@ -114,7 +114,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		}
 
 		/// <summary>
-		///   Verifies that the properties required for rendering the grid are working
+		///     Verifies that the properties required for rendering the grid are working
 		/// </summary>
 		[Test]
 		public void TestRenderingProperties()
@@ -137,7 +137,7 @@ namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
 		}
 
 		/// <summary>
-		///   Verifies that the statistical properties of the grid work as expected
+		///     Verifies that the statistical properties of the grid work as expected
 		/// </summary>
 		[Test]
 		public void TestStatisticalProperties()
