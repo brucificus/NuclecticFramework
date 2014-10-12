@@ -1,188 +1,200 @@
 ﻿#region CPL License
 
-///*
-//Nuclex Framework
-//Copyright (C) 2002-2011 Nuclex Development Labs
+/*
+Nuclex Framework
+Copyright (C) 2002-2011 Nuclex Development Labs
 
-//This library is free software; you can redistribute it and/or
-//modify it under the terms of the IBM Common Public License as
-//published by the IBM Corporation; either version 1.0 of the
-//License, or (at your option) any later version.
+This library is free software; you can redistribute it and/or
+modify it under the terms of the IBM Common Public License as
+published by the IBM Corporation; either version 1.0 of the
+License, or (at your option) any later version.
 
-//This library is distributed in the hope that it will be useful,
-//but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-//IBM Common Public License for more details.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+IBM Common Public License for more details.
 
-//You should have received a copy of the IBM Common Public
-//License along with this library
-//*/
+You should have received a copy of the IBM Common Public
+License along with this library
+*/
 
 #endregion
 
-//using Microsoft.Xna.Framework.Input;
-//using Moq;
-//using Nuclectic.Tests.Mocks;
-//#if UNITTEST
-//using NUnit.Framework;
+using Microsoft.Xna.Framework.Input;
+using Moq;
+using Nuclectic.Tests.Mocks;
+#if UNITTEST
+using NUnit.Framework;
 
-//namespace Nuclectic.Tests.Input.Devices {
+namespace Nuclectic.Tests.Input.Devices
+{
 
-//  /// <summary>Unit tests for the mocked keyboard</summary>
-//  [TestFixture]
-//  public class MockedKeyboardTest {
+	/// <summary>Unit tests for the mocked keyboard</summary>
+	[TestFixture]
+	public class MockedKeyboardTest
+	{
 
-//	#region interface IKeyboardSubscriber
+		#region interface IKeyboardSubscriber
 
-//	/// <summary>Subscriber to the </summary>
-//	public interface IKeyboardSubscriber {
+		/// <summary>Subscriber to the </summary>
+		public interface IKeyboardSubscriber
+		{
 
-//	  /// <summary>Called when a key has been pressed</summary>
-//	  /// <param name="key">Key that has been pressed</param>
-//	  void KeyPressed(Keys key);
+			/// <summary>Called when a key has been pressed</summary>
+			/// <param name="key">Key that has been pressed</param>
+			void KeyPressed(Keys key);
 
-//	  /// <summary>Called when a key has been released</summary>
-//	  /// <param name="key">Key that has been released</param>
-//	  void KeyReleased(Keys key);
+			/// <summary>Called when a key has been released</summary>
+			/// <param name="key">Key that has been released</param>
+			void KeyReleased(Keys key);
 
-//	  /// <summary>Called when a character has been entered</summary>
-//	  /// <param name="character">Character that has been entered</param>
-//	  void CharacterEntered(char character);
+			/// <summary>Called when a character has been entered</summary>
+			/// <param name="character">Character that has been entered</param>
+			void CharacterEntered(char character);
 
-//	}
+		}
 
-//	#endregion // interface IKeyboardSubscriber
+		#endregion // interface IKeyboardSubscriber
 
-//	/// <summary>Called before each test is run</summary>
-//	[SetUp]
-//	public void Setup() {
-//	  this.mockery = new MockFactory();
-//	  this.keyboard = new MockedKeyboard();
-//	}
+		/// <summary>Verifies that the GetState() method is working</summary>
+		[Test]
+		public void TestGetState()
+		{
+			var keyboard = new MockedKeyboard();
 
-//	/// <summary>Called after each test has run</summary>
-//	[TearDown]
-//	public void Teardown() {
-//	  if (this.mockery != null) {
-//		this.mockery.Dispose();
-//		this.mockery = null;
-//	  }
-//	}
+			keyboard.GetState();
+			// No exception means success
+		}
 
-//	/// <summary>Verifies that the GetState() method is working</summary>
-//	[Test]
-//	public void TestGetState() {
-//	  this.keyboard.GetState();
-//	  // No exception means success
-//	}
+		/// <summary>Verifies that the game pad can be attached and detached</summary>
+		[Test]
+		public void TestAttachAndDetach()
+		{
+			var keyboard = new MockedKeyboard();
 
-//	/// <summary>Verifies that the game pad can be attached and detached</summary>
-//	[Test]
-//	public void TestAttachAndDetach() {
-//	  Assert.IsFalse(this.keyboard.IsAttached);
-//	  this.keyboard.Attach();
-//	  Assert.IsTrue(this.keyboard.IsAttached);
-//	  this.keyboard.Detach();
-//	  Assert.IsFalse(this.keyboard.IsAttached);
-//	}
+			Assert.IsFalse(keyboard.IsAttached);
+			keyboard.Attach();
+			Assert.IsTrue(keyboard.IsAttached);
+			keyboard.Detach();
+			Assert.IsFalse(keyboard.IsAttached);
+		}
 
-//	/// <summary>Verifies that the mocked keyboard's name can be retrieved</summary>
-//	[Test]
-//	public void TestName() {
-//	  StringAssert.Contains("mock", this.keyboard.Name.ToLower());
-//	}
+		/// <summary>Verifies that the mocked keyboard's name can be retrieved</summary>
+		[Test]
+		public void TestName()
+		{
+			var keyboard = new MockedKeyboard();
 
-//	/// <summary>Verifies that key presses can be simulation</summary>
-//	[Test]
-//	public void TestPressKey() {
-//	  Mock<IKeyboardSubscriber> subscriber = mockSubscriber();
+			StringAssert.Contains("mock", keyboard.Name.ToLower());
+		}
 
-//	  this.keyboard.Press(Keys.H);
+		/// <summary>Verifies that key presses can be simulation</summary>
+		[Test]
+		public void TestPressKey()
+		{
+			var keyboard = new MockedKeyboard();
+			Mock<IKeyboardSubscriber> subscriber = mockSubscriber(keyboard);
 
-//	  subscriber.Expects.One.Method(x => x.KeyPressed(0)).With(Keys.H);
+			keyboard.Press(Keys.H);
 
-//	  this.keyboard.Update();
+			subscriber.Setup(x => x.KeyPressed(Keys.H)).Verifiable();
 
-//	  this.mockery.VerifyAllExpectationsHaveBeenMet();
-//	}
+			keyboard.Update();
 
-//	/// <summary>Verifies that key releases can be simulated</summary>
-//	[Test]
-//	public void TestReleaseKey() {
-//	  Mock<IKeyboardSubscriber> subscriber = mockSubscriber();
+			subscriber.VerifyAll();
+		}
 
-//	  this.keyboard.Release(Keys.W);
+		/// <summary>Verifies that key releases can be simulated</summary>
+		[Test]
+		public void TestReleaseKey()
+		{
+			var keyboard = new MockedKeyboard();
+			Mock<IKeyboardSubscriber> subscriber = mockSubscriber(keyboard);
 
-//	  subscriber.Expects.One.Method(x => x.KeyReleased(0)).With(Keys.W);
+			keyboard.Release(Keys.W);
 
-//	  this.keyboard.Update();
+			subscriber.Setup(x => x.KeyReleased(Keys.W)).Verifiable();
 
-//	  this.mockery.VerifyAllExpectationsHaveBeenMet();
-//	}
+			keyboard.Update();
 
-//	/// <summary>Verifies that character entries can be simulated</summary>
-//	[Test]
-//	public void TestEnterCharacter() {
-//	  Mock<IKeyboardSubscriber> subscriber = mockSubscriber();
+			subscriber.VerifyAll();
+		}
 
-//	  this.keyboard.Enter('!');
+		/// <summary>Verifies that character entries can be simulated</summary>
+		[Test]
+		public void TestEnterCharacter()
+		{
+			var keyboard = new MockedKeyboard();
+			Mock<IKeyboardSubscriber> subscriber = mockSubscriber(keyboard);
 
-//	  subscriber.Expects.One.Method(x => x.CharacterEntered(' ')).With('!');
+			keyboard.Enter('!');
 
-//	  this.keyboard.Update();
+			subscriber.Setup(x => x.CharacterEntered('!')).Verifiable();
 
-//	  this.mockery.VerifyAllExpectationsHaveBeenMet();
-//	}
+			keyboard.Update();
 
-//	/// <summary>Verifies that text entries can be simulated</summary>
-//	[Test]
-//	public void TestTypeText() {
-//	  Mock<IKeyboardSubscriber> subscriber = mockSubscriber();
+			subscriber.VerifyAll();
+		}
 
-//	  this.keyboard.Type("Xyz™");
+		/// <summary>Verifies that text entries can be simulated</summary>
+		[Test]
+		public void TestTypeText()
+		{
+			var keyboard = new MockedKeyboard();
+			Mock<IKeyboardSubscriber> subscriber = mockSubscriber(keyboard);
 
-//	  subscriber.Expects.One.Method(x => x.KeyPressed(0)).With(Keys.LeftShift);
-//	  subscriber.Expects.One.Method(x => x.KeyPressed(0)).With(Keys.X);
-//	  subscriber.Expects.One.Method(x => x.CharacterEntered(' ')).With('X');
-//	  subscriber.Expects.One.Method(x => x.KeyReleased(0)).With(Keys.X);
-//	  subscriber.Expects.One.Method(x => x.KeyReleased(0)).With(Keys.LeftShift);
+			keyboard.Type("Xyz™");
 
-//	  subscriber.Expects.One.Method(x => x.KeyPressed(0)).With(Keys.Y);
-//	  subscriber.Expects.One.Method(x => x.CharacterEntered(' ')).With('y');
-//	  subscriber.Expects.One.Method(x => x.KeyReleased(0)).With(Keys.Y);
+			ExpectMappedCapital(subscriber, Keys.X, 'X');
 
-//	  subscriber.Expects.One.Method(x => x.KeyPressed(0)).With(Keys.Z);
-//	  subscriber.Expects.One.Method(x => x.CharacterEntered(' ')).With('z');
-//	  subscriber.Expects.One.Method(x => x.KeyReleased(0)).With(Keys.Z);
+			ExpectMapped(subscriber, Keys.Y, 'y');
 
-//	  subscriber.Expects.One.Method(x => x.KeyPressed(0)).With(Keys.None);
-//	  subscriber.Expects.One.Method(x => x.CharacterEntered(' ')).With('™');
-//	  subscriber.Expects.One.Method(x => x.KeyReleased(0)).With(Keys.None);
+			ExpectMapped(subscriber, Keys.Z, 'z');
 
-//	  this.keyboard.Update();
+			ExpectUnmapped(subscriber);
 
-//	  this.mockery.VerifyAllExpectationsHaveBeenMet();
-//	}
+			keyboard.Update();
 
-//	/// <summary>Mocks a subscriber for the buffered keyboard</summary>
-//	/// <returns>A subscriber registered to the events of the keyboard</returns>
-//	private Mock<IKeyboardSubscriber> mockSubscriber() {
-//	  Mock<IKeyboardSubscriber> subscriber = this.mockery.CreateMock<IKeyboardSubscriber>();
+			subscriber.VerifyAll();
+		}
 
-//	  this.keyboard.KeyPressed += subscriber.MockObject.KeyPressed;
-//	  this.keyboard.KeyReleased += subscriber.MockObject.KeyReleased;
-//	  this.keyboard.CharacterEntered += subscriber.MockObject.CharacterEntered;
+		private static void ExpectUnmapped(Mock<IKeyboardSubscriber> subscriber)
+		{
+			subscriber.Setup(x => x.KeyPressed(Keys.None)).Verifiable();
+			subscriber.Setup(x => x.CharacterEntered('™')).Verifiable();
+			subscriber.Setup(x => x.KeyReleased(Keys.None)).Verifiable();
+		}
 
-//	  return subscriber;
-//	}
+		private static void ExpectMapped(Mock<IKeyboardSubscriber> subscriber, Keys key, char character)
+		{
+			subscriber.Setup(x => x.KeyPressed(key)).Verifiable();
+			subscriber.Setup(x => x.CharacterEntered(character)).Verifiable();
+			subscriber.Setup(x => x.KeyReleased(key)).Verifiable();
+		}
 
-//	/// <summary>Creates dynamic mock objects for interfaces</summary>
-//	private MockFactory mockery;
-//	/// <summary>Buffered keyboard being tested</summary>
-//	private MockedKeyboard keyboard;
+		private static void ExpectMappedCapital(Mock<IKeyboardSubscriber> subscriber, Keys key, char character)
+		{
+			subscriber.Setup(x => x.KeyPressed(Keys.LeftShift)).Verifiable();
+			subscriber.Setup(x => x.KeyPressed(key)).Verifiable();
+			subscriber.Setup(x => x.CharacterEntered(character)).Verifiable();
+			subscriber.Setup(x => x.KeyReleased(key)).Verifiable();
+			subscriber.Setup(x => x.KeyReleased(Keys.LeftShift)).Verifiable();
+		}
 
-//  }
+		/// <summary>Mocks a subscriber for the buffered keyboard</summary>
+		/// <returns>A subscriber registered to the events of the keyboard</returns>
+		private Mock<IKeyboardSubscriber> mockSubscriber(MockedKeyboard keyboard)
+		{
+			Mock<IKeyboardSubscriber> subscriber = new Mock<IKeyboardSubscriber>();
 
-//} // namespace Nuclex.Input.Devices
+			keyboard.KeyPressed += subscriber.Object.KeyPressed;
+			keyboard.KeyReleased += subscriber.Object.KeyReleased;
+			keyboard.CharacterEntered += subscriber.Object.CharacterEntered;
 
-//#endif // UNITTEST
+			return subscriber;
+		}
+	}
+
+} // namespace Nuclex.Input.Devices
+
+#endif // UNITTEST

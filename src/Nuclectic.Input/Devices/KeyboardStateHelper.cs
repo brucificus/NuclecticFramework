@@ -34,14 +34,14 @@ namespace Nuclectic.Input.Devices
 		/// <param name="keyboardState">KeyboardState that will be modified</param>
 		/// <param name="key">Key that will be added to the pressed keys</param>
 		public delegate void AddPressedKeyDelegate(
-			ref KeyboardState keyboardState, int key
+			ref KeyboardState keyboardState, Keys key
 			);
 
 		/// <summary>Delegate for the KeyboardState.RemovePressedKey() method</summary>
 		/// <param name="keyboardState">KeyboardState that will be modified</param>
 		/// <param name="key">Key that will be removed from the pressed keys</param>
 		public delegate void RemovePressedKeyDelegate(
-			ref KeyboardState keyboardState, int key
+			ref KeyboardState keyboardState, Keys key
 			);
 
 		/// <summary>Initializes the static fields of the class</summary>
@@ -57,11 +57,12 @@ namespace Nuclectic.Input.Devices
 		/// <returns>A delegate that can be used to add a pressed key</returns>
 		private static AddPressedKeyDelegate createAddPressedKeyDelegate()
 		{
-			MethodInfo addPressedKeyMethod = typeof (KeyboardState).GetTypeInfo().GetDeclaredMethod("AddPressedKey");
+			MethodInfo addPressedKeyMethod = typeof(KeyboardState).GetTypeInfo().GetDeclaredMethod("InternalSetKey");
+			
 			Type byrefKeyboardState = typeof (KeyboardState).MakeByRefType();
 
 			ParameterExpression instance = Expression.Parameter(byrefKeyboardState, "instance");
-			ParameterExpression keyValue = Expression.Parameter(typeof (int), "key");
+			ParameterExpression keyValue = Expression.Parameter(typeof (Keys), "key");
 
 			Expression<AddPressedKeyDelegate> expression =
 				Expression.Lambda<AddPressedKeyDelegate>(
@@ -78,11 +79,11 @@ namespace Nuclectic.Input.Devices
 		/// <returns>A delegate that can be used to remove a pressed key</returns>
 		private static RemovePressedKeyDelegate createRemovePressedKeyDelegate()
 		{
-			MethodInfo addPressedKeyMethod = typeof (KeyboardState).GetTypeInfo().GetDeclaredMethod("RemovePressedKey");
+			MethodInfo addPressedKeyMethod = typeof(KeyboardState).GetTypeInfo().GetDeclaredMethod("InternalClearKey");
 			Type byrefKeyboardState = typeof (KeyboardState).MakeByRefType();
 
 			ParameterExpression instance = Expression.Parameter(byrefKeyboardState, "instance");
-			ParameterExpression keyValue = Expression.Parameter(typeof (int), "key");
+			ParameterExpression keyValue = Expression.Parameter(typeof (Keys), "key");
 
 			Expression<RemovePressedKeyDelegate> expression =
 				Expression.Lambda<RemovePressedKeyDelegate>(

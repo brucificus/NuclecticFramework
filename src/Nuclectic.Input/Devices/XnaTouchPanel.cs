@@ -43,7 +43,6 @@ namespace Nuclectic.Input.Devices
 		{
 			get
 			{
-				//return true; // Is there a WP7 device without touch screen?
 				return TouchPanel.GetCapabilities().IsConnected;
 			}
 		}

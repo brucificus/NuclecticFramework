@@ -167,13 +167,13 @@ namespace Nuclectic.Input.Devices
 				{
 					case EventType.KeyRelease:
 					{
-						KeyboardStateHelper.RemovePressedKey(ref this.current, (int)nextEvent.Key);
+						KeyboardStateHelper.RemovePressedKey(ref this.current, nextEvent.Key);
 						OnKeyReleased(nextEvent.Key);
 						break;
 					}
 					case EventType.KeyPress:
 					{
-						KeyboardStateHelper.AddPressedKey(ref this.current, (int)nextEvent.Key);
+						KeyboardStateHelper.AddPressedKey(ref this.current, nextEvent.Key);
 						OnKeyPressed(nextEvent.Key);
 						break;
 					}

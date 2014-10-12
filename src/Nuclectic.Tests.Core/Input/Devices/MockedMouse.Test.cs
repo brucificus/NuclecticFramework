@@ -1,176 +1,177 @@
 ﻿#region CPL License
 
-///*
-//Nuclex Framework
-//Copyright (C) 2002-2011 Nuclex Development Labs
+/*
+Nuclex Framework
+Copyright (C) 2002-2011 Nuclex Development Labs
 
-//This library is free software; you can redistribute it and/or
-//modify it under the terms of the IBM Common Public License as
-//published by the IBM Corporation; either version 1.0 of the
-//License, or (at your option) any later version.
+This library is free software; you can redistribute it and/or
+modify it under the terms of the IBM Common Public License as
+published by the IBM Corporation; either version 1.0 of the
+License, or (at your option) any later version.
 
-//This library is distributed in the hope that it will be useful,
-//but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-//IBM Common Public License for more details.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+IBM Common Public License for more details.
 
-//You should have received a copy of the IBM Common Public
-//License along with this library
-//*/
+You should have received a copy of the IBM Common Public
+License along with this library
+*/
 
 #endregion
 
-//using Moq;
-//#if UNITTEST
-//using NUnit.Framework;
+using Moq;
+using Nuclectic.Input;
+using Nuclex.Input.Devices;
+#if UNITTEST
+using NUnit.Framework;
 
-//namespace Nuclectic.Tests.Input.Devices {
+namespace Nuclectic.Tests.Input.Devices
+{
 
-//  /// <summary>Unit tests for the mocked mouse</summary>
-//  [TestFixture]
-//  internal class MockedMouseTest {
+	/// <summary>Unit tests for the mocked mouse</summary>
+	[TestFixture]
+	public class MockedMouseTest
+	{
 
-//	#region interface IMouseSubscriber
+		#region interface IMouseSubscriber
 
-//	/// <summary>Subscriber to the events of a mouse</summary>
-//	public interface IMouseSubscriber {
+		/// <summary>Subscriber to the events of a mouse</summary>
+		public interface IMouseSubscriber
+		{
 
-//	  /// <summary>Called when a mouse button has been pressed</summary>
-//	  /// <param name="buttons">Button which has been pressed</param>
-//	  void ButtonPressed(MouseButtons buttons);
+			/// <summary>Called when a mouse button has been pressed</summary>
+			/// <param name="buttons">Button which has been pressed</param>
+			void ButtonPressed(MouseButtons buttons);
 
-//	  /// <summary>Called when a mouse button has been released</summary>
-//	  /// <param name="buttons">Button which has been released</param>
-//	  void ButtonReleased(MouseButtons buttons);
+			/// <summary>Called when a mouse button has been released</summary>
+			/// <param name="buttons">Button which has been released</param>
+			void ButtonReleased(MouseButtons buttons);
 
-//	  /// <summary>Called when the mouse cursor has been moved</summary>
-//	  /// <param name="x">X coordinate of the mouse cursor</param>
-//	  /// <param name="y">Y coordinate of the mouse cursor</param>
-//	  void Moved(float x, float y);
+			/// <summary>Called when the mouse cursor has been moved</summary>
+			/// <param name="x">X coordinate of the mouse cursor</param>
+			/// <param name="y">Y coordinate of the mouse cursor</param>
+			void Moved(float x, float y);
 
-//	  /// <summary>Called when the mouse wheel has been rotated</summary>
-//	  /// <param name="ticks">Number of ticks the mouse wheel was rotated</param>
-//	  void WheelRotated(float ticks);
+			/// <summary>Called when the mouse wheel has been rotated</summary>
+			/// <param name="ticks">Number of ticks the mouse wheel was rotated</param>
+			void WheelRotated(float ticks);
 
-//	}
+		}
 
-//	#endregion // interface IMouseSubscriber
+		#endregion // interface IMouseSubscriber
 
-//	/// <summary>Called before each test is run</summary>
-//	[SetUp]
-//	public void Setup() {
-//	  this.mockery = new MockFactory();
-//	  this.mouse = new MockedMouse();
-//	}
+		/// <summary>Verifies that the GetState() method is working</summary>
+		[Test]
+		public void TestGetState()
+		{
+			var mouse = new MockedMouse();
 
-//	/// <summary>Called after each test has run</summary>
-//	[TearDown]
-//	public void Teardown() {
-//	  if (this.mockery != null) {
-//		this.mockery.Dispose();
-//		this.mockery = null;
-//	  }
-//	}
+			mouse.GetState();
+			// No exception means success
+		}
 
-//	/// <summary>Verifies that the GetState() method is working</summary>
-//	[Test]
-//	public void TestGetState() {
-//	  this.mouse.GetState();
-//	  // No exception means success
-//	}
+		/// <summary>Verifies that the mouse can be attached and detached</summary>
+		[Test]
+		public void TestAttachAndDetach()
+		{
+			var mouse = new MockedMouse();
 
-//	/// <summary>Verifies that the mouse can be attached and detached</summary>
-//	[Test]
-//	public void TestAttachAndDetach() {
-//	  Assert.IsFalse(this.mouse.IsAttached);
-//	  this.mouse.Attach();
-//	  Assert.IsTrue(this.mouse.IsAttached);
-//	  this.mouse.Detach();
-//	  Assert.IsFalse(this.mouse.IsAttached);
-//	}
+			Assert.IsFalse(mouse.IsAttached);
+			mouse.Attach();
+			Assert.IsTrue(mouse.IsAttached);
+			mouse.Detach();
+			Assert.IsFalse(mouse.IsAttached);
+		}
 
-//	/// <summary>Verifies that the mocked mouse's name can be retrieved</summary>
-//	[Test]
-//	public void TestName() {
-//	  StringAssert.Contains("mock", this.mouse.Name.ToLower());
-//	}
+		/// <summary>Verifies that the mocked mouse's name can be retrieved</summary>
+		[Test]
+		public void TestName()
+		{
+			var mouse = new MockedMouse();
 
-//	/// <summary>Verifies that button presses can be simulated</summary>
-//	[Test]
-//	public void TestPressButton() {
-//	  Mock<IMouseSubscriber> subscriber = mockSubscriber();
+			StringAssert.Contains("mock", mouse.Name.ToLower());
+		}
 
-//	  this.mouse.Press(MouseButtons.Right);
+		/// <summary>Verifies that button presses can be simulated</summary>
+		[Test]
+		public void TestPressButton()
+		{
+			var mouse = new MockedMouse();
+			Mock<IMouseSubscriber> subscriber = mockSubscriber(mouse);
 
-//	  subscriber.Expects.One.Method(x => x.ButtonPressed(0)).With(MouseButtons.Right);
+			mouse.Press(MouseButtons.Right);
 
-//	  this.mouse.Update();
+			subscriber.Setup(x => x.ButtonPressed(MouseButtons.Right));
 
-//	  this.mockery.VerifyAllExpectationsHaveBeenMet();
-//	}
+			mouse.Update();
 
-//	/// <summary>Verifies that button releases can be simulated</summary>
-//	[Test]
-//	public void TestReleaseButton() {
-//	  Mock<IMouseSubscriber> subscriber = mockSubscriber();
+			subscriber.VerifyAll();
+		}
 
-//	  this.mouse.Release(MouseButtons.X2);
+		/// <summary>Verifies that button releases can be simulated</summary>
+		[Test]
+		public void TestReleaseButton()
+		{
+			var mouse = new MockedMouse();
+			Mock<IMouseSubscriber> subscriber = mockSubscriber(mouse);
 
-//	  subscriber.Expects.One.Method(x => x.ButtonReleased(0)).With(MouseButtons.X2);
+			mouse.Release(MouseButtons.X2);
 
-//	  this.mouse.Update();
+			subscriber.Setup(x => x.ButtonReleased(MouseButtons.X2)).Verifiable();
 
-//	  this.mockery.VerifyAllExpectationsHaveBeenMet();
-//	}
+			mouse.Update();
 
-//	/// <summary>Verifies that mouse movement can be simulated</summary>
-//	[Test]
-//	public void TestMoveTo() {
-//	  Mock<IMouseSubscriber> subscriber = mockSubscriber();
+			subscriber.VerifyAll();
+		}
 
-//	  this.mouse.MoveTo(43.21f, 87.65f);
+		/// <summary>Verifies that mouse movement can be simulated</summary>
+		[Test]
+		public void TestMoveTo()
+		{
+			var mouse = new MockedMouse();
+			Mock<IMouseSubscriber> subscriber = mockSubscriber(mouse);
 
-//	  subscriber.Expects.One.Method(x => x.Moved(0, 0)).With(43.21f, 87.65f);
+			mouse.MoveTo(43.21f, 87.65f);
 
-//	  this.mouse.Update();
+			subscriber.Setup(x => x.Moved(43.21f, 87.65f)).Verifiable();
 
-//	  this.mockery.VerifyAllExpectationsHaveBeenMet();
-//	}
+			mouse.Update();
 
-//	/// <summary>Verifies that mouse wheel rotations can be simulated</summary>
-//	[Test]
-//	public void TestRotateWheel() {
-//	  Mock<IMouseSubscriber> subscriber = mockSubscriber();
+			subscriber.VerifyAll();
+		}
 
-//	  this.mouse.RotateWheel(1.2f);
+		/// <summary>Verifies that mouse wheel rotations can be simulated</summary>
+		[Test]
+		public void TestRotateWheel()
+		{
+			var mouse = new MockedMouse();
+			Mock<IMouseSubscriber> subscriber = mockSubscriber(mouse);
 
-//	  subscriber.Expects.One.Method(x => x.WheelRotated(0)).With(1.2f);
+			mouse.RotateWheel(1.2f);
 
-//	  this.mouse.Update();
+			subscriber.Setup(x => x.WheelRotated(1.2f)).Verifiable();
 
-//	  this.mockery.VerifyAllExpectationsHaveBeenMet();
-//	}
+			mouse.Update();
 
-//	/// <summary>Mocks a subscriber for the buffered keyboard</summary>
-//	/// <returns>A subscriber registered to the events of the keyboard</returns>
-//	private Mock<IMouseSubscriber> mockSubscriber() {
-//	  Mock<IMouseSubscriber> subscriber = this.mockery.CreateMock<IMouseSubscriber>();
+			subscriber.VerifyAll();
+		}
 
-//	  this.mouse.MouseButtonPressed += subscriber.MockObject.ButtonPressed;
-//	  this.mouse.MouseButtonReleased += subscriber.MockObject.ButtonReleased;
-//	  this.mouse.MouseMoved += subscriber.MockObject.Moved;
-//	  this.mouse.MouseWheelRotated += subscriber.MockObject.WheelRotated;
+		/// <summary>Mocks a subscriber for the buffered keyboard</summary>
+		/// <returns>A subscriber registered to the events of the keyboard</returns>
+		private Mock<IMouseSubscriber> mockSubscriber(MockedMouse mouse)
+		{
+			Mock<IMouseSubscriber> subscriber = new Mock<IMouseSubscriber>();
 
-//	  return subscriber;
-//	}
+			mouse.MouseButtonPressed += subscriber.Object.ButtonPressed;
+			mouse.MouseButtonReleased += subscriber.Object.ButtonReleased;
+			mouse.MouseMoved += subscriber.Object.Moved;
+			mouse.MouseWheelRotated += subscriber.Object.WheelRotated;
 
-//	/// <summary>Creates dynamic mock objects for interfaces</summary>
-//	private MockFactory mockery;
-//	/// <summary>Buffered mouse being tested</summary>
-//	private MockedMouse mouse;
+			return subscriber;
+		}
+	}
 
-//  }
+} // namespace Nuclex.Input.Devices
 
-//} // namespace Nuclex.Input.Devices
-
-//#endif // UNITTEST
+#endif // UNITTEST
