@@ -1,217 +1,204 @@
 ﻿#region CPL License
 
-///*
-//Nuclex Framework
-//Copyright (C) 2002-2009 Nuclex Development Labs
+/*
+Nuclex Framework
+Copyright (C) 2002-2009 Nuclex Development Labs
 
-//This library is free software; you can redistribute it and/or
-//modify it under the terms of the IBM Common Public License as
-//published by the IBM Corporation; either version 1.0 of the
-//License, or (at your option) any later version.
+This library is free software; you can redistribute it and/or
+modify it under the terms of the IBM Common Public License as
+published by the IBM Corporation; either version 1.0 of the
+License, or (at your option) any later version.
 
-//This library is distributed in the hope that it will be useful,
-//but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-//IBM Common Public License for more details.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+IBM Common Public License for more details.
 
-//You should have received a copy of the IBM Common Public
-//License along with this library
-//*/
+You should have received a copy of the IBM Common Public
+License along with this library
+*/
 
 #endregion
 
-//using Microsoft.Xna.Framework;
-//using Microsoft.Xna.Framework.Content;
-//using Microsoft.Xna.Framework.Graphics;
-//using Nuclectic.Graphics.Helpers;
-//using Nuclectic.Graphics.TriD;
-//using Nuclectic.Graphics.TriD.SpecialEffects.Water;
-//using Nuclex.Testing.Xna;
-//using SlimDX.Direct3D9;
-//using Effect = SlimDX.Direct3D9.Effect;
-//#if UNITTEST
-//using NUnit.Framework;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Nuclectic.Graphics.Helpers;
+using Nuclectic.Graphics.TriD;
+using Nuclectic.Graphics.TriD.SpecialEffects.Water;
+using Nuclectic.Tests.Mocks;
+#if UNITTEST
+using NUnit.Framework;
 
-//namespace Nuclectic.Tests.Graphics.SpecialEffects.Water {
+namespace Nuclectic.Tests.Graphics.SpecialEffects.Water
+{
 
-//  /// <summary>Unit tests for the grid class</summary>
-//  [TestFixture]
-//  [RequiresSTA]
-//  internal class WaterSurfaceTest {
+	/// <summary>Unit tests for the grid class</summary>
+	[TestFixture(IgnoreReason = "Unstable, may freeze test runner.")]
+	[RequiresSTA]
+	internal class WaterSurfaceTest
+		: TestFixtureBase
+	{
+		/// <summary>
+		///   Verifies that the simple constructor of the Grid class is working
+		/// </summary>
+		[Test]
+		public void TestSimpleConstructor()
+		{
+			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService())
+			using (
+			  WaterSurface surface = new WaterSurface(
+				mockedGraphicsDeviceService.GraphicsDevice,
+				new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f)
+			  )
+			)
+			{
+				Assert.IsNotNull(surface); // Nonsense; avoids compiler warning
+			}
+		}
 
-//	/// <summary>Executed before each test is run</summary>
-//	[SetUp]
-//	public void Setup() {
-//	  this.mockedGraphicsDeviceService = new MockedGraphicsDeviceService(DeviceType.Reference);
-//	  this.mockedGraphicsDeviceService.CreateDevice();
+		/// <summary>
+		///   Verifies that the complete constructor of the Grid class is working
+		/// </summary>
+		[Test]
+		public void TestFullConstructor()
+		{
+			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService())
+			using (
+			  WaterSurface surface = new WaterSurface(
+				mockedGraphicsDeviceService.GraphicsDevice,
+				new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
+				4, 4
+			  )
+			)
+			{
+				Assert.IsNotNull(surface); // Nonsense; avoids compiler warning
+			}
+		}
 
-//	  MockedGraphicsDeviceService mockedService = this.mockedGraphicsDeviceService;
-//	  this.contentManager = new ResourceContentManager(
-//		GraphicsDeviceServiceHelper.MakePrivateServiceProvider(mockedService),
-//		Resources.UnitTestResources.ResourceManager
-//	  );
-//	}
+		/// <summary>
+		///   Tests whether the water surface can select its index and vertex buffers
+		/// </summary>
+		[Test]
+		public void TestSelectIndexAndVertexBuffer()
+		{
+			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService())
+			using (
+			  WaterSurface surface = new WaterSurface(
+				mockedGraphicsDeviceService.GraphicsDevice,
+				new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
+				4, 4
+			  )
+			)
+			{
+				GraphicsDevice graphicsDevice = mockedGraphicsDeviceService.GraphicsDevice;
+				graphicsDevice.Indices = null;
+				graphicsDevice.SetVertexBuffer(null);
 
-//	/// <summary>Executed after each test has run</summary>
-//	[TearDown]
-//	public void Teardown() {
-//	  if(this.contentManager != null) {
-//		this.contentManager.Dispose();
-//		this.contentManager = null;
-//	  }
-//	  if(this.mockedGraphicsDeviceService != null) {
-//		this.mockedGraphicsDeviceService.DestroyDevice();
-//		this.mockedGraphicsDeviceService = null;
-//	  }
-//	}
+				Assert.IsNull(graphicsDevice.Indices);
+				Assert.Inconclusive("MonoGame GraphicsDevice.GetVertexBuffers() is missing");
+				//Assert.AreEqual(0, graphicsDevice.GetVertexBuffers().Length);
 
-//	/// <summary>
-//	///   Verifies that the simple constructor of the Grid class is working
-//	/// </summary>
-//	[Test]
-//	public void TestSimpleConstructor() {
-//	  using(
-//		WaterSurface surface = new WaterSurface(
-//		  this.mockedGraphicsDeviceService.GraphicsDevice,
-//		  new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f)
-//		)
-//	  ) {
-//		Assert.IsNotNull(surface); // Nonsense; avoids compiler warning
-//	  }
-//	}
+				surface.SelectVertexAndIndexBuffer();
 
-//	/// <summary>
-//	///   Verifies that the complete constructor of the Grid class is working
-//	/// </summary>
-//	[Test]
-//	public void TestFullConstructor() {
-//	  using(
-//		WaterSurface surface = new WaterSurface(
-//		  this.mockedGraphicsDeviceService.GraphicsDevice,
-//		  new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
-//		  4, 4
-//		)
-//	  ) {
-//		Assert.IsNotNull(surface); // Nonsense; avoids compiler warning
-//	  }
-//	}
+				Assert.IsNotNull(graphicsDevice.Indices);
+				Assert.Inconclusive("MonoGame GraphicsDevice.GetVertexBuffers() is missing");
+				//Assert.IsNotNull(graphicsDevice.GetVertexBuffers()[0].VertexBuffer);
+			}
+		}
 
-//	/// <summary>
-//	///   Tests whether the water surface can select its index and vertex buffers
-//	/// </summary>
-//	[Test]
-//	public void TestSelectIndexAndVertexBuffer() {
-//	  using(
-//		WaterSurface surface = new WaterSurface(
-//		  this.mockedGraphicsDeviceService.GraphicsDevice,
-//		  new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
-//		  4, 4
-//		)
-//	  ) {
-//		GraphicsDevice graphicsDevice = this.mockedGraphicsDeviceService.GraphicsDevice;
-//		graphicsDevice.Indices = null;
-//		graphicsDevice.SetVertexBuffer(null);
+		/// <summary>
+		///   Tests whether the water surface can draw its water plane
+		/// </summary>
+		[Test]
+		public void TestDrawWaterPlane()
+		{
+			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService())
+			using (var contentManager = mockedGraphicsDeviceService.CreateResourceContentManager(Resources.UnitTestResources.ResourceManager))
+			{
+				Effect waterSurfaceEffect = contentManager.Load<Effect>(
+																			 "WaterSurfaceEffect"
+					);
 
-//		Assert.IsNull(graphicsDevice.Indices);
-//		Assert.AreEqual(0, graphicsDevice.GetVertexBuffers().Length);
+				using (
+					WaterSurface surface = new WaterSurface(
+						mockedGraphicsDeviceService.GraphicsDevice,
+						new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
+						4, 4
+						)
+					)
+				{
+					surface.SelectVertexAndIndexBuffer();
 
-//		surface.SelectVertexAndIndexBuffer();
+					EffectTechnique technique = waterSurfaceEffect.CurrentTechnique;
+					for (int pass = 0; pass < technique.Passes.Count; ++pass)
+					{
+						technique.Passes[pass].Apply();
 
-//		Assert.IsNotNull(graphicsDevice.Indices);
-//		Assert.IsNotNull(graphicsDevice.GetVertexBuffers()[0].VertexBuffer);
-//	  }
-//	}
+						surface.DrawWaterPlane(new GameTime(), Camera.CreateDefaultOrthographic());
+					}
+				}
+			}
+		}
 
-//	/// <summary>
-//	///   Tests whether the water surface can draw its water plane
-//	/// </summary>
-//	[Test]
-//	public void TestDrawWaterPlane() {
-//	  Effect waterSurfaceEffect = this.contentManager.Load<Effect>(
-//		"WaterSurfaceEffect"
-//	  );
+		/// <summary>
+		///   Tests whether the water surface can update its reflection texture
+		/// </summary>
+		[Test]
+		public void TestUpdateReflection()
+		{
+			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService())
+			using (
+			  WaterSurface surface = new WaterSurface(
+				mockedGraphicsDeviceService.GraphicsDevice,
+				new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
+				4, 4
+			  )
+			)
+			{
+				surface.UpdateReflection(
+				  new GameTime(), Camera.CreateDefaultOrthographic(),
+				  new WaterSurface.SceneDrawDelegate(drawReflection)
+				);
 
-//	  using(
-//		WaterSurface surface = new WaterSurface(
-//		  this.mockedGraphicsDeviceService.GraphicsDevice,
-//		  new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
-//		  4, 4
-//		)
-//	  ) {
-//		surface.SelectVertexAndIndexBuffer();
+				Assert.IsNotNull(surface.ReflectionCamera);
+				Assert.IsNotNull(surface.ReflectionTexture);
+			}
+		}
 
-//		EffectTechnique technique = waterSurfaceEffect.CurrentTechnique;
-//		for (int pass = 0; pass < technique.Passes.Count; ++pass) {
-//		  technique.Passes[pass].Apply();
+		/// <summary>
+		///   Verifies that the water surface can survive a graphics device reset
+		/// </summary>
+		[Test]
+		public void TestGraphicsDeviceReset()
+		{
+			using (var mockedGraphicsDeviceService = PrepareGlobalExclusiveMockedGraphicsDeviceService())
+			using (
+			  WaterSurface surface = new WaterSurface(
+				mockedGraphicsDeviceService.GraphicsDevice,
+				new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
+				4, 4
+			  )
+			)
+			{
+				mockedGraphicsDeviceService.ResetDevice();
 
-//		  surface.DrawWaterPlane(new GameTime(), Camera.CreateDefaultOrthographic());
-//		}
-//	  }
-//	}
+				surface.UpdateReflection(
+				  new GameTime(), Camera.CreateDefaultOrthographic(),
+				  new WaterSurface.SceneDrawDelegate(drawReflection)
+				);
 
-//	/// <summary>
-//	///   Tests whether the water surface can update its reflection texture
-//	/// </summary>
-//	[Test]
-//	public void TestUpdateReflection() {
-//	  using(
-//		WaterSurface surface = new WaterSurface(
-//		  this.mockedGraphicsDeviceService.GraphicsDevice,
-//		  new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
-//		  4, 4
-//		)
-//	  ) {
-//		surface.UpdateReflection(
-//		  new GameTime(), Camera.CreateDefaultOrthographic(),
-//		  new WaterSurface.SceneDrawDelegate(drawReflection)
-//		);
+				Assert.IsNotNull(surface.ReflectionCamera);
+				Assert.IsNotNull(surface.ReflectionTexture);
+			}
+		}
 
-//		Assert.IsNotNull(surface.ReflectionCamera);
-//		Assert.IsNotNull(surface.ReflectionTexture);
-//	  }
-//	}
+		/// <summary>Dummy that's supposed to draw the water's reflection</summary>
+		/// <param name="gameTime">Snapshot of the game's timing values</param>
+		/// <param name="camera">Camera containing the viewer's position</param>
+		private void drawReflection(GameTime gameTime, ICamera camera) { }
+	}
 
-//	/// <summary>
-//	///   Verifies that the water surface can survive a graphics device reset
-//	/// </summary>
-//	[Test]
-//	public void TestGraphicsDeviceReset() {
-//	  using(
-//		WaterSurface surface = new WaterSurface(
-//		  this.mockedGraphicsDeviceService.GraphicsDevice,
-//		  new Vector2(-10.0f, -10.0f), new Vector2(10.0f, 10.0f),
-//		  4, 4
-//		)
-//	  ) {
-//		this.mockedGraphicsDeviceService.ResetDevice();
+} // namespace Nuclex.Graphics.SpecialEffects.Water
 
-//		surface.UpdateReflection(
-//		  new GameTime(), Camera.CreateDefaultOrthographic(),
-//		  new WaterSurface.SceneDrawDelegate(drawReflection)
-//		);
-
-//		Assert.IsNotNull(surface.ReflectionCamera);
-//		Assert.IsNotNull(surface.ReflectionTexture);
-//	  }
-//	}
-
-//	/// <summary>Dummy that's supposed to draw the water's reflection</summary>
-//	/// <param name="gameTime">Snapshot of the game's timing values</param>
-//	/// <param name="camera">Camera containing the viewer's position</param>
-//	private void drawReflection(GameTime gameTime, Camera camera) { }
-
-//	/// <summary>
-//	///   Mocked graphics device service used for rendering in the unit test
-//	/// </summary>
-//	private MockedGraphicsDeviceService mockedGraphicsDeviceService;
-
-//	/// <summary>
-//	///   Content manager used to load the content for the unit test
-//	/// </summary>
-//	private ResourceContentManager contentManager;
-
-//  }
-
-//} // namespace Nuclex.Graphics.SpecialEffects.Water
-
-//#endif // UNITTEST
+#endif // UNITTEST
