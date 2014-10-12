@@ -404,6 +404,7 @@ namespace Nuclectic.Tests.Input.Devices
 		///   Verifies that ExtendedGamePadState.PovFromDpad processes values correctly
 		/// </summary>
 		/// <param name="button">Button to test on the normal game pad state</param>
+		/// <remarks>Will fail until a fix for https://github.com/mono/MonoGame/issues/3070 is released</remarks>
 		[
 			Test,
 			TestCase(Buttons.DPadUp),
