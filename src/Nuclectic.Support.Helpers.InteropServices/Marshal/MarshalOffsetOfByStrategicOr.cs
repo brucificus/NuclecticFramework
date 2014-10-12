@@ -10,9 +10,7 @@ namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 		private readonly IEnumerable<IMarshalOffsetOf> _providers;
 
 		public MarshalOffsetOfByStrategicOr(params IMarshalOffsetOf[] providers)
-			: this(providers.AsEnumerable())
-		{
-		}
+			: this(providers.AsEnumerable()) { }
 
 		public MarshalOffsetOfByStrategicOr(IEnumerable<IMarshalOffsetOf> providers)
 		{

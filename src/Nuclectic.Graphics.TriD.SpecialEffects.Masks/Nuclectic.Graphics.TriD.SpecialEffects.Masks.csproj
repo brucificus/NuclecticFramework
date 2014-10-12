@@ -14,7 +14,7 @@
     <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-	<DocumentationFile>bin\$(Configuration)\$(AssemblyName).xml</DocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,9 +37,9 @@
     <Compile Include="ColorScreenMask.cs" />
     <Compile Include="PositionVertex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-	<Compile Include="$(SolutionDir)tools\build\FrameworkAssemblyInfo.cs">
-		<Link>Properties\FrameworkAssemblyInfo.cs</Link>
-	</Compile>
+    <Compile Include="$(SolutionDir)tools\build\FrameworkAssemblyInfo.cs">
+      <Link>Properties\FrameworkAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="ScreenMask.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +60,10 @@
     <ProjectReference Include="..\Nuclectic.Graphics.TriD.SpecialEffects.Abstractions\Nuclectic.Graphics.TriD.SpecialEffects.Abstractions.csproj">
       <Project>{DDAE917E-9931-48DD-9805-DB13D25A3F9D}</Project>
       <Name>Nuclectic.Graphics.TriD.SpecialEffects.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuclectic.Support.Abstractions\Nuclectic.Support.Abstractions.csproj">
+      <Project>{956F95EC-D3D8-491F-AEF1-5830243BE274}</Project>
+      <Name>Nuclectic.Support.Abstractions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

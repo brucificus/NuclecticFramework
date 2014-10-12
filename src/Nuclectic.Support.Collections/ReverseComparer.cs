@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2013 Nuclex Development Labs
@@ -16,40 +17,37 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System.Collections.Generic;
 
-namespace Nuclectic.Support.Collections {
+namespace Nuclectic.Support.Collections
+{
+	/// <summary>
+	///   Compares two values in reverse or reverses the output of another comparer
+	/// </summary>
+	/// <typeparam name="TCompared">Type of values to be compared</typeparam>
+	public class ReverseComparer<TCompared> : IComparer<TCompared>
+	{
+		/// <summary>Initializes a new reverse comparer</summary>
+		public ReverseComparer()
+			: this(Comparer<TCompared>.Default) { }
 
-  /// <summary>
-  ///   Compares two values in reverse or reverses the output of another comparer
-  /// </summary>
-  /// <typeparam name="TCompared">Type of values to be compared</typeparam>
-  public class ReverseComparer<TCompared> : IComparer<TCompared> {
+		/// <summary>
+		///   Initializes the comparer to provide the inverse results of another comparer
+		/// </summary>
+		/// <param name="comparerToReverse">Comparer whose results will be inversed</param>
+		public ReverseComparer(IComparer<TCompared> comparerToReverse) { this.comparer = comparerToReverse; }
 
-    /// <summary>Initializes a new reverse comparer</summary>
-    public ReverseComparer() : this(Comparer<TCompared>.Default) { }
+		/// <summary>Compares the left value to the right value</summary>
+		/// <param name="left">Value on the left side</param>
+		/// <param name="right">Value on the right side</param>
+		/// <returns>The relationship of the two values</returns>
+		public int Compare(TCompared left, TCompared right) { return this.comparer.Compare(right, left); // intentionally reversed 
+		}
 
-    /// <summary>
-    ///   Initializes the comparer to provide the inverse results of another comparer
-    /// </summary>
-    /// <param name="comparerToReverse">Comparer whose results will be inversed</param>
-    public ReverseComparer(IComparer<TCompared> comparerToReverse) {
-      this.comparer = comparerToReverse;
-    }
-
-    /// <summary>Compares the left value to the right value</summary>
-    /// <param name="left">Value on the left side</param>
-    /// <param name="right">Value on the right side</param>
-    /// <returns>The relationship of the two values</returns>
-    public int Compare(TCompared left, TCompared right) {
-      return this.comparer.Compare(right, left); // intentionally reversed 
-    }
-
-    /// <summary>The default comparer from the .NET framework</summary>
-    private IComparer<TCompared> comparer;
-
-  }
-
+		/// <summary>The default comparer from the .NET framework</summary>
+		private IComparer<TCompared> comparer;
+	}
 } // namespace Nuclex.Support.Collections

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,41 +17,47 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using System.Collections.Generic;
 
-namespace Nuclectic.Input {
+namespace Nuclectic.Input
+{
+	/// <summary>Provides helper methods for collections</summary>
+	internal static class CollectionHelper
+	{
+		/// <summary>Returns an item from a list if the index exists</summary>
+		/// <typeparam name="ItemType">Type of the item that will be returned</typeparam>
+		/// <param name="list">List the item will be taken from</param>
+		/// <param name="index">Index from which the item will be taken</param>
+		/// <returns>The item if the index existed, otherwise a default item</returns>
+		public static ItemType GetIfExists<ItemType>(IList<ItemType> list, int index)
+		{
+			if (list.Count > index)
+			{
+				return list[index];
+			}
+			else
+			{
+				return default(ItemType);
+			}
+		}
 
-  /// <summary>Provides helper methods for collections</summary>
-  internal static class CollectionHelper {
-
-    /// <summary>Returns an item from a list if the index exists</summary>
-    /// <typeparam name="ItemType">Type of the item that will be returned</typeparam>
-    /// <param name="list">List the item will be taken from</param>
-    /// <param name="index">Index from which the item will be taken</param>
-    /// <returns>The item if the index existed, otherwise a default item</returns>
-    public static ItemType GetIfExists<ItemType>(IList<ItemType> list, int index) {
-      if (list.Count > index) {
-        return list[index];
-      } else {
-        return default(ItemType);
-      }
-    }
-
-    /// <summary>Disposes all items in a list</summary>
-    /// <typeparam name="ItemType">Type of item that will be disposed</typeparam>
-    /// <param name="list">List containing the items that will be disposed</param>
-    public static void DisposeItems<ItemType>(IList<ItemType> list) {
-      for (int index = list.Count - 1; index >= 0; --index) {
-        IDisposable disposable = list[index] as IDisposable;
-        if (disposable != null) {
-          disposable.Dispose();
-        }
-      }
-    }
-
-  }
-
+		/// <summary>Disposes all items in a list</summary>
+		/// <typeparam name="ItemType">Type of item that will be disposed</typeparam>
+		/// <param name="list">List containing the items that will be disposed</param>
+		public static void DisposeItems<ItemType>(IList<ItemType> list)
+		{
+			for (int index = list.Count - 1; index >= 0; --index)
+			{
+				IDisposable disposable = list[index] as IDisposable;
+				if (disposable != null)
+				{
+					disposable.Dispose();
+				}
+			}
+		}
+	}
 } // namespace Nuclex.Input

@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2008 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
@@ -24,120 +26,121 @@ using Microsoft.Xna.Framework.Graphics;
 using Nuclectic.Graphics.Helpers;
 using Nuclectic.Graphics.TriD.Batching;
 
-namespace Nuclectic.Fonts {
+namespace Nuclectic.Fonts
+{
+	/// <summary>Batches text drawing commands</summary>
+	public class TextBatch : ITextBatch, IDisposable
+	{
+		/// <summary>Initializes a new text batch for rendering</summary>
+		/// <param name="graphicsDevice">Graphics device to render to</param>
+		public TextBatch(GraphicsDevice graphicsDevice, Effect solidColorEffect)
+		{
+			this.dummyService = GraphicsDeviceServiceHelper.MakeDummyGraphicsDeviceService(
+																						   graphicsDevice
+				);
+			this.solidColorEffect = solidColorEffect;
 
-  /// <summary>Batches text drawing commands</summary>
-  public class TextBatch : ITextBatch, IDisposable {
+			// Set up our internal primitive batch. We delegate the vertex batching
+			// methods to this class and just make it our responsibility to present
+			// a clean interface to the user.
+			this.primitiveBatch = new PrimitiveBatch<VertexPositionNormalTexture>(
+				graphicsDevice
+				);
 
-    /// <summary>Initializes a new text batch for rendering</summary>
-    /// <param name="graphicsDevice">Graphics device to render to</param>
-	  public TextBatch(GraphicsDevice graphicsDevice, Effect solidColorEffect)
-	  {
-      this.dummyService = GraphicsDeviceServiceHelper.MakeDummyGraphicsDeviceService(
-        graphicsDevice
-      );
-	    this.solidColorEffect = solidColorEffect;
+			// Set up a view matrix that provides a 1:1 transformation of pixels to
+			// world units. Unless the user sets his own ViewProjection matrix, this will
+			// allow us to expose similar behavior to the XNA SpriteBatch class.
+			this.viewProjection = new Matrix(
+				2.0f / (float)graphicsDevice.Viewport.Width, 0.0f, 0.0f, 0.0f,
+				0.0f, 2.0f / (float)graphicsDevice.Viewport.Height, 0.0f, 0.0f,
+				0.0f, 0.0f, 1.0f, 0.0f,
+				-1.0f, -1.0f, 0.0f, 1.0f
+				);
+		}
 
-		// Set up our internal primitive batch. We delegate the vertex batching
-		// methods to this class and just make it our responsibility to present
-		// a clean interface to the user.
-		this.primitiveBatch = new PrimitiveBatch<VertexPositionNormalTexture>(
-		  graphicsDevice
-		);
+		/// <summary>Immediately releases all resources owned by the instance</summary>
+		public void Dispose()
+		{
+			if (this.primitiveBatch != null)
+			{
+				this.primitiveBatch.Dispose();
+				this.primitiveBatch = null;
+			}
+			if (this.dummyService != null)
+			{
+				IDisposable disposable = this.dummyService as IDisposable;
+				if (disposable != null)
+				{
+					disposable.Dispose();
+				}
+				this.dummyService = null;
+			}
+		}
 
-		// Set up a view matrix that provides a 1:1 transformation of pixels to
-		// world units. Unless the user sets his own ViewProjection matrix, this will
-		// allow us to expose similar behavior to the XNA SpriteBatch class.
-		this.viewProjection = new Matrix(
-		  2.0f / (float)graphicsDevice.Viewport.Width, 0.0f, 0.0f, 0.0f,
-		  0.0f, 2.0f / (float)graphicsDevice.Viewport.Height, 0.0f, 0.0f,
-		  0.0f, 0.0f, 1.0f, 0.0f,
-		  -1.0f, -1.0f, 0.0f, 1.0f
-		);
+		/// <summary>Current concatenated view * projection matrix of the scene</summary>
+		public Matrix ViewProjection { get { return this.viewProjection; } set { this.viewProjection = value; } }
 
-    }
+		/// <summary>Draws a line of text to the screen</summary>
+		/// <param name="text">Pregenerated text mesh to draw to the screen</param>
+		/// <param name="color">Color and opacity with which to draw the text</param>
+		public void DrawText(IText text, Color color)
+		{
+			this.primitiveBatch.Draw(
+									 text.Vertices, text.Indices, text.PrimitiveType,
+									 new TextDrawContext(this.solidColorEffect, this.viewProjection, color)
+				);
+		}
 
-    /// <summary>Immediately releases all resources owned by the instance</summary>
-    public void Dispose() {
-      if(this.primitiveBatch != null) {
-        this.primitiveBatch.Dispose();
-        this.primitiveBatch = null;
-      }
-      if(this.dummyService != null) {
-        IDisposable disposable = this.dummyService as IDisposable;
-        if(disposable != null) {
-          disposable.Dispose();
-        }
-        this.dummyService = null;
-      }
-    }
+		/// <summary>Draws a line of text to the screen</summary>
+		/// <param name="text">Pregenerated text mesh to draw to the screen</param>
+		/// <param name="color">Color and opacity with which to draw the text</param>
+		/// <param name="transform">Transformation matrix to apply to the text</param>
+		public void DrawText(IText text, Matrix transform, Color color)
+		{
+			this.primitiveBatch.Draw(
+									 text.Vertices, text.Indices, text.PrimitiveType,
+									 new TextDrawContext(
+										 this.solidColorEffect, transform * this.viewProjection, color
+										 )
+				);
+		}
 
-    /// <summary>Current concatenated view * projection matrix of the scene</summary>
-    public Matrix ViewProjection {
-      get { return this.viewProjection; }
-      set { this.viewProjection = value; }
-    }
+		/// <summary>Draws a line of text to the screen</summary>
+		/// <param name="text">Pregenerated text mesh to draw to the screen</param>
+		/// <param name="effect">Custom effect with which to draw the text</param>
+		public void DrawText(IText text, Effect effect)
+		{
+			this.primitiveBatch.Draw(
+									 text.Vertices, text.Indices, text.PrimitiveType,
+									 new EffectDrawContext(effect)
+				);
+		}
 
-    /// <summary>Draws a line of text to the screen</summary>
-    /// <param name="text">Pregenerated text mesh to draw to the screen</param>
-    /// <param name="color">Color and opacity with which to draw the text</param>
-    public void DrawText(IText text, Color color) {
-      this.primitiveBatch.Draw(
-        text.Vertices, text.Indices, text.PrimitiveType,
-        new TextDrawContext(this.solidColorEffect, this.viewProjection, color)
-      );
-    }
+		/// <summary>Begins a new text rendering batch</summary>
+		/// <remarks>
+		///   Call this before drawing text with the DrawText() method. For optimal
+		///   performance, try to put all your text drawing commands inside as few
+		///   Begin()..End() pairs as you can manage.
+		/// </remarks>
+		public void Begin() { this.primitiveBatch.Begin(QueueingStrategy.Deferred); }
 
-    /// <summary>Draws a line of text to the screen</summary>
-    /// <param name="text">Pregenerated text mesh to draw to the screen</param>
-    /// <param name="color">Color and opacity with which to draw the text</param>
-    /// <param name="transform">Transformation matrix to apply to the text</param>
-    public void DrawText(IText text, Matrix transform, Color color) {
-      this.primitiveBatch.Draw(
-        text.Vertices, text.Indices, text.PrimitiveType,
-        new TextDrawContext(
-          this.solidColorEffect, transform * this.viewProjection, color
-        )
-      );
-    }
+		/// <summary>Ends the current text rendering batch</summary>
+		/// <remarks>
+		///   This method needs to be called each time you call the Begin() method
+		///   after all text drawing commands have taken place.
+		/// </remarks>
+		public void End() { this.primitiveBatch.End(); }
 
-    /// <summary>Draws a line of text to the screen</summary>
-    /// <param name="text">Pregenerated text mesh to draw to the screen</param>
-    /// <param name="effect">Custom effect with which to draw the text</param>
-    public void DrawText(IText text, Effect effect) {
-      this.primitiveBatch.Draw(
-        text.Vertices, text.Indices, text.PrimitiveType,
-        new EffectDrawContext(effect)
-      );
-    }
+		/// <summary>Dummy graphics device service used for the content manager</summary>
+		private IGraphicsDeviceService dummyService;
 
-    /// <summary>Begins a new text rendering batch</summary>
-    /// <remarks>
-    ///   Call this before drawing text with the DrawText() method. For optimal
-    ///   performance, try to put all your text drawing commands inside as few
-    ///   Begin()..End() pairs as you can manage.
-    /// </remarks>
-    public void Begin() {
-      this.primitiveBatch.Begin(QueueingStrategy.Deferred);
-    }
+		/// <summary>Primitive batch used to batch text vertices together</summary>
+		private PrimitiveBatch<VertexPositionNormalTexture> primitiveBatch;
 
-    /// <summary>Ends the current text rendering batch</summary>
-    /// <remarks>
-    ///   This method needs to be called each time you call the Begin() method
-    ///   after all text drawing commands have taken place.
-    /// </remarks>
-    public void End() {
-      this.primitiveBatch.End();
-    }
+		/// <summary>Effect used for rendering text in solid color</summary>
+		private Effect solidColorEffect;
 
-    /// <summary>Dummy graphics device service used for the content manager</summary>
-    private IGraphicsDeviceService dummyService;
-    /// <summary>Primitive batch used to batch text vertices together</summary>
-    private PrimitiveBatch<VertexPositionNormalTexture> primitiveBatch;
-    /// <summary>Effect used for rendering text in solid color</summary>
-    private Effect solidColorEffect;
-    /// <summary>Current view * projection matrix to apply to the text</summary>
-    private Matrix viewProjection;
-  }
-
+		/// <summary>Current view * projection matrix to apply to the text</summary>
+		private Matrix viewProjection;
+	}
 } // namespace Nuclex.Fonts

@@ -1,5 +1,5 @@
-namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails {
-
+namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails
+{
 /*
   /// <summary>Manages vertex buffers for trails</summary>
   public class TrailManager {
@@ -51,6 +51,4 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails {
   //   FlyweightAccessor {
   //     Age 
 */
-
 } // namespace Nuclex.Graphics.SpecialEffects.Trails
-                        

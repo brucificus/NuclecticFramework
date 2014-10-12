@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,55 +17,52 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Geometry.Areas.PointGenerators {
+namespace Nuclectic.Geometry.Areas.PointGenerators
+{
+	/// <summary>Point generator for rectangle areas</summary>
+	public static class Rectangle3PointGenerator
+	{
+		/// <summary>Returns a random point on the perimeter of a rectangle</summary>
+		/// <param name="randomNumberGenerator">Random number generator that will be used</param>
+		/// <param name="orientation">Orientation of the rectangle in space</param>
+		/// <param name="extents">Extents of the rectangle</param>
+		/// <returns>A random point on the rectangle's perimeter</returns>
+		public static Vector3 GenerateRandomPointOnPerimeter(
+			IRandom randomNumberGenerator, Matrix orientation, Vector2 extents
+			)
+		{
+			// Use the 2D random point generator to get determine the random point
+			Vector2 point = Rectangle2PointGenerator.GenerateRandomPointOnPerimeter(
+																				    randomNumberGenerator, extents
+				);
 
-  /// <summary>Point generator for rectangle areas</summary>
-  public static class Rectangle3PointGenerator {
+			// Transform the point by the disc's orientation matrix to get the world
+			// coordinates of the point
+			return Vector3.Transform(new Vector3(point.X, point.Y, 0.0f), orientation);
+		}
 
-    /// <summary>Returns a random point on the perimeter of a rectangle</summary>
-    /// <param name="randomNumberGenerator">Random number generator that will be used</param>
-    /// <param name="orientation">Orientation of the rectangle in space</param>
-    /// <param name="extents">Extents of the rectangle</param>
-    /// <returns>A random point on the rectangle's perimeter</returns>
-    public static Vector3 GenerateRandomPointOnPerimeter(
-      IRandom randomNumberGenerator, Matrix orientation, Vector2 extents
-    ) {
+		/// <summary>Returns a random point within a rectangle</summary>
+		/// <param name="randomNumberGenerator">Random number generator that will be used</param>
+		/// <param name="orientation">Orientation of the rectangle in space</param>
+		/// <param name="extents">Extents of the rectangle</param>
+		/// <returns>A random point within the rectangle</returns>
+		public static Vector3 GenerateRandomPointWithin(
+			IRandom randomNumberGenerator, Matrix orientation, Vector2 extents
+			)
+		{
+			// Use the 2D random point generator to get determine the random point
+			Vector2 point = Rectangle2PointGenerator.GenerateRandomPointWithin(
+																			   randomNumberGenerator, extents
+				);
 
-      // Use the 2D random point generator to get determine the random point
-      Vector2 point = Rectangle2PointGenerator.GenerateRandomPointOnPerimeter(
-        randomNumberGenerator, extents
-      );
-
-      // Transform the point by the disc's orientation matrix to get the world
-      // coordinates of the point
-      return Vector3.Transform(new Vector3(point.X, point.Y, 0.0f), orientation);
-
-    }
-
-    /// <summary>Returns a random point within a rectangle</summary>
-    /// <param name="randomNumberGenerator">Random number generator that will be used</param>
-    /// <param name="orientation">Orientation of the rectangle in space</param>
-    /// <param name="extents">Extents of the rectangle</param>
-    /// <returns>A random point within the rectangle</returns>
-    public static Vector3 GenerateRandomPointWithin(
-      IRandom randomNumberGenerator, Matrix orientation, Vector2 extents
-    ) {
-
-      // Use the 2D random point generator to get determine the random point
-      Vector2 point = Rectangle2PointGenerator.GenerateRandomPointWithin(
-        randomNumberGenerator, extents
-      );
-
-      // Transform the point by the disc's orientation matrix to get the world
-      // coordinates of the point
-      return Vector3.Transform(new Vector3(point.X, point.Y, 0.0f), orientation);
-
-    }
-
-  }
-
+			// Transform the point by the disc's orientation matrix to get the world
+			// coordinates of the point
+			return Vector3.Transform(new Vector3(point.X, point.Y, 0.0f), orientation);
+		}
+	}
 } // namespace Nuclex.Geometry.Volumes.Generators

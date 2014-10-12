@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,42 +17,39 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace Nuclectic.Input.Devices {
+namespace Nuclectic.Input.Devices
+{
+	/// <summary>Stores the state of a touch panel</summary>
+	public struct TouchState : ITouchState
+	{
+		/// <summary>Initializes a new touch panel state</summary>
+		/// <param name="isAttached">Whether the touch panel is connected</param>
+		/// <param name="touches">Touch events since the last update</param>
+		public TouchState(bool isAttached, TouchCollection touches)
+		{
+			this.isAttached = isAttached;
+			this.touches = touches;
+		}
 
-  /// <summary>Stores the state of a touch panel</summary>
-  public struct TouchState : ITouchState {
+		/// <summary>Whether the touch panel is connected</summary>
+		/// <remarks>
+		///   If the touch panel is not connected, all data in the state will
+		///   be neutral
+		/// </remarks>
+		public bool IsAttached { get { return this.isAttached; } }
 
-    /// <summary>Initializes a new touch panel state</summary>
-    /// <param name="isAttached">Whether the touch panel is connected</param>
-    /// <param name="touches">Touch events since the last update</param>
-    public TouchState(bool isAttached, TouchCollection touches) {
-      this.isAttached = isAttached;
-      this.touches = touches;
-    }
+		/// <summary>Touch events that occured since the last update</summary>
+		public TouchCollection Touches { get { return this.touches; } }
 
-    /// <summary>Whether the touch panel is connected</summary>
-    /// <remarks>
-    ///   If the touch panel is not connected, all data in the state will
-    ///   be neutral
-    /// </remarks>
-    public bool IsAttached {
-      get { return this.isAttached; }
-    }
+		/// <summary>Whether the touch panel is connected</summary>
+		private bool isAttached;
 
-    /// <summary>Touch events that occured since the last update</summary>
-    public TouchCollection Touches {
-      get { return this.touches; }
-    }
-
-    /// <summary>Whether the touch panel is connected</summary>
-    private bool isAttached;
-    /// <summary>Collection of touches since the last update</summary>
-    private TouchCollection touches;
-
-  }
-
+		/// <summary>Collection of touches since the last update</summary>
+		private TouchCollection touches;
+	}
 } // namespace Nuclex.Input.Devices

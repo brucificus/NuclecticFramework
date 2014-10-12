@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,146 +17,156 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Nuclectic.Graphics.Helpers {
+namespace Nuclectic.Graphics.Helpers
+{
+	/// <summary>Provides supporting functions for the graphics device service</summary>
+	public static class GraphicsDeviceServiceHelper
+	{
+		#region class DummyGraphicsDeviceService
 
-  /// <summary>Provides supporting functions for the graphics device service</summary>
-  public static class GraphicsDeviceServiceHelper {
+		/// <summary>Dummy graphics device service using an existing graphics device</summary>
+		private class DummyGraphicsDeviceService : IGraphicsDeviceService, IDisposable
+		{
+			/// <summary>Triggered when the graphics device has been created</summary>
+			public event EventHandler<EventArgs> DeviceCreated { add { } remove { } }
 
-    #region class DummyGraphicsDeviceService
+			/// <summary>Triggered when the graphics device is about to be disposed</summary>
+			public event EventHandler<EventArgs> DeviceDisposing;
 
-    /// <summary>Dummy graphics device service using an existing graphics device</summary>
-    private class DummyGraphicsDeviceService : IGraphicsDeviceService, IDisposable {
+			/// <summary>Triggered after the graphics device has completed a reset</summary>
+			public event EventHandler<EventArgs> DeviceReset;
 
-      /// <summary>Triggered when the graphics device has been created</summary>
-      public event EventHandler<EventArgs> DeviceCreated { add { } remove { } }
-      /// <summary>Triggered when the graphics device is about to be disposed</summary>
-      public event EventHandler<EventArgs> DeviceDisposing;
-      /// <summary>Triggered after the graphics device has completed a reset</summary>
-      public event EventHandler<EventArgs> DeviceReset;
-      /// <summary>Triggered when the graphcis device is about to be reset</summary>
-      public event EventHandler<EventArgs> DeviceResetting;
+			/// <summary>Triggered when the graphcis device is about to be reset</summary>
+			public event EventHandler<EventArgs> DeviceResetting;
 
-      /// <summary>Initializes a new dummy graphics device service</summary>
-      /// <param name="graphicsDevice">Graphics device the service will use</param>
-      public DummyGraphicsDeviceService(GraphicsDevice graphicsDevice) {
-        this.graphicsDevice = graphicsDevice;
-        
-        this.graphicsDeviceResettingDelegate = new EventHandler<EventArgs>(
-          graphicsDeviceResetting
-        );
-        this.graphicsDeviceResetDelegate = new EventHandler<EventArgs>(
-          graphicsDeviceReset
-        );
-        this.graphicsDeviceDisposingDelegate = new EventHandler<EventArgs>(
-          graphicsDeviceDisposing
-        );
+			/// <summary>Initializes a new dummy graphics device service</summary>
+			/// <param name="graphicsDevice">Graphics device the service will use</param>
+			public DummyGraphicsDeviceService(GraphicsDevice graphicsDevice)
+			{
+				this.graphicsDevice = graphicsDevice;
 
-        graphicsDevice.DeviceResetting += this.graphicsDeviceResettingDelegate;
-        graphicsDevice.DeviceReset += this.graphicsDeviceResetDelegate;
-        graphicsDevice.Disposing += this.graphicsDeviceDisposingDelegate;
-      }
+				this.graphicsDeviceResettingDelegate = new EventHandler<EventArgs>(
+					graphicsDeviceResetting
+					);
+				this.graphicsDeviceResetDelegate = new EventHandler<EventArgs>(
+					graphicsDeviceReset
+					);
+				this.graphicsDeviceDisposingDelegate = new EventHandler<EventArgs>(
+					graphicsDeviceDisposing
+					);
 
-      /// <summary>Immediately releases all resouces owned by the instance</summary>
-      public void Dispose() {
-        if(this.graphicsDevice != null) {
-          graphicsDeviceDisposing(this.graphicsDevice, EventArgs.Empty);
+				graphicsDevice.DeviceResetting += this.graphicsDeviceResettingDelegate;
+				graphicsDevice.DeviceReset += this.graphicsDeviceResetDelegate;
+				graphicsDevice.Disposing += this.graphicsDeviceDisposingDelegate;
+			}
 
-          this.graphicsDevice.Disposing -= this.graphicsDeviceDisposingDelegate;
-          this.graphicsDevice.DeviceReset -= this.graphicsDeviceResetDelegate;
-          this.graphicsDevice.DeviceResetting -= this.graphicsDeviceResettingDelegate;
+			/// <summary>Immediately releases all resouces owned by the instance</summary>
+			public void Dispose()
+			{
+				if (this.graphicsDevice != null)
+				{
+					graphicsDeviceDisposing(this.graphicsDevice, EventArgs.Empty);
 
-          this.graphicsDevice = null;
-        }
-      }
+					this.graphicsDevice.Disposing -= this.graphicsDeviceDisposingDelegate;
+					this.graphicsDevice.DeviceReset -= this.graphicsDeviceResetDelegate;
+					this.graphicsDevice.DeviceResetting -= this.graphicsDeviceResettingDelegate;
 
-      /// <summary>Graphics device provided by the service</summary>
-      public GraphicsDevice GraphicsDevice {
-        get { return this.graphicsDevice; }
-      }
+					this.graphicsDevice = null;
+				}
+			}
 
-      /// <summary>Called when the graphics device is about to reset</summary>
-      /// <param name="sender">Graphics device that is started a reset</param>
-      /// <param name="arguments">Not used</param>
-      private void graphicsDeviceResetting(object sender, EventArgs arguments) {
-        if(DeviceResetting != null) {
-          DeviceResetting(this, EventArgs.Empty);
-        }
-      }
+			/// <summary>Graphics device provided by the service</summary>
+			public GraphicsDevice GraphicsDevice { get { return this.graphicsDevice; } }
 
-      /// <summary>Called when the graphics device has completed a reset</summary>
-      /// <param name="sender">Graphics device that has completed its reset</param>
-      /// <param name="arguments">Not used</param>
-      private void graphicsDeviceReset(object sender, EventArgs arguments) {
-        if(DeviceReset != null) {
-          DeviceReset(this, EventArgs.Empty);
-        }
-      }
+			/// <summary>Called when the graphics device is about to reset</summary>
+			/// <param name="sender">Graphics device that is started a reset</param>
+			/// <param name="arguments">Not used</param>
+			private void graphicsDeviceResetting(object sender, EventArgs arguments)
+			{
+				if (DeviceResetting != null)
+				{
+					DeviceResetting(this, EventArgs.Empty);
+				}
+			}
 
-      /// <summary>Called when the graphics device is being disposed</summary>
-      /// <param name="sender">Graphics device that is being disposed</param>
-      /// <param name="arguments">Not used</param>
-      private void graphicsDeviceDisposing(object sender, EventArgs arguments) {
-        if(DeviceDisposing != null) {
-          DeviceDisposing(this, EventArgs.Empty);
-        }
-      }
+			/// <summary>Called when the graphics device has completed a reset</summary>
+			/// <param name="sender">Graphics device that has completed its reset</param>
+			/// <param name="arguments">Not used</param>
+			private void graphicsDeviceReset(object sender, EventArgs arguments)
+			{
+				if (DeviceReset != null)
+				{
+					DeviceReset(this, EventArgs.Empty);
+				}
+			}
 
-      /// <summary>Graphics device the dummy service is being created for</summary>
-      private GraphicsDevice graphicsDevice;
-      /// <summary>Delegate for the graphicsDeviceResetting() method</summary>
-      private EventHandler<EventArgs> graphicsDeviceResettingDelegate;
-      /// <summary>Delegate for the graphicsDeviceReset() method</summary>
-      private EventHandler<EventArgs> graphicsDeviceResetDelegate;
-      /// <summary>Delegate for the graphicsDeviceDisposing() method</summary>
-      private EventHandler<EventArgs> graphicsDeviceDisposingDelegate;
+			/// <summary>Called when the graphics device is being disposed</summary>
+			/// <param name="sender">Graphics device that is being disposed</param>
+			/// <param name="arguments">Not used</param>
+			private void graphicsDeviceDisposing(object sender, EventArgs arguments)
+			{
+				if (DeviceDisposing != null)
+				{
+					DeviceDisposing(this, EventArgs.Empty);
+				}
+			}
 
-    }
+			/// <summary>Graphics device the dummy service is being created for</summary>
+			private GraphicsDevice graphicsDevice;
 
-    #endregion // class DummyGraphicsDeviceService
+			/// <summary>Delegate for the graphicsDeviceResetting() method</summary>
+			private EventHandler<EventArgs> graphicsDeviceResettingDelegate;
 
-    /// <summary>
-    ///   Creates a service provider containing only the graphics device service
-    /// </summary>
-    /// <param name="graphicsDeviceService">
-    ///   Graphics device service that will be provided by the service provider
-    /// </param>
-    /// <returns>
-    ///   A new service provider that provides the graphics device service
-    /// </returns>
-    public static IServiceProvider MakePrivateServiceProvider(
-      IGraphicsDeviceService graphicsDeviceService
-    ) {
-      GameServiceContainer serviceContainer = new GameServiceContainer();
-      serviceContainer.AddService(
-        typeof(IGraphicsDeviceService), graphicsDeviceService
-      );
-      return serviceContainer;
-    }
+			/// <summary>Delegate for the graphicsDeviceReset() method</summary>
+			private EventHandler<EventArgs> graphicsDeviceResetDelegate;
 
-    /// <summary>
-    ///   Creates a dummy graphics device service for the provided graphics device
-    /// </summary>
-    /// <param name="graphicsDevice">
-    ///   Graphics device the dummy service is created around
-    /// </param>
-    /// <returns>A new dummy service for the provided graphics device</returns>
-    /// <remarks>
-    ///   The dummy graphics device service is in all terms equal to the real thing,
-    ///   except that it will trigger the service's events *after* the graphics device
-    ///   might have already notified other subscribers.
-    /// </remarks>
-    public static IGraphicsDeviceService MakeDummyGraphicsDeviceService(
-      GraphicsDevice graphicsDevice
-    ) {
-      return new DummyGraphicsDeviceService(graphicsDevice);
-    }
+			/// <summary>Delegate for the graphicsDeviceDisposing() method</summary>
+			private EventHandler<EventArgs> graphicsDeviceDisposingDelegate;
+		}
 
-  }
+		#endregion // class DummyGraphicsDeviceService
 
+		/// <summary>
+		///   Creates a service provider containing only the graphics device service
+		/// </summary>
+		/// <param name="graphicsDeviceService">
+		///   Graphics device service that will be provided by the service provider
+		/// </param>
+		/// <returns>
+		///   A new service provider that provides the graphics device service
+		/// </returns>
+		public static IServiceProvider MakePrivateServiceProvider(
+			IGraphicsDeviceService graphicsDeviceService
+			)
+		{
+			GameServiceContainer serviceContainer = new GameServiceContainer();
+			serviceContainer.AddService(
+									    typeof (IGraphicsDeviceService), graphicsDeviceService
+				);
+			return serviceContainer;
+		}
+
+		/// <summary>
+		///   Creates a dummy graphics device service for the provided graphics device
+		/// </summary>
+		/// <param name="graphicsDevice">
+		///   Graphics device the dummy service is created around
+		/// </param>
+		/// <returns>A new dummy service for the provided graphics device</returns>
+		/// <remarks>
+		///   The dummy graphics device service is in all terms equal to the real thing,
+		///   except that it will trigger the service's events *after* the graphics device
+		///   might have already notified other subscribers.
+		/// </remarks>
+		public static IGraphicsDeviceService MakeDummyGraphicsDeviceService(
+			GraphicsDevice graphicsDevice
+			) { return new DummyGraphicsDeviceService(graphicsDevice); }
+	}
 } // namespace Nuclex.Graphics

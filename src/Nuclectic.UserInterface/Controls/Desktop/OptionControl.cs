@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,37 +17,39 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 
-namespace Nuclectic.UserInterface.Controls.Desktop {
+namespace Nuclectic.UserInterface.Controls.Desktop
+{
+	/// <summary>Control displaying an option the user can toggle on and off</summary>
+	public class OptionControl : PressableControl
+	{
+		/// <summary>Will be triggered when the choice is changed</summary>
+		public event EventHandler Changed;
 
-  /// <summary>Control displaying an option the user can toggle on and off</summary>
-  public class OptionControl : PressableControl {
+		/// <summary>Called when the button is pressed</summary>
+		protected override void OnPressed()
+		{
+			this.Selected = !this.Selected;
+			OnChanged();
+		}
 
-    /// <summary>Will be triggered when the choice is changed</summary>
-    public event EventHandler Changed;
+		/// <summary>Triggers the changed event</summary>
+		protected virtual void OnChanged()
+		{
+			if (Changed != null)
+			{
+				Changed(this, EventArgs.Empty);
+			}
+		}
 
-    /// <summary>Called when the button is pressed</summary>
-    protected override void OnPressed() {
-      this.Selected = !this.Selected;
-      OnChanged();
-    }
+		/// <summary>Text that will be shown on the button</summary>
+		public string Text;
 
-    /// <summary>Triggers the changed event</summary>
-    protected virtual void OnChanged() {
-      if(Changed != null) {
-        Changed(this, EventArgs.Empty);
-      }
-    }
-
-    /// <summary>Text that will be shown on the button</summary>
-    public string Text;
-
-    /// <summary>Whether the option is currently selected</summary>
-    public bool Selected;
-
-  }
-
+		/// <summary>Whether the option is currently selected</summary>
+		public bool Selected;
+	}
 } // namespace Nuclex.UserInterface.Controls.Desktop

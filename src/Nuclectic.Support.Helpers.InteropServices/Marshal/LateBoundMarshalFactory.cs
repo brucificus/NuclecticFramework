@@ -21,7 +21,7 @@ namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 			if (sizeOfMethod == null)
 				return null;
 
-			return new LateBoundMarshalSizeOf((Type t) => (IntPtr)sizeOfMethod.Invoke(null, new object[]{t}));
+			return new LateBoundMarshalSizeOf((Type t) => (int)sizeOfMethod.Invoke(null, new object[] {t}));
 		}
 
 		public IMarshalOffsetOf CreateMarshalOffsetOf()
@@ -31,12 +31,12 @@ namespace Nuclectic.Support.Helpers.InteropServices.Marshal
 			if (marshalType == null)
 				return null;
 
-			var offsetOfMethod = marshalType.GetMethod("OffsetOf", new[] { typeof(Type), typeof(string) });
+			var offsetOfMethod = marshalType.GetMethod("OffsetOf", new[] {typeof (Type), typeof (string)});
 
 			if (offsetOfMethod == null)
 				return null;
 
-			return new LateBoundMarshalOffsetOf((Type t, string f) => (IntPtr)offsetOfMethod.Invoke(null, new object[] { t, f }));
+			return new LateBoundMarshalOffsetOf((Type t, string f) => (IntPtr)offsetOfMethod.Invoke(null, new object[] {t, f}));
 		}
 
 		private static Type FindMarshalType()

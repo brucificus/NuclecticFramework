@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,54 +17,47 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Joystick = SlimDX.DirectInput.Joystick;
 
-namespace Nuclectic.Input.Devices {
+namespace Nuclectic.Input.Devices
+{
+	partial class DirectInputConverter
+	{
+		#region interface IButtonReader
 
-  partial class DirectInputConverter {
+		#endregion // interface IButtonReader
 
-    #region interface IButtonReader
+		#region class ButtonReader
 
-      #endregion // interface IButtonReader
+		private class ButtonReader : IButtonReader
+		{
+			/// <summary>Initializes a new button reader for the specified button</summary>
+			/// <param name="buttonIndex">
+			///   Index of the button the reader is initialized for
+			/// </param>
+			public ButtonReader(int buttonIndex) { this.buttonIndex = buttonIndex; }
 
-    #region class ButtonReader
+			/// <summary>Determines whether the specified button is pressed</summary>
+			/// <param name="buttons">Array containing the state of all buttons</param>
+			/// <returns>True if the specified button was pressed</returns>
+			public bool IsPressed(bool[] buttons) { return buttons[this.buttonIndex]; }
 
-    private class ButtonReader : IButtonReader {
+			/// <summary>
+			///   Determines whether the state of the specified button has changed
+			///   between two states
+			/// </summary>
+			/// <param name="previous">Previous state of the buttons</param>
+			/// <param name="current">Current state of the buttons</param>
+			/// <returns>True if the state of the button has changed</returns>
+			public bool HasChanged(bool[] previous, bool[] current) { return previous[this.buttonIndex] != current[this.buttonIndex]; }
 
-      /// <summary>Initializes a new button reader for the specified button</summary>
-      /// <param name="buttonIndex">
-      ///   Index of the button the reader is initialized for
-      /// </param>
-      public ButtonReader(int buttonIndex) {
-        this.buttonIndex = buttonIndex;
-      }
+			/// <summary>Index of the button the reader is checking</summary>
+			private int buttonIndex;
+		}
 
-      /// <summary>Determines whether the specified button is pressed</summary>
-      /// <param name="buttons">Array containing the state of all buttons</param>
-      /// <returns>True if the specified button was pressed</returns>
-      public bool IsPressed(bool[] buttons) {
-        return buttons[this.buttonIndex];
-      }
-
-      /// <summary>
-      ///   Determines whether the state of the specified button has changed
-      ///   between two states
-      /// </summary>
-      /// <param name="previous">Previous state of the buttons</param>
-      /// <param name="current">Current state of the buttons</param>
-      /// <returns>True if the state of the button has changed</returns>
-      public bool HasChanged(bool[] previous, bool[] current) {
-        return previous[this.buttonIndex] != current[this.buttonIndex];
-      }
-
-      /// <summary>Index of the button the reader is checking</summary>
-      private int buttonIndex;
-
-    }
-
-    #endregion // class ButtonReader
-
-  }
+		#endregion // class ButtonReader
+	}
 } // namespace Nuclex.Input.Devices

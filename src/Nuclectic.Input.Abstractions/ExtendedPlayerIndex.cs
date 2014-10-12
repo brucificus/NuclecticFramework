@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,32 +17,38 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Input {
+namespace Nuclectic.Input
+{
+	/// <summary>Player index enumeration with slots for 8 players</summary>
+	public enum ExtendedPlayerIndex
+	{
+		/// <summary>First player</summary>
+		One = PlayerIndex.One,
 
-  /// <summary>Player index enumeration with slots for 8 players</summary>
-  public enum ExtendedPlayerIndex {
+		/// <summary>Second player</summary>
+		Two = PlayerIndex.Two,
 
-    /// <summary>First player</summary>
-    One = PlayerIndex.One,
-    /// <summary>Second player</summary>
-    Two = PlayerIndex.Two,
-    /// <summary>Third player</summary>
-    Three = PlayerIndex.Three,
-    /// <summary>Fourth player</summary>
-    Four = PlayerIndex.Four,
-    /// <summary>Fifth player</summary>
-    Five,
-    /// <summary>Sixth player</summary>
-    Six,
-    /// <summary>Seventh player</summary>
-    Seven,
-    /// <summary>Eigth player</summary>
-    Eight
+		/// <summary>Third player</summary>
+		Three = PlayerIndex.Three,
 
-  }
+		/// <summary>Fourth player</summary>
+		Four = PlayerIndex.Four,
 
+		/// <summary>Fifth player</summary>
+		Five,
+
+		/// <summary>Sixth player</summary>
+		Six,
+
+		/// <summary>Seventh player</summary>
+		Seven,
+
+		/// <summary>Eigth player</summary>
+		Eight
+	}
 } // namespace Nuclex.Input

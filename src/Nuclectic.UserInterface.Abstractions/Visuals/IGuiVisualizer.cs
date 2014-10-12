@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,17 +17,16 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.UserInterface.Visuals {
-
-  /// <summary>Interface for an exchangeable GUI painter</summary>
-  public interface IGuiVisualizer {
-
-    /// <summary>Renders an entire control tree starting at the provided control</summary>
-    /// <param name="screen">Screen containing the GUI that will be drawn</param>
-    void Draw(IScreen screen);
-
-  }
-
+namespace Nuclectic.UserInterface.Visuals
+{
+	/// <summary>Interface for an exchangeable GUI painter</summary>
+	public interface IGuiVisualizer
+	{
+		/// <summary>Renders an entire control tree starting at the provided control</summary>
+		/// <param name="screen">Screen containing the GUI that will be drawn</param>
+		void Draw(IScreen screen);
+	}
 } // namespace Nuclex.UserInterface.Visuals

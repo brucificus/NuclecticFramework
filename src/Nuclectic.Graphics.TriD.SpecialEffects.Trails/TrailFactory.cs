@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,26 +17,23 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails {
-
-  /// <summary>Creates trail particles, reusing their trail queues</summary>
-  public class TrailFactory {
-
-    /// <summary>Initializes a new trail particle</summary>
-    public TrailFactory(int maximumTrailLength) {
-      this.maximumTrailLength = maximumTrailLength;
-    }
+namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails
+{
+	/// <summary>Creates trail particles, reusing their trail queues</summary>
+	public class TrailFactory
+	{
+		/// <summary>Initializes a new trail particle</summary>
+		public TrailFactory(int maximumTrailLength) { this.maximumTrailLength = maximumTrailLength; }
 
 #if false
-    /// <summary>Queues of trail particles the factory will resuse</summary>
+	/// <summary>Queues of trail particles the factory will resuse</summary>
     private List<Queue<TrailParticle>> trailQueues;
 #endif
 
-    /// <summary>Maximum number of particles </summary>
-    private int maximumTrailLength;
-
-  }
-
+		/// <summary>Maximum number of particles </summary>
+		private int maximumTrailLength;
+	}
 } // namespace Nuclex.Graphics.SpecialEffects.Trails

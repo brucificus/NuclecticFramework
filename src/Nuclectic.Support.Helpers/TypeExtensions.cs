@@ -19,19 +19,13 @@ namespace Nuclectic.Support.Helpers
 			if (!methodsWithName.Any())
 				return null;
 
-			var result = methodsWithParameterCount.SingleOrDefault(mi => mi.GetParameters().Select(p=>p.ParameterType).SequenceEqual(parameterTypes));
+			var result = methodsWithParameterCount.SingleOrDefault(mi => mi.GetParameters().Select(p => p.ParameterType).SequenceEqual(parameterTypes));
 
 			return result;
 		}
 
-		public static FieldInfo GetField(this Type self, string name)
-		{
-			return self.GetTypeInfo().DeclaredFields.SingleOrDefault(fi => fi.Name == name);
-		}
+		public static FieldInfo GetField(this Type self, string name) { return self.GetTypeInfo().DeclaredFields.SingleOrDefault(fi => fi.Name == name); }
 
-		public static IEnumerable<FieldInfo> GetFields(this Type self)
-		{
-			return self.GetTypeInfo().DeclaredFields;
-		}
+		public static IEnumerable<FieldInfo> GetFields(this Type self) { return self.GetTypeInfo().DeclaredFields; }
 	}
 }

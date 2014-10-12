@@ -22,6 +22,7 @@
 
 		<dependency id="Nuclectic.Graphics.Helpers" version="$NFVersionCompatRange$" />
 		<dependency id="Nuclectic.Graphics.TriD.SpecialEffects.Abstractions" version="$NFVersionCompatRange$" />
+		<dependency id="Nuclectic.Support.Abstractions" version="$NFVersionCompatRange$" />
 	</dependencies>
   </metadata>
 </package>

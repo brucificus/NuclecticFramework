@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,18 +17,17 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.Game.Space {
-
-  /// <summary>
-  ///   Interface for geometrical objects providing a bounding rectangle
-  /// </summary>
-  public interface IBoundingRectangleProvider {
-
-    /// <summary>Bounding rectangle of the geometrical object</summary>
-    BoundingRectangle BoundingRectangle { get; }
-
-  }
-
+namespace Nuclectic.Game.Space
+{
+	/// <summary>
+	///   Interface for geometrical objects providing a bounding rectangle
+	/// </summary>
+	public interface IBoundingRectangleProvider
+	{
+		/// <summary>Bounding rectangle of the geometrical object</summary>
+		BoundingRectangle BoundingRectangle { get; }
+	}
 } // namespace Nuclex.Game.Space

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,32 +17,34 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Input;
 
-namespace Nuclectic.Input.Devices {
-    /// <summary>Specialized input device for game pad-like controllers</summary>
-  public interface IGamePad : IInputDevice {
+namespace Nuclectic.Input.Devices
+{
+	/// <summary>Specialized input device for game pad-like controllers</summary>
+	public interface IGamePad : IInputDevice
+	{
+		/// <summary>Called when one or more buttons on the game pad have been pressed</summary>
+		event GamePadButtonDelegate ButtonPressed;
 
-    /// <summary>Called when one or more buttons on the game pad have been pressed</summary>
-    event GamePadButtonDelegate ButtonPressed;
-    /// <summary>Called when one or more buttons on the game pad have been released</summary>
-    event GamePadButtonDelegate ButtonReleased;
+		/// <summary>Called when one or more buttons on the game pad have been released</summary>
+		event GamePadButtonDelegate ButtonReleased;
 
-    /// <summary>Called when one or more buttons on the game pad have been pressed</summary>
-    event ExtendedGamePadButtonDelegate ExtendedButtonPressed;
-    /// <summary>Called when one or more buttons on the game pad have been released</summary>
-    event ExtendedGamePadButtonDelegate ExtendedButtonReleased;
+		/// <summary>Called when one or more buttons on the game pad have been pressed</summary>
+		event ExtendedGamePadButtonDelegate ExtendedButtonPressed;
 
-    /// <summary>Retrieves the current state of the game pad</summary>
-    /// <returns>The current state of the game pad</returns>
-    GamePadState GetState();
+		/// <summary>Called when one or more buttons on the game pad have been released</summary>
+		event ExtendedGamePadButtonDelegate ExtendedButtonReleased;
 
-    /// <summary>Retrieves the current DirectInput joystick state</summary>
-    /// <returns>The current state of the DirectInput joystick</returns>
-    IExtendedGamePadState GetExtendedState();
+		/// <summary>Retrieves the current state of the game pad</summary>
+		/// <returns>The current state of the game pad</returns>
+		GamePadState GetState();
 
-  }
-
+		/// <summary>Retrieves the current DirectInput joystick state</summary>
+		/// <returns>The current state of the DirectInput joystick</returns>
+		IExtendedGamePadState GetExtendedState();
+	}
 } // namespace Nuclex.Input.Devices

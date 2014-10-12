@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,15 +17,14 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails {
-
-  /// <summary>Creates trail particles, reusing their trail queues</summary>
-  public class TrailParticleFactory {
-
-    // TODO: Write the TrailParticleFactory
-
-  }
-
+namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails
+{
+	/// <summary>Creates trail particles, reusing their trail queues</summary>
+	public class TrailParticleFactory
+	{
+		// TODO: Write the TrailParticleFactory
+	}
 } // namespace Nuclex.Graphics.SpecialEffects.Trails

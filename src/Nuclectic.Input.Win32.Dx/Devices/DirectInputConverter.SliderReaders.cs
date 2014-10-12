@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,95 +17,99 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Joystick = SlimDX.DirectInput.Joystick;
 
-namespace Nuclectic.Input.Devices {
+namespace Nuclectic.Input.Devices
+{
+	partial class DirectInputConverter
+	{
+		#region interface ISliderReader
 
-  partial class DirectInputConverter {
+		#endregion // interface ISliderReader
 
-    #region interface ISliderReader
+		#region class SliderReader
 
-      #endregion // interface ISliderReader
+		/// <summary>Reads the state of a slider and normalized it</summary>
+		private class SliderReader : ISliderReader
+		{
+			/// <summary>Initializes a new slider reader</summary>
+			/// <param name="index">Index of the slider in the array</param>
+			/// <param name="min">Negative range of the slider</param>
+			/// <param name="max">Positive range of the slider</param>
+			public SliderReader(int index, int min, int max)
+			{
+				this.Index = index;
+				this.min = min;
+				this.range = (float)(max - min);
+			}
 
-    #region class SliderReader
+			/// <summary>Retrieves the current value of the axis</summary>
+			/// <param name="state">Joystick state the axis is taken from</param>
+			/// <returns>The value of the axis in the joystick state</returns>
+			public float GetValue(IJoystickState state)
+			{
+				int raw = Read(state);
 
-    /// <summary>Reads the state of a slider and normalized it</summary>
-    private class SliderReader : ISliderReader {
+				return (float)(raw - min) / this.range;
+			}
 
-      /// <summary>Initializes a new slider reader</summary>
-      /// <param name="index">Index of the slider in the array</param>
-      /// <param name="min">Negative range of the slider</param>
-      /// <param name="max">Positive range of the slider</param>
-      public SliderReader(int index, int min, int max) {
-        this.Index = index;
-        this.min = min;
-        this.range = (float)(max - min);
-      }
+			/// <summary>Reads the raw value from the joystick state</summary>
+			/// <param name="state">Joystick state the value is read from</param>
+			/// <returns>The raw value of the axis in the joystick state</returns>
+			protected virtual int Read(IJoystickState state) { return state.GetSliders()[this.Index]; }
 
-      /// <summary>Retrieves the current value of the axis</summary>
-      /// <param name="state">Joystick state the axis is taken from</param>
-      /// <returns>The value of the axis in the joystick state</returns>
-      public float GetValue(IJoystickState state) {
-        int raw = Read(state);
+			/// <summary>Index of the slider in the array</summary>
+			protected int Index;
 
-        return (float)(raw - min) / this.range;
-      }
+			/// <summary>Minimum raw value of the slider</summary>
+			private int min;
 
-      /// <summary>Reads the raw value from the joystick state</summary>
-      /// <param name="state">Joystick state the value is read from</param>
-      /// <returns>The raw value of the axis in the joystick state</returns>
-      protected virtual int Read(IJoystickState state) {
-        return state.GetSliders()[this.Index];
-      }
+			/// <summary>Total value range of the slider</summary>
+			private float range;
+		}
 
-      /// <summary>Index of the slider in the array</summary>
-      protected int Index;
-      /// <summary>Minimum raw value of the slider</summary>
-      private int min;
-      /// <summary>Total value range of the slider</summary>
-      private float range;
+		#endregion // class SliderReader
 
-    }
+		#region class VelocitySliderRead
 
-    #endregion // class SliderReader
+		/// <summary>Reads the value of a velocity slider</summary>
+		private class VelocitySliderReader : SliderReader
+		{
+			public VelocitySliderReader(int index, int min, int max)
+				: base(index, min, max) { }
 
-    #region class VelocitySliderRead
+			protected override int Read(IJoystickState state) { return state.GetVelocitySliders()[base.Index]; }
+		}
 
-    /// <summary>Reads the value of a velocity slider</summary>
-    private class VelocitySliderReader : SliderReader {
-      public VelocitySliderReader(int index, int min, int max) : base(index, min, max) { }
-      protected override int Read(IJoystickState state) {
-        return state.GetVelocitySliders()[base.Index];
-      }
-    }
+		#endregion // class VelocitySliderReader
 
-    #endregion // class VelocitySliderReader
+		#region class AccelerationSliderRead
 
-    #region class AccelerationSliderRead
+		/// <summary>Reads the value of an acceleration slider</summary>
+		private class AccelerationSliderReader : SliderReader
+		{
+			public AccelerationSliderReader(int index, int min, int max)
+				: base(index, min, max) { }
 
-    /// <summary>Reads the value of an acceleration slider</summary>
-    private class AccelerationSliderReader : SliderReader {
-      public AccelerationSliderReader(int index, int min, int max) : base(index, min, max) { }
-      protected override int Read(IJoystickState state) {
-        return state.GetAccelerationSliders()[base.Index];
-      }
-    }
+			protected override int Read(IJoystickState state) { return state.GetAccelerationSliders()[base.Index]; }
+		}
 
-    #endregion // class AccelerationSliderReader
+		#endregion // class AccelerationSliderReader
 
-    #region class ForceSliderRead
+		#region class ForceSliderRead
 
-    /// <summary>Reads the value of a force slider</summary>
-    private class ForceSliderReader : SliderReader {
-      public ForceSliderReader(int index, int min, int max) : base(index, min, max) { }
-      protected override int Read(IJoystickState state) {
-        return state.GetForceSliders()[base.Index];
-      }
-    }
+		/// <summary>Reads the value of a force slider</summary>
+		private class ForceSliderReader : SliderReader
+		{
+			public ForceSliderReader(int index, int min, int max)
+				: base(index, min, max) { }
 
-    #endregion // class ForceSliderReader
+			protected override int Read(IJoystickState state) { return state.GetForceSliders()[base.Index]; }
+		}
 
-  }
+		#endregion // class ForceSliderReader
+	}
 } // namespace Nuclex.Input.Devices

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,37 +17,30 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 
-namespace Nuclectic.Input {
+namespace Nuclectic.Input
+{
+	/// <summary>Carries the arguments for the controller detection event</summary>
+	public class ControllerEventArgs : EventArgs
+	{
+		/// <summary>Initializes a new argument container for keyboard/mouse input</summary>
+		public ControllerEventArgs() { this.playerIndex = null; }
 
-  /// <summary>Carries the arguments for the controller detection event</summary>
-  public class ControllerEventArgs : EventArgs {
+		/// <summary>Initializes a new argument container with a controller index</summary>
+		/// <param name="playerIndex">Player whose controller was detected</param>
+		public ControllerEventArgs(ExtendedPlayerIndex playerIndex) { this.playerIndex = playerIndex; }
 
-    /// <summary>Initializes a new argument container for keyboard/mouse input</summary>
-    public ControllerEventArgs() {
-      this.playerIndex = null;
-    }
+		/// <summary>Index of the controller on which a button was pressed</summary>
+		/// <remarks>
+		///   If this is null, the player pressed a button/key on his mouse/keyboard.
+		/// </remarks>
+		public ExtendedPlayerIndex? PlayerIndex { get { return this.playerIndex; } }
 
-    /// <summary>Initializes a new argument container with a controller index</summary>
-    /// <param name="playerIndex">Player whose controller was detected</param>
-    public ControllerEventArgs(ExtendedPlayerIndex playerIndex) {
-      this.playerIndex = playerIndex;
-    }
-
-    /// <summary>Index of the controller on which a button was pressed</summary>
-    /// <remarks>
-    ///   If this is null, the player pressed a button/key on his mouse/keyboard.
-    /// </remarks>
-    public ExtendedPlayerIndex? PlayerIndex {
-      get { return this.playerIndex; }
-    }
-
-    /// <summary>Index of the detected controller</summary>
-    private ExtendedPlayerIndex? playerIndex;
-
-  }
-
+		/// <summary>Index of the detected controller</summary>
+		private ExtendedPlayerIndex? playerIndex;
+	}
 } // namespace Nuclex.Input

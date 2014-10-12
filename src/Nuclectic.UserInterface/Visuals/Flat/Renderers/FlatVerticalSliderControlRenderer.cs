@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,45 +17,49 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.UserInterface.Visuals.Flat.Renderers {
+namespace Nuclectic.UserInterface.Visuals.Flat.Renderers
+{
+	/// <summary>Renders sliders in a traditional flat style</summary>
+	public class FlatVerticalSliderControlRenderer :
+		IFlatControlRenderer<Controls.Desktop.VerticalSliderControl>
+	{
+		/// <summary>
+		///   Renders the specified control using the provided graphics interface
+		/// </summary>
+		/// <param name="control">Control that will be rendered</param>
+		/// <param name="graphics">
+		///   Graphics interface that will be used to draw the control
+		/// </param>
+		public void Render(
+			Controls.Desktop.VerticalSliderControl control, IFlatGuiGraphics graphics
+			)
+		{
+			RectangleF controlBounds = control.GetAbsoluteBounds();
 
-  /// <summary>Renders sliders in a traditional flat style</summary>
-  public class FlatVerticalSliderControlRenderer :
-    IFlatControlRenderer<Controls.Desktop.VerticalSliderControl> {
+			float thumbHeight = controlBounds.Height * control.ThumbSize;
+			float thumbY = (controlBounds.Height - thumbHeight) * control.ThumbPosition;
 
-    /// <summary>
-    ///   Renders the specified control using the provided graphics interface
-    /// </summary>
-    /// <param name="control">Control that will be rendered</param>
-    /// <param name="graphics">
-    ///   Graphics interface that will be used to draw the control
-    /// </param>
-    public void Render(
-      Controls.Desktop.VerticalSliderControl control, IFlatGuiGraphics graphics
-    ) {
-      RectangleF controlBounds = control.GetAbsoluteBounds();
+			graphics.DrawElement("rail.vertical", controlBounds);
 
-      float thumbHeight = controlBounds.Height * control.ThumbSize;
-      float thumbY = (controlBounds.Height - thumbHeight) * control.ThumbPosition;
+			RectangleF thumbBounds = new RectangleF(
+				controlBounds.X, controlBounds.Y + thumbY, controlBounds.Width, thumbHeight
+				);
 
-      graphics.DrawElement("rail.vertical", controlBounds);
-
-      RectangleF thumbBounds = new RectangleF(
-        controlBounds.X, controlBounds.Y + thumbY, controlBounds.Width, thumbHeight
-      );
-
-      if(control.ThumbDepressed) {
-        graphics.DrawElement("slider.vertical.depressed", thumbBounds);
-      } else if(control.MouseOverThumb) {
-        graphics.DrawElement("slider.vertical.highlighted", thumbBounds);
-      } else {
-        graphics.DrawElement("slider.vertical.normal", thumbBounds);
-      }
-
-    }
-
-  }
-
+			if (control.ThumbDepressed)
+			{
+				graphics.DrawElement("slider.vertical.depressed", thumbBounds);
+			}
+			else if (control.MouseOverThumb)
+			{
+				graphics.DrawElement("slider.vertical.highlighted", thumbBounds);
+			}
+			else
+			{
+				graphics.DrawElement("slider.vertical.normal", thumbBounds);
+			}
+		}
+	}
 } // namespace Nuclex.UserInterface.Visuals.Flat.Renderers

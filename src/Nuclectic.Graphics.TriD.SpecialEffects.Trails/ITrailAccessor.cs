@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,31 +17,30 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System.Collections.Generic;
 
-namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails {
+namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails
+{
+	/// <summary>Used to access the queue of a trail</summary>
+	/// <typeparam name="TrailType">Data type storing the trail sections</typeparam>
+	/// <typeparam name="ParticleType">Data type of the particles</typeparam>
+	public interface ITrailAccessor<TrailType, ParticleType>
+	{
+		/// <summary>Retrieves the queue storing a trail's sections</summary>
+		/// <param name="trail">Trail whose sections will be returned</param>
+		/// <param name="queue">
+		///   Will recieve the queue containing the sections that make up the trail
+		/// </param>
+		void GetQueue(ref TrailType trail, out Queue<ParticleType> queue);
 
-  /// <summary>Used to access the queue of a trail</summary>
-  /// <typeparam name="TrailType">Data type storing the trail sections</typeparam>
-  /// <typeparam name="ParticleType">Data type of the particles</typeparam>
-  public interface ITrailAccessor<TrailType, ParticleType> {
-
-    /// <summary>Retrieves the queue storing a trail's sections</summary>
-    /// <param name="trail">Trail whose sections will be returned</param>
-    /// <param name="queue">
-    ///   Will recieve the queue containing the sections that make up the trail
-    /// </param>
-    void GetQueue(ref TrailType trail, out Queue<ParticleType> queue);
-
-    /// <summary>Assigns the queue storing a trail's sections</summary>
-    /// <param name="trail">Trail whose sections will be assigned</param>
-    /// <param name="queue">
-    ///   Queue containing the sections that will be assigned to the trail
-    /// </param>
-    void SetQueue(ref TrailType trail, ref Queue<ParticleType> queue);
-
-  }
-
+		/// <summary>Assigns the queue storing a trail's sections</summary>
+		/// <param name="trail">Trail whose sections will be assigned</param>
+		/// <param name="queue">
+		///   Queue containing the sections that will be assigned to the trail
+		/// </param>
+		void SetQueue(ref TrailType trail, ref Queue<ParticleType> queue);
+	}
 } // namespace Nuclex.Graphics.SpecialEffects.Trails

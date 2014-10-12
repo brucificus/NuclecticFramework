@@ -1,5 +1,6 @@
 using System.Reflection;
 using System.Resources;
+using System.Runtime.CompilerServices;
 
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
@@ -8,6 +9,7 @@ using System.Resources;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
+[assembly: InternalsVisibleTo("Nuclectic.Tests.Core")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -19,5 +21,6 @@ using System.Resources;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
+
 [assembly: AssemblyVersion("0.1.1")]
 [assembly: AssemblyFileVersion("0.1.1")]

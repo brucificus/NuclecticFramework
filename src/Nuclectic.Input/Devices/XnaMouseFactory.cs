@@ -3,9 +3,6 @@
 	public class XnaMouseFactory
 		: IMouseFactory
 	{
-		public IMouse GetMouse()
-		{
-			return new XnaMouse();
-		}
+		public IMouse GetMouse() { return new XnaMouse(); }
 	}
 }

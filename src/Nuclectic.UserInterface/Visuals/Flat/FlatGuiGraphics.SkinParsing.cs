@@ -1,4 +1,5 @@
-﻿//#region CPL License
+﻿#region CPL License
+
 ///*
 //Nuclex Framework
 //Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,7 +17,8 @@
 //You should have received a copy of the IBM Common Public
 //License along with this library
 //*/
-//#endregion
+
+#endregion
 
 //#if !USE_XMLDOCUMENT
 
@@ -336,7 +338,7 @@
 //	private void loadSkin(Stream skinStream) {
 
 //#if NO_XMLSCHEMA
-      
+
 //	  var skinDocument = XDocument.Load(skinStream);
 
 //#else

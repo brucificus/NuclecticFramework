@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2013 Nuclex Development Labs
@@ -16,18 +17,18 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.Support {
+namespace Nuclectic.Support
+{
+	/// <summary>How to behave in in respect to the garbage collector</summary>
+	public enum GarbagePolicy
+	{
+		/// <summary>Avoid feeding the garbage collector whenever possible</summary>
+		Avoid,
 
-  /// <summary>How to behave in in respect to the garbage collector</summary>
-  public enum GarbagePolicy {
-
-    /// <summary>Avoid feeding the garbage collector whenever possible</summary>
-    Avoid,
-    /// <summary>Accept garbage production</summary>
-    Accept
-
-  }
-
+		/// <summary>Accept garbage production</summary>
+		Accept
+	}
 } // namespace Nuclex.Support

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
@@ -23,79 +25,79 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Microsoft.Xna.Framework.Input;
 
-namespace Nuclectic.Input.Devices {
+namespace Nuclectic.Input.Devices
+{
+	/// <summary>Contains helper methods to modify an XNA KeyboardState</summary>
+	internal static class KeyboardStateHelper
+	{
+		/// <summary>Delegate for the KeyboardState.AddPressedKey() method</summary>
+		/// <param name="keyboardState">KeyboardState that will be modified</param>
+		/// <param name="key">Key that will be added to the pressed keys</param>
+		public delegate void AddPressedKeyDelegate(
+			ref KeyboardState keyboardState, Keys key
+			);
 
-  /// <summary>Contains helper methods to modify an XNA KeyboardState</summary>
-  internal static class KeyboardStateHelper {
+		/// <summary>Delegate for the KeyboardState.RemovePressedKey() method</summary>
+		/// <param name="keyboardState">KeyboardState that will be modified</param>
+		/// <param name="key">Key that will be removed from the pressed keys</param>
+		public delegate void RemovePressedKeyDelegate(
+			ref KeyboardState keyboardState, Keys key
+			);
 
-    /// <summary>Delegate for the KeyboardState.AddPressedKey() method</summary>
-    /// <param name="keyboardState">KeyboardState that will be modified</param>
-    /// <param name="key">Key that will be added to the pressed keys</param>
-    public delegate void AddPressedKeyDelegate(
-      ref KeyboardState keyboardState, int key
-    );
+		/// <summary>Initializes the static fields of the class</summary>
+		static KeyboardStateHelper()
+		{
+			AddPressedKey = createAddPressedKeyDelegate();
+			RemovePressedKey = createRemovePressedKeyDelegate();
+		}
 
-    /// <summary>Delegate for the KeyboardState.RemovePressedKey() method</summary>
-    /// <param name="keyboardState">KeyboardState that will be modified</param>
-    /// <param name="key">Key that will be removed from the pressed keys</param>
-    public delegate void RemovePressedKeyDelegate(
-      ref KeyboardState keyboardState, int key
-    );
+		/// <summary>
+		///   Creates a delegate for adding a pressed key to a keyboard state
+		/// </summary>
+		/// <returns>A delegate that can be used to add a pressed key</returns>
+		private static AddPressedKeyDelegate createAddPressedKeyDelegate()
+		{
+			MethodInfo addPressedKeyMethod = typeof(KeyboardState).GetTypeInfo().GetDeclaredMethod("InternalSetKey");
+			
+			Type byrefKeyboardState = typeof (KeyboardState).MakeByRefType();
 
-    /// <summary>Initializes the static fields of the class</summary>
-    static KeyboardStateHelper() {
-      AddPressedKey = createAddPressedKeyDelegate();
-      RemovePressedKey = createRemovePressedKeyDelegate();
-    }
+			ParameterExpression instance = Expression.Parameter(byrefKeyboardState, "instance");
+			ParameterExpression keyValue = Expression.Parameter(typeof (Keys), "key");
 
-    /// <summary>
-    ///   Creates a delegate for adding a pressed key to a keyboard state
-    /// </summary>
-    /// <returns>A delegate that can be used to add a pressed key</returns>
-    private static AddPressedKeyDelegate createAddPressedKeyDelegate()
-    {
-        MethodInfo addPressedKeyMethod = typeof (KeyboardState).GetTypeInfo().GetDeclaredMethod("AddPressedKey");
-      Type byrefKeyboardState = typeof(KeyboardState).MakeByRefType();
+			Expression<AddPressedKeyDelegate> expression =
+				Expression.Lambda<AddPressedKeyDelegate>(
+														 Expression.Call(instance, addPressedKeyMethod, keyValue),
+														 instance, keyValue
+					);
 
-      ParameterExpression instance = Expression.Parameter(byrefKeyboardState, "instance");
-      ParameterExpression keyValue = Expression.Parameter(typeof(int), "key");
+			return expression.Compile();
+		}
 
-      Expression<AddPressedKeyDelegate> expression =
-        Expression.Lambda<AddPressedKeyDelegate>(
-          Expression.Call(instance, addPressedKeyMethod, keyValue),
-          instance, keyValue
-        );
+		/// <summary>
+		///   Creates a delegate for removing a pressed key from a keyboard state
+		/// </summary>
+		/// <returns>A delegate that can be used to remove a pressed key</returns>
+		private static RemovePressedKeyDelegate createRemovePressedKeyDelegate()
+		{
+			MethodInfo addPressedKeyMethod = typeof(KeyboardState).GetTypeInfo().GetDeclaredMethod("InternalClearKey");
+			Type byrefKeyboardState = typeof (KeyboardState).MakeByRefType();
 
-      return expression.Compile();
-    }
+			ParameterExpression instance = Expression.Parameter(byrefKeyboardState, "instance");
+			ParameterExpression keyValue = Expression.Parameter(typeof (Keys), "key");
 
-    /// <summary>
-    ///   Creates a delegate for removing a pressed key from a keyboard state
-    /// </summary>
-    /// <returns>A delegate that can be used to remove a pressed key</returns>
-    private static RemovePressedKeyDelegate createRemovePressedKeyDelegate() {
-		MethodInfo addPressedKeyMethod = typeof(KeyboardState).GetTypeInfo().GetDeclaredMethod("RemovePressedKey");
-      Type byrefKeyboardState = typeof(KeyboardState).MakeByRefType();
+			Expression<RemovePressedKeyDelegate> expression =
+				Expression.Lambda<RemovePressedKeyDelegate>(
+														    Expression.Call(instance, addPressedKeyMethod, keyValue),
+															instance, keyValue
+					);
 
-      ParameterExpression instance = Expression.Parameter(byrefKeyboardState, "instance");
-      ParameterExpression keyValue = Expression.Parameter(typeof(int), "key");
+			return expression.Compile();
+		}
 
-      Expression<RemovePressedKeyDelegate> expression =
-        Expression.Lambda<RemovePressedKeyDelegate>(
-          Expression.Call(instance, addPressedKeyMethod, keyValue),
-          instance, keyValue
-        );
+		/// <summary>Adds a pressed key to a KeyboardState</summary>
+		public static readonly AddPressedKeyDelegate AddPressedKey;
 
-      return expression.Compile();
-    }
-
-    /// <summary>Adds a pressed key to a KeyboardState</summary>
-    public static readonly AddPressedKeyDelegate AddPressedKey;
-
-    /// <summary>Removes a pressed key from a KeyboardState</summary>
-    public static readonly RemovePressedKeyDelegate RemovePressedKey;
-
-  }
-
+		/// <summary>Removes a pressed key from a KeyboardState</summary>
+		public static readonly RemovePressedKeyDelegate RemovePressedKey;
+	}
 } // namespace Nuclex.Input.Devices
-

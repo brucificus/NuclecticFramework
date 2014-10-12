@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,46 +17,45 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.Graphics.TriD.Batching {
+namespace Nuclectic.Graphics.TriD.Batching
+{
+	/// <summary>
+	///   Strategies by which the primitive batcher can consolidate vertices
+	/// </summary>
+	public enum QueueingStrategy
+	{
+		/// <summary>Immediately draws any primitives sent to the batcher.</summary>
+		/// <remarks>
+		///   This results in rather poor performance but keeps the drawing order
+		///   unchanged even when multiple primitve batchers are used to draw at
+		///   the same time.
+		/// </remarks>
+		Immediate,
 
-  /// <summary>
-  ///   Strategies by which the primitive batcher can consolidate vertices
-  /// </summary>
-  public enum QueueingStrategy {
+		/// <summary>
+		///   The vertex batcher caches any drawing commands until a batch is full
+		///   or the End() method is called.
+		/// </summary>
+		/// <remarks>
+		///   This will greatly improve rendering performance compared to immediate
+		///   drawing. However, using multiple primitve batchers at the same time
+		///   will result in an undefined drawing order (if there are no overlaps or
+		///   the depth buffer is enabled, this won't matter)
+		/// </remarks>
+		Deferred,
 
-    /// <summary>Immediately draws any primitives sent to the batcher.</summary>
-    /// <remarks>
-    ///   This results in rather poor performance but keeps the drawing order
-    ///   unchanged even when multiple primitve batchers are used to draw at
-    ///   the same time.
-    /// </remarks>
-    Immediate,
-
-    /// <summary>
-    ///   The vertex batcher caches any drawing commands until a batch is full
-    ///   or the End() method is called.
-    /// </summary>
-    /// <remarks>
-    ///   This will greatly improve rendering performance compared to immediate
-    ///   drawing. However, using multiple primitve batchers at the same time
-    ///   will result in an undefined drawing order (if there are no overlaps or
-    ///   the depth buffer is enabled, this won't matter)
-    /// </remarks>
-    Deferred,
-
-    /// <summary>
-    ///   Caches all drawing commands and sorts the primitives queued for drawing
-    ///   by the context they use.
-    /// </summary>
-    /// <remarks>
-    ///   This is the fastest mode for many small objects. However, drawing order
-    ///   will be undefined, requiring either a zero overlap guarantee for any
-    ///   vertices drawn or the depth buffer to be enabled.
-    /// </remarks>
-    Context
-
-  }
-
+		/// <summary>
+		///   Caches all drawing commands and sorts the primitives queued for drawing
+		///   by the context they use.
+		/// </summary>
+		/// <remarks>
+		///   This is the fastest mode for many small objects. However, drawing order
+		///   will be undefined, requiring either a zero overlap guarantee for any
+		///   vertices drawn or the depth buffer to be enabled.
+		/// </remarks>
+		Context
+	}
 } // namespace Nuclex.Graphics.Batching

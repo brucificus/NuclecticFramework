@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,40 +17,42 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Geometry.Lines.Collisions {
+namespace Nuclectic.Geometry.Lines.Collisions
+{
+	/// <summary>Contains all Ray3 to Plane3 interference detection code</summary>
+	public static class Ray3Plane3Collider
+	{
+		/// <summary>Determines where a ray will hit a plane, if at all</summary>
+		/// <param name="rayStart">Starting point of the ray</param>
+		/// <param name="rayDirection">Direction into which the ray extends</param>
+		/// <param name="planeOffset">Offset of the plane</param>
+		/// <param name="planeNormal">Normal vector of the plane</param>
+		/// <returns>The intersection points between the ray and the plane, if any</returns>
+		public static LineContacts FindContacts(
+			Vector3 rayStart, Vector3 rayDirection,
+			Vector3 planeOffset, Vector3 planeNormal
+			)
+		{
+			LineContacts contacts = Line3Plane3Collider.FindContacts(
+																	 rayStart, rayDirection, planeOffset, planeNormal
+				);
 
-  /// <summary>Contains all Ray3 to Plane3 interference detection code</summary>
-  public static class Ray3Plane3Collider {
+			// If the contact occured before the starting offset of the ray,
+			// no collision took place since we're a ray
+			if (!float.IsNaN(contacts.EntryTime))
+			{
+				if (contacts.EntryTime < 0.0f)
+				{
+					return LineContacts.None;
+				}
+			}
 
-    /// <summary>Determines where a ray will hit a plane, if at all</summary>
-    /// <param name="rayStart">Starting point of the ray</param>
-    /// <param name="rayDirection">Direction into which the ray extends</param>
-    /// <param name="planeOffset">Offset of the plane</param>
-    /// <param name="planeNormal">Normal vector of the plane</param>
-    /// <returns>The intersection points between the ray and the plane, if any</returns>
-    public static LineContacts FindContacts(
-      Vector3 rayStart, Vector3 rayDirection,
-      Vector3 planeOffset, Vector3 planeNormal
-    ) {
-      LineContacts contacts = Line3Plane3Collider.FindContacts(
-        rayStart, rayDirection, planeOffset, planeNormal
-      );
-
-      // If the contact occured before the starting offset of the ray,
-      // no collision took place since we're a ray
-      if(!float.IsNaN(contacts.EntryTime)) {
-        if(contacts.EntryTime < 0.0f) {
-          return LineContacts.None;
-        }
-      }
-
-      return contacts;
-    }
-
-  }
-
+			return contacts;
+		}
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions

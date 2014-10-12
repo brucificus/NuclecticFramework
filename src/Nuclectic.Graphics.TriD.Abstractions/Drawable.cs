@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,235 +17,237 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Nuclectic.Graphics.TriD {
+namespace Nuclectic.Graphics.TriD
+{
+	/// <summary>Drawable object that monitors the GraphicsDeviceService</summary>
+	public abstract class Drawable : IDisposable
+	{
+		/// <summary>Initializes a new drawable object.</summary>
+		/// <param name="graphicsDeviceService">
+		///   Graphics device this drawable object will be bound to
+		/// </param>
+		public Drawable(IGraphicsDeviceService graphicsDeviceService)
+		{
+			// Remember the graphics device service for later
+			this.graphicsDeviceService = graphicsDeviceService;
 
-  /// <summary>Drawable object that monitors the GraphicsDeviceService</summary>
-  public abstract class Drawable : IDisposable {
+			this.deviceCreatedDelegate = new EventHandler<EventArgs>(deviceCreated);
+			this.deviceResettingDelegate = new EventHandler<EventArgs>(deviceResetting);
+			this.deviceResetDelegate = new EventHandler<EventArgs>(deviceReset);
+			this.deviceDisposingDelegate = new EventHandler<EventArgs>(deviceDisposing);
 
-    /// <summary>Initializes a new drawable object.</summary>
-    /// <param name="graphicsDeviceService">
-    ///   Graphics device this drawable object will be bound to
-    /// </param>
-    public Drawable(IGraphicsDeviceService graphicsDeviceService) {
+			// Register to the graphics device events
+			subscribeToGraphicsDeviceService();
+		}
 
-      // Remember the graphics device service for later
-      this.graphicsDeviceService = graphicsDeviceService;
+		/// <summary>Immediately releases all resources owned by this instance</summary>
+		/// <remarks>
+		///   This method is not suitable for being called during a GC run, it is intended
+		///   for manual usage when you actually want to get rid of the Drawable object.
+		/// </remarks>
+		public virtual void Dispose()
+		{
+			// Unsubscribe from the graphics device service's events
+			if (this.graphicsDeviceService != null)
+			{
+				unsubscribeFromGraphicsDeviceService();
+				this.graphicsDeviceService = null;
+			}
+		}
 
-      this.deviceCreatedDelegate = new EventHandler<EventArgs>(deviceCreated);
-      this.deviceResettingDelegate = new EventHandler<EventArgs>(deviceResetting);
-      this.deviceResetDelegate = new EventHandler<EventArgs>(deviceReset);
-      this.deviceDisposingDelegate = new EventHandler<EventArgs>(deviceDisposing);
+		/// <summary>Called when the Drawable should draw itself.</summary>
+		/// <param name="gameTime">Provides a snapshot of the game's timing values</param>
+		public virtual void Draw(GameTime gameTime) { }
 
-      // Register to the graphics device events
-      subscribeToGraphicsDeviceService();
+		/// <summary>GraphicsDevice this component is bound to.</summary>
+		public GraphicsDevice GraphicsDevice { get { return this.graphicsDeviceService.GraphicsDevice; } }
 
-    }
+		/// <summary>Retrieves the graphics device service from a service provider.</summary>
+		/// <param name="serviceProvider">Service provider to look in</param>
+		/// <returns>The graphics device service, if it was available</returns>
+		/// <remarks>
+		///   This method is included in the Drawable class to allow deriving classes
+		///   to expect an IServerProvider as their constructor argument and still
+		///   initialize Drawable, their base class, with a graphics device service.
+		///   <example>
+		///     <code>
+		///       public class MyDrawable : Drawable {
+		/// 
+		///         public MyDrawable(IServiceProvider serviceProvider) :
+		///           base(GetGraphicsDeviceService(serviceProvider)) { }
+		///      
+		///       }
+		///     </code>
+		///   </example>
+		/// </remarks>
+		protected static IGraphicsDeviceService GetGraphicsDeviceService(
+			IServiceProvider serviceProvider
+			)
+		{
+			IGraphicsDeviceService graphicsDeviceService = serviceProvider.GetService(
+																					  typeof (IGraphicsDeviceService)
+															   ) as IGraphicsDeviceService;
 
-    /// <summary>Immediately releases all resources owned by this instance</summary>
-    /// <remarks>
-    ///   This method is not suitable for being called during a GC run, it is intended
-    ///   for manual usage when you actually want to get rid of the Drawable object.
-    /// </remarks>
-    public virtual void Dispose() {
+			if (graphicsDeviceService == null)
+				throw new InvalidOperationException("Graphics device service not found");
 
-      // Unsubscribe from the graphics device service's events
-      if(this.graphicsDeviceService != null) {
-        unsubscribeFromGraphicsDeviceService();
-        this.graphicsDeviceService = null;
-      }
+			return graphicsDeviceService;
+		}
 
-    }
+		/// <summary>Graphics device service the drawable was constucted on</summary>
+		protected IGraphicsDeviceService GraphicsDeviceService { get { return this.graphicsDeviceService; } }
 
-    /// <summary>Called when the Drawable should draw itself.</summary>
-    /// <param name="gameTime">Provides a snapshot of the game's timing values</param>
-    public virtual void Draw(GameTime gameTime) { }
+		/// <summary>
+		///   Called when the object needs to set up graphics resources. Override to
+		///   set up any object specific graphics resources.
+		/// </summary>
+		/// <param name="createAllContent">
+		///   True if all graphics resources need to be set up; false if only
+		///   manual resources need to be set up.
+		/// </param>
+		[
+			Obsolete(
+				"The LoadGraphicsContent method is obsolete and will be removed in the future. " +
+				"Use the LoadContent method instead."
+				)
+		]
+		protected virtual void LoadGraphicsContent(bool createAllContent) { }
 
-    /// <summary>GraphicsDevice this component is bound to.</summary>
-    public GraphicsDevice GraphicsDevice {
-      get { return this.graphicsDeviceService.GraphicsDevice; }
-    }
+		/// <summary>
+		///   Called when graphics resources need to be loaded. Override this method to load
+		///   any game-specific graphics resources.
+		/// </summary>
+		protected virtual void LoadContent() { }
 
-    /// <summary>Retrieves the graphics device service from a service provider.</summary>
-    /// <param name="serviceProvider">Service provider to look in</param>
-    /// <returns>The graphics device service, if it was available</returns>
-    /// <remarks>
-    ///   This method is included in the Drawable class to allow deriving classes
-    ///   to expect an IServerProvider as their constructor argument and still
-    ///   initialize Drawable, their base class, with a graphics device service.
-    ///   <example>
-    ///     <code>
-    ///       public class MyDrawable : Drawable {
-    /// 
-    ///         public MyDrawable(IServiceProvider serviceProvider) :
-    ///           base(GetGraphicsDeviceService(serviceProvider)) { }
-    ///      
-    ///       }
-    ///     </code>
-    ///   </example>
-    /// </remarks>
-    protected static IGraphicsDeviceService GetGraphicsDeviceService(
-      IServiceProvider serviceProvider
-    ) {
-      IGraphicsDeviceService graphicsDeviceService = serviceProvider.GetService(
-        typeof(IGraphicsDeviceService)
-      ) as IGraphicsDeviceService;
+		/// <summary>
+		///   Called when graphics resources should be released. Override to
+		///   handle component specific graphics resources.
+		/// </summary>
+		/// <param name="destroyAllContent">
+		///   True if all graphics resources should be released; false if only
+		///   manual resources should be released.
+		/// </param>
+		[
+			Obsolete(
+				"The UnloadGraphicsContent method is obsolete and will be removed in the future. " +
+				"Use the UnloadContent method instead."
+				)
+		]
+		protected virtual void UnloadGraphicsContent(bool destroyAllContent) { }
 
-      if(graphicsDeviceService == null)
-        throw new InvalidOperationException("Graphics device service not found");
+		/// <summary>
+		///   Called when graphics resources need to be unloaded. Override this method to unload
+		///   any game-specific graphics resources.
+		/// </summary>
+		protected virtual void UnloadContent() { }
 
-      return graphicsDeviceService;
-    }
+		/// <summary>
+		///   Subscribes this component to the events of the graphics device service.
+		/// </summary>
+		private void subscribeToGraphicsDeviceService()
+		{
+			// Register to the events of the graphics device service so we know when
+			// the graphics device is set up, shut down or reset.
+			this.graphicsDeviceService.DeviceCreated += this.deviceCreatedDelegate;
+			this.graphicsDeviceService.DeviceResetting += this.deviceResettingDelegate;
+			this.graphicsDeviceService.DeviceReset += this.deviceResetDelegate;
+			this.graphicsDeviceService.DeviceDisposing += this.deviceDisposingDelegate;
 
-    /// <summary>Graphics device service the drawable was constucted on</summary>
-    protected IGraphicsDeviceService GraphicsDeviceService {
-      get { return this.graphicsDeviceService; }
-    }
-
-    /// <summary>
-    ///   Called when the object needs to set up graphics resources. Override to
-    ///   set up any object specific graphics resources.
-    /// </summary>
-    /// <param name="createAllContent">
-    ///   True if all graphics resources need to be set up; false if only
-    ///   manual resources need to be set up.
-    /// </param>
-    [
-      Obsolete(
-        "The LoadGraphicsContent method is obsolete and will be removed in the future. " +
-        "Use the LoadContent method instead."
-      )
-    ]
-    protected virtual void LoadGraphicsContent(bool createAllContent) { }
-
-    /// <summary>
-    ///   Called when graphics resources need to be loaded. Override this method to load
-    ///   any game-specific graphics resources.
-    /// </summary>
-    protected virtual void LoadContent() { }
-
-    /// <summary>
-    ///   Called when graphics resources should be released. Override to
-    ///   handle component specific graphics resources.
-    /// </summary>
-    /// <param name="destroyAllContent">
-    ///   True if all graphics resources should be released; false if only
-    ///   manual resources should be released.
-    /// </param>
-    [
-      Obsolete(
-        "The UnloadGraphicsContent method is obsolete and will be removed in the future. " +
-        "Use the UnloadContent method instead."
-      )
-    ]
-    protected virtual void UnloadGraphicsContent(bool destroyAllContent) { }
-
-    /// <summary>
-    ///   Called when graphics resources need to be unloaded. Override this method to unload
-    ///   any game-specific graphics resources.
-    /// </summary>
-    protected virtual void UnloadContent() { }
-
-    /// <summary>
-    ///   Subscribes this component to the events of the graphics device service.
-    /// </summary>
-    private void subscribeToGraphicsDeviceService() {
-
-      // Register to the events of the graphics device service so we know when
-      // the graphics device is set up, shut down or reset.
-      this.graphicsDeviceService.DeviceCreated += this.deviceCreatedDelegate;
-      this.graphicsDeviceService.DeviceResetting += this.deviceResettingDelegate;
-      this.graphicsDeviceService.DeviceReset += this.deviceResetDelegate;
-      this.graphicsDeviceService.DeviceDisposing += this.deviceDisposingDelegate;
-
-      // If a graphics device has already been created, we need to simulate the
-      // DeviceCreated event that we did miss because we weren't born yet :)
-      if(this.graphicsDeviceService.GraphicsDevice != null) {
+			// If a graphics device has already been created, we need to simulate the
+			// DeviceCreated event that we did miss because we weren't born yet :)
+			if (this.graphicsDeviceService.GraphicsDevice != null)
+			{
 #pragma warning disable 618 // Call to obsolete method
-        LoadGraphicsContent(true);
+				LoadGraphicsContent(true);
 #pragma warning restore 618 // Call to obsolete method
-        LoadContent();
-      }
+				LoadContent();
+			}
+		}
 
-    }
+		/// <summary>
+		///   Unsubscribes this component from the events of the graphics device service.
+		/// </summary>
+		private void unsubscribeFromGraphicsDeviceService()
+		{
+			// Unsubscribe from the events again
+			this.graphicsDeviceService.DeviceCreated -= new EventHandler<EventArgs>(deviceCreated);
+			this.graphicsDeviceService.DeviceResetting -= new EventHandler<EventArgs>(deviceResetting);
+			this.graphicsDeviceService.DeviceReset -= new EventHandler<EventArgs>(deviceReset);
+			this.graphicsDeviceService.DeviceDisposing -= new EventHandler<EventArgs>(deviceDisposing);
 
-    /// <summary>
-    ///   Unsubscribes this component from the events of the graphics device service.
-    /// </summary>
-    private void unsubscribeFromGraphicsDeviceService() {
-
-      // Unsubscribe from the events again
-      this.graphicsDeviceService.DeviceCreated -= new EventHandler<EventArgs>(deviceCreated);
-      this.graphicsDeviceService.DeviceResetting -= new EventHandler<EventArgs>(deviceResetting);
-      this.graphicsDeviceService.DeviceReset -= new EventHandler<EventArgs>(deviceReset);
-      this.graphicsDeviceService.DeviceDisposing -= new EventHandler<EventArgs>(deviceDisposing);
-
-      // If the graphics device is still active, we give the component a chance
-      // to clean up its data
-      if(this.graphicsDeviceService.GraphicsDevice != null) {
+			// If the graphics device is still active, we give the component a chance
+			// to clean up its data
+			if (this.graphicsDeviceService.GraphicsDevice != null)
+			{
 #pragma warning disable 618 // Call to obsolete method
-        UnloadGraphicsContent(true);
+				UnloadGraphicsContent(true);
 #pragma warning restore 618 // Call to obsolete method
-        UnloadContent();
-      }
+				UnloadContent();
+			}
+		}
 
-    }
-
-    /// <summary>Called when the graphics device is created</summary>
-    /// <param name="sender">Graphics device service that created a new device</param>
-    /// <param name="arguments">Not used</param>
-    private void deviceCreated(object sender, EventArgs arguments) {
+		/// <summary>Called when the graphics device is created</summary>
+		/// <param name="sender">Graphics device service that created a new device</param>
+		/// <param name="arguments">Not used</param>
+		private void deviceCreated(object sender, EventArgs arguments)
+		{
 #pragma warning disable 618 // Call to obsolete method
-      LoadGraphicsContent(true);
+			LoadGraphicsContent(true);
 #pragma warning restore 618 // Call to obsolete method
-      LoadContent();
-    }
+			LoadContent();
+		}
 
-    /// <summary>Called before the graphics device is being reset</summary>
-    /// <param name="sender">Graphics device service that is resetting its device</param>
-    /// <param name="arguments">Not used</param>
-    private void deviceResetting(object sender, EventArgs arguments) {
+		/// <summary>Called before the graphics device is being reset</summary>
+		/// <param name="sender">Graphics device service that is resetting its device</param>
+		/// <param name="arguments">Not used</param>
+		private void deviceResetting(object sender, EventArgs arguments)
+		{
 #pragma warning disable 618 // Call to obsolete method
-      UnloadGraphicsContent(false);
+			UnloadGraphicsContent(false);
 #pragma warning restore 618 // Call to obsolete method
-    }
+		}
 
-    /// <summary>Called after the graphics device has been reset</summary>
-    /// <param name="sender">Graphics device service that has just reset its device</param>
-    /// <param name="arguments">Not used</param>
-    private void deviceReset(object sender, EventArgs arguments) {
+		/// <summary>Called after the graphics device has been reset</summary>
+		/// <param name="sender">Graphics device service that has just reset its device</param>
+		/// <param name="arguments">Not used</param>
+		private void deviceReset(object sender, EventArgs arguments)
+		{
 #pragma warning disable 618 // Call to obsolete method
-      LoadGraphicsContent(false);
+			LoadGraphicsContent(false);
 #pragma warning restore 618 // Call to obsolete method
-    }
+		}
 
-    /// <summary>Called before the graphics device is being disposed</summary>
-    /// <param name="sender">Graphics device service that's disposing the device</param>
-    /// <param name="arguments">Not used</param>
-    private void deviceDisposing(object sender, EventArgs arguments) {
+		/// <summary>Called before the graphics device is being disposed</summary>
+		/// <param name="sender">Graphics device service that's disposing the device</param>
+		/// <param name="arguments">Not used</param>
+		private void deviceDisposing(object sender, EventArgs arguments)
+		{
 #pragma warning disable 618 // Call to obsolete method
-      UnloadGraphicsContent(true);
+			UnloadGraphicsContent(true);
 #pragma warning restore 618 // Call to obsolete method
-      UnloadContent();
-    }
+			UnloadContent();
+		}
 
-    /// <summary>Graphics device service this component is bound to.</summary>
-    private IGraphicsDeviceService graphicsDeviceService;
+		/// <summary>Graphics device service this component is bound to.</summary>
+		private IGraphicsDeviceService graphicsDeviceService;
 
-    /// <summary>Delegate for the deviceCreated() method</summary>
-    private EventHandler<EventArgs> deviceCreatedDelegate;
-    /// <summary>Delegate for the deviceResetting() method</summary>
-    private EventHandler<EventArgs> deviceResettingDelegate;
-    /// <summary>Delegate for the deviceReset() method</summary>
-    private EventHandler<EventArgs> deviceResetDelegate;
-    /// <summary>Delegate for the deviceDisposing() method</summary>
-    private EventHandler<EventArgs> deviceDisposingDelegate;
+		/// <summary>Delegate for the deviceCreated() method</summary>
+		private EventHandler<EventArgs> deviceCreatedDelegate;
 
-  }
+		/// <summary>Delegate for the deviceResetting() method</summary>
+		private EventHandler<EventArgs> deviceResettingDelegate;
 
+		/// <summary>Delegate for the deviceReset() method</summary>
+		private EventHandler<EventArgs> deviceResetDelegate;
+
+		/// <summary>Delegate for the deviceDisposing() method</summary>
+		private EventHandler<EventArgs> deviceDisposingDelegate;
+	}
 } // namespace Nuclex.Graphics

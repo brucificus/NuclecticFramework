@@ -2,8 +2,8 @@
 
 namespace Nuclectic.UserInterface.Controls
 {
-    public interface ICommandProcessor
-    {
-        bool ProcessCommand(Command command);
-    }
+	public interface ICommandProcessor
+	{
+		bool ProcessCommand(Command command);
+	}
 }

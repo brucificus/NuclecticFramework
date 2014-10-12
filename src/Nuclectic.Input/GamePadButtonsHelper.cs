@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,23 +17,20 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework.Input;
 
-namespace Nuclectic.Input {
-
-  /// <summary>Contains helper methods for the GamePadButtons enumeration</summary>
-  public static class GamePadButtonsHelper {
-
-    /// <summary>Checks whether buttons are contained in a button flag field</summary>
-    /// <param name="buttons">Button flag field that will be checked</param>
-    /// <param name="button">Buttons for which the method will check</param>
-    /// <returns>True if all specified buttons appear in the flag field</returns>
-    public static bool Contains(this Buttons buttons, Buttons button) {
-      return ((buttons & button) != 0);
-    }
-
-  }
-
+namespace Nuclectic.Input
+{
+	/// <summary>Contains helper methods for the GamePadButtons enumeration</summary>
+	public static class GamePadButtonsHelper
+	{
+		/// <summary>Checks whether buttons are contained in a button flag field</summary>
+		/// <param name="buttons">Button flag field that will be checked</param>
+		/// <param name="button">Buttons for which the method will check</param>
+		/// <returns>True if all specified buttons appear in the flag field</returns>
+		public static bool Contains(this Buttons buttons, Buttons button) { return ((buttons & button) != 0); }
+	}
 } // namespace Nuclex.Input

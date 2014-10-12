@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,15 +17,16 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails {
-
+namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails
+{
 #if false
-  /// <summary>Renders a trail for particles that store their past positions</summary>
-  /// <typeparam name="ParticleType">
-  ///   Type of particles whose trail will be rendered
-  /// </typeparam>
+	/// <summary>Renders a trail for particles that store their past positions</summary>
+	/// <typeparam name="ParticleType">
+	///   Type of particles whose trail will be rendered
+	/// </typeparam>
   public class TrailRenderer<ParticleType> :
     IParticleRenderer<ParticleType, TrailVertex>
     where ParticleType : struct {
@@ -43,5 +45,4 @@ namespace Nuclectic.Graphics.TriD.SpecialEffects.Trails {
 
   }
 #endif
-
 } // namespace Nuclex.Graphics.SpecialEffects.Trails

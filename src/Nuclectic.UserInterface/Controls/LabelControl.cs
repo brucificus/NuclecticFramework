@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,25 +17,23 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.UserInterface.Controls {
+namespace Nuclectic.UserInterface.Controls
+{
+	/// <summary>Control that draws a block of text</summary>
+	public class LabelControl : Control
+	{
+		/// <summary>Initializes a new label control with an empty string</summary>
+		public LabelControl()
+			: this(string.Empty) { }
 
-  /// <summary>Control that draws a block of text</summary>
-  public class LabelControl : Control {
+		/// <summary>Initializes a new label control</summary>
+		/// <param name="text">Text to be printed at the location of the label control</param>
+		public LabelControl(string text) { this.Text = text; }
 
-    /// <summary>Initializes a new label control with an empty string</summary>
-    public LabelControl() : this(string.Empty) { }
-
-    /// <summary>Initializes a new label control</summary>
-    /// <param name="text">Text to be printed at the location of the label control</param>
-    public LabelControl(string text) {
-      this.Text = text;
-    }
-
-    /// <summary>Text to be rendered in the control's frame</summary>
-    public string Text;
-
-  }
-
+		/// <summary>Text to be rendered in the control's frame</summary>
+		public string Text;
+	}
 } // namespace Nuclex.UserInterface.Controls

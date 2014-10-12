@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,11 +17,13 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.UserInterface.Controls.Arcade {
-
-  /// <summary>Panel that can host other controls, similar to a window</summary>
-  public class PanelControl : Control { }
-
+namespace Nuclectic.UserInterface.Controls.Arcade
+{
+	/// <summary>Panel that can host other controls, similar to a window</summary>
+	public class PanelControl : Control
+	{
+	}
 } // namespace Nuclex.UserInterface.Controls.Arcade

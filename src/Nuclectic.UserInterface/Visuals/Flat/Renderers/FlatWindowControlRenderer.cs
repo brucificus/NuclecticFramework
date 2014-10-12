@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,32 +17,33 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.UserInterface.Visuals.Flat.Renderers {
+namespace Nuclectic.UserInterface.Visuals.Flat.Renderers
+{
+	/// <summary>Renders window controls in a traditional flat style</summary>
+	public class FlatWindowControlRenderer :
+		IFlatControlRenderer<Controls.Desktop.WindowControl>
+	{
+		/// <summary>
+		///   Renders the specified control using the provided graphics interface
+		/// </summary>
+		/// <param name="control">Control that will be rendered</param>
+		/// <param name="graphics">
+		///   Graphics interface that will be used to draw the control
+		/// </param>
+		public void Render(
+			Controls.Desktop.WindowControl control, IFlatGuiGraphics graphics
+			)
+		{
+			RectangleF controlBounds = control.GetAbsoluteBounds();
+			graphics.DrawElement("window", controlBounds);
 
-  /// <summary>Renders window controls in a traditional flat style</summary>
-  public class FlatWindowControlRenderer :
-    IFlatControlRenderer<Controls.Desktop.WindowControl> {
-
-    /// <summary>
-    ///   Renders the specified control using the provided graphics interface
-    /// </summary>
-    /// <param name="control">Control that will be rendered</param>
-    /// <param name="graphics">
-    ///   Graphics interface that will be used to draw the control
-    /// </param>
-    public void Render(
-      Controls.Desktop.WindowControl control, IFlatGuiGraphics graphics
-    ) {
-      RectangleF controlBounds = control.GetAbsoluteBounds();
-      graphics.DrawElement("window", controlBounds);
-
-      if(control.Title != null) {
-        graphics.DrawString("window", controlBounds, control.Title);
-      }
-    }
-
-  }
-
+			if (control.Title != null)
+			{
+				graphics.DrawString("window", controlBounds, control.Title);
+			}
+		}
+	}
 } // namespace Nuclex.UserInterface.Visuals.Flat.Renderers

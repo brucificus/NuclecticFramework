@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,24 +17,23 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.Input.Devices {
-    /// <summary>
-  ///   Sends out notifications for intercepted window messages related to the keyboard
-  /// </summary>
-  public interface IKeyboardMessageSource {
+namespace Nuclectic.Input.Devices
+{
+	/// <summary>
+	///   Sends out notifications for intercepted window messages related to the keyboard
+	/// </summary>
+	public interface IKeyboardMessageSource
+	{
+		/// <summary>Triggered when a key has been pressed down</summary>
+		event KeyboardKeyEventDelegate KeyPressed;
 
-    /// <summary>Triggered when a key has been pressed down</summary>
-    event KeyboardKeyEventDelegate KeyPressed;
+		/// <summary>Triggered when a key has been released again</summary>
+		event KeyboardKeyEventDelegate KeyReleased;
 
-    /// <summary>Triggered when a key has been released again</summary>
-    event KeyboardKeyEventDelegate KeyReleased;
-
-    /// <summary>Triggered when the user has entered a character</summary>
-    event KeyboardCharacterEventDelegate CharacterEntered;
-
-  }
-
+		/// <summary>Triggered when the user has entered a character</summary>
+		event KeyboardCharacterEventDelegate CharacterEntered;
+	}
 } // namespace Nuclex.Input.Devices
-

@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2010 Nuclex Development Labs
@@ -16,19 +17,18 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
-namespace Nuclectic.UserInterface.Controls {
+namespace Nuclectic.UserInterface.Controls
+{
+	/// <summary>Visual indicator for the progress of some operation</summary>
+	public class ProgressControl : Control
+	{
+		// TODO: Make a derived, interactive version of this control
+		//   Name: VolumeControl
 
-  /// <summary>Visual indicator for the progress of some operation</summary>
-  public class ProgressControl : Control {
-
-    // TODO: Make a derived, interactive version of this control
-    //   Name: VolumeControl
-
-    /// <summary>The displayed progress in the range between 0.0 and 1.0</summary>
-    public float Progress;
-
-  }
-
+		/// <summary>The displayed progress in the range between 0.0 and 1.0</summary>
+		public float Progress;
+	}
 } // namespace Nuclex.UserInterface.Controls

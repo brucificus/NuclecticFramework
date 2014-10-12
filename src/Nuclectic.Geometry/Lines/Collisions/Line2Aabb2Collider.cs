@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,106 +17,114 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Geometry.Lines.Collisions {
+namespace Nuclectic.Geometry.Lines.Collisions
+{
+	/// <summary>
+	///   Detects intersections of infinite 2D lines with 2D axis-aligned boxes
+	/// </summary>
+	public static class Line2Aabb2Collider
+	{
+		/// <summary>Determines the contact times of a line with an axis aligned box</summary>
+		/// <param name="lineOffset">Offset of the line from the box</param>
+		/// <param name="lineDirection">Direction into which the line goes</param>
+		/// <param name="boxExtents">Extents of the box (half of the box' dimensions)</param>
+		/// <returns>The contact points, if any, between the line and the box</returns>
+		/// <remarks>
+		///   Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
+		///   and used as a supporting function for the other line/box contact finders.
+		/// </remarks>
+		public static LineContacts FindContacts(
+			Vector2 lineOffset, Vector2 lineDirection, Vector2 boxExtents
+			)
+		{
+			float entrytime = float.MinValue;
+			float exitTime = float.MaxValue;
 
-  /// <summary>
-  ///   Detects intersections of infinite 2D lines with 2D axis-aligned boxes
-  /// </summary>
-  public static class Line2Aabb2Collider {
+			// Determine the instants of entry and exit into the box, if any
+			bool notEntirelyClipped =
+				clip(+lineDirection.X, -lineOffset.X - boxExtents.X, ref entrytime, ref exitTime) &&
+				clip(-lineDirection.X, +lineOffset.X - boxExtents.X, ref entrytime, ref exitTime) &&
+				clip(+lineDirection.Y, -lineOffset.Y - boxExtents.Y, ref entrytime, ref exitTime) &&
+				clip(-lineDirection.Y, +lineOffset.Y - boxExtents.Y, ref entrytime, ref exitTime);
 
-    /// <summary>Determines the contact times of a line with an axis aligned box</summary>
-    /// <param name="lineOffset">Offset of the line from the box</param>
-    /// <param name="lineDirection">Direction into which the line goes</param>
-    /// <param name="boxExtents">Extents of the box (half of the box' dimensions)</param>
-    /// <returns>The contact points, if any, between the line and the box</returns>
-    /// <remarks>
-    ///   Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
-    ///   and used as a supporting function for the other line/box contact finders.
-    /// </remarks>
-    public static LineContacts FindContacts(
-      Vector2 lineOffset, Vector2 lineDirection, Vector2 boxExtents
-    ) {
-      float entrytime = float.MinValue;
-      float exitTime = float.MaxValue;
+			// Find out if an intersection with the box has actually occured
+			bool intersects =
+				notEntirelyClipped &&
+				(entrytime != float.MinValue || exitTime != float.MaxValue);
 
-      // Determine the instants of entry and exit into the box, if any
-      bool notEntirelyClipped =
-        clip(+lineDirection.X, -lineOffset.X - boxExtents.X, ref entrytime, ref exitTime) &&
-        clip(-lineDirection.X, +lineOffset.X - boxExtents.X, ref entrytime, ref exitTime) &&
-        clip(+lineDirection.Y, -lineOffset.Y - boxExtents.Y, ref entrytime, ref exitTime) &&
-        clip(-lineDirection.Y, +lineOffset.Y - boxExtents.Y, ref entrytime, ref exitTime);
+			if (intersects)
+			{
+				return new LineContacts(entrytime, exitTime);
+			}
+			else
+			{
+				return LineContacts.None;
+			}
+		}
 
-      // Find out if an intersection with the box has actually occured
-      bool intersects =
-        notEntirelyClipped &&
-        (entrytime != float.MinValue || exitTime != float.MaxValue);
+		/// <summary>Determines the contact times of a line with an axis aligned box</summary>
+		/// <param name="lineOffset">Offset of the line from the box</param>
+		/// <param name="lineDirection">Direction into which the line goes</param>
+		/// <param name="minBoxCorner">Corner of the box with the lesser coordinates</param>
+		/// <param name="maxBoxCorner">Corner of the box with the greater coordinates</param>
+		/// <returns>The contact points, if any, between the line and the box</returns>
+		public static LineContacts FindContacts(
+			Vector2 lineOffset, Vector2 lineDirection,
+			Vector2 minBoxCorner, Vector2 maxBoxCorner
+			)
+		{
+			Vector2 boxExtents = (maxBoxCorner - minBoxCorner) / 2.0f;
+			Vector2 boxOffset = minBoxCorner + boxExtents;
 
-      if(intersects) {
-        return new LineContacts(entrytime, exitTime);
-      } else {
-        return LineContacts.None;
-      }
-    }
+			return FindContacts(
+							    lineOffset - boxOffset, lineDirection, boxExtents
+				);
+		}
 
-    /// <summary>Determines the contact times of a line with an axis aligned box</summary>
-    /// <param name="lineOffset">Offset of the line from the box</param>
-    /// <param name="lineDirection">Direction into which the line goes</param>
-    /// <param name="minBoxCorner">Corner of the box with the lesser coordinates</param>
-    /// <param name="maxBoxCorner">Corner of the box with the greater coordinates</param>
-    /// <returns>The contact points, if any, between the line and the box</returns>
-    public static LineContacts FindContacts(
-      Vector2 lineOffset, Vector2 lineDirection,
-      Vector2 minBoxCorner, Vector2 maxBoxCorner
-    ) {
-      Vector2 boxExtents = (maxBoxCorner - minBoxCorner) / 2.0f;
-      Vector2 boxOffset = minBoxCorner + boxExtents;
+		/// <summary>Determines where a line will intersect with a normalized plane</summary>
+		/// <param name="denominator">Denominator of the line's direction towards the plane</param>
+		/// <param name="numerator">Numerator of the line's direction towards the plane</param>
+		/// <param name="entryTime">Time of entry into the plane</param>
+		/// <param name="exitTime">Time of exit from the plane</param>
+		/// <returns>True if the line segment actually intersects with the plane</returns>
+		/// <remarks>
+		///   Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
+		///   and used as a supporting function for the other line/box contact finders.
+		/// </remarks>
+		private static bool clip(
+			float denominator, float numerator,
+			ref float entryTime, ref float exitTime
+			)
+		{
+			if (denominator > 0.0f)
+			{
+				if (numerator > denominator * exitTime)
+					return false;
 
-      return FindContacts(
-        lineOffset - boxOffset, lineDirection, boxExtents
-      );
-    }
+				if (numerator > denominator * entryTime)
+					entryTime = numerator / denominator;
 
-    /// <summary>Determines where a line will intersect with a normalized plane</summary>
-    /// <param name="denominator">Denominator of the line's direction towards the plane</param>
-    /// <param name="numerator">Numerator of the line's direction towards the plane</param>
-    /// <param name="entryTime">Time of entry into the plane</param>
-    /// <param name="exitTime">Time of exit from the plane</param>
-    /// <returns>True if the line segment actually intersects with the plane</returns>
-    /// <remarks>
-    ///   Shamelessly lifted from the FreeMagic library at http://www.magic-software.com
-    ///   and used as a supporting function for the other line/box contact finders.
-    /// </remarks>
-    private static bool clip(
-      float denominator, float numerator,
-      ref float entryTime, ref float exitTime
-    ) {
-      if(denominator > 0.0f) {
-        if(numerator > denominator * exitTime)
-          return false;
+				return true;
+			}
+			else if (denominator < 0.0f)
+			{
+				if (numerator > denominator * entryTime)
+					return false;
 
-        if(numerator > denominator * entryTime)
-          entryTime = numerator / denominator;
+				if (numerator > denominator * exitTime)
+					exitTime = numerator / denominator;
 
-        return true;
-
-      } else if(denominator < 0.0f) {
-        if(numerator > denominator * entryTime)
-          return false;
-
-        if(numerator > denominator * exitTime)
-          exitTime = numerator / denominator;
-
-        return true;
-
-      } else {
-        return numerator <= 0.0f;
-      }
-    }
-
-  }
-
+				return true;
+			}
+			else
+			{
+				return numerator <= 0.0f;
+			}
+		}
+	}
 } // namespace Nuclex.Geometry.Lines.Collisions

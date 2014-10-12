@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,86 +17,81 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input.Touch;
 
-namespace Nuclectic.Input.Devices {
+namespace Nuclectic.Input.Devices
+{
+	/// <summary>XNA-based touch input panel for Windows Phone 7 devices</summary>
+	internal class XnaTouchPanel : TouchPanelBase
+	{
+		/// <summary>Initializes a new touch panel based on the XNA framework</summary>
+		public XnaTouchPanel() { this.states = new Queue<TouchState>(); }
 
-  /// <summary>XNA-based touch input panel for Windows Phone 7 devices</summary>
-  internal class XnaTouchPanel : TouchPanelBase {
+		/// <summary>Maximum number of simultaneous touches the panel supports</summary>
+		public override int MaximumTouchCount { get { return TouchPanel.GetCapabilities().MaximumTouchCount; } }
 
-    /// <summary>Initializes a new touch panel based on the XNA framework</summary>
-    public XnaTouchPanel() {
-      this.states = new Queue<TouchState>();
-    }
+		/// <summary>Retrieves the current state of the touch panel</summary>
+		/// <returns>The current state of the touch panel</returns>
+		public override ITouchState GetState() { return this.current; }
 
-    /// <summary>Maximum number of simultaneous touches the panel supports</summary>
-    public override int MaximumTouchCount {
-      get { return TouchPanel.GetCapabilities().MaximumTouchCount; }
-    }
+		/// <summary>Whether the input device is connected to the system</summary>
+		public override bool IsAttached
+		{
+			get
+			{
+				return TouchPanel.GetCapabilities().IsConnected;
+			}
+		}
 
-    /// <summary>Retrieves the current state of the touch panel</summary>
-    /// <returns>The current state of the touch panel</returns>
-    public override ITouchState GetState() {
-      return this.current;
-    }
+		/// <summary>Human-readable name of the input device</summary>
+		public override string Name { get { return "Windows Touch Panel"; } }
 
-    /// <summary>Whether the input device is connected to the system</summary>
-    public override bool IsAttached {
-      get {
-        //return true; // Is there a WP7 device without touch screen?
-        return TouchPanel.GetCapabilities().IsConnected;
-      }
-    }
+		/// <summary>Updates the state of the input device</summary>
+		/// <remarks>
+		///   <para>
+		///     If this method is called with no snapshots in the queue, it will take
+		///     an immediate snapshot and make it the current state. This way, you
+		///     can use the input devices without caring for the snapshot system if
+		///     you wish.
+		///   </para>
+		///   <para>
+		///     If this method is called while one or more snapshots are waiting in
+		///     the queue, this method takes the next snapshot from the queue and makes
+		///     it the current state.
+		///   </para>
+		/// </remarks>
+		public override void Update()
+		{
+			var previous = this.current;
 
-    /// <summary>Human-readable name of the input device</summary>
-    public override string Name {
-      get { return "Windows Touch Panel"; }
-    }
+			if (this.states.Count == 0)
+			{
+				this.current = new TouchState(IsAttached, TouchPanel.GetState());
+			}
+			else
+			{
+				this.current = this.states.Dequeue();
+			}
 
-    /// <summary>Updates the state of the input device</summary>
-    /// <remarks>
-    ///   <para>
-    ///     If this method is called with no snapshots in the queue, it will take
-    ///     an immediate snapshot and make it the current state. This way, you
-    ///     can use the input devices without caring for the snapshot system if
-    ///     you wish.
-    ///   </para>
-    ///   <para>
-    ///     If this method is called while one or more snapshots are waiting in
-    ///     the queue, this method takes the next snapshot from the queue and makes
-    ///     it the current state.
-    ///   </para>
-    /// </remarks>
-    public override void Update() {
-      var previous = this.current;
+			GenerateEvents(ref previous, ref this.current);
+		}
 
-      if (this.states.Count == 0) {
-        this.current = new TouchState(IsAttached, TouchPanel.GetState());
-      } else {
-        this.current = this.states.Dequeue();
-      }
+		/// <summary>Takes a snapshot of the current state of the input device</summary>
+		/// <remarks>
+		///   This snapshot will be queued until the user calls the Update() method,
+		///   where the next polled snapshot will be taken from the queue and provided
+		///   to the user.
+		/// </remarks>
+		public override void TakeSnapshot() { this.states.Enqueue(new TouchState(IsAttached, TouchPanel.GetState())); }
 
-      GenerateEvents(ref previous, ref this.current);
-    }
+		/// <summary>Snapshots of the touch panel state waiting to be processed</summary>
+		private Queue<TouchState> states;
 
-    /// <summary>Takes a snapshot of the current state of the input device</summary>
-    /// <remarks>
-    ///   This snapshot will be queued until the user calls the Update() method,
-    ///   where the next polled snapshot will be taken from the queue and provided
-    ///   to the user.
-    /// </remarks>
-    public override void TakeSnapshot() {
-      this.states.Enqueue(new TouchState(IsAttached, TouchPanel.GetState()));
-    }
-
-    /// <summary>Snapshots of the touch panel state waiting to be processed</summary>
-    private Queue<TouchState> states;
-    /// <summary>Currently published game pad state</summary>
-    private ITouchState current;
-
-  }
-
+		/// <summary>Currently published game pad state</summary>
+		private ITouchState current;
+	}
 } // namespace Nuclex.Input.Devices

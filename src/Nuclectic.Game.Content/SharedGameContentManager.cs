@@ -1,4 +1,5 @@
-﻿//#region CPL License
+﻿#region CPL License
+
 ///*
 //Nuclex Framework
 //Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,7 +17,8 @@
 //You should have received a copy of the IBM Common Public
 //License along with this library
 //*/
-//#endregion
+
+#endregion
 
 //using Microsoft.Xna.Framework.Content;
 
@@ -44,7 +46,7 @@
 
 //	/// <summary>The content manager this instance delegates to</summary>
 //	private ContentManager contentManager;
-  
+
 //  }
 
 //} // namespace Nuclex.Game.Content

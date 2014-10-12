@@ -1,4 +1,5 @@
 ﻿#region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2009 Nuclex Development Labs
@@ -16,42 +17,37 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 using Microsoft.Xna.Framework;
 
-namespace Nuclectic.Geometry.Volumes.Collisions {
+namespace Nuclectic.Geometry.Volumes.Collisions
+{
+	/// <summary>Contains all Cylinder-to-Mesh interference detection code</summary>
+	public static class CylinderMeshCollider
+	{
+		/// <summary>Test whether a cylinder and a mesh are overlapping</summary>
+		/// <param name="cylinderTransform">Center and orientation of the cylinder</param>
+		/// <param name="cylinderLength">Length of the cylinder</param>
+		/// <param name="cylinderRadius">Radius of the cylinder</param>
+		/// <param name="triangleMesh">Mesh to be checked for overlap</param>
+		/// <returns>True if the axis aligned box and the mesh are intersecting</returns>
+		public static bool CheckContact(
+			Matrix cylinderTransform, float cylinderLength, float cylinderRadius,
+			TriangleMesh3 triangleMesh
+			) { throw new NotImplementedException("Not implemented yet"); }
 
-  /// <summary>Contains all Cylinder-to-Mesh interference detection code</summary>
-  public static class CylinderMeshCollider {
-
-    /// <summary>Test whether a cylinder and a mesh are overlapping</summary>
-    /// <param name="cylinderTransform">Center and orientation of the cylinder</param>
-    /// <param name="cylinderLength">Length of the cylinder</param>
-    /// <param name="cylinderRadius">Radius of the cylinder</param>
-    /// <param name="triangleMesh">Mesh to be checked for overlap</param>
-    /// <returns>True if the axis aligned box and the mesh are intersecting</returns>
-    public static bool CheckContact(
-      Matrix cylinderTransform, float cylinderLength, float cylinderRadius,
-      TriangleMesh3 triangleMesh
-    ) {
-      throw new NotImplementedException("Not implemented yet");
-    }
-
-    /// <summary>Find the contact location between a cylinder and a mesh</summary>
-    /// <param name="cylinderTransform">Center and orientation of the cylinder</param>
-    /// <param name="cylinderLength">Length of the cylinder</param>
-    /// <param name="cylinderRadius">Radius of the cylinder</param>
-    /// <param name="triangleMesh">Mesh to be checked for overlap</param>
-    /// <returns>A contact location if the axis aligned box touches the mesh</returns>
-    public static Vector3? FindContact(
-      Matrix cylinderTransform, float cylinderLength, float cylinderRadius,
-      TriangleMesh3 triangleMesh
-    ) {
-      throw new NotImplementedException("Not implemented yet");
-    }
-
-  }
-
+		/// <summary>Find the contact location between a cylinder and a mesh</summary>
+		/// <param name="cylinderTransform">Center and orientation of the cylinder</param>
+		/// <param name="cylinderLength">Length of the cylinder</param>
+		/// <param name="cylinderRadius">Radius of the cylinder</param>
+		/// <param name="triangleMesh">Mesh to be checked for overlap</param>
+		/// <returns>A contact location if the axis aligned box touches the mesh</returns>
+		public static Vector3? FindContact(
+			Matrix cylinderTransform, float cylinderLength, float cylinderRadius,
+			TriangleMesh3 triangleMesh
+			) { throw new NotImplementedException("Not implemented yet"); }
+	}
 } // namespace Nuclex.Geometry.Volumes.Collisions

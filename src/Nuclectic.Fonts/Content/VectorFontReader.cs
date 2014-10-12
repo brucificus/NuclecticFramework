@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2008 Nuclex Development Labs
@@ -16,6 +17,7 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System.Collections.Generic;
@@ -23,47 +25,47 @@ using System.Collections.Immutable;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 
-namespace Nuclectic.Fonts.Content {
+namespace Nuclectic.Fonts.Content
+{
+	/// <summary>XNA framework content reader for VectorFonts</summary>
+	public class VectorFontReader : ContentTypeReader<VectorFont>
+	{
+		/// <summary>Load a vector font from a stored XNA asset</summary>
+		/// <param name="input">Reader from which the asset can be read</param>
+		/// <param name="existingInstance">Optional existing instance we are reloading</param>
+		/// <returns>The loaded VectorFont instance</returns>
+		protected override VectorFont Read(ContentReader input, VectorFont existingInstance)
+		{
+			float lineHeight = input.ReadSingle();
 
-  /// <summary>XNA framework content reader for VectorFonts</summary>
-  public class VectorFontReader : ContentTypeReader<IVectorFont> {
+			// Which index corresponds to which character
+			var characterMap = input.ReadObject<Dictionary<char, int>>();
 
-    /// <summary>Load a vector font from a stored XNA asset</summary>
-    /// <param name="input">Reader from which the asset can be read</param>
-    /// <param name="existingInstance">Optional existing instance we are reloading</param>
-    /// <returns>The loaded VectorFont instance</returns>
-    protected override IVectorFont Read(ContentReader input, IVectorFont existingInstance) {
-      float lineHeight = input.ReadSingle();
+			// Vectors of each character
+			var characters = input.ReadObject<List<VectorFontCharacter>>();
 
-      // Which index corresponds to which character
-      var characterMap = input.ReadObject<Dictionary<char, int>>();
+			// Special distance adjustments between some characters
+			var kerningTable =
+				new Dictionary<KerningPair, Vector2>();
 
-      // Vectors of each character
-      var characters = input.ReadObject<List<VectorFontCharacter>>();
+			int kerningEntryCount = input.ReadInt32();
+			for (int index = 0; index < kerningEntryCount; ++index)
+			{
+				char left = input.ReadChar();
+				char right = input.ReadChar();
+				Vector2 kerning = input.ReadVector2();
 
-      // Special distance adjustments between some characters
-      var kerningTable =
-        new Dictionary<KerningPair, Vector2>();
+				kerningTable.Add(new KerningPair(left, right), kerning);
+			}
 
-      int kerningEntryCount = input.ReadInt32();
-      for(int index = 0; index < kerningEntryCount; ++index) {
-        char left = input.ReadChar();
-        char right = input.ReadChar();
-        Vector2 kerning = input.ReadVector2();
-
-        kerningTable.Add(new KerningPair(left, right), kerning);
-      }
-
-      #if false
+#if false
       IGraphicsDeviceService graphicsDeviceService =
         (IGraphicsDeviceService)input.ContentManager.ServiceProvider.GetService(
           typeof(IGraphicsDeviceService)
         );
       #endif
 
-      return new VectorFont(lineHeight, characters.ToImmutableList(), characterMap.ToImmutableDictionary(), kerningTable.ToImmutableDictionary());
-    }
-
-  }
-
+			return new VectorFont(lineHeight, characters.ToImmutableList(), characterMap.ToImmutableDictionary(), kerningTable.ToImmutableDictionary());
+		}
+	}
 } // namespace Nuclex.Fonts.Content

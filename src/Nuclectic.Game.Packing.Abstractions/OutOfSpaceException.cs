@@ -1,4 +1,5 @@
 #region CPL License
+
 /*
 Nuclex Framework
 Copyright (C) 2002-2011 Nuclex Development Labs
@@ -16,31 +17,33 @@ IBM Common Public License for more details.
 You should have received a copy of the IBM Common Public
 License along with this library
 */
+
 #endregion
 
 using System;
 
-namespace Nuclectic.Game.Packing {
+namespace Nuclectic.Game.Packing
+{
+	/// <summary>Insufficient space left in packing area to contain a given object</summary>
+	/// <remarks>
+	///   An exception being sent to you from deep space. Erm, no, wait, it's an exception
+	///   that occurs when a packing algorithm runs out of space and is unable to fit
+	///   the object you tried to pack into the remaining packing area.
+	/// </remarks>
+	public class OutOfSpaceException : Exception
+	{
+		/// <summary>Initializes the exception</summary>
+		public OutOfSpaceException() { }
 
-  /// <summary>Insufficient space left in packing area to contain a given object</summary>
-  /// <remarks>
-  ///   An exception being sent to you from deep space. Erm, no, wait, it's an exception
-  ///   that occurs when a packing algorithm runs out of space and is unable to fit
-  ///   the object you tried to pack into the remaining packing area.
-  /// </remarks>
-  public class OutOfSpaceException : Exception {
+		/// <summary>Initializes the exception with an error message</summary>
+		/// <param name="message">Error message describing the cause of the exception</param>
+		public OutOfSpaceException(string message)
+			: base(message) { }
 
-    /// <summary>Initializes the exception</summary>
-    public OutOfSpaceException() { }
-
-    /// <summary>Initializes the exception with an error message</summary>
-    /// <param name="message">Error message describing the cause of the exception</param>
-    public OutOfSpaceException(string message) : base(message) { }
-
-    /// <summary>Initializes the exception as a followup exception</summary>
-    /// <param name="message">Error message describing the cause of the exception</param>
-    /// <param name="inner">Preceding exception that has caused this exception</param>
-    public OutOfSpaceException(string message, Exception inner) : base(message, inner) { }
-  }
-
+		/// <summary>Initializes the exception as a followup exception</summary>
+		/// <param name="message">Error message describing the cause of the exception</param>
+		/// <param name="inner">Preceding exception that has caused this exception</param>
+		public OutOfSpaceException(string message, Exception inner)
+			: base(message, inner) { }
+	}
 } // namespace Nuclex.Game.Packing
